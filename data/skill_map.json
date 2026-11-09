@@ -1,0 +1,105 @@
+{
+  "subject": "Mathematics",
+  "topic_chain": "Fractions",
+  "curriculum_note": "Sequence modelled on common Grade 3-5 fraction progressions (e.g. NCERT / CBSE primary maths, CCSS 3.NF-5.NF). Grade levels are indicative.",
+  "skills": [
+    {
+      "id": "fraction_basics",
+      "name": "Understanding fractions",
+      "grade": 3,
+      "description": "A fraction names equal parts of a whole: the denominator is how many equal parts, the numerator is how many we take.",
+      "prerequisites": []
+    },
+    {
+      "id": "equivalent_fractions",
+      "name": "Equivalent fractions",
+      "grade": 4,
+      "description": "Multiplying or dividing the numerator and denominator by the same number gives an equal fraction.",
+      "prerequisites": ["fraction_basics"]
+    },
+    {
+      "id": "simplifying_fractions",
+      "name": "Simplifying fractions",
+      "grade": 4,
+      "description": "Writing a fraction in lowest terms by dividing top and bottom by their greatest common factor.",
+      "prerequisites": ["equivalent_fractions"]
+    },
+    {
+      "id": "comparing_fractions",
+      "name": "Comparing fractions",
+      "grade": 4,
+      "description": "Deciding which of two fractions is larger, using common denominators or benchmarks.",
+      "prerequisites": ["equivalent_fractions"]
+    },
+    {
+      "id": "add_sub_like",
+      "name": "Adding and subtracting with like denominators",
+      "grade": 4,
+      "description": "When denominators match, add or subtract the numerators and keep the denominator.",
+      "prerequisites": ["fraction_basics"]
+    },
+    {
+      "id": "common_denominators",
+      "name": "Finding common denominators",
+      "grade": 5,
+      "description": "Rewriting two fractions so they share a denominator (ideally the least common multiple), using equivalent fractions.",
+      "prerequisites": ["equivalent_fractions"]
+    },
+    {
+      "id": "add_sub_unlike",
+      "name": "Adding and subtracting with unlike denominators",
+      "grade": 5,
+      "description": "Convert to a common denominator first, then add or subtract the numerators.",
+      "prerequisites": ["common_denominators", "add_sub_like"]
+    },
+    {
+      "id": "multiply_fractions",
+      "name": "Multiplying fractions",
+      "grade": 5,
+      "description": "Multiply numerators together and denominators together, then simplify.",
+      "prerequisites": ["fraction_basics"]
+    }
+  ],
+  "misconceptions": {
+    "ADD_ACROSS": {
+      "label": "Adds numerators and adds denominators",
+      "explanation": "Treats the top and bottom numbers as separate whole numbers (e.g. 1/2 + 1/3 = 2/5) instead of finding a common denominator first.",
+      "gap_skill": "common_denominators"
+    },
+    "SUB_ACROSS": {
+      "label": "Subtracts numerators and subtracts denominators",
+      "explanation": "Subtracts tops and bottoms separately (e.g. 3/4 - 1/2 = 2/2) instead of converting to a common denominator.",
+      "gap_skill": "common_denominators"
+    },
+    "KEEP_ONE_DENOMINATOR": {
+      "label": "Keeps one denominator without converting",
+      "explanation": "Combines the numerators but keeps one of the original denominators, without rewriting the other fraction (e.g. 1/2 + 1/4 = 2/4).",
+      "gap_skill": "common_denominators"
+    },
+    "NUMERATOR_NOT_SCALED": {
+      "label": "Finds a common denominator but doesn't scale the numerators",
+      "explanation": "Multiplies the denominators but leaves the numerators unchanged (e.g. 1/2 + 1/3 = 2/6), so the new fractions are not equivalent to the originals.",
+      "gap_skill": "equivalent_fractions"
+    },
+    "NOT_SIMPLIFIED": {
+      "label": "Correct value but not in simplest form",
+      "explanation": "The answer has the right value but was not reduced to lowest terms.",
+      "gap_skill": "simplifying_fractions"
+    },
+    "BIGGER_DENOMINATOR_BIGGER": {
+      "label": "Thinks a bigger denominator means a bigger fraction",
+      "explanation": "Picks the fraction with the larger denominator as larger (e.g. thinks 1/8 > 1/3), not seeing that more parts means smaller parts.",
+      "gap_skill": "comparing_fractions"
+    },
+    "EQUIV_ADD_SAME": {
+      "label": "Adds the same number to top and bottom",
+      "explanation": "Makes an 'equivalent' fraction by adding the same amount to numerator and denominator (e.g. 2/3 = 4/5) instead of multiplying.",
+      "gap_skill": "equivalent_fractions"
+    },
+    "MULTIPLY_CROSS_ADD": {
+      "label": "Multiplies numerators but adds denominators",
+      "explanation": "Mixes up the rules for addition and multiplication of fractions.",
+      "gap_skill": "multiply_fractions"
+    }
+  }
+}

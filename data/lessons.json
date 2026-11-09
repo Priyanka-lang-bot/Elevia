@@ -1,0 +1,78 @@
+{
+  "common_denominators": {
+    "title": "Finding common denominators",
+    "big_idea": "You can only add or subtract fractions when the pieces are the same size. A common denominator makes the pieces the same size.",
+    "steps": [
+      "Look at the two denominators. If they're different, the pieces are different sizes.",
+      "Find a number that both denominators divide into. The smallest one is the lowest common denominator (LCD).",
+      "Rewrite each fraction over the LCD. Whatever you multiply the bottom by, multiply the top by the same number.",
+      "Now the pieces are the same size, so add or subtract only the numerators. Keep the denominator.",
+      "Simplify the answer if you can."
+    ],
+    "sense_check": "Quick check: 1/2 + 1/3 must be more than 1/2, because you're adding something to 1/2. 2/5 is less than 1/2, so 2/5 can't be right.",
+    "worked_examples": [
+      {"type": "add", "a": "1/2", "b": "1/3"},
+      {"type": "add", "a": "3/4", "b": "1/6"}
+    ]
+  },
+  "equivalent_fractions": {
+    "title": "Equivalent fractions",
+    "big_idea": "Equivalent fractions are the same amount written differently. You make one by multiplying (or dividing) the top and bottom by the same number.",
+    "steps": [
+      "Ask: what do I multiply the old denominator by to get the new one?",
+      "Multiply the numerator by that same number.",
+      "Check: the fraction should still describe the same amount. Multiplying top and bottom by the same number is like multiplying by 1.",
+      "Adding the same number to top and bottom does NOT keep the amount the same."
+    ],
+    "sense_check": "Quick check: 1/2 = 2/4 = 4/8. Each time the pieces get smaller, you need more of them.",
+    "worked_examples": [
+      {"type": "equivalent", "a": "2/3", "target": 12},
+      {"type": "equivalent", "a": "3/5", "target": 20}
+    ]
+  },
+  "simplifying_fractions": {
+    "title": "Simplifying fractions",
+    "big_idea": "A fraction is in simplest form when the top and bottom have no common factor except 1.",
+    "steps": [
+      "List the factors of the numerator and the denominator.",
+      "Find the greatest common factor (GCF).",
+      "Divide the top and the bottom by the GCF.",
+      "Check that no number other than 1 divides both."
+    ],
+    "sense_check": "Quick check: 6/8 and 3/4 are the same amount, but 3/4 is simpler because 3 and 4 share no factor.",
+    "worked_examples": [
+      {"type": "simplify", "a": "12/18"},
+      {"type": "simplify", "a": "20/25"}
+    ]
+  },
+  "comparing_fractions": {
+    "title": "Comparing fractions",
+    "big_idea": "A bigger denominator means the whole is cut into more pieces, so each piece is smaller.",
+    "steps": [
+      "If the numerators are the same, the fraction with the smaller denominator is larger.",
+      "If the denominators are the same, the fraction with the larger numerator is larger.",
+      "Otherwise, rewrite both over a common denominator and compare the numerators.",
+      "Sense-check with benchmarks like 1/2: is each fraction more or less than half?"
+    ],
+    "sense_check": "Quick check: would you rather have 1/3 of a pizza or 1/8? Eight slices are smaller than three slices.",
+    "worked_examples": [
+      {"type": "compare", "a": "1/3", "b": "1/8"},
+      {"type": "compare", "a": "2/3", "b": "3/5"}
+    ]
+  },
+  "multiply_fractions": {
+    "title": "Multiplying fractions",
+    "big_idea": "Multiplying fractions means taking a part of a part. Multiply the tops, multiply the bottoms.",
+    "steps": [
+      "You do NOT need a common denominator to multiply.",
+      "Multiply numerator × numerator.",
+      "Multiply denominator × denominator.",
+      "Simplify the result."
+    ],
+    "sense_check": "Quick check: half of a half is a quarter, so 1/2 × 1/2 = 1/4. Multiplying two fractions less than 1 gives a smaller answer.",
+    "worked_examples": [
+      {"type": "multiply", "a": "2/3", "b": "3/4"},
+      {"type": "multiply", "a": "1/2", "b": "4/5"}
+    ]
+  }
+}
