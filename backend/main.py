@@ -17,6 +17,8 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 from . import db, llm, orchestrator as orch
+from .accounts.errors import AccountError
+from .accounts.routes import router as accounts_router
 from .config import get_settings
 from .content import lessons, skill_map, skills_by_id, validate_all
 
@@ -38,13 +40,20 @@ app = FastAPI(title="ELEVIA API", version="1.0.0", lifespan=lifespan,
               description="Agentic learning-gap workflow for fractions: Diagnoser, Checker, Planner, Tutor.")
 
 _s = get_settings()
-app.add_middleware(CORSMiddleware, allow_origins=_s.cors_origins, allow_methods=["GET", "POST"],
-                   allow_headers=["Content-Type", "X-Teacher-Pin"])
+app.add_middleware(CORSMiddleware, allow_origins=_s.cors_origins, allow_methods=["GET", "POST", "PUT"],
+                   allow_headers=["Content-Type", "X-Teacher-Pin", "Authorization", "X-Client-Id"])
+app.include_router(accounts_router)
 
 
 @app.exception_handler(orch.WorkflowError)
 def _workflow_error(_: Request, exc: orch.WorkflowError):
     return JSONResponse(status_code=exc.status_code, content={"detail": str(exc)})
+
+
+@app.exception_handler(AccountError)
+def _account_error(_: Request, exc: AccountError):
+    return JSONResponse(status_code=exc.status_code,
+                        content={"detail": str(exc), "field": exc.field, "code": exc.code})
 
 
 @app.exception_handler(Exception)

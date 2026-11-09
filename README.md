@@ -15,6 +15,15 @@ Teachers can confirm or reject gaps and change the learning focus. Every overrid
 
 ---
 
+## Accounts and access (in progress)
+
+The backend now has real accounts for five roles, built to the architecture document: individual students (locked until a parent verifies and consents), school students (referral code + teacher approval), independent learners (email verification + optional, revocable sharing), parents, teachers and school admins. Passwords are hashed with scrypt; sessions, consent records with timestamps, referral codes, sharing grants and an access log are stored in SQLite. Every route checks role **and** relationship before showing anyone's data. The new screens are not built yet (waiting for design approval).
+
+- Add a subscribed school and get its admin's invitation link:
+  `python scripts/create_school.py --name "Sunrise Public School" --admin-email head@school.in --state Maharashtra --district Pune`
+- Emails: with `EMAIL_MODE=outbox` (default) nothing is sent; emails are saved in the database. Locally, set `ELEVIA_DEV_OUTBOX=1` and open http://localhost:8000/dev/outbox to see them and their links. Set `EMAIL_MODE=smtp` and the `SMTP_*` values to really send.
+- Parent verification is currently email ownership + a declaration. That is **not** DPDP Rule 10-grade verification; see the architecture document.
+
 ## 1. Run it locally (Windows)
 
 Needs Python 3.10+.

@@ -163,9 +163,11 @@ def transaction(db_path: Optional[str] = None) -> Iterator[sqlite3.Connection]:
 
 
 def init_db(db_path: Optional[str] = None) -> None:
+    from .accounts.schema import ACCOUNTS_SCHEMA
     conn = connect(db_path)
     try:
         conn.executescript(SCHEMA)
+        conn.executescript(ACCOUNTS_SCHEMA)
         conn.commit()
     finally:
         conn.close()
