@@ -1,0 +1,16 @@
+[project]
+name = "elevia"
+version = "1.0.0"
+description = "ELEVIA: closing learning gaps with agentic AI"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+    "httpx>=0.27",
+    "pydantic>=2.7",
+    "python-dotenv>=1.0",
+]
+
+[tool.vercel]
+# The FastAPI instance named `app` in ./app.py (backend at /api, website in public/)
+entrypoint = "app:app"
