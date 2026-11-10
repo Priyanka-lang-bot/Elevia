@@ -25,14 +25,19 @@ from .content import lessons, skill_map, skills_by_id, validate_all
 log = logging.getLogger("elevia")
 DEMO_TEACHER_PIN = "2468"
 
-@asynccontextmanager
-async def lifespan(_: FastAPI):
+def startup() -> None:
+    """Create tables and check content. Called by this app's lifespan and by app.py (Vercel)."""
     db.init_db()
     validate_all()  # fail fast on broken content files
     # Free hosts wipe the disk on restart; ELEVIA_AUTO_SEED=1 re-creates the sample students if the DB is empty.
     if os.getenv("ELEVIA_AUTO_SEED", "").lower() in ("1", "true", "yes") and not orch.list_students():
         from .sample_data import seed
         seed()
+
+
+@asynccontextmanager
+async def lifespan(_: FastAPI):
+    startup()
     yield
 
 
@@ -43,6 +48,37 @@ _s = get_settings()
 app.add_middleware(CORSMiddleware, allow_origins=_s.cors_origins, allow_methods=["GET", "POST", "PUT"],
                    allow_headers=["Content-Type", "X-Teacher-Pin", "Authorization", "X-Client-Id"])
 app.include_router(accounts_router)
+
+
+LEGACY_PREFIXES = ("/students", "/cases", "/assessments", "/teacher/")
+
+
+def legacy_api_enabled() -> bool:
+    """The demo-phase learning-engine routes have no login. Off on Vercel unless explicitly enabled."""
+    if os.getenv("ELEVIA_LEGACY_API") is not None:
+        return os.getenv("ELEVIA_LEGACY_API") == "1"
+    return not os.getenv("VERCEL")
+
+
+@app.middleware("http")
+async def _block_legacy(request: Request, call_next):
+    path = request.scope.get("path", "")
+    root = request.scope.get("root_path", "")
+    rel = path[len(root):] if root and path.startswith(root) else path
+    if rel.startswith(LEGACY_PREFIXES) and not legacy_api_enabled():
+        return JSONResponse(status_code=404, content={"detail": "Not found."})
+    return await call_next(request)
+
+
+@app.middleware("http")
+async def _remember_origin(request: Request, call_next):
+    from .accounts import emailer
+    proto = request.headers.get("x-forwarded-proto") or request.url.scheme
+    tok = emailer.request_origin.set(f"{proto}://{request.headers.get('host', request.url.netloc)}")
+    try:
+        return await call_next(request)
+    finally:
+        emailer.request_origin.reset(tok)
 
 
 @app.exception_handler(orch.WorkflowError)

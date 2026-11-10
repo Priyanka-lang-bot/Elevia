@@ -17,14 +17,64 @@ Teachers can confirm or reject gaps and change the learning focus. Every overrid
 
 ## Accounts and access (in progress)
 
-The backend now has real accounts for five roles, built to the architecture document: individual students (locked until a parent verifies and consents), school students (referral code + teacher approval), independent learners (email verification + optional, revocable sharing), parents, teachers and school admins. Passwords are hashed with scrypt; sessions, consent records with timestamps, referral codes, sharing grants and an access log are stored in SQLite. Every route checks role **and** relationship before showing anyone's data. The new screens are not built yet (waiting for design approval).
+The backend now has real accounts for five roles, built to the architecture document: individual students (locked until a parent verifies and consents), school students (referral code + teacher approval), independent learners (email verification + optional, revocable sharing), parents, teachers and school admins. Passwords are hashed with scrypt; sessions, consent records with timestamps, referral codes, sharing grants and an access log are stored in SQLite. Every route checks role **and** relationship before showing anyone's data. The website in `public/` covers all three pathways, parent consent, and simple home screens for each role.
 
 - Add a subscribed school and get its admin's invitation link:
   `python scripts/create_school.py --name "Sunrise Public School" --admin-email head@school.in --state Maharashtra --district Pune`
 - Emails: with `EMAIL_MODE=outbox` (default) nothing is sent; emails are saved in the database. Locally, set `ELEVIA_DEV_OUTBOX=1` and open http://localhost:8000/dev/outbox to see them and their links. Set `EMAIL_MODE=smtp` and the `SMTP_*` values to really send.
 - Parent verification is currently email ownership + a declaration. That is **not** DPDP Rule 10-grade verification; see the architecture document.
 
-## 1. Run it locally (Windows)
+## Run the website locally (Windows)
+
+The website (in `public/`) and the API (`backend/`, served at `/api`) run together:
+
+```powershell
+cd C:\Users\DELL\Desktop\Prausnex\elevia
+py -3.13 -m venv .venv
+.venv\Scripts\activate
+python -m pip install --only-binary=:all: -r requirements.txt
+copy .env.example .env
+python -m uvicorn app:app --reload
+```
+Open **http://localhost:8000**. (The website needs only FastAPI, so it avoids the pandas/pyarrow files your laptop's security policy blocks.)
+
+To test without an email service, set `ELEVIA_DEMO_EMAIL_LINKS=1` in `.env`: the links ELEVIA would email appear in a yellow "Demo mode" box on screen. **Demo only** — with it on, anyone could approve their own consent.
+
+Add a subscribed school (prints the admin's invitation link):
+```powershell
+python scripts/create_school.py --name "Sunrise Public School" --admin-email head@school.in --state Maharashtra --district Pune
+```
+
+Run the tests: `python -m pip install -r requirements-dev.txt` then `python -m pytest -q` (add `set ELEVIA_TEST_TURSO=1` first to run them through the Turso connector).
+
+## Deploy on Vercel (with a Turso database)
+
+Vercel runs `app.py` as one serverless function and serves `public/` from its CDN. Vercel's disk is temporary, so data lives in **Turso** (hosted SQLite).
+
+**1. Create the database (Turso, free tier)**
+1. Sign up at https://turso.tech (Continue with GitHub).
+2. Create a database; pick the region closest to your users (e.g. Mumbai).
+3. Copy its **URL** (`libsql://<name>-<org>.turso.io`) and create a **token** with read-write access.
+
+**2. Create the Vercel project**
+1. Sign in at https://vercel.com with GitHub → **Add New… → Project** → import `Priyanka-lang-bot/Elevia`.
+2. Framework preset: **FastAPI** (detected automatically). Leave build settings empty.
+3. **Environment Variables**:
+   | Name | Value |
+   |---|---|
+   | `TURSO_DATABASE_URL` | your `libsql://…` URL |
+   | `TURSO_AUTH_TOKEN` | your token |
+   | `ELEVIA_DEMO_EMAIL_LINKS` | `1` for a judges' demo without email (remove for real use) |
+   | `EMAIL_MODE`, `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, `EMAIL_FROM` | only when you set up real email |
+4. **Deploy**. Then Project → Settings → Functions → set the region near your Turso database (e.g. Mumbai, `bom1`).
+
+**3. Add a school to the live site** (from your laptop, pointed at Turso): put `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN` and `APP_BASE_URL=https://<your-project>.vercel.app` in `.env`, then run the `create_school.py` command above. Open the printed link to set up the school admin.
+
+Notes: the older fractions learning screens (Streamlit, in `frontend/`) are not part of the Vercel site yet; their unauthenticated API routes are switched off on Vercel and will return with proper accounts in the learning phase. Sessions use HttpOnly cookies; security headers are set in `vercel.json`.
+
+## Older Streamlit version (fractions learning engine)
+
+### Run it locally (Windows)
 
 Needs Python 3.10+.
 

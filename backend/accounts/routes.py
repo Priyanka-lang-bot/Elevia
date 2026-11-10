@@ -8,23 +8,50 @@ from __future__ import annotations
 import os
 from typing import Callable, Optional
 
-from fastapi import APIRouter, Depends, Header
+from fastapi import APIRouter, Depends, Header, Request, Response
 from pydantic import BaseModel, Field
 
 from .. import db
-from . import core, pathways, permissions, schools, sharing
+from . import core, emailer, pathways, permissions, schools, sharing
 from .errors import AccountError
 
 router = APIRouter()
+COOKIE = "elevia_session"
+WEB_HEADER = "x-elevia-web"  # sent by ELEVIA's own web page; a cross-site form can't add it
 
 
 def _tx(fn: Callable):
-    with db.transaction() as conn:
-        return fn(conn)
+    bucket = [] if emailer.demo_links_enabled() else None
+    token = emailer.demo_emails.set(bucket)
+    try:
+        with db.transaction() as conn:
+            result = fn(conn)
+    finally:
+        emailer.demo_emails.reset(token)
+    if bucket and isinstance(result, dict):
+        result = {**result, "demo_emails": bucket}  # DEMO MODE ONLY: shows links instead of sending
+    return result
 
 
-def _bearer(authorization: str = Header(default="")) -> str:
-    return authorization[7:].strip() if authorization.lower().startswith("bearer ") else ""
+def _with_session(request: Request, response: Response, result: dict) -> dict:
+    """Put the session in an HttpOnly cookie. ELEVIA's web page never sees the token itself."""
+    tok = result.get("token") if isinstance(result, dict) else None
+    if tok:
+        https = request.url.scheme == "https" or request.headers.get("x-forwarded-proto") == "https"
+        response.set_cookie(COOKIE, tok, max_age=core.SESSION_DAYS * 86400, httponly=True, secure=https,
+                            samesite="lax", path="/")
+        if request.headers.get(WEB_HEADER) == "1":
+            result = {k: v for k, v in result.items() if k != "token"}
+    return result
+
+
+def _bearer(request: Request, authorization: str = Header(default="")) -> str:
+    if authorization.lower().startswith("bearer "):
+        return authorization[7:].strip()
+    tok = request.cookies.get(COOKIE, "")
+    if tok and request.method not in ("GET", "HEAD") and request.headers.get(WEB_HEADER) != "1":
+        raise AccountError("Request blocked.", 403, code="csrf")  # cookie sent by another site
+    return tok
 
 
 def current_user(token: str = Depends(_bearer)) -> dict:
@@ -160,13 +187,14 @@ class Scopes(BaseModel):
 # ---------------------------------------------------------------- auth
 
 @router.post("/auth/login")
-def login(body: Login):
-    return _tx(lambda c: core.login(c, body.identifier, body.password))
+def login(body: Login, request: Request, response: Response):
+    return _with_session(request, response, _tx(lambda c: core.login(c, body.identifier, body.password)))
 
 
 @router.post("/auth/logout")
-def logout(token: str = Depends(_bearer)):
+def logout(response: Response, token: str = Depends(_bearer)):
     _tx(lambda c: core.revoke_session(c, token))
+    response.delete_cookie(COOKIE, path="/")
     return {"ok": True}
 
 
@@ -199,18 +227,20 @@ def reset(body: ResetBody):
 
 
 @router.post("/auth/register/student", status_code=201)
-def register_student(body: StudentSignup):
-    return _tx(lambda c: pathways.register_individual_student(c, **body.model_dump()))
+def register_student(body: StudentSignup, request: Request, response: Response):
+    return _with_session(request, response, _tx(lambda c: pathways.register_individual_student(c, **body.model_dump())))
 
 
 @router.post("/auth/register/school-student", status_code=201)
-def register_school_student(body: SchoolStudentSignup, x_client_id: str = Header(default="")):
-    return _tx(lambda c: schools.register_school_student(c, client_id=x_client_id, **body.model_dump()))
+def register_school_student(body: SchoolStudentSignup, request: Request, response: Response,
+                            x_client_id: str = Header(default="")):
+    return _with_session(request, response, _tx(
+        lambda c: schools.register_school_student(c, client_id=x_client_id, **body.model_dump())))
 
 
 @router.post("/auth/register/learner", status_code=201)
-def register_learner(body: LearnerSignup):
-    return _tx(lambda c: pathways.register_learner(c, **body.model_dump()))
+def register_learner(body: LearnerSignup, request: Request, response: Response):
+    return _with_session(request, response, _tx(lambda c: pathways.register_learner(c, **body.model_dump())))
 
 
 @router.post("/auth/school-code/validate")
@@ -226,10 +256,11 @@ def consent_info(body: TokenBody):
 
 
 @router.post("/consent/accept")
-def consent_accept(body: ConsentAccept, actor: Optional[dict] = Depends(optional_user)):
+def consent_accept(body: ConsentAccept, request: Request, response: Response,
+                   actor: Optional[dict] = Depends(optional_user)):
     d = body.model_dump()
     tok = d.pop("token")
-    return _tx(lambda c: pathways.accept_consent(c, tok, actor=actor, **d))
+    return _with_session(request, response, _tx(lambda c: pathways.accept_consent(c, tok, actor=actor, **d)))
 
 
 @router.post("/consent/decline")
@@ -268,8 +299,9 @@ def invite_info(body: TokenBody):
 
 
 @router.post("/invites/accept", status_code=201)
-def invite_accept(body: StaffAccept):
-    return _tx(lambda c: schools.accept_staff_invite(c, body.token, full_name=body.full_name, password=body.password))
+def invite_accept(body: StaffAccept, request: Request, response: Response):
+    return _with_session(request, response, _tx(
+        lambda c: schools.accept_staff_invite(c, body.token, full_name=body.full_name, password=body.password)))
 
 
 @router.post("/school/classes", status_code=201)

@@ -441,3 +441,48 @@ def test_dev_outbox_hidden_unless_enabled(client, monkeypatch):
     monkeypatch.setenv("ELEVIA_DEV_OUTBOX", "1")
     make_learner(client, verify=False)
     assert "Confirm your email" in client.get("/dev/outbox").json()[0]["subject"]
+
+
+# ---------------------------------------------------------------- browser cookie sessions
+
+WEB = {"X-Elevia-Web": "1"}
+
+
+def test_cookie_session_is_httponly_and_token_hidden_from_page(browser):
+    r = browser.post("/auth/register/learner", headers=WEB, json={
+        "full_name": "Ada Learner", "date_of_birth": dob(25), "email": "ada@example.com", "password": PW,
+        "accept_terms": True})
+    assert r.status_code == 201 and "token" not in r.json()  # the page never sees the token
+    cookie = r.headers["set-cookie"].lower()
+    assert "httponly" in cookie and "samesite=lax" in cookie and "secure" in cookie
+    assert browser.get("/auth/me").json()["next_step"] == "verify_email"
+
+
+def test_cookie_requests_without_web_header_are_blocked(browser):
+    browser.post("/auth/register/learner", headers=WEB, json={
+        "full_name": "Ada Learner", "date_of_birth": dob(25), "email": "ada@example.com", "password": PW,
+        "accept_terms": True})
+    # a form on another site would carry the cookie but can't add the header
+    assert browser.post("/auth/resend-verification").status_code == 403
+    assert browser.post("/auth/resend-verification", headers=WEB).status_code == 200
+
+
+def test_logout_clears_cookie(browser):
+    browser.post("/auth/register/learner", headers=WEB, json={
+        "full_name": "Ada Learner", "date_of_birth": dob(25), "email": "ada@example.com", "password": PW,
+        "accept_terms": True})
+    assert browser.post("/auth/logout", headers=WEB).status_code == 200
+    assert browser.get("/auth/me").status_code == 401
+
+
+def test_demo_email_links_only_when_enabled(client, monkeypatch):
+    body = {"full_name": "Riya Sharma", "date_of_birth": dob(12), "username": "riya_demo", "password": PW,
+            "parent_name": "Meena Sharma", "parent_email": "mum@example.com"}
+    assert "demo_emails" not in client.post("/auth/register/student", json=body).json()
+    monkeypatch.setenv("ELEVIA_DEMO_EMAIL_LINKS", "1")
+    r = client.post("/auth/register/student", json={**body, "username": "riya_demo2", "parent_email": "m2@example.com"})
+    demo = r.json()["demo_emails"][0]
+    assert demo["to"] == "m2@example.com" and "action=consent&token=" in demo["link"]
+    monkeypatch.setenv("EMAIL_MODE", "smtp")  # never shown when real email is configured
+    from backend.accounts import emailer
+    assert not emailer.demo_links_enabled()

@@ -142,7 +142,18 @@ def now_iso() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 
 
-def connect(db_path: Optional[str] = None) -> sqlite3.Connection:
+def using_turso() -> bool:
+    import os
+    return bool(os.getenv("TURSO_DATABASE_URL", "").strip())
+
+
+def connect(db_path: Optional[str] = None):
+    import os
+    if db_path is None and using_turso():
+        from .turso import TursoConnection
+        conn = TursoConnection(os.environ["TURSO_DATABASE_URL"], os.getenv("TURSO_AUTH_TOKEN", ""))
+        conn.execute("PRAGMA foreign_keys = ON")
+        return conn
     conn = sqlite3.connect(db_path or get_settings().db_path, timeout=10)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")

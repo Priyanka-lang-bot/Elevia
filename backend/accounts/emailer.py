@@ -7,6 +7,7 @@ clearly a development mode: nothing reaches a real inbox.
 """
 from __future__ import annotations
 
+import contextvars
 import logging
 import os
 import smtplib
@@ -18,13 +19,23 @@ from ..db import now_iso
 log = logging.getLogger("elevia.email")
 
 
+# Set per request: the site's origin (used when APP_BASE_URL is not configured) and,
+# in demo mode, the emails generated during this request.
+request_origin: contextvars.ContextVar[str] = contextvars.ContextVar("request_origin", default="")
+demo_emails: contextvars.ContextVar[list | None] = contextvars.ContextVar("demo_emails", default=None)
+
+
+def demo_links_enabled() -> bool:
+    return mode() == "outbox" and os.getenv("ELEVIA_DEMO_EMAIL_LINKS", "") == "1"
+
+
 def mode() -> str:
     m = os.getenv("EMAIL_MODE", "outbox").strip().lower()
     return m if m in ("smtp", "outbox") else "outbox"
 
 
 def app_base_url() -> str:
-    return os.getenv("APP_BASE_URL", "http://localhost:8501").rstrip("/")
+    return (os.getenv("APP_BASE_URL", "").strip() or request_origin.get() or "http://localhost:8000").rstrip("/")
 
 
 def link(action: str, token: str) -> str:
@@ -37,6 +48,11 @@ def send(conn, to: str, subject: str, body: str) -> None:
         conn.execute("INSERT INTO email_outbox (to_email, subject, body, created_at) VALUES (?,?,?,?)",
                      (to, subject, body, now_iso()))
         log.info("Email saved to outbox (not sent): %s -> %s", subject, to)
+        bucket = demo_emails.get()
+        if bucket is not None and demo_links_enabled():
+            import re
+            m = re.search(r"https?://\S+", body)
+            bucket.append({"to": to, "subject": subject, "link": m.group(0) if m else None})
         return
     msg = EmailMessage()
     msg["From"] = os.getenv("EMAIL_FROM", os.getenv("SMTP_USER", ""))
