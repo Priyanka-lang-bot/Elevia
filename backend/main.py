@@ -109,7 +109,7 @@ class NewStudent(BaseModel):
 
 class Answer(BaseModel):
     question_id: str = Field(min_length=1, max_length=20)
-    answer: str = Field(max_length=40)
+    answer: str = Field(max_length=200)
     hints_used: int = Field(default=0, ge=0, le=5)
 
 

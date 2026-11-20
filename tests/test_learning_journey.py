@@ -128,8 +128,9 @@ def test_entry_welcome_then_start_creates_one_session(client, me):
     # no grade -> clear message, nothing created
     assert client.post("/learn/start", json={}, headers=me).status_code == 400
     assert count("SELECT COUNT(*) FROM students") == 0
-    # grade outside the fractions content is refused
-    assert client.post("/learn/start", json={"grade": 12}, headers=me).status_code == 422
+    # grade outside the supported range (3-12) is refused
+    assert client.post("/learn/start", json={"grade": 13}, headers=me).status_code == 422
+    assert client.post("/learn/start", json={"grade": 2}, headers=me).status_code == 422
 
     st = start(client, me)
     again = start(client, me)                        # double click / second tab
