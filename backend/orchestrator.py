@@ -11,6 +11,7 @@ which is what the Agent Activity page shows.
 from __future__ import annotations
 
 import json
+import logging
 import sqlite3
 from datetime import datetime, timezone
 from typing import Any, Callable, Optional
@@ -21,6 +22,8 @@ from .config import get_settings
 from .content import lessons, public_question, questions, skill_name, skills_by_id
 from .db import dumps, now_iso, row_to_dict, rows_to_dicts
 from .fractions_engine import check_answer, correct_answer_text, hints_for, render_prompt, worked_solution
+
+log = logging.getLogger("elevia")
 
 ACTIVE_STAGES = ("diagnostic", "verification", "learning", "retest_pending", "retest", "teacher_review")
 
@@ -254,11 +257,38 @@ def submit_answer(assessment_id: int, question_id: str, answer: str, hints_used:
         n_answered = conn.execute("SELECT COUNT(*) FROM responses WHERE assessment_id=?",
                                   (assessment_id,)).fetchone()[0]
         completed = n_answered >= len(a["question_ids"])
-        if completed:
+        if not completed:
+            feedback["assessment_completed"] = False
+            feedback["case"] = case_detail(case["id"], conn)
+            return feedback
+    # The answer above is already committed. Finishing the assessment (diagnose, verify, plan, ...) runs in its
+    # own transaction so a failure there can never throw away what the student answered.
+    _finish_after_answer(assessment_id)
+    feedback["assessment_completed"] = True
+    feedback["case"] = case_detail(case_id_of(assessment_id))
+    return feedback
+
+
+def case_id_of(assessment_id: int) -> int:
+    with db.transaction() as conn:
+        return _get(conn, "assessments", assessment_id)["case_id"]
+
+
+def _finish_after_answer(assessment_id: int) -> None:
+    try:
+        with db.transaction() as conn:
+            a = _get(conn, "assessments", assessment_id)
+            case = _get(conn, "cases", a["case_id"])
             _complete_assessment(conn, a, case)
-        feedback["assessment_completed"] = completed
-        feedback["case"] = case_detail(case["id"], conn)
-        return feedback
+    except Exception as e:  # the failed attempt was rolled back; keep the answers and hand over to a teacher
+        log.exception("Finishing assessment %s failed", assessment_id)
+        with db.transaction() as conn:
+            a = _get(conn, "assessments", assessment_id)
+            conn.execute("UPDATE assessments SET status='completed', completed_at=COALESCE(completed_at, ?) "
+                         "WHERE id=?", (now_iso(), assessment_id))
+            _log_skip(conn, a["case_id"], "Orchestrator", "complete_assessment",
+                      f"Processing failed ({type(e).__name__}); answers were kept.")
+            _set_stage(conn, a["case_id"], "teacher_review", f"processing_failed: {type(e).__name__}"[:200])
 
 
 def get_hint(assessment_id: int, question_id: str, level: int) -> dict:

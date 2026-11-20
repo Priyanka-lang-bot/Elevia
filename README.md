@@ -24,6 +24,26 @@ The backend now has real accounts for five roles, built to the architecture docu
 - Emails: with `EMAIL_MODE=outbox` (default) nothing is sent; emails are saved in the database. Locally, set `ELEVIA_DEV_OUTBOX=1` and open http://localhost:8000/dev/outbox to see them and their links. Set `EMAIL_MODE=smtp` and the `SMTP_*` values to really send.
 - Parent verification is currently email ownership + a declaration. That is **not** DPDP Rule 10-grade verification; see the architecture document.
 
+## Student learning journey (Round 3, working end to end)
+
+Log in as a student or independent learner and open **Start or continue learning** (`#/learn`). The journey runs on the Vercel/FastAPI site itself, through the authenticated `/api/learn/*` routes in `backend/learning.py`, which wrap the existing orchestrator and agents:
+
+1. **Entry**: login links your account to one learning record (`learner_links` table); a grade 3-8 is asked once if the profile has none.
+2. **Check-in**: 5 fraction questions, exact feedback, answers and attempts saved.
+3. **Diagnoser** (rules): suspects a gap from known mistake patterns; a single mistake is also listed as a possible careless slip.
+4. **Double-check (Checker)**: 2 new questions give confirmed / rejected / inconclusive. Only *confirmed* gaps go further; inconclusive waits for a teacher.
+5. **Planner** (rules) picks the focus using the skill map and prerequisites; it refuses unverified gaps.
+6. **Tutor**: lesson, worked examples (computed exactly), hints, practice. Template text is used if optional AI wording fails.
+7. **Retest**: 3 new questions after the configured delay (`RETEST_DELAY_HOURS`, default 24; `ALLOW_EARLY_RETEST` gives a demo shortcut). Pass = at least 2 of 3.
+8. **Replanning**: pass -> gap resolved, skill mastered. Fail -> gap stays open, new plan, new lesson, new practice, then a new retest with different questions.
+
+Every screen shows the step, what is tested, why, whether the gap is verified, and what to do next. Progress survives reloads and new logins; double submissions are recorded once; if processing crashes the answers are kept and the case goes to teacher review.
+
+Status notes (honest):
+- Teacher override exists in the older (Streamlit) teacher dashboard and the `/api/teacher/*` routes, which are **still disabled on Vercel** (no login there). A case in "waiting for teacher" therefore cannot be unblocked from the Vercel site yet.
+- Not implemented: autonomous LLM agents, Bayesian Knowledge Tracing, general prerequisite-graph traversal beyond the existing chain walk, automatic teacher escalation after three failed cycles (after a second failed retest the bank has no unseen questions and the case goes to teacher review).
+- Retest bank is now 2 sets of 3 per skill (77 questions in total).
+
 ## Run the website locally (Windows)
 
 The website (in `public/`) and the API (`backend/`, served at `/api`) run together:
@@ -235,16 +255,16 @@ elevia/
 
 ## 6. Implemented and tested
 
-- 51 automated tests passing (`python -m pytest -q`), covering: correct, equivalent, incorrect and invalid fraction answers; all 8 mistake patterns; diagnosis and confidence; verification question selection; confirmed / rejected / inconclusive verdicts; the Planner refusing unverified gaps; prerequisite-first planning; Tutor lessons; retest pass and fail (fail re-plans); mastery only via retest; SQLite persistence; teacher PIN, confirm, reject and change-focus; override blocked mid-verification; input validation; early-retest lock; missing AI configuration; AI output that is invalid JSON, an HTTP error, wrong maths, or claims certainty (all fall back, and the key is never leaked).
+- 116 automated tests passing (35 new ones cover the student journey) (`python -m pytest -q`), covering: correct, equivalent, incorrect and invalid fraction answers; all 8 mistake patterns; diagnosis and confidence; verification question selection; confirmed / rejected / inconclusive verdicts; the Planner refusing unverified gaps; prerequisite-first planning; Tutor lessons; retest pass and fail (fail re-plans); mastery only via retest; SQLite persistence; teacher PIN, confirm, reject and change-focus; override blocked mid-verification; input validation; early-retest lock; missing AI configuration; AI output that is invalid JSON, an HTTP error, wrong maths, or claims certainty (all fall back, and the key is never leaked).
 - Full click-through of the website in a real browser (Chrome, desktop and 390 px mobile): demo flow, input validation messages, wrong teacher PIN, teacher confirm. No console errors.
 
 ## 7. Known limitations and not yet built
 
 - **AI model path was tested only against simulated API responses**: no real provider call was made during development. Test once with your key before the demo; any failure falls back to templates automatically and is shown in the agent log.
 - The Diagnoser's gap choice and confidence are rule-based heuristics over 8 known mistake patterns. The confidence formula is reasoned, not statistically calibrated.
-- Fractions only: 8 skills, 65 questions, lessons for 5 skills (equivalent, simplifying, comparing, common denominators, multiplying). Gaps in skills without a lesson go to the teacher.
+- Fractions only: 8 skills, 77 questions, lessons for 5 skills (equivalent, simplifying, comparing, common denominators, multiplying). Gaps in skills without a lesson go to the teacher.
 - Verification and retest pools are small. A second failed retest can run out of new questions, which sends the case to teacher review.
-- Students have no login (sample/student picker). Teachers share one PIN. This is fine for a demo, not for real student data.
+- The Streamlit demo has no student login (sample/student picker); the website journey above uses real accounts. Teachers share one PIN. This is fine for a demo, not for real student data.
 - The retest delay uses server time. There are no reminders or notifications.
 - Hint usage is recorded but not yet used in decisions.
 - Free hosting doesn't keep the database (see Deployment).

@@ -85,6 +85,9 @@ pools = {
             ("equivalent", "equivalent_fractions", {"a": "4/5", "target": 25}),
             ("equivalent", "equivalent_fractions", {"a": "1/6", "target": 30}),
             ("equivalent", "equivalent_fractions", {"a": "3/7", "target": 21}),
+            ("equivalent", "equivalent_fractions", {"a": "2/9", "target": 27}),
+            ("equivalent", "equivalent_fractions", {"a": "5/8", "target": 40}),
+            ("equivalent", "equivalent_fractions", {"a": "7/10", "target": 30}),
         ],
     },
     "simplifying_fractions": {
@@ -103,6 +106,9 @@ pools = {
             ("simplify", "simplifying_fractions", {"a": "16/20"}),
             ("simplify", "simplifying_fractions", {"a": "21/28"}),
             ("simplify", "simplifying_fractions", {"a": "24/36"}),
+            ("simplify", "simplifying_fractions", {"a": "18/30"}),
+            ("simplify", "simplifying_fractions", {"a": "28/42"}),
+            ("simplify", "simplifying_fractions", {"a": "20/45"}),
         ],
     },
     "comparing_fractions": {
@@ -121,6 +127,9 @@ pools = {
             ("compare", "comparing_fractions", {"a": "1/9", "b": "1/2"}),
             ("compare", "comparing_fractions", {"a": "4/5", "b": "4/9"}),
             ("compare", "comparing_fractions", {"a": "5/6", "b": "7/9"}),
+            ("compare", "comparing_fractions", {"a": "2/7", "b": "2/5"}),
+            ("compare", "comparing_fractions", {"a": "5/8", "b": "3/4"}),
+            ("compare", "comparing_fractions", {"a": "7/10", "b": "2/3"}),
         ],
     },
     "multiply_fractions": {
@@ -139,6 +148,9 @@ pools = {
             ("multiply", "multiply_fractions", {"a": "3/5", "b": "1/2"}),
             ("multiply", "multiply_fractions", {"a": "4/7", "b": "2/3"}),
             ("multiply", "multiply_fractions", {"a": "5/9", "b": "3/5"}),
+            ("multiply", "multiply_fractions", {"a": "2/9", "b": "3/4"}),
+            ("multiply", "multiply_fractions", {"a": "5/6", "b": "2/5"}),
+            ("multiply", "multiply_fractions", {"a": "3/7", "b": "7/8"}),
         ],
     },
 }

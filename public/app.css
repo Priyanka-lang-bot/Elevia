@@ -69,3 +69,45 @@ h1.title{margin:0;font-size:44px;text-align:center}
 @media (max-width:600px){.stage{padding:80px 8px 40px}.sheet{padding:44px 22px 40px}.row2{grid-template-columns:1fr}h1.title{font-size:36px}.logo{font-size:30px}.access{gap:28px}.topbar .who span.role{display:none}}
 [hidden]{display:none !important}
 h1[tabindex="-1"]:focus{outline:none}
+/* learning journey */
+.learn{max-width:820px}
+.journey-wrap{display:flex;flex-direction:column;gap:8px}
+.journey-now{margin:0;font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.journey{display:flex;gap:6px;margin:0;padding:0;list-style:none;flex-wrap:wrap}
+.step{flex:1;min-width:112px;display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:6px 12px 6px 6px;font-weight:700;font-size:14px;color:var(--muted)}
+.step .dot{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#eef1f5;font-size:13px;font-weight:800;flex:none}
+.step.done{color:var(--ok);border-color:#a9d6bf}.step.done .dot{background:var(--ok);color:#fff}
+.step.current{color:var(--navy);border:2px solid var(--navy);background:#eef2ff}.step.current .dot{background:var(--navy);color:#fff}
+.step.skipped{opacity:.6;text-decoration:line-through}
+.learn-title{margin:0;font-size:30px;font-family:"Rubik Dirt",system-ui,sans-serif;font-weight:400}
+.where .line{margin:0;line-height:1.5}
+.gapbox{flex-direction:row;align-items:center;gap:16px;border-left:8px solid #e6c88a}
+.gapbox .gapicon{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;background:#fff8e8;flex:none}
+.gapbox.verified{border-left-color:var(--navy)}.gapbox.verified .gapicon{background:#eef2ff}
+.gapbox.not_supported,.gapbox.resolved{border-left-color:#5f8f4f}.gapbox.not_supported .gapicon,.gapbox.resolved .gapicon{background:#ecf6ea}
+.gapbox.still_present{border-left-color:#d98a3d}
+.gapbox.unclear{border-left-color:#999}
+.pill.bad{color:var(--bad);border-color:#e9b3ae;background:#fdecea}
+.panel.q .qcount{margin:0;font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.prompt{margin:0;font-size:34px;font-weight:800;line-height:1.2;overflow-wrap:anywhere}
+.qform{display:flex;flex-direction:column;gap:12px}
+.answer-input{height:56px;border:2px solid #3a3f4a;border-radius:12px;padding:0 16px;font:inherit;font-size:24px;font-weight:700;max-width:320px}
+.answer-input:focus,.choice input:focus-visible{outline:3px solid #7d8fd6;outline-offset:2px}
+.choices{display:flex;gap:12px;flex-wrap:wrap}
+.choice{display:flex;align-items:center;gap:10px;border:2px solid #3a3f4a;border-radius:12px;padding:12px 18px;font-size:22px;font-weight:800;background:#fff;cursor:pointer}
+.choice input{width:20px;height:20px;accent-color:var(--navy)}
+.feedback{border-radius:12px;padding:14px 18px;border:2px solid}
+.feedback h2{margin:0 0 6px}.feedback p{margin:4px 0}
+.feedback.good{background:#ecf6ea;border-color:#5f8f4f}.feedback.bad{background:#fff3ee;border-color:#d98a3d}
+.sol,.steps,.how{margin:6px 0 0;padding-left:22px;line-height:1.55}
+.hintbox{background:#fffbe8;border:1.5px dashed #d9b84a;border-radius:10px;padding:10px 14px;font-weight:600}
+.lesson .bigidea{font-size:18px;font-weight:700;margin:0;line-height:1.45}
+.lesson .sense{margin:0;background:#fffbe8;border-radius:10px;padding:10px 14px;line-height:1.5}
+.example{border:1.5px solid var(--line);border-radius:10px;padding:8px 14px;background:#fff}
+.example summary{cursor:pointer;font-weight:800;font-size:17px}
+.notice{border-left:8px solid #d98a3d}
+.countdown{margin:0;font-size:24px;font-weight:800}
+.result.good{border-left:8px solid #5f8f4f}.result .score{margin:0;font-size:22px;font-weight:800}
+.skills>summary{cursor:pointer;font-weight:800;font-size:18px}
+@media (max-width:600px){.prompt{font-size:28px}.step{min-width:calc(50% - 6px)}.learn-title{font-size:26px}.gapbox{flex-direction:column;align-items:flex-start}}
+@media (prefers-reduced-motion:no-preference){.step,.btn{transition:background-color .15s,border-color .15s}}

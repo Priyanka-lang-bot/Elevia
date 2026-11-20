@@ -519,8 +519,8 @@ function studentHome(me) {
   const c = me.student && me.student.class;
   board(me, panel(`Welcome, ${me.user.full_name.split(" ")[0]}!`,
     el("p", { text: "Your account is ready." }),
-    c ? el("p", { text: `You're in ${c.school_name}, Class ${c.grade} ${c.division} (${c.academic_year}).` }) : null,
-    el("div", { class: "note", text: "Next step (coming soon): tell ELEVIA your grade, school and subjects, then start your first check-in." })));
+    c ? el("p", { text: `You're in ${c.school_name}, Class ${c.grade} ${c.division} (${c.academic_year}).` }) : null),
+    learnEntryPanel());
 }
 
 // ---- independent learner: sharing controls
@@ -550,8 +550,9 @@ async function learnerHome(me) {
     });
   const shares = data.shares.filter((s) => ["active", "invited"].includes(s.status));
   board(me,
-    panel(`Welcome, ${me.user.full_name.split(" ")[0]}!`, el("p", { text: "Your account is ready. Learning onboarding comes next." }),
+    panel(`Welcome, ${me.user.full_name.split(" ")[0]}!`, el("p", { text: "Your account is ready." }),
       el("p", { class: "hint", text: "Nobody can see your progress unless you share it below." })),
+    learnEntryPanel(),
     panel("People who can see your progress",
       shares.length ? el("ul", { class: "list" }, shares.map((s) => shareItem(me, s))) : el("p", { class: "hint", text: "You aren't sharing with anyone." })),
     data.requests.length ? panel("Requests to see your progress", el("ul", { class: "list" }, data.requests.map((r) => requestItem(me, r)))) : null,
@@ -720,6 +721,7 @@ async function adminHome(me) {
 // ------------------------------------------------------------------ router
 
 function route() {
+  if (typeof stopLearnTimer === "function") stopLearnTimer();
   const h = location.hash || "#/";
   if (h === "#/" || h === "#") return accessView();
   if (h === "#/login") return loginView();
@@ -727,6 +729,7 @@ function route() {
   if (h === "#/student") return studentSignupView(null);
   if (h === "#/school") return schoolCodeView();
   if (h === "#/learner") return learnerSignupView();
+  if (h === "#/learn") return learnView().catch((e) => show(sheetPage([...title("OOPS"), el("p", { class: "alert bad", text: (e && e.detail) || "Something went wrong." })])));
   if (h === "#/home") return homeView().catch((e) => show(sheetPage([...title("OOPS"), el("p", { class: "alert bad", text: e.detail || "Something went wrong." })])));
   return accessView();
 }
@@ -748,4 +751,5 @@ function start() {
 }
 
 window.addEventListener("hashchange", route);
-if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
+// Deferred scripts run while readyState is "interactive"; wait for DOMContentLoaded so learn.js is loaded before routing.
+if (document.readyState === "complete") start(); else document.addEventListener("DOMContentLoaded", start);
