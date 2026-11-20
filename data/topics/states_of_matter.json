@@ -1,0 +1,1040 @@
+{
+ "skills": [
+  {
+   "id": "particle_model",
+   "name": "States of matter and particles",
+   "grade": 5,
+   "prerequisites": [],
+   "description": "Particle arrangement and movement in solids, liquids and gases."
+  },
+  {
+   "id": "conservation_of_mass",
+   "name": "Mass is conserved",
+   "grade": 7,
+   "prerequisites": [
+    "particle_model"
+   ],
+   "description": "Mass stays the same when dissolving, melting or freezing."
+  }
+ ],
+ "misconceptions": {
+  "SCI_PARTICLES_GROW": {
+   "label": "Thinks particles themselves grow or shrink",
+   "gap_skill": "particle_model",
+   "explanation": "Explains expansion by particles getting bigger instead of moving further apart."
+  },
+  "SCI_BUBBLES_AIR": {
+   "label": "Thinks the bubbles in boiling water are air or other gases",
+   "gap_skill": "particle_model",
+   "explanation": "Believes boiling bubbles are air, or that water splits into oxygen and hydrogen."
+  },
+  "SCI_DISSOLVE_VANISH": {
+   "label": "Thinks a dissolved substance disappears",
+   "gap_skill": "conservation_of_mass",
+   "explanation": "Believes dissolved sugar or salt is gone, so the solution weighs less."
+  },
+  "SCI_STATE_MASS": {
+   "label": "Thinks mass changes when something melts or freezes",
+   "gap_skill": "conservation_of_mass",
+   "explanation": "Believes ice weighs more (or less) than the water it melts into."
+  }
+ },
+ "questions": [
+  {
+   "id": "MAT-DA1",
+   "pool": "diagnostic:states_of_matter:A",
+   "skill_id": "particle_model",
+   "type": "mcq",
+   "gap_targets": [
+    "particle_model"
+   ],
+   "prompt": "When a metal rod is heated, it gets slightly longer. Why?",
+   "answer": "Its particles vibrate more and move slightly further apart",
+   "hints": [
+    "Think about the particles: do they change size, or do they move and spread out?",
+    "Boiling changes water into a gas; it does not split water into other substances."
+   ],
+   "solution": [
+    "Particles do not grow. They move more, so they take up more space.",
+    "Answer: Its particles vibrate more and move slightly further apart."
+   ],
+   "patterns": {
+    "Its particles get bigger": "SCI_PARTICLES_GROW"
+   },
+   "options": [
+    "Its particles vibrate more and move slightly further apart",
+    "Its particles get bigger",
+    "New particles are made"
+   ]
+  },
+  {
+   "id": "MAT-DA2",
+   "pool": "diagnostic:states_of_matter:A",
+   "skill_id": "conservation_of_mass",
+   "type": "mcq",
+   "gap_targets": [
+    "conservation_of_mass"
+   ],
+   "prompt": "50 g of sugar is stirred into 200 g of water until it all dissolves. What is the mass of the sugar solution?",
+   "answer": "250 g",
+   "hints": [
+    "Were any particles added or taken away?",
+    "Dissolving and changing state don't create or destroy particles."
+   ],
+   "solution": [
+    "The sugar is still there, spread out as tiny particles. 200 g + 50 g = 250 g.",
+    "Answer: 250 g."
+   ],
+   "patterns": {
+    "200 g": "SCI_DISSOLVE_VANISH",
+    "Between 200 g and 250 g": "SCI_DISSOLVE_VANISH"
+   },
+   "options": [
+    "200 g",
+    "Between 200 g and 250 g",
+    "250 g"
+   ]
+  },
+  {
+   "id": "MAT-DA3",
+   "pool": "diagnostic:states_of_matter:A",
+   "skill_id": "particle_model",
+   "type": "mcq",
+   "gap_targets": [
+    "particle_model"
+   ],
+   "prompt": "What are the bubbles that form inside boiling water?",
+   "answer": "Water vapour (water as a gas)",
+   "hints": [
+    "Think about the particles: do they change size, or do they move and spread out?",
+    "Boiling changes water into a gas; it does not split water into other substances."
+   ],
+   "solution": [
+    "At boiling point, liquid water turns into water vapour inside the liquid. The water is not split into other gases.",
+    "Answer: Water vapour (water as a gas)."
+   ],
+   "patterns": {
+    "Air": "SCI_BUBBLES_AIR",
+    "Oxygen and hydrogen": "SCI_BUBBLES_AIR"
+   },
+   "options": [
+    "Oxygen and hydrogen",
+    "Water vapour (water as a gas)",
+    "Air"
+   ]
+  },
+  {
+   "id": "MAT-DA4",
+   "pool": "diagnostic:states_of_matter:A",
+   "skill_id": "conservation_of_mass",
+   "type": "mcq",
+   "gap_targets": [
+    "conservation_of_mass"
+   ],
+   "prompt": "A 100 g ice cube melts completely in a closed bag. What is the mass of the water?",
+   "answer": "100 g",
+   "hints": [
+    "Were any particles added or taken away?",
+    "Dissolving and changing state don't create or destroy particles."
+   ],
+   "solution": [
+    "Melting changes the state, not the amount of matter. The mass stays 100 g.",
+    "Answer: 100 g."
+   ],
+   "patterns": {
+    "More than 100 g": "SCI_STATE_MASS",
+    "Less than 100 g": "SCI_STATE_MASS"
+   },
+   "options": [
+    "100 g",
+    "More than 100 g",
+    "Less than 100 g"
+   ]
+  },
+  {
+   "id": "MAT-DA5",
+   "pool": "diagnostic:states_of_matter:A",
+   "skill_id": "particle_model",
+   "type": "mcq",
+   "gap_targets": [
+    "particle_model"
+   ],
+   "prompt": "A balloon gets bigger when it is warmed. What happens to the gas particles inside?",
+   "answer": "They move faster and push harder on the balloon",
+   "hints": [
+    "Think about the particles: do they change size, or do they move and spread out?",
+    "Boiling changes water into a gas; it does not split water into other substances."
+   ],
+   "solution": [
+    "Heating makes particles move faster, not grow.",
+    "Answer: They move faster and push harder on the balloon."
+   ],
+   "patterns": {
+    "Each particle grows larger": "SCI_PARTICLES_GROW"
+   },
+   "options": [
+    "Each particle grows larger",
+    "More particles are created",
+    "They move faster and push harder on the balloon"
+   ]
+  },
+  {
+   "id": "MAT-DB1",
+   "pool": "diagnostic:states_of_matter:B",
+   "skill_id": "conservation_of_mass",
+   "type": "mcq",
+   "gap_targets": [
+    "conservation_of_mass"
+   ],
+   "prompt": "When salt dissolves in water, the salt…",
+   "answer": "is still there, broken into tiny particles spread through the water",
+   "hints": [
+    "Were any particles added or taken away?",
+    "Dissolving and changing state don't create or destroy particles."
+   ],
+   "solution": [
+    "Dissolving spreads the salt out. You can get it back by evaporating the water.",
+    "Answer: is still there, broken into tiny particles spread through the water."
+   ],
+   "patterns": {
+    "disappears and no longer exists": "SCI_DISSOLVE_VANISH"
+   },
+   "options": [
+    "turns into water",
+    "is still there, broken into tiny particles spread through the water",
+    "disappears and no longer exists"
+   ]
+  },
+  {
+   "id": "MAT-DB2",
+   "pool": "diagnostic:states_of_matter:B",
+   "skill_id": "particle_model",
+   "type": "mcq",
+   "gap_targets": [
+    "particle_model"
+   ],
+   "prompt": "In which state are particles packed closely in a fixed arrangement?",
+   "answer": "Solid",
+   "hints": [
+    "Think about the particles: do they change size, or do they move and spread out?",
+    "Boiling changes water into a gas; it does not split water into other substances."
+   ],
+   "solution": [
+    "In a solid, particles are close together and only vibrate in place.",
+    "Answer: Solid."
+   ],
+   "options": [
+    "Solid",
+    "Liquid",
+    "Gas"
+   ]
+  },
+  {
+   "id": "MAT-DB3",
+   "pool": "diagnostic:states_of_matter:B",
+   "skill_id": "conservation_of_mass",
+   "type": "mcq",
+   "gap_targets": [
+    "conservation_of_mass"
+   ],
+   "prompt": "A sealed bottle of water is put in a freezer and the water freezes. Compared with before, its mass is…",
+   "answer": "the same",
+   "hints": [
+    "Were any particles added or taken away?",
+    "Dissolving and changing state don't create or destroy particles."
+   ],
+   "solution": [
+    "Freezing does not add or remove particles, so mass stays the same.",
+    "Answer: the same."
+   ],
+   "patterns": {
+    "greater, because ice is heavier": "SCI_STATE_MASS",
+    "smaller": "SCI_STATE_MASS"
+   },
+   "options": [
+    "greater, because ice is heavier",
+    "smaller",
+    "the same"
+   ]
+  },
+  {
+   "id": "MAT-DB4",
+   "pool": "diagnostic:states_of_matter:B",
+   "skill_id": "particle_model",
+   "type": "mcq",
+   "gap_targets": [
+    "particle_model"
+   ],
+   "prompt": "When water boils in a kettle, the bubbles rising through it contain…",
+   "answer": "steam (water vapour)",
+   "hints": [
+    "Think about the particles: do they change size, or do they move and spread out?",
+    "Boiling changes water into a gas; it does not split water into other substances."
+   ],
+   "solution": [
+    "The big bubbles at boiling are water that has turned into a gas.",
+    "Answer: steam (water vapour)."
+   ],
+   "patterns": {
+    "air that was in the water": "SCI_BUBBLES_AIR"
+   },
+   "options": [
+    "heat",
+    "steam (water vapour)",
+    "air that was in the water"
+   ]
+  },
+  {
+   "id": "MAT-DB5",
+   "pool": "diagnostic:states_of_matter:B",
+   "skill_id": "conservation_of_mass",
+   "type": "mcq",
+   "gap_targets": [
+    "conservation_of_mass"
+   ],
+   "prompt": "Sugar dissolved in tea cannot be seen. How do you know it is still there?",
+   "answer": "The tea tastes sweet",
+   "hints": [
+    "Were any particles added or taken away?",
+    "Dissolving and changing state don't create or destroy particles."
+   ],
+   "solution": [
+    "The sweet taste shows the sugar particles are still in the tea.",
+    "Answer: The tea tastes sweet."
+   ],
+   "patterns": {
+    "It isn't; dissolved sugar is gone": "SCI_DISSOLVE_VANISH"
+   },
+   "options": [
+    "The tea tastes sweet",
+    "It isn't; dissolved sugar is gone",
+    "The tea changes colour"
+   ]
+  },
+  {
+   "id": "MAT-VPM1",
+   "pool": "verification:particle_model",
+   "skill_id": "particle_model",
+   "type": "mcq",
+   "gap_targets": [
+    "particle_model"
+   ],
+   "prompt": "The liquid in a thermometer rises when it gets warmer because…",
+   "answer": "its particles move further apart, so it takes up more space",
+   "hints": [
+    "Think about the particles: do they change size, or do they move and spread out?",
+    "Boiling changes water into a gas; it does not split water into other substances."
+   ],
+   "solution": [
+    "The liquid expands because its particles spread out, not because each particle gets bigger.",
+    "Answer: its particles move further apart, so it takes up more space."
+   ],
+   "patterns": {
+    "its particles expand": "SCI_PARTICLES_GROW"
+   },
+   "options": [
+    "its particles expand",
+    "more liquid is made",
+    "its particles move further apart, so it takes up more space"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "MAT-VPM2",
+   "pool": "verification:particle_model",
+   "skill_id": "particle_model",
+   "type": "mcq",
+   "gap_targets": [
+    "particle_model"
+   ],
+   "prompt": "Compared with a liquid, the particles in a gas are…",
+   "answer": "far apart and moving quickly",
+   "hints": [
+    "Think about the particles: do they change size, or do they move and spread out?",
+    "Boiling changes water into a gas; it does not split water into other substances."
+   ],
+   "solution": [
+    "Gas particles are the same size as in the liquid, but much further apart and faster.",
+    "Answer: far apart and moving quickly."
+   ],
+   "patterns": {
+    "bigger": "SCI_PARTICLES_GROW"
+   },
+   "options": [
+    "not moving at all",
+    "far apart and moving quickly",
+    "bigger"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "MAT-VPM3",
+   "pool": "verification:particle_model",
+   "skill_id": "particle_model",
+   "type": "mcq",
+   "gap_targets": [
+    "particle_model"
+   ],
+   "prompt": "Water is boiling in an open pan. What happens to the water particles that escape?",
+   "answer": "They become a gas and spread into the air",
+   "hints": [
+    "Think about the particles: do they change size, or do they move and spread out?",
+    "Boiling changes water into a gas; it does not split water into other substances."
+   ],
+   "solution": [
+    "Boiling changes water's state, not what it is made of.",
+    "Answer: They become a gas and spread into the air."
+   ],
+   "patterns": {
+    "They break up into oxygen and hydrogen": "SCI_BUBBLES_AIR"
+   },
+   "options": [
+    "They become a gas and spread into the air",
+    "They break up into oxygen and hydrogen",
+    "They stop existing"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "MAT-PPM1",
+   "pool": "practice:particle_model",
+   "skill_id": "particle_model",
+   "type": "mcq",
+   "gap_targets": [
+    "particle_model"
+   ],
+   "prompt": "Railway tracks have small gaps between sections. This is because on hot days…",
+   "answer": "the metal expands as its particles move further apart",
+   "hints": [
+    "Think about the particles: do they change size, or do they move and spread out?",
+    "Boiling changes water into a gas; it does not split water into other substances."
+   ],
+   "solution": [
+    "The particles move more and spread out, so the rail gets longer.",
+    "Answer: the metal expands as its particles move further apart."
+   ],
+   "patterns": {
+    "the metal particles get bigger": "SCI_PARTICLES_GROW"
+   },
+   "options": [
+    "the metal particles get bigger",
+    "the metal melts a little",
+    "the metal expands as its particles move further apart"
+   ]
+  },
+  {
+   "id": "MAT-PPM2",
+   "pool": "practice:particle_model",
+   "skill_id": "particle_model",
+   "type": "mcq",
+   "gap_targets": [
+    "particle_model"
+   ],
+   "prompt": "What is inside the large bubbles in a pot of water at a rolling boil?",
+   "answer": "Water in its gas state",
+   "hints": [
+    "Think about the particles: do they change size, or do they move and spread out?",
+    "Boiling changes water into a gas; it does not split water into other substances."
+   ],
+   "solution": [
+    "The bubbles are water vapour made from the liquid water.",
+    "Answer: Water in its gas state."
+   ],
+   "patterns": {
+    "Air from the room": "SCI_BUBBLES_AIR"
+   },
+   "options": [
+    "Nothing; they are empty",
+    "Water in its gas state",
+    "Air from the room"
+   ]
+  },
+  {
+   "id": "MAT-PPM3",
+   "pool": "practice:particle_model",
+   "skill_id": "particle_model",
+   "type": "mcq",
+   "gap_targets": [
+    "particle_model"
+   ],
+   "prompt": "Ice melts into water. What happens to the water particles?",
+   "answer": "They stay the same particles but can now move past each other",
+   "hints": [
+    "Think about the particles: do they change size, or do they move and spread out?",
+    "Boiling changes water into a gas; it does not split water into other substances."
+   ],
+   "solution": [
+    "Melting changes how particles are arranged, not their size.",
+    "Answer: They stay the same particles but can now move past each other."
+   ],
+   "patterns": {
+    "They become smaller particles": "SCI_PARTICLES_GROW"
+   },
+   "options": [
+    "They stay the same particles but can now move past each other",
+    "They become smaller particles",
+    "They turn into different particles"
+   ]
+  },
+  {
+   "id": "MAT-RPM1",
+   "pool": "retest:particle_model",
+   "skill_id": "particle_model",
+   "type": "mcq",
+   "gap_targets": [
+    "particle_model"
+   ],
+   "prompt": "When a gas is cooled, it takes up less space. This is because…",
+   "answer": "its particles slow down and move closer together",
+   "hints": [
+    "Think about the particles: do they change size, or do they move and spread out?",
+    "Boiling changes water into a gas; it does not split water into other substances."
+   ],
+   "solution": [
+    "Cooling slows particles down. Their size stays the same.",
+    "Answer: its particles slow down and move closer together."
+   ],
+   "patterns": {
+    "its particles shrink": "SCI_PARTICLES_GROW"
+   },
+   "options": [
+    "its particles shrink",
+    "some particles are destroyed",
+    "its particles slow down and move closer together"
+   ]
+  },
+  {
+   "id": "MAT-RPM2",
+   "pool": "retest:particle_model",
+   "skill_id": "particle_model",
+   "type": "mcq",
+   "gap_targets": [
+    "particle_model"
+   ],
+   "prompt": "Just above the spout of a boiling kettle there is an invisible gas. It is…",
+   "answer": "water vapour",
+   "hints": [
+    "Think about the particles: do they change size, or do they move and spread out?",
+    "Boiling changes water into a gas; it does not split water into other substances."
+   ],
+   "solution": [
+    "The invisible gas is water vapour. The white cloud further away is tiny droplets formed as it cools.",
+    "Answer: water vapour."
+   ],
+   "patterns": {
+    "hot air": "SCI_BUBBLES_AIR"
+   },
+   "options": [
+    "smoke",
+    "water vapour",
+    "hot air"
+   ]
+  },
+  {
+   "id": "MAT-RPM3",
+   "pool": "retest:particle_model",
+   "skill_id": "particle_model",
+   "type": "mcq",
+   "gap_targets": [
+    "particle_model"
+   ],
+   "prompt": "A drop of perfume spreads across a room. This shows that gas particles…",
+   "answer": "move around and spread out",
+   "hints": [
+    "Think about the particles: do they change size, or do they move and spread out?",
+    "Boiling changes water into a gas; it does not split water into other substances."
+   ],
+   "solution": [
+    "Gas particles move quickly in all directions and mix with the air.",
+    "Answer: move around and spread out."
+   ],
+   "patterns": {
+    "grow until they fill the room": "SCI_PARTICLES_GROW"
+   },
+   "options": [
+    "move around and spread out",
+    "grow until they fill the room",
+    "are not moving"
+   ]
+  },
+  {
+   "id": "MAT-RPM4",
+   "pool": "retest:particle_model",
+   "skill_id": "particle_model",
+   "type": "mcq",
+   "gap_targets": [
+    "particle_model"
+   ],
+   "prompt": "Bubbles appear in a beaker of water at 100 °C at sea level. They are bubbles of…",
+   "answer": "water vapour",
+   "hints": [
+    "Think about the particles: do they change size, or do they move and spread out?",
+    "Boiling changes water into a gas; it does not split water into other substances."
+   ],
+   "solution": [
+    "At 100 °C water boils: liquid water turns into water vapour.",
+    "Answer: water vapour."
+   ],
+   "patterns": {
+    "oxygen": "SCI_BUBBLES_AIR"
+   },
+   "options": [
+    "oxygen",
+    "carbon dioxide",
+    "water vapour"
+   ]
+  },
+  {
+   "id": "MAT-RPM5",
+   "pool": "retest:particle_model",
+   "skill_id": "particle_model",
+   "type": "mcq",
+   "gap_targets": [
+    "particle_model"
+   ],
+   "prompt": "Why does a bicycle tyre feel harder on a hot day?",
+   "answer": "The air particles inside move faster and hit the tyre walls harder",
+   "hints": [
+    "Think about the particles: do they change size, or do they move and spread out?",
+    "Boiling changes water into a gas; it does not split water into other substances."
+   ],
+   "solution": [
+    "Faster particles push harder on the walls, raising the pressure.",
+    "Answer: The air particles inside move faster and hit the tyre walls harder."
+   ],
+   "patterns": {
+    "The air particles get bigger": "SCI_PARTICLES_GROW"
+   },
+   "options": [
+    "The rubber gets thicker",
+    "The air particles inside move faster and hit the tyre walls harder",
+    "The air particles get bigger"
+   ]
+  },
+  {
+   "id": "MAT-RPM6",
+   "pool": "retest:particle_model",
+   "skill_id": "particle_model",
+   "type": "mcq",
+   "gap_targets": [
+    "particle_model"
+   ],
+   "prompt": "Liquid water and ice are both made of…",
+   "answer": "the same water particles, arranged differently",
+   "hints": [
+    "Think about the particles: do they change size, or do they move and spread out?",
+    "Boiling changes water into a gas; it does not split water into other substances."
+   ],
+   "solution": [
+    "Ice and water are the same substance. In ice the particles are fixed in place but still vibrate.",
+    "Answer: the same water particles, arranged differently."
+   ],
+   "patterns": {
+    "different particles; ice particles are bigger": "SCI_PARTICLES_GROW"
+   },
+   "options": [
+    "the same water particles, arranged differently",
+    "different particles; ice particles are bigger",
+    "particles that cannot move at all"
+   ]
+  },
+  {
+   "id": "MAT-VCOM1",
+   "pool": "verification:conservation_of_mass",
+   "skill_id": "conservation_of_mass",
+   "type": "mcq",
+   "gap_targets": [
+    "conservation_of_mass"
+   ],
+   "prompt": "A 300 g block of chocolate is melted in a closed container. What does the melted chocolate weigh?",
+   "answer": "300 g",
+   "hints": [
+    "Were any particles added or taken away?",
+    "Dissolving and changing state don't create or destroy particles."
+   ],
+   "solution": [
+    "Melting does not change mass.",
+    "Answer: 300 g."
+   ],
+   "patterns": {
+    "Less than 300 g, because liquids weigh less": "SCI_STATE_MASS",
+    "More than 300 g": "SCI_STATE_MASS"
+   },
+   "options": [
+    "Less than 300 g, because liquids weigh less",
+    "More than 300 g",
+    "300 g"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "MAT-VCOM2",
+   "pool": "verification:conservation_of_mass",
+   "skill_id": "conservation_of_mass",
+   "type": "mcq",
+   "gap_targets": [
+    "conservation_of_mass"
+   ],
+   "prompt": "Seawater is left in a dish in the sun until all the water evaporates. What is left?",
+   "answer": "Salt",
+   "hints": [
+    "Were any particles added or taken away?",
+    "Dissolving and changing state don't create or destroy particles."
+   ],
+   "solution": [
+    "The dissolved salt was there all along and is left behind.",
+    "Answer: Salt."
+   ],
+   "patterns": {
+    "Nothing, because the salt disappeared when it dissolved": "SCI_DISSOLVE_VANISH"
+   },
+   "options": [
+    "Sand",
+    "Salt",
+    "Nothing, because the salt disappeared when it dissolved"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "MAT-VCOM3",
+   "pool": "verification:conservation_of_mass",
+   "skill_id": "conservation_of_mass",
+   "type": "mcq",
+   "gap_targets": [
+    "conservation_of_mass"
+   ],
+   "prompt": "20 g of salt is dissolved in 500 g of water. The mass of the salty water is…",
+   "answer": "520 g",
+   "hints": [
+    "Were any particles added or taken away?",
+    "Dissolving and changing state don't create or destroy particles."
+   ],
+   "solution": [
+    "Nothing is lost when salt dissolves: 500 g + 20 g = 520 g.",
+    "Answer: 520 g."
+   ],
+   "patterns": {
+    "500 g": "SCI_DISSOLVE_VANISH"
+   },
+   "options": [
+    "520 g",
+    "500 g",
+    "480 g"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "MAT-PCOM1",
+   "pool": "practice:conservation_of_mass",
+   "skill_id": "conservation_of_mass",
+   "type": "mcq",
+   "gap_targets": [
+    "conservation_of_mass"
+   ],
+   "prompt": "Ice in a sealed jar melts. What happens to the total mass of the jar and its contents?",
+   "answer": "It stays the same",
+   "hints": [
+    "Were any particles added or taken away?",
+    "Dissolving and changing state don't create or destroy particles."
+   ],
+   "solution": [
+    "In a sealed jar nothing gets in or out, and melting does not change mass.",
+    "Answer: It stays the same."
+   ],
+   "patterns": {
+    "It increases": "SCI_STATE_MASS",
+    "It decreases": "SCI_STATE_MASS"
+   },
+   "options": [
+    "It increases",
+    "It decreases",
+    "It stays the same"
+   ]
+  },
+  {
+   "id": "MAT-PCOM2",
+   "pool": "practice:conservation_of_mass",
+   "skill_id": "conservation_of_mass",
+   "type": "mcq",
+   "gap_targets": [
+    "conservation_of_mass"
+   ],
+   "prompt": "A spoon of sugar is dissolved in a glass of water. With an extremely powerful microscope, you would see…",
+   "answer": "sugar particles mixed among the water particles",
+   "hints": [
+    "Were any particles added or taken away?",
+    "Dissolving and changing state don't create or destroy particles."
+   ],
+   "solution": [
+    "The sugar particles separate and spread among the water particles.",
+    "Answer: sugar particles mixed among the water particles."
+   ],
+   "patterns": {
+    "only water particles; the sugar has been destroyed": "SCI_DISSOLVE_VANISH"
+   },
+   "options": [
+    "bigger water particles",
+    "sugar particles mixed among the water particles",
+    "only water particles; the sugar has been destroyed"
+   ]
+  },
+  {
+   "id": "MAT-PCOM3",
+   "pool": "practice:conservation_of_mass",
+   "skill_id": "conservation_of_mass",
+   "type": "mcq",
+   "gap_targets": [
+    "conservation_of_mass"
+   ],
+   "prompt": "40 g of solid candle wax is melted (none of it burns). How much liquid wax is there?",
+   "answer": "40 g",
+   "hints": [
+    "Were any particles added or taken away?",
+    "Dissolving and changing state don't create or destroy particles."
+   ],
+   "solution": [
+    "Changing state does not change mass.",
+    "Answer: 40 g."
+   ],
+   "patterns": {
+    "Less than 40 g": "SCI_STATE_MASS",
+    "More than 40 g": "SCI_STATE_MASS"
+   },
+   "options": [
+    "40 g",
+    "Less than 40 g",
+    "More than 40 g"
+   ]
+  },
+  {
+   "id": "MAT-RCOM1",
+   "pool": "retest:conservation_of_mass",
+   "skill_id": "conservation_of_mass",
+   "type": "mcq",
+   "gap_targets": [
+    "conservation_of_mass"
+   ],
+   "prompt": "Why is the mass of a solution equal to the mass of the water plus the mass of what dissolved?",
+   "answer": "Particles are not created or destroyed when something dissolves",
+   "hints": [
+    "Were any particles added or taken away?",
+    "Dissolving and changing state don't create or destroy particles."
+   ],
+   "solution": [
+    "Every particle is still there, so the masses add up.",
+    "Answer: Particles are not created or destroyed when something dissolves."
+   ],
+   "patterns": {
+    "It isn't; the dissolved mass is lost": "SCI_DISSOLVE_VANISH"
+   },
+   "options": [
+    "Dissolving always adds extra mass",
+    "It isn't; the dissolved mass is lost",
+    "Particles are not created or destroyed when something dissolves"
+   ]
+  },
+  {
+   "id": "MAT-RCOM2",
+   "pool": "retest:conservation_of_mass",
+   "skill_id": "conservation_of_mass",
+   "type": "mcq",
+   "gap_targets": [
+    "conservation_of_mass"
+   ],
+   "prompt": "A 250 g bottle of water freezes solid inside a sealed container. What is the mass of the ice?",
+   "answer": "250 g",
+   "hints": [
+    "Were any particles added or taken away?",
+    "Dissolving and changing state don't create or destroy particles."
+   ],
+   "solution": [
+    "Freezing changes the state but not the mass.",
+    "Answer: 250 g."
+   ],
+   "patterns": {
+    "More than 250 g": "SCI_STATE_MASS",
+    "Less than 250 g": "SCI_STATE_MASS"
+   },
+   "options": [
+    "Less than 250 g",
+    "250 g",
+    "More than 250 g"
+   ]
+  },
+  {
+   "id": "MAT-RCOM3",
+   "pool": "retest:conservation_of_mass",
+   "skill_id": "conservation_of_mass",
+   "type": "mcq",
+   "gap_targets": [
+    "conservation_of_mass"
+   ],
+   "prompt": "10 g of copper sulfate crystals dissolve in 90 g of water. What is the mass of the blue solution?",
+   "answer": "100 g",
+   "hints": [
+    "Were any particles added or taken away?",
+    "Dissolving and changing state don't create or destroy particles."
+   ],
+   "solution": [
+    "90 g + 10 g = 100 g. The crystals are still there, dissolved.",
+    "Answer: 100 g."
+   ],
+   "patterns": {
+    "90 g": "SCI_DISSOLVE_VANISH"
+   },
+   "options": [
+    "100 g",
+    "90 g",
+    "80 g"
+   ]
+  },
+  {
+   "id": "MAT-RCOM4",
+   "pool": "retest:conservation_of_mass",
+   "skill_id": "conservation_of_mass",
+   "type": "mcq",
+   "gap_targets": [
+    "conservation_of_mass"
+   ],
+   "prompt": "Water is frozen into ice in a sealed tray. The ice takes up more space. Its mass…",
+   "answer": "stays the same",
+   "hints": [
+    "Were any particles added or taken away?",
+    "Dissolving and changing state don't create or destroy particles."
+   ],
+   "solution": [
+    "Ice takes up more space than water but has exactly the same mass.",
+    "Answer: stays the same."
+   ],
+   "patterns": {
+    "increases, because it takes up more space": "SCI_STATE_MASS",
+    "decreases": "SCI_STATE_MASS"
+   },
+   "options": [
+    "increases, because it takes up more space",
+    "decreases",
+    "stays the same"
+   ]
+  },
+  {
+   "id": "MAT-RCOM5",
+   "pool": "retest:conservation_of_mass",
+   "skill_id": "conservation_of_mass",
+   "type": "mcq",
+   "gap_targets": [
+    "conservation_of_mass"
+   ],
+   "prompt": "Lemonade powder dissolves completely in water. Where did the powder go?",
+   "answer": "It is spread through the water as tiny particles",
+   "hints": [
+    "Were any particles added or taken away?",
+    "Dissolving and changing state don't create or destroy particles."
+   ],
+   "solution": [
+    "Dissolved substances are still present, just too spread out to see.",
+    "Answer: It is spread through the water as tiny particles."
+   ],
+   "patterns": {
+    "It vanished": "SCI_DISSOLVE_VANISH"
+   },
+   "options": [
+    "It became part of the glass",
+    "It is spread through the water as tiny particles",
+    "It vanished"
+   ]
+  },
+  {
+   "id": "MAT-RCOM6",
+   "pool": "retest:conservation_of_mass",
+   "skill_id": "conservation_of_mass",
+   "type": "mcq",
+   "gap_targets": [
+    "conservation_of_mass"
+   ],
+   "prompt": "A beaker of ice weighs 200 g altogether. It is covered so no water can escape and left to melt. Afterwards the scale reads…",
+   "answer": "200 g",
+   "hints": [
+    "Were any particles added or taken away?",
+    "Dissolving and changing state don't create or destroy particles."
+   ],
+   "solution": [
+    "No matter got in or out, and melting does not change mass.",
+    "Answer: 200 g."
+   ],
+   "patterns": {
+    "Less than 200 g": "SCI_STATE_MASS",
+    "More than 200 g": "SCI_STATE_MASS"
+   },
+   "options": [
+    "200 g",
+    "Less than 200 g",
+    "More than 200 g"
+   ]
+  }
+ ],
+ "lessons": {
+  "particle_model": {
+   "title": "States of matter and particles",
+   "big_idea": "Everything is made of tiny particles. Heating makes them move faster and spread further apart; the particles themselves never get bigger. When water boils, the bubbles are water vapour.",
+   "steps": [
+    "Solid: particles close together, vibrating in place.",
+    "Liquid: particles close together but able to slide past each other.",
+    "Gas: particles far apart, moving fast in all directions.",
+    "Heating: particles move faster and spread out, so things expand. Each particle stays the same size.",
+    "Boiling: liquid turns into gas inside the liquid, making bubbles of vapour."
+   ],
+   "sense_check": "If particles grew when heated, a hot spoon would be made of bigger atoms than a cold one. Atoms don't change size like that.",
+   "worked_examples": [
+    {
+     "prompt": "Why does a metal rod get longer when heated?",
+     "answer": "Its particles move more and spread apart",
+     "steps": [
+      "Heat gives particles more energy.",
+      "They vibrate more and push slightly apart.",
+      "The rod gets longer; the particles are the same size."
+     ]
+    },
+    {
+     "prompt": "What is inside the bubbles in boiling water?",
+     "answer": "Water vapour",
+     "steps": [
+      "At 100 °C some liquid water turns into gas.",
+      "That gas forms bubbles that rise.",
+      "The bubbles are water vapour, not air."
+     ]
+    }
+   ]
+  },
+  "conservation_of_mass": {
+   "title": "Mass is conserved",
+   "big_idea": "When something dissolves, melts or freezes, no particles are created or destroyed, so the total mass stays the same. Dissolved sugar or salt is still there, just spread out too small to see.",
+   "steps": [
+    "List everything you started with and its mass.",
+    "Ask: did anything escape (like a gas) or get added? If not, the total mass stays the same.",
+    "Dissolving: mass of solution = mass of liquid + mass of what dissolved.",
+    "Melting or freezing: the mass does not change, even if the volume does."
+   ],
+   "sense_check": "Evaporate salty water and salt is left behind. It must have been there the whole time.",
+   "worked_examples": [
+    {
+     "prompt": "50 g of sugar dissolves in 200 g of water. Mass of the solution?",
+     "answer": "250 g",
+     "steps": [
+      "Nothing escapes.",
+      "The sugar is still there, spread out.",
+      "200 g + 50 g = 250 g."
+     ]
+    },
+    {
+     "prompt": "A 100 g ice cube melts in a closed bag. Mass of the water?",
+     "answer": "100 g",
+     "steps": [
+      "Melting changes state only.",
+      "No particles are added or lost.",
+      "100 g."
+     ]
+    }
+   ]
+  }
+ }
+}

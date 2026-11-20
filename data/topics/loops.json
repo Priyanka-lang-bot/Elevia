@@ -1,0 +1,1007 @@
+{
+ "skills": [
+  {
+   "id": "loop_counting",
+   "name": "How many times a loop runs",
+   "grade": 7,
+   "prerequisites": [
+    "variable_assignment"
+   ],
+   "description": "range(a, b) stops before b."
+  },
+  {
+   "id": "loop_accumulator",
+   "name": "Running totals in loops",
+   "grade": 8,
+   "prerequisites": [
+    "loop_counting"
+   ],
+   "description": "Accumulating a value across loop passes."
+  }
+ ],
+ "misconceptions": {
+  "CS_RANGE_OFF_BY_ONE": {
+   "label": "Thinks range() includes the end value (one extra pass)",
+   "gap_skill": "loop_counting",
+   "explanation": "Predicts range(1, 5) runs 5 times, or that range(4) ends at 4."
+  },
+  "CS_ACC_LAST": {
+   "label": "Thinks a running total only keeps the last value added",
+   "gap_skill": "loop_accumulator",
+   "explanation": "Predicts total = total + i ends with just the final i."
+  }
+ },
+ "questions": [
+  {
+   "id": "LOOP-DA1",
+   "pool": "diagnostic:loops:A",
+   "skill_id": "loop_counting",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_counting"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "4",
+   "hints": [
+    "range(a, b) starts at a and stops BEFORE b.",
+    "range(n) gives 0, 1, ..., n − 1: that is n numbers."
+   ],
+   "solution": [
+    "range(1, 5) gives 1, 2, 3, 4.",
+    "That is 4 numbers, so count is 4."
+   ],
+   "patterns": {
+    "5": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "count = 0\nfor i in range(1, 5):\n    count = count + 1\nprint(count)"
+  },
+  {
+   "id": "LOOP-DA2",
+   "pool": "diagnostic:loops:A",
+   "skill_id": "loop_counting",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_counting"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "range(a, b) starts at a and stops BEFORE b.",
+    "range(n) gives 0, 1, ..., n − 1: that is n numbers."
+   ],
+   "solution": [
+    "range(4) gives 0 to 3.",
+    "The last value i takes is 3."
+   ],
+   "patterns": {
+    "4": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "for i in range(4):\n    last = i\nprint(last)"
+  },
+  {
+   "id": "LOOP-DA3",
+   "pool": "diagnostic:loops:A",
+   "skill_id": "loop_accumulator",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_accumulator"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "6",
+   "hints": [
+    "The total keeps growing: each time round it adds to what it already had.",
+    "Write the total after every pass of the loop."
+   ],
+   "solution": [
+    "i takes the values 1, 2, 3.",
+    "total adds each one: 1 + 2 + 3 = 6."
+   ],
+   "patterns": {
+    "3": "CS_ACC_LAST",
+    "10": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "total = 0\nfor i in range(1, 4):\n    total = total + i\nprint(total)"
+  },
+  {
+   "id": "LOOP-DA4",
+   "pool": "diagnostic:loops:A",
+   "skill_id": "loop_accumulator",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_accumulator"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "15",
+   "hints": [
+    "The total keeps growing: each time round it adds to what it already had.",
+    "Write the total after every pass of the loop."
+   ],
+   "solution": [
+    "The loop runs 3 times.",
+    "Each time it adds 5: 3 × 5 = 15."
+   ],
+   "patterns": {
+    "5": "CS_ACC_LAST",
+    "20": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "total = 0\nfor i in range(3):\n    total = total + 5\nprint(total)"
+  },
+  {
+   "id": "LOOP-DA5",
+   "pool": "diagnostic:loops:A",
+   "skill_id": "loop_accumulator",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_accumulator"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "10",
+   "hints": [
+    "The total keeps growing: each time round it adds to what it already had.",
+    "Write the total after every pass of the loop."
+   ],
+   "solution": [
+    "i takes the values 1, 2, 3, 4.",
+    "total adds each one: 1 + 2 + 3 + 4 = 10."
+   ],
+   "patterns": {
+    "4": "CS_ACC_LAST",
+    "15": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "total = 0\nfor i in range(1, 5):\n    total = total + i\nprint(total)"
+  },
+  {
+   "id": "LOOP-DB1",
+   "pool": "diagnostic:loops:B",
+   "skill_id": "loop_counting",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_counting"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "5",
+   "hints": [
+    "range(a, b) starts at a and stops BEFORE b.",
+    "range(n) gives 0, 1, ..., n − 1: that is n numbers."
+   ],
+   "solution": [
+    "range(2, 7) gives 2, 3, 4, 5, 6.",
+    "That is 5 numbers, so count is 5."
+   ],
+   "patterns": {
+    "6": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "count = 0\nfor i in range(2, 7):\n    count = count + 1\nprint(count)"
+  },
+  {
+   "id": "LOOP-DB2",
+   "pool": "diagnostic:loops:B",
+   "skill_id": "loop_counting",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_counting"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "5",
+   "hints": [
+    "range(a, b) starts at a and stops BEFORE b.",
+    "range(n) gives 0, 1, ..., n − 1: that is n numbers."
+   ],
+   "solution": [
+    "range(6) gives 0 to 5.",
+    "The last value i takes is 5."
+   ],
+   "patterns": {
+    "6": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "for i in range(6):\n    last = i\nprint(last)"
+  },
+  {
+   "id": "LOOP-DB3",
+   "pool": "diagnostic:loops:B",
+   "skill_id": "loop_accumulator",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_accumulator"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "15",
+   "hints": [
+    "The total keeps growing: each time round it adds to what it already had.",
+    "Write the total after every pass of the loop."
+   ],
+   "solution": [
+    "i takes the values 1, 2, 3, 4, 5.",
+    "total adds each one: 1 + 2 + 3 + 4 + 5 = 15."
+   ],
+   "patterns": {
+    "5": "CS_ACC_LAST",
+    "21": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "total = 0\nfor i in range(1, 6):\n    total = total + i\nprint(total)"
+  },
+  {
+   "id": "LOOP-DB4",
+   "pool": "diagnostic:loops:B",
+   "skill_id": "loop_accumulator",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_accumulator"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "12",
+   "hints": [
+    "The total keeps growing: each time round it adds to what it already had.",
+    "Write the total after every pass of the loop."
+   ],
+   "solution": [
+    "The loop runs 4 times.",
+    "Each time it adds 3: 4 × 3 = 12."
+   ],
+   "patterns": {
+    "3": "CS_ACC_LAST",
+    "15": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "total = 0\nfor i in range(4):\n    total = total + 3\nprint(total)"
+  },
+  {
+   "id": "LOOP-DB5",
+   "pool": "diagnostic:loops:B",
+   "skill_id": "loop_accumulator",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_accumulator"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "10",
+   "hints": [
+    "The total keeps growing: each time round it adds to what it already had.",
+    "Write the total after every pass of the loop."
+   ],
+   "solution": [
+    "The loop runs 5 times.",
+    "Each time it adds 2: 5 × 2 = 10."
+   ],
+   "patterns": {
+    "2": "CS_ACC_LAST",
+    "12": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "total = 0\nfor i in range(5):\n    total = total + 2\nprint(total)"
+  },
+  {
+   "id": "LOOP-VLC1",
+   "pool": "verification:loop_counting",
+   "skill_id": "loop_counting",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_counting"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "5",
+   "hints": [
+    "range(a, b) starts at a and stops BEFORE b.",
+    "range(n) gives 0, 1, ..., n − 1: that is n numbers."
+   ],
+   "solution": [
+    "range(3, 8) gives 3, 4, 5, 6, 7.",
+    "That is 5 numbers, so count is 5."
+   ],
+   "patterns": {
+    "6": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "count = 0\nfor i in range(3, 8):\n    count = count + 1\nprint(count)",
+   "check_role": "same_type"
+  },
+  {
+   "id": "LOOP-VLC2",
+   "pool": "verification:loop_counting",
+   "skill_id": "loop_counting",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_counting"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "4",
+   "hints": [
+    "range(a, b) starts at a and stops BEFORE b.",
+    "range(n) gives 0, 1, ..., n − 1: that is n numbers."
+   ],
+   "solution": [
+    "range(5) gives 0 to 4.",
+    "The last value i takes is 4."
+   ],
+   "patterns": {
+    "5": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "for i in range(5):\n    last = i\nprint(last)",
+   "check_role": "same_type"
+  },
+  {
+   "id": "LOOP-VLC3",
+   "pool": "verification:loop_counting",
+   "skill_id": "loop_counting",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_counting"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "6",
+   "hints": [
+    "range(a, b) starts at a and stops BEFORE b.",
+    "range(n) gives 0, 1, ..., n − 1: that is n numbers."
+   ],
+   "solution": [
+    "range(0, 6) gives 0, 1, 2, 3, 4, 5.",
+    "That is 6 numbers, so count is 6."
+   ],
+   "patterns": {
+    "7": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "count = 0\nfor i in range(0, 6):\n    count = count + 1\nprint(count)",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "LOOP-VLC4",
+   "pool": "verification:loop_counting",
+   "skill_id": "loop_counting",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_counting"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "8",
+   "hints": [
+    "range(a, b) starts at a and stops BEFORE b.",
+    "range(n) gives 0, 1, ..., n − 1: that is n numbers."
+   ],
+   "solution": [
+    "range(9) gives 0 to 8.",
+    "The last value i takes is 8."
+   ],
+   "patterns": {
+    "9": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "for i in range(9):\n    last = i\nprint(last)",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "LOOP-VLA1",
+   "pool": "verification:loop_accumulator",
+   "skill_id": "loop_accumulator",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_accumulator"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "21",
+   "hints": [
+    "The total keeps growing: each time round it adds to what it already had.",
+    "Write the total after every pass of the loop."
+   ],
+   "solution": [
+    "i takes the values 1, 2, 3, 4, 5, 6.",
+    "total adds each one: 1 + 2 + 3 + 4 + 5 + 6 = 21."
+   ],
+   "patterns": {
+    "6": "CS_ACC_LAST",
+    "28": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "total = 0\nfor i in range(1, 7):\n    total = total + i\nprint(total)",
+   "check_role": "same_type"
+  },
+  {
+   "id": "LOOP-VLA2",
+   "pool": "verification:loop_accumulator",
+   "skill_id": "loop_accumulator",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_accumulator"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "24",
+   "hints": [
+    "The total keeps growing: each time round it adds to what it already had.",
+    "Write the total after every pass of the loop."
+   ],
+   "solution": [
+    "The loop runs 6 times.",
+    "Each time it adds 4: 6 × 4 = 24."
+   ],
+   "patterns": {
+    "4": "CS_ACC_LAST",
+    "28": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "total = 0\nfor i in range(6):\n    total = total + 4\nprint(total)",
+   "check_role": "same_type"
+  },
+  {
+   "id": "LOOP-VLA3",
+   "pool": "verification:loop_accumulator",
+   "skill_id": "loop_accumulator",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_accumulator"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "18",
+   "hints": [
+    "The total keeps growing: each time round it adds to what it already had.",
+    "Write the total after every pass of the loop."
+   ],
+   "solution": [
+    "The loop runs 2 times.",
+    "Each time it adds 9: 2 × 9 = 18."
+   ],
+   "patterns": {
+    "9": "CS_ACC_LAST",
+    "27": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "total = 0\nfor i in range(2):\n    total = total + 9\nprint(total)",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "LOOP-VLA4",
+   "pool": "verification:loop_accumulator",
+   "skill_id": "loop_accumulator",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_accumulator"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "The total keeps growing: each time round it adds to what it already had.",
+    "Write the total after every pass of the loop."
+   ],
+   "solution": [
+    "i takes the values 1, 2.",
+    "total adds each one: 1 + 2 = 3."
+   ],
+   "patterns": {
+    "2": "CS_ACC_LAST",
+    "6": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "total = 0\nfor i in range(1, 3):\n    total = total + i\nprint(total)",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "LOOP-PLC1",
+   "pool": "practice:loop_counting",
+   "skill_id": "loop_counting",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_counting"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "range(a, b) starts at a and stops BEFORE b.",
+    "range(n) gives 0, 1, ..., n − 1: that is n numbers."
+   ],
+   "solution": [
+    "range(1, 4) gives 1, 2, 3.",
+    "That is 3 numbers, so count is 3."
+   ],
+   "patterns": {
+    "4": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "count = 0\nfor i in range(1, 4):\n    count = count + 1\nprint(count)"
+  },
+  {
+   "id": "LOOP-PLC2",
+   "pool": "practice:loop_counting",
+   "skill_id": "loop_counting",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_counting"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "2",
+   "hints": [
+    "range(a, b) starts at a and stops BEFORE b.",
+    "range(n) gives 0, 1, ..., n − 1: that is n numbers."
+   ],
+   "solution": [
+    "range(3) gives 0 to 2.",
+    "The last value i takes is 2."
+   ],
+   "patterns": {
+    "3": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "for i in range(3):\n    last = i\nprint(last)"
+  },
+  {
+   "id": "LOOP-PLC3",
+   "pool": "practice:loop_counting",
+   "skill_id": "loop_counting",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_counting"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "5",
+   "hints": [
+    "range(a, b) starts at a and stops BEFORE b.",
+    "range(n) gives 0, 1, ..., n − 1: that is n numbers."
+   ],
+   "solution": [
+    "range(5, 10) gives 5, 6, 7, 8, 9.",
+    "That is 5 numbers, so count is 5."
+   ],
+   "patterns": {
+    "6": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "count = 0\nfor i in range(5, 10):\n    count = count + 1\nprint(count)"
+  },
+  {
+   "id": "LOOP-PLC4",
+   "pool": "practice:loop_counting",
+   "skill_id": "loop_counting",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_counting"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "6",
+   "hints": [
+    "range(a, b) starts at a and stops BEFORE b.",
+    "range(n) gives 0, 1, ..., n − 1: that is n numbers."
+   ],
+   "solution": [
+    "range(7) gives 0 to 6.",
+    "The last value i takes is 6."
+   ],
+   "patterns": {
+    "7": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "for i in range(7):\n    last = i\nprint(last)"
+  },
+  {
+   "id": "LOOP-PLA1",
+   "pool": "practice:loop_accumulator",
+   "skill_id": "loop_accumulator",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_accumulator"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "The total keeps growing: each time round it adds to what it already had.",
+    "Write the total after every pass of the loop."
+   ],
+   "solution": [
+    "i takes the values 1, 2.",
+    "total adds each one: 1 + 2 = 3."
+   ],
+   "patterns": {
+    "2": "CS_ACC_LAST",
+    "6": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "total = 0\nfor i in range(1, 3):\n    total = total + i\nprint(total)"
+  },
+  {
+   "id": "LOOP-PLA2",
+   "pool": "practice:loop_accumulator",
+   "skill_id": "loop_accumulator",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_accumulator"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "12",
+   "hints": [
+    "The total keeps growing: each time round it adds to what it already had.",
+    "Write the total after every pass of the loop."
+   ],
+   "solution": [
+    "The loop runs 2 times.",
+    "Each time it adds 6: 2 × 6 = 12."
+   ],
+   "patterns": {
+    "6": "CS_ACC_LAST",
+    "18": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "total = 0\nfor i in range(2):\n    total = total + 6\nprint(total)"
+  },
+  {
+   "id": "LOOP-PLA3",
+   "pool": "practice:loop_accumulator",
+   "skill_id": "loop_accumulator",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_accumulator"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "28",
+   "hints": [
+    "The total keeps growing: each time round it adds to what it already had.",
+    "Write the total after every pass of the loop."
+   ],
+   "solution": [
+    "i takes the values 1, 2, 3, 4, 5, 6, 7.",
+    "total adds each one: 1 + 2 + 3 + 4 + 5 + 6 + 7 = 28."
+   ],
+   "patterns": {
+    "7": "CS_ACC_LAST",
+    "36": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "total = 0\nfor i in range(1, 8):\n    total = total + i\nprint(total)"
+  },
+  {
+   "id": "LOOP-PLA4",
+   "pool": "practice:loop_accumulator",
+   "skill_id": "loop_accumulator",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_accumulator"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "25",
+   "hints": [
+    "The total keeps growing: each time round it adds to what it already had.",
+    "Write the total after every pass of the loop."
+   ],
+   "solution": [
+    "The loop runs 5 times.",
+    "Each time it adds 5: 5 × 5 = 25."
+   ],
+   "patterns": {
+    "5": "CS_ACC_LAST",
+    "30": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "total = 0\nfor i in range(5):\n    total = total + 5\nprint(total)"
+  },
+  {
+   "id": "LOOP-RLC1",
+   "pool": "retest:loop_counting",
+   "skill_id": "loop_counting",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_counting"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "5",
+   "hints": [
+    "range(a, b) starts at a and stops BEFORE b.",
+    "range(n) gives 0, 1, ..., n − 1: that is n numbers."
+   ],
+   "solution": [
+    "range(1, 6) gives 1, 2, 3, 4, 5.",
+    "That is 5 numbers, so count is 5."
+   ],
+   "patterns": {
+    "6": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "count = 0\nfor i in range(1, 6):\n    count = count + 1\nprint(count)"
+  },
+  {
+   "id": "LOOP-RLC2",
+   "pool": "retest:loop_counting",
+   "skill_id": "loop_counting",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_counting"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "5",
+   "hints": [
+    "range(a, b) starts at a and stops BEFORE b.",
+    "range(n) gives 0, 1, ..., n − 1: that is n numbers."
+   ],
+   "solution": [
+    "range(4, 9) gives 4, 5, 6, 7, 8.",
+    "That is 5 numbers, so count is 5."
+   ],
+   "patterns": {
+    "6": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "count = 0\nfor i in range(4, 9):\n    count = count + 1\nprint(count)"
+  },
+  {
+   "id": "LOOP-RLC3",
+   "pool": "retest:loop_counting",
+   "skill_id": "loop_counting",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_counting"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "range(a, b) starts at a and stops BEFORE b.",
+    "range(n) gives 0, 1, ..., n − 1: that is n numbers."
+   ],
+   "solution": [
+    "range(0, 3) gives 0, 1, 2.",
+    "That is 3 numbers, so count is 3."
+   ],
+   "patterns": {
+    "4": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "count = 0\nfor i in range(0, 3):\n    count = count + 1\nprint(count)"
+  },
+  {
+   "id": "LOOP-RLC4",
+   "pool": "retest:loop_counting",
+   "skill_id": "loop_counting",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_counting"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "7",
+   "hints": [
+    "range(a, b) starts at a and stops BEFORE b.",
+    "range(n) gives 0, 1, ..., n − 1: that is n numbers."
+   ],
+   "solution": [
+    "range(8) gives 0 to 7.",
+    "The last value i takes is 7."
+   ],
+   "patterns": {
+    "8": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "for i in range(8):\n    last = i\nprint(last)"
+  },
+  {
+   "id": "LOOP-RLC5",
+   "pool": "retest:loop_counting",
+   "skill_id": "loop_counting",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_counting"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "1",
+   "hints": [
+    "range(a, b) starts at a and stops BEFORE b.",
+    "range(n) gives 0, 1, ..., n − 1: that is n numbers."
+   ],
+   "solution": [
+    "range(2) gives 0 to 1.",
+    "The last value i takes is 1."
+   ],
+   "patterns": {
+    "2": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "for i in range(2):\n    last = i\nprint(last)"
+  },
+  {
+   "id": "LOOP-RLC6",
+   "pool": "retest:loop_counting",
+   "skill_id": "loop_counting",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_counting"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "9",
+   "hints": [
+    "range(a, b) starts at a and stops BEFORE b.",
+    "range(n) gives 0, 1, ..., n − 1: that is n numbers."
+   ],
+   "solution": [
+    "range(10) gives 0 to 9.",
+    "The last value i takes is 9."
+   ],
+   "patterns": {
+    "10": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "for i in range(10):\n    last = i\nprint(last)"
+  },
+  {
+   "id": "LOOP-RLA1",
+   "pool": "retest:loop_accumulator",
+   "skill_id": "loop_accumulator",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_accumulator"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "15",
+   "hints": [
+    "The total keeps growing: each time round it adds to what it already had.",
+    "Write the total after every pass of the loop."
+   ],
+   "solution": [
+    "i takes the values 1, 2, 3, 4, 5.",
+    "total adds each one: 1 + 2 + 3 + 4 + 5 = 15."
+   ],
+   "patterns": {
+    "5": "CS_ACC_LAST",
+    "21": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "total = 0\nfor i in range(1, 6):\n    total = total + i\nprint(total)"
+  },
+  {
+   "id": "LOOP-RLA2",
+   "pool": "retest:loop_accumulator",
+   "skill_id": "loop_accumulator",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_accumulator"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "36",
+   "hints": [
+    "The total keeps growing: each time round it adds to what it already had.",
+    "Write the total after every pass of the loop."
+   ],
+   "solution": [
+    "i takes the values 1, 2, 3, 4, 5, 6, 7, 8.",
+    "total adds each one: 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 = 36."
+   ],
+   "patterns": {
+    "8": "CS_ACC_LAST",
+    "45": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "total = 0\nfor i in range(1, 9):\n    total = total + i\nprint(total)"
+  },
+  {
+   "id": "LOOP-RLA3",
+   "pool": "retest:loop_accumulator",
+   "skill_id": "loop_accumulator",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_accumulator"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "28",
+   "hints": [
+    "The total keeps growing: each time round it adds to what it already had.",
+    "Write the total after every pass of the loop."
+   ],
+   "solution": [
+    "The loop runs 4 times.",
+    "Each time it adds 7: 4 × 7 = 28."
+   ],
+   "patterns": {
+    "7": "CS_ACC_LAST",
+    "35": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "total = 0\nfor i in range(4):\n    total = total + 7\nprint(total)"
+  },
+  {
+   "id": "LOOP-RLA4",
+   "pool": "retest:loop_accumulator",
+   "skill_id": "loop_accumulator",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_accumulator"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "24",
+   "hints": [
+    "The total keeps growing: each time round it adds to what it already had.",
+    "Write the total after every pass of the loop."
+   ],
+   "solution": [
+    "The loop runs 3 times.",
+    "Each time it adds 8: 3 × 8 = 24."
+   ],
+   "patterns": {
+    "8": "CS_ACC_LAST",
+    "32": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "total = 0\nfor i in range(3):\n    total = total + 8\nprint(total)"
+  },
+  {
+   "id": "LOOP-RLA5",
+   "pool": "retest:loop_accumulator",
+   "skill_id": "loop_accumulator",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_accumulator"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "14",
+   "hints": [
+    "The total keeps growing: each time round it adds to what it already had.",
+    "Write the total after every pass of the loop."
+   ],
+   "solution": [
+    "The loop runs 7 times.",
+    "Each time it adds 2: 7 × 2 = 14."
+   ],
+   "patterns": {
+    "2": "CS_ACC_LAST",
+    "16": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "total = 0\nfor i in range(7):\n    total = total + 2\nprint(total)"
+  },
+  {
+   "id": "LOOP-RLA6",
+   "pool": "retest:loop_accumulator",
+   "skill_id": "loop_accumulator",
+   "type": "code_output",
+   "gap_targets": [
+    "loop_accumulator"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "18",
+   "hints": [
+    "The total keeps growing: each time round it adds to what it already had.",
+    "Write the total after every pass of the loop."
+   ],
+   "solution": [
+    "The loop runs 6 times.",
+    "Each time it adds 3: 6 × 3 = 18."
+   ],
+   "patterns": {
+    "3": "CS_ACC_LAST",
+    "21": "CS_RANGE_OFF_BY_ONE"
+   },
+   "code": "total = 0\nfor i in range(6):\n    total = total + 3\nprint(total)"
+  }
+ ],
+ "lessons": {
+  "loop_counting": {
+   "title": "How many times a loop runs",
+   "big_idea": "range(a, b) starts at a and stops just BEFORE b. So range(1, 5) gives 1, 2, 3, 4: four numbers, not five.",
+   "steps": [
+    "Write out the numbers range gives, starting at the first value.",
+    "Stop one before the end value; the end value itself is never used.",
+    "range(n) is the same as range(0, n): it runs exactly n times.",
+    "Count how many numbers you wrote."
+   ],
+   "sense_check": "The count from range(a, b) is always b − a. range(1, 5): 5 − 1 = 4.",
+   "worked_examples": [
+    {
+     "prompt": "What does this program print?",
+     "code": "count = 0\nfor i in range(1, 5):\n    count = count + 1\nprint(count)",
+     "answer": "4",
+     "steps": [
+      "i = 1, 2, 3, 4 (stops before 5).",
+      "count goes up 4 times.",
+      "Prints 4."
+     ]
+    },
+    {
+     "prompt": "What does this program print?",
+     "code": "for i in range(4):\n    last = i\nprint(last)",
+     "answer": "3",
+     "steps": [
+      "i = 0, 1, 2, 3.",
+      "The last value stored is 3.",
+      "Prints 3."
+     ]
+    }
+   ]
+  },
+  "loop_accumulator": {
+   "title": "Running totals in loops",
+   "big_idea": "`total = total + i` adds i to what total ALREADY holds. The total builds up each time round, it is not replaced.",
+   "steps": [
+    "Start with total = 0 (or whatever it starts as).",
+    "Each pass: new total = old total + the value added.",
+    "Keep a trace table: pass number, i, total.",
+    "The printed value is the total after the last pass."
+   ],
+   "sense_check": "Saving ₹1, then ₹2, then ₹3 in a piggy bank gives ₹6, not ₹3.",
+   "worked_examples": [
+    {
+     "prompt": "What does this program print?",
+     "code": "total = 0\nfor i in range(1, 4):\n    total = total + i\nprint(total)",
+     "answer": "6",
+     "steps": [
+      "i = 1: total 1.",
+      "i = 2: total 3.",
+      "i = 3: total 6.",
+      "Prints 6."
+     ]
+    },
+    {
+     "prompt": "What does this program print?",
+     "code": "total = 0\nfor i in range(3):\n    total = total + 5\nprint(total)",
+     "answer": "15",
+     "steps": [
+      "The loop runs 3 times.",
+      "5 + 5 + 5 = 15.",
+      "Prints 15."
+     ]
+    }
+   ]
+  }
+ }
+}

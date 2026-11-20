@@ -13,7 +13,10 @@ def Q(**kw):
 def test_content_loads_and_every_question_has_an_exact_answer():
     counts = validate_all()
     assert counts["questions"] == len(questions()) >= 60
-    for q in questions().values():
+    from backend.engine import is_fraction
+    fraction_qs = [q for q in questions().values() if is_fraction(q)]
+    assert len(fraction_qs) >= 60          # the original bank is all still there
+    for q in fraction_qs:
         assert isinstance(correct_answer(q), Fraction)
 
 

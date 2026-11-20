@@ -1,0 +1,1096 @@
+{
+ "skills": [
+  {
+   "id": "sva_basic",
+   "name": "Singular and plural subjects",
+   "grade": 3,
+   "prerequisites": [],
+   "description": "The verb takes -s with a singular subject, not with a plural one."
+  },
+  {
+   "id": "sva_tricky",
+   "name": "Agreement with tricky subjects",
+   "grade": 5,
+   "prerequisites": [
+    "sva_basic"
+   ],
+   "description": "Phrases between subject and verb; each/every/everyone."
+  }
+ ],
+ "misconceptions": {
+  "ENG_PLURAL_VERB_S": {
+   "label": "Adds -s to the verb when the subject is plural",
+   "gap_skill": "sva_basic",
+   "explanation": "Writes 'the dogs barks', putting -s on both noun and verb."
+  },
+  "ENG_NEAREST_NOUN": {
+   "label": "Makes the verb agree with the nearest noun",
+   "gap_skill": "sva_tricky",
+   "explanation": "Writes 'the box of pencils are' because 'pencils' is next to the verb."
+  },
+  "ENG_EACH_PLURAL": {
+   "label": "Treats each / every / everyone as plural",
+   "gap_skill": "sva_tricky",
+   "explanation": "Writes 'everyone have' or 'each of the boys have'."
+  }
+ },
+ "questions": [
+  {
+   "id": "SVA-DA1",
+   "pool": "diagnostic:subject_verb_agreement:A",
+   "skill_id": "sva_basic",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_basic"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The dogs ___ loudly every night.",
+   "answer": "bark",
+   "hints": [
+    "Find the subject. Is it one thing or more than one?",
+    "With a plural subject (dogs, they), the verb has NO -s: the dogs bark."
+   ],
+   "solution": [
+    "The subject is plural, so the verb has no -s.",
+    "The dogs bark loudly every night."
+   ],
+   "patterns": {
+    "barks": "ENG_PLURAL_VERB_S"
+   },
+   "options": [
+    "bark",
+    "barks"
+   ]
+  },
+  {
+   "id": "SVA-DA2",
+   "pool": "diagnostic:subject_verb_agreement:A",
+   "skill_id": "sva_tricky",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_tricky"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The box of pencils ___ on the desk.",
+   "answer": "is",
+   "hints": [
+    "Cross out the extra phrase (of the..., in the...) and find the real subject.",
+    "Each, every, everyone and nobody are singular."
+   ],
+   "solution": [
+    "The verb agrees with the main subject, not the noun just before it.",
+    "The box of pencils is on the desk."
+   ],
+   "patterns": {
+    "are": "ENG_NEAREST_NOUN"
+   },
+   "options": [
+    "is",
+    "are"
+   ]
+  },
+  {
+   "id": "SVA-DA3",
+   "pool": "diagnostic:subject_verb_agreement:A",
+   "skill_id": "sva_tricky",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_tricky"
+   ],
+   "prompt": "Choose the word that completes the sentence:  Everyone in the class ___ a book.",
+   "answer": "has",
+   "hints": [
+    "Cross out the extra phrase (of the..., in the...) and find the real subject.",
+    "Each, every, everyone and nobody are singular."
+   ],
+   "solution": [
+    "Each / every / everyone / nobody is singular, so use the singular verb.",
+    "Everyone in the class has a book."
+   ],
+   "patterns": {
+    "have": "ENG_EACH_PLURAL"
+   },
+   "options": [
+    "has",
+    "have"
+   ]
+  },
+  {
+   "id": "SVA-DA4",
+   "pool": "diagnostic:subject_verb_agreement:A",
+   "skill_id": "sva_tricky",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_tricky"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The leader of the players ___ ready.",
+   "answer": "is",
+   "hints": [
+    "Cross out the extra phrase (of the..., in the...) and find the real subject.",
+    "Each, every, everyone and nobody are singular."
+   ],
+   "solution": [
+    "The verb agrees with the main subject, not the noun just before it.",
+    "The leader of the players is ready."
+   ],
+   "patterns": {
+    "are": "ENG_NEAREST_NOUN"
+   },
+   "options": [
+    "is",
+    "are"
+   ]
+  },
+  {
+   "id": "SVA-DA5",
+   "pool": "diagnostic:subject_verb_agreement:A",
+   "skill_id": "sva_basic",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_basic"
+   ],
+   "prompt": "Choose the word that completes the sentence:  My friends ___ cricket after school.",
+   "answer": "play",
+   "hints": [
+    "Find the subject. Is it one thing or more than one?",
+    "With a plural subject (dogs, they), the verb has NO -s: the dogs bark."
+   ],
+   "solution": [
+    "The subject is plural, so the verb has no -s.",
+    "My friends play cricket after school."
+   ],
+   "patterns": {
+    "plays": "ENG_PLURAL_VERB_S"
+   },
+   "options": [
+    "play",
+    "plays"
+   ]
+  },
+  {
+   "id": "SVA-DB1",
+   "pool": "diagnostic:subject_verb_agreement:B",
+   "skill_id": "sva_basic",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_basic"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The birds ___ south in winter.",
+   "answer": "fly",
+   "hints": [
+    "Find the subject. Is it one thing or more than one?",
+    "With a plural subject (dogs, they), the verb has NO -s: the dogs bark."
+   ],
+   "solution": [
+    "The subject is plural, so the verb has no -s.",
+    "The birds fly south in winter."
+   ],
+   "patterns": {
+    "flies": "ENG_PLURAL_VERB_S"
+   },
+   "options": [
+    "fly",
+    "flies"
+   ]
+  },
+  {
+   "id": "SVA-DB2",
+   "pool": "diagnostic:subject_verb_agreement:B",
+   "skill_id": "sva_tricky",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_tricky"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The pencils in the box ___ new.",
+   "answer": "are",
+   "hints": [
+    "Cross out the extra phrase (of the..., in the...) and find the real subject.",
+    "Each, every, everyone and nobody are singular."
+   ],
+   "solution": [
+    "The verb agrees with the main subject, not the noun just before it.",
+    "The pencils in the box are new."
+   ],
+   "patterns": {
+    "is": "ENG_NEAREST_NOUN"
+   },
+   "options": [
+    "is",
+    "are"
+   ]
+  },
+  {
+   "id": "SVA-DB3",
+   "pool": "diagnostic:subject_verb_agreement:B",
+   "skill_id": "sva_tricky",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_tricky"
+   ],
+   "prompt": "Choose the word that completes the sentence:  Each of the boys ___ a bat.",
+   "answer": "has",
+   "hints": [
+    "Cross out the extra phrase (of the..., in the...) and find the real subject.",
+    "Each, every, everyone and nobody are singular."
+   ],
+   "solution": [
+    "Each / every / everyone / nobody is singular, so use the singular verb.",
+    "Each of the boys has a bat."
+   ],
+   "patterns": {
+    "have": "ENG_EACH_PLURAL"
+   },
+   "options": [
+    "has",
+    "have"
+   ]
+  },
+  {
+   "id": "SVA-DB4",
+   "pool": "diagnostic:subject_verb_agreement:B",
+   "skill_id": "sva_tricky",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_tricky"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The colour of the flowers ___ bright yellow.",
+   "answer": "is",
+   "hints": [
+    "Cross out the extra phrase (of the..., in the...) and find the real subject.",
+    "Each, every, everyone and nobody are singular."
+   ],
+   "solution": [
+    "The verb agrees with the main subject, not the noun just before it.",
+    "The colour of the flowers is bright yellow."
+   ],
+   "patterns": {
+    "are": "ENG_NEAREST_NOUN"
+   },
+   "options": [
+    "is",
+    "are"
+   ]
+  },
+  {
+   "id": "SVA-DB5",
+   "pool": "diagnostic:subject_verb_agreement:B",
+   "skill_id": "sva_basic",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_basic"
+   ],
+   "prompt": "Choose the word that completes the sentence:  Those girls ___ in the school choir.",
+   "answer": "sing",
+   "hints": [
+    "Find the subject. Is it one thing or more than one?",
+    "With a plural subject (dogs, they), the verb has NO -s: the dogs bark."
+   ],
+   "solution": [
+    "The subject is plural, so the verb has no -s.",
+    "Those girls sing in the school choir."
+   ],
+   "patterns": {
+    "sings": "ENG_PLURAL_VERB_S"
+   },
+   "options": [
+    "sing",
+    "sings"
+   ]
+  },
+  {
+   "id": "SVA-VSB1",
+   "pool": "verification:sva_basic",
+   "skill_id": "sva_basic",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_basic"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The teachers ___ in the staff room.",
+   "answer": "meet",
+   "hints": [
+    "Find the subject. Is it one thing or more than one?",
+    "With a plural subject (dogs, they), the verb has NO -s: the dogs bark."
+   ],
+   "solution": [
+    "The subject is plural, so the verb has no -s.",
+    "The teachers meet in the staff room."
+   ],
+   "patterns": {
+    "meets": "ENG_PLURAL_VERB_S"
+   },
+   "options": [
+    "meet",
+    "meets"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "SVA-VSB2",
+   "pool": "verification:sva_basic",
+   "skill_id": "sva_basic",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_basic"
+   ],
+   "prompt": "Choose the word that completes the sentence:  My parents ___ tea every morning.",
+   "answer": "drink",
+   "hints": [
+    "Find the subject. Is it one thing or more than one?",
+    "With a plural subject (dogs, they), the verb has NO -s: the dogs bark."
+   ],
+   "solution": [
+    "The subject is plural, so the verb has no -s.",
+    "My parents drink tea every morning."
+   ],
+   "patterns": {
+    "drinks": "ENG_PLURAL_VERB_S"
+   },
+   "options": [
+    "drink",
+    "drinks"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "SVA-VSB3",
+   "pool": "verification:sva_basic",
+   "skill_id": "sva_basic",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_basic"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The children ___ to the park on Sundays.",
+   "answer": "go",
+   "hints": [
+    "Find the subject. Is it one thing or more than one?",
+    "With a plural subject (dogs, they), the verb has NO -s: the dogs bark."
+   ],
+   "solution": [
+    "The subject is plural, so the verb has no -s.",
+    "The children go to the park on Sundays."
+   ],
+   "patterns": {
+    "goes": "ENG_PLURAL_VERB_S"
+   },
+   "options": [
+    "go",
+    "goes"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "SVA-VSB4",
+   "pool": "verification:sva_basic",
+   "skill_id": "sva_basic",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_basic"
+   ],
+   "prompt": "Choose the word that completes the sentence:  Cats ___ a lot during the day.",
+   "answer": "sleep",
+   "hints": [
+    "Find the subject. Is it one thing or more than one?",
+    "With a plural subject (dogs, they), the verb has NO -s: the dogs bark."
+   ],
+   "solution": [
+    "The subject is plural, so the verb has no -s.",
+    "Cats sleep a lot during the day."
+   ],
+   "patterns": {
+    "sleeps": "ENG_PLURAL_VERB_S"
+   },
+   "options": [
+    "sleep",
+    "sleeps"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "SVA-VST1",
+   "pool": "verification:sva_tricky",
+   "skill_id": "sva_tricky",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_tricky"
+   ],
+   "prompt": "Choose the word that completes the sentence:  A bunch of grapes ___ in the fridge.",
+   "answer": "is",
+   "hints": [
+    "Cross out the extra phrase (of the..., in the...) and find the real subject.",
+    "Each, every, everyone and nobody are singular."
+   ],
+   "solution": [
+    "The verb agrees with the main subject, not the noun just before it.",
+    "A bunch of grapes is in the fridge."
+   ],
+   "patterns": {
+    "are": "ENG_NEAREST_NOUN"
+   },
+   "options": [
+    "is",
+    "are"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "SVA-VST2",
+   "pool": "verification:sva_tricky",
+   "skill_id": "sva_tricky",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_tricky"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The books on the shelf ___ dusty.",
+   "answer": "are",
+   "hints": [
+    "Cross out the extra phrase (of the..., in the...) and find the real subject.",
+    "Each, every, everyone and nobody are singular."
+   ],
+   "solution": [
+    "The verb agrees with the main subject, not the noun just before it.",
+    "The books on the shelf are dusty."
+   ],
+   "patterns": {
+    "is": "ENG_NEAREST_NOUN"
+   },
+   "options": [
+    "is",
+    "are"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "SVA-VST3",
+   "pool": "verification:sva_tricky",
+   "skill_id": "sva_tricky",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_tricky"
+   ],
+   "prompt": "Choose the word that completes the sentence:  Every student ___ a uniform.",
+   "answer": "wears",
+   "hints": [
+    "Cross out the extra phrase (of the..., in the...) and find the real subject.",
+    "Each, every, everyone and nobody are singular."
+   ],
+   "solution": [
+    "Each / every / everyone / nobody is singular, so use the singular verb.",
+    "Every student wears a uniform."
+   ],
+   "patterns": {
+    "wear": "ENG_EACH_PLURAL"
+   },
+   "options": [
+    "wear",
+    "wears"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "SVA-VST4",
+   "pool": "verification:sva_tricky",
+   "skill_id": "sva_tricky",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_tricky"
+   ],
+   "prompt": "Choose the word that completes the sentence:  Everybody ___ the answer.",
+   "answer": "knows",
+   "hints": [
+    "Cross out the extra phrase (of the..., in the...) and find the real subject.",
+    "Each, every, everyone and nobody are singular."
+   ],
+   "solution": [
+    "Each / every / everyone / nobody is singular, so use the singular verb.",
+    "Everybody knows the answer."
+   ],
+   "patterns": {
+    "know": "ENG_EACH_PLURAL"
+   },
+   "options": [
+    "know",
+    "knows"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "SVA-PSB1",
+   "pool": "practice:sva_basic",
+   "skill_id": "sva_basic",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_basic"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The farmers ___ rice in July.",
+   "answer": "plant",
+   "hints": [
+    "Find the subject. Is it one thing or more than one?",
+    "With a plural subject (dogs, they), the verb has NO -s: the dogs bark."
+   ],
+   "solution": [
+    "The subject is plural, so the verb has no -s.",
+    "The farmers plant rice in July."
+   ],
+   "patterns": {
+    "plants": "ENG_PLURAL_VERB_S"
+   },
+   "options": [
+    "plant",
+    "plants"
+   ]
+  },
+  {
+   "id": "SVA-PSB2",
+   "pool": "practice:sva_basic",
+   "skill_id": "sva_basic",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_basic"
+   ],
+   "prompt": "Choose the word that completes the sentence:  These shoes ___ too tight.",
+   "answer": "feel",
+   "hints": [
+    "Find the subject. Is it one thing or more than one?",
+    "With a plural subject (dogs, they), the verb has NO -s: the dogs bark."
+   ],
+   "solution": [
+    "The subject is plural, so the verb has no -s.",
+    "These shoes feel too tight."
+   ],
+   "patterns": {
+    "feels": "ENG_PLURAL_VERB_S"
+   },
+   "options": [
+    "feel",
+    "feels"
+   ]
+  },
+  {
+   "id": "SVA-PSB3",
+   "pool": "practice:sva_basic",
+   "skill_id": "sva_basic",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_basic"
+   ],
+   "prompt": "Choose the word that completes the sentence:  Monkeys ___ bananas.",
+   "answer": "eat",
+   "hints": [
+    "Find the subject. Is it one thing or more than one?",
+    "With a plural subject (dogs, they), the verb has NO -s: the dogs bark."
+   ],
+   "solution": [
+    "The subject is plural, so the verb has no -s.",
+    "Monkeys eat bananas."
+   ],
+   "patterns": {
+    "eats": "ENG_PLURAL_VERB_S"
+   },
+   "options": [
+    "eat",
+    "eats"
+   ]
+  },
+  {
+   "id": "SVA-PSB4",
+   "pool": "practice:sva_basic",
+   "skill_id": "sva_basic",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_basic"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The students ___ their homework in the library.",
+   "answer": "do",
+   "hints": [
+    "Find the subject. Is it one thing or more than one?",
+    "With a plural subject (dogs, they), the verb has NO -s: the dogs bark."
+   ],
+   "solution": [
+    "The subject is plural, so the verb has no -s.",
+    "The students do their homework in the library."
+   ],
+   "patterns": {
+    "does": "ENG_PLURAL_VERB_S"
+   },
+   "options": [
+    "do",
+    "does"
+   ]
+  },
+  {
+   "id": "SVA-PST1",
+   "pool": "practice:sva_tricky",
+   "skill_id": "sva_tricky",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_tricky"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The sound of the drums ___ very loud.",
+   "answer": "was",
+   "hints": [
+    "Cross out the extra phrase (of the..., in the...) and find the real subject.",
+    "Each, every, everyone and nobody are singular."
+   ],
+   "solution": [
+    "The verb agrees with the main subject, not the noun just before it.",
+    "The sound of the drums was very loud."
+   ],
+   "patterns": {
+    "were": "ENG_NEAREST_NOUN"
+   },
+   "options": [
+    "was",
+    "were"
+   ]
+  },
+  {
+   "id": "SVA-PST2",
+   "pool": "practice:sva_tricky",
+   "skill_id": "sva_tricky",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_tricky"
+   ],
+   "prompt": "Choose the word that completes the sentence:  Each of the rooms ___ a fan.",
+   "answer": "has",
+   "hints": [
+    "Cross out the extra phrase (of the..., in the...) and find the real subject.",
+    "Each, every, everyone and nobody are singular."
+   ],
+   "solution": [
+    "Each / every / everyone / nobody is singular, so use the singular verb.",
+    "Each of the rooms has a fan."
+   ],
+   "patterns": {
+    "have": "ENG_EACH_PLURAL"
+   },
+   "options": [
+    "has",
+    "have"
+   ]
+  },
+  {
+   "id": "SVA-PST3",
+   "pool": "practice:sva_tricky",
+   "skill_id": "sva_tricky",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_tricky"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The keys to the cupboard ___ lost.",
+   "answer": "were",
+   "hints": [
+    "Cross out the extra phrase (of the..., in the...) and find the real subject.",
+    "Each, every, everyone and nobody are singular."
+   ],
+   "solution": [
+    "The verb agrees with the main subject, not the noun just before it.",
+    "The keys to the cupboard were lost."
+   ],
+   "patterns": {
+    "was": "ENG_NEAREST_NOUN"
+   },
+   "options": [
+    "was",
+    "were"
+   ]
+  },
+  {
+   "id": "SVA-PST4",
+   "pool": "practice:sva_tricky",
+   "skill_id": "sva_tricky",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_tricky"
+   ],
+   "prompt": "Choose the word that completes the sentence:  Every one of the apples ___ ripe.",
+   "answer": "is",
+   "hints": [
+    "Cross out the extra phrase (of the..., in the...) and find the real subject.",
+    "Each, every, everyone and nobody are singular."
+   ],
+   "solution": [
+    "Each / every / everyone / nobody is singular, so use the singular verb.",
+    "Every one of the apples is ripe."
+   ],
+   "patterns": {
+    "are": "ENG_EACH_PLURAL"
+   },
+   "options": [
+    "is",
+    "are"
+   ]
+  },
+  {
+   "id": "SVA-RSB1",
+   "pool": "retest:sva_basic",
+   "skill_id": "sva_basic",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_basic"
+   ],
+   "prompt": "Choose the word that completes the sentence:  My brothers ___ comics at night.",
+   "answer": "read",
+   "hints": [
+    "Find the subject. Is it one thing or more than one?",
+    "With a plural subject (dogs, they), the verb has NO -s: the dogs bark."
+   ],
+   "solution": [
+    "The subject is plural, so the verb has no -s.",
+    "My brothers read comics at night."
+   ],
+   "patterns": {
+    "reads": "ENG_PLURAL_VERB_S"
+   },
+   "options": [
+    "read",
+    "reads"
+   ]
+  },
+  {
+   "id": "SVA-RSB2",
+   "pool": "retest:sva_basic",
+   "skill_id": "sva_basic",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_basic"
+   ],
+   "prompt": "Choose the word that completes the sentence:  Bees ___ honey from nectar.",
+   "answer": "make",
+   "hints": [
+    "Find the subject. Is it one thing or more than one?",
+    "With a plural subject (dogs, they), the verb has NO -s: the dogs bark."
+   ],
+   "solution": [
+    "The subject is plural, so the verb has no -s.",
+    "Bees make honey from nectar."
+   ],
+   "patterns": {
+    "makes": "ENG_PLURAL_VERB_S"
+   },
+   "options": [
+    "make",
+    "makes"
+   ]
+  },
+  {
+   "id": "SVA-RSB3",
+   "pool": "retest:sva_basic",
+   "skill_id": "sva_basic",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_basic"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The buses ___ late when it rains.",
+   "answer": "arrive",
+   "hints": [
+    "Find the subject. Is it one thing or more than one?",
+    "With a plural subject (dogs, they), the verb has NO -s: the dogs bark."
+   ],
+   "solution": [
+    "The subject is plural, so the verb has no -s.",
+    "The buses arrive late when it rains."
+   ],
+   "patterns": {
+    "arrives": "ENG_PLURAL_VERB_S"
+   },
+   "options": [
+    "arrive",
+    "arrives"
+   ]
+  },
+  {
+   "id": "SVA-RSB4",
+   "pool": "retest:sva_basic",
+   "skill_id": "sva_basic",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_basic"
+   ],
+   "prompt": "Choose the word that completes the sentence:  Our neighbours ___ a big garden.",
+   "answer": "have",
+   "hints": [
+    "Find the subject. Is it one thing or more than one?",
+    "With a plural subject (dogs, they), the verb has NO -s: the dogs bark."
+   ],
+   "solution": [
+    "The subject is plural, so the verb has no -s.",
+    "Our neighbours have a big garden."
+   ],
+   "patterns": {
+    "has": "ENG_PLURAL_VERB_S"
+   },
+   "options": [
+    "has",
+    "have"
+   ]
+  },
+  {
+   "id": "SVA-RSB5",
+   "pool": "retest:sva_basic",
+   "skill_id": "sva_basic",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_basic"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The cows ___ grass in the field.",
+   "answer": "eat",
+   "hints": [
+    "Find the subject. Is it one thing or more than one?",
+    "With a plural subject (dogs, they), the verb has NO -s: the dogs bark."
+   ],
+   "solution": [
+    "The subject is plural, so the verb has no -s.",
+    "The cows eat grass in the field."
+   ],
+   "patterns": {
+    "eats": "ENG_PLURAL_VERB_S"
+   },
+   "options": [
+    "eat",
+    "eats"
+   ]
+  },
+  {
+   "id": "SVA-RSB6",
+   "pool": "retest:sva_basic",
+   "skill_id": "sva_basic",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_basic"
+   ],
+   "prompt": "Choose the word that completes the sentence:  My cousins ___ in Chennai.",
+   "answer": "live",
+   "hints": [
+    "Find the subject. Is it one thing or more than one?",
+    "With a plural subject (dogs, they), the verb has NO -s: the dogs bark."
+   ],
+   "solution": [
+    "The subject is plural, so the verb has no -s.",
+    "My cousins live in Chennai."
+   ],
+   "patterns": {
+    "lives": "ENG_PLURAL_VERB_S"
+   },
+   "options": [
+    "live",
+    "lives"
+   ]
+  },
+  {
+   "id": "SVA-RST1",
+   "pool": "retest:sva_tricky",
+   "skill_id": "sva_tricky",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_tricky"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The price of the tickets ___ too high.",
+   "answer": "is",
+   "hints": [
+    "Cross out the extra phrase (of the..., in the...) and find the real subject.",
+    "Each, every, everyone and nobody are singular."
+   ],
+   "solution": [
+    "The verb agrees with the main subject, not the noun just before it.",
+    "The price of the tickets is too high."
+   ],
+   "patterns": {
+    "are": "ENG_NEAREST_NOUN"
+   },
+   "options": [
+    "is",
+    "are"
+   ]
+  },
+  {
+   "id": "SVA-RST2",
+   "pool": "retest:sva_tricky",
+   "skill_id": "sva_tricky",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_tricky"
+   ],
+   "prompt": "Choose the word that completes the sentence:  Everyone ___ invited to the party.",
+   "answer": "is",
+   "hints": [
+    "Cross out the extra phrase (of the..., in the...) and find the real subject.",
+    "Each, every, everyone and nobody are singular."
+   ],
+   "solution": [
+    "Each / every / everyone / nobody is singular, so use the singular verb.",
+    "Everyone is invited to the party."
+   ],
+   "patterns": {
+    "are": "ENG_EACH_PLURAL"
+   },
+   "options": [
+    "is",
+    "are"
+   ]
+  },
+  {
+   "id": "SVA-RST3",
+   "pool": "retest:sva_tricky",
+   "skill_id": "sva_tricky",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_tricky"
+   ],
+   "prompt": "Choose the word that completes the sentence:  One of my friends ___ a cat.",
+   "answer": "has",
+   "hints": [
+    "Cross out the extra phrase (of the..., in the...) and find the real subject.",
+    "Each, every, everyone and nobody are singular."
+   ],
+   "solution": [
+    "The verb agrees with the main subject, not the noun just before it.",
+    "One of my friends has a cat."
+   ],
+   "patterns": {
+    "have": "ENG_NEAREST_NOUN"
+   },
+   "options": [
+    "has",
+    "have"
+   ]
+  },
+  {
+   "id": "SVA-RST4",
+   "pool": "retest:sva_tricky",
+   "skill_id": "sva_tricky",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_tricky"
+   ],
+   "prompt": "Choose the word that completes the sentence:  Each child ___ a turn.",
+   "answer": "gets",
+   "hints": [
+    "Cross out the extra phrase (of the..., in the...) and find the real subject.",
+    "Each, every, everyone and nobody are singular."
+   ],
+   "solution": [
+    "Each / every / everyone / nobody is singular, so use the singular verb.",
+    "Each child gets a turn."
+   ],
+   "patterns": {
+    "get": "ENG_EACH_PLURAL"
+   },
+   "options": [
+    "get",
+    "gets"
+   ]
+  },
+  {
+   "id": "SVA-RST5",
+   "pool": "retest:sva_tricky",
+   "skill_id": "sva_tricky",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_tricky"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The girls in the photo ___ my cousins.",
+   "answer": "are",
+   "hints": [
+    "Cross out the extra phrase (of the..., in the...) and find the real subject.",
+    "Each, every, everyone and nobody are singular."
+   ],
+   "solution": [
+    "The verb agrees with the main subject, not the noun just before it.",
+    "The girls in the photo are my cousins."
+   ],
+   "patterns": {
+    "is": "ENG_NEAREST_NOUN"
+   },
+   "options": [
+    "is",
+    "are"
+   ]
+  },
+  {
+   "id": "SVA-RST6",
+   "pool": "retest:sva_tricky",
+   "skill_id": "sva_tricky",
+   "type": "mcq",
+   "gap_targets": [
+    "sva_tricky"
+   ],
+   "prompt": "Choose the word that completes the sentence:  Nobody in the team ___ tired.",
+   "answer": "is",
+   "hints": [
+    "Cross out the extra phrase (of the..., in the...) and find the real subject.",
+    "Each, every, everyone and nobody are singular."
+   ],
+   "solution": [
+    "Each / every / everyone / nobody is singular, so use the singular verb.",
+    "Nobody in the team is tired."
+   ],
+   "patterns": {
+    "are": "ENG_EACH_PLURAL"
+   },
+   "options": [
+    "is",
+    "are"
+   ]
+  }
+ ],
+ "lessons": {
+  "sva_basic": {
+   "title": "Singular and plural subjects",
+   "big_idea": "A verb must match its subject. One thing: add -s to the verb (the dog barks). More than one: no -s on the verb (the dogs bark). The -s moves from the noun to the verb, never both.",
+   "steps": [
+    "Find the subject: who or what is doing the action?",
+    "Is it one (he, she, the dog) or more than one (they, the dogs)?",
+    "One: the verb takes -s or -es (barks, goes, has).",
+    "More than one: the verb has no -s (bark, go, have)."
+   ],
+   "sense_check": "'The dogs barks' has two -s endings. Only one of the noun and the verb gets the -s.",
+   "worked_examples": [
+    {
+     "prompt": "The dogs ___ loudly. (bark / barks)",
+     "answer": "bark",
+     "steps": [
+      "Subject: the dogs, plural.",
+      "Plural subject, so no -s: bark."
+     ]
+    },
+    {
+     "prompt": "My sister ___ to school by bus. (go / goes)",
+     "answer": "goes",
+     "steps": [
+      "Subject: my sister, one person.",
+      "Singular, so add -es: goes."
+     ]
+    }
+   ]
+  },
+  "sva_tricky": {
+   "title": "Agreement with tricky subjects",
+   "big_idea": "Extra words between the subject and the verb do not change the subject. Words like each, every, everyone and nobody are singular.",
+   "steps": [
+    "Cover up phrases like 'of the pencils' or 'in the box'.",
+    "What is left is the real subject: 'The box ... is'.",
+    "Each, every, everyone, everybody, nobody: treat them as ONE.",
+    "Read the sentence again with only the subject and verb."
+   ],
+   "sense_check": "'The box of pencils are' becomes 'The box are' when you cover the middle. That sounds wrong.",
+   "worked_examples": [
+    {
+     "prompt": "The box of pencils ___ on the desk. (is / are)",
+     "answer": "is",
+     "steps": [
+      "Cover 'of pencils'.",
+      "The box ___ on the desk.",
+      "One box: is."
+     ]
+    },
+    {
+     "prompt": "Everyone in the class ___ a book. (has / have)",
+     "answer": "has",
+     "steps": [
+      "'Everyone' is singular.",
+      "Everyone has."
+     ]
+    }
+   ]
+  }
+ }
+}

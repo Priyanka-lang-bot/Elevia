@@ -387,6 +387,39 @@
       "target": 21
     },
     {
+      "id": "EQ-R4",
+      "pool": "retest:equivalent_fractions",
+      "skill_id": "equivalent_fractions",
+      "type": "equivalent",
+      "gap_targets": [
+        "equivalent_fractions"
+      ],
+      "a": "2/9",
+      "target": 27
+    },
+    {
+      "id": "EQ-R5",
+      "pool": "retest:equivalent_fractions",
+      "skill_id": "equivalent_fractions",
+      "type": "equivalent",
+      "gap_targets": [
+        "equivalent_fractions"
+      ],
+      "a": "5/8",
+      "target": 40
+    },
+    {
+      "id": "EQ-R6",
+      "pool": "retest:equivalent_fractions",
+      "skill_id": "equivalent_fractions",
+      "type": "equivalent",
+      "gap_targets": [
+        "equivalent_fractions"
+      ],
+      "a": "7/10",
+      "target": 30
+    },
+    {
       "id": "SI-V1",
       "pool": "verification:simplifying_fractions",
       "skill_id": "simplifying_fractions",
@@ -488,6 +521,36 @@
         "simplifying_fractions"
       ],
       "a": "24/36"
+    },
+    {
+      "id": "SI-R4",
+      "pool": "retest:simplifying_fractions",
+      "skill_id": "simplifying_fractions",
+      "type": "simplify",
+      "gap_targets": [
+        "simplifying_fractions"
+      ],
+      "a": "18/30"
+    },
+    {
+      "id": "SI-R5",
+      "pool": "retest:simplifying_fractions",
+      "skill_id": "simplifying_fractions",
+      "type": "simplify",
+      "gap_targets": [
+        "simplifying_fractions"
+      ],
+      "a": "28/42"
+    },
+    {
+      "id": "SI-R6",
+      "pool": "retest:simplifying_fractions",
+      "skill_id": "simplifying_fractions",
+      "type": "simplify",
+      "gap_targets": [
+        "simplifying_fractions"
+      ],
+      "a": "20/45"
     },
     {
       "id": "CO-V1",
@@ -603,6 +666,39 @@
       "b": "7/9"
     },
     {
+      "id": "CO-R4",
+      "pool": "retest:comparing_fractions",
+      "skill_id": "comparing_fractions",
+      "type": "compare",
+      "gap_targets": [
+        "comparing_fractions"
+      ],
+      "a": "2/7",
+      "b": "2/5"
+    },
+    {
+      "id": "CO-R5",
+      "pool": "retest:comparing_fractions",
+      "skill_id": "comparing_fractions",
+      "type": "compare",
+      "gap_targets": [
+        "comparing_fractions"
+      ],
+      "a": "5/8",
+      "b": "3/4"
+    },
+    {
+      "id": "CO-R6",
+      "pool": "retest:comparing_fractions",
+      "skill_id": "comparing_fractions",
+      "type": "compare",
+      "gap_targets": [
+        "comparing_fractions"
+      ],
+      "a": "7/10",
+      "b": "2/3"
+    },
+    {
       "id": "MU-V1",
       "pool": "verification:multiply_fractions",
       "skill_id": "multiply_fractions",
@@ -714,6 +810,39 @@
       ],
       "a": "5/9",
       "b": "3/5"
+    },
+    {
+      "id": "MU-R4",
+      "pool": "retest:multiply_fractions",
+      "skill_id": "multiply_fractions",
+      "type": "multiply",
+      "gap_targets": [
+        "multiply_fractions"
+      ],
+      "a": "2/9",
+      "b": "3/4"
+    },
+    {
+      "id": "MU-R5",
+      "pool": "retest:multiply_fractions",
+      "skill_id": "multiply_fractions",
+      "type": "multiply",
+      "gap_targets": [
+        "multiply_fractions"
+      ],
+      "a": "5/6",
+      "b": "2/5"
+    },
+    {
+      "id": "MU-R6",
+      "pool": "retest:multiply_fractions",
+      "skill_id": "multiply_fractions",
+      "type": "multiply",
+      "gap_targets": [
+        "multiply_fractions"
+      ],
+      "a": "3/7",
+      "b": "7/8"
     }
   ]
 }

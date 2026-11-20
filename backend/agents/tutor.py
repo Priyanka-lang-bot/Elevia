@@ -24,7 +24,8 @@ from pydantic import BaseModel, Field, field_validator
 
 from .. import llm
 from ..content import lessons, misconceptions, public_question, questions_in_pool, skill_name
-from ..fractions_engine import correct_answer, fmt, hints_for, render_prompt, worked_solution
+from ..engine import hints_for
+from ..fractions_engine import correct_answer, fmt, render_prompt, worked_solution
 
 NAME = "Tutor"
 
@@ -67,7 +68,10 @@ def _template_note(gap: dict, focus: str) -> str:
     mis = misconceptions().get(gap.get("misconception") or "")
     if ev and mis:
         e = ev[0]
-        return (f"Earlier you answered {e['prompt'].replace(' = ?', '')} with {e['answer']}. "
+        shown = e['prompt'].replace(' = ?', '')
+        if len(shown) > 70:
+            shown = f"the question \"{shown[:67].rstrip()}…\""
+        return (f"Earlier you answered {shown} with {e['answer']}. "
                 f"That matches a common mistake: \"{mis['label']}\". Lots of students do this. "
                 f"Let's see why it doesn't work and fix it step by step.")
     return f"Let's build up '{skill_name(focus)}' step by step."
@@ -83,8 +87,12 @@ def run(payload: dict) -> dict:
 
     examples = []
     for ex in content["worked_examples"]:
-        q = {"id": "example", **ex}
-        examples.append({"prompt": render_prompt(q), "steps": worked_solution(q), "answer": fmt(correct_answer(q))})
+        if "type" in ex:  # fraction example: steps and answer computed exactly
+            q = {"id": "example", **ex}
+            examples.append({"prompt": render_prompt(q), "steps": worked_solution(q), "answer": fmt(correct_answer(q))})
+        else:              # authored example (checked at build time, see scripts/build_curriculum.py)
+            examples.append({"prompt": ex["prompt"], "steps": list(ex["steps"]), "answer": ex["answer"],
+                             "code": ex.get("code")})
 
     exclude = set(payload.get("practice_exclude", []))
     practice_pool = questions_in_pool(f"practice:{focus}") or questions_in_pool(f"practice:{gap['skill_id']}")

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from . import db, orchestrator as o
 from .content import questions
-from .fractions_engine import correct_answer_text
+from .engine import correct_answer_text
 
 
 def _answer_all(case: dict, answers: dict[str, str] | None = None) -> dict:

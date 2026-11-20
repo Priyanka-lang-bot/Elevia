@@ -19,6 +19,8 @@ from pydantic import BaseModel, Field
 from . import db, llm, orchestrator as orch
 from .accounts.errors import AccountError
 from .accounts.routes import router as accounts_router
+from .learning import router as learning_router
+from .progress import router as progress_router
 from .config import get_settings
 from .content import lessons, skill_map, skills_by_id, validate_all
 
@@ -48,6 +50,8 @@ _s = get_settings()
 app.add_middleware(CORSMiddleware, allow_origins=_s.cors_origins, allow_methods=["GET", "POST", "PUT"],
                    allow_headers=["Content-Type", "X-Teacher-Pin", "Authorization", "X-Client-Id"])
 app.include_router(accounts_router)
+app.include_router(learning_router)
+app.include_router(progress_router)
 
 
 LEGACY_PREFIXES = ("/students", "/cases", "/assessments", "/teacher/")
@@ -107,7 +111,7 @@ class NewStudent(BaseModel):
 
 class Answer(BaseModel):
     question_id: str = Field(min_length=1, max_length=20)
-    answer: str = Field(max_length=40)
+    answer: str = Field(max_length=200)
     hints_used: int = Field(default=0, ge=0, le=5)
 
 
