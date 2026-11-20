@@ -10,25 +10,36 @@ function stopLearnTimer() { if (learnTimer) { clearInterval(learnTimer); learnTi
 const ANSWER_HELP = {
   fraction: "Type a fraction like 3/4, a whole number like 4, or a mixed number like 1 1/2.",
   integer: "Type a whole number, like 12.",
-  choice: "Choose the bigger fraction.",
+  number: "Type a number, like 12, −3, 0.75 or 3/4.",
+  text: "Type your answer.",
+  code: "Type exactly what the program prints.",
+  choice: "Choose one answer.",
 };
+let currentTopic = "fractions";
 
 function learnEntryPanel() {
-  return panel("Your fractions journey",
-    el("p", { text: "A short check-in finds what to practise. ELEVIA double-checks it, teaches the missing step, and retests you on new questions." }),
-    el("div", { class: "actions" }, el("a", { class: "btn main", href: "#/learn", text: "Start or continue learning" })));
+  return panel("Your learning",
+    el("p", { text: "Pick a subject and topic. A short check-in finds what to practise. ELEVIA double-checks it, teaches the missing step, and retests you on new questions." }),
+    el("div", { class: "actions" }, el("a", { class: "btn main", href: "#/learn", text: "Open my dashboard" })));
 }
 
 // ------------------------------------------------------------------ loading, errors, shell
 
 function learnMain(me, ...kids) { show(topbar(me), el("main", { class: "board learn" }, kids)); }
 
-async function learnView() {
+async function learnView(topic) {
   stopLearnTimer();
   let me = state.me;
   try { if (!me) me = await api("GET", "/auth/me"); }
-  catch (e) { if (e.status === 401) { go("#/login"); return; } learnMain({ user: { full_name: "", role_label: "" } }, panel("Can't load", el("p", { class: "alert bad", text: e.detail }))); return; }
+  catch (e) {
+    if (e.status === 401) { sessionStorage.setItem("elevia_return", location.hash); go("#/login"); return; }
+    learnMain({ user: { full_name: "", role_label: "" } }, panel("Can't load", el("p", { class: "alert bad", text: e.detail }))); return;
+  }
   state.me = me;
+  if (!["student", "learner"].includes(me.user.role)) { go("#/home"); return; }
+  if (me.next_step && !["onboarding", "student_home", "learner_home"].includes(me.next_step) && me.next_step.startsWith("await")) { go("#/home"); return; }
+  if (!topic) return loadDashboard(me);
+  currentTopic = topic;
   return loadLearn(me);
 }
 
@@ -36,7 +47,7 @@ async function loadLearn(me, notice) {
   stopLearnTimer();
   learnMain(me, panel("Getting your journey ready…", el("p", { class: "hint", role: "status", text: "One moment." })));
   try {
-    renderLearn(me, await api("GET", "/learn/state"), notice);
+    renderLearn(me, await api("GET", "/learn/state?topic=" + encodeURIComponent(currentTopic)), notice);
   } catch (e) {
     if (e.status === 401) { go("#/login"); return; }
     learnMain(me, panel("We couldn't open your learning journey",
@@ -44,7 +55,7 @@ async function loadLearn(me, notice) {
       el("p", { class: "hint", text: "Your progress is saved. Nothing was lost." }),
       el("div", { class: "actions" },
         e.status === 403 ? null : el("button", { class: "btn main", type: "button", text: "Try again", onClick: () => loadLearn(me) }),
-        el("a", { class: "btn", href: "#/home", text: "Back to home" }))));
+        el("a", { class: "btn", href: "#/learn", text: "Back to my dashboard" }))));
   }
 }
 
@@ -84,7 +95,7 @@ function skillsPanel(st) {
   const pillKind = { mastered: "ok", developing: "wait", needs_practice: "bad", not_assessed: "off" };
   const items = st.skills.filter((s) => s.attempts || s.status !== "not_assessed");
   return el("details", { class: "panel skills" },
-    el("summary", { text: "Your fraction skills" }),
+    el("summary", { text: st.topic ? `Your ${st.topic.name.toLowerCase()} skills` : "Your skills" }),
     items.length
       ? el("ul", { class: "list" }, items.map((s) => el("li", { class: "item" }, el("span", { class: "grow", text: s.name }),
           el("span", { class: "hint", text: s.attempts ? `${s.correct}/${s.attempts} right so far` : "" }), pill(s.label, pillKind[s.status] || "off"))))
@@ -104,11 +115,20 @@ function renderLearn(me, st, notice) {
     teacher_wait: () => teacherPanel(me, st), done: () => donePanel(me, st),
   }[st.phase];
   const parts = body ? body() : [panel("Something unexpected", el("p", { text: "Please refresh the page. Your progress is saved." }))];
+  if (st.topic) currentTopic = st.topic.id;
   learnMain(me,
+    crumbs(st),
     notice ? el("p", { class: "alert good", role: "status", text: notice }) : null,
     journeyBar(st), whereBox(st), gapBox(st), ...parts, skillsPanel(st),
     el("p", { class: "hint center", text: "ELEVIA points out possible gaps in what you know from your answers. It isn't a medical or psychological test." }));
   const first = root.querySelector("input[type=text]"); if (first) first.focus({ preventScroll: true });
+}
+
+function crumbs(st) {
+  const t = st.topic;
+  return el("nav", { class: "crumbs", "aria-label": "Breadcrumb" },
+    el("a", { href: "#/learn", text: "← My dashboard" }),
+    t ? el("span", { class: "subj-chip", style: `--c:${t.color}` }, el("span", { "aria-hidden": "true", text: t.icon }), ` ${t.subject} · ${t.name}`) : null);
 }
 
 // ------------------------------------------------------------------ welcome / start
@@ -123,13 +143,16 @@ function welcomePanel(me, st) {
     if (st.needs_grade && !sel.value) { err.textContent = "Please choose your grade first."; err.hidden = false; sel.focus(); return; }
     btn.disabled = true; btn.textContent = "Getting your questions ready…";
     try {
-      const next = await api("POST", "/learn/start", st.needs_grade ? { grade: Number(sel.value) } : {});
+      const body = { topic_id: currentTopic };
+      if (st.needs_grade) body.grade = Number(sel.value);
+      const next = await api("POST", "/learn/start", body);
       renderLearn(me, next);
     } catch (e) { err.textContent = e.detail; err.hidden = false; btn.disabled = false; btn.textContent = "Try again"; }
   });
   return [panel("How it works",
+    st.topic ? el("p", { class: "line" }, el("strong", { text: "In this topic: " }), st.topic.objectives.join(" · ")) : null,
     el("ol", { class: "how" },
-      el("li", { text: "Check-in: 5 fraction questions." }),
+      el("li", { text: "Check-in: 5 questions on this topic." }),
       el("li", { text: "Double-check: if something looks like a gap, 2 new questions make sure." }),
       el("li", { text: "Learn & practise: a short lesson with examples, only for a confirmed gap." }),
       el("li", { text: "Retest: 3 new questions later. Get 2 right to close the gap." })),
@@ -149,14 +172,16 @@ function questionPanel(me, st, practice) {
   const form = el("form", { novalidate: true, class: "qform" });
   const err = el("p", { class: "alert bad", role: "alert", hidden: true });
   const status = el("p", { class: "hint", role: "status" });
-  const help = el("p", { class: "hint", text: ANSWER_HELP[q.input_kind] || ANSWER_HELP.fraction });
+  const help = el("p", { class: "hint", text: q.code ? ANSWER_HELP.code : (ANSWER_HELP[q.input_kind] || ANSWER_HELP.fraction) });
   let input;
   if (q.input_kind === "choice") {
-    input = el("div", { class: "choices", role: "radiogroup", "aria-labelledby": "qprompt" }, q.choices.map((c, i) =>
+    const long = q.choices.some((c) => c.length > 14);
+    input = el("div", { class: "choices" + (long ? " stack" : ""), role: "radiogroup", "aria-labelledby": "qprompt" }, q.choices.map((c, i) =>
       el("label", { class: "choice" }, el("input", { type: "radio", name: "answer", value: c, id: "c" + i }), el("span", { text: c }))));
   } else {
     input = el("input", { type: "text", name: "answer", class: "answer-input", autocomplete: "off", autocapitalize: "off",
-      spellcheck: "false", maxlength: "20", "aria-label": "Your answer", "aria-describedby": "ahelp" });
+      spellcheck: "false", maxlength: "40", inputmode: q.input_kind === "number" || q.input_kind === "integer" ? "decimal" : "text",
+      "aria-label": "Your answer", "aria-describedby": "ahelp" });
   }
   help.id = "ahelp";
   const submit = el("button", { class: "btn main", type: "submit", text: isLast ? (practice ? "Check my answer" : "Submit my last answer") : "Check my answer" });
@@ -195,11 +220,16 @@ function questionPanel(me, st, practice) {
   });
   form.append(input, help, err, el("div", { class: "actions" }, submit, hintBtn || false), hintBox, status);
 
-  box.append(
+  box.append(...[
     el("p", { class: "qcount", text: `${kind === "practice" ? "Practice" : kind === "retest" ? "Retest" : kind === "verification" ? "Double-check" : "Check-in"} · question ${a.answered + 1} of ${a.total}` }),
-    el("p", { class: "prompt", id: "qprompt", text: q.prompt }), form,
-    kind === "practice" && a.answered >= 2 ? finishPracticeButton(me, a) : null);
+    el("p", { class: "prompt" + (q.prompt.length > 60 ? " long" : ""), id: "qprompt", text: q.prompt }),
+    q.code ? codeBlock(q.code) : null, form,
+    kind === "practice" && a.answered >= 2 ? finishPracticeButton(me, a) : null].filter(Boolean));
   return [box];
+}
+
+function codeBlock(code) {
+  return el("pre", { class: "code", tabindex: "0", "aria-label": "Program" }, el("code", { text: code }));
 }
 
 function finishPracticeButton(me, a) {
@@ -228,9 +258,10 @@ function showFeedback(me, box, q, r, kind, isLast) {
     : kind === "diagnostic" ? "See what ELEVIA found" : kind === "verification" ? "See the result of the double-check"
     : kind === "practice" ? "Continue" : "See my retest result";
   const nextBtn = el("button", { class: "btn main", type: "button", text: nextLabel, onClick: () => renderLearn(me, r.state) });
-  box.replaceChildren(
+  box.replaceChildren(...[
     el("p", { class: "qcount", text: "Question answered" }),
-    el("p", { class: "prompt", text: q.prompt }), card, el("div", { class: "actions" }, nextBtn));
+    el("p", { class: "prompt" + (q.prompt.length > 60 ? " long" : ""), text: q.prompt }), q.code ? codeBlock(q.code) : null,
+    card, el("div", { class: "actions" }, nextBtn)].filter(Boolean));
   nextBtn.focus();
 }
 
@@ -254,7 +285,8 @@ function learnPanels(me, st) {
       el("p", { class: "sense", text: l.sense_check }),
       el("h3", { text: "Worked examples" }),
       l.worked_examples.map((ex, i) => el("details", { class: "example", open: i === 0 },
-        el("summary", { text: ex.prompt.replace(" = ?", "") + " = " + ex.answer }),
+        el("summary", { text: ex.code ? `${ex.prompt} → ${ex.answer}` : (ex.prompt.includes("= ?") ? ex.prompt.replace(" = ?", "") + " = " + ex.answer : `${ex.prompt} → ${ex.answer}`) }),
+        ex.code ? codeBlock(ex.code) : null,
         el("ol", { class: "sol" }, ex.steps.map((s) => el("li", { text: s })))))));
   }
   if (st.assessment) {
@@ -288,7 +320,7 @@ function retestWaitPanel(me, st) {
   };
   start.addEventListener("click", async () => {
     err.hidden = true; start.disabled = true;
-    try { renderLearn(me, await api("POST", "/learn/retest/start", { early: !refresh() })); }
+    try { renderLearn(me, await api("POST", "/learn/retest/start", { early: !refresh(), topic_id: currentTopic })); }
     catch (e) { err.textContent = e.detail; err.hidden = false; start.disabled = false; }
   });
   refresh();
@@ -317,10 +349,145 @@ function donePanel(me, st) {
   const again = el("button", { class: "btn main", type: "button", text: st.next_action.label });
   again.addEventListener("click", async () => {
     again.disabled = true; again.textContent = "Getting your questions ready…";
-    try { renderLearn(me, await api("POST", "/learn/start", {})); }
+    try { renderLearn(me, await api("POST", "/learn/start", { topic_id: currentTopic })); }
     catch (e) { again.disabled = false; again.textContent = "Try again"; again.before(el("p", { class: "alert bad", role: "alert", text: e.detail })); }
   });
   return [el("section", { class: "panel result " + o.tone }, kids,
     el("p", { class: "hint", text: "Next: a new check-in uses different questions, so ELEVIA can see what has changed." }),
-    el("div", { class: "actions" }, again, el("a", { class: "btn", href: "#/home", text: "Back to home" })))];
+    el("div", { class: "actions" }, again, el("a", { class: "btn", href: "#/learn", text: "Choose another topic" })))];
+}
+
+// ------------------------------------------------------------------ student dashboard (all subjects)
+
+async function loadDashboard(me, notice) {
+  learnMain(me, panel("Loading your dashboard…", el("p", { class: "hint", role: "status", text: "One moment." })));
+  let d;
+  try { d = await api("GET", "/learn/dashboard"); }
+  catch (e) {
+    if (e.status === 401) { go("#/login"); return; }
+    learnMain(me, panel("We couldn't load your dashboard", el("p", { class: "alert bad", role: "alert", text: e.detail }),
+      el("p", { class: "hint", text: "Your progress is saved. Nothing was lost." }),
+      el("div", { class: "actions" }, el("button", { class: "btn main", type: "button", text: "Try again", onClick: () => loadDashboard(me) }))));
+    return;
+  }
+  renderDashboard(me, d, notice);
+}
+
+function stat(value, label, sub) {
+  return el("div", { class: "stat" }, el("span", { class: "stat-v", text: String(value) }), el("span", { class: "stat-l", text: label }),
+    sub ? el("span", { class: "hint", text: sub }) : null);
+}
+
+function openTopic(me, d, topicId, phase) {
+  let grade = null;
+  if (d.needs_grade) {               // first topic: ask for the grade once
+    const sel = document.getElementById("dgrade");
+    if (!sel.value) { const e = document.getElementById("dgrade-err"); e.hidden = false; sel.focus(); sel.scrollIntoView({ block: "center" }); return; }
+    grade = Number(sel.value);
+  }
+  if (phase !== "not_started" && phase !== "done") { go("#/learn/" + topicId); return; }
+  currentTopic = topicId;            // "Start the check-in" / "Start a new check-in" starts it straight away
+  const body = { topic_id: topicId };
+  if (grade) body.grade = grade;
+  api("POST", "/learn/start", body).then((st) => { history.pushState(null, "", "#/learn/" + topicId); renderLearn(me, st); })
+    .catch((e) => {
+      const er = document.getElementById("dgrade-err");
+      if (er) { er.textContent = e.detail; er.hidden = false; return; }
+      const m = root.querySelector("main"); if (m) m.prepend(el("p", { class: "alert bad", role: "alert", text: e.detail }));
+    });
+}
+
+function topicCard(me, d, sub, t) {
+  const pct = t.skills_total ? Math.round((t.skills_mastered / t.skills_total) * 100) : 0;
+  const kind = { not_started: "off", done: "ok", teacher_wait: "wait", retest_wait: "wait" }[t.phase] || "now";
+  return el("li", { class: "tcard" + (t.recommended ? " rec" : ""), style: `--c:${sub.color}` },
+    el("div", { class: "tcard-top" },
+      el("span", { class: "tunit", text: t.unit }),
+      t.recommended ? el("span", { class: "pill ok", text: "For your grade" }) : el("span", { class: "hint", text: `Grades ${t.grade_min}–${t.grade_max}` })),
+    el("h3", { text: t.name }),
+    el("p", { class: "tdesc", text: t.description }),
+    el("div", { class: "meter", role: "img", "aria-label": `${t.skills_mastered} of ${t.skills_total} skills mastered` },
+      el("span", { style: `width:${pct}%` })),
+    el("p", { class: "hint", style: "margin:0", text: `${t.skills_mastered}/${t.skills_total} skills mastered` + (t.rounds ? ` · ${t.rounds} round${t.rounds > 1 ? "s" : ""}` : "") }),
+    el("div", { class: "tcard-foot" },
+      el("span", { class: "tstatus " + kind, text: t.phase === "done" && t.outcome ? t.outcome : t.phase_label }),
+      el("button", { class: "btn small" + (t.phase === "not_started" ? "" : " main"), type: "button", text: t.next_label,
+        "aria-label": `${t.next_label}: ${t.name}`, onClick: () => openTopic(me, d, t.id, t.phase) })));
+}
+
+function renderDashboard(me, d, notice) {
+  const first = d.student.name;
+  const kids = [];
+  if (notice) kids.push(el("p", { class: "alert good", role: "status", text: notice }));
+  const acc = d.answers.total ? Math.round((d.answers.correct / d.answers.total) * 100) : null;
+  kids.push(el("section", { class: "panel hello" },
+    el("div", { class: "hello-text" },
+      el("h1", { class: "learn-title", text: `Hi ${first}!` }),
+      el("p", { class: "line", text: d.phase === "welcome"
+        ? "Choose a subject and a topic to begin. Each topic starts with a 5-question check-in."
+        : (d.continue_learning.length ? "Pick up where you left off, or start something new." : "Choose what to learn next.") }),
+      d.student.grade ? el("p", { class: "hint", style: "margin:0", text: `Grade ${d.student.grade}` } ) : null),
+    el("div", { class: "stats" },
+      stat(`${d.totals.topics_started}/${d.totals.topics_available}`, "Topics started"),
+      stat(d.totals.skills_mastered, "Skills mastered", "Only a passed retest counts"),
+      stat(d.answers.total, "Answers checked", acc === null ? "None yet" : `${acc}% correct`))));
+
+  if (d.needs_grade) {
+    kids.push(el("section", { class: "panel" }, el("h2", { text: "First, which grade are you in?" }),
+      el("p", { class: "hint", style: "margin:0", text: "We use it to suggest topics. You can still open any topic." }),
+      el("div", { class: "field", style: "max-width:260px" }, el("label", { for: "dgrade", class: "sr", text: "Your grade" }),
+        el("select", { id: "dgrade" }, el("option", { value: "", text: "Choose your grade" }), d.grades.map((g) => el("option", { value: String(g), text: `Grade ${g}` })))),
+      el("p", { id: "dgrade-err", class: "alert bad", role: "alert", hidden: true, text: "Please choose your grade first." })));
+  }
+
+  if (d.continue_learning.length) {
+    kids.push(el("section", { class: "panel" }, el("h2", { text: "Continue learning" }),
+      el("ul", { class: "cont" }, d.continue_learning.map((c) => el("li", { class: "cont-item", style: `--c:${c.color}` },
+        el("div", { class: "grow" }, el("span", { class: "hint", text: c.subject }), el("strong", { text: c.topic }),
+          el("span", { class: "hint", text: c.phase_label + (c.skill ? ` · ${c.skill}` : "") })),
+        el("a", { class: "btn small main", href: "#/learn/" + c.topic_id, text: c.next_label }))))));
+  }
+
+  const side = [];
+  side.push(el("section", { class: "panel" }, el("h2", { text: "Upcoming retests" }),
+    d.upcoming_retests.length ? el("ul", { class: "list" }, d.upcoming_retests.map((r) => el("li", { class: "item" },
+      el("span", { class: "grow" }, el("strong", { text: r.topic }), r.skill ? el("span", { class: "hint", text: ` · ${r.skill}` }) : null),
+      r.unlocked ? el("a", { class: "btn small main", href: "#/learn/" + r.topic_id, text: "Start retest" })
+        : el("span", { class: "hint", text: "Unlocks " + fmt(r.available_at) }))))
+      : el("p", { class: "hint", text: "No retests scheduled. A retest is booked after you finish a lesson." })));
+  side.push(el("section", { class: "panel" }, el("h2", { text: "Gaps ELEVIA is working on" }),
+    d.open_gaps.length ? el("ul", { class: "list" }, d.open_gaps.map((g) => el("li", { class: "item" },
+      el("span", { class: "grow" }, el("strong", { text: g.skill || g.topic }), el("span", { class: "hint", text: ` · ${g.topic}` })),
+      pill(g.headline, { checking: "wait", verified: "bad", unclear: "off", still_present: "bad" }[g.state] || "off"))))
+      : el("p", { class: "hint", text: "Nothing open. Suspected gaps show up here, and say whether they've been checked yet." })));
+  kids.push(el("div", { class: "two" }, side));
+
+  const tabs = el("div", { class: "tabs", role: "tablist", "aria-label": "Subjects" });
+  const panes = el("div");
+  d.subjects.forEach((sub, i) => {
+    const id = "sub-" + sub.id;
+    const tab = el("button", { class: "tab", role: "tab", type: "button", id: "tab-" + sub.id, "aria-controls": id,
+      "aria-selected": i === 0 ? "true" : "false", style: `--c:${sub.color}` },
+      el("span", { class: "tab-ic", "aria-hidden": "true", text: sub.icon }), sub.name);
+    const pane = el("div", { class: "pane", role: "tabpanel", id, "aria-labelledby": "tab-" + sub.id, hidden: i !== 0 },
+      el("p", { class: "hint", style: "margin:0 0 12px", text: sub.description }),
+      el("ul", { class: "tgrid" }, sub.topics.map((t) => topicCard(me, d, sub, t))),
+      sub.planned.length ? el("div", { class: "planned" }, el("span", { class: "sec", text: "Planned, not available yet" }),
+        el("div", { class: "chips" }, sub.planned.map((p) => el("span", { class: "chip", text: p })))) : null);
+    tab.addEventListener("click", () => {
+      tabs.querySelectorAll(".tab").forEach((b) => b.setAttribute("aria-selected", b === tab ? "true" : "false"));
+      panes.querySelectorAll(".pane").forEach((p) => { p.hidden = p !== pane; });
+    });
+    tabs.append(tab); panes.append(pane);
+  });
+  kids.push(el("section", { class: "panel" }, el("h2", { text: "Subjects" }), tabs, panes));
+
+  kids.push(el("section", { class: "panel" }, el("h2", { text: "Recent activity" }),
+    d.history.length ? el("ul", { class: "list" }, d.history.map((h) => el("li", { class: "item" },
+      el("span", { class: "grow" }, el("strong", { text: h.topic }), h.skill ? el("span", { class: "hint", text: ` · ${h.skill}` }) : null),
+      el("span", { class: "hint", text: h.outcome }), el("span", { class: "hint", text: fmt(h.date) }))))
+      : el("p", { class: "hint", text: "Your finished and current rounds will be listed here." })));
+  if (me.user.role === "learner") kids.push(el("p", { class: "center" }, el("a", { href: "#/sharing", text: "Privacy and sharing settings" })));
+  learnMain(me, ...kids);
+  root.querySelector("main").classList.add("dash");
 }

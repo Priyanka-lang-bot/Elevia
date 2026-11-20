@@ -3,19 +3,223 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ELEVIA · Closing learning gaps</title>
-<meta name="description" content="ELEVIA finds the learning gap behind a student's mistakes, checks it, and teaches the missing step.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>ELEVIA · Find the missing understanding behind wrong answers</title>
+<meta name="description" content="ELEVIA spots the misconception behind a student's wrong answers, checks it with new questions before teaching, then teaches the missing step and retests. Maths, Science, English and Computer Science.">
+<meta property="og:title" content="ELEVIA · Verify before you teach">
+<meta property="og:description" content="Find the missing understanding behind wrong answers, check it, teach it, retest it.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1f2a44">
+<link rel="preload" href="/fonts/nunito-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/rubik-dirt-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/app.css">
+<link rel="stylesheet" href="/landing.css">
 <script src="/decor.js" defer></script>
 <script src="/app.js" defer></script>
 <script src="/learn.js" defer></script>
+<script src="/progress.js" defer></script>
+<script src="/landing.js" defer></script>
 </head>
 <body>
-<div id="app" aria-live="polite"><p style="padding:24px">Loading ELEVIA…</p></div>
+<div id="landing">
+<header class="lnav" id="top">
+  <a class="brand lnav-logo" href="#/" aria-label="ELEVIA home">ELEVIA</a>
+  <button class="lnav-toggle" type="button" aria-expanded="false" aria-controls="lnav-links"><span class="sr">Menu</span><span aria-hidden="true">☰</span></button>
+  <nav id="lnav-links" class="lnav-links" aria-label="Main">
+    <a href="#home" data-scroll>Home</a>
+    <a href="#how" data-scroll>How it works</a>
+    <a href="#features" data-scroll>Features</a>
+    <a href="#students" data-scroll>For students</a>
+    <a href="#teachers" data-scroll>For teachers</a>
+    <a href="#about" data-scroll>About</a>
+    <a class="lnav-login" href="#/login">Log in</a>
+    <a class="btn main small" href="#/start">Get started</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-copy reveal">
+    <p class="eyebrow">Personalised learning that checks before it teaches</p>
+    <h1 class="hero-h">Don't just find the wrong answer. <span class="brand hl">Find the missing understanding.</span></h1>
+    <p class="hero-p">ELEVIA spots the misconception behind a student's mistakes, checks it with new questions, and only then builds a lesson to teach what they missed. Then it retests on fresh questions to see if it stuck.</p>
+    <div class="actions">
+      <a class="btn main big" href="#/start">Get started</a>
+      <a class="btn big" href="#how" data-scroll>See how it works</a>
+    </div>
+    <p class="hint hero-note" id="hero-counts">Maths, Science, English and Computer Science. Every answer is checked by fixed rules, not guessed by AI.</p>
+  </div>
+  <div class="hero-art reveal" aria-hidden="false">
+    <svg class="cut deco d1" aria-hidden="true" width="170" height="105" viewBox="0 0 200 124"><path d="M38 104 C14 104 6 82 18 68 C8 50 26 30 46 38 C50 16 78 6 98 20 C112 4 146 8 152 32 C176 28 194 48 184 70 C198 86 186 106 166 104 Z" fill="#aeb9f1" stroke="#fff" stroke-width="7" stroke-linejoin="round"/></svg>
+    <svg class="cut deco d2" aria-hidden="true" width="150" height="93" viewBox="0 0 200 124"><path d="M38 104 C14 104 6 82 18 68 C8 50 26 30 46 38 C50 16 78 6 98 20 C112 4 146 8 152 32 C176 28 194 48 184 70 C198 86 186 106 166 104 Z" fill="#f2b8c8" stroke="#fff" stroke-width="7" stroke-linejoin="round"/></svg>
+    <figure class="polaroid p-main">
+      <span class="tape" aria-hidden="true"></span>
+      <img src="/img/shot-lesson.jpg" width="1200" height="900" alt="ELEVIA lesson screen: the gap is confirmed and a step-by-step lesson on common denominators is shown" loading="eager">
+      <figcaption>Real screen: a lesson starts only after the gap is confirmed</figcaption>
+    </figure>
+    <div class="note-card n-story">
+      <span class="tape t2" aria-hidden="true"></span>
+      <p class="hand">½ + ⅓ = <s>2/5</s></p>
+      <p class="small"><b>Possible gap:</b> adds tops and bottoms.<br><b>Not confirmed yet</b>, so ELEVIA asks 2 new questions first.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec-block" id="problem">
+  <div class="wrap">
+    <h2 class="sec-h reveal">A wrong answer is a symptom, not a diagnosis</h2>
+    <p class="sec-p reveal">Students often follow a rule that <em>looks</em> right to them. Marking it wrong, or re-teaching the whole chapter, doesn't find that rule. Teaching to a guess can waste time or reinforce the wrong idea.</p>
+    <div class="prob-grid">
+      <article class="paper-card reveal"><span class="pc-num">1</span><h3>Marks say <em>what</em>, not <em>why</em></h3><p>"2/5" is wrong, but the score doesn't show the student added the tops and the bottoms separately.</p></article>
+      <article class="paper-card reveal tilt"><span class="pc-num">2</span><h3>One mistake can be a slip</h3><p>A single wrong answer might just be a typo or a rushed moment. Treating every slip as a gap wastes the student's time.</p></article>
+      <article class="paper-card reveal"><span class="pc-num">3</span><h3>The real gap is often earlier</h3><p>Trouble adding fractions can come from an earlier skill, like finding common denominators.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec-block alt" id="how">
+  <div class="wrap">
+    <h2 class="sec-h reveal">How ELEVIA works</h2>
+    <p class="sec-p reveal">Four coordinated roles move each student through one learning journey. Every decision is made by fixed, testable rules, so the same answers always lead to the same outcome.</p>
+    <ol class="roles">
+      <li class="role-card reveal" style="--c:#aeb9f1"><span class="tape" aria-hidden="true"></span><span class="role-n">1</span><h3>Diagnoser</h3><p>Reads the check-in answers and matches wrong answers against known misconception patterns. A single mistake is flagged as a possible slip.</p><span class="tag">Suggests a possible gap</span></li>
+      <li class="role-card reveal" style="--c:#f2b8c8"><span class="tape" aria-hidden="true"></span><span class="role-n">2</span><h3>Checker</h3><p>Asks 2 brand-new questions. Same mistake again: <b>confirmed</b>. All correct: <b>rejected</b>. Mixed: <b>inconclusive</b>, so a teacher decides.</p><span class="tag">Verifies before teaching</span></li>
+      <li class="role-card reveal" style="--c:#a9c2a1"><span class="tape" aria-hidden="true"></span><span class="role-n">3</span><h3>Planner</h3><p>Plans only for a confirmed gap. Walks the skill map's prerequisites to pick where to start.</p><span class="tag">Chooses the focus</span></li>
+      <li class="role-card reveal" style="--c:#e3c78f"><span class="tape" aria-hidden="true"></span><span class="role-n">4</span><h3>Tutor</h3><p>Explains the missing step with worked examples and practice questions with hints. Maths in examples is computed exactly.</p><span class="tag">Teaches the missing step</span></li>
+      <li class="role-card reveal" style="--c:#9fb0d6"><span class="tape" aria-hidden="true"></span><span class="role-n">↻</span><h3>Retest</h3><p>After a delay, 3 new questions. 2 out of 3 closes the gap and marks the skill mastered. Otherwise ELEVIA replans with a fresh lesson.</p><span class="tag">Checks it stuck</span></li>
+    </ol>
+    <p class="hint center reveal">Optional AI can rewrite a lesson's wording. Its output is checked, and if it fails the original template text is used. It never makes the decisions above.</p>
+  </div>
+</section>
+
+<section class="sec-block" id="features">
+  <div class="wrap">
+    <h2 class="sec-h reveal">What's built</h2>
+    <p class="sec-p reveal">Everything below works in the current version and is covered by automated tests.</p>
+    <ul class="feat-grid">
+      <li class="feat reveal"><span class="fi" aria-hidden="true">🔍</span><h3>Misconception detection</h3><p>39 named misconception patterns across 11 topics, each tied to the skill it points to.</p></li>
+      <li class="feat reveal"><span class="fi" aria-hidden="true">✓</span><h3>Verify before you teach</h3><p>No lesson is planned for a gap that hasn't been confirmed by new questions or a teacher.</p></li>
+      <li class="feat reveal"><span class="fi" aria-hidden="true">🗺</span><h3>Plans from a skill map</h3><p>Prerequisites decide where a learning plan starts.</p></li>
+      <li class="feat reveal"><span class="fi" aria-hidden="true">📘</span><h3>Step-by-step lessons</h3><p>Worked examples, sense checks, practice with hints and full solutions.</p></li>
+      <li class="feat reveal"><span class="fi" aria-hidden="true">⏱</span><h3>Delayed retests</h3><p>Retests use new questions after a gap (24 h by default), never a repeat of the check-in.</p></li>
+      <li class="feat reveal"><span class="fi" aria-hidden="true">📈</span><h3>Progress you can trust</h3><p>Only a passed retest marks a skill mastered. Progress is saved after every answer.</p></li>
+      <li class="feat reveal"><span class="fi" aria-hidden="true">🧑‍🏫</span><h3>Teacher review</h3><p>Teachers resolve unclear cases, change the focus, and every decision is logged with a reason.</p></li>
+      <li class="feat reveal"><span class="fi" aria-hidden="true">🔒</span><h3>Consent and privacy</h3><p>Parent consent for under-18s, school codes, and adult learners choose exactly what to share.</p></li>
+      <li class="feat reveal"><span class="fi" aria-hidden="true">≡</span><h3>Exact answer checking</h3><p>Exact fraction arithmetic, accepted-answer lists, and code answers verified by running the snippets when the question bank is built.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec-block alt" id="subjects">
+  <div class="wrap">
+    <h2 class="sec-h reveal">Subjects and topics</h2>
+    <p class="sec-p reveal">Every topic below has a check-in, double-check questions, lessons, practice and retests. Grey topics are planned and not playable yet.</p>
+    <div class="subj-grid" id="subj-grid">
+      <article class="subj" style="--c:#2f4a8a"><h3><span aria-hidden="true">∑</span> Mathematics</h3><p>Fractions, decimals, percentages, integers, linear equations.</p></article>
+      <article class="subj" style="--c:#2e7d5b"><h3><span aria-hidden="true">⚛</span> Science</h3><p>Forces and motion, states of matter.</p></article>
+      <article class="subj" style="--c:#a0522d"><h3><span aria-hidden="true">Aa</span> English</h3><p>Past tense verbs, subject–verb agreement.</p></article>
+      <article class="subj" style="--c:#6b3fa0"><h3><span aria-hidden="true">&lt;/&gt;</span> Computer Science</h3><p>Variables and assignment, loops.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec-block" id="students">
+  <div class="wrap split">
+    <div class="split-copy reveal">
+      <h2 class="sec-h left">For students</h2>
+      <p class="sec-p left">Always know where you are and why.</p>
+      <ul class="ticks">
+        <li>A step tracker: check-in, double-check, learn, retest, result</li>
+        <li>Told plainly whether a suspected gap has been confirmed yet</li>
+        <li>Short lessons with worked examples, hints and solutions</li>
+        <li>A dashboard of topics, upcoming retests and mastered skills</li>
+        <li>Safe to close the tab: progress is saved after every answer</li>
+      </ul>
+    </div>
+    <div class="shots reveal">
+      <div class="shot-tabs" role="tablist" aria-label="Student screens">
+        <button role="tab" type="button" aria-selected="true" data-shot="dash">Dashboard</button>
+        <button role="tab" type="button" aria-selected="false" data-shot="verify">Double-check</button>
+        <button role="tab" type="button" aria-selected="false" data-shot="lesson">Lesson</button>
+        <button role="tab" type="button" aria-selected="false" data-shot="result">Result</button>
+      </div>
+      <figure class="browser"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <img id="shot-img" src="/img/shot-dash.jpg" width="1200" height="900" loading="lazy" alt="Student dashboard with subjects, continue learning and upcoming retests">
+      </figure>
+      <p class="hint center">Real screens captured from the working app with test accounts.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec-block alt" id="teachers">
+  <div class="wrap split rev">
+    <div class="shots reveal">
+      <figure class="browser"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <img src="/img/shot-teacher.jpg" width="1200" height="900" loading="lazy" alt="Teacher view of a student: verified gaps, double-check reasons and a review form">
+      </figure>
+    </div>
+    <div class="split-copy reveal">
+      <h2 class="sec-h left">For teachers</h2>
+      <p class="sec-p left">You stay in charge of the decisions that need a human.</p>
+      <ul class="ticks">
+        <li>See students in the classes you're assigned to, nobody else's</li>
+        <li>Each student's verified gaps, the evidence and why the Checker decided</li>
+        <li>Resolve inconclusive cases: confirm and teach, or reject</li>
+        <li>Change a learning focus, with every override logged with a reason</li>
+        <li>Class view: who needs review and the most common verified gaps</li>
+        <li>Approve students who join with your class code</li>
+      </ul>
+      <p class="hint">Teachers join by invitation from their school admin.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec-block" id="why">
+  <div class="wrap">
+    <h2 class="sec-h reveal">Verify before you teach</h2>
+    <p class="sec-p reveal">ELEVIA's core rule: a suspected misconception is a hypothesis until new evidence supports it.</p>
+    <div class="compare">
+      <div class="cmp-col reveal">
+        <h3>The usual way</h3>
+        <ol class="flow muted"><li>Wrong answer</li><li>Assume the cause</li><li>Re-teach</li><li>Hope it worked</li></ol>
+      </div>
+      <div class="cmp-col good reveal">
+        <span class="tape" aria-hidden="true"></span>
+        <h3>The ELEVIA way</h3>
+        <ol class="flow"><li>Wrong answer matches a known pattern</li><li><b>Suspected</b> gap: nothing changes yet</li><li>2 new questions: confirmed, rejected or inconclusive</li><li>Lesson only for a confirmed gap</li><li>Retest on new questions later</li></ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-block alt" id="about">
+  <div class="wrap narrow reveal">
+    <h2 class="sec-h">About ELEVIA</h2>
+    <p class="sec-p">ELEVIA is being built for PRASUNEX Innovathon 2026, around one question: how do we close the actual gap in a student's understanding instead of just marking answers? It is a working prototype. It hasn't been tested in classrooms yet, so we make no claims about learning outcomes.</p>
+    <p class="sec-p">What's next: more topics (geometry, statistics, reading comprehension, Boolean logic), wider prerequisite planning, and classroom pilots with teachers.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-sheet reveal">
+    <span class="tape" aria-hidden="true"></span>
+    <h2 class="brand">Find the missing understanding.</h2>
+    <p>Sign up as a student, through your school, or as an adult learner. Each topic starts with a 5-question check-in.</p>
+    <div class="actions center-row"><a class="btn main big" href="#/start">Get started</a><a class="btn big" href="#/login">Log in</a></div>
+  </div>
+</section>
+</main>
+
+<footer class="lfoot">
+  <div class="wrap foot-grid">
+    <div><a class="brand foot-logo" href="#/">ELEVIA</a><p class="hint">Verify before you teach.</p></div>
+    <nav aria-label="Footer"><a href="#how" data-scroll>How it works</a><a href="#subjects" data-scroll>Subjects</a><a href="#teachers" data-scroll>For teachers</a><a href="#/start">Get started</a><a href="#/login">Log in</a></nav>
+    <p class="hint foot-note">ELEVIA points out possible gaps in what a student has learned from their answers. It is not a medical or psychological assessment.</p>
+  </div>
+</footer>
+</div>
+<div id="app" aria-live="polite" hidden><p style="padding:24px">Loading ELEVIA…</p></div>
 <noscript><p style="padding:24px">ELEVIA needs JavaScript turned on.</p></noscript>
 </body>
 </html>

@@ -197,3 +197,14 @@ def test_code_answers_are_never_executed():
     assert r.valid is False or r.correct is False                # just text, compared, never run
     assert check_answer(q, q["answer"]).correct
     assert check_answer(q, "3").pattern == "CS_KEEPS_FIRST"
+
+
+def test_public_catalog_needs_no_login_and_exposes_no_answers(client):
+    r = client.get("/learn/catalog")
+    assert r.status_code == 200
+    d = r.json()
+    assert d["counts"] == {"subjects": 4, "topics": 11, "questions": len(questions())}
+    assert sum(len(s["topics"]) for s in d["subjects"]) == 11
+    blob = str(d)
+    assert "answer" not in blob and "patterns" not in blob     # catalogue only, never question content
+    assert client.get("/learn/dashboard").status_code == 401   # personal data still needs a login

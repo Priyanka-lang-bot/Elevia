@@ -483,6 +483,20 @@ def build_dashboard(conn, user: dict) -> dict:
 
 # ---------------------------------------------------------------- routes
 
+@router.get("/catalog")
+def catalog():
+    """Public (no login): subjects, playable topics and planned topics, for the landing page."""
+    cur = curriculum()
+    from .content import questions as all_questions
+    n_q = len(all_questions())
+    return {"subjects": [{"id": s["id"], "name": s["name"], "icon": s["icon"], "color": s["color"],
+                          "description": s["description"], "planned": s.get("planned", []),
+                          "topics": [{"id": t, "name": cur["topics"][t]["name"], "unit": cur["topics"][t]["unit"],
+                                      "grades": f"{cur['topics'][t]['grade_min']}–{cur['topics'][t]['grade_max']}"}
+                                     for t in s["topics"]]} for s in cur["subjects"]],
+            "counts": {"subjects": len(cur["subjects"]), "topics": len(cur["topics"]), "questions": n_q}}
+
+
 @router.get("/curriculum")
 def curriculum_view(user: dict = Depends(learner)):
     return {"subjects": curriculum()["subjects"],
