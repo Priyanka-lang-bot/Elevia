@@ -4,7 +4,7 @@
 
 - **No classroom evaluation.** ELEVIA hasn't been tested with real students, so there is no evidence yet that it improves learning. We make no such claim.
 - **Rule-based, not autonomous agents.** The Diagnoser, Checker, Planner and Tutor are deterministic rules coordinated by an orchestrator. That's intentional (auditable, repeatable), but they don't learn from data.
-- **Fixed question banks.** Each skill has 4 double-check, 4 practice (3 in Science) and 6 retest questions. After two failed retests on the same skill, or several rounds of one topic, new questions run out and the case goes to teacher review. There is no automatic question generation.
+- **Fixed question banks.** Each teachable skill has 3–4 double-check, 3–5 practice and 6 retest questions. After two failed retests on the same skill, or several rounds of one topic, new questions run out and the case goes to teacher review. There is no automatic question generation.
 - **Misconception coverage is limited** to 39 named patterns. Other wrong answers count as unclassified mistakes.
 - **Science and English use multiple choice / exact words.** There is no free-text or essay marking; reading comprehension and writing are not built.
 - **Computer Science is predict-the-output only.** Students don't write code (nothing student-written is ever executed).
