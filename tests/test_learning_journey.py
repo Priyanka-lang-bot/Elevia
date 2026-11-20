@@ -405,7 +405,7 @@ def test_bad_input_is_explained_and_not_recorded(client, me):
     assert client.post("/learn/answer", headers=me, json={"assessment_id": st["assessment"]["id"],
                                                           "question_id": "CD-R1", "answer": "1"}).status_code == 400
     assert client.post("/learn/answer", headers=me, json={"assessment_id": st["assessment"]["id"],
-                                                          "question_id": q["id"], "answer": "9" * 41}).status_code == 422
+                                                          "question_id": q["id"], "answer": "9" * 201}).status_code == 422
     assert client.post("/learn/answer", headers=me, json={"assessment_id": 99999, "question_id": q["id"],
                                                           "answer": "1"}).status_code == 404
 
