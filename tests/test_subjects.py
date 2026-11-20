@@ -205,6 +205,8 @@ def test_public_catalog_needs_no_login_and_exposes_no_answers(client):
     d = r.json()
     assert d["counts"] == {"subjects": 4, "topics": 11, "questions": len(questions())}
     assert sum(len(s["topics"]) for s in d["subjects"]) == 11
-    blob = str(d)
-    assert "answer" not in blob and "patterns" not in blob     # catalogue only, never question content
+    for s in d["subjects"]:                                     # catalogue only, never question content
+        assert set(s) == {"id", "name", "icon", "color", "description", "planned", "topics"}
+        for t in s["topics"]:
+            assert set(t) == {"id", "name", "unit", "grades"}
     assert client.get("/learn/dashboard").status_code == 401   # personal data still needs a login
