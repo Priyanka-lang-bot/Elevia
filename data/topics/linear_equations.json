@@ -1,0 +1,973 @@
+{
+ "skills": [
+  {
+   "id": "one_step_equations",
+   "name": "Solving one-step equations",
+   "grade": 6,
+   "prerequisites": [],
+   "description": "Use the inverse operation on both sides."
+  },
+  {
+   "id": "two_step_equations",
+   "name": "Solving two-step equations",
+   "grade": 7,
+   "prerequisites": [
+    "one_step_equations"
+   ],
+   "description": "Undo operations in reverse order."
+  }
+ ],
+ "misconceptions": {
+  "ALG_SAME_OP": {
+   "label": "Does the same operation instead of the opposite one",
+   "gap_skill": "one_step_equations",
+   "explanation": "Solves x + 5 = 12 as x = 17 by adding 5 again instead of subtracting."
+  },
+  "ALG_COEFF_SUB": {
+   "label": "Subtracts the number in front of x instead of dividing",
+   "gap_skill": "one_step_equations",
+   "explanation": "Solves 3x = 12 as x = 9."
+  },
+  "ALG_ORDER": {
+   "label": "Undoes the steps in the wrong order",
+   "gap_skill": "two_step_equations",
+   "explanation": "Solves 2x + 3 = 11 by dividing first: 11 ÷ 2 − 3 = 2.5 instead of 4."
+  }
+ },
+ "questions": [
+  {
+   "id": "ALG-DA1",
+   "pool": "diagnostic:linear_equations:A",
+   "skill_id": "one_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "one_step_equations"
+   ],
+   "prompt": "Solve for x:  x + 5 = 12",
+   "answer": "7",
+   "hints": [
+    "Ask: what was done to x? Then do the OPPOSITE to both sides.",
+    "The opposite of + is −, and the opposite of × is ÷."
+   ],
+   "solution": [
+    "x has 5 added, so subtract 5 from both sides.",
+    "x = 12 − 5 = 7."
+   ],
+   "patterns": {
+    "17": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-DA2",
+   "pool": "diagnostic:linear_equations:A",
+   "skill_id": "one_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "one_step_equations"
+   ],
+   "prompt": "Solve for x:  3x = 12",
+   "answer": "4",
+   "hints": [
+    "Ask: what was done to x? Then do the OPPOSITE to both sides.",
+    "The opposite of + is −, and the opposite of × is ÷."
+   ],
+   "solution": [
+    "3x means 3 × x, so divide both sides by 3.",
+    "x = 12 ÷ 3 = 4."
+   ],
+   "patterns": {
+    "9": "ALG_COEFF_SUB",
+    "36": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-DA3",
+   "pool": "diagnostic:linear_equations:A",
+   "skill_id": "two_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "two_step_equations"
+   ],
+   "prompt": "Solve for x:  2x + 3 = 11",
+   "answer": "4",
+   "hints": [
+    "Undo the steps in reverse order: first undo the + or −, then undo the ×.",
+    "Do the same thing to both sides at every step."
+   ],
+   "solution": [
+    "Subtract 3 from both sides: 2x = 8.",
+    "Divide both sides by 2: x = 4."
+   ],
+   "patterns": {
+    "2.5": "ALG_ORDER",
+    "7": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-DA4",
+   "pool": "diagnostic:linear_equations:A",
+   "skill_id": "two_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "two_step_equations"
+   ],
+   "prompt": "Solve for x:  4x + 1 = 21",
+   "answer": "5",
+   "hints": [
+    "Undo the steps in reverse order: first undo the + or −, then undo the ×.",
+    "Do the same thing to both sides at every step."
+   ],
+   "solution": [
+    "Subtract 1 from both sides: 4x = 20.",
+    "Divide both sides by 4: x = 5."
+   ],
+   "patterns": {
+    "4.25": "ALG_ORDER",
+    "5.5": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-DA5",
+   "pool": "diagnostic:linear_equations:A",
+   "skill_id": "one_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "one_step_equations"
+   ],
+   "prompt": "Solve for x:  x − 4 = 9",
+   "answer": "13",
+   "hints": [
+    "Ask: what was done to x? Then do the OPPOSITE to both sides.",
+    "The opposite of + is −, and the opposite of × is ÷."
+   ],
+   "solution": [
+    "x has 4 taken away, so add 4 to both sides.",
+    "x = 9 + 4 = 13."
+   ],
+   "patterns": {
+    "5": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-DB1",
+   "pool": "diagnostic:linear_equations:B",
+   "skill_id": "one_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "one_step_equations"
+   ],
+   "prompt": "Solve for x:  x + 8 = 15",
+   "answer": "7",
+   "hints": [
+    "Ask: what was done to x? Then do the OPPOSITE to both sides.",
+    "The opposite of + is −, and the opposite of × is ÷."
+   ],
+   "solution": [
+    "x has 8 added, so subtract 8 from both sides.",
+    "x = 15 − 8 = 7."
+   ],
+   "patterns": {
+    "23": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-DB2",
+   "pool": "diagnostic:linear_equations:B",
+   "skill_id": "one_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "one_step_equations"
+   ],
+   "prompt": "Solve for x:  4x = 20",
+   "answer": "5",
+   "hints": [
+    "Ask: what was done to x? Then do the OPPOSITE to both sides.",
+    "The opposite of + is −, and the opposite of × is ÷."
+   ],
+   "solution": [
+    "4x means 4 × x, so divide both sides by 4.",
+    "x = 20 ÷ 4 = 5."
+   ],
+   "patterns": {
+    "16": "ALG_COEFF_SUB",
+    "80": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-DB3",
+   "pool": "diagnostic:linear_equations:B",
+   "skill_id": "two_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "two_step_equations"
+   ],
+   "prompt": "Solve for x:  2x + 5 = 17",
+   "answer": "6",
+   "hints": [
+    "Undo the steps in reverse order: first undo the + or −, then undo the ×.",
+    "Do the same thing to both sides at every step."
+   ],
+   "solution": [
+    "Subtract 5 from both sides: 2x = 12.",
+    "Divide both sides by 2: x = 6."
+   ],
+   "patterns": {
+    "3.5": "ALG_ORDER",
+    "11": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-DB4",
+   "pool": "diagnostic:linear_equations:B",
+   "skill_id": "two_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "two_step_equations"
+   ],
+   "prompt": "Solve for x:  3x + 2 = 14",
+   "answer": "4",
+   "hints": [
+    "Undo the steps in reverse order: first undo the + or −, then undo the ×.",
+    "Do the same thing to both sides at every step."
+   ],
+   "solution": [
+    "Subtract 2 from both sides: 3x = 12.",
+    "Divide both sides by 3: x = 4."
+   ],
+   "patterns": {
+    "8/3": "ALG_ORDER",
+    "16/3": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-DB5",
+   "pool": "diagnostic:linear_equations:B",
+   "skill_id": "one_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "one_step_equations"
+   ],
+   "prompt": "Solve for x:  x − 6 = 3",
+   "answer": "9",
+   "hints": [
+    "Ask: what was done to x? Then do the OPPOSITE to both sides.",
+    "The opposite of + is −, and the opposite of × is ÷."
+   ],
+   "solution": [
+    "x has 6 taken away, so add 6 to both sides.",
+    "x = 3 + 6 = 9."
+   ],
+   "patterns": {
+    "-3": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-VOSE1",
+   "pool": "verification:one_step_equations",
+   "skill_id": "one_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "one_step_equations"
+   ],
+   "prompt": "Solve for x:  x + 7 = 19",
+   "answer": "12",
+   "hints": [
+    "Ask: what was done to x? Then do the OPPOSITE to both sides.",
+    "The opposite of + is −, and the opposite of × is ÷."
+   ],
+   "solution": [
+    "x has 7 added, so subtract 7 from both sides.",
+    "x = 19 − 7 = 12."
+   ],
+   "patterns": {
+    "26": "ALG_SAME_OP"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "ALG-VOSE2",
+   "pool": "verification:one_step_equations",
+   "skill_id": "one_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "one_step_equations"
+   ],
+   "prompt": "Solve for x:  5x = 30",
+   "answer": "6",
+   "hints": [
+    "Ask: what was done to x? Then do the OPPOSITE to both sides.",
+    "The opposite of + is −, and the opposite of × is ÷."
+   ],
+   "solution": [
+    "5x means 5 × x, so divide both sides by 5.",
+    "x = 30 ÷ 5 = 6."
+   ],
+   "patterns": {
+    "25": "ALG_COEFF_SUB",
+    "150": "ALG_SAME_OP"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "ALG-VOSE3",
+   "pool": "verification:one_step_equations",
+   "skill_id": "one_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "one_step_equations"
+   ],
+   "prompt": "Solve for x:  x − 9 = 4",
+   "answer": "13",
+   "hints": [
+    "Ask: what was done to x? Then do the OPPOSITE to both sides.",
+    "The opposite of + is −, and the opposite of × is ÷."
+   ],
+   "solution": [
+    "x has 9 taken away, so add 9 to both sides.",
+    "x = 4 + 9 = 13."
+   ],
+   "patterns": {
+    "-5": "ALG_SAME_OP"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "ALG-VOSE4",
+   "pool": "verification:one_step_equations",
+   "skill_id": "one_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "one_step_equations"
+   ],
+   "prompt": "Solve for x:  6x = 42",
+   "answer": "7",
+   "hints": [
+    "Ask: what was done to x? Then do the OPPOSITE to both sides.",
+    "The opposite of + is −, and the opposite of × is ÷."
+   ],
+   "solution": [
+    "6x means 6 × x, so divide both sides by 6.",
+    "x = 42 ÷ 6 = 7."
+   ],
+   "patterns": {
+    "36": "ALG_COEFF_SUB",
+    "252": "ALG_SAME_OP"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "ALG-VTSE1",
+   "pool": "verification:two_step_equations",
+   "skill_id": "two_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "two_step_equations"
+   ],
+   "prompt": "Solve for x:  2x + 7 = 15",
+   "answer": "4",
+   "hints": [
+    "Undo the steps in reverse order: first undo the + or −, then undo the ×.",
+    "Do the same thing to both sides at every step."
+   ],
+   "solution": [
+    "Subtract 7 from both sides: 2x = 8.",
+    "Divide both sides by 2: x = 4."
+   ],
+   "patterns": {
+    "0.5": "ALG_ORDER",
+    "11": "ALG_SAME_OP"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "ALG-VTSE2",
+   "pool": "verification:two_step_equations",
+   "skill_id": "two_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "two_step_equations"
+   ],
+   "prompt": "Solve for x:  5x + 3 = 23",
+   "answer": "4",
+   "hints": [
+    "Undo the steps in reverse order: first undo the + or −, then undo the ×.",
+    "Do the same thing to both sides at every step."
+   ],
+   "solution": [
+    "Subtract 3 from both sides: 5x = 20.",
+    "Divide both sides by 5: x = 4."
+   ],
+   "patterns": {
+    "1.6": "ALG_ORDER",
+    "5.2": "ALG_SAME_OP"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "ALG-VTSE3",
+   "pool": "verification:two_step_equations",
+   "skill_id": "two_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "two_step_equations"
+   ],
+   "prompt": "Solve for x:  4x + 6 = 26",
+   "answer": "5",
+   "hints": [
+    "Undo the steps in reverse order: first undo the + or −, then undo the ×.",
+    "Do the same thing to both sides at every step."
+   ],
+   "solution": [
+    "Subtract 6 from both sides: 4x = 20.",
+    "Divide both sides by 4: x = 5."
+   ],
+   "patterns": {
+    "0.5": "ALG_ORDER",
+    "8": "ALG_SAME_OP"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "ALG-VTSE4",
+   "pool": "verification:two_step_equations",
+   "skill_id": "two_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "two_step_equations"
+   ],
+   "prompt": "Solve for x:  3x + 4 = 19",
+   "answer": "5",
+   "hints": [
+    "Undo the steps in reverse order: first undo the + or −, then undo the ×.",
+    "Do the same thing to both sides at every step."
+   ],
+   "solution": [
+    "Subtract 4 from both sides: 3x = 15.",
+    "Divide both sides by 3: x = 5."
+   ],
+   "patterns": {
+    "7/3": "ALG_ORDER",
+    "23/3": "ALG_SAME_OP"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "ALG-POSE1",
+   "pool": "practice:one_step_equations",
+   "skill_id": "one_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "one_step_equations"
+   ],
+   "prompt": "Solve for x:  x + 3 = 10",
+   "answer": "7",
+   "hints": [
+    "Ask: what was done to x? Then do the OPPOSITE to both sides.",
+    "The opposite of + is −, and the opposite of × is ÷."
+   ],
+   "solution": [
+    "x has 3 added, so subtract 3 from both sides.",
+    "x = 10 − 3 = 7."
+   ],
+   "patterns": {
+    "13": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-POSE2",
+   "pool": "practice:one_step_equations",
+   "skill_id": "one_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "one_step_equations"
+   ],
+   "prompt": "Solve for x:  x − 5 = 8",
+   "answer": "13",
+   "hints": [
+    "Ask: what was done to x? Then do the OPPOSITE to both sides.",
+    "The opposite of + is −, and the opposite of × is ÷."
+   ],
+   "solution": [
+    "x has 5 taken away, so add 5 to both sides.",
+    "x = 8 + 5 = 13."
+   ],
+   "patterns": {
+    "3": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-POSE3",
+   "pool": "practice:one_step_equations",
+   "skill_id": "one_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "one_step_equations"
+   ],
+   "prompt": "Solve for x:  2x = 18",
+   "answer": "9",
+   "hints": [
+    "Ask: what was done to x? Then do the OPPOSITE to both sides.",
+    "The opposite of + is −, and the opposite of × is ÷."
+   ],
+   "solution": [
+    "2x means 2 × x, so divide both sides by 2.",
+    "x = 18 ÷ 2 = 9."
+   ],
+   "patterns": {
+    "16": "ALG_COEFF_SUB",
+    "36": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-POSE4",
+   "pool": "practice:one_step_equations",
+   "skill_id": "one_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "one_step_equations"
+   ],
+   "prompt": "Solve for x:  7x = 35",
+   "answer": "5",
+   "hints": [
+    "Ask: what was done to x? Then do the OPPOSITE to both sides.",
+    "The opposite of + is −, and the opposite of × is ÷."
+   ],
+   "solution": [
+    "7x means 7 × x, so divide both sides by 7.",
+    "x = 35 ÷ 7 = 5."
+   ],
+   "patterns": {
+    "28": "ALG_COEFF_SUB",
+    "245": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-PTSE1",
+   "pool": "practice:two_step_equations",
+   "skill_id": "two_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "two_step_equations"
+   ],
+   "prompt": "Solve for x:  2x + 1 = 9",
+   "answer": "4",
+   "hints": [
+    "Undo the steps in reverse order: first undo the + or −, then undo the ×.",
+    "Do the same thing to both sides at every step."
+   ],
+   "solution": [
+    "Subtract 1 from both sides: 2x = 8.",
+    "Divide both sides by 2: x = 4."
+   ],
+   "patterns": {
+    "3.5": "ALG_ORDER",
+    "5": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-PTSE2",
+   "pool": "practice:two_step_equations",
+   "skill_id": "two_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "two_step_equations"
+   ],
+   "prompt": "Solve for x:  3x + 5 = 20",
+   "answer": "5",
+   "hints": [
+    "Undo the steps in reverse order: first undo the + or −, then undo the ×.",
+    "Do the same thing to both sides at every step."
+   ],
+   "solution": [
+    "Subtract 5 from both sides: 3x = 15.",
+    "Divide both sides by 3: x = 5."
+   ],
+   "patterns": {
+    "5/3": "ALG_ORDER",
+    "25/3": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-PTSE3",
+   "pool": "practice:two_step_equations",
+   "skill_id": "two_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "two_step_equations"
+   ],
+   "prompt": "Solve for x:  4x + 2 = 18",
+   "answer": "4",
+   "hints": [
+    "Undo the steps in reverse order: first undo the + or −, then undo the ×.",
+    "Do the same thing to both sides at every step."
+   ],
+   "solution": [
+    "Subtract 2 from both sides: 4x = 16.",
+    "Divide both sides by 4: x = 4."
+   ],
+   "patterns": {
+    "2.5": "ALG_ORDER",
+    "5": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-PTSE4",
+   "pool": "practice:two_step_equations",
+   "skill_id": "two_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "two_step_equations"
+   ],
+   "prompt": "Solve for x:  5x + 1 = 26",
+   "answer": "5",
+   "hints": [
+    "Undo the steps in reverse order: first undo the + or −, then undo the ×.",
+    "Do the same thing to both sides at every step."
+   ],
+   "solution": [
+    "Subtract 1 from both sides: 5x = 25.",
+    "Divide both sides by 5: x = 5."
+   ],
+   "patterns": {
+    "4.2": "ALG_ORDER",
+    "5.4": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-ROSE1",
+   "pool": "retest:one_step_equations",
+   "skill_id": "one_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "one_step_equations"
+   ],
+   "prompt": "Solve for x:  x + 9 = 20",
+   "answer": "11",
+   "hints": [
+    "Ask: what was done to x? Then do the OPPOSITE to both sides.",
+    "The opposite of + is −, and the opposite of × is ÷."
+   ],
+   "solution": [
+    "x has 9 added, so subtract 9 from both sides.",
+    "x = 20 − 9 = 11."
+   ],
+   "patterns": {
+    "29": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-ROSE2",
+   "pool": "retest:one_step_equations",
+   "skill_id": "one_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "one_step_equations"
+   ],
+   "prompt": "Solve for x:  8x = 48",
+   "answer": "6",
+   "hints": [
+    "Ask: what was done to x? Then do the OPPOSITE to both sides.",
+    "The opposite of + is −, and the opposite of × is ÷."
+   ],
+   "solution": [
+    "8x means 8 × x, so divide both sides by 8.",
+    "x = 48 ÷ 8 = 6."
+   ],
+   "patterns": {
+    "40": "ALG_COEFF_SUB",
+    "384": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-ROSE3",
+   "pool": "retest:one_step_equations",
+   "skill_id": "one_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "one_step_equations"
+   ],
+   "prompt": "Solve for x:  x − 7 = 5",
+   "answer": "12",
+   "hints": [
+    "Ask: what was done to x? Then do the OPPOSITE to both sides.",
+    "The opposite of + is −, and the opposite of × is ÷."
+   ],
+   "solution": [
+    "x has 7 taken away, so add 7 to both sides.",
+    "x = 5 + 7 = 12."
+   ],
+   "patterns": {
+    "-2": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-ROSE4",
+   "pool": "retest:one_step_equations",
+   "skill_id": "one_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "one_step_equations"
+   ],
+   "prompt": "Solve for x:  x + 6 = 13",
+   "answer": "7",
+   "hints": [
+    "Ask: what was done to x? Then do the OPPOSITE to both sides.",
+    "The opposite of + is −, and the opposite of × is ÷."
+   ],
+   "solution": [
+    "x has 6 added, so subtract 6 from both sides.",
+    "x = 13 − 6 = 7."
+   ],
+   "patterns": {
+    "19": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-ROSE5",
+   "pool": "retest:one_step_equations",
+   "skill_id": "one_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "one_step_equations"
+   ],
+   "prompt": "Solve for x:  9x = 54",
+   "answer": "6",
+   "hints": [
+    "Ask: what was done to x? Then do the OPPOSITE to both sides.",
+    "The opposite of + is −, and the opposite of × is ÷."
+   ],
+   "solution": [
+    "9x means 9 × x, so divide both sides by 9.",
+    "x = 54 ÷ 9 = 6."
+   ],
+   "patterns": {
+    "45": "ALG_COEFF_SUB",
+    "486": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-ROSE6",
+   "pool": "retest:one_step_equations",
+   "skill_id": "one_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "one_step_equations"
+   ],
+   "prompt": "Solve for x:  x − 3 = 12",
+   "answer": "15",
+   "hints": [
+    "Ask: what was done to x? Then do the OPPOSITE to both sides.",
+    "The opposite of + is −, and the opposite of × is ÷."
+   ],
+   "solution": [
+    "x has 3 taken away, so add 3 to both sides.",
+    "x = 12 + 3 = 15."
+   ],
+   "patterns": {
+    "9": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-RTSE1",
+   "pool": "retest:two_step_equations",
+   "skill_id": "two_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "two_step_equations"
+   ],
+   "prompt": "Solve for x:  2x + 9 = 21",
+   "answer": "6",
+   "hints": [
+    "Undo the steps in reverse order: first undo the + or −, then undo the ×.",
+    "Do the same thing to both sides at every step."
+   ],
+   "solution": [
+    "Subtract 9 from both sides: 2x = 12.",
+    "Divide both sides by 2: x = 6."
+   ],
+   "patterns": {
+    "1.5": "ALG_ORDER",
+    "15": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-RTSE2",
+   "pool": "retest:two_step_equations",
+   "skill_id": "two_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "two_step_equations"
+   ],
+   "prompt": "Solve for x:  3x + 1 = 16",
+   "answer": "5",
+   "hints": [
+    "Undo the steps in reverse order: first undo the + or −, then undo the ×.",
+    "Do the same thing to both sides at every step."
+   ],
+   "solution": [
+    "Subtract 1 from both sides: 3x = 15.",
+    "Divide both sides by 3: x = 5."
+   ],
+   "patterns": {
+    "13/3": "ALG_ORDER",
+    "17/3": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-RTSE3",
+   "pool": "retest:two_step_equations",
+   "skill_id": "two_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "two_step_equations"
+   ],
+   "prompt": "Solve for x:  5x + 4 = 29",
+   "answer": "5",
+   "hints": [
+    "Undo the steps in reverse order: first undo the + or −, then undo the ×.",
+    "Do the same thing to both sides at every step."
+   ],
+   "solution": [
+    "Subtract 4 from both sides: 5x = 25.",
+    "Divide both sides by 5: x = 5."
+   ],
+   "patterns": {
+    "1.8": "ALG_ORDER",
+    "6.6": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-RTSE4",
+   "pool": "retest:two_step_equations",
+   "skill_id": "two_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "two_step_equations"
+   ],
+   "prompt": "Solve for x:  4x + 3 = 27",
+   "answer": "6",
+   "hints": [
+    "Undo the steps in reverse order: first undo the + or −, then undo the ×.",
+    "Do the same thing to both sides at every step."
+   ],
+   "solution": [
+    "Subtract 3 from both sides: 4x = 24.",
+    "Divide both sides by 4: x = 6."
+   ],
+   "patterns": {
+    "3.75": "ALG_ORDER",
+    "7.5": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-RTSE5",
+   "pool": "retest:two_step_equations",
+   "skill_id": "two_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "two_step_equations"
+   ],
+   "prompt": "Solve for x:  2x + 11 = 25",
+   "answer": "7",
+   "hints": [
+    "Undo the steps in reverse order: first undo the + or −, then undo the ×.",
+    "Do the same thing to both sides at every step."
+   ],
+   "solution": [
+    "Subtract 11 from both sides: 2x = 14.",
+    "Divide both sides by 2: x = 7."
+   ],
+   "patterns": {
+    "1.5": "ALG_ORDER",
+    "18": "ALG_SAME_OP"
+   }
+  },
+  {
+   "id": "ALG-RTSE6",
+   "pool": "retest:two_step_equations",
+   "skill_id": "two_step_equations",
+   "type": "numeric",
+   "gap_targets": [
+    "two_step_equations"
+   ],
+   "prompt": "Solve for x:  6x + 5 = 41",
+   "answer": "6",
+   "hints": [
+    "Undo the steps in reverse order: first undo the + or −, then undo the ×.",
+    "Do the same thing to both sides at every step."
+   ],
+   "solution": [
+    "Subtract 5 from both sides: 6x = 36.",
+    "Divide both sides by 6: x = 6."
+   ],
+   "patterns": {
+    "11/6": "ALG_ORDER",
+    "23/3": "ALG_SAME_OP"
+   }
+  }
+ ],
+ "lessons": {
+  "one_step_equations": {
+   "title": "Solving one-step equations",
+   "big_idea": "An equation is a balance. To get x on its own, undo what was done to it by doing the OPPOSITE operation to both sides.",
+   "steps": [
+    "Look at what is happening to x: is something added, subtracted or multiplied?",
+    "Choose the opposite: + ↔ −, × ↔ ÷.",
+    "Do that opposite to BOTH sides so the balance stays level.",
+    "Check: put your answer back into the equation."
+   ],
+   "sense_check": "If x + 5 = 12 and you said x = 17, check it: 17 + 5 = 22, not 12. So x must be smaller than 12.",
+   "worked_examples": [
+    {
+     "prompt": "Solve for x:  x + 5 = 12",
+     "answer": "7",
+     "steps": [
+      "Subtract 5 from both sides.",
+      "x = 12 − 5 = 7.",
+      "Check: 7 + 5 = 12 ✓"
+     ]
+    },
+    {
+     "prompt": "Solve for x:  3x = 12",
+     "answer": "4",
+     "steps": [
+      "3x means 3 × x.",
+      "Divide both sides by 3: x = 4.",
+      "Check: 3 × 4 = 12 ✓"
+     ]
+    }
+   ]
+  },
+  "two_step_equations": {
+   "title": "Solving two-step equations",
+   "big_idea": "In 2x + 3 = 11, x was first multiplied by 2, then 3 was added. Undo them in REVERSE order: subtract 3 first, then divide by 2.",
+   "steps": [
+    "Undo the adding or subtracting first.",
+    "Then undo the multiplying by dividing.",
+    "Do each step to both sides.",
+    "Check by substituting your answer."
+   ],
+   "sense_check": "Getting dressed: socks then shoes. Undressing: shoes first, then socks. Undo in reverse order.",
+   "worked_examples": [
+    {
+     "prompt": "Solve for x:  2x + 3 = 11",
+     "answer": "4",
+     "steps": [
+      "Subtract 3: 2x = 8.",
+      "Divide by 2: x = 4.",
+      "Check: 2 × 4 + 3 = 11 ✓"
+     ]
+    },
+    {
+     "prompt": "Solve for x:  4x + 1 = 21",
+     "answer": "5",
+     "steps": [
+      "Subtract 1: 4x = 20.",
+      "Divide by 4: x = 5.",
+      "Check: 4 × 5 + 1 = 21 ✓"
+     ]
+    }
+   ]
+  }
+ }
+}

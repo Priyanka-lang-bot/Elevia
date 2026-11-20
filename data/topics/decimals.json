@@ -1,0 +1,1008 @@
+{
+ "skills": [
+  {
+   "id": "decimal_place_value",
+   "name": "Decimal place value",
+   "grade": 4,
+   "prerequisites": [],
+   "description": "Tenths and hundredths; comparing decimals by place value."
+  },
+  {
+   "id": "adding_decimals",
+   "name": "Adding and subtracting decimals",
+   "grade": 5,
+   "prerequisites": [
+    "decimal_place_value"
+   ],
+   "description": "Line up decimal points so digits of the same place value are added."
+  }
+ ],
+ "misconceptions": {
+  "DEC_LONGER_BIGGER": {
+   "label": "Thinks a decimal with more digits is larger",
+   "gap_skill": "decimal_place_value",
+   "explanation": "Compares the digits after the point like whole numbers, so 0.25 seems bigger than 0.5 because 25 > 5."
+  },
+  "DEC_RIGHT_ALIGN": {
+   "label": "Lines up the last digits instead of the decimal points",
+   "gap_skill": "adding_decimals",
+   "explanation": "Adds 2.5 + 1.25 as 25 + 125, giving 1.50 instead of 3.75."
+  }
+ },
+ "questions": [
+  {
+   "id": "DEC-DA1",
+   "pool": "diagnostic:decimals:A",
+   "skill_id": "decimal_place_value",
+   "type": "mcq",
+   "gap_targets": [
+    "decimal_place_value"
+   ],
+   "prompt": "Which is larger: 0.5 or 0.25?",
+   "answer": "0.5",
+   "hints": [
+    "Line up the decimal points and compare the tenths digit first.",
+    "Add zeros so both have the same number of decimal places, e.g. 0.5 = 0.50."
+   ],
+   "solution": [
+    "Write both with 2 decimal places: 0.5 = 0.50, 0.25 = 0.25.",
+    "Compare digit by digit from the left: 0.5 is larger."
+   ],
+   "patterns": {
+    "0.25": "DEC_LONGER_BIGGER"
+   },
+   "options": [
+    "0.5",
+    "0.25"
+   ]
+  },
+  {
+   "id": "DEC-DA2",
+   "pool": "diagnostic:decimals:A",
+   "skill_id": "decimal_place_value",
+   "type": "mcq",
+   "gap_targets": [
+    "decimal_place_value"
+   ],
+   "prompt": "Which is larger: 0.7 or 0.65?",
+   "answer": "0.7",
+   "hints": [
+    "Line up the decimal points and compare the tenths digit first.",
+    "Add zeros so both have the same number of decimal places, e.g. 0.5 = 0.50."
+   ],
+   "solution": [
+    "Write both with 2 decimal places: 0.7 = 0.70, 0.65 = 0.65.",
+    "Compare digit by digit from the left: 0.7 is larger."
+   ],
+   "patterns": {
+    "0.65": "DEC_LONGER_BIGGER"
+   },
+   "options": [
+    "0.7",
+    "0.65"
+   ]
+  },
+  {
+   "id": "DEC-DA3",
+   "pool": "diagnostic:decimals:A",
+   "skill_id": "adding_decimals",
+   "type": "numeric",
+   "gap_targets": [
+    "adding_decimals"
+   ],
+   "prompt": "2.5 + 1.25 = ?",
+   "answer": "3.75",
+   "hints": [
+    "Line up the decimal points, one under the other.",
+    "Fill empty places with 0 (2.5 = 2.50), then add as usual and keep the point in line."
+   ],
+   "solution": [
+    "Line up the points: 2.50 + 1.25.",
+    "2.50 + 1.25 = 3.75."
+   ],
+   "patterns": {
+    "1.5": "DEC_RIGHT_ALIGN"
+   }
+  },
+  {
+   "id": "DEC-DA4",
+   "pool": "diagnostic:decimals:A",
+   "skill_id": "adding_decimals",
+   "type": "numeric",
+   "gap_targets": [
+    "adding_decimals"
+   ],
+   "prompt": "3.4 + 1.15 = ?",
+   "answer": "4.55",
+   "hints": [
+    "Line up the decimal points, one under the other.",
+    "Fill empty places with 0 (2.5 = 2.50), then add as usual and keep the point in line."
+   ],
+   "solution": [
+    "Line up the points: 3.40 + 1.15.",
+    "3.40 + 1.15 = 4.55."
+   ],
+   "patterns": {
+    "1.49": "DEC_RIGHT_ALIGN"
+   }
+  },
+  {
+   "id": "DEC-DA5",
+   "pool": "diagnostic:decimals:A",
+   "skill_id": "adding_decimals",
+   "type": "numeric",
+   "gap_targets": [
+    "adding_decimals"
+   ],
+   "prompt": "0.3 + 0.4 = ?",
+   "answer": "0.7",
+   "hints": [
+    "Line up the decimal points, one under the other.",
+    "Fill empty places with 0 (2.5 = 2.50), then add as usual and keep the point in line."
+   ],
+   "solution": [
+    "Line up the points: 0.3 + 0.4.",
+    "0.3 + 0.4 = 0.7."
+   ],
+   "patterns": {}
+  },
+  {
+   "id": "DEC-DB1",
+   "pool": "diagnostic:decimals:B",
+   "skill_id": "decimal_place_value",
+   "type": "mcq",
+   "gap_targets": [
+    "decimal_place_value"
+   ],
+   "prompt": "Which is larger: 0.8 or 0.75?",
+   "answer": "0.8",
+   "hints": [
+    "Line up the decimal points and compare the tenths digit first.",
+    "Add zeros so both have the same number of decimal places, e.g. 0.5 = 0.50."
+   ],
+   "solution": [
+    "Write both with 2 decimal places: 0.8 = 0.80, 0.75 = 0.75.",
+    "Compare digit by digit from the left: 0.8 is larger."
+   ],
+   "patterns": {
+    "0.75": "DEC_LONGER_BIGGER"
+   },
+   "options": [
+    "0.8",
+    "0.75"
+   ]
+  },
+  {
+   "id": "DEC-DB2",
+   "pool": "diagnostic:decimals:B",
+   "skill_id": "decimal_place_value",
+   "type": "mcq",
+   "gap_targets": [
+    "decimal_place_value"
+   ],
+   "prompt": "Which is larger: 0.3 or 0.125?",
+   "answer": "0.3",
+   "hints": [
+    "Line up the decimal points and compare the tenths digit first.",
+    "Add zeros so both have the same number of decimal places, e.g. 0.5 = 0.50."
+   ],
+   "solution": [
+    "Write both with 3 decimal places: 0.3 = 0.300, 0.125 = 0.125.",
+    "Compare digit by digit from the left: 0.3 is larger."
+   ],
+   "patterns": {
+    "0.125": "DEC_LONGER_BIGGER"
+   },
+   "options": [
+    "0.3",
+    "0.125"
+   ]
+  },
+  {
+   "id": "DEC-DB3",
+   "pool": "diagnostic:decimals:B",
+   "skill_id": "adding_decimals",
+   "type": "numeric",
+   "gap_targets": [
+    "adding_decimals"
+   ],
+   "prompt": "4.6 + 2.35 = ?",
+   "answer": "6.95",
+   "hints": [
+    "Line up the decimal points, one under the other.",
+    "Fill empty places with 0 (2.5 = 2.50), then add as usual and keep the point in line."
+   ],
+   "solution": [
+    "Line up the points: 4.60 + 2.35.",
+    "4.60 + 2.35 = 6.95."
+   ],
+   "patterns": {
+    "2.81": "DEC_RIGHT_ALIGN"
+   }
+  },
+  {
+   "id": "DEC-DB4",
+   "pool": "diagnostic:decimals:B",
+   "skill_id": "adding_decimals",
+   "type": "numeric",
+   "gap_targets": [
+    "adding_decimals"
+   ],
+   "prompt": "1.5 + 3.25 = ?",
+   "answer": "4.75",
+   "hints": [
+    "Line up the decimal points, one under the other.",
+    "Fill empty places with 0 (2.5 = 2.50), then add as usual and keep the point in line."
+   ],
+   "solution": [
+    "Line up the points: 1.50 + 3.25.",
+    "1.50 + 3.25 = 4.75."
+   ],
+   "patterns": {
+    "3.4": "DEC_RIGHT_ALIGN"
+   }
+  },
+  {
+   "id": "DEC-DB5",
+   "pool": "diagnostic:decimals:B",
+   "skill_id": "adding_decimals",
+   "type": "numeric",
+   "gap_targets": [
+    "adding_decimals"
+   ],
+   "prompt": "0.2 + 0.6 = ?",
+   "answer": "0.8",
+   "hints": [
+    "Line up the decimal points, one under the other.",
+    "Fill empty places with 0 (2.5 = 2.50), then add as usual and keep the point in line."
+   ],
+   "solution": [
+    "Line up the points: 0.2 + 0.6.",
+    "0.2 + 0.6 = 0.8."
+   ],
+   "patterns": {}
+  },
+  {
+   "id": "DEC-VDPV1",
+   "pool": "verification:decimal_place_value",
+   "skill_id": "decimal_place_value",
+   "type": "mcq",
+   "gap_targets": [
+    "decimal_place_value"
+   ],
+   "prompt": "Which is larger: 0.4 or 0.36?",
+   "answer": "0.4",
+   "hints": [
+    "Line up the decimal points and compare the tenths digit first.",
+    "Add zeros so both have the same number of decimal places, e.g. 0.5 = 0.50."
+   ],
+   "solution": [
+    "Write both with 2 decimal places: 0.4 = 0.40, 0.36 = 0.36.",
+    "Compare digit by digit from the left: 0.4 is larger."
+   ],
+   "patterns": {
+    "0.36": "DEC_LONGER_BIGGER"
+   },
+   "options": [
+    "0.4",
+    "0.36"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "DEC-VDPV2",
+   "pool": "verification:decimal_place_value",
+   "skill_id": "decimal_place_value",
+   "type": "mcq",
+   "gap_targets": [
+    "decimal_place_value"
+   ],
+   "prompt": "Which is larger: 0.6 or 0.55?",
+   "answer": "0.6",
+   "hints": [
+    "Line up the decimal points and compare the tenths digit first.",
+    "Add zeros so both have the same number of decimal places, e.g. 0.5 = 0.50."
+   ],
+   "solution": [
+    "Write both with 2 decimal places: 0.6 = 0.60, 0.55 = 0.55.",
+    "Compare digit by digit from the left: 0.6 is larger."
+   ],
+   "patterns": {
+    "0.55": "DEC_LONGER_BIGGER"
+   },
+   "options": [
+    "0.6",
+    "0.55"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "DEC-VDPV3",
+   "pool": "verification:decimal_place_value",
+   "skill_id": "decimal_place_value",
+   "type": "mcq",
+   "gap_targets": [
+    "decimal_place_value"
+   ],
+   "prompt": "Which is larger: 0.9 or 0.875?",
+   "answer": "0.9",
+   "hints": [
+    "Line up the decimal points and compare the tenths digit first.",
+    "Add zeros so both have the same number of decimal places, e.g. 0.5 = 0.50."
+   ],
+   "solution": [
+    "Write both with 3 decimal places: 0.9 = 0.900, 0.875 = 0.875.",
+    "Compare digit by digit from the left: 0.9 is larger."
+   ],
+   "patterns": {
+    "0.875": "DEC_LONGER_BIGGER"
+   },
+   "options": [
+    "0.9",
+    "0.875"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "DEC-VDPV4",
+   "pool": "verification:decimal_place_value",
+   "skill_id": "decimal_place_value",
+   "type": "mcq",
+   "gap_targets": [
+    "decimal_place_value"
+   ],
+   "prompt": "Which is larger: 0.2 or 0.15?",
+   "answer": "0.2",
+   "hints": [
+    "Line up the decimal points and compare the tenths digit first.",
+    "Add zeros so both have the same number of decimal places, e.g. 0.5 = 0.50."
+   ],
+   "solution": [
+    "Write both with 2 decimal places: 0.2 = 0.20, 0.15 = 0.15.",
+    "Compare digit by digit from the left: 0.2 is larger."
+   ],
+   "patterns": {
+    "0.15": "DEC_LONGER_BIGGER"
+   },
+   "options": [
+    "0.2",
+    "0.15"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "DEC-VAD1",
+   "pool": "verification:adding_decimals",
+   "skill_id": "adding_decimals",
+   "type": "numeric",
+   "gap_targets": [
+    "adding_decimals"
+   ],
+   "prompt": "5.5 + 1.25 = ?",
+   "answer": "6.75",
+   "hints": [
+    "Line up the decimal points, one under the other.",
+    "Fill empty places with 0 (2.5 = 2.50), then add as usual and keep the point in line."
+   ],
+   "solution": [
+    "Line up the points: 5.50 + 1.25.",
+    "5.50 + 1.25 = 6.75."
+   ],
+   "patterns": {
+    "1.8": "DEC_RIGHT_ALIGN"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "DEC-VAD2",
+   "pool": "verification:adding_decimals",
+   "skill_id": "adding_decimals",
+   "type": "numeric",
+   "gap_targets": [
+    "adding_decimals"
+   ],
+   "prompt": "2.7 + 3.15 = ?",
+   "answer": "5.85",
+   "hints": [
+    "Line up the decimal points, one under the other.",
+    "Fill empty places with 0 (2.5 = 2.50), then add as usual and keep the point in line."
+   ],
+   "solution": [
+    "Line up the points: 2.70 + 3.15.",
+    "2.70 + 3.15 = 5.85."
+   ],
+   "patterns": {
+    "3.42": "DEC_RIGHT_ALIGN"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "DEC-VAD3",
+   "pool": "verification:adding_decimals",
+   "skill_id": "adding_decimals",
+   "type": "numeric",
+   "gap_targets": [
+    "adding_decimals"
+   ],
+   "prompt": "6.75 − 1.5 = ?",
+   "answer": "5.25",
+   "hints": [
+    "Line up the decimal points, one under the other.",
+    "Fill empty places with 0 (2.5 = 2.50), then add as usual and keep the point in line."
+   ],
+   "solution": [
+    "Line up the points: 6.75 − 1.50.",
+    "6.75 − 1.50 = 5.25."
+   ],
+   "patterns": {
+    "6.6": "DEC_RIGHT_ALIGN"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "DEC-VAD4",
+   "pool": "verification:adding_decimals",
+   "skill_id": "adding_decimals",
+   "type": "numeric",
+   "gap_targets": [
+    "adding_decimals"
+   ],
+   "prompt": "8.4 + 2.25 = ?",
+   "answer": "10.65",
+   "hints": [
+    "Line up the decimal points, one under the other.",
+    "Fill empty places with 0 (2.5 = 2.50), then add as usual and keep the point in line."
+   ],
+   "solution": [
+    "Line up the points: 8.40 + 2.25.",
+    "8.40 + 2.25 = 10.65."
+   ],
+   "patterns": {
+    "3.09": "DEC_RIGHT_ALIGN"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "DEC-PDPV1",
+   "pool": "practice:decimal_place_value",
+   "skill_id": "decimal_place_value",
+   "type": "mcq",
+   "gap_targets": [
+    "decimal_place_value"
+   ],
+   "prompt": "Which is larger: 0.6 or 0.45?",
+   "answer": "0.6",
+   "hints": [
+    "Line up the decimal points and compare the tenths digit first.",
+    "Add zeros so both have the same number of decimal places, e.g. 0.5 = 0.50."
+   ],
+   "solution": [
+    "Write both with 2 decimal places: 0.6 = 0.60, 0.45 = 0.45.",
+    "Compare digit by digit from the left: 0.6 is larger."
+   ],
+   "patterns": {
+    "0.45": "DEC_LONGER_BIGGER"
+   },
+   "options": [
+    "0.6",
+    "0.45"
+   ]
+  },
+  {
+   "id": "DEC-PDPV2",
+   "pool": "practice:decimal_place_value",
+   "skill_id": "decimal_place_value",
+   "type": "mcq",
+   "gap_targets": [
+    "decimal_place_value"
+   ],
+   "prompt": "Which is larger: 0.35 or 0.4?",
+   "answer": "0.4",
+   "hints": [
+    "Line up the decimal points and compare the tenths digit first.",
+    "Add zeros so both have the same number of decimal places, e.g. 0.5 = 0.50."
+   ],
+   "solution": [
+    "Write both with 2 decimal places: 0.35 = 0.35, 0.4 = 0.40.",
+    "Compare digit by digit from the left: 0.4 is larger."
+   ],
+   "patterns": {
+    "0.35": "DEC_LONGER_BIGGER"
+   },
+   "options": [
+    "0.35",
+    "0.4"
+   ]
+  },
+  {
+   "id": "DEC-PDPV3",
+   "pool": "practice:decimal_place_value",
+   "skill_id": "decimal_place_value",
+   "type": "mcq",
+   "gap_targets": [
+    "decimal_place_value"
+   ],
+   "prompt": "Which is larger: 0.09 or 0.1?",
+   "answer": "0.1",
+   "hints": [
+    "Line up the decimal points and compare the tenths digit first.",
+    "Add zeros so both have the same number of decimal places, e.g. 0.5 = 0.50."
+   ],
+   "solution": [
+    "Write both with 2 decimal places: 0.09 = 0.09, 0.1 = 0.10.",
+    "Compare digit by digit from the left: 0.1 is larger."
+   ],
+   "patterns": {
+    "0.09": "DEC_LONGER_BIGGER"
+   },
+   "options": [
+    "0.09",
+    "0.1"
+   ]
+  },
+  {
+   "id": "DEC-PDPV4",
+   "pool": "practice:decimal_place_value",
+   "skill_id": "decimal_place_value",
+   "type": "mcq",
+   "gap_targets": [
+    "decimal_place_value"
+   ],
+   "prompt": "Which is larger: 1.2 or 1.15?",
+   "answer": "1.2",
+   "hints": [
+    "Line up the decimal points and compare the tenths digit first.",
+    "Add zeros so both have the same number of decimal places, e.g. 0.5 = 0.50."
+   ],
+   "solution": [
+    "Write both with 2 decimal places: 1.2 = 1.20, 1.15 = 1.15.",
+    "Compare digit by digit from the left: 1.2 is larger."
+   ],
+   "patterns": {
+    "1.15": "DEC_LONGER_BIGGER"
+   },
+   "options": [
+    "1.2",
+    "1.15"
+   ]
+  },
+  {
+   "id": "DEC-PAD1",
+   "pool": "practice:adding_decimals",
+   "skill_id": "adding_decimals",
+   "type": "numeric",
+   "gap_targets": [
+    "adding_decimals"
+   ],
+   "prompt": "3.5 + 2.25 = ?",
+   "answer": "5.75",
+   "hints": [
+    "Line up the decimal points, one under the other.",
+    "Fill empty places with 0 (2.5 = 2.50), then add as usual and keep the point in line."
+   ],
+   "solution": [
+    "Line up the points: 3.50 + 2.25.",
+    "3.50 + 2.25 = 5.75."
+   ],
+   "patterns": {
+    "2.6": "DEC_RIGHT_ALIGN"
+   }
+  },
+  {
+   "id": "DEC-PAD2",
+   "pool": "practice:adding_decimals",
+   "skill_id": "adding_decimals",
+   "type": "numeric",
+   "gap_targets": [
+    "adding_decimals"
+   ],
+   "prompt": "1.75 + 0.5 = ?",
+   "answer": "2.25",
+   "hints": [
+    "Line up the decimal points, one under the other.",
+    "Fill empty places with 0 (2.5 = 2.50), then add as usual and keep the point in line."
+   ],
+   "solution": [
+    "Line up the points: 1.75 + 0.50.",
+    "1.75 + 0.50 = 2.25."
+   ],
+   "patterns": {
+    "1.8": "DEC_RIGHT_ALIGN"
+   }
+  },
+  {
+   "id": "DEC-PAD3",
+   "pool": "practice:adding_decimals",
+   "skill_id": "adding_decimals",
+   "type": "numeric",
+   "gap_targets": [
+    "adding_decimals"
+   ],
+   "prompt": "4.2 + 1.05 = ?",
+   "answer": "5.25",
+   "hints": [
+    "Line up the decimal points, one under the other.",
+    "Fill empty places with 0 (2.5 = 2.50), then add as usual and keep the point in line."
+   ],
+   "solution": [
+    "Line up the points: 4.20 + 1.05.",
+    "4.20 + 1.05 = 5.25."
+   ],
+   "patterns": {
+    "1.47": "DEC_RIGHT_ALIGN"
+   }
+  },
+  {
+   "id": "DEC-PAD4",
+   "pool": "practice:adding_decimals",
+   "skill_id": "adding_decimals",
+   "type": "numeric",
+   "gap_targets": [
+    "adding_decimals"
+   ],
+   "prompt": "9.8 + 0.15 = ?",
+   "answer": "9.95",
+   "hints": [
+    "Line up the decimal points, one under the other.",
+    "Fill empty places with 0 (2.5 = 2.50), then add as usual and keep the point in line."
+   ],
+   "solution": [
+    "Line up the points: 9.80 + 0.15.",
+    "9.80 + 0.15 = 9.95."
+   ],
+   "patterns": {
+    "1.13": "DEC_RIGHT_ALIGN"
+   }
+  },
+  {
+   "id": "DEC-RDPV1",
+   "pool": "retest:decimal_place_value",
+   "skill_id": "decimal_place_value",
+   "type": "mcq",
+   "gap_targets": [
+    "decimal_place_value"
+   ],
+   "prompt": "Which is larger: 0.7 or 0.69?",
+   "answer": "0.7",
+   "hints": [
+    "Line up the decimal points and compare the tenths digit first.",
+    "Add zeros so both have the same number of decimal places, e.g. 0.5 = 0.50."
+   ],
+   "solution": [
+    "Write both with 2 decimal places: 0.7 = 0.70, 0.69 = 0.69.",
+    "Compare digit by digit from the left: 0.7 is larger."
+   ],
+   "patterns": {
+    "0.69": "DEC_LONGER_BIGGER"
+   },
+   "options": [
+    "0.7",
+    "0.69"
+   ]
+  },
+  {
+   "id": "DEC-RDPV2",
+   "pool": "retest:decimal_place_value",
+   "skill_id": "decimal_place_value",
+   "type": "mcq",
+   "gap_targets": [
+    "decimal_place_value"
+   ],
+   "prompt": "Which is larger: 0.5 or 0.45?",
+   "answer": "0.5",
+   "hints": [
+    "Line up the decimal points and compare the tenths digit first.",
+    "Add zeros so both have the same number of decimal places, e.g. 0.5 = 0.50."
+   ],
+   "solution": [
+    "Write both with 2 decimal places: 0.5 = 0.50, 0.45 = 0.45.",
+    "Compare digit by digit from the left: 0.5 is larger."
+   ],
+   "patterns": {
+    "0.45": "DEC_LONGER_BIGGER"
+   },
+   "options": [
+    "0.5",
+    "0.45"
+   ]
+  },
+  {
+   "id": "DEC-RDPV3",
+   "pool": "retest:decimal_place_value",
+   "skill_id": "decimal_place_value",
+   "type": "mcq",
+   "gap_targets": [
+    "decimal_place_value"
+   ],
+   "prompt": "Which is larger: 0.4 or 0.375?",
+   "answer": "0.4",
+   "hints": [
+    "Line up the decimal points and compare the tenths digit first.",
+    "Add zeros so both have the same number of decimal places, e.g. 0.5 = 0.50."
+   ],
+   "solution": [
+    "Write both with 3 decimal places: 0.4 = 0.400, 0.375 = 0.375.",
+    "Compare digit by digit from the left: 0.4 is larger."
+   ],
+   "patterns": {
+    "0.375": "DEC_LONGER_BIGGER"
+   },
+   "options": [
+    "0.4",
+    "0.375"
+   ]
+  },
+  {
+   "id": "DEC-RDPV4",
+   "pool": "retest:decimal_place_value",
+   "skill_id": "decimal_place_value",
+   "type": "mcq",
+   "gap_targets": [
+    "decimal_place_value"
+   ],
+   "prompt": "Which is larger: 0.1 or 0.08?",
+   "answer": "0.1",
+   "hints": [
+    "Line up the decimal points and compare the tenths digit first.",
+    "Add zeros so both have the same number of decimal places, e.g. 0.5 = 0.50."
+   ],
+   "solution": [
+    "Write both with 2 decimal places: 0.1 = 0.10, 0.08 = 0.08.",
+    "Compare digit by digit from the left: 0.1 is larger."
+   ],
+   "patterns": {
+    "0.08": "DEC_LONGER_BIGGER"
+   },
+   "options": [
+    "0.1",
+    "0.08"
+   ]
+  },
+  {
+   "id": "DEC-RDPV5",
+   "pool": "retest:decimal_place_value",
+   "skill_id": "decimal_place_value",
+   "type": "mcq",
+   "gap_targets": [
+    "decimal_place_value"
+   ],
+   "prompt": "Which is larger: 0.6 or 0.525?",
+   "answer": "0.6",
+   "hints": [
+    "Line up the decimal points and compare the tenths digit first.",
+    "Add zeros so both have the same number of decimal places, e.g. 0.5 = 0.50."
+   ],
+   "solution": [
+    "Write both with 3 decimal places: 0.6 = 0.600, 0.525 = 0.525.",
+    "Compare digit by digit from the left: 0.6 is larger."
+   ],
+   "patterns": {
+    "0.525": "DEC_LONGER_BIGGER"
+   },
+   "options": [
+    "0.6",
+    "0.525"
+   ]
+  },
+  {
+   "id": "DEC-RDPV6",
+   "pool": "retest:decimal_place_value",
+   "skill_id": "decimal_place_value",
+   "type": "mcq",
+   "gap_targets": [
+    "decimal_place_value"
+   ],
+   "prompt": "Which is larger: 0.3 or 0.25?",
+   "answer": "0.3",
+   "hints": [
+    "Line up the decimal points and compare the tenths digit first.",
+    "Add zeros so both have the same number of decimal places, e.g. 0.5 = 0.50."
+   ],
+   "solution": [
+    "Write both with 2 decimal places: 0.3 = 0.30, 0.25 = 0.25.",
+    "Compare digit by digit from the left: 0.3 is larger."
+   ],
+   "patterns": {
+    "0.25": "DEC_LONGER_BIGGER"
+   },
+   "options": [
+    "0.3",
+    "0.25"
+   ]
+  },
+  {
+   "id": "DEC-RAD1",
+   "pool": "retest:adding_decimals",
+   "skill_id": "adding_decimals",
+   "type": "numeric",
+   "gap_targets": [
+    "adding_decimals"
+   ],
+   "prompt": "6.5 + 2.25 = ?",
+   "answer": "8.75",
+   "hints": [
+    "Line up the decimal points, one under the other.",
+    "Fill empty places with 0 (2.5 = 2.50), then add as usual and keep the point in line."
+   ],
+   "solution": [
+    "Line up the points: 6.50 + 2.25.",
+    "6.50 + 2.25 = 8.75."
+   ],
+   "patterns": {
+    "2.9": "DEC_RIGHT_ALIGN"
+   }
+  },
+  {
+   "id": "DEC-RAD2",
+   "pool": "retest:adding_decimals",
+   "skill_id": "adding_decimals",
+   "type": "numeric",
+   "gap_targets": [
+    "adding_decimals"
+   ],
+   "prompt": "7.3 + 1.45 = ?",
+   "answer": "8.75",
+   "hints": [
+    "Line up the decimal points, one under the other.",
+    "Fill empty places with 0 (2.5 = 2.50), then add as usual and keep the point in line."
+   ],
+   "solution": [
+    "Line up the points: 7.30 + 1.45.",
+    "7.30 + 1.45 = 8.75."
+   ],
+   "patterns": {
+    "2.18": "DEC_RIGHT_ALIGN"
+   }
+  },
+  {
+   "id": "DEC-RAD3",
+   "pool": "retest:adding_decimals",
+   "skill_id": "adding_decimals",
+   "type": "numeric",
+   "gap_targets": [
+    "adding_decimals"
+   ],
+   "prompt": "5.75 − 1.5 = ?",
+   "answer": "4.25",
+   "hints": [
+    "Line up the decimal points, one under the other.",
+    "Fill empty places with 0 (2.5 = 2.50), then add as usual and keep the point in line."
+   ],
+   "solution": [
+    "Line up the points: 5.75 − 1.50.",
+    "5.75 − 1.50 = 4.25."
+   ],
+   "patterns": {
+    "5.6": "DEC_RIGHT_ALIGN"
+   }
+  },
+  {
+   "id": "DEC-RAD4",
+   "pool": "retest:adding_decimals",
+   "skill_id": "adding_decimals",
+   "type": "numeric",
+   "gap_targets": [
+    "adding_decimals"
+   ],
+   "prompt": "2.4 + 5.35 = ?",
+   "answer": "7.75",
+   "hints": [
+    "Line up the decimal points, one under the other.",
+    "Fill empty places with 0 (2.5 = 2.50), then add as usual and keep the point in line."
+   ],
+   "solution": [
+    "Line up the points: 2.40 + 5.35.",
+    "2.40 + 5.35 = 7.75."
+   ],
+   "patterns": {
+    "5.59": "DEC_RIGHT_ALIGN"
+   }
+  },
+  {
+   "id": "DEC-RAD5",
+   "pool": "retest:adding_decimals",
+   "skill_id": "adding_decimals",
+   "type": "numeric",
+   "gap_targets": [
+    "adding_decimals"
+   ],
+   "prompt": "8.6 + 0.15 = ?",
+   "answer": "8.75",
+   "hints": [
+    "Line up the decimal points, one under the other.",
+    "Fill empty places with 0 (2.5 = 2.50), then add as usual and keep the point in line."
+   ],
+   "solution": [
+    "Line up the points: 8.60 + 0.15.",
+    "8.60 + 0.15 = 8.75."
+   ],
+   "patterns": {
+    "1.01": "DEC_RIGHT_ALIGN"
+   }
+  },
+  {
+   "id": "DEC-RAD6",
+   "pool": "retest:adding_decimals",
+   "skill_id": "adding_decimals",
+   "type": "numeric",
+   "gap_targets": [
+    "adding_decimals"
+   ],
+   "prompt": "9.25 − 3.5 = ?",
+   "answer": "5.75",
+   "hints": [
+    "Line up the decimal points, one under the other.",
+    "Fill empty places with 0 (2.5 = 2.50), then add as usual and keep the point in line."
+   ],
+   "solution": [
+    "Line up the points: 9.25 − 3.50.",
+    "9.25 − 3.50 = 5.75."
+   ],
+   "patterns": {
+    "8.9": "DEC_RIGHT_ALIGN"
+   }
+  }
+ ],
+ "lessons": {
+  "decimal_place_value": {
+   "title": "Decimal place value",
+   "big_idea": "After the decimal point the places are tenths, then hundredths, then thousandths. More digits does not mean bigger: 0.5 is 5 tenths, and 0.25 is only 2 tenths and 5 hundredths.",
+   "steps": [
+    "Line up the two numbers by their decimal points.",
+    "If one has fewer digits, add zeros at the end: 0.5 becomes 0.50. This does not change its value.",
+    "Compare the tenths digits first. The bigger tenths digit wins.",
+    "Only if the tenths are equal, compare the hundredths, and so on."
+   ],
+   "sense_check": "Think of money: 0.5 of a rupee is 50 paise, 0.25 of a rupee is 25 paise. 50 paise is more.",
+   "worked_examples": [
+    {
+     "prompt": "Which is larger: 0.5 or 0.25?",
+     "answer": "0.5",
+     "steps": [
+      "Write 0.5 as 0.50.",
+      "Compare tenths: 5 tenths vs 2 tenths.",
+      "5 > 2, so 0.5 is larger."
+     ]
+    },
+    {
+     "prompt": "Which is larger: 0.7 or 0.65?",
+     "answer": "0.7",
+     "steps": [
+      "Write 0.7 as 0.70.",
+      "70 hundredths vs 65 hundredths.",
+      "0.7 is larger."
+     ]
+    }
+   ]
+  },
+  "adding_decimals": {
+   "title": "Adding and subtracting decimals",
+   "big_idea": "You can only add digits that have the same place value. Lining up the decimal points lines up tenths with tenths and hundredths with hundredths.",
+   "steps": [
+    "Write the numbers one under the other with the decimal points in a straight line.",
+    "Fill any empty places at the end with 0 so both have the same number of decimal places.",
+    "Add or subtract column by column from the right, carrying or borrowing as usual.",
+    "Put the decimal point in the answer directly under the other points."
+   ],
+   "sense_check": "Estimate first: 2.5 + 1.25 is about 2 + 1 = 3, so an answer like 1.5 can't be right.",
+   "worked_examples": [
+    {
+     "prompt": "2.5 + 1.25 = ?",
+     "answer": "3.75",
+     "steps": [
+      "Line up the points: 2.50 + 1.25.",
+      "Add the columns: 3.75."
+     ]
+    },
+    {
+     "prompt": "4.6 − 1.25 = ?",
+     "answer": "3.35",
+     "steps": [
+      "Line up the points: 4.60 − 1.25.",
+      "Subtract the columns: 3.35."
+     ]
+    }
+   ]
+  }
+ }
+}

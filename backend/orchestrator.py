@@ -19,9 +19,9 @@ from typing import Any, Callable, Optional
 from . import db
 from .agents import checker, diagnoser, planner, tutor
 from .config import get_settings
-from .content import lessons, public_question, questions, skill_name, skills_by_id
+from .content import lessons, public_question, questions, skill_name, skills_by_id, topic, topics
 from .db import dumps, now_iso, row_to_dict, rows_to_dicts
-from .fractions_engine import check_answer, correct_answer_text, hints_for, render_prompt, worked_solution
+from .engine import check_answer, correct_answer_text, hints_for, render_prompt, worked_solution
 
 log = logging.getLogger("elevia")
 
@@ -170,22 +170,45 @@ def get_student(student_id: int) -> dict:
         return _get(conn, "students", student_id)
 
 
-def start_case(student_id: int) -> dict:
+DEFAULT_TOPIC = "fractions"
+_TOPIC_SQL = f"COALESCE((SELECT topic_id FROM case_topics ct WHERE ct.case_id = cases.id), '{DEFAULT_TOPIC}')"
+
+
+def case_topic(conn, case_id: int) -> str:
+    row = conn.execute("SELECT topic_id FROM case_topics WHERE case_id=?", (case_id,)).fetchone()
+    return row["topic_id"] if row else DEFAULT_TOPIC
+
+
+def active_case_id(conn, student_id: int, topic_id: str) -> Optional[int]:
+    row = conn.execute(
+        f"SELECT id FROM cases WHERE student_id = ? AND stage IN ({','.join('?' * len(ACTIVE_STAGES))}) "
+        f"AND {_TOPIC_SQL} = ? ORDER BY id DESC LIMIT 1", (student_id, *ACTIVE_STAGES, topic_id)).fetchone()
+    return row["id"] if row else None
+
+
+def start_case(student_id: int, topic_id: str = DEFAULT_TOPIC) -> dict:
+    """Start a check-in on a topic, or return the student's unfinished case on that topic (one per topic)."""
+    try:
+        t_info = topic(topic_id)
+    except KeyError:
+        raise WorkflowError("That topic is not available.", 400)
     with db.transaction() as conn:
         _get(conn, "students", student_id)
-        active = conn.execute(
-            f"SELECT id FROM cases WHERE student_id = ? AND stage IN ({','.join('?' * len(ACTIVE_STAGES))}) "
-            "ORDER BY id DESC LIMIT 1", (student_id, *ACTIVE_STAGES)).fetchone()
+        active = active_case_id(conn, student_id, topic_id)
         if active:
-            return case_detail(active["id"], conn)
-        n_prev = conn.execute("SELECT COUNT(*) FROM cases WHERE student_id = ?", (student_id,)).fetchone()[0]
+            return case_detail(active, conn)
+        n_prev = conn.execute(f"SELECT COUNT(*) FROM cases WHERE student_id = ? AND {_TOPIC_SQL} = ?",
+                              (student_id, topic_id)).fetchone()[0]
         dset = "A" if n_prev % 2 == 0 else "B"
         t = now_iso()
         cur = conn.execute(
             "INSERT INTO cases (student_id, stage, diagnostic_set, created_at, updated_at) VALUES (?,?,?,?,?)",
             (student_id, "diagnostic", dset, t, t))
         case_id = cur.lastrowid
-        qids = sorted(q["id"] for q in questions().values() if q["pool"] == f"diagnostic:{dset}")
+        if topic_id != DEFAULT_TOPIC:
+            conn.execute("INSERT INTO case_topics (case_id, topic_id) VALUES (?,?)", (case_id, topic_id))
+        pool = t_info["diagnostic_pools"][dset]
+        qids = sorted(q["id"] for q in questions().values() if q["pool"] == pool)
         _create_assessment(conn, case_id, "diagnostic", qids)
         return case_detail(case_id, conn)
 
@@ -617,8 +640,11 @@ def case_detail(case_id: int, conn: Optional[sqlite3.Connection] = None) -> dict
     overrides = rows_to_dicts(conn.execute("SELECT * FROM teacher_overrides WHERE case_id=? ORDER BY id",
                                            (case_id,)).fetchall())
     open_a = next((a for a in assessments if a["status"] == "open"), None)
+    tid = case_topic(conn, case_id)
     return {
         **case,
+        "topic_id": tid,
+        "topic_name": topics().get(tid, {}).get("name", tid),
         "stage_label": STAGE_LABELS.get(case["stage"], case["stage"]),
         "assessments": assessments,
         "open_assessment": open_a,

@@ -9,8 +9,8 @@ import pytest
 
 from backend import db
 from backend.content import misconceptions, questions
-from backend.fractions_engine import (answer_input_kind, check_answer, choices, correct_answer,
-                                      correct_answer_text)
+from backend.engine import answer_input_kind, check_answer, choices, correct_answer_text
+from backend.fractions_engine import correct_answer
 from tests.test_accounts import H, consent, db_one, make_child, make_learner
 
 DIAG_WRONG = {"DA3": "2/5", "DA5": "3/7"}          # both: adds numerators and denominators

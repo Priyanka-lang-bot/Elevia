@@ -1,0 +1,314 @@
+{
+ "subjects": [
+  {
+   "id": "mathematics",
+   "name": "Mathematics",
+   "icon": "∑",
+   "color": "#2f4a8a",
+   "description": "Number, ratio and algebra, checked with exact arithmetic.",
+   "topics": [
+    "fractions",
+    "decimals",
+    "percentages",
+    "integers",
+    "linear_equations"
+   ],
+   "planned": [
+    "Geometry",
+    "Mensuration",
+    "Statistics",
+    "Probability"
+   ]
+  },
+  {
+   "id": "science",
+   "name": "Science",
+   "icon": "⚛",
+   "color": "#2e7d5b",
+   "description": "Concept questions that separate real misconceptions from slips.",
+   "topics": [
+    "forces_motion",
+    "states_of_matter"
+   ],
+   "planned": [
+    "Biology: plants and photosynthesis",
+    "Light and sound",
+    "Electric circuits"
+   ]
+  },
+  {
+   "id": "english",
+   "name": "English",
+   "icon": "Aa",
+   "color": "#a0522d",
+   "description": "Grammar and sentence construction with exact answer checking.",
+   "topics": [
+    "past_tense",
+    "subject_verb_agreement"
+   ],
+   "planned": [
+    "Vocabulary",
+    "Reading comprehension",
+    "Writing fundamentals"
+   ]
+  },
+  {
+   "id": "computer_science",
+   "name": "Computer Science",
+   "icon": "</>",
+   "color": "#6b3fa0",
+   "description": "Predict what short programs print. Answers are verified by running the code.",
+   "topics": [
+    "variables",
+    "loops"
+   ],
+   "planned": [
+    "Conditions and Boolean logic",
+    "Algorithms",
+    "Data structures"
+   ]
+  }
+ ],
+ "topics": {
+  "fractions": {
+   "id": "fractions",
+   "subject": "mathematics",
+   "name": "Fractions",
+   "unit": "Number",
+   "grade_min": 3,
+   "grade_max": 6,
+   "description": "Equivalent fractions, simplifying, comparing, common denominators, adding and multiplying.",
+   "objectives": [
+    "Find equivalent fractions and simplify",
+    "Compare fractions",
+    "Add and subtract fractions with unlike denominators",
+    "Multiply fractions"
+   ],
+   "skills": [
+    "fraction_basics",
+    "equivalent_fractions",
+    "simplifying_fractions",
+    "comparing_fractions",
+    "add_sub_like",
+    "common_denominators",
+    "add_sub_unlike",
+    "multiply_fractions"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:A",
+    "B": "diagnostic:B"
+   },
+   "original": true
+  },
+  "decimals": {
+   "id": "decimals",
+   "subject": "mathematics",
+   "name": "Decimals",
+   "unit": "Number",
+   "grade_min": 4,
+   "grade_max": 6,
+   "description": "Place value after the decimal point, comparing decimals, adding and subtracting.",
+   "objectives": [
+    "Compare decimals using place value",
+    "Add and subtract decimals by lining up the points"
+   ],
+   "skills": [
+    "decimal_place_value",
+    "adding_decimals"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:decimals:A",
+    "B": "diagnostic:decimals:B"
+   }
+  },
+  "percentages": {
+   "id": "percentages",
+   "subject": "mathematics",
+   "name": "Percentages",
+   "unit": "Ratio and proportion",
+   "grade_min": 6,
+   "grade_max": 8,
+   "description": "What per cent means, converting to decimals, and finding a percentage of an amount.",
+   "objectives": [
+    "Convert between percentages and decimals",
+    "Find a percentage of a quantity"
+   ],
+   "skills": [
+    "percent_meaning",
+    "percent_of_quantity"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:percentages:A",
+    "B": "diagnostic:percentages:B"
+   }
+  },
+  "integers": {
+   "id": "integers",
+   "subject": "mathematics",
+   "name": "Integers",
+   "unit": "Number systems",
+   "grade_min": 6,
+   "grade_max": 8,
+   "description": "Adding, subtracting and multiplying positive and negative numbers.",
+   "objectives": [
+    "Add and subtract negative numbers",
+    "Multiply integers using the sign rules"
+   ],
+   "skills": [
+    "adding_integers",
+    "multiplying_integers"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:integers:A",
+    "B": "diagnostic:integers:B"
+   }
+  },
+  "linear_equations": {
+   "id": "linear_equations",
+   "subject": "mathematics",
+   "name": "Linear equations",
+   "unit": "Algebra",
+   "grade_min": 6,
+   "grade_max": 8,
+   "description": "Solving one-step and two-step equations with inverse operations.",
+   "objectives": [
+    "Solve one-step equations",
+    "Solve two-step equations by undoing in reverse order"
+   ],
+   "skills": [
+    "one_step_equations",
+    "two_step_equations"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:linear_equations:A",
+    "B": "diagnostic:linear_equations:B"
+   }
+  },
+  "forces_motion": {
+   "id": "forces_motion",
+   "subject": "science",
+   "name": "Forces and motion",
+   "unit": "Physics",
+   "grade_min": 6,
+   "grade_max": 8,
+   "description": "Mass and weight, falling objects, and why things keep moving or slow down.",
+   "objectives": [
+    "Tell mass and weight apart",
+    "Explain motion with balanced and unbalanced forces"
+   ],
+   "skills": [
+    "gravity_and_weight",
+    "forces_and_motion"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:forces_motion:A",
+    "B": "diagnostic:forces_motion:B"
+   }
+  },
+  "states_of_matter": {
+   "id": "states_of_matter",
+   "subject": "science",
+   "name": "States of matter",
+   "unit": "Chemistry",
+   "grade_min": 5,
+   "grade_max": 8,
+   "description": "The particle model of solids, liquids and gases, and why mass is conserved.",
+   "objectives": [
+    "Explain expansion and boiling with the particle model",
+    "Explain why mass is conserved when dissolving or changing state"
+   ],
+   "skills": [
+    "particle_model",
+    "conservation_of_mass"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:states_of_matter:A",
+    "B": "diagnostic:states_of_matter:B"
+   }
+  },
+  "past_tense": {
+   "id": "past_tense",
+   "subject": "english",
+   "name": "Past tense verbs",
+   "unit": "Grammar",
+   "grade_min": 3,
+   "grade_max": 6,
+   "description": "Spelling regular past tense forms and using common irregular verbs.",
+   "objectives": [
+    "Apply doubling and y→i spelling rules",
+    "Use common irregular past tense forms"
+   ],
+   "skills": [
+    "regular_past",
+    "irregular_past"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:past_tense:A",
+    "B": "diagnostic:past_tense:B"
+   }
+  },
+  "subject_verb_agreement": {
+   "id": "subject_verb_agreement",
+   "subject": "english",
+   "name": "Subject–verb agreement",
+   "unit": "Sentence construction",
+   "grade_min": 3,
+   "grade_max": 7,
+   "description": "Matching verbs to singular and plural subjects, including tricky subjects.",
+   "objectives": [
+    "Match verbs to singular and plural subjects",
+    "Find the real subject when other nouns get in the way"
+   ],
+   "skills": [
+    "sva_basic",
+    "sva_tricky"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:subject_verb_agreement:A",
+    "B": "diagnostic:subject_verb_agreement:B"
+   }
+  },
+  "variables": {
+   "id": "variables",
+   "subject": "computer_science",
+   "name": "Variables and assignment",
+   "unit": "Programming fundamentals",
+   "grade_min": 6,
+   "grade_max": 9,
+   "description": "What a variable holds, how assignment replaces values, and tracing short programs.",
+   "objectives": [
+    "Predict the value of a variable after assignments",
+    "Trace a short program line by line"
+   ],
+   "skills": [
+    "variable_assignment",
+    "variable_tracing"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:variables:A",
+    "B": "diagnostic:variables:B"
+   }
+  },
+  "loops": {
+   "id": "loops",
+   "subject": "computer_science",
+   "name": "Loops",
+   "unit": "Programming fundamentals",
+   "grade_min": 7,
+   "grade_max": 10,
+   "description": "How many times a for-loop runs with range(), and building running totals.",
+   "objectives": [
+    "Predict how many times a loop runs",
+    "Trace a running total through a loop"
+   ],
+   "skills": [
+    "loop_counting",
+    "loop_accumulator"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:loops:A",
+    "B": "diagnostic:loops:B"
+   }
+  }
+ }
+}

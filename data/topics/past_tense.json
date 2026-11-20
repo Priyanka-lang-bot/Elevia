@@ -1,0 +1,946 @@
+{
+ "skills": [
+  {
+   "id": "regular_past",
+   "name": "Regular past tense spelling",
+   "grade": 3,
+   "prerequisites": [],
+   "description": "Adding -ed with the doubling and y→i rules."
+  },
+  {
+   "id": "irregular_past",
+   "name": "Irregular past tense verbs",
+   "grade": 4,
+   "prerequisites": [
+    "regular_past"
+   ],
+   "description": "Common verbs that do not take -ed."
+  }
+ ],
+ "misconceptions": {
+  "ENG_OVERREGULARISE": {
+   "label": "Adds -ed to irregular verbs",
+   "gap_skill": "irregular_past",
+   "explanation": "Writes 'goed', 'buyed' or 'catched' instead of went, bought, caught."
+  },
+  "ENG_NO_DOUBLING": {
+   "label": "Forgets to double the final consonant",
+   "gap_skill": "regular_past",
+   "explanation": "Writes 'stoped' or 'planed' instead of stopped, planned."
+  },
+  "ENG_Y_TO_I": {
+   "label": "Keeps the y before adding -ed",
+   "gap_skill": "regular_past",
+   "explanation": "Writes 'cryed' or 'studyed' instead of cried, studied."
+  }
+ },
+ "questions": [
+  {
+   "id": "PAST-DA1",
+   "pool": "diagnostic:past_tense:A",
+   "skill_id": "irregular_past",
+   "type": "text",
+   "gap_targets": [
+    "irregular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"go\".",
+   "answer": "went",
+   "hints": [
+    "This is an irregular verb: it does not take -ed.",
+    "Say it in a sentence: 'Yesterday I ...'. Which word sounds right?"
+   ],
+   "solution": [
+    "\"go\" is irregular, so it does not add -ed.",
+    "Past tense: went (not goed)."
+   ],
+   "patterns": {
+    "goed": "ENG_OVERREGULARISE"
+   }
+  },
+  {
+   "id": "PAST-DA2",
+   "pool": "diagnostic:past_tense:A",
+   "skill_id": "irregular_past",
+   "type": "text",
+   "gap_targets": [
+    "irregular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"buy\".",
+   "answer": "bought",
+   "hints": [
+    "This is an irregular verb: it does not take -ed.",
+    "Say it in a sentence: 'Yesterday I ...'. Which word sounds right?"
+   ],
+   "solution": [
+    "\"buy\" is irregular, so it does not add -ed.",
+    "Past tense: bought (not buyed)."
+   ],
+   "patterns": {
+    "buyed": "ENG_OVERREGULARISE"
+   }
+  },
+  {
+   "id": "PAST-DA3",
+   "pool": "diagnostic:past_tense:A",
+   "skill_id": "regular_past",
+   "type": "text",
+   "gap_targets": [
+    "regular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"stop\".",
+   "answer": "stopped",
+   "hints": [
+    "Short verb ending consonant–vowel–consonant (stop)? Double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry)? Change y to i, then add -ed."
+   ],
+   "solution": [
+    "\"stop\" ends consonant–vowel–consonant, so double the last letter.",
+    "stop → stopped."
+   ],
+   "patterns": {
+    "stoped": "ENG_NO_DOUBLING"
+   }
+  },
+  {
+   "id": "PAST-DA4",
+   "pool": "diagnostic:past_tense:A",
+   "skill_id": "regular_past",
+   "type": "text",
+   "gap_targets": [
+    "regular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"cry\".",
+   "answer": "cried",
+   "hints": [
+    "Short verb ending consonant–vowel–consonant (stop)? Double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry)? Change y to i, then add -ed."
+   ],
+   "solution": [
+    "\"cry\" ends with a consonant + y, so change y to i and add -ed.",
+    "cry → cried."
+   ],
+   "patterns": {
+    "cryed": "ENG_Y_TO_I"
+   }
+  },
+  {
+   "id": "PAST-DA5",
+   "pool": "diagnostic:past_tense:A",
+   "skill_id": "regular_past",
+   "type": "text",
+   "gap_targets": [
+    "regular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"plan\".",
+   "answer": "planned",
+   "hints": [
+    "Short verb ending consonant–vowel–consonant (stop)? Double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry)? Change y to i, then add -ed."
+   ],
+   "solution": [
+    "\"plan\" ends consonant–vowel–consonant, so double the last letter.",
+    "plan → planned."
+   ],
+   "patterns": {
+    "planed": "ENG_NO_DOUBLING"
+   }
+  },
+  {
+   "id": "PAST-DB1",
+   "pool": "diagnostic:past_tense:B",
+   "skill_id": "irregular_past",
+   "type": "text",
+   "gap_targets": [
+    "irregular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"catch\".",
+   "answer": "caught",
+   "hints": [
+    "This is an irregular verb: it does not take -ed.",
+    "Say it in a sentence: 'Yesterday I ...'. Which word sounds right?"
+   ],
+   "solution": [
+    "\"catch\" is irregular, so it does not add -ed.",
+    "Past tense: caught (not catched)."
+   ],
+   "patterns": {
+    "catched": "ENG_OVERREGULARISE"
+   }
+  },
+  {
+   "id": "PAST-DB2",
+   "pool": "diagnostic:past_tense:B",
+   "skill_id": "irregular_past",
+   "type": "text",
+   "gap_targets": [
+    "irregular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"teach\".",
+   "answer": "taught",
+   "hints": [
+    "This is an irregular verb: it does not take -ed.",
+    "Say it in a sentence: 'Yesterday I ...'. Which word sounds right?"
+   ],
+   "solution": [
+    "\"teach\" is irregular, so it does not add -ed.",
+    "Past tense: taught (not teached)."
+   ],
+   "patterns": {
+    "teached": "ENG_OVERREGULARISE"
+   }
+  },
+  {
+   "id": "PAST-DB3",
+   "pool": "diagnostic:past_tense:B",
+   "skill_id": "regular_past",
+   "type": "text",
+   "gap_targets": [
+    "regular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"drop\".",
+   "answer": "dropped",
+   "hints": [
+    "Short verb ending consonant–vowel–consonant (stop)? Double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry)? Change y to i, then add -ed."
+   ],
+   "solution": [
+    "\"drop\" ends consonant–vowel–consonant, so double the last letter.",
+    "drop → dropped."
+   ],
+   "patterns": {
+    "droped": "ENG_NO_DOUBLING"
+   }
+  },
+  {
+   "id": "PAST-DB4",
+   "pool": "diagnostic:past_tense:B",
+   "skill_id": "regular_past",
+   "type": "text",
+   "gap_targets": [
+    "regular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"try\".",
+   "answer": "tried",
+   "hints": [
+    "Short verb ending consonant–vowel–consonant (stop)? Double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry)? Change y to i, then add -ed."
+   ],
+   "solution": [
+    "\"try\" ends with a consonant + y, so change y to i and add -ed.",
+    "try → tried."
+   ],
+   "patterns": {
+    "tryed": "ENG_Y_TO_I"
+   }
+  },
+  {
+   "id": "PAST-DB5",
+   "pool": "diagnostic:past_tense:B",
+   "skill_id": "regular_past",
+   "type": "text",
+   "gap_targets": [
+    "regular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"clap\".",
+   "answer": "clapped",
+   "hints": [
+    "Short verb ending consonant–vowel–consonant (stop)? Double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry)? Change y to i, then add -ed."
+   ],
+   "solution": [
+    "\"clap\" ends consonant–vowel–consonant, so double the last letter.",
+    "clap → clapped."
+   ],
+   "patterns": {
+    "claped": "ENG_NO_DOUBLING"
+   }
+  },
+  {
+   "id": "PAST-VRP1",
+   "pool": "verification:regular_past",
+   "skill_id": "regular_past",
+   "type": "text",
+   "gap_targets": [
+    "regular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"hug\".",
+   "answer": "hugged",
+   "hints": [
+    "Short verb ending consonant–vowel–consonant (stop)? Double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry)? Change y to i, then add -ed."
+   ],
+   "solution": [
+    "\"hug\" ends consonant–vowel–consonant, so double the last letter.",
+    "hug → hugged."
+   ],
+   "patterns": {
+    "huged": "ENG_NO_DOUBLING"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "PAST-VRP2",
+   "pool": "verification:regular_past",
+   "skill_id": "regular_past",
+   "type": "text",
+   "gap_targets": [
+    "regular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"study\".",
+   "answer": "studied",
+   "hints": [
+    "Short verb ending consonant–vowel–consonant (stop)? Double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry)? Change y to i, then add -ed."
+   ],
+   "solution": [
+    "\"study\" ends with a consonant + y, so change y to i and add -ed.",
+    "study → studied."
+   ],
+   "patterns": {
+    "studyed": "ENG_Y_TO_I"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "PAST-VRP3",
+   "pool": "verification:regular_past",
+   "skill_id": "regular_past",
+   "type": "text",
+   "gap_targets": [
+    "regular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"jog\".",
+   "answer": "jogged",
+   "hints": [
+    "Short verb ending consonant–vowel–consonant (stop)? Double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry)? Change y to i, then add -ed."
+   ],
+   "solution": [
+    "\"jog\" ends consonant–vowel–consonant, so double the last letter.",
+    "jog → jogged."
+   ],
+   "patterns": {
+    "joged": "ENG_NO_DOUBLING"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "PAST-VRP4",
+   "pool": "verification:regular_past",
+   "skill_id": "regular_past",
+   "type": "text",
+   "gap_targets": [
+    "regular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"carry\".",
+   "answer": "carried",
+   "hints": [
+    "Short verb ending consonant–vowel–consonant (stop)? Double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry)? Change y to i, then add -ed."
+   ],
+   "solution": [
+    "\"carry\" ends with a consonant + y, so change y to i and add -ed.",
+    "carry → carried."
+   ],
+   "patterns": {
+    "carryed": "ENG_Y_TO_I"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "PAST-VIP1",
+   "pool": "verification:irregular_past",
+   "skill_id": "irregular_past",
+   "type": "text",
+   "gap_targets": [
+    "irregular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"think\".",
+   "answer": "thought",
+   "hints": [
+    "This is an irregular verb: it does not take -ed.",
+    "Say it in a sentence: 'Yesterday I ...'. Which word sounds right?"
+   ],
+   "solution": [
+    "\"think\" is irregular, so it does not add -ed.",
+    "Past tense: thought (not thinked)."
+   ],
+   "patterns": {
+    "thinked": "ENG_OVERREGULARISE"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "PAST-VIP2",
+   "pool": "verification:irregular_past",
+   "skill_id": "irregular_past",
+   "type": "text",
+   "gap_targets": [
+    "irregular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"run\".",
+   "answer": "ran",
+   "hints": [
+    "This is an irregular verb: it does not take -ed.",
+    "Say it in a sentence: 'Yesterday I ...'. Which word sounds right?"
+   ],
+   "solution": [
+    "\"run\" is irregular, so it does not add -ed.",
+    "Past tense: ran (not runned)."
+   ],
+   "patterns": {
+    "runned": "ENG_OVERREGULARISE"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "PAST-VIP3",
+   "pool": "verification:irregular_past",
+   "skill_id": "irregular_past",
+   "type": "text",
+   "gap_targets": [
+    "irregular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"eat\".",
+   "answer": "ate",
+   "hints": [
+    "This is an irregular verb: it does not take -ed.",
+    "Say it in a sentence: 'Yesterday I ...'. Which word sounds right?"
+   ],
+   "solution": [
+    "\"eat\" is irregular, so it does not add -ed.",
+    "Past tense: ate (not eated)."
+   ],
+   "patterns": {
+    "eated": "ENG_OVERREGULARISE"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "PAST-VIP4",
+   "pool": "verification:irregular_past",
+   "skill_id": "irregular_past",
+   "type": "text",
+   "gap_targets": [
+    "irregular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"write\".",
+   "answer": "wrote",
+   "hints": [
+    "This is an irregular verb: it does not take -ed.",
+    "Say it in a sentence: 'Yesterday I ...'. Which word sounds right?"
+   ],
+   "solution": [
+    "\"write\" is irregular, so it does not add -ed.",
+    "Past tense: wrote (not writed)."
+   ],
+   "patterns": {
+    "writed": "ENG_OVERREGULARISE"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "PAST-PRP1",
+   "pool": "practice:regular_past",
+   "skill_id": "regular_past",
+   "type": "text",
+   "gap_targets": [
+    "regular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"shop\".",
+   "answer": "shopped",
+   "hints": [
+    "Short verb ending consonant–vowel–consonant (stop)? Double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry)? Change y to i, then add -ed."
+   ],
+   "solution": [
+    "\"shop\" ends consonant–vowel–consonant, so double the last letter.",
+    "shop → shopped."
+   ],
+   "patterns": {
+    "shoped": "ENG_NO_DOUBLING"
+   }
+  },
+  {
+   "id": "PAST-PRP2",
+   "pool": "practice:regular_past",
+   "skill_id": "regular_past",
+   "type": "text",
+   "gap_targets": [
+    "regular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"hurry\".",
+   "answer": "hurried",
+   "hints": [
+    "Short verb ending consonant–vowel–consonant (stop)? Double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry)? Change y to i, then add -ed."
+   ],
+   "solution": [
+    "\"hurry\" ends with a consonant + y, so change y to i and add -ed.",
+    "hurry → hurried."
+   ],
+   "patterns": {
+    "hurryed": "ENG_Y_TO_I"
+   }
+  },
+  {
+   "id": "PAST-PRP3",
+   "pool": "practice:regular_past",
+   "skill_id": "regular_past",
+   "type": "text",
+   "gap_targets": [
+    "regular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"grab\".",
+   "answer": "grabbed",
+   "hints": [
+    "Short verb ending consonant–vowel–consonant (stop)? Double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry)? Change y to i, then add -ed."
+   ],
+   "solution": [
+    "\"grab\" ends consonant–vowel–consonant, so double the last letter.",
+    "grab → grabbed."
+   ],
+   "patterns": {
+    "grabed": "ENG_NO_DOUBLING"
+   }
+  },
+  {
+   "id": "PAST-PRP4",
+   "pool": "practice:regular_past",
+   "skill_id": "regular_past",
+   "type": "text",
+   "gap_targets": [
+    "regular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"copy\".",
+   "answer": "copied",
+   "hints": [
+    "Short verb ending consonant–vowel–consonant (stop)? Double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry)? Change y to i, then add -ed."
+   ],
+   "solution": [
+    "\"copy\" ends with a consonant + y, so change y to i and add -ed.",
+    "copy → copied."
+   ],
+   "patterns": {
+    "copyed": "ENG_Y_TO_I"
+   }
+  },
+  {
+   "id": "PAST-PIP1",
+   "pool": "practice:irregular_past",
+   "skill_id": "irregular_past",
+   "type": "text",
+   "gap_targets": [
+    "irregular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"bring\".",
+   "answer": "brought",
+   "hints": [
+    "This is an irregular verb: it does not take -ed.",
+    "Say it in a sentence: 'Yesterday I ...'. Which word sounds right?"
+   ],
+   "solution": [
+    "\"bring\" is irregular, so it does not add -ed.",
+    "Past tense: brought (not bringed)."
+   ],
+   "patterns": {
+    "bringed": "ENG_OVERREGULARISE"
+   }
+  },
+  {
+   "id": "PAST-PIP2",
+   "pool": "practice:irregular_past",
+   "skill_id": "irregular_past",
+   "type": "text",
+   "gap_targets": [
+    "irregular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"sing\".",
+   "answer": "sang",
+   "hints": [
+    "This is an irregular verb: it does not take -ed.",
+    "Say it in a sentence: 'Yesterday I ...'. Which word sounds right?"
+   ],
+   "solution": [
+    "\"sing\" is irregular, so it does not add -ed.",
+    "Past tense: sang (not singed)."
+   ],
+   "patterns": {
+    "singed": "ENG_OVERREGULARISE"
+   }
+  },
+  {
+   "id": "PAST-PIP3",
+   "pool": "practice:irregular_past",
+   "skill_id": "irregular_past",
+   "type": "text",
+   "gap_targets": [
+    "irregular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"drink\".",
+   "answer": "drank",
+   "hints": [
+    "This is an irregular verb: it does not take -ed.",
+    "Say it in a sentence: 'Yesterday I ...'. Which word sounds right?"
+   ],
+   "solution": [
+    "\"drink\" is irregular, so it does not add -ed.",
+    "Past tense: drank (not drinked)."
+   ],
+   "patterns": {
+    "drinked": "ENG_OVERREGULARISE"
+   }
+  },
+  {
+   "id": "PAST-PIP4",
+   "pool": "practice:irregular_past",
+   "skill_id": "irregular_past",
+   "type": "text",
+   "gap_targets": [
+    "irregular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"take\".",
+   "answer": "took",
+   "hints": [
+    "This is an irregular verb: it does not take -ed.",
+    "Say it in a sentence: 'Yesterday I ...'. Which word sounds right?"
+   ],
+   "solution": [
+    "\"take\" is irregular, so it does not add -ed.",
+    "Past tense: took (not taked)."
+   ],
+   "patterns": {
+    "taked": "ENG_OVERREGULARISE"
+   }
+  },
+  {
+   "id": "PAST-RRP1",
+   "pool": "retest:regular_past",
+   "skill_id": "regular_past",
+   "type": "text",
+   "gap_targets": [
+    "regular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"nod\".",
+   "answer": "nodded",
+   "hints": [
+    "Short verb ending consonant–vowel–consonant (stop)? Double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry)? Change y to i, then add -ed."
+   ],
+   "solution": [
+    "\"nod\" ends consonant–vowel–consonant, so double the last letter.",
+    "nod → nodded."
+   ],
+   "patterns": {
+    "noded": "ENG_NO_DOUBLING"
+   }
+  },
+  {
+   "id": "PAST-RRP2",
+   "pool": "retest:regular_past",
+   "skill_id": "regular_past",
+   "type": "text",
+   "gap_targets": [
+    "regular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"worry\".",
+   "answer": "worried",
+   "hints": [
+    "Short verb ending consonant–vowel–consonant (stop)? Double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry)? Change y to i, then add -ed."
+   ],
+   "solution": [
+    "\"worry\" ends with a consonant + y, so change y to i and add -ed.",
+    "worry → worried."
+   ],
+   "patterns": {
+    "worryed": "ENG_Y_TO_I"
+   }
+  },
+  {
+   "id": "PAST-RRP3",
+   "pool": "retest:regular_past",
+   "skill_id": "regular_past",
+   "type": "text",
+   "gap_targets": [
+    "regular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"rub\".",
+   "answer": "rubbed",
+   "hints": [
+    "Short verb ending consonant–vowel–consonant (stop)? Double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry)? Change y to i, then add -ed."
+   ],
+   "solution": [
+    "\"rub\" ends consonant–vowel–consonant, so double the last letter.",
+    "rub → rubbed."
+   ],
+   "patterns": {
+    "rubed": "ENG_NO_DOUBLING"
+   }
+  },
+  {
+   "id": "PAST-RRP4",
+   "pool": "retest:regular_past",
+   "skill_id": "regular_past",
+   "type": "text",
+   "gap_targets": [
+    "regular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"reply\".",
+   "answer": "replied",
+   "hints": [
+    "Short verb ending consonant–vowel–consonant (stop)? Double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry)? Change y to i, then add -ed."
+   ],
+   "solution": [
+    "\"reply\" ends with a consonant + y, so change y to i and add -ed.",
+    "reply → replied."
+   ],
+   "patterns": {
+    "replyed": "ENG_Y_TO_I"
+   }
+  },
+  {
+   "id": "PAST-RRP5",
+   "pool": "retest:regular_past",
+   "skill_id": "regular_past",
+   "type": "text",
+   "gap_targets": [
+    "regular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"skip\".",
+   "answer": "skipped",
+   "hints": [
+    "Short verb ending consonant–vowel–consonant (stop)? Double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry)? Change y to i, then add -ed."
+   ],
+   "solution": [
+    "\"skip\" ends consonant–vowel–consonant, so double the last letter.",
+    "skip → skipped."
+   ],
+   "patterns": {
+    "skiped": "ENG_NO_DOUBLING"
+   }
+  },
+  {
+   "id": "PAST-RRP6",
+   "pool": "retest:regular_past",
+   "skill_id": "regular_past",
+   "type": "text",
+   "gap_targets": [
+    "regular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"dry\".",
+   "answer": "dried",
+   "hints": [
+    "Short verb ending consonant–vowel–consonant (stop)? Double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry)? Change y to i, then add -ed."
+   ],
+   "solution": [
+    "\"dry\" ends with a consonant + y, so change y to i and add -ed.",
+    "dry → dried."
+   ],
+   "patterns": {
+    "dryed": "ENG_Y_TO_I"
+   }
+  },
+  {
+   "id": "PAST-RIP1",
+   "pool": "retest:irregular_past",
+   "skill_id": "irregular_past",
+   "type": "text",
+   "gap_targets": [
+    "irregular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"find\".",
+   "answer": "found",
+   "hints": [
+    "This is an irregular verb: it does not take -ed.",
+    "Say it in a sentence: 'Yesterday I ...'. Which word sounds right?"
+   ],
+   "solution": [
+    "\"find\" is irregular, so it does not add -ed.",
+    "Past tense: found (not finded)."
+   ],
+   "patterns": {
+    "finded": "ENG_OVERREGULARISE"
+   }
+  },
+  {
+   "id": "PAST-RIP2",
+   "pool": "retest:irregular_past",
+   "skill_id": "irregular_past",
+   "type": "text",
+   "gap_targets": [
+    "irregular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"speak\".",
+   "answer": "spoke",
+   "hints": [
+    "This is an irregular verb: it does not take -ed.",
+    "Say it in a sentence: 'Yesterday I ...'. Which word sounds right?"
+   ],
+   "solution": [
+    "\"speak\" is irregular, so it does not add -ed.",
+    "Past tense: spoke (not speaked)."
+   ],
+   "patterns": {
+    "speaked": "ENG_OVERREGULARISE"
+   }
+  },
+  {
+   "id": "PAST-RIP3",
+   "pool": "retest:irregular_past",
+   "skill_id": "irregular_past",
+   "type": "text",
+   "gap_targets": [
+    "irregular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"throw\".",
+   "answer": "threw",
+   "hints": [
+    "This is an irregular verb: it does not take -ed.",
+    "Say it in a sentence: 'Yesterday I ...'. Which word sounds right?"
+   ],
+   "solution": [
+    "\"throw\" is irregular, so it does not add -ed.",
+    "Past tense: threw (not throwed)."
+   ],
+   "patterns": {
+    "throwed": "ENG_OVERREGULARISE"
+   }
+  },
+  {
+   "id": "PAST-RIP4",
+   "pool": "retest:irregular_past",
+   "skill_id": "irregular_past",
+   "type": "text",
+   "gap_targets": [
+    "irregular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"sleep\".",
+   "answer": "slept",
+   "hints": [
+    "This is an irregular verb: it does not take -ed.",
+    "Say it in a sentence: 'Yesterday I ...'. Which word sounds right?"
+   ],
+   "solution": [
+    "\"sleep\" is irregular, so it does not add -ed.",
+    "Past tense: slept (not sleeped)."
+   ],
+   "patterns": {
+    "sleeped": "ENG_OVERREGULARISE"
+   }
+  },
+  {
+   "id": "PAST-RIP5",
+   "pool": "retest:irregular_past",
+   "skill_id": "irregular_past",
+   "type": "text",
+   "gap_targets": [
+    "irregular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"keep\".",
+   "answer": "kept",
+   "hints": [
+    "This is an irregular verb: it does not take -ed.",
+    "Say it in a sentence: 'Yesterday I ...'. Which word sounds right?"
+   ],
+   "solution": [
+    "\"keep\" is irregular, so it does not add -ed.",
+    "Past tense: kept (not keeped)."
+   ],
+   "patterns": {
+    "keeped": "ENG_OVERREGULARISE"
+   }
+  },
+  {
+   "id": "PAST-RIP6",
+   "pool": "retest:irregular_past",
+   "skill_id": "irregular_past",
+   "type": "text",
+   "gap_targets": [
+    "irregular_past"
+   ],
+   "prompt": "Type the past tense of the verb \"feel\".",
+   "answer": "felt",
+   "hints": [
+    "This is an irregular verb: it does not take -ed.",
+    "Say it in a sentence: 'Yesterday I ...'. Which word sounds right?"
+   ],
+   "solution": [
+    "\"feel\" is irregular, so it does not add -ed.",
+    "Past tense: felt (not feeled)."
+   ],
+   "patterns": {
+    "feeled": "ENG_OVERREGULARISE"
+   }
+  }
+ ],
+ "lessons": {
+  "regular_past": {
+   "title": "Regular past tense spelling",
+   "big_idea": "Most verbs add -ed for the past tense, but two spelling rules change the word first: double a final consonant after a short vowel, and change a final consonant + y to i.",
+   "steps": [
+    "Most verbs: just add -ed (walk → walked).",
+    "Short verb ending consonant–vowel–consonant (stop, plan): double the last letter, then add -ed.",
+    "Verb ending consonant + y (cry, study): change y to i, then add -ed.",
+    "Verb ending vowel + y (play): keep the y (played)."
+   ],
+   "sense_check": "Without doubling, 'stoped' would rhyme with 'hoped'. The double letter keeps the vowel short.",
+   "worked_examples": [
+    {
+     "prompt": "Past tense of \"stop\"",
+     "answer": "stopped",
+     "steps": [
+      "s-t-O-P: short vowel then one consonant.",
+      "Double the p: stopp.",
+      "Add -ed: stopped."
+     ]
+    },
+    {
+     "prompt": "Past tense of \"cry\"",
+     "answer": "cried",
+     "steps": [
+      "Ends with consonant r + y.",
+      "Change y to i: cri.",
+      "Add -ed: cried."
+     ]
+    }
+   ]
+  },
+  "irregular_past": {
+   "title": "Irregular past tense verbs",
+   "big_idea": "Some common verbs have their own past form and never take -ed: go → went, buy → bought, eat → ate.",
+   "steps": [
+    "Before adding -ed, ask: is this one of the irregular verbs?",
+    "Many irregular verbs change their vowel (sing → sang, drink → drank).",
+    "Some change completely (go → went, buy → bought).",
+    "Learn them in groups: think/bought/brought/caught/taught all end in -ought or -aught."
+   ],
+   "sense_check": "Nobody says 'I goed to school' in a book or the news. If it sounds like baby talk, it's probably irregular.",
+   "worked_examples": [
+    {
+     "prompt": "Past tense of \"go\"",
+     "answer": "went",
+     "steps": [
+      "'go' is irregular.",
+      "Its past form is 'went'."
+     ]
+    },
+    {
+     "prompt": "Past tense of \"catch\"",
+     "answer": "caught",
+     "steps": [
+      "'catch' is irregular.",
+      "It belongs to the -aught group, like teach → taught.",
+      "caught."
+     ]
+    }
+   ]
+  }
+ }
+}

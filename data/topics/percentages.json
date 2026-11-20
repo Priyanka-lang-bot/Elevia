@@ -1,0 +1,972 @@
+{
+ "skills": [
+  {
+   "id": "percent_meaning",
+   "name": "What a percentage means",
+   "grade": 6,
+   "prerequisites": [
+    "decimal_place_value"
+   ],
+   "description": "Per cent as 'out of 100'; converting percentages and decimals."
+  },
+  {
+   "id": "percent_of_quantity",
+   "name": "Percentage of an amount",
+   "grade": 6,
+   "prerequisites": [
+    "percent_meaning"
+   ],
+   "description": "Finding p% of a quantity."
+  }
+ ],
+ "misconceptions": {
+  "PCT_DECIMAL_SHIFT": {
+   "label": "Moves the decimal point only one place when converting percentages",
+   "gap_skill": "percent_meaning",
+   "explanation": "Writes 7% as 0.7 (or 0.4 as 4%), forgetting that per cent means out of 100."
+  },
+  "PCT_SUBTRACT": {
+   "label": "Subtracts the percentage number from the amount",
+   "gap_skill": "percent_of_quantity",
+   "explanation": "Works out 20% of 50 as 50 − 20 = 30."
+  },
+  "PCT_DIVIDE": {
+   "label": "Divides the amount by the percentage number",
+   "gap_skill": "percent_of_quantity",
+   "explanation": "Works out 20% of 50 as 50 ÷ 20 = 2.5."
+  }
+ },
+ "questions": [
+  {
+   "id": "PCT-DA1",
+   "pool": "diagnostic:percentages:A",
+   "skill_id": "percent_meaning",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_meaning"
+   ],
+   "prompt": "Write 7% as a decimal.",
+   "answer": "0.07",
+   "hints": [
+    "Per cent means 'out of 100'.",
+    "To turn a percentage into a decimal, divide by 100: move the point two places left."
+   ],
+   "solution": [
+    "7% means 7 out of 100.",
+    "7 ÷ 100 = 0.07."
+   ],
+   "patterns": {
+    "0.7": "PCT_DECIMAL_SHIFT"
+   }
+  },
+  {
+   "id": "PCT-DA2",
+   "pool": "diagnostic:percentages:A",
+   "skill_id": "percent_meaning",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_meaning"
+   ],
+   "prompt": "Write 0.4 as a percentage. (Type the number, e.g. 40 for 40%.)",
+   "answer": "40",
+   "hints": [
+    "Multiply by 100 to turn a decimal into a percentage.",
+    "Move the point two places right."
+   ],
+   "solution": [
+    "0.4 × 100 = 40.",
+    "So 0.4 = 40%."
+   ],
+   "patterns": {
+    "4": "PCT_DECIMAL_SHIFT"
+   },
+   "percent": true
+  },
+  {
+   "id": "PCT-DA3",
+   "pool": "diagnostic:percentages:A",
+   "skill_id": "percent_of_quantity",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_of_quantity"
+   ],
+   "prompt": "What is 20% of 50?",
+   "answer": "10",
+   "hints": [
+    "Find 10% or 1% first, then build up.",
+    "p% of n means (p ÷ 100) × n."
+   ],
+   "solution": [
+    "20% = 20/100.",
+    "20/100 × 50 = 1000/100 = 10."
+   ],
+   "patterns": {
+    "30": "PCT_SUBTRACT",
+    "2.5": "PCT_DIVIDE"
+   }
+  },
+  {
+   "id": "PCT-DA4",
+   "pool": "diagnostic:percentages:A",
+   "skill_id": "percent_of_quantity",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_of_quantity"
+   ],
+   "prompt": "What is 25% of 80?",
+   "answer": "20",
+   "hints": [
+    "Find 10% or 1% first, then build up.",
+    "p% of n means (p ÷ 100) × n."
+   ],
+   "solution": [
+    "25% = 25/100.",
+    "25/100 × 80 = 2000/100 = 20."
+   ],
+   "patterns": {
+    "55": "PCT_SUBTRACT",
+    "3.2": "PCT_DIVIDE"
+   }
+  },
+  {
+   "id": "PCT-DA5",
+   "pool": "diagnostic:percentages:A",
+   "skill_id": "percent_of_quantity",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_of_quantity"
+   ],
+   "prompt": "What is 10% of 70?",
+   "answer": "7",
+   "hints": [
+    "Find 10% or 1% first, then build up.",
+    "p% of n means (p ÷ 100) × n."
+   ],
+   "solution": [
+    "10% = 10/100.",
+    "10/100 × 70 = 700/100 = 7."
+   ],
+   "patterns": {
+    "60": "PCT_SUBTRACT"
+   }
+  },
+  {
+   "id": "PCT-DB1",
+   "pool": "diagnostic:percentages:B",
+   "skill_id": "percent_meaning",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_meaning"
+   ],
+   "prompt": "Write 3% as a decimal.",
+   "answer": "0.03",
+   "hints": [
+    "Per cent means 'out of 100'.",
+    "To turn a percentage into a decimal, divide by 100: move the point two places left."
+   ],
+   "solution": [
+    "3% means 3 out of 100.",
+    "3 ÷ 100 = 0.03."
+   ],
+   "patterns": {
+    "0.3": "PCT_DECIMAL_SHIFT"
+   }
+  },
+  {
+   "id": "PCT-DB2",
+   "pool": "diagnostic:percentages:B",
+   "skill_id": "percent_meaning",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_meaning"
+   ],
+   "prompt": "Write 0.6 as a percentage. (Type the number, e.g. 40 for 40%.)",
+   "answer": "60",
+   "hints": [
+    "Multiply by 100 to turn a decimal into a percentage.",
+    "Move the point two places right."
+   ],
+   "solution": [
+    "0.6 × 100 = 60.",
+    "So 0.6 = 60%."
+   ],
+   "patterns": {
+    "6": "PCT_DECIMAL_SHIFT"
+   },
+   "percent": true
+  },
+  {
+   "id": "PCT-DB3",
+   "pool": "diagnostic:percentages:B",
+   "skill_id": "percent_of_quantity",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_of_quantity"
+   ],
+   "prompt": "What is 30% of 60?",
+   "answer": "18",
+   "hints": [
+    "Find 10% or 1% first, then build up.",
+    "p% of n means (p ÷ 100) × n."
+   ],
+   "solution": [
+    "30% = 30/100.",
+    "30/100 × 60 = 1800/100 = 18."
+   ],
+   "patterns": {
+    "30": "PCT_SUBTRACT",
+    "2": "PCT_DIVIDE"
+   }
+  },
+  {
+   "id": "PCT-DB4",
+   "pool": "diagnostic:percentages:B",
+   "skill_id": "percent_of_quantity",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_of_quantity"
+   ],
+   "prompt": "What is 75% of 40?",
+   "answer": "30",
+   "hints": [
+    "Find 10% or 1% first, then build up.",
+    "p% of n means (p ÷ 100) × n."
+   ],
+   "solution": [
+    "75% = 75/100.",
+    "75/100 × 40 = 3000/100 = 30."
+   ],
+   "patterns": {
+    "-35": "PCT_SUBTRACT",
+    "8/15": "PCT_DIVIDE"
+   }
+  },
+  {
+   "id": "PCT-DB5",
+   "pool": "diagnostic:percentages:B",
+   "skill_id": "percent_of_quantity",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_of_quantity"
+   ],
+   "prompt": "What is 15% of 60?",
+   "answer": "9",
+   "hints": [
+    "Find 10% or 1% first, then build up.",
+    "p% of n means (p ÷ 100) × n."
+   ],
+   "solution": [
+    "15% = 15/100.",
+    "15/100 × 60 = 900/100 = 9."
+   ],
+   "patterns": {
+    "45": "PCT_SUBTRACT",
+    "4": "PCT_DIVIDE"
+   }
+  },
+  {
+   "id": "PCT-VPM1",
+   "pool": "verification:percent_meaning",
+   "skill_id": "percent_meaning",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_meaning"
+   ],
+   "prompt": "Write 9% as a decimal.",
+   "answer": "0.09",
+   "hints": [
+    "Per cent means 'out of 100'.",
+    "To turn a percentage into a decimal, divide by 100: move the point two places left."
+   ],
+   "solution": [
+    "9% means 9 out of 100.",
+    "9 ÷ 100 = 0.09."
+   ],
+   "patterns": {
+    "0.9": "PCT_DECIMAL_SHIFT"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "PCT-VPM2",
+   "pool": "verification:percent_meaning",
+   "skill_id": "percent_meaning",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_meaning"
+   ],
+   "prompt": "Write 5% as a decimal.",
+   "answer": "0.05",
+   "hints": [
+    "Per cent means 'out of 100'.",
+    "To turn a percentage into a decimal, divide by 100: move the point two places left."
+   ],
+   "solution": [
+    "5% means 5 out of 100.",
+    "5 ÷ 100 = 0.05."
+   ],
+   "patterns": {
+    "0.5": "PCT_DECIMAL_SHIFT"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "PCT-VPM3",
+   "pool": "verification:percent_meaning",
+   "skill_id": "percent_meaning",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_meaning"
+   ],
+   "prompt": "Write 0.3 as a percentage. (Type the number, e.g. 40 for 40%.)",
+   "answer": "30",
+   "hints": [
+    "Multiply by 100 to turn a decimal into a percentage.",
+    "Move the point two places right."
+   ],
+   "solution": [
+    "0.3 × 100 = 30.",
+    "So 0.3 = 30%."
+   ],
+   "patterns": {
+    "3": "PCT_DECIMAL_SHIFT"
+   },
+   "check_role": "similar_concept",
+   "percent": true
+  },
+  {
+   "id": "PCT-VPM4",
+   "pool": "verification:percent_meaning",
+   "skill_id": "percent_meaning",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_meaning"
+   ],
+   "prompt": "Write 0.8 as a percentage. (Type the number, e.g. 40 for 40%.)",
+   "answer": "80",
+   "hints": [
+    "Multiply by 100 to turn a decimal into a percentage.",
+    "Move the point two places right."
+   ],
+   "solution": [
+    "0.8 × 100 = 80.",
+    "So 0.8 = 80%."
+   ],
+   "patterns": {
+    "8": "PCT_DECIMAL_SHIFT"
+   },
+   "check_role": "similar_concept",
+   "percent": true
+  },
+  {
+   "id": "PCT-VPOQ1",
+   "pool": "verification:percent_of_quantity",
+   "skill_id": "percent_of_quantity",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_of_quantity"
+   ],
+   "prompt": "What is 40% of 25?",
+   "answer": "10",
+   "hints": [
+    "Find 10% or 1% first, then build up.",
+    "p% of n means (p ÷ 100) × n."
+   ],
+   "solution": [
+    "40% = 40/100.",
+    "40/100 × 25 = 1000/100 = 10."
+   ],
+   "patterns": {
+    "-15": "PCT_SUBTRACT",
+    "0.625": "PCT_DIVIDE"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "PCT-VPOQ2",
+   "pool": "verification:percent_of_quantity",
+   "skill_id": "percent_of_quantity",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_of_quantity"
+   ],
+   "prompt": "What is 20% of 35?",
+   "answer": "7",
+   "hints": [
+    "Find 10% or 1% first, then build up.",
+    "p% of n means (p ÷ 100) × n."
+   ],
+   "solution": [
+    "20% = 20/100.",
+    "20/100 × 35 = 700/100 = 7."
+   ],
+   "patterns": {
+    "15": "PCT_SUBTRACT",
+    "1.75": "PCT_DIVIDE"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "PCT-VPOQ3",
+   "pool": "verification:percent_of_quantity",
+   "skill_id": "percent_of_quantity",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_of_quantity"
+   ],
+   "prompt": "What is 50% of 36?",
+   "answer": "18",
+   "hints": [
+    "Find 10% or 1% first, then build up.",
+    "p% of n means (p ÷ 100) × n."
+   ],
+   "solution": [
+    "50% = 50/100.",
+    "50/100 × 36 = 1800/100 = 18."
+   ],
+   "patterns": {
+    "-14": "PCT_SUBTRACT",
+    "0.72": "PCT_DIVIDE"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "PCT-VPOQ4",
+   "pool": "verification:percent_of_quantity",
+   "skill_id": "percent_of_quantity",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_of_quantity"
+   ],
+   "prompt": "What is 30% of 90?",
+   "answer": "27",
+   "hints": [
+    "Find 10% or 1% first, then build up.",
+    "p% of n means (p ÷ 100) × n."
+   ],
+   "solution": [
+    "30% = 30/100.",
+    "30/100 × 90 = 2700/100 = 27."
+   ],
+   "patterns": {
+    "60": "PCT_SUBTRACT",
+    "3": "PCT_DIVIDE"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "PCT-PPM1",
+   "pool": "practice:percent_meaning",
+   "skill_id": "percent_meaning",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_meaning"
+   ],
+   "prompt": "Write 4% as a decimal.",
+   "answer": "0.04",
+   "hints": [
+    "Per cent means 'out of 100'.",
+    "To turn a percentage into a decimal, divide by 100: move the point two places left."
+   ],
+   "solution": [
+    "4% means 4 out of 100.",
+    "4 ÷ 100 = 0.04."
+   ],
+   "patterns": {
+    "0.4": "PCT_DECIMAL_SHIFT"
+   }
+  },
+  {
+   "id": "PCT-PPM2",
+   "pool": "practice:percent_meaning",
+   "skill_id": "percent_meaning",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_meaning"
+   ],
+   "prompt": "Write 8% as a decimal.",
+   "answer": "0.08",
+   "hints": [
+    "Per cent means 'out of 100'.",
+    "To turn a percentage into a decimal, divide by 100: move the point two places left."
+   ],
+   "solution": [
+    "8% means 8 out of 100.",
+    "8 ÷ 100 = 0.08."
+   ],
+   "patterns": {
+    "0.8": "PCT_DECIMAL_SHIFT"
+   }
+  },
+  {
+   "id": "PCT-PPM3",
+   "pool": "practice:percent_meaning",
+   "skill_id": "percent_meaning",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_meaning"
+   ],
+   "prompt": "Write 0.2 as a percentage. (Type the number, e.g. 40 for 40%.)",
+   "answer": "20",
+   "hints": [
+    "Multiply by 100 to turn a decimal into a percentage.",
+    "Move the point two places right."
+   ],
+   "solution": [
+    "0.2 × 100 = 20.",
+    "So 0.2 = 20%."
+   ],
+   "patterns": {
+    "2": "PCT_DECIMAL_SHIFT"
+   },
+   "percent": true
+  },
+  {
+   "id": "PCT-PPM4",
+   "pool": "practice:percent_meaning",
+   "skill_id": "percent_meaning",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_meaning"
+   ],
+   "prompt": "Write 0.9 as a percentage. (Type the number, e.g. 40 for 40%.)",
+   "answer": "90",
+   "hints": [
+    "Multiply by 100 to turn a decimal into a percentage.",
+    "Move the point two places right."
+   ],
+   "solution": [
+    "0.9 × 100 = 90.",
+    "So 0.9 = 90%."
+   ],
+   "patterns": {
+    "9": "PCT_DECIMAL_SHIFT"
+   },
+   "percent": true
+  },
+  {
+   "id": "PCT-PPOQ1",
+   "pool": "practice:percent_of_quantity",
+   "skill_id": "percent_of_quantity",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_of_quantity"
+   ],
+   "prompt": "What is 10% of 90?",
+   "answer": "9",
+   "hints": [
+    "Find 10% or 1% first, then build up.",
+    "p% of n means (p ÷ 100) × n."
+   ],
+   "solution": [
+    "10% = 10/100.",
+    "10/100 × 90 = 900/100 = 9."
+   ],
+   "patterns": {
+    "80": "PCT_SUBTRACT"
+   }
+  },
+  {
+   "id": "PCT-PPOQ2",
+   "pool": "practice:percent_of_quantity",
+   "skill_id": "percent_of_quantity",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_of_quantity"
+   ],
+   "prompt": "What is 25% of 40?",
+   "answer": "10",
+   "hints": [
+    "Find 10% or 1% first, then build up.",
+    "p% of n means (p ÷ 100) × n."
+   ],
+   "solution": [
+    "25% = 25/100.",
+    "25/100 × 40 = 1000/100 = 10."
+   ],
+   "patterns": {
+    "15": "PCT_SUBTRACT",
+    "1.6": "PCT_DIVIDE"
+   }
+  },
+  {
+   "id": "PCT-PPOQ3",
+   "pool": "practice:percent_of_quantity",
+   "skill_id": "percent_of_quantity",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_of_quantity"
+   ],
+   "prompt": "What is 60% of 30?",
+   "answer": "18",
+   "hints": [
+    "Find 10% or 1% first, then build up.",
+    "p% of n means (p ÷ 100) × n."
+   ],
+   "solution": [
+    "60% = 60/100.",
+    "60/100 × 30 = 1800/100 = 18."
+   ],
+   "patterns": {
+    "-30": "PCT_SUBTRACT",
+    "0.5": "PCT_DIVIDE"
+   }
+  },
+  {
+   "id": "PCT-PPOQ4",
+   "pool": "practice:percent_of_quantity",
+   "skill_id": "percent_of_quantity",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_of_quantity"
+   ],
+   "prompt": "What is 5% of 80?",
+   "answer": "4",
+   "hints": [
+    "Find 10% or 1% first, then build up.",
+    "p% of n means (p ÷ 100) × n."
+   ],
+   "solution": [
+    "5% = 5/100.",
+    "5/100 × 80 = 400/100 = 4."
+   ],
+   "patterns": {
+    "75": "PCT_SUBTRACT",
+    "16": "PCT_DIVIDE"
+   }
+  },
+  {
+   "id": "PCT-RPM1",
+   "pool": "retest:percent_meaning",
+   "skill_id": "percent_meaning",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_meaning"
+   ],
+   "prompt": "Write 2% as a decimal.",
+   "answer": "0.02",
+   "hints": [
+    "Per cent means 'out of 100'.",
+    "To turn a percentage into a decimal, divide by 100: move the point two places left."
+   ],
+   "solution": [
+    "2% means 2 out of 100.",
+    "2 ÷ 100 = 0.02."
+   ],
+   "patterns": {
+    "0.2": "PCT_DECIMAL_SHIFT"
+   }
+  },
+  {
+   "id": "PCT-RPM2",
+   "pool": "retest:percent_meaning",
+   "skill_id": "percent_meaning",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_meaning"
+   ],
+   "prompt": "Write 6% as a decimal.",
+   "answer": "0.06",
+   "hints": [
+    "Per cent means 'out of 100'.",
+    "To turn a percentage into a decimal, divide by 100: move the point two places left."
+   ],
+   "solution": [
+    "6% means 6 out of 100.",
+    "6 ÷ 100 = 0.06."
+   ],
+   "patterns": {
+    "0.6": "PCT_DECIMAL_SHIFT"
+   }
+  },
+  {
+   "id": "PCT-RPM3",
+   "pool": "retest:percent_meaning",
+   "skill_id": "percent_meaning",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_meaning"
+   ],
+   "prompt": "Write 1% as a decimal.",
+   "answer": "0.01",
+   "hints": [
+    "Per cent means 'out of 100'.",
+    "To turn a percentage into a decimal, divide by 100: move the point two places left."
+   ],
+   "solution": [
+    "1% means 1 out of 100.",
+    "1 ÷ 100 = 0.01."
+   ],
+   "patterns": {
+    "0.1": "PCT_DECIMAL_SHIFT"
+   }
+  },
+  {
+   "id": "PCT-RPM4",
+   "pool": "retest:percent_meaning",
+   "skill_id": "percent_meaning",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_meaning"
+   ],
+   "prompt": "Write 0.7 as a percentage. (Type the number, e.g. 40 for 40%.)",
+   "answer": "70",
+   "hints": [
+    "Multiply by 100 to turn a decimal into a percentage.",
+    "Move the point two places right."
+   ],
+   "solution": [
+    "0.7 × 100 = 70.",
+    "So 0.7 = 70%."
+   ],
+   "patterns": {
+    "7": "PCT_DECIMAL_SHIFT"
+   },
+   "percent": true
+  },
+  {
+   "id": "PCT-RPM5",
+   "pool": "retest:percent_meaning",
+   "skill_id": "percent_meaning",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_meaning"
+   ],
+   "prompt": "Write 0.5 as a percentage. (Type the number, e.g. 40 for 40%.)",
+   "answer": "50",
+   "hints": [
+    "Multiply by 100 to turn a decimal into a percentage.",
+    "Move the point two places right."
+   ],
+   "solution": [
+    "0.5 × 100 = 50.",
+    "So 0.5 = 50%."
+   ],
+   "patterns": {
+    "5": "PCT_DECIMAL_SHIFT"
+   },
+   "percent": true
+  },
+  {
+   "id": "PCT-RPM6",
+   "pool": "retest:percent_meaning",
+   "skill_id": "percent_meaning",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_meaning"
+   ],
+   "prompt": "Write 0.1 as a percentage. (Type the number, e.g. 40 for 40%.)",
+   "answer": "10",
+   "hints": [
+    "Multiply by 100 to turn a decimal into a percentage.",
+    "Move the point two places right."
+   ],
+   "solution": [
+    "0.1 × 100 = 10.",
+    "So 0.1 = 10%."
+   ],
+   "patterns": {
+    "1": "PCT_DECIMAL_SHIFT"
+   },
+   "percent": true
+  },
+  {
+   "id": "PCT-RPOQ1",
+   "pool": "retest:percent_of_quantity",
+   "skill_id": "percent_of_quantity",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_of_quantity"
+   ],
+   "prompt": "What is 20% of 45?",
+   "answer": "9",
+   "hints": [
+    "Find 10% or 1% first, then build up.",
+    "p% of n means (p ÷ 100) × n."
+   ],
+   "solution": [
+    "20% = 20/100.",
+    "20/100 × 45 = 900/100 = 9."
+   ],
+   "patterns": {
+    "25": "PCT_SUBTRACT",
+    "2.25": "PCT_DIVIDE"
+   }
+  },
+  {
+   "id": "PCT-RPOQ2",
+   "pool": "retest:percent_of_quantity",
+   "skill_id": "percent_of_quantity",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_of_quantity"
+   ],
+   "prompt": "What is 40% of 15?",
+   "answer": "6",
+   "hints": [
+    "Find 10% or 1% first, then build up.",
+    "p% of n means (p ÷ 100) × n."
+   ],
+   "solution": [
+    "40% = 40/100.",
+    "40/100 × 15 = 600/100 = 6."
+   ],
+   "patterns": {
+    "-25": "PCT_SUBTRACT",
+    "0.375": "PCT_DIVIDE"
+   }
+  },
+  {
+   "id": "PCT-RPOQ3",
+   "pool": "retest:percent_of_quantity",
+   "skill_id": "percent_of_quantity",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_of_quantity"
+   ],
+   "prompt": "What is 75% of 12?",
+   "answer": "9",
+   "hints": [
+    "Find 10% or 1% first, then build up.",
+    "p% of n means (p ÷ 100) × n."
+   ],
+   "solution": [
+    "75% = 75/100.",
+    "75/100 × 12 = 900/100 = 9."
+   ],
+   "patterns": {
+    "-63": "PCT_SUBTRACT",
+    "0.16": "PCT_DIVIDE"
+   }
+  },
+  {
+   "id": "PCT-RPOQ4",
+   "pool": "retest:percent_of_quantity",
+   "skill_id": "percent_of_quantity",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_of_quantity"
+   ],
+   "prompt": "What is 30% of 50?",
+   "answer": "15",
+   "hints": [
+    "Find 10% or 1% first, then build up.",
+    "p% of n means (p ÷ 100) × n."
+   ],
+   "solution": [
+    "30% = 30/100.",
+    "30/100 × 50 = 1500/100 = 15."
+   ],
+   "patterns": {
+    "20": "PCT_SUBTRACT",
+    "5/3": "PCT_DIVIDE"
+   }
+  },
+  {
+   "id": "PCT-RPOQ5",
+   "pool": "retest:percent_of_quantity",
+   "skill_id": "percent_of_quantity",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_of_quantity"
+   ],
+   "prompt": "What is 25% of 60?",
+   "answer": "15",
+   "hints": [
+    "Find 10% or 1% first, then build up.",
+    "p% of n means (p ÷ 100) × n."
+   ],
+   "solution": [
+    "25% = 25/100.",
+    "25/100 × 60 = 1500/100 = 15."
+   ],
+   "patterns": {
+    "35": "PCT_SUBTRACT",
+    "2.4": "PCT_DIVIDE"
+   }
+  },
+  {
+   "id": "PCT-RPOQ6",
+   "pool": "retest:percent_of_quantity",
+   "skill_id": "percent_of_quantity",
+   "type": "numeric",
+   "gap_targets": [
+    "percent_of_quantity"
+   ],
+   "prompt": "What is 60% of 45?",
+   "answer": "27",
+   "hints": [
+    "Find 10% or 1% first, then build up.",
+    "p% of n means (p ÷ 100) × n."
+   ],
+   "solution": [
+    "60% = 60/100.",
+    "60/100 × 45 = 2700/100 = 27."
+   ],
+   "patterns": {
+    "-15": "PCT_SUBTRACT",
+    "0.75": "PCT_DIVIDE"
+   }
+  }
+ ],
+ "lessons": {
+  "percent_meaning": {
+   "title": "What a percentage means",
+   "big_idea": "Per cent means 'out of 100'. 7% is 7 out of 100, which is 0.07, not 0.7.",
+   "steps": [
+    "Read p% as p out of 100, or p/100.",
+    "To change a percentage to a decimal, divide by 100: move the decimal point two places left.",
+    "7% → 7.0 → 0.07. Add a zero if you run out of digits.",
+    "To change a decimal to a percentage, multiply by 100: 0.4 → 40%."
+   ],
+   "sense_check": "0.7 is more than half, but 7% is a tiny part of the whole. They can't be equal.",
+   "worked_examples": [
+    {
+     "prompt": "Write 7% as a decimal.",
+     "answer": "0.07",
+     "steps": [
+      "7% = 7/100.",
+      "7 ÷ 100 = 0.07."
+     ]
+    },
+    {
+     "prompt": "Write 0.4 as a percentage.",
+     "answer": "40",
+     "steps": [
+      "0.4 × 100 = 40.",
+      "0.4 = 40%."
+     ]
+    }
+   ]
+  },
+  "percent_of_quantity": {
+   "title": "Finding a percentage of an amount",
+   "big_idea": "p% of an amount means p hundredths of it: multiply the amount by p and divide by 100.",
+   "steps": [
+    "Write the percentage as a fraction over 100.",
+    "Multiply that fraction by the amount.",
+    "A shortcut: 10% is the amount ÷ 10, then scale up (20% is double 10%).",
+    "Check the size: 20% is less than half, so the answer must be less than half the amount."
+   ],
+   "sense_check": "20% of 50 is a small part of 50. 30 is more than half of 50, so it can't be 20% of it.",
+   "worked_examples": [
+    {
+     "prompt": "What is 20% of 50?",
+     "answer": "10",
+     "steps": [
+      "10% of 50 = 5.",
+      "20% = 2 × 10%, so 2 × 5 = 10."
+     ]
+    },
+    {
+     "prompt": "What is 25% of 80?",
+     "answer": "20",
+     "steps": [
+      "25% = 1/4.",
+      "80 ÷ 4 = 20."
+     ]
+    }
+   ]
+  }
+ }
+}
