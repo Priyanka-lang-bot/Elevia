@@ -49,7 +49,10 @@ def get_settings() -> Settings:
         "openai": "https://api.openai.com/v1",
     }.get(provider, "")
     return Settings(
-        db_path=os.getenv("ELEVIA_DB_PATH", str(ROOT / "elevia.db")),
+        # On Vercel the code directory is read-only; without Turso, use a scratch
+        # file in /tmp (ephemeral, per instance) so previews still start.
+        db_path=os.getenv("ELEVIA_DB_PATH") or (
+            "/tmp/elevia.db" if os.getenv("VERCEL") else str(ROOT / "elevia.db")),
         llm_provider=provider,
         llm_api_key=os.getenv("LLM_API_KEY", "").strip(),
         llm_model=os.getenv("LLM_MODEL", default_model).strip(),
