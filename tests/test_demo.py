@@ -137,3 +137,26 @@ def test_demo_story_is_realistic_and_consistent_across_dashboards(client, demo_o
     assert client.get(f"/progress/students/{aid}", headers=H(tok["parent"])).status_code == 404
     # history is spread over days, not all "now"
     assert count("SELECT COUNT(DISTINCT substr(created_at,1,10)) FROM cases") >= 6
+
+
+def test_next_step_queue_and_intervention_history(client, demo_on):
+    demo_script.seed()
+    tok = {s: demo_login(client, s).cookies.get("elevia_session") for s in ("riya", "arjun", "fresh", "teacher")}
+    riya = client.get("/learn/dashboard", headers=H(tok["riya"])).json()["next_step"]
+    assert riya["kind"] == "learn" and riya["topic_id"] == "past_tense"          # lesson in progress first
+    arjun = client.get("/learn/dashboard", headers=H(tok["arjun"])).json()["next_step"]
+    assert arjun["kind"] == "verify" and arjun["topic_id"] == "linear_equations"  # unfinished double-check
+    fresh = client.get("/learn/dashboard", headers=H(tok["fresh"])).json()
+    assert fresh["needs_grade"] is True and fresh["next_step"]["kind"] == "start"
+    t = client.get("/progress/students", headers=H(tok["teacher"])).json()
+    assert len(t["queue"]) == 1 and t["queue"][0]["student"] == "Arjun Patel" and t["queue"][0]["topic"] == "Fractions"
+    assert "mixed" in t["queue"][0]["reason"]
+    assert t["interventions"][0]["action"] == "note" and "number line" in t["interventions"][0]["reason"]
+    # once the retest unlocks, it becomes the next step
+    with __import__("backend.db", fromlist=["x"]).transaction() as c:
+        c.execute("UPDATE assessments SET available_at='2000-01-01T00:00:00+00:00' WHERE kind='retest' AND status='open'")
+    riya = client.get("/learn/dashboard", headers=H(tok["riya"])).json()["next_step"]
+    assert riya["kind"] == "retest" and riya["topic_id"] == "loops"
+    # parents get no queue
+    ptok = demo_login(client, "parent").cookies.get("elevia_session")
+    assert client.get("/progress/students", headers=H(ptok)).json()["queue"] == []

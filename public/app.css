@@ -167,3 +167,12 @@ h1[tabindex="-1"]:focus{outline:none}
 .review{border:2px dashed #9fb0d6;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;background:#f8f9ff}
 .review h3{margin:0}.review textarea{border:1.5px solid #3a3f4a;border-radius:10px;padding:10px 12px;font:inherit;font-size:15px;resize:vertical}
 @media (max-width:760px){.two{grid-template-columns:1fr}.hello{padding-left:24px;background-image:none}.facts{grid-template-columns:1fr}.stat{min-width:0;flex:1}}
+.next-step{border-left:8px solid var(--navy);background:linear-gradient(90deg,#eef2ff,#fffefb 60%)}
+.next-step h2{margin:0}
+.queue{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.queue-item{display:flex;align-items:center;gap:12px;background:#fff8f4;border:1.5px solid #f0c9b4;border-left:6px solid #d98a3d;border-radius:10px;padding:12px 14px}
+.queue-item .grow{display:flex;flex-direction:column;gap:2px;flex:1}
+.kids{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.kid{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.kid-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.kid .btn{align-self:flex-start}

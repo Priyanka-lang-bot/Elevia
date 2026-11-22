@@ -397,6 +397,39 @@ NEXT_LABEL = {"not_started": "Start the check-in", "checkin": "Continue the chec
               "teacher_wait": "See status", "done": "Start a new check-in"}
 
 
+def _next_step(cont, upcoming, recommended, subjects) -> dict:
+    """One clear recommendation, most useful first."""
+    ready = [r for r in upcoming if r["unlocked"]]
+    if ready:
+        r = ready[0]
+        return {"kind": "retest", "topic_id": r["topic_id"], "title": f"Take your {r['topic']} retest",
+                "text": "It's unlocked. Three new questions: get 2 right to close the gap.", "action": "Start retest"}
+    order = ["retest", "verify", "learn", "checkin"]
+    for phase in order:
+        c = next((x for x in cont if x["phase"] == phase), None)
+        if c:
+            text = {"retest": "You started a retest. Finish the last questions.",
+                    "verify": "ELEVIA noticed a possible gap and wants to check it with two new questions.",
+                    "learn": f"Your lesson{' on ' + c['skill'].lower() if c.get('skill') else ''} is ready, with worked examples and practice.",
+                    "checkin": "Finish your check-in so ELEVIA can see what to practise."}[phase]
+            return {"kind": phase, "topic_id": c["topic_id"], "title": f"{c['next_label']}: {c['topic']}",
+                    "text": text, "action": c["next_label"]}
+    if upcoming:
+        r = upcoming[0]
+        return {"kind": "wait", "topic_id": r["topic_id"], "title": f"Your {r['topic']} retest is booked",
+                "text": "It unlocks after a short break. Meanwhile, try a new topic.", "action": "See retest",
+                "available_at": r["available_at"]}
+    if recommended:
+        t = recommended[0]
+        return {"kind": "start", "topic_id": t["id"], "title": f"Start {t['name']}",
+                "text": "Recommended for your grade. It starts with a 5-question check-in.", "action": "Start the check-in"}
+    first = next((t for s in subjects for t in s["topics"] if t["phase"] in ("not_started", "done")), None)
+    if first:
+        return {"kind": "start", "topic_id": first["id"], "title": f"Try {first['name']}",
+                "text": "Pick any topic to start a check-in.", "action": "Start the check-in"}
+    return {"kind": "none", "title": "You're all caught up", "text": "Waiting on your teacher for one topic.", "action": None}
+
+
 def build_dashboard(conn, user: dict) -> dict:
     student = _linked_student(conn, user)
     cur = curriculum()
@@ -472,6 +505,7 @@ def build_dashboard(conn, user: dict) -> dict:
     for m in mastery.values():
         counts[m["status"]] = counts.get(m["status"], 0) + 1
     recommended = [t for s in subjects for t in s["topics"] if t["recommended"] and t["phase"] == "not_started"][:4]
+    out["next_step"] = _next_step(cont, upcoming, recommended, subjects)
     out.update(phase="dashboard" if student else "welcome", subjects=subjects, continue_learning=cont,
                upcoming_retests=upcoming, open_gaps=open_gaps, history=history,
                mastery_counts={MASTERY_LABELS[k]: v for k, v in counts.items() if k != "not_assessed"},

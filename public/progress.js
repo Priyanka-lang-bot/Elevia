@@ -5,33 +5,67 @@
 const STAGE_KIND = { diagnostic: "wait", verification: "wait", learning: "now", retest_pending: "wait", retest: "now",
   teacher_review: "bad", completed: "ok", closed: "ok" };
 
-async function progressPanel(me) {
+const ACTION_LABEL = { confirm_gap: "Confirmed the gap", reject_gap: "Rejected the gap", change_focus: "Changed the focus", note: "Added a note" };
+
+function childSummary(s) {
+  if (!s.started) return "Hasn't started any topic yet.";
+  const parts = [`Has worked on ${s.topics_started} topic${s.topics_started === 1 ? "" : "s"} and mastered ${s.skills_mastered} skill${s.skills_mastered === 1 ? "" : "s"} (a skill counts as mastered only after passing a retest on new questions).`];
+  if (s.active.length) parts.push("Right now: " + s.active.map((a) => `${a.topic} (${a.stage_label.toLowerCase()})`).join(", ") + ".");
+  if (s.confirmed_gaps) parts.push(`${s.confirmed_gaps} confirmed gap${s.confirmed_gaps === 1 ? " is" : "s are"} being worked on.`);
+  if (s.needs_review) parts.push("One topic is waiting for the teacher's decision.");
+  return parts.join(" ");
+}
+
+async function progressPanels(me) {
   let data;
   try { data = await api("GET", "/progress/students"); }
-  catch (e) { return panel("Students' learning", el("p", { class: "alert bad", text: e.detail })); }
+  catch (e) { return [panel("Students' learning", el("p", { class: "alert bad", text: e.detail }))]; }
   const teacher = me.user.role === "teacher";
   const head = teacher ? "Students' learning" : me.user.role === "parent" ? "Your children's learning" : "Learning shared with you";
   if (!data.groups.length) {
-    return panel(head, el("p", { class: "hint", text: teacher
+    return [panel(head, el("p", { class: "hint", text: teacher
       ? "No approved students yet. Students appear here after you approve them for your class."
-      : "Nothing to show yet. Progress appears once your child starts learning and you've allowed 'See progress and skills'." }));
+      : "Nothing to show yet. Progress appears once your child starts learning and you've allowed 'See progress and skills'." }))];
   }
-  return panel(head, ...data.groups.map((g) => el("div", { class: "pgroup" },
-    el("h3", { text: g.label }),
+  const out = [];
+  if (teacher) {
+    out.push(panel("Review queue",
+      data.queue.length ? el("ul", { class: "queue" }, data.queue.map((q) => el("li", { class: "queue-item" },
+        el("div", { class: "grow" }, el("strong", { text: `${q.student} · ${q.topic}` }),
+          el("span", { class: "hint", text: (q.skill ? `${q.skill}${q.suspected ? ` (suspected: ${q.suspected})` : ""} · ` : "") + q.reason }),
+          el("span", { class: "hint", text: "Waiting since " + fmt(q.since) })),
+        el("a", { class: "btn small main", href: `#/progress/${q.user_id}`, text: "Review" }))))
+        : el("p", { class: "hint", text: "Nothing waiting. Cases appear here when ELEVIA isn't sure and needs your decision." })));
+  }
+  out.push(panel(head, ...data.groups.map((g) => el("div", { class: "pgroup" },
+    teacher || data.groups.length > 1 ? el("h3", { text: g.label }) : null,
     g.insights ? el("div", { class: "insights" },
       el("span", { class: "chip", text: `${g.insights.started}/${g.insights.students} students started` }),
       el("span", { class: "chip" + (g.insights.needs_review ? " warn" : ""), text: `${g.insights.needs_review} need your review` }),
-      g.insights.common_gaps.length ? el("span", { class: "hint", text: "Most common verified gaps: " + g.insights.common_gaps.map((c) => `${c.label} (${c.students})`).join("; ") })
-        : el("span", { class: "hint", text: "No verified gaps in this class yet." })) : null,
-    el("div", { class: "table-wrap" }, el("table", { class: "ptable" },
-      el("thead", {}, el("tr", {}, ["Student", "Now working on", "Verified gaps", "Mastered", "Answers", ""].map((h) => el("th", { scope: "col", text: h })))),
+      g.insights.common_gaps.length ? el("span", { class: "hint", text: "Most common confirmed misconceptions: " + g.insights.common_gaps.map((c) => `${c.label} (${c.students})`).join("; ") })
+        : el("span", { class: "hint", text: "No confirmed misconceptions in this class yet." })) : null,
+    teacher ? el("div", { class: "table-wrap" }, el("table", { class: "ptable" },
+      el("thead", {}, el("tr", {}, ["Student", "Now working on", "Confirmed gaps", "Mastered", "Answers right", ""].map((h) => el("th", { scope: "col", text: h })))),
       el("tbody", {}, g.students.map((s) => el("tr", {},
         el("th", { scope: "row" }, s.name, s.needs_review ? pill("needs review", "bad") : null),
         el("td", { text: s.started ? (s.active.map((a) => `${a.topic}: ${a.stage_label}`).join("; ") || "Nothing in progress") : "Not started yet" }),
         el("td", { text: String(s.confirmed_gaps) }),
         el("td", { text: String(s.skills_mastered) }),
         el("td", { text: s.answers ? `${s.correct}/${s.answers}` : "0" }),
-        el("td", {}, el("a", { class: "btn small", href: `#/progress/${s.user_id}`, text: "Open" }))))))))));
+        el("td", {}, el("a", { class: "btn small", href: `#/progress/${s.user_id}`, text: "Open" })))))))
+      : el("ul", { class: "kids" }, g.students.map((s) => el("li", { class: "kid" },
+        el("div", { class: "kid-head" }, el("strong", { text: s.name }), s.last_activity ? el("span", { class: "hint", text: "Last active " + fmt(s.last_activity) }) : null),
+        el("p", { style: "margin:0;line-height:1.55", text: childSummary(s) }),
+        el("div", { class: "stats" }, stat(s.topics_started, "Topics"), stat(s.skills_mastered, "Skills mastered"), stat(s.confirmed_gaps, "Gaps being worked on")),
+        el("a", { class: "btn small", href: `#/progress/${s.user_id}`, text: "See details" }))))))));
+  if (teacher) {
+    out.push(panel("Intervention history",
+      data.interventions.length ? el("ul", { class: "list" }, data.interventions.map((i) => el("li", { class: "item" },
+        el("span", { class: "grow" }, el("strong", { text: `${ACTION_LABEL[i.action] || i.action}` }), ` · ${i.student}, ${i.topic}: `, el("span", { class: "hint", text: i.reason })),
+        el("span", { class: "hint", text: `${i.by} · ${fmt(i.date)}` }))))
+        : el("p", { class: "hint", text: "Your decisions and notes will be listed here, with the reason you gave." })));
+  }
+  return out;
 }
 
 async function progressDetailView(uid) {

@@ -432,6 +432,18 @@ function renderDashboard(me, d, notice) {
       stat(d.totals.skills_mastered, "Skills mastered", "Only a passed retest counts"),
       stat(d.answers.total, "Answers checked", acc === null ? "None yet" : `${acc}% correct`))));
 
+  if (d.next_step && !d.needs_grade) {
+    const n = d.next_step;
+    const b = n.action ? el("button", { class: "btn main", type: "button", text: n.action }) : null;
+    if (b) b.addEventListener("click", () => {
+      const t = d.subjects.flatMap((s) => s.topics).find((x) => x.id === n.topic_id);
+      openTopic(me, d, n.topic_id, n.kind === "start" ? (t ? t.phase : "not_started") : "in_progress");
+    });
+    kids.push(el("section", { class: "panel next-step", "aria-label": "What to do next" },
+      el("span", { class: "sec", text: "What to do next" }),
+      el("h2", { text: n.title }), el("p", { style: "margin:0", text: n.text + (n.available_at ? ` Unlocks ${fmt(n.available_at)}.` : "") }),
+      b ? el("div", { class: "actions" }, b) : null));
+  }
   if (d.needs_grade) {
     kids.push(el("section", { class: "panel" }, el("h2", { text: "First, which grade are you in?" }),
       el("p", { class: "hint", style: "margin:0", text: "We use it to suggest topics. You can still open any topic." }),

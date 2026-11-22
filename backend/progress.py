@@ -27,6 +27,22 @@ MASTERY = {"not_assessed": "Not checked", "needs_practice": "Needs practice", "d
 GAP_STATUS = {"suspected": "Suspected (being checked)", "confirmed": "Confirmed by the double-check",
               "rejected": "Not supported (a slip)", "inconclusive": "Inconclusive: needs a teacher",
               "resolved": "Closed: retest passed", "still_present": "Still open: retest not passed"}
+REVIEW_REASON = {"verification_inconclusive": "Double-check was mixed: confirm or reject the gap",
+                 "no_new_questions": "Ran out of new questions for this skill",
+                 "no_lesson_available": "No lesson exists for this gap yet"}
+
+
+def _review_reason(code: Optional[str]) -> str:
+    code = code or ""
+    if code in REVIEW_REASON:
+        return REVIEW_REASON[code]
+    if code.startswith("processing_failed"):
+        return "Something went wrong while checking answers (answers were kept)"
+    if code.startswith("planning_failed"):
+        return "The Planner couldn't make a plan for this gap"
+    return code or "Needs a teacher's decision"
+
+
 VIEWER_ROLES = ("teacher", "parent", "learner", "student", "school_admin")
 
 
@@ -130,6 +146,31 @@ def students(user: dict = Depends(active_user)):
                         (student["id"],)).fetchall():
                     label = (misconceptions().get(r["misconception"] or "") or {}).get("label") or skill_name(r["skill_id"])
                     cnt[label] += 1
+        queue, interventions = [], []
+        if user["role"] == "teacher":
+            for g in groups.values():
+                for srow in g["students"]:
+                    student = _student_of(conn, srow["user_id"])
+                    if not student:
+                        continue
+                    for c in rows_to_dicts(conn.execute(
+                            f"SELECT cases.*, {orch._TOPIC_SQL} AS topic_id FROM cases WHERE student_id=?",
+                            (student["id"],)).fetchall()):
+                        gap = row_to_dict(conn.execute("SELECT * FROM gaps WHERE case_id=? ORDER BY id DESC LIMIT 1",
+                                                       (c["id"],)).fetchone())
+                        if c["stage"] == "teacher_review":
+                            mis = (misconceptions().get((gap or {}).get("misconception") or "") or {}).get("label")
+                            queue.append({"user_id": srow["user_id"], "student": srow["name"], "case_id": c["id"],
+                                          "topic": topics().get(c["topic_id"], {}).get("name", c["topic_id"]),
+                                          "skill": skill_name(gap["skill_id"]) if gap else None, "suspected": mis,
+                                          "reason": _review_reason(c["closed_reason"]),
+                                          "since": c["updated_at"]})
+                        for o in conn.execute("SELECT * FROM teacher_overrides WHERE case_id=?", (c["id"],)).fetchall():
+                            interventions.append({"date": o["created_at"], "by": o["teacher_name"], "action": o["action"],
+                                                  "reason": o["reason"], "student": srow["name"], "user_id": srow["user_id"],
+                                                  "topic": topics().get(c["topic_id"], {}).get("name", c["topic_id"])})
+            queue.sort(key=lambda x: x["since"])
+            interventions.sort(key=lambda x: x["date"], reverse=True)
         out = []
         for label, g in groups.items():
             st = g["students"]
@@ -139,7 +180,7 @@ def students(user: dict = Depends(active_user)):
                 "common_gaps": [{"label": k, "students": v} for k, v in common.get(label, Counter()).most_common(5)],
             } if user["role"] == "teacher" else None
             out.append(g)
-        return {"role": user["role"], "groups": out}
+        return {"role": user["role"], "groups": out, "queue": queue, "interventions": interventions[:15]}
 
 
 @router.get("/students/{user_id}")

@@ -647,7 +647,7 @@ async function parentHome(me) {
   board(me,
     panel("Your children", cards.length ? el("ul", { class: "list" }, cards) : el("p", { class: "hint", text: "No children linked yet. When your child signs up with your email, you'll get a consent request." }),
       el("p", { class: "hint", text: "What you can see below depends on the choices you saved for each child." })),
-    await progressPanel(me),
+    ...(await progressPanels(me)),
     await sharedWithMePanel());
 }
 
@@ -674,7 +674,7 @@ async function teacherHome(me) {
   let codes = [];
   try { codes = await api("GET", "/school/codes"); } catch (e) { /* ignore */ }
   board(me,
-    await progressPanel(me),
+    ...(await progressPanels(me)),
     ...(panels.length ? panels : [panel("Your classes", el("p", { class: "hint", text: "Your school admin hasn't assigned you a class yet." }))]),
     codesPanel(me, classes, codes, () => teacherHome(me)),
     await sharedWithMePanel());
