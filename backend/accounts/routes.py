@@ -11,7 +11,7 @@ from typing import Callable, Optional
 from fastapi import APIRouter, Depends, Header, Request, Response
 from pydantic import BaseModel, Field
 
-from .. import db
+from .. import db, demo
 from . import core, emailer, pathways, permissions, schools, sharing
 from .errors import AccountError
 
@@ -282,12 +282,13 @@ def children(user: dict = Depends(active_user)):
 
 @router.put("/parent/children/{student_id}/permissions")
 def child_permissions(student_id: int, body: Permissions, user: dict = Depends(active_user)):
-    return _tx(lambda c: pathways.update_permissions(c, user, student_id, body.permissions))
+    return _tx(lambda c: (demo.refuse_for_demo(c, user, "changing permissions"),
+                          pathways.update_permissions(c, user, student_id, body.permissions))[1])
 
 
 @router.post("/parent/children/{student_id}/withdraw-consent")
 def withdraw(student_id: int, user: dict = Depends(active_user)):
-    _tx(lambda c: pathways.withdraw_consent(c, user, student_id))
+    _tx(lambda c: (demo.refuse_for_demo(c, user, "withdrawing consent"), pathways.withdraw_consent(c, user, student_id)))
     return {"ok": True}
 
 
@@ -316,7 +317,8 @@ def classes(user: dict = Depends(active_user)):
 
 @router.post("/school/teachers/invite")
 def invite_teacher(body: EmailBody, user: dict = Depends(active_user)):
-    return _tx(lambda c: schools.invite_teacher(c, user, body.email))
+    return _tx(lambda c: (demo.refuse_for_demo(c, user, "sending invitations"),
+                          schools.invite_teacher(c, user, body.email))[1])
 
 
 @router.get("/school/teachers")
@@ -332,7 +334,8 @@ def assign(body: Assignment, user: dict = Depends(active_user)):
 
 @router.post("/school/assignments/remove")
 def unassign(body: Assignment, user: dict = Depends(active_user)):
-    return _tx(lambda c: schools.unassign_teacher(c, user, body.teacher_id, body.class_id))
+    return _tx(lambda c: (demo.refuse_for_demo(c, user, "removing teachers from classes"),
+                          schools.unassign_teacher(c, user, body.teacher_id, body.class_id))[1])
 
 
 @router.post("/school/codes", status_code=201)
@@ -379,7 +382,8 @@ def with_me(user: dict = Depends(active_user)):
 
 @router.post("/sharing/invite", status_code=201)
 def share_invite(body: ShareInvite, user: dict = Depends(active_user)):
-    return _tx(lambda c: sharing.invite(c, user, body.email, body.scopes, body.expires_days))
+    return _tx(lambda c: (demo.refuse_for_demo(c, user, "sending sharing invitations"),
+                          sharing.invite(c, user, body.email, body.scopes, body.expires_days))[1])
 
 
 @router.post("/sharing/accept")

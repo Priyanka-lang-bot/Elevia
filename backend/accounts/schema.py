@@ -199,6 +199,15 @@ CREATE TABLE IF NOT EXISTS learner_links (
     created_at TEXT NOT NULL
 );
 
+-- Rows created by scripts/demo.py. Demo login and demo reset only ever act on what is listed here.
+CREATE TABLE IF NOT EXISTS demo_registry (
+    kind TEXT NOT NULL,            -- 'user' or 'school'
+    ref_id INTEGER NOT NULL,
+    slug TEXT,
+    created_at TEXT NOT NULL,
+    PRIMARY KEY (kind, ref_id)
+);
+
 CREATE INDEX IF NOT EXISTS idx_sessions_user ON auth_sessions(user_id);
 CREATE INDEX IF NOT EXISTS idx_tokens_email ON email_tokens(email);
 CREATE INDEX IF NOT EXISTS idx_enroll_class ON class_enrollments(class_id);

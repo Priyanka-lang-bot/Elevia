@@ -21,6 +21,7 @@ from .accounts.errors import AccountError
 from .accounts.routes import router as accounts_router
 from .learning import router as learning_router
 from .progress import router as progress_router
+from .demo import router as demo_router
 from .config import get_settings
 from .content import lessons, skill_map, skills_by_id, validate_all
 
@@ -52,6 +53,7 @@ app.add_middleware(CORSMiddleware, allow_origins=_s.cors_origins, allow_methods=
 app.include_router(accounts_router)
 app.include_router(learning_router)
 app.include_router(progress_router)
+app.include_router(demo_router)
 
 
 LEGACY_PREFIXES = ("/students", "/cases", "/assessments", "/teacher/")

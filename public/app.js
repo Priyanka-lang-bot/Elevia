@@ -147,6 +147,15 @@ function demoBanner() {
   return box;
 }
 
+function demoLoginStrip() {
+  const box = el("div", { class: "demo-strip", hidden: true },
+    el("p", { class: "sec", style: "margin:0", text: "Or explore a demo account" }));
+  const grid = el("div", { class: "demo-grid compact" });
+  box.append(grid);
+  if (typeof renderDemoCards === "function") renderDemoCards(grid, () => { box.hidden = false; }, true);
+  return box;
+}
+
 function landingVisible(on) {
   const l = document.getElementById("landing");
   if (l) l.hidden = !on;
@@ -222,7 +231,8 @@ function loginView() {
     field("Password", "password", { type: "password", autocomplete: "current-password", placeholder: "Your password" }),
     el("a", { href: "#/forgot", style: "align-self:flex-end;font-size:14px", text: "Forgot password?" }),
     el("button", { class: "btn main", type: "submit", text: "Log in" }),
-    el("p", { class: "center", style: "margin:0;font-weight:600" }, "New here? ", el("a", { href: "#/start", text: "Create an account" }))),
+    el("p", { class: "center", style: "margin:0;font-weight:600" }, "New here? ", el("a", { href: "#/start", text: "Create an account" })),
+      demoLoginStrip()),
     async (v) => {
       await api("POST", "/auth/login", { identifier: v.identifier, password: v.password });
       const back = sessionStorage.getItem("elevia_return"); sessionStorage.removeItem("elevia_return");

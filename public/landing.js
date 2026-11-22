@@ -43,6 +43,46 @@ function initLanding() {
     const [src, alt] = shots[b.dataset.shot]; img.src = src; img.alt = alt;
   }));
   loadCatalog();
+  renderDemoCards(document.getElementById("demo-grid"), () => {
+    document.getElementById("demo").hidden = false;
+    document.querySelectorAll(".demo-cta").forEach((a) => { a.hidden = false; });
+  });
+}
+
+const DEMO_ICON = { Student: "🎒", "New student": "✨", Teacher: "🧑‍🏫", Parent: "🏠", "School admin": "🏫" };
+
+// One-click demo login. Shown only when the server runs with ELEVIA_DEMO_MODE=1.
+async function renderDemoCards(box, onEnabled, compact) {
+  if (!box) return;
+  let d;
+  try {
+    const r = await fetch("/api/demo/accounts", { credentials: "same-origin" });
+    if (!r.ok) return;
+    d = await r.json();
+  } catch (e) { return; }
+  if (!d.enabled) return;
+  if (onEnabled) onEnabled();
+  if (!d.ready) {
+    box.replaceChildren(el("p", { class: "alert bad", text: "Demo accounts aren't set up on this server yet. The team runs: python scripts/demo.py seed" }));
+    return;
+  }
+  box.replaceChildren(...d.accounts.map((a) => {
+    const btn = el("button", { class: "btn main" + (compact ? " small" : ""), type: "button", text: `Explore as ${a.name.split(" ")[0]}`,
+      "aria-label": `Open the demo as ${a.name}, ${a.role}` });
+    const err = el("p", { class: "alert bad", role: "alert", hidden: true });
+    btn.addEventListener("click", async () => {
+      btn.disabled = true; btn.textContent = "Opening…"; err.hidden = true;
+      try {
+        await api("POST", "/demo/login", { slug: a.slug });
+        state.me = null; go("#/home");
+      } catch (e) { err.textContent = e.detail; err.hidden = false; btn.disabled = false; btn.textContent = `Explore as ${a.name.split(" ")[0]}`; }
+    });
+    return el("article", { class: "demo-card" + (compact ? " compact" : "") },
+      el("div", { class: "demo-top" }, el("span", { class: "demo-ic", "aria-hidden": "true", text: DEMO_ICON[a.role] || "•" }),
+        el("div", {}, el("h3", { text: a.name }), el("p", { class: "demo-role", text: `${a.role} · ${a.badge}` }))),
+      compact ? null : el("p", { class: "demo-ex", text: a.explore }),
+      a.available ? btn : el("p", { class: "hint", text: "Not set up yet" }), err);
+  }));
 }
 
 async function loadCatalog() {
