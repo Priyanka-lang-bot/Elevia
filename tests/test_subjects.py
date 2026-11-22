@@ -146,7 +146,7 @@ def test_unknown_topic_is_refused(client, me):
 
 def test_curriculum_structure_is_complete():
     counts = validate_all()
-    assert counts["subjects"] == 4 and counts["topics"] == 11
+    assert counts["subjects"] == 4 and counts["topics"] == 24
     cur = curriculum()
     for tid, t in cur["topics"].items():
         assert t["objectives"] and t["skills"] and t["unit"]
@@ -203,8 +203,8 @@ def test_public_catalog_needs_no_login_and_exposes_no_answers(client):
     r = client.get("/learn/catalog")
     assert r.status_code == 200
     d = r.json()
-    assert d["counts"] == {"subjects": 4, "topics": 11, "questions": len(questions())}
-    assert sum(len(s["topics"]) for s in d["subjects"]) == 11
+    assert d["counts"] == {"subjects": 4, "topics": 24, "questions": len(questions())}
+    assert sum(len(s["topics"]) for s in d["subjects"]) == 24
     for s in d["subjects"]:                                     # catalogue only, never question content
         assert set(s) == {"id", "name", "icon", "color", "description", "planned", "topics"}
         for t in s["topics"]:

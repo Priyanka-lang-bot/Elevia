@@ -7,17 +7,23 @@
    "color": "#2f4a8a",
    "description": "Number, ratio and algebra, checked with exact arithmetic.",
    "topics": [
+    "order_of_operations",
+    "factors_multiples",
     "fractions",
     "decimals",
     "percentages",
     "integers",
-    "linear_equations"
+    "ratio_proportion",
+    "linear_equations",
+    "angles",
+    "perimeter_area",
+    "statistics"
    ],
    "planned": [
-    "Geometry",
-    "Mensuration",
-    "Statistics",
-    "Probability"
+    "Probability",
+    "Area of triangles and circles",
+    "Volume",
+    "Graphs"
    ]
   },
   {
@@ -27,13 +33,15 @@
    "color": "#2e7d5b",
    "description": "Concept questions that separate real misconceptions from slips.",
    "topics": [
+    "fair_testing",
     "forces_motion",
     "states_of_matter"
    ],
    "planned": [
-    "Biology: plants and photosynthesis",
-    "Light and sound",
-    "Electric circuits"
+    "Heat and temperature",
+    "Light",
+    "Electric circuits",
+    "Plants and photosynthesis"
    ]
   },
   {
@@ -43,13 +51,16 @@
    "color": "#a0522d",
    "description": "Grammar and sentence construction with exact answer checking.",
    "topics": [
+    "parts_of_speech",
     "past_tense",
-    "subject_verb_agreement"
+    "subject_verb_agreement",
+    "apostrophes"
    ],
    "planned": [
-    "Vocabulary",
     "Reading comprehension",
-    "Writing fundamentals"
+    "Sentence construction",
+    "Other tenses",
+    "Vocabulary"
    ]
   },
   {
@@ -60,12 +71,16 @@
    "description": "Predict what short programs print. Answers are verified by running the code.",
    "topics": [
     "variables",
-    "loops"
+    "data_types",
+    "conditionals",
+    "boolean_logic",
+    "loops",
+    "algorithms"
    ],
    "planned": [
-    "Conditions and Boolean logic",
-    "Algorithms",
-    "Data structures"
+    "Functions",
+    "Lists and data structures",
+    "Sorting algorithms"
    ]
   }
  ],
@@ -184,6 +199,132 @@
     "B": "diagnostic:linear_equations:B"
    }
   },
+  "order_of_operations": {
+   "id": "order_of_operations",
+   "subject": "mathematics",
+   "name": "Order of operations",
+   "unit": "Arithmetic",
+   "grade_min": 4,
+   "grade_max": 7,
+   "description": "Which part of a calculation to do first: × and ÷ before + and −, and brackets first.",
+   "objectives": [
+    "Apply × and ÷ before + and −",
+    "Work out brackets first"
+   ],
+   "skills": [
+    "multiply_before_add",
+    "brackets_first"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:order_of_operations:A",
+    "B": "diagnostic:order_of_operations:B"
+   }
+  },
+  "factors_multiples": {
+   "id": "factors_multiples",
+   "subject": "mathematics",
+   "name": "Factors and multiples",
+   "unit": "Number",
+   "grade_min": 5,
+   "grade_max": 7,
+   "description": "Highest common factors and lowest common multiples, and how not to mix them up.",
+   "objectives": [
+    "Find the HCF of two numbers",
+    "Find the LCM of two numbers"
+   ],
+   "skills": [
+    "highest_common_factor",
+    "lowest_common_multiple"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:factors_multiples:A",
+    "B": "diagnostic:factors_multiples:B"
+   }
+  },
+  "ratio_proportion": {
+   "id": "ratio_proportion",
+   "subject": "mathematics",
+   "name": "Ratio and proportion",
+   "unit": "Ratio and proportion",
+   "grade_min": 6,
+   "grade_max": 8,
+   "description": "Scaling ratios up and down, and sharing an amount in a given ratio.",
+   "objectives": [
+    "Find equivalent ratios by multiplying",
+    "Share an amount in a ratio"
+   ],
+   "skills": [
+    "equivalent_ratios",
+    "sharing_in_ratio"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:ratio_proportion:A",
+    "B": "diagnostic:ratio_proportion:B"
+   }
+  },
+  "perimeter_area": {
+   "id": "perimeter_area",
+   "subject": "mathematics",
+   "name": "Perimeter and area",
+   "unit": "Mensuration",
+   "grade_min": 4,
+   "grade_max": 7,
+   "description": "The distance round a shape versus the space inside it, for rectangles and squares.",
+   "objectives": [
+    "Find the perimeter of rectangles and squares",
+    "Find and use the area of rectangles"
+   ],
+   "skills": [
+    "perimeter",
+    "area_rectangles"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:perimeter_area:A",
+    "B": "diagnostic:perimeter_area:B"
+   }
+  },
+  "statistics": {
+   "id": "statistics",
+   "subject": "mathematics",
+   "name": "Averages",
+   "unit": "Statistics",
+   "grade_min": 6,
+   "grade_max": 8,
+   "description": "Finding the mean and the median, and choosing the right steps for each.",
+   "objectives": [
+    "Calculate the mean",
+    "Find the median of a list"
+   ],
+   "skills": [
+    "calculating_mean",
+    "finding_median"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:statistics:A",
+    "B": "diagnostic:statistics:B"
+   }
+  },
+  "angles": {
+   "id": "angles",
+   "subject": "mathematics",
+   "name": "Angles",
+   "unit": "Geometry",
+   "grade_min": 5,
+   "grade_max": 8,
+   "description": "Angle facts: straight lines, full turns and triangles.",
+   "objectives": [
+    "Find missing angles on a line and around a point",
+    "Find the missing angle in a triangle"
+   ],
+   "skills": [
+    "angles_on_a_line",
+    "angles_in_a_triangle"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:angles:A",
+    "B": "diagnostic:angles:B"
+   }
+  },
   "forces_motion": {
    "id": "forces_motion",
    "subject": "science",
@@ -224,6 +365,27 @@
    "diagnostic_pools": {
     "A": "diagnostic:states_of_matter:A",
     "B": "diagnostic:states_of_matter:B"
+   }
+  },
+  "fair_testing": {
+   "id": "fair_testing",
+   "subject": "science",
+   "name": "Scientific reasoning",
+   "unit": "Working scientifically",
+   "grade_min": 4,
+   "grade_max": 8,
+   "description": "Planning fair tests: what to change, what to measure and what to keep the same.",
+   "objectives": [
+    "Identify what to change and what to measure",
+    "Plan and judge fair tests"
+   ],
+   "skills": [
+    "variables_in_investigations",
+    "fair_test"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:fair_testing:A",
+    "B": "diagnostic:fair_testing:B"
    }
   },
   "past_tense": {
@@ -268,6 +430,48 @@
     "B": "diagnostic:subject_verb_agreement:B"
    }
   },
+  "parts_of_speech": {
+   "id": "parts_of_speech",
+   "subject": "english",
+   "name": "Parts of speech",
+   "unit": "Grammar",
+   "grade_min": 4,
+   "grade_max": 7,
+   "description": "Telling adjectives from adverbs, and seeing that a word's class depends on the sentence.",
+   "objectives": [
+    "Tell adjectives and adverbs apart",
+    "Identify word class from how a word is used"
+   ],
+   "skills": [
+    "adjectives_and_adverbs",
+    "word_class_in_context"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:parts_of_speech:A",
+    "B": "diagnostic:parts_of_speech:B"
+   }
+  },
+  "apostrophes": {
+   "id": "apostrophes",
+   "subject": "english",
+   "name": "Punctuation: apostrophes",
+   "unit": "Punctuation",
+   "grade_min": 4,
+   "grade_max": 7,
+   "description": "Apostrophes for belonging (one or many owners) and telling contractions from possessive words.",
+   "objectives": [
+    "Use apostrophes for one and several owners",
+    "Choose between its/it's, your/you're, their/they're"
+   ],
+   "skills": [
+    "apostrophes_for_possession",
+    "contractions_vs_possessives"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:apostrophes:A",
+    "B": "diagnostic:apostrophes:B"
+   }
+  },
   "variables": {
    "id": "variables",
    "subject": "computer_science",
@@ -308,6 +512,90 @@
    "diagnostic_pools": {
     "A": "diagnostic:loops:A",
     "B": "diagnostic:loops:B"
+   }
+  },
+  "data_types": {
+   "id": "data_types",
+   "subject": "computer_science",
+   "name": "Data types",
+   "unit": "Programming fundamentals",
+   "grade_min": 7,
+   "grade_max": 10,
+   "description": "Strings versus numbers, and converting with int() and str().",
+   "objectives": [
+    "Predict what + and * do with text and numbers",
+    "Use int() and str() to convert"
+   ],
+   "skills": [
+    "text_vs_numbers",
+    "type_conversion"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:data_types:A",
+    "B": "diagnostic:data_types:B"
+   }
+  },
+  "conditionals": {
+   "id": "conditionals",
+   "subject": "computer_science",
+   "name": "Conditional statements",
+   "unit": "Programming fundamentals",
+   "grade_min": 7,
+   "grade_max": 10,
+   "description": "if/else decisions and if/elif/else chains, including boundary values.",
+   "objectives": [
+    "Predict which branch of an if/else runs",
+    "Trace an if/elif/else chain"
+   ],
+   "skills": [
+    "if_else",
+    "elif_chains"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:conditionals:A",
+    "B": "diagnostic:conditionals:B"
+   }
+  },
+  "boolean_logic": {
+   "id": "boolean_logic",
+   "subject": "computer_science",
+   "name": "Logical reasoning",
+   "unit": "Computational thinking",
+   "grade_min": 7,
+   "grade_max": 10,
+   "description": "and, or and not in Python conditions.",
+   "objectives": [
+    "Evaluate and / or expressions",
+    "Evaluate expressions with not"
+   ],
+   "skills": [
+    "and_or",
+    "not_logic"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:boolean_logic:A",
+    "B": "diagnostic:boolean_logic:B"
+   }
+  },
+  "algorithms": {
+   "id": "algorithms",
+   "subject": "computer_science",
+   "name": "Basic algorithms",
+   "unit": "Algorithms",
+   "grade_min": 8,
+   "grade_max": 10,
+   "description": "Tracing simple algorithms: finding the largest value, counting and searching in a list.",
+   "objectives": [
+    "Trace a find-the-largest algorithm",
+    "Trace counting and searching loops"
+   ],
+   "skills": [
+    "find_largest",
+    "search_and_count"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:algorithms:A",
+    "B": "diagnostic:algorithms:B"
    }
   }
  }

@@ -1,0 +1,1017 @@
+{
+ "skills": [
+  {
+   "id": "find_largest",
+   "name": "Finding the largest value",
+   "grade": 8,
+   "prerequisites": [
+    "loop_counting"
+   ],
+   "description": "Keeping a best-so-far value."
+  },
+  {
+   "id": "search_and_count",
+   "name": "Searching and counting",
+   "grade": 8,
+   "prerequisites": [
+    "find_largest"
+   ],
+   "description": "Loops visit every item; positions start at 0."
+  }
+ ],
+ "misconceptions": {
+  "CS_ALG_LAST_ITEM": {
+   "label": "Thinks the result is just the last item in the list",
+   "gap_skill": "find_largest",
+   "explanation": "Misses that best only changes when a bigger value appears."
+  },
+  "CS_ALG_STOPS_EARLY": {
+   "label": "Thinks the loop stops at the first match",
+   "gap_skill": "search_and_count",
+   "explanation": "Counts only one match, or gives the first position."
+  },
+  "CS_ALG_ONE_BASED": {
+   "label": "Counts list positions from 1 instead of 0",
+   "gap_skill": "search_and_count",
+   "explanation": "Says the first item is at position 1."
+  }
+ },
+ "questions": [
+  {
+   "id": "ALGO-DA1",
+   "pool": "diagnostic:algorithms:A",
+   "skill_id": "find_largest",
+   "type": "code_output",
+   "gap_targets": [
+    "find_largest"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "9",
+   "hints": [
+    "`best` keeps the largest value seen SO FAR; it only changes when a bigger one turns up.",
+    "Trace the loop: write best after each item."
+   ],
+   "solution": [
+    "best starts as 4.",
+    "It is replaced whenever a bigger number appears.",
+    "The largest value is 9."
+   ],
+   "patterns": {
+    "7": "CS_ALG_LAST_ITEM"
+   },
+   "code": "nums = [4, 9, 2, 7]\nbest = nums[0]\nfor n in nums:\n    if n > best:\n        best = n\nprint(best)"
+  },
+  {
+   "id": "ALGO-DA2",
+   "pool": "diagnostic:algorithms:A",
+   "skill_id": "search_and_count",
+   "type": "code_output",
+   "gap_targets": [
+    "search_and_count"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "2",
+   "hints": [
+    "The loop looks at EVERY item; it doesn't stop at the first match.",
+    "List positions start at 0: the first item is position 0."
+   ],
+   "solution": [
+    "The loop checks every item.",
+    "8 appears 2 times.",
+    "Prints 2."
+   ],
+   "patterns": {
+    "1": "CS_ALG_STOPS_EARLY"
+   },
+   "code": "nums = [3, 8, 5, 8, 1]\ncount = 0\nfor n in nums:\n    if n == 8:\n        count = count + 1\nprint(count)"
+  },
+  {
+   "id": "ALGO-DA3",
+   "pool": "diagnostic:algorithms:A",
+   "skill_id": "find_largest",
+   "type": "code_output",
+   "gap_targets": [
+    "find_largest"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "1",
+   "hints": [
+    "`best` keeps the largest value seen SO FAR; it only changes when a bigger one turns up.",
+    "Trace the loop: write best after each item."
+   ],
+   "solution": [
+    "best starts as 6.",
+    "It is replaced whenever a smaller number appears.",
+    "The smallest value is 1."
+   ],
+   "patterns": {
+    "5": "CS_ALG_LAST_ITEM"
+   },
+   "code": "nums = [6, 3, 1, 5]\nbest = nums[0]\nfor n in nums:\n    if n < best:\n        best = n\nprint(best)"
+  },
+  {
+   "id": "ALGO-DA4",
+   "pool": "diagnostic:algorithms:A",
+   "skill_id": "search_and_count",
+   "type": "code_output",
+   "gap_targets": [
+    "search_and_count"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "The loop looks at EVERY item; it doesn't stop at the first match.",
+    "List positions start at 0: the first item is position 0."
+   ],
+   "solution": [
+    "2 is at positions 1, 3 (counting from 0).",
+    "pos is overwritten each time, so it ends with the last match.",
+    "Prints 3."
+   ],
+   "patterns": {
+    "1": "CS_ALG_STOPS_EARLY",
+    "4": "CS_ALG_ONE_BASED"
+   },
+   "code": "nums = [5, 2, 9, 2]\npos = -1\nfor i in range(len(nums)):\n    if nums[i] == 2:\n        pos = i\nprint(pos)"
+  },
+  {
+   "id": "ALGO-DA5",
+   "pool": "diagnostic:algorithms:A",
+   "skill_id": "find_largest",
+   "type": "code_output",
+   "gap_targets": [
+    "find_largest"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "11",
+   "hints": [
+    "`best` keeps the largest value seen SO FAR; it only changes when a bigger one turns up.",
+    "Trace the loop: write best after each item."
+   ],
+   "solution": [
+    "best starts as 2.",
+    "It is replaced whenever a bigger number appears.",
+    "The largest value is 11."
+   ],
+   "patterns": {
+    "8": "CS_ALG_LAST_ITEM"
+   },
+   "code": "nums = [2, 11, 6, 8]\nbest = nums[0]\nfor n in nums:\n    if n > best:\n        best = n\nprint(best)"
+  },
+  {
+   "id": "ALGO-DB1",
+   "pool": "diagnostic:algorithms:B",
+   "skill_id": "find_largest",
+   "type": "code_output",
+   "gap_targets": [
+    "find_largest"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "12",
+   "hints": [
+    "`best` keeps the largest value seen SO FAR; it only changes when a bigger one turns up.",
+    "Trace the loop: write best after each item."
+   ],
+   "solution": [
+    "best starts as 5.",
+    "It is replaced whenever a bigger number appears.",
+    "The largest value is 12."
+   ],
+   "patterns": {
+    "9": "CS_ALG_LAST_ITEM"
+   },
+   "code": "nums = [5, 12, 3, 9]\nbest = nums[0]\nfor n in nums:\n    if n > best:\n        best = n\nprint(best)"
+  },
+  {
+   "id": "ALGO-DB2",
+   "pool": "diagnostic:algorithms:B",
+   "skill_id": "search_and_count",
+   "type": "code_output",
+   "gap_targets": [
+    "search_and_count"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "The loop looks at EVERY item; it doesn't stop at the first match.",
+    "List positions start at 0: the first item is position 0."
+   ],
+   "solution": [
+    "The loop checks every item.",
+    "7 appears 3 times.",
+    "Prints 3."
+   ],
+   "patterns": {
+    "1": "CS_ALG_STOPS_EARLY"
+   },
+   "code": "nums = [7, 4, 7, 7, 2]\ncount = 0\nfor n in nums:\n    if n == 7:\n        count = count + 1\nprint(count)"
+  },
+  {
+   "id": "ALGO-DB3",
+   "pool": "diagnostic:algorithms:B",
+   "skill_id": "find_largest",
+   "type": "code_output",
+   "gap_targets": [
+    "find_largest"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "2",
+   "hints": [
+    "`best` keeps the largest value seen SO FAR; it only changes when a bigger one turns up.",
+    "Trace the loop: write best after each item."
+   ],
+   "solution": [
+    "best starts as 8.",
+    "It is replaced whenever a smaller number appears.",
+    "The smallest value is 2."
+   ],
+   "patterns": {
+    "6": "CS_ALG_LAST_ITEM"
+   },
+   "code": "nums = [8, 4, 2, 6]\nbest = nums[0]\nfor n in nums:\n    if n < best:\n        best = n\nprint(best)"
+  },
+  {
+   "id": "ALGO-DB4",
+   "pool": "diagnostic:algorithms:B",
+   "skill_id": "search_and_count",
+   "type": "code_output",
+   "gap_targets": [
+    "search_and_count"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "The loop looks at EVERY item; it doesn't stop at the first match.",
+    "List positions start at 0: the first item is position 0."
+   ],
+   "solution": [
+    "6 is at positions 1, 3 (counting from 0).",
+    "pos is overwritten each time, so it ends with the last match.",
+    "Prints 3."
+   ],
+   "patterns": {
+    "1": "CS_ALG_STOPS_EARLY",
+    "4": "CS_ALG_ONE_BASED"
+   },
+   "code": "nums = [1, 6, 3, 6]\npos = -1\nfor i in range(len(nums)):\n    if nums[i] == 6:\n        pos = i\nprint(pos)"
+  },
+  {
+   "id": "ALGO-DB5",
+   "pool": "diagnostic:algorithms:B",
+   "skill_id": "find_largest",
+   "type": "code_output",
+   "gap_targets": [
+    "find_largest"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "10",
+   "hints": [
+    "`best` keeps the largest value seen SO FAR; it only changes when a bigger one turns up.",
+    "Trace the loop: write best after each item."
+   ],
+   "solution": [
+    "best starts as 3.",
+    "It is replaced whenever a bigger number appears.",
+    "The largest value is 10."
+   ],
+   "patterns": {
+    "4": "CS_ALG_LAST_ITEM"
+   },
+   "code": "nums = [3, 10, 7, 4]\nbest = nums[0]\nfor n in nums:\n    if n > best:\n        best = n\nprint(best)"
+  },
+  {
+   "id": "ALGO-VFL1",
+   "pool": "verification:find_largest",
+   "skill_id": "find_largest",
+   "type": "code_output",
+   "gap_targets": [
+    "find_largest"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "14",
+   "hints": [
+    "`best` keeps the largest value seen SO FAR; it only changes when a bigger one turns up.",
+    "Trace the loop: write best after each item."
+   ],
+   "solution": [
+    "best starts as 1.",
+    "It is replaced whenever a bigger number appears.",
+    "The largest value is 14."
+   ],
+   "patterns": {
+    "9": "CS_ALG_LAST_ITEM"
+   },
+   "code": "nums = [1, 14, 6, 9]\nbest = nums[0]\nfor n in nums:\n    if n > best:\n        best = n\nprint(best)",
+   "check_role": "same_type"
+  },
+  {
+   "id": "ALGO-VFL2",
+   "pool": "verification:find_largest",
+   "skill_id": "find_largest",
+   "type": "code_output",
+   "gap_targets": [
+    "find_largest"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "20",
+   "hints": [
+    "`best` keeps the largest value seen SO FAR; it only changes when a bigger one turns up.",
+    "Trace the loop: write best after each item."
+   ],
+   "solution": [
+    "best starts as 7.",
+    "It is replaced whenever a bigger number appears.",
+    "The largest value is 20."
+   ],
+   "patterns": {
+    "11": "CS_ALG_LAST_ITEM"
+   },
+   "code": "nums = [7, 20, 3, 11]\nbest = nums[0]\nfor n in nums:\n    if n > best:\n        best = n\nprint(best)",
+   "check_role": "same_type"
+  },
+  {
+   "id": "ALGO-VFL3",
+   "pool": "verification:find_largest",
+   "skill_id": "find_largest",
+   "type": "code_output",
+   "gap_targets": [
+    "find_largest"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "2",
+   "hints": [
+    "`best` keeps the largest value seen SO FAR; it only changes when a bigger one turns up.",
+    "Trace the loop: write best after each item."
+   ],
+   "solution": [
+    "best starts as 9.",
+    "It is replaced whenever a smaller number appears.",
+    "The smallest value is 2."
+   ],
+   "patterns": {
+    "7": "CS_ALG_LAST_ITEM"
+   },
+   "code": "nums = [9, 5, 2, 7]\nbest = nums[0]\nfor n in nums:\n    if n < best:\n        best = n\nprint(best)",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "ALGO-VFL4",
+   "pool": "verification:find_largest",
+   "skill_id": "find_largest",
+   "type": "code_output",
+   "gap_targets": [
+    "find_largest"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "4",
+   "hints": [
+    "`best` keeps the largest value seen SO FAR; it only changes when a bigger one turns up.",
+    "Trace the loop: write best after each item."
+   ],
+   "solution": [
+    "best starts as 12.",
+    "It is replaced whenever a smaller number appears.",
+    "The smallest value is 4."
+   ],
+   "patterns": {
+    "10": "CS_ALG_LAST_ITEM"
+   },
+   "code": "nums = [12, 6, 4, 10]\nbest = nums[0]\nfor n in nums:\n    if n < best:\n        best = n\nprint(best)",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "ALGO-PFL1",
+   "pool": "practice:find_largest",
+   "skill_id": "find_largest",
+   "type": "code_output",
+   "gap_targets": [
+    "find_largest"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "15",
+   "hints": [
+    "`best` keeps the largest value seen SO FAR; it only changes when a bigger one turns up.",
+    "Trace the loop: write best after each item."
+   ],
+   "solution": [
+    "best starts as 3.",
+    "It is replaced whenever a bigger number appears.",
+    "The largest value is 15."
+   ],
+   "patterns": {
+    "10": "CS_ALG_LAST_ITEM"
+   },
+   "code": "nums = [3, 15, 8, 10]\nbest = nums[0]\nfor n in nums:\n    if n > best:\n        best = n\nprint(best)"
+  },
+  {
+   "id": "ALGO-PFL2",
+   "pool": "practice:find_largest",
+   "skill_id": "find_largest",
+   "type": "code_output",
+   "gap_targets": [
+    "find_largest"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "13",
+   "hints": [
+    "`best` keeps the largest value seen SO FAR; it only changes when a bigger one turns up.",
+    "Trace the loop: write best after each item."
+   ],
+   "solution": [
+    "best starts as 6.",
+    "It is replaced whenever a bigger number appears.",
+    "The largest value is 13."
+   ],
+   "patterns": {
+    "9": "CS_ALG_LAST_ITEM"
+   },
+   "code": "nums = [6, 13, 4, 9]\nbest = nums[0]\nfor n in nums:\n    if n > best:\n        best = n\nprint(best)"
+  },
+  {
+   "id": "ALGO-PFL3",
+   "pool": "practice:find_largest",
+   "skill_id": "find_largest",
+   "type": "code_output",
+   "gap_targets": [
+    "find_largest"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "`best` keeps the largest value seen SO FAR; it only changes when a bigger one turns up.",
+    "Trace the loop: write best after each item."
+   ],
+   "solution": [
+    "best starts as 10.",
+    "It is replaced whenever a smaller number appears.",
+    "The smallest value is 3."
+   ],
+   "patterns": {
+    "8": "CS_ALG_LAST_ITEM"
+   },
+   "code": "nums = [10, 7, 3, 8]\nbest = nums[0]\nfor n in nums:\n    if n < best:\n        best = n\nprint(best)"
+  },
+  {
+   "id": "ALGO-PFL4",
+   "pool": "practice:find_largest",
+   "skill_id": "find_largest",
+   "type": "code_output",
+   "gap_targets": [
+    "find_largest"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "1",
+   "hints": [
+    "`best` keeps the largest value seen SO FAR; it only changes when a bigger one turns up.",
+    "Trace the loop: write best after each item."
+   ],
+   "solution": [
+    "best starts as 11.",
+    "It is replaced whenever a smaller number appears.",
+    "The smallest value is 1."
+   ],
+   "patterns": {
+    "9": "CS_ALG_LAST_ITEM"
+   },
+   "code": "nums = [11, 5, 1, 9]\nbest = nums[0]\nfor n in nums:\n    if n < best:\n        best = n\nprint(best)"
+  },
+  {
+   "id": "ALGO-RFL1",
+   "pool": "retest:find_largest",
+   "skill_id": "find_largest",
+   "type": "code_output",
+   "gap_targets": [
+    "find_largest"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "17",
+   "hints": [
+    "`best` keeps the largest value seen SO FAR; it only changes when a bigger one turns up.",
+    "Trace the loop: write best after each item."
+   ],
+   "solution": [
+    "best starts as 2.",
+    "It is replaced whenever a bigger number appears.",
+    "The largest value is 17."
+   ],
+   "patterns": {
+    "12": "CS_ALG_LAST_ITEM"
+   },
+   "code": "nums = [2, 17, 9, 12]\nbest = nums[0]\nfor n in nums:\n    if n > best:\n        best = n\nprint(best)"
+  },
+  {
+   "id": "ALGO-RFL2",
+   "pool": "retest:find_largest",
+   "skill_id": "find_largest",
+   "type": "code_output",
+   "gap_targets": [
+    "find_largest"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "16",
+   "hints": [
+    "`best` keeps the largest value seen SO FAR; it only changes when a bigger one turns up.",
+    "Trace the loop: write best after each item."
+   ],
+   "solution": [
+    "best starts as 8.",
+    "It is replaced whenever a bigger number appears.",
+    "The largest value is 16."
+   ],
+   "patterns": {
+    "5": "CS_ALG_LAST_ITEM"
+   },
+   "code": "nums = [8, 16, 1, 5]\nbest = nums[0]\nfor n in nums:\n    if n > best:\n        best = n\nprint(best)"
+  },
+  {
+   "id": "ALGO-RFL3",
+   "pool": "retest:find_largest",
+   "skill_id": "find_largest",
+   "type": "code_output",
+   "gap_targets": [
+    "find_largest"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "19",
+   "hints": [
+    "`best` keeps the largest value seen SO FAR; it only changes when a bigger one turns up.",
+    "Trace the loop: write best after each item."
+   ],
+   "solution": [
+    "best starts as 4.",
+    "It is replaced whenever a bigger number appears.",
+    "The largest value is 19."
+   ],
+   "patterns": {
+    "13": "CS_ALG_LAST_ITEM"
+   },
+   "code": "nums = [4, 19, 6, 13]\nbest = nums[0]\nfor n in nums:\n    if n > best:\n        best = n\nprint(best)"
+  },
+  {
+   "id": "ALGO-RFL4",
+   "pool": "retest:find_largest",
+   "skill_id": "find_largest",
+   "type": "code_output",
+   "gap_targets": [
+    "find_largest"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "1",
+   "hints": [
+    "`best` keeps the largest value seen SO FAR; it only changes when a bigger one turns up.",
+    "Trace the loop: write best after each item."
+   ],
+   "solution": [
+    "best starts as 7.",
+    "It is replaced whenever a smaller number appears.",
+    "The smallest value is 1."
+   ],
+   "patterns": {
+    "4": "CS_ALG_LAST_ITEM"
+   },
+   "code": "nums = [7, 3, 1, 4]\nbest = nums[0]\nfor n in nums:\n    if n < best:\n        best = n\nprint(best)"
+  },
+  {
+   "id": "ALGO-RFL5",
+   "pool": "retest:find_largest",
+   "skill_id": "find_largest",
+   "type": "code_output",
+   "gap_targets": [
+    "find_largest"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "2",
+   "hints": [
+    "`best` keeps the largest value seen SO FAR; it only changes when a bigger one turns up.",
+    "Trace the loop: write best after each item."
+   ],
+   "solution": [
+    "best starts as 9.",
+    "It is replaced whenever a smaller number appears.",
+    "The smallest value is 2."
+   ],
+   "patterns": {
+    "8": "CS_ALG_LAST_ITEM"
+   },
+   "code": "nums = [9, 6, 2, 8]\nbest = nums[0]\nfor n in nums:\n    if n < best:\n        best = n\nprint(best)"
+  },
+  {
+   "id": "ALGO-RFL6",
+   "pool": "retest:find_largest",
+   "skill_id": "find_largest",
+   "type": "code_output",
+   "gap_targets": [
+    "find_largest"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "`best` keeps the largest value seen SO FAR; it only changes when a bigger one turns up.",
+    "Trace the loop: write best after each item."
+   ],
+   "solution": [
+    "best starts as 13.",
+    "It is replaced whenever a smaller number appears.",
+    "The smallest value is 3."
+   ],
+   "patterns": {
+    "11": "CS_ALG_LAST_ITEM"
+   },
+   "code": "nums = [13, 9, 3, 11]\nbest = nums[0]\nfor n in nums:\n    if n < best:\n        best = n\nprint(best)"
+  },
+  {
+   "id": "ALGO-VSAC1",
+   "pool": "verification:search_and_count",
+   "skill_id": "search_and_count",
+   "type": "code_output",
+   "gap_targets": [
+    "search_and_count"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "The loop looks at EVERY item; it doesn't stop at the first match.",
+    "List positions start at 0: the first item is position 0."
+   ],
+   "solution": [
+    "The loop checks every item.",
+    "2 appears 3 times.",
+    "Prints 3."
+   ],
+   "patterns": {
+    "1": "CS_ALG_STOPS_EARLY"
+   },
+   "code": "nums = [2, 5, 2, 9, 2]\ncount = 0\nfor n in nums:\n    if n == 2:\n        count = count + 1\nprint(count)",
+   "check_role": "same_type"
+  },
+  {
+   "id": "ALGO-VSAC2",
+   "pool": "verification:search_and_count",
+   "skill_id": "search_and_count",
+   "type": "code_output",
+   "gap_targets": [
+    "search_and_count"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "The loop looks at EVERY item; it doesn't stop at the first match.",
+    "List positions start at 0: the first item is position 0."
+   ],
+   "solution": [
+    "The loop checks every item.",
+    "4 appears 3 times.",
+    "Prints 3."
+   ],
+   "patterns": {
+    "1": "CS_ALG_STOPS_EARLY"
+   },
+   "code": "nums = [4, 4, 1, 4]\ncount = 0\nfor n in nums:\n    if n == 4:\n        count = count + 1\nprint(count)",
+   "check_role": "same_type"
+  },
+  {
+   "id": "ALGO-VSAC3",
+   "pool": "verification:search_and_count",
+   "skill_id": "search_and_count",
+   "type": "code_output",
+   "gap_targets": [
+    "search_and_count"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "The loop looks at EVERY item; it doesn't stop at the first match.",
+    "List positions start at 0: the first item is position 0."
+   ],
+   "solution": [
+    "3 is at positions 1, 3 (counting from 0).",
+    "pos is overwritten each time, so it ends with the last match.",
+    "Prints 3."
+   ],
+   "patterns": {
+    "1": "CS_ALG_STOPS_EARLY",
+    "4": "CS_ALG_ONE_BASED"
+   },
+   "code": "nums = [8, 3, 5, 3]\npos = -1\nfor i in range(len(nums)):\n    if nums[i] == 3:\n        pos = i\nprint(pos)",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "ALGO-VSAC4",
+   "pool": "verification:search_and_count",
+   "skill_id": "search_and_count",
+   "type": "code_output",
+   "gap_targets": [
+    "search_and_count"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "The loop looks at EVERY item; it doesn't stop at the first match.",
+    "List positions start at 0: the first item is position 0."
+   ],
+   "solution": [
+    "9 is at positions 1, 3 (counting from 0).",
+    "pos is overwritten each time, so it ends with the last match.",
+    "Prints 3."
+   ],
+   "patterns": {
+    "1": "CS_ALG_STOPS_EARLY",
+    "4": "CS_ALG_ONE_BASED"
+   },
+   "code": "nums = [6, 9, 1, 9, 4]\npos = -1\nfor i in range(len(nums)):\n    if nums[i] == 9:\n        pos = i\nprint(pos)",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "ALGO-PSAC1",
+   "pool": "practice:search_and_count",
+   "skill_id": "search_and_count",
+   "type": "code_output",
+   "gap_targets": [
+    "search_and_count"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "The loop looks at EVERY item; it doesn't stop at the first match.",
+    "List positions start at 0: the first item is position 0."
+   ],
+   "solution": [
+    "The loop checks every item.",
+    "1 appears 3 times.",
+    "Prints 3."
+   ],
+   "patterns": {
+    "1": "CS_ALG_STOPS_EARLY"
+   },
+   "code": "nums = [1, 3, 1, 1, 6]\ncount = 0\nfor n in nums:\n    if n == 1:\n        count = count + 1\nprint(count)"
+  },
+  {
+   "id": "ALGO-PSAC2",
+   "pool": "practice:search_and_count",
+   "skill_id": "search_and_count",
+   "type": "code_output",
+   "gap_targets": [
+    "search_and_count"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "2",
+   "hints": [
+    "The loop looks at EVERY item; it doesn't stop at the first match.",
+    "List positions start at 0: the first item is position 0."
+   ],
+   "solution": [
+    "The loop checks every item.",
+    "5 appears 2 times.",
+    "Prints 2."
+   ],
+   "patterns": {
+    "1": "CS_ALG_STOPS_EARLY"
+   },
+   "code": "nums = [5, 8, 5, 2]\ncount = 0\nfor n in nums:\n    if n == 5:\n        count = count + 1\nprint(count)"
+  },
+  {
+   "id": "ALGO-PSAC3",
+   "pool": "practice:search_and_count",
+   "skill_id": "search_and_count",
+   "type": "code_output",
+   "gap_targets": [
+    "search_and_count"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "The loop looks at EVERY item; it doesn't stop at the first match.",
+    "List positions start at 0: the first item is position 0."
+   ],
+   "solution": [
+    "2 is at positions 1, 3 (counting from 0).",
+    "pos is overwritten each time, so it ends with the last match.",
+    "Prints 3."
+   ],
+   "patterns": {
+    "1": "CS_ALG_STOPS_EARLY",
+    "4": "CS_ALG_ONE_BASED"
+   },
+   "code": "nums = [7, 2, 6, 2, 8]\npos = -1\nfor i in range(len(nums)):\n    if nums[i] == 2:\n        pos = i\nprint(pos)"
+  },
+  {
+   "id": "ALGO-PSAC4",
+   "pool": "practice:search_and_count",
+   "skill_id": "search_and_count",
+   "type": "code_output",
+   "gap_targets": [
+    "search_and_count"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "2",
+   "hints": [
+    "The loop looks at EVERY item; it doesn't stop at the first match.",
+    "List positions start at 0: the first item is position 0."
+   ],
+   "solution": [
+    "4 is at positions 0, 2 (counting from 0).",
+    "pos is overwritten each time, so it ends with the last match.",
+    "Prints 2."
+   ],
+   "patterns": {
+    "0": "CS_ALG_STOPS_EARLY",
+    "3": "CS_ALG_ONE_BASED"
+   },
+   "code": "nums = [4, 1, 4, 3]\npos = -1\nfor i in range(len(nums)):\n    if nums[i] == 4:\n        pos = i\nprint(pos)"
+  },
+  {
+   "id": "ALGO-RSAC1",
+   "pool": "retest:search_and_count",
+   "skill_id": "search_and_count",
+   "type": "code_output",
+   "gap_targets": [
+    "search_and_count"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "The loop looks at EVERY item; it doesn't stop at the first match.",
+    "List positions start at 0: the first item is position 0."
+   ],
+   "solution": [
+    "The loop checks every item.",
+    "3 appears 3 times.",
+    "Prints 3."
+   ],
+   "patterns": {
+    "1": "CS_ALG_STOPS_EARLY"
+   },
+   "code": "nums = [3, 7, 3, 3, 1]\ncount = 0\nfor n in nums:\n    if n == 3:\n        count = count + 1\nprint(count)"
+  },
+  {
+   "id": "ALGO-RSAC2",
+   "pool": "retest:search_and_count",
+   "skill_id": "search_and_count",
+   "type": "code_output",
+   "gap_targets": [
+    "search_and_count"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "2",
+   "hints": [
+    "The loop looks at EVERY item; it doesn't stop at the first match.",
+    "List positions start at 0: the first item is position 0."
+   ],
+   "solution": [
+    "The loop checks every item.",
+    "9 appears 2 times.",
+    "Prints 2."
+   ],
+   "patterns": {
+    "1": "CS_ALG_STOPS_EARLY"
+   },
+   "code": "nums = [9, 2, 9, 5]\ncount = 0\nfor n in nums:\n    if n == 9:\n        count = count + 1\nprint(count)"
+  },
+  {
+   "id": "ALGO-RSAC3",
+   "pool": "retest:search_and_count",
+   "skill_id": "search_and_count",
+   "type": "code_output",
+   "gap_targets": [
+    "search_and_count"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "The loop looks at EVERY item; it doesn't stop at the first match.",
+    "List positions start at 0: the first item is position 0."
+   ],
+   "solution": [
+    "The loop checks every item.",
+    "6 appears 3 times.",
+    "Prints 3."
+   ],
+   "patterns": {
+    "1": "CS_ALG_STOPS_EARLY"
+   },
+   "code": "nums = [6, 6, 4, 6]\ncount = 0\nfor n in nums:\n    if n == 6:\n        count = count + 1\nprint(count)"
+  },
+  {
+   "id": "ALGO-RSAC4",
+   "pool": "retest:search_and_count",
+   "skill_id": "search_and_count",
+   "type": "code_output",
+   "gap_targets": [
+    "search_and_count"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "The loop looks at EVERY item; it doesn't stop at the first match.",
+    "List positions start at 0: the first item is position 0."
+   ],
+   "solution": [
+    "1 is at positions 1, 3 (counting from 0).",
+    "pos is overwritten each time, so it ends with the last match.",
+    "Prints 3."
+   ],
+   "patterns": {
+    "1": "CS_ALG_STOPS_EARLY",
+    "4": "CS_ALG_ONE_BASED"
+   },
+   "code": "nums = [5, 1, 8, 1, 7]\npos = -1\nfor i in range(len(nums)):\n    if nums[i] == 1:\n        pos = i\nprint(pos)"
+  },
+  {
+   "id": "ALGO-RSAC5",
+   "pool": "retest:search_and_count",
+   "skill_id": "search_and_count",
+   "type": "code_output",
+   "gap_targets": [
+    "search_and_count"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "2",
+   "hints": [
+    "The loop looks at EVERY item; it doesn't stop at the first match.",
+    "List positions start at 0: the first item is position 0."
+   ],
+   "solution": [
+    "2 is at positions 0, 2 (counting from 0).",
+    "pos is overwritten each time, so it ends with the last match.",
+    "Prints 2."
+   ],
+   "patterns": {
+    "0": "CS_ALG_STOPS_EARLY",
+    "3": "CS_ALG_ONE_BASED"
+   },
+   "code": "nums = [2, 9, 2, 4]\npos = -1\nfor i in range(len(nums)):\n    if nums[i] == 2:\n        pos = i\nprint(pos)"
+  },
+  {
+   "id": "ALGO-RSAC6",
+   "pool": "retest:search_and_count",
+   "skill_id": "search_and_count",
+   "type": "code_output",
+   "gap_targets": [
+    "search_and_count"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "The loop looks at EVERY item; it doesn't stop at the first match.",
+    "List positions start at 0: the first item is position 0."
+   ],
+   "solution": [
+    "3 is at positions 1, 3 (counting from 0).",
+    "pos is overwritten each time, so it ends with the last match.",
+    "Prints 3."
+   ],
+   "patterns": {
+    "1": "CS_ALG_STOPS_EARLY",
+    "4": "CS_ALG_ONE_BASED"
+   },
+   "code": "nums = [8, 3, 7, 3, 5]\npos = -1\nfor i in range(len(nums)):\n    if nums[i] == 3:\n        pos = i\nprint(pos)"
+  }
+ ],
+ "lessons": {
+  "find_largest": {
+   "title": "Finding the largest value",
+   "big_idea": "To find the largest item, keep a 'best so far' and compare every item with it. best only changes when a bigger value turns up, so it is NOT simply the last item in the list.",
+   "steps": [
+    "Start best as the first item.",
+    "For each item, if it's bigger than best, replace best.",
+    "After the loop, best holds the largest value."
+   ],
+   "sense_check": "For [4, 9, 2, 7] the answer can't be 7: 9 was bigger and nothing replaced it.",
+   "worked_examples": [
+    {
+     "prompt": "What does this program print?",
+     "code": "nums = [4, 9, 2, 7]\nbest = nums[0]\nfor n in nums:\n    if n > best:\n        best = n\nprint(best)",
+     "answer": "9",
+     "steps": [
+      "best = 4.",
+      "9 > 4: best = 9.",
+      "2 and 7 are not bigger than 9.",
+      "Prints 9."
+     ]
+    }
+   ]
+  },
+  "search_and_count": {
+   "title": "Searching and counting",
+   "big_idea": "A for loop visits EVERY item, even after it finds a match, unless the code tells it to stop. List positions start at 0.",
+   "steps": [
+    "Trace the loop through every item.",
+    "Update the count (or position) each time there's a match.",
+    "Remember: the first item is position 0."
+   ],
+   "sense_check": "In [3, 8, 5, 8, 1] there are two 8s, so the count is 2, not 1.",
+   "worked_examples": [
+    {
+     "prompt": "What does this program print?",
+     "code": "nums = [3, 8, 5, 8, 1]\ncount = 0\nfor n in nums:\n    if n == 8:\n        count = count + 1\nprint(count)",
+     "answer": "2",
+     "steps": [
+      "8 at the 2nd item: count 1.",
+      "8 again at the 4th item: count 2.",
+      "Prints 2."
+     ]
+    }
+   ]
+  }
+ }
+}

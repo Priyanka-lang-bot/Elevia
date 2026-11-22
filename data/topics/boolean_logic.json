@@ -1,0 +1,985 @@
+{
+ "skills": [
+  {
+   "id": "and_or",
+   "name": "and / or",
+   "grade": 7,
+   "prerequisites": [],
+   "description": "Both versus at least one."
+  },
+  {
+   "id": "not_logic",
+   "name": "not",
+   "grade": 8,
+   "prerequisites": [
+    "and_or"
+   ],
+   "description": "Flipping a True/False value."
+  }
+ ],
+ "misconceptions": {
+  "CS_AND_EITHER": {
+   "label": "Thinks `and` is True when either side is True",
+   "gap_skill": "and_or",
+   "explanation": "Treats and like or."
+  },
+  "CS_OR_NEEDS_BOTH": {
+   "label": "Thinks `or` needs both sides to be True",
+   "gap_skill": "and_or",
+   "explanation": "Treats or like and."
+  },
+  "CS_IGNORES_NOT": {
+   "label": "Ignores the `not`",
+   "gap_skill": "not_logic",
+   "explanation": "Gives the value before it is flipped."
+  }
+ },
+ "questions": [
+  {
+   "id": "BOO-DA1",
+   "pool": "diagnostic:boolean_logic:A",
+   "skill_id": "and_or",
+   "type": "code_output",
+   "gap_targets": [
+    "and_or"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "and is True only if BOTH sides are True.",
+    "or is True if AT LEAST ONE side is True."
+   ],
+   "solution": [
+    "Check each side with x = 12.",
+    "Combine them with and: False."
+   ],
+   "patterns": {
+    "True": "CS_AND_EITHER"
+   },
+   "code": "x = 12\nprint(x > 10 and x < 12)"
+  },
+  {
+   "id": "BOO-DA2",
+   "pool": "diagnostic:boolean_logic:A",
+   "skill_id": "and_or",
+   "type": "code_output",
+   "gap_targets": [
+    "and_or"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "True",
+   "hints": [
+    "and is True only if BOTH sides are True.",
+    "or is True if AT LEAST ONE side is True."
+   ],
+   "solution": [
+    "Check each side with x = 3.",
+    "Combine them with or: True."
+   ],
+   "patterns": {
+    "False": "CS_OR_NEEDS_BOTH"
+   },
+   "code": "x = 3\nprint(x < 4 or x > 9)"
+  },
+  {
+   "id": "BOO-DA3",
+   "pool": "diagnostic:boolean_logic:A",
+   "skill_id": "not_logic",
+   "type": "code_output",
+   "gap_targets": [
+    "not_logic"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "Work out the part after not first, then flip it.",
+    "Brackets are worked out first."
+   ],
+   "solution": [
+    "The part after not is True.",
+    "not flips it: False."
+   ],
+   "patterns": {
+    "True": "CS_IGNORES_NOT"
+   },
+   "code": "x = 4\nprint(not x > 2)"
+  },
+  {
+   "id": "BOO-DA4",
+   "pool": "diagnostic:boolean_logic:A",
+   "skill_id": "not_logic",
+   "type": "code_output",
+   "gap_targets": [
+    "not_logic"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "Work out the part after not first, then flip it.",
+    "Brackets are worked out first."
+   ],
+   "solution": [
+    "The part after not is True.",
+    "not flips it: False."
+   ],
+   "patterns": {
+    "True": "CS_IGNORES_NOT"
+   },
+   "code": "x = 6\nprint(not (x > 2 and x > 0))"
+  },
+  {
+   "id": "BOO-DA5",
+   "pool": "diagnostic:boolean_logic:A",
+   "skill_id": "and_or",
+   "type": "code_output",
+   "gap_targets": [
+    "and_or"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "and is True only if BOTH sides are True.",
+    "or is True if AT LEAST ONE side is True."
+   ],
+   "solution": [
+    "Check each side with x = 15.",
+    "Combine them with and: False."
+   ],
+   "patterns": {
+    "True": "CS_AND_EITHER"
+   },
+   "code": "x = 15\nprint(x > 10 and x < 12)"
+  },
+  {
+   "id": "BOO-DB1",
+   "pool": "diagnostic:boolean_logic:B",
+   "skill_id": "and_or",
+   "type": "code_output",
+   "gap_targets": [
+    "and_or"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "and is True only if BOTH sides are True.",
+    "or is True if AT LEAST ONE side is True."
+   ],
+   "solution": [
+    "Check each side with x = 20.",
+    "Combine them with and: False."
+   ],
+   "patterns": {
+    "True": "CS_AND_EITHER"
+   },
+   "code": "x = 20\nprint(x > 18 and x < 20)"
+  },
+  {
+   "id": "BOO-DB2",
+   "pool": "diagnostic:boolean_logic:B",
+   "skill_id": "and_or",
+   "type": "code_output",
+   "gap_targets": [
+    "and_or"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "True",
+   "hints": [
+    "and is True only if BOTH sides are True.",
+    "or is True if AT LEAST ONE side is True."
+   ],
+   "solution": [
+    "Check each side with x = 2.",
+    "Combine them with or: True."
+   ],
+   "patterns": {
+    "False": "CS_OR_NEEDS_BOTH"
+   },
+   "code": "x = 2\nprint(x < 5 or x > 9)"
+  },
+  {
+   "id": "BOO-DB3",
+   "pool": "diagnostic:boolean_logic:B",
+   "skill_id": "not_logic",
+   "type": "code_output",
+   "gap_targets": [
+    "not_logic"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "Work out the part after not first, then flip it.",
+    "Brackets are worked out first."
+   ],
+   "solution": [
+    "The part after not is True.",
+    "not flips it: False."
+   ],
+   "patterns": {
+    "True": "CS_IGNORES_NOT"
+   },
+   "code": "x = 7\nprint(not x > 3)"
+  },
+  {
+   "id": "BOO-DB4",
+   "pool": "diagnostic:boolean_logic:B",
+   "skill_id": "not_logic",
+   "type": "code_output",
+   "gap_targets": [
+    "not_logic"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "Work out the part after not first, then flip it.",
+    "Brackets are worked out first."
+   ],
+   "solution": [
+    "The part after not is True.",
+    "not flips it: False."
+   ],
+   "patterns": {
+    "True": "CS_IGNORES_NOT"
+   },
+   "code": "x = 8\nprint(not (x > 5 and x > 0))"
+  },
+  {
+   "id": "BOO-DB5",
+   "pool": "diagnostic:boolean_logic:B",
+   "skill_id": "and_or",
+   "type": "code_output",
+   "gap_targets": [
+    "and_or"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "and is True only if BOTH sides are True.",
+    "or is True if AT LEAST ONE side is True."
+   ],
+   "solution": [
+    "Check each side with x = 25.",
+    "Combine them with and: False."
+   ],
+   "patterns": {
+    "True": "CS_AND_EITHER"
+   },
+   "code": "x = 25\nprint(x > 5 and x < 9)"
+  },
+  {
+   "id": "BOO-VAO1",
+   "pool": "verification:and_or",
+   "skill_id": "and_or",
+   "type": "code_output",
+   "gap_targets": [
+    "and_or"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "and is True only if BOTH sides are True.",
+    "or is True if AT LEAST ONE side is True."
+   ],
+   "solution": [
+    "Check each side with x = 9.",
+    "Combine them with and: False."
+   ],
+   "patterns": {
+    "True": "CS_AND_EITHER"
+   },
+   "code": "x = 9\nprint(x > 3 and x < 9)",
+   "check_role": "same_type"
+  },
+  {
+   "id": "BOO-VAO2",
+   "pool": "verification:and_or",
+   "skill_id": "and_or",
+   "type": "code_output",
+   "gap_targets": [
+    "and_or"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "and is True only if BOTH sides are True.",
+    "or is True if AT LEAST ONE side is True."
+   ],
+   "solution": [
+    "Check each side with x = 14.",
+    "Combine them with and: False."
+   ],
+   "patterns": {
+    "True": "CS_AND_EITHER"
+   },
+   "code": "x = 14\nprint(x > 1 and x < 10)",
+   "check_role": "same_type"
+  },
+  {
+   "id": "BOO-VAO3",
+   "pool": "verification:and_or",
+   "skill_id": "and_or",
+   "type": "code_output",
+   "gap_targets": [
+    "and_or"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "True",
+   "hints": [
+    "and is True only if BOTH sides are True.",
+    "or is True if AT LEAST ONE side is True."
+   ],
+   "solution": [
+    "Check each side with x = 11.",
+    "Combine them with or: True."
+   ],
+   "patterns": {
+    "False": "CS_OR_NEEDS_BOTH"
+   },
+   "code": "x = 11\nprint(x < 15 or x > 30)",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "BOO-VAO4",
+   "pool": "verification:and_or",
+   "skill_id": "and_or",
+   "type": "code_output",
+   "gap_targets": [
+    "and_or"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "True",
+   "hints": [
+    "and is True only if BOTH sides are True.",
+    "or is True if AT LEAST ONE side is True."
+   ],
+   "solution": [
+    "Check each side with x = 40.",
+    "Combine them with or: True."
+   ],
+   "patterns": {
+    "False": "CS_OR_NEEDS_BOTH"
+   },
+   "code": "x = 40\nprint(x < 5 or x > 30)",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "BOO-PAO1",
+   "pool": "practice:and_or",
+   "skill_id": "and_or",
+   "type": "code_output",
+   "gap_targets": [
+    "and_or"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "and is True only if BOTH sides are True.",
+    "or is True if AT LEAST ONE side is True."
+   ],
+   "solution": [
+    "Check each side with x = 6.",
+    "Combine them with and: False."
+   ],
+   "patterns": {
+    "True": "CS_AND_EITHER"
+   },
+   "code": "x = 6\nprint(x > 2 and x < 6)"
+  },
+  {
+   "id": "BOO-PAO2",
+   "pool": "practice:and_or",
+   "skill_id": "and_or",
+   "type": "code_output",
+   "gap_targets": [
+    "and_or"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "and is True only if BOTH sides are True.",
+    "or is True if AT LEAST ONE side is True."
+   ],
+   "solution": [
+    "Check each side with x = 30.",
+    "Combine them with and: False."
+   ],
+   "patterns": {
+    "True": "CS_AND_EITHER"
+   },
+   "code": "x = 30\nprint(x > 10 and x < 20)"
+  },
+  {
+   "id": "BOO-PAO3",
+   "pool": "practice:and_or",
+   "skill_id": "and_or",
+   "type": "code_output",
+   "gap_targets": [
+    "and_or"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "True",
+   "hints": [
+    "and is True only if BOTH sides are True.",
+    "or is True if AT LEAST ONE side is True."
+   ],
+   "solution": [
+    "Check each side with x = 1.",
+    "Combine them with or: True."
+   ],
+   "patterns": {
+    "False": "CS_OR_NEEDS_BOTH"
+   },
+   "code": "x = 1\nprint(x < 3 or x > 8)"
+  },
+  {
+   "id": "BOO-PAO4",
+   "pool": "practice:and_or",
+   "skill_id": "and_or",
+   "type": "code_output",
+   "gap_targets": [
+    "and_or"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "True",
+   "hints": [
+    "and is True only if BOTH sides are True.",
+    "or is True if AT LEAST ONE side is True."
+   ],
+   "solution": [
+    "Check each side with x = 12.",
+    "Combine them with or: True."
+   ],
+   "patterns": {
+    "False": "CS_OR_NEEDS_BOTH"
+   },
+   "code": "x = 12\nprint(x < 2 or x > 10)"
+  },
+  {
+   "id": "BOO-RAO1",
+   "pool": "retest:and_or",
+   "skill_id": "and_or",
+   "type": "code_output",
+   "gap_targets": [
+    "and_or"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "and is True only if BOTH sides are True.",
+    "or is True if AT LEAST ONE side is True."
+   ],
+   "solution": [
+    "Check each side with x = 16.",
+    "Combine them with and: False."
+   ],
+   "patterns": {
+    "True": "CS_AND_EITHER"
+   },
+   "code": "x = 16\nprint(x > 15 and x < 16)"
+  },
+  {
+   "id": "BOO-RAO2",
+   "pool": "retest:and_or",
+   "skill_id": "and_or",
+   "type": "code_output",
+   "gap_targets": [
+    "and_or"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "and is True only if BOTH sides are True.",
+    "or is True if AT LEAST ONE side is True."
+   ],
+   "solution": [
+    "Check each side with x = 50.",
+    "Combine them with and: False."
+   ],
+   "patterns": {
+    "True": "CS_AND_EITHER"
+   },
+   "code": "x = 50\nprint(x > 20 and x < 40)"
+  },
+  {
+   "id": "BOO-RAO3",
+   "pool": "retest:and_or",
+   "skill_id": "and_or",
+   "type": "code_output",
+   "gap_targets": [
+    "and_or"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "True",
+   "hints": [
+    "and is True only if BOTH sides are True.",
+    "or is True if AT LEAST ONE side is True."
+   ],
+   "solution": [
+    "Check each side with x = 0.",
+    "Combine them with or: True."
+   ],
+   "patterns": {
+    "False": "CS_OR_NEEDS_BOTH"
+   },
+   "code": "x = 0\nprint(x < 4 or x > 10)"
+  },
+  {
+   "id": "BOO-RAO4",
+   "pool": "retest:and_or",
+   "skill_id": "and_or",
+   "type": "code_output",
+   "gap_targets": [
+    "and_or"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "True",
+   "hints": [
+    "and is True only if BOTH sides are True.",
+    "or is True if AT LEAST ONE side is True."
+   ],
+   "solution": [
+    "Check each side with x = 25.",
+    "Combine them with or: True."
+   ],
+   "patterns": {
+    "False": "CS_OR_NEEDS_BOTH"
+   },
+   "code": "x = 25\nprint(x < 3 or x > 20)"
+  },
+  {
+   "id": "BOO-RAO5",
+   "pool": "retest:and_or",
+   "skill_id": "and_or",
+   "type": "code_output",
+   "gap_targets": [
+    "and_or"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "and is True only if BOTH sides are True.",
+    "or is True if AT LEAST ONE side is True."
+   ],
+   "solution": [
+    "Check each side with x = 8.",
+    "Combine them with and: False."
+   ],
+   "patterns": {
+    "True": "CS_AND_EITHER"
+   },
+   "code": "x = 8\nprint(x > 8 and x < 9)"
+  },
+  {
+   "id": "BOO-RAO6",
+   "pool": "retest:and_or",
+   "skill_id": "and_or",
+   "type": "code_output",
+   "gap_targets": [
+    "and_or"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "and is True only if BOTH sides are True.",
+    "or is True if AT LEAST ONE side is True."
+   ],
+   "solution": [
+    "Check each side with x = 7.",
+    "Combine them with and: False."
+   ],
+   "patterns": {
+    "True": "CS_AND_EITHER"
+   },
+   "code": "x = 7\nprint(x > 1 and x < 6)"
+  },
+  {
+   "id": "BOO-VNL1",
+   "pool": "verification:not_logic",
+   "skill_id": "not_logic",
+   "type": "code_output",
+   "gap_targets": [
+    "not_logic"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "Work out the part after not first, then flip it.",
+    "Brackets are worked out first."
+   ],
+   "solution": [
+    "The part after not is True.",
+    "not flips it: False."
+   ],
+   "patterns": {
+    "True": "CS_IGNORES_NOT"
+   },
+   "code": "x = 9\nprint(not x > 4)",
+   "check_role": "same_type"
+  },
+  {
+   "id": "BOO-VNL2",
+   "pool": "verification:not_logic",
+   "skill_id": "not_logic",
+   "type": "code_output",
+   "gap_targets": [
+    "not_logic"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "True",
+   "hints": [
+    "Work out the part after not first, then flip it.",
+    "Brackets are worked out first."
+   ],
+   "solution": [
+    "The part after not is False.",
+    "not flips it: True."
+   ],
+   "patterns": {
+    "False": "CS_IGNORES_NOT"
+   },
+   "code": "x = 1\nprint(not x > 6)",
+   "check_role": "same_type"
+  },
+  {
+   "id": "BOO-VNL3",
+   "pool": "verification:not_logic",
+   "skill_id": "not_logic",
+   "type": "code_output",
+   "gap_targets": [
+    "not_logic"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "Work out the part after not first, then flip it.",
+    "Brackets are worked out first."
+   ],
+   "solution": [
+    "The part after not is True.",
+    "not flips it: False."
+   ],
+   "patterns": {
+    "True": "CS_IGNORES_NOT"
+   },
+   "code": "x = 10\nprint(not (x > 3 and x > 0))",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "BOO-VNL4",
+   "pool": "verification:not_logic",
+   "skill_id": "not_logic",
+   "type": "code_output",
+   "gap_targets": [
+    "not_logic"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "True",
+   "hints": [
+    "Work out the part after not first, then flip it.",
+    "Brackets are worked out first."
+   ],
+   "solution": [
+    "The part after not is False.",
+    "not flips it: True."
+   ],
+   "patterns": {
+    "False": "CS_IGNORES_NOT"
+   },
+   "code": "x = 2\nprint(not (x > 8 and x > 0))",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "BOO-PNL1",
+   "pool": "practice:not_logic",
+   "skill_id": "not_logic",
+   "type": "code_output",
+   "gap_targets": [
+    "not_logic"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "Work out the part after not first, then flip it.",
+    "Brackets are worked out first."
+   ],
+   "solution": [
+    "The part after not is True.",
+    "not flips it: False."
+   ],
+   "patterns": {
+    "True": "CS_IGNORES_NOT"
+   },
+   "code": "x = 5\nprint(not x > 1)"
+  },
+  {
+   "id": "BOO-PNL2",
+   "pool": "practice:not_logic",
+   "skill_id": "not_logic",
+   "type": "code_output",
+   "gap_targets": [
+    "not_logic"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "True",
+   "hints": [
+    "Work out the part after not first, then flip it.",
+    "Brackets are worked out first."
+   ],
+   "solution": [
+    "The part after not is False.",
+    "not flips it: True."
+   ],
+   "patterns": {
+    "False": "CS_IGNORES_NOT"
+   },
+   "code": "x = 3\nprint(not x > 7)"
+  },
+  {
+   "id": "BOO-PNL3",
+   "pool": "practice:not_logic",
+   "skill_id": "not_logic",
+   "type": "code_output",
+   "gap_targets": [
+    "not_logic"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "Work out the part after not first, then flip it.",
+    "Brackets are worked out first."
+   ],
+   "solution": [
+    "The part after not is True.",
+    "not flips it: False."
+   ],
+   "patterns": {
+    "True": "CS_IGNORES_NOT"
+   },
+   "code": "x = 9\nprint(not (x > 4 and x > 0))"
+  },
+  {
+   "id": "BOO-PNL4",
+   "pool": "practice:not_logic",
+   "skill_id": "not_logic",
+   "type": "code_output",
+   "gap_targets": [
+    "not_logic"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "True",
+   "hints": [
+    "Work out the part after not first, then flip it.",
+    "Brackets are worked out first."
+   ],
+   "solution": [
+    "The part after not is False.",
+    "not flips it: True."
+   ],
+   "patterns": {
+    "False": "CS_IGNORES_NOT"
+   },
+   "code": "x = 4\nprint(not (x > 6 and x > 0))"
+  },
+  {
+   "id": "BOO-RNL1",
+   "pool": "retest:not_logic",
+   "skill_id": "not_logic",
+   "type": "code_output",
+   "gap_targets": [
+    "not_logic"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "Work out the part after not first, then flip it.",
+    "Brackets are worked out first."
+   ],
+   "solution": [
+    "The part after not is True.",
+    "not flips it: False."
+   ],
+   "patterns": {
+    "True": "CS_IGNORES_NOT"
+   },
+   "code": "x = 11\nprint(not x > 2)"
+  },
+  {
+   "id": "BOO-RNL2",
+   "pool": "retest:not_logic",
+   "skill_id": "not_logic",
+   "type": "code_output",
+   "gap_targets": [
+    "not_logic"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "True",
+   "hints": [
+    "Work out the part after not first, then flip it.",
+    "Brackets are worked out first."
+   ],
+   "solution": [
+    "The part after not is False.",
+    "not flips it: True."
+   ],
+   "patterns": {
+    "False": "CS_IGNORES_NOT"
+   },
+   "code": "x = 2\nprint(not x > 9)"
+  },
+  {
+   "id": "BOO-RNL3",
+   "pool": "retest:not_logic",
+   "skill_id": "not_logic",
+   "type": "code_output",
+   "gap_targets": [
+    "not_logic"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "Work out the part after not first, then flip it.",
+    "Brackets are worked out first."
+   ],
+   "solution": [
+    "The part after not is True.",
+    "not flips it: False."
+   ],
+   "patterns": {
+    "True": "CS_IGNORES_NOT"
+   },
+   "code": "x = 12\nprint(not (x > 6 and x > 0))"
+  },
+  {
+   "id": "BOO-RNL4",
+   "pool": "retest:not_logic",
+   "skill_id": "not_logic",
+   "type": "code_output",
+   "gap_targets": [
+    "not_logic"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "False",
+   "hints": [
+    "Work out the part after not first, then flip it.",
+    "Brackets are worked out first."
+   ],
+   "solution": [
+    "The part after not is True.",
+    "not flips it: False."
+   ],
+   "patterns": {
+    "True": "CS_IGNORES_NOT"
+   },
+   "code": "x = 5\nprint(not (x > 1 and x > 0))"
+  },
+  {
+   "id": "BOO-RNL5",
+   "pool": "retest:not_logic",
+   "skill_id": "not_logic",
+   "type": "code_output",
+   "gap_targets": [
+    "not_logic"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "True",
+   "hints": [
+    "Work out the part after not first, then flip it.",
+    "Brackets are worked out first."
+   ],
+   "solution": [
+    "The part after not is False.",
+    "not flips it: True."
+   ],
+   "patterns": {
+    "False": "CS_IGNORES_NOT"
+   },
+   "code": "x = 6\nprint(not x > 6)"
+  },
+  {
+   "id": "BOO-RNL6",
+   "pool": "retest:not_logic",
+   "skill_id": "not_logic",
+   "type": "code_output",
+   "gap_targets": [
+    "not_logic"
+   ],
+   "prompt": "What does this program print? (True or False)",
+   "answer": "True",
+   "hints": [
+    "Work out the part after not first, then flip it.",
+    "Brackets are worked out first."
+   ],
+   "solution": [
+    "The part after not is False.",
+    "not flips it: True."
+   ],
+   "patterns": {
+    "False": "CS_IGNORES_NOT"
+   },
+   "code": "x = 3\nprint(not (x > 10 and x > 0))"
+  }
+ ],
+ "lessons": {
+  "and_or": {
+   "title": "and / or",
+   "big_idea": "and needs BOTH conditions to be True. or needs AT LEAST ONE to be True. That's different from how we sometimes use 'or' in everyday speech.",
+   "steps": [
+    "Work out each side separately as True or False.",
+    "and: True only if both are True.",
+    "or: True if either one (or both) is True."
+   ],
+   "sense_check": "A ticket for ages over 10 AND under 12: a 12-year-old fails the second check, so it's False.",
+   "worked_examples": [
+    {
+     "prompt": "What does this program print?",
+     "code": "x = 12\nprint(x > 10 and x < 12)",
+     "answer": "False",
+     "steps": [
+      "12 > 10 is True.",
+      "12 < 12 is False.",
+      "True and False → False."
+     ]
+    },
+    {
+     "prompt": "What does this program print?",
+     "code": "x = 3\nprint(x < 4 or x > 9)",
+     "answer": "True",
+     "steps": [
+      "3 < 4 is True.",
+      "3 > 9 is False.",
+      "True or False → True."
+     ]
+    }
+   ]
+  },
+  "not_logic": {
+   "title": "not",
+   "big_idea": "not flips True to False and False to True. Work out what comes after it first (including anything in brackets), then flip the result.",
+   "steps": [
+    "Find what not applies to.",
+    "Work that part out as True or False.",
+    "Flip it."
+   ],
+   "sense_check": "not (4 > 2): 4 > 2 is True, so the answer is False.",
+   "worked_examples": [
+    {
+     "prompt": "What does this program print?",
+     "code": "x = 4\nprint(not x > 2)",
+     "answer": "False",
+     "steps": [
+      "4 > 2 is True.",
+      "not True → False."
+     ]
+    },
+    {
+     "prompt": "What does this program print?",
+     "code": "x = 6\nprint(not (x > 2 and x > 0))",
+     "answer": "False",
+     "steps": [
+      "6 > 2 and 6 > 0 is True.",
+      "not True → False."
+     ]
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,954 @@
+{
+ "skills": [
+  {
+   "id": "calculating_mean",
+   "name": "The mean",
+   "grade": 6,
+   "prerequisites": [],
+   "description": "Total divided by how many."
+  },
+  {
+   "id": "finding_median",
+   "name": "The median",
+   "grade": 6,
+   "prerequisites": [],
+   "description": "The middle value of an ordered list."
+  }
+ ],
+ "misconceptions": {
+  "STAT_TOTAL_ONLY": {
+   "label": "Gives the total instead of dividing by how many",
+   "gap_skill": "calculating_mean",
+   "explanation": "Adds the values but forgets to divide."
+  },
+  "STAT_MODE_FOR_MEAN": {
+   "label": "Gives the most common value when asked for the mean",
+   "gap_skill": "calculating_mean",
+   "explanation": "Mixes up the mean and the mode."
+  },
+  "STAT_MEDIAN_UNSORTED": {
+   "label": "Takes the middle value without putting the list in order",
+   "gap_skill": "finding_median",
+   "explanation": "Picks the middle of the list as written."
+  },
+  "STAT_MEAN_FOR_MEDIAN": {
+   "label": "Calculates the mean when asked for the median",
+   "gap_skill": "finding_median",
+   "explanation": "Mixes up the two kinds of average."
+  }
+ },
+ "questions": [
+  {
+   "id": "STA-DA1",
+   "pool": "diagnostic:statistics:A",
+   "skill_id": "calculating_mean",
+   "type": "numeric",
+   "gap_targets": [
+    "calculating_mean"
+   ],
+   "prompt": "Find the mean of: 4, 6, 6, 8",
+   "answer": "6",
+   "hints": [
+    "Add all the values.",
+    "Divide the total by HOW MANY values there are."
+   ],
+   "solution": [
+    "Total = 4 + 6 + 6 + 8 = 24.",
+    "24 ÷ 4 = 6."
+   ],
+   "patterns": {
+    "24": "STAT_TOTAL_ONLY"
+   }
+  },
+  {
+   "id": "STA-DA2",
+   "pool": "diagnostic:statistics:A",
+   "skill_id": "finding_median",
+   "type": "numeric",
+   "gap_targets": [
+    "finding_median"
+   ],
+   "prompt": "Find the median of: 7, 2, 9, 4, 3",
+   "answer": "4",
+   "hints": [
+    "First put the values in order from smallest to largest.",
+    "The median is the middle value of the ordered list."
+   ],
+   "solution": [
+    "In order: 2, 3, 4, 7, 9.",
+    "The middle value is 4."
+   ],
+   "patterns": {
+    "9": "STAT_MEDIAN_UNSORTED",
+    "5": "STAT_MEAN_FOR_MEDIAN"
+   }
+  },
+  {
+   "id": "STA-DA3",
+   "pool": "diagnostic:statistics:A",
+   "skill_id": "calculating_mean",
+   "type": "numeric",
+   "gap_targets": [
+    "calculating_mean"
+   ],
+   "prompt": "Find the mean of: 5, 9, 10",
+   "answer": "8",
+   "hints": [
+    "Add all the values.",
+    "Divide the total by HOW MANY values there are."
+   ],
+   "solution": [
+    "Total = 5 + 9 + 10 = 24.",
+    "24 ÷ 3 = 8."
+   ],
+   "patterns": {
+    "24": "STAT_TOTAL_ONLY"
+   }
+  },
+  {
+   "id": "STA-DA4",
+   "pool": "diagnostic:statistics:A",
+   "skill_id": "finding_median",
+   "type": "numeric",
+   "gap_targets": [
+    "finding_median"
+   ],
+   "prompt": "Find the median of: 12, 5, 8, 15, 1",
+   "answer": "8",
+   "hints": [
+    "First put the values in order from smallest to largest.",
+    "The median is the middle value of the ordered list."
+   ],
+   "solution": [
+    "In order: 1, 5, 8, 12, 15.",
+    "The middle value is 8."
+   ],
+   "patterns": {}
+  },
+  {
+   "id": "STA-DA5",
+   "pool": "diagnostic:statistics:A",
+   "skill_id": "calculating_mean",
+   "type": "numeric",
+   "gap_targets": [
+    "calculating_mean"
+   ],
+   "prompt": "Find the mean of: 3, 3, 9, 5",
+   "answer": "5",
+   "hints": [
+    "Add all the values.",
+    "Divide the total by HOW MANY values there are."
+   ],
+   "solution": [
+    "Total = 3 + 3 + 9 + 5 = 20.",
+    "20 ÷ 4 = 5."
+   ],
+   "patterns": {
+    "20": "STAT_TOTAL_ONLY",
+    "3": "STAT_MODE_FOR_MEAN"
+   }
+  },
+  {
+   "id": "STA-DB1",
+   "pool": "diagnostic:statistics:B",
+   "skill_id": "calculating_mean",
+   "type": "numeric",
+   "gap_targets": [
+    "calculating_mean"
+   ],
+   "prompt": "Find the mean of: 2, 8, 8, 6",
+   "answer": "6",
+   "hints": [
+    "Add all the values.",
+    "Divide the total by HOW MANY values there are."
+   ],
+   "solution": [
+    "Total = 2 + 8 + 8 + 6 = 24.",
+    "24 ÷ 4 = 6."
+   ],
+   "patterns": {
+    "24": "STAT_TOTAL_ONLY",
+    "8": "STAT_MODE_FOR_MEAN"
+   }
+  },
+  {
+   "id": "STA-DB2",
+   "pool": "diagnostic:statistics:B",
+   "skill_id": "finding_median",
+   "type": "numeric",
+   "gap_targets": [
+    "finding_median"
+   ],
+   "prompt": "Find the median of: 9, 1, 6, 8, 2",
+   "answer": "6",
+   "hints": [
+    "First put the values in order from smallest to largest.",
+    "The median is the middle value of the ordered list."
+   ],
+   "solution": [
+    "In order: 1, 2, 6, 8, 9.",
+    "The middle value is 6."
+   ],
+   "patterns": {}
+  },
+  {
+   "id": "STA-DB3",
+   "pool": "diagnostic:statistics:B",
+   "skill_id": "calculating_mean",
+   "type": "numeric",
+   "gap_targets": [
+    "calculating_mean"
+   ],
+   "prompt": "Find the mean of: 6, 7, 11",
+   "answer": "8",
+   "hints": [
+    "Add all the values.",
+    "Divide the total by HOW MANY values there are."
+   ],
+   "solution": [
+    "Total = 6 + 7 + 11 = 24.",
+    "24 ÷ 3 = 8."
+   ],
+   "patterns": {
+    "24": "STAT_TOTAL_ONLY"
+   }
+  },
+  {
+   "id": "STA-DB4",
+   "pool": "diagnostic:statistics:B",
+   "skill_id": "finding_median",
+   "type": "numeric",
+   "gap_targets": [
+    "finding_median"
+   ],
+   "prompt": "Find the median of: 10, 4, 13, 7, 2",
+   "answer": "7",
+   "hints": [
+    "First put the values in order from smallest to largest.",
+    "The median is the middle value of the ordered list."
+   ],
+   "solution": [
+    "In order: 2, 4, 7, 10, 13.",
+    "The middle value is 7."
+   ],
+   "patterns": {
+    "13": "STAT_MEDIAN_UNSORTED"
+   }
+  },
+  {
+   "id": "STA-DB5",
+   "pool": "diagnostic:statistics:B",
+   "skill_id": "calculating_mean",
+   "type": "numeric",
+   "gap_targets": [
+    "calculating_mean"
+   ],
+   "prompt": "Find the mean of: 5, 5, 11, 7",
+   "answer": "7",
+   "hints": [
+    "Add all the values.",
+    "Divide the total by HOW MANY values there are."
+   ],
+   "solution": [
+    "Total = 5 + 5 + 11 + 7 = 28.",
+    "28 ÷ 4 = 7."
+   ],
+   "patterns": {
+    "28": "STAT_TOTAL_ONLY",
+    "5": "STAT_MODE_FOR_MEAN"
+   }
+  },
+  {
+   "id": "STA-VCM1",
+   "pool": "verification:calculating_mean",
+   "skill_id": "calculating_mean",
+   "type": "numeric",
+   "gap_targets": [
+    "calculating_mean"
+   ],
+   "prompt": "Find the mean of: 3, 7, 7, 11",
+   "answer": "7",
+   "hints": [
+    "Add all the values.",
+    "Divide the total by HOW MANY values there are."
+   ],
+   "solution": [
+    "Total = 3 + 7 + 7 + 11 = 28.",
+    "28 ÷ 4 = 7."
+   ],
+   "patterns": {
+    "28": "STAT_TOTAL_ONLY"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "STA-VCM2",
+   "pool": "verification:calculating_mean",
+   "skill_id": "calculating_mean",
+   "type": "numeric",
+   "gap_targets": [
+    "calculating_mean"
+   ],
+   "prompt": "Find the mean of: 10, 2, 2, 6",
+   "answer": "5",
+   "hints": [
+    "Add all the values.",
+    "Divide the total by HOW MANY values there are."
+   ],
+   "solution": [
+    "Total = 10 + 2 + 2 + 6 = 20.",
+    "20 ÷ 4 = 5."
+   ],
+   "patterns": {
+    "20": "STAT_TOTAL_ONLY",
+    "2": "STAT_MODE_FOR_MEAN"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "STA-VCM3",
+   "pool": "verification:calculating_mean",
+   "skill_id": "calculating_mean",
+   "type": "numeric",
+   "gap_targets": [
+    "calculating_mean"
+   ],
+   "prompt": "Find the mean of: 4, 8, 12",
+   "answer": "8",
+   "hints": [
+    "Add all the values.",
+    "Divide the total by HOW MANY values there are."
+   ],
+   "solution": [
+    "Total = 4 + 8 + 12 = 24.",
+    "24 ÷ 3 = 8."
+   ],
+   "patterns": {
+    "24": "STAT_TOTAL_ONLY"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "STA-VCM4",
+   "pool": "verification:calculating_mean",
+   "skill_id": "calculating_mean",
+   "type": "numeric",
+   "gap_targets": [
+    "calculating_mean"
+   ],
+   "prompt": "Find the mean of: 1, 5, 9, 5",
+   "answer": "5",
+   "hints": [
+    "Add all the values.",
+    "Divide the total by HOW MANY values there are."
+   ],
+   "solution": [
+    "Total = 1 + 5 + 9 + 5 = 20.",
+    "20 ÷ 4 = 5."
+   ],
+   "patterns": {
+    "20": "STAT_TOTAL_ONLY"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "STA-PCM1",
+   "pool": "practice:calculating_mean",
+   "skill_id": "calculating_mean",
+   "type": "numeric",
+   "gap_targets": [
+    "calculating_mean"
+   ],
+   "prompt": "Find the mean of: 2, 4, 4, 6",
+   "answer": "4",
+   "hints": [
+    "Add all the values.",
+    "Divide the total by HOW MANY values there are."
+   ],
+   "solution": [
+    "Total = 2 + 4 + 4 + 6 = 16.",
+    "16 ÷ 4 = 4."
+   ],
+   "patterns": {
+    "16": "STAT_TOTAL_ONLY"
+   }
+  },
+  {
+   "id": "STA-PCM2",
+   "pool": "practice:calculating_mean",
+   "skill_id": "calculating_mean",
+   "type": "numeric",
+   "gap_targets": [
+    "calculating_mean"
+   ],
+   "prompt": "Find the mean of: 9, 3, 3, 5",
+   "answer": "5",
+   "hints": [
+    "Add all the values.",
+    "Divide the total by HOW MANY values there are."
+   ],
+   "solution": [
+    "Total = 9 + 3 + 3 + 5 = 20.",
+    "20 ÷ 4 = 5."
+   ],
+   "patterns": {
+    "20": "STAT_TOTAL_ONLY",
+    "3": "STAT_MODE_FOR_MEAN"
+   }
+  },
+  {
+   "id": "STA-PCM3",
+   "pool": "practice:calculating_mean",
+   "skill_id": "calculating_mean",
+   "type": "numeric",
+   "gap_targets": [
+    "calculating_mean"
+   ],
+   "prompt": "Find the mean of: 7, 8, 12",
+   "answer": "9",
+   "hints": [
+    "Add all the values.",
+    "Divide the total by HOW MANY values there are."
+   ],
+   "solution": [
+    "Total = 7 + 8 + 12 = 27.",
+    "27 ÷ 3 = 9."
+   ],
+   "patterns": {
+    "27": "STAT_TOTAL_ONLY"
+   }
+  },
+  {
+   "id": "STA-PCM4",
+   "pool": "practice:calculating_mean",
+   "skill_id": "calculating_mean",
+   "type": "numeric",
+   "gap_targets": [
+    "calculating_mean"
+   ],
+   "prompt": "Find the mean of: 10, 6, 6, 2",
+   "answer": "6",
+   "hints": [
+    "Add all the values.",
+    "Divide the total by HOW MANY values there are."
+   ],
+   "solution": [
+    "Total = 10 + 6 + 6 + 2 = 24.",
+    "24 ÷ 4 = 6."
+   ],
+   "patterns": {
+    "24": "STAT_TOTAL_ONLY"
+   }
+  },
+  {
+   "id": "STA-RCM1",
+   "pool": "retest:calculating_mean",
+   "skill_id": "calculating_mean",
+   "type": "numeric",
+   "gap_targets": [
+    "calculating_mean"
+   ],
+   "prompt": "Find the mean of: 1, 9, 9, 5",
+   "answer": "6",
+   "hints": [
+    "Add all the values.",
+    "Divide the total by HOW MANY values there are."
+   ],
+   "solution": [
+    "Total = 1 + 9 + 9 + 5 = 24.",
+    "24 ÷ 4 = 6."
+   ],
+   "patterns": {
+    "24": "STAT_TOTAL_ONLY",
+    "9": "STAT_MODE_FOR_MEAN"
+   }
+  },
+  {
+   "id": "STA-RCM2",
+   "pool": "retest:calculating_mean",
+   "skill_id": "calculating_mean",
+   "type": "numeric",
+   "gap_targets": [
+    "calculating_mean"
+   ],
+   "prompt": "Find the mean of: 6, 2, 2, 10",
+   "answer": "5",
+   "hints": [
+    "Add all the values.",
+    "Divide the total by HOW MANY values there are."
+   ],
+   "solution": [
+    "Total = 6 + 2 + 2 + 10 = 20.",
+    "20 ÷ 4 = 5."
+   ],
+   "patterns": {
+    "20": "STAT_TOTAL_ONLY",
+    "2": "STAT_MODE_FOR_MEAN"
+   }
+  },
+  {
+   "id": "STA-RCM3",
+   "pool": "retest:calculating_mean",
+   "skill_id": "calculating_mean",
+   "type": "numeric",
+   "gap_targets": [
+    "calculating_mean"
+   ],
+   "prompt": "Find the mean of: 10, 14, 18",
+   "answer": "14",
+   "hints": [
+    "Add all the values.",
+    "Divide the total by HOW MANY values there are."
+   ],
+   "solution": [
+    "Total = 10 + 14 + 18 = 42.",
+    "42 ÷ 3 = 14."
+   ],
+   "patterns": {
+    "42": "STAT_TOTAL_ONLY"
+   }
+  },
+  {
+   "id": "STA-RCM4",
+   "pool": "retest:calculating_mean",
+   "skill_id": "calculating_mean",
+   "type": "numeric",
+   "gap_targets": [
+    "calculating_mean"
+   ],
+   "prompt": "Find the mean of: 4, 4, 12, 8",
+   "answer": "7",
+   "hints": [
+    "Add all the values.",
+    "Divide the total by HOW MANY values there are."
+   ],
+   "solution": [
+    "Total = 4 + 4 + 12 + 8 = 28.",
+    "28 ÷ 4 = 7."
+   ],
+   "patterns": {
+    "28": "STAT_TOTAL_ONLY",
+    "4": "STAT_MODE_FOR_MEAN"
+   }
+  },
+  {
+   "id": "STA-RCM5",
+   "pool": "retest:calculating_mean",
+   "skill_id": "calculating_mean",
+   "type": "numeric",
+   "gap_targets": [
+    "calculating_mean"
+   ],
+   "prompt": "Find the mean of: 3, 11, 11, 7",
+   "answer": "8",
+   "hints": [
+    "Add all the values.",
+    "Divide the total by HOW MANY values there are."
+   ],
+   "solution": [
+    "Total = 3 + 11 + 11 + 7 = 32.",
+    "32 ÷ 4 = 8."
+   ],
+   "patterns": {
+    "32": "STAT_TOTAL_ONLY",
+    "11": "STAT_MODE_FOR_MEAN"
+   }
+  },
+  {
+   "id": "STA-RCM6",
+   "pool": "retest:calculating_mean",
+   "skill_id": "calculating_mean",
+   "type": "numeric",
+   "gap_targets": [
+    "calculating_mean"
+   ],
+   "prompt": "Find the mean of: 8, 12, 16",
+   "answer": "12",
+   "hints": [
+    "Add all the values.",
+    "Divide the total by HOW MANY values there are."
+   ],
+   "solution": [
+    "Total = 8 + 12 + 16 = 36.",
+    "36 ÷ 3 = 12."
+   ],
+   "patterns": {
+    "36": "STAT_TOTAL_ONLY"
+   }
+  },
+  {
+   "id": "STA-VFM1",
+   "pool": "verification:finding_median",
+   "skill_id": "finding_median",
+   "type": "numeric",
+   "gap_targets": [
+    "finding_median"
+   ],
+   "prompt": "Find the median of: 8, 3, 10, 6, 1",
+   "answer": "6",
+   "hints": [
+    "First put the values in order from smallest to largest.",
+    "The median is the middle value of the ordered list."
+   ],
+   "solution": [
+    "In order: 1, 3, 6, 8, 10.",
+    "The middle value is 6."
+   ],
+   "patterns": {
+    "10": "STAT_MEDIAN_UNSORTED"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "STA-VFM2",
+   "pool": "verification:finding_median",
+   "skill_id": "finding_median",
+   "type": "numeric",
+   "gap_targets": [
+    "finding_median"
+   ],
+   "prompt": "Find the median of: 14, 2, 9, 11, 4",
+   "answer": "9",
+   "hints": [
+    "First put the values in order from smallest to largest.",
+    "The median is the middle value of the ordered list."
+   ],
+   "solution": [
+    "In order: 2, 4, 9, 11, 14.",
+    "The middle value is 9."
+   ],
+   "patterns": {
+    "8": "STAT_MEAN_FOR_MEDIAN"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "STA-VFM3",
+   "pool": "verification:finding_median",
+   "skill_id": "finding_median",
+   "type": "numeric",
+   "gap_targets": [
+    "finding_median"
+   ],
+   "prompt": "Find the median of: 6, 15, 3, 9, 12",
+   "answer": "9",
+   "hints": [
+    "First put the values in order from smallest to largest.",
+    "The median is the middle value of the ordered list."
+   ],
+   "solution": [
+    "In order: 3, 6, 9, 12, 15.",
+    "The middle value is 9."
+   ],
+   "patterns": {
+    "3": "STAT_MEDIAN_UNSORTED"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "STA-VFM4",
+   "pool": "verification:finding_median",
+   "skill_id": "finding_median",
+   "type": "numeric",
+   "gap_targets": [
+    "finding_median"
+   ],
+   "prompt": "Find the median of: 20, 5, 11, 2, 7",
+   "answer": "7",
+   "hints": [
+    "First put the values in order from smallest to largest.",
+    "The median is the middle value of the ordered list."
+   ],
+   "solution": [
+    "In order: 2, 5, 7, 11, 20.",
+    "The middle value is 7."
+   ],
+   "patterns": {
+    "11": "STAT_MEDIAN_UNSORTED",
+    "9": "STAT_MEAN_FOR_MEDIAN"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "STA-PFM1",
+   "pool": "practice:finding_median",
+   "skill_id": "finding_median",
+   "type": "numeric",
+   "gap_targets": [
+    "finding_median"
+   ],
+   "prompt": "Find the median of: 5, 12, 3, 8, 2",
+   "answer": "5",
+   "hints": [
+    "First put the values in order from smallest to largest.",
+    "The median is the middle value of the ordered list."
+   ],
+   "solution": [
+    "In order: 2, 3, 5, 8, 12.",
+    "The middle value is 5."
+   ],
+   "patterns": {
+    "3": "STAT_MEDIAN_UNSORTED",
+    "6": "STAT_MEAN_FOR_MEDIAN"
+   }
+  },
+  {
+   "id": "STA-PFM2",
+   "pool": "practice:finding_median",
+   "skill_id": "finding_median",
+   "type": "numeric",
+   "gap_targets": [
+    "finding_median"
+   ],
+   "prompt": "Find the median of: 11, 4, 16, 6, 3",
+   "answer": "6",
+   "hints": [
+    "First put the values in order from smallest to largest.",
+    "The median is the middle value of the ordered list."
+   ],
+   "solution": [
+    "In order: 3, 4, 6, 11, 16.",
+    "The middle value is 6."
+   ],
+   "patterns": {
+    "16": "STAT_MEDIAN_UNSORTED",
+    "8": "STAT_MEAN_FOR_MEDIAN"
+   }
+  },
+  {
+   "id": "STA-PFM3",
+   "pool": "practice:finding_median",
+   "skill_id": "finding_median",
+   "type": "numeric",
+   "gap_targets": [
+    "finding_median"
+   ],
+   "prompt": "Find the median of: 9, 2, 14, 7, 1",
+   "answer": "7",
+   "hints": [
+    "First put the values in order from smallest to largest.",
+    "The median is the middle value of the ordered list."
+   ],
+   "solution": [
+    "In order: 1, 2, 7, 9, 14.",
+    "The middle value is 7."
+   ],
+   "patterns": {
+    "14": "STAT_MEDIAN_UNSORTED"
+   }
+  },
+  {
+   "id": "STA-PFM4",
+   "pool": "practice:finding_median",
+   "skill_id": "finding_median",
+   "type": "numeric",
+   "gap_targets": [
+    "finding_median"
+   ],
+   "prompt": "Find the median of: 13, 6, 2, 10, 4",
+   "answer": "6",
+   "hints": [
+    "First put the values in order from smallest to largest.",
+    "The median is the middle value of the ordered list."
+   ],
+   "solution": [
+    "In order: 2, 4, 6, 10, 13.",
+    "The middle value is 6."
+   ],
+   "patterns": {
+    "2": "STAT_MEDIAN_UNSORTED",
+    "7": "STAT_MEAN_FOR_MEDIAN"
+   }
+  },
+  {
+   "id": "STA-RFM1",
+   "pool": "retest:finding_median",
+   "skill_id": "finding_median",
+   "type": "numeric",
+   "gap_targets": [
+    "finding_median"
+   ],
+   "prompt": "Find the median of: 7, 1, 12, 9, 3",
+   "answer": "7",
+   "hints": [
+    "First put the values in order from smallest to largest.",
+    "The median is the middle value of the ordered list."
+   ],
+   "solution": [
+    "In order: 1, 3, 7, 9, 12.",
+    "The middle value is 7."
+   ],
+   "patterns": {
+    "12": "STAT_MEDIAN_UNSORTED"
+   }
+  },
+  {
+   "id": "STA-RFM2",
+   "pool": "retest:finding_median",
+   "skill_id": "finding_median",
+   "type": "numeric",
+   "gap_targets": [
+    "finding_median"
+   ],
+   "prompt": "Find the median of: 15, 5, 10, 2, 8",
+   "answer": "8",
+   "hints": [
+    "First put the values in order from smallest to largest.",
+    "The median is the middle value of the ordered list."
+   ],
+   "solution": [
+    "In order: 2, 5, 8, 10, 15.",
+    "The middle value is 8."
+   ],
+   "patterns": {
+    "10": "STAT_MEDIAN_UNSORTED"
+   }
+  },
+  {
+   "id": "STA-RFM3",
+   "pool": "retest:finding_median",
+   "skill_id": "finding_median",
+   "type": "numeric",
+   "gap_targets": [
+    "finding_median"
+   ],
+   "prompt": "Find the median of: 4, 13, 1, 9, 6",
+   "answer": "6",
+   "hints": [
+    "First put the values in order from smallest to largest.",
+    "The median is the middle value of the ordered list."
+   ],
+   "solution": [
+    "In order: 1, 4, 6, 9, 13.",
+    "The middle value is 6."
+   ],
+   "patterns": {
+    "1": "STAT_MEDIAN_UNSORTED"
+   }
+  },
+  {
+   "id": "STA-RFM4",
+   "pool": "retest:finding_median",
+   "skill_id": "finding_median",
+   "type": "numeric",
+   "gap_targets": [
+    "finding_median"
+   ],
+   "prompt": "Find the median of: 18, 7, 3, 12, 5",
+   "answer": "7",
+   "hints": [
+    "First put the values in order from smallest to largest.",
+    "The median is the middle value of the ordered list."
+   ],
+   "solution": [
+    "In order: 3, 5, 7, 12, 18.",
+    "The middle value is 7."
+   ],
+   "patterns": {
+    "3": "STAT_MEDIAN_UNSORTED",
+    "9": "STAT_MEAN_FOR_MEDIAN"
+   }
+  },
+  {
+   "id": "STA-RFM5",
+   "pool": "retest:finding_median",
+   "skill_id": "finding_median",
+   "type": "numeric",
+   "gap_targets": [
+    "finding_median"
+   ],
+   "prompt": "Find the median of: 2, 11, 6, 14, 4",
+   "answer": "6",
+   "hints": [
+    "First put the values in order from smallest to largest.",
+    "The median is the middle value of the ordered list."
+   ],
+   "solution": [
+    "In order: 2, 4, 6, 11, 14.",
+    "The middle value is 6."
+   ],
+   "patterns": {}
+  },
+  {
+   "id": "STA-RFM6",
+   "pool": "retest:finding_median",
+   "skill_id": "finding_median",
+   "type": "numeric",
+   "gap_targets": [
+    "finding_median"
+   ],
+   "prompt": "Find the median of: 16, 3, 9, 1, 8",
+   "answer": "8",
+   "hints": [
+    "First put the values in order from smallest to largest.",
+    "The median is the middle value of the ordered list."
+   ],
+   "solution": [
+    "In order: 1, 3, 8, 9, 16.",
+    "The middle value is 8."
+   ],
+   "patterns": {
+    "9": "STAT_MEDIAN_UNSORTED"
+   }
+  }
+ ],
+ "lessons": {
+  "calculating_mean": {
+   "title": "The mean",
+   "big_idea": "The mean shares the total out equally. Add all the values, then divide by how many values there are. The total on its own isn't an average, and neither is the most common value (the mode).",
+   "steps": [
+    "Add all the values to get the total.",
+    "Count how many values there are.",
+    "Divide the total by the count.",
+    "Check: the mean lies between the smallest and largest values."
+   ],
+   "sense_check": "The mean of 4, 6, 6 and 8 can't be 24: that's bigger than every value.",
+   "worked_examples": [
+    {
+     "prompt": "Mean of 4, 6, 6, 8?",
+     "answer": "6",
+     "steps": [
+      "Total: 24.",
+      "4 values: 24 ÷ 4 = 6."
+     ]
+    },
+    {
+     "prompt": "Mean of 5, 9, 10?",
+     "answer": "8",
+     "steps": [
+      "Total: 24.",
+      "3 values: 24 ÷ 3 = 8."
+     ]
+    }
+   ]
+  },
+  "finding_median": {
+   "title": "The median",
+   "big_idea": "The median is the middle value once the list is IN ORDER. The middle of the unsorted list means nothing, because the order the values were written in is just the order they were collected.",
+   "steps": [
+    "Rewrite the list from smallest to largest.",
+    "Cross off one from each end until one value is left.",
+    "That middle value is the median."
+   ],
+   "sense_check": "For 7, 2, 9, 4, 3 the third value written is 9, but sorted (2, 3, 4, 7, 9) the middle is 4.",
+   "worked_examples": [
+    {
+     "prompt": "Median of 7, 2, 9, 4, 3?",
+     "answer": "4",
+     "steps": [
+      "Sort: 2, 3, 4, 7, 9.",
+      "Middle: 4."
+     ]
+    },
+    {
+     "prompt": "Median of 12, 5, 8, 15, 1?",
+     "answer": "8",
+     "steps": [
+      "Sort: 1, 5, 8, 12, 15.",
+      "Middle: 8."
+     ]
+    }
+   ]
+  }
+ }
+}

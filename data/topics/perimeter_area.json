@@ -1,0 +1,988 @@
+{
+ "skills": [
+  {
+   "id": "perimeter",
+   "name": "Perimeter",
+   "grade": 4,
+   "prerequisites": [],
+   "description": "The total length of the boundary."
+  },
+  {
+   "id": "area_rectangles",
+   "name": "Area of rectangles",
+   "grade": 5,
+   "prerequisites": [
+    "perimeter"
+   ],
+   "description": "Length × width, in square units."
+  }
+ ],
+ "misconceptions": {
+  "PA_AREA_FOR_PERIM": {
+   "label": "Works out the area when asked for the perimeter",
+   "gap_skill": "perimeter",
+   "explanation": "Multiplies length and width for the distance round."
+  },
+  "PA_HALF_PERIM": {
+   "label": "Adds only two sides for the perimeter",
+   "gap_skill": "perimeter",
+   "explanation": "Says a 7 by 3 rectangle has perimeter 10."
+  },
+  "PA_PERIM_FOR_AREA": {
+   "label": "Works out the perimeter when asked for the area",
+   "gap_skill": "area_rectangles",
+   "explanation": "Adds all four sides for the space inside."
+  },
+  "PA_ADD_SIDES": {
+   "label": "Adds length and width to find the area",
+   "gap_skill": "area_rectangles",
+   "explanation": "Says a 7 by 3 rectangle has area 10."
+  },
+  "PA_SUBTRACT_SIDE": {
+   "label": "Subtracts instead of dividing to find a missing side",
+   "gap_skill": "area_rectangles",
+   "explanation": "Works out width = area − length."
+  }
+ },
+ "questions": [
+  {
+   "id": "PAR-DA1",
+   "pool": "diagnostic:perimeter_area:A",
+   "skill_id": "perimeter",
+   "type": "numeric",
+   "gap_targets": [
+    "perimeter"
+   ],
+   "prompt": "A rectangle is 7 cm long and 3 cm wide. What is its perimeter, in cm?",
+   "answer": "20",
+   "hints": [
+    "Perimeter is the distance all the way round: add every side.",
+    "A rectangle has two lengths and two widths."
+   ],
+   "solution": [
+    "Add all four sides: 7 + 3 + 7 + 3.",
+    "Perimeter = 20 cm."
+   ],
+   "patterns": {
+    "21": "PA_AREA_FOR_PERIM",
+    "10": "PA_HALF_PERIM"
+   }
+  },
+  {
+   "id": "PAR-DA2",
+   "pool": "diagnostic:perimeter_area:A",
+   "skill_id": "area_rectangles",
+   "type": "numeric",
+   "gap_targets": [
+    "area_rectangles"
+   ],
+   "prompt": "A rectangle is 6 cm long and 4 cm wide. What is its area, in cm²?",
+   "answer": "24",
+   "hints": [
+    "Area is the space inside, measured in squares.",
+    "Area of a rectangle = length × width."
+   ],
+   "solution": [
+    "Area = length × width = 6 × 4.",
+    "Area = 24 cm²."
+   ],
+   "patterns": {
+    "20": "PA_PERIM_FOR_AREA",
+    "10": "PA_ADD_SIDES"
+   }
+  },
+  {
+   "id": "PAR-DA3",
+   "pool": "diagnostic:perimeter_area:A",
+   "skill_id": "perimeter",
+   "type": "numeric",
+   "gap_targets": [
+    "perimeter"
+   ],
+   "prompt": "A square has sides of 5 cm. What is its perimeter, in cm?",
+   "answer": "20",
+   "hints": [
+    "Perimeter is the distance all the way round: add every side.",
+    "A rectangle has two lengths and two widths."
+   ],
+   "solution": [
+    "Add all four sides: 5 + 5 + 5 + 5.",
+    "Perimeter = 20 cm."
+   ],
+   "patterns": {
+    "25": "PA_AREA_FOR_PERIM",
+    "10": "PA_HALF_PERIM"
+   }
+  },
+  {
+   "id": "PAR-DA4",
+   "pool": "diagnostic:perimeter_area:A",
+   "skill_id": "area_rectangles",
+   "type": "numeric",
+   "gap_targets": [
+    "area_rectangles"
+   ],
+   "prompt": "A rectangle is 8 cm long and 2 cm wide. What is its area, in cm²?",
+   "answer": "16",
+   "hints": [
+    "Area is the space inside, measured in squares.",
+    "Area of a rectangle = length × width."
+   ],
+   "solution": [
+    "Area = length × width = 8 × 2.",
+    "Area = 16 cm²."
+   ],
+   "patterns": {
+    "20": "PA_PERIM_FOR_AREA",
+    "10": "PA_ADD_SIDES"
+   }
+  },
+  {
+   "id": "PAR-DA5",
+   "pool": "diagnostic:perimeter_area:A",
+   "skill_id": "area_rectangles",
+   "type": "numeric",
+   "gap_targets": [
+    "area_rectangles"
+   ],
+   "prompt": "A rectangle is 9 cm long and 3 cm wide. What is its area, in cm²?",
+   "answer": "27",
+   "hints": [
+    "Area is the space inside, measured in squares.",
+    "Area of a rectangle = length × width."
+   ],
+   "solution": [
+    "Area = length × width = 9 × 3.",
+    "Area = 27 cm²."
+   ],
+   "patterns": {
+    "24": "PA_PERIM_FOR_AREA",
+    "12": "PA_ADD_SIDES"
+   }
+  },
+  {
+   "id": "PAR-DB1",
+   "pool": "diagnostic:perimeter_area:B",
+   "skill_id": "perimeter",
+   "type": "numeric",
+   "gap_targets": [
+    "perimeter"
+   ],
+   "prompt": "A rectangle is 8 cm long and 5 cm wide. What is its perimeter, in cm?",
+   "answer": "26",
+   "hints": [
+    "Perimeter is the distance all the way round: add every side.",
+    "A rectangle has two lengths and two widths."
+   ],
+   "solution": [
+    "Add all four sides: 8 + 5 + 8 + 5.",
+    "Perimeter = 26 cm."
+   ],
+   "patterns": {
+    "40": "PA_AREA_FOR_PERIM",
+    "13": "PA_HALF_PERIM"
+   }
+  },
+  {
+   "id": "PAR-DB2",
+   "pool": "diagnostic:perimeter_area:B",
+   "skill_id": "area_rectangles",
+   "type": "numeric",
+   "gap_targets": [
+    "area_rectangles"
+   ],
+   "prompt": "A rectangle is 7 cm long and 2 cm wide. What is its area, in cm²?",
+   "answer": "14",
+   "hints": [
+    "Area is the space inside, measured in squares.",
+    "Area of a rectangle = length × width."
+   ],
+   "solution": [
+    "Area = length × width = 7 × 2.",
+    "Area = 14 cm²."
+   ],
+   "patterns": {
+    "18": "PA_PERIM_FOR_AREA",
+    "9": "PA_ADD_SIDES"
+   }
+  },
+  {
+   "id": "PAR-DB3",
+   "pool": "diagnostic:perimeter_area:B",
+   "skill_id": "perimeter",
+   "type": "numeric",
+   "gap_targets": [
+    "perimeter"
+   ],
+   "prompt": "A square has sides of 6 cm. What is its perimeter, in cm?",
+   "answer": "24",
+   "hints": [
+    "Perimeter is the distance all the way round: add every side.",
+    "A rectangle has two lengths and two widths."
+   ],
+   "solution": [
+    "Add all four sides: 6 + 6 + 6 + 6.",
+    "Perimeter = 24 cm."
+   ],
+   "patterns": {
+    "36": "PA_AREA_FOR_PERIM",
+    "12": "PA_HALF_PERIM"
+   }
+  },
+  {
+   "id": "PAR-DB4",
+   "pool": "diagnostic:perimeter_area:B",
+   "skill_id": "area_rectangles",
+   "type": "numeric",
+   "gap_targets": [
+    "area_rectangles"
+   ],
+   "prompt": "A rectangle is 5 cm long and 3 cm wide. What is its area, in cm²?",
+   "answer": "15",
+   "hints": [
+    "Area is the space inside, measured in squares.",
+    "Area of a rectangle = length × width."
+   ],
+   "solution": [
+    "Area = length × width = 5 × 3.",
+    "Area = 15 cm²."
+   ],
+   "patterns": {
+    "16": "PA_PERIM_FOR_AREA",
+    "8": "PA_ADD_SIDES"
+   }
+  },
+  {
+   "id": "PAR-DB5",
+   "pool": "diagnostic:perimeter_area:B",
+   "skill_id": "area_rectangles",
+   "type": "numeric",
+   "gap_targets": [
+    "area_rectangles"
+   ],
+   "prompt": "A square has sides of 4 cm. What is its area, in cm²?",
+   "answer": "16",
+   "hints": [
+    "Area is the space inside, measured in squares.",
+    "Area of a rectangle = length × width."
+   ],
+   "solution": [
+    "Area = length × width = 4 × 4.",
+    "Area = 16 cm²."
+   ],
+   "patterns": {
+    "8": "PA_ADD_SIDES"
+   }
+  },
+  {
+   "id": "PAR-VP1",
+   "pool": "verification:perimeter",
+   "skill_id": "perimeter",
+   "type": "numeric",
+   "gap_targets": [
+    "perimeter"
+   ],
+   "prompt": "A rectangle is 9 cm long and 4 cm wide. What is its perimeter, in cm?",
+   "answer": "26",
+   "hints": [
+    "Perimeter is the distance all the way round: add every side.",
+    "A rectangle has two lengths and two widths."
+   ],
+   "solution": [
+    "Add all four sides: 9 + 4 + 9 + 4.",
+    "Perimeter = 26 cm."
+   ],
+   "patterns": {
+    "36": "PA_AREA_FOR_PERIM",
+    "13": "PA_HALF_PERIM"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "PAR-VP2",
+   "pool": "verification:perimeter",
+   "skill_id": "perimeter",
+   "type": "numeric",
+   "gap_targets": [
+    "perimeter"
+   ],
+   "prompt": "A rectangle is 10 cm long and 3 cm wide. What is its perimeter, in cm?",
+   "answer": "26",
+   "hints": [
+    "Perimeter is the distance all the way round: add every side.",
+    "A rectangle has two lengths and two widths."
+   ],
+   "solution": [
+    "Add all four sides: 10 + 3 + 10 + 3.",
+    "Perimeter = 26 cm."
+   ],
+   "patterns": {
+    "30": "PA_AREA_FOR_PERIM",
+    "13": "PA_HALF_PERIM"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "PAR-VP3",
+   "pool": "verification:perimeter",
+   "skill_id": "perimeter",
+   "type": "numeric",
+   "gap_targets": [
+    "perimeter"
+   ],
+   "prompt": "A rectangle is 6 cm long and 2 cm wide. What is its perimeter, in cm?",
+   "answer": "16",
+   "hints": [
+    "Perimeter is the distance all the way round: add every side.",
+    "A rectangle has two lengths and two widths."
+   ],
+   "solution": [
+    "Add all four sides: 6 + 2 + 6 + 2.",
+    "Perimeter = 16 cm."
+   ],
+   "patterns": {
+    "12": "PA_AREA_FOR_PERIM",
+    "8": "PA_HALF_PERIM"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "PAR-VP4",
+   "pool": "verification:perimeter",
+   "skill_id": "perimeter",
+   "type": "numeric",
+   "gap_targets": [
+    "perimeter"
+   ],
+   "prompt": "A rectangle is 12 cm long and 5 cm wide. What is its perimeter, in cm?",
+   "answer": "34",
+   "hints": [
+    "Perimeter is the distance all the way round: add every side.",
+    "A rectangle has two lengths and two widths."
+   ],
+   "solution": [
+    "Add all four sides: 12 + 5 + 12 + 5.",
+    "Perimeter = 34 cm."
+   ],
+   "patterns": {
+    "60": "PA_AREA_FOR_PERIM",
+    "17": "PA_HALF_PERIM"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "PAR-PP1",
+   "pool": "practice:perimeter",
+   "skill_id": "perimeter",
+   "type": "numeric",
+   "gap_targets": [
+    "perimeter"
+   ],
+   "prompt": "A rectangle is 11 cm long and 4 cm wide. What is its perimeter, in cm?",
+   "answer": "30",
+   "hints": [
+    "Perimeter is the distance all the way round: add every side.",
+    "A rectangle has two lengths and two widths."
+   ],
+   "solution": [
+    "Add all four sides: 11 + 4 + 11 + 4.",
+    "Perimeter = 30 cm."
+   ],
+   "patterns": {
+    "44": "PA_AREA_FOR_PERIM",
+    "15": "PA_HALF_PERIM"
+   }
+  },
+  {
+   "id": "PAR-PP2",
+   "pool": "practice:perimeter",
+   "skill_id": "perimeter",
+   "type": "numeric",
+   "gap_targets": [
+    "perimeter"
+   ],
+   "prompt": "A square has sides of 8 cm. What is its perimeter, in cm?",
+   "answer": "32",
+   "hints": [
+    "Perimeter is the distance all the way round: add every side.",
+    "A rectangle has two lengths and two widths."
+   ],
+   "solution": [
+    "Add all four sides: 8 + 8 + 8 + 8.",
+    "Perimeter = 32 cm."
+   ],
+   "patterns": {
+    "64": "PA_AREA_FOR_PERIM",
+    "16": "PA_HALF_PERIM"
+   }
+  },
+  {
+   "id": "PAR-PP3",
+   "pool": "practice:perimeter",
+   "skill_id": "perimeter",
+   "type": "numeric",
+   "gap_targets": [
+    "perimeter"
+   ],
+   "prompt": "A rectangle is 13 cm long and 2 cm wide. What is its perimeter, in cm?",
+   "answer": "30",
+   "hints": [
+    "Perimeter is the distance all the way round: add every side.",
+    "A rectangle has two lengths and two widths."
+   ],
+   "solution": [
+    "Add all four sides: 13 + 2 + 13 + 2.",
+    "Perimeter = 30 cm."
+   ],
+   "patterns": {
+    "26": "PA_AREA_FOR_PERIM",
+    "15": "PA_HALF_PERIM"
+   }
+  },
+  {
+   "id": "PAR-PP4",
+   "pool": "practice:perimeter",
+   "skill_id": "perimeter",
+   "type": "numeric",
+   "gap_targets": [
+    "perimeter"
+   ],
+   "prompt": "A square has sides of 7 cm. What is its perimeter, in cm?",
+   "answer": "28",
+   "hints": [
+    "Perimeter is the distance all the way round: add every side.",
+    "A rectangle has two lengths and two widths."
+   ],
+   "solution": [
+    "Add all four sides: 7 + 7 + 7 + 7.",
+    "Perimeter = 28 cm."
+   ],
+   "patterns": {
+    "49": "PA_AREA_FOR_PERIM",
+    "14": "PA_HALF_PERIM"
+   }
+  },
+  {
+   "id": "PAR-RP1",
+   "pool": "retest:perimeter",
+   "skill_id": "perimeter",
+   "type": "numeric",
+   "gap_targets": [
+    "perimeter"
+   ],
+   "prompt": "A rectangle is 9 cm long and 6 cm wide. What is its perimeter, in cm?",
+   "answer": "30",
+   "hints": [
+    "Perimeter is the distance all the way round: add every side.",
+    "A rectangle has two lengths and two widths."
+   ],
+   "solution": [
+    "Add all four sides: 9 + 6 + 9 + 6.",
+    "Perimeter = 30 cm."
+   ],
+   "patterns": {
+    "54": "PA_AREA_FOR_PERIM",
+    "15": "PA_HALF_PERIM"
+   }
+  },
+  {
+   "id": "PAR-RP2",
+   "pool": "retest:perimeter",
+   "skill_id": "perimeter",
+   "type": "numeric",
+   "gap_targets": [
+    "perimeter"
+   ],
+   "prompt": "A rectangle is 14 cm long and 3 cm wide. What is its perimeter, in cm?",
+   "answer": "34",
+   "hints": [
+    "Perimeter is the distance all the way round: add every side.",
+    "A rectangle has two lengths and two widths."
+   ],
+   "solution": [
+    "Add all four sides: 14 + 3 + 14 + 3.",
+    "Perimeter = 34 cm."
+   ],
+   "patterns": {
+    "42": "PA_AREA_FOR_PERIM",
+    "17": "PA_HALF_PERIM"
+   }
+  },
+  {
+   "id": "PAR-RP3",
+   "pool": "retest:perimeter",
+   "skill_id": "perimeter",
+   "type": "numeric",
+   "gap_targets": [
+    "perimeter"
+   ],
+   "prompt": "A rectangle is 5 cm long and 2 cm wide. What is its perimeter, in cm?",
+   "answer": "14",
+   "hints": [
+    "Perimeter is the distance all the way round: add every side.",
+    "A rectangle has two lengths and two widths."
+   ],
+   "solution": [
+    "Add all four sides: 5 + 2 + 5 + 2.",
+    "Perimeter = 14 cm."
+   ],
+   "patterns": {
+    "10": "PA_AREA_FOR_PERIM",
+    "7": "PA_HALF_PERIM"
+   }
+  },
+  {
+   "id": "PAR-RP4",
+   "pool": "retest:perimeter",
+   "skill_id": "perimeter",
+   "type": "numeric",
+   "gap_targets": [
+    "perimeter"
+   ],
+   "prompt": "A square has sides of 10 cm. What is its perimeter, in cm?",
+   "answer": "40",
+   "hints": [
+    "Perimeter is the distance all the way round: add every side.",
+    "A rectangle has two lengths and two widths."
+   ],
+   "solution": [
+    "Add all four sides: 10 + 10 + 10 + 10.",
+    "Perimeter = 40 cm."
+   ],
+   "patterns": {
+    "100": "PA_AREA_FOR_PERIM",
+    "20": "PA_HALF_PERIM"
+   }
+  },
+  {
+   "id": "PAR-RP5",
+   "pool": "retest:perimeter",
+   "skill_id": "perimeter",
+   "type": "numeric",
+   "gap_targets": [
+    "perimeter"
+   ],
+   "prompt": "A rectangle is 15 cm long and 4 cm wide. What is its perimeter, in cm?",
+   "answer": "38",
+   "hints": [
+    "Perimeter is the distance all the way round: add every side.",
+    "A rectangle has two lengths and two widths."
+   ],
+   "solution": [
+    "Add all four sides: 15 + 4 + 15 + 4.",
+    "Perimeter = 38 cm."
+   ],
+   "patterns": {
+    "60": "PA_AREA_FOR_PERIM",
+    "19": "PA_HALF_PERIM"
+   }
+  },
+  {
+   "id": "PAR-RP6",
+   "pool": "retest:perimeter",
+   "skill_id": "perimeter",
+   "type": "numeric",
+   "gap_targets": [
+    "perimeter"
+   ],
+   "prompt": "A rectangle is 8 cm long and 7 cm wide. What is its perimeter, in cm?",
+   "answer": "30",
+   "hints": [
+    "Perimeter is the distance all the way round: add every side.",
+    "A rectangle has two lengths and two widths."
+   ],
+   "solution": [
+    "Add all four sides: 8 + 7 + 8 + 7.",
+    "Perimeter = 30 cm."
+   ],
+   "patterns": {
+    "56": "PA_AREA_FOR_PERIM",
+    "15": "PA_HALF_PERIM"
+   }
+  },
+  {
+   "id": "PAR-VAR1",
+   "pool": "verification:area_rectangles",
+   "skill_id": "area_rectangles",
+   "type": "numeric",
+   "gap_targets": [
+    "area_rectangles"
+   ],
+   "prompt": "A rectangle is 6 cm long and 5 cm wide. What is its area, in cm²?",
+   "answer": "30",
+   "hints": [
+    "Area is the space inside, measured in squares.",
+    "Area of a rectangle = length × width."
+   ],
+   "solution": [
+    "Area = length × width = 6 × 5.",
+    "Area = 30 cm²."
+   ],
+   "patterns": {
+    "22": "PA_PERIM_FOR_AREA",
+    "11": "PA_ADD_SIDES"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "PAR-VAR2",
+   "pool": "verification:area_rectangles",
+   "skill_id": "area_rectangles",
+   "type": "numeric",
+   "gap_targets": [
+    "area_rectangles"
+   ],
+   "prompt": "A rectangle is 9 cm long and 2 cm wide. What is its area, in cm²?",
+   "answer": "18",
+   "hints": [
+    "Area is the space inside, measured in squares.",
+    "Area of a rectangle = length × width."
+   ],
+   "solution": [
+    "Area = length × width = 9 × 2.",
+    "Area = 18 cm²."
+   ],
+   "patterns": {
+    "22": "PA_PERIM_FOR_AREA",
+    "11": "PA_ADD_SIDES"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "PAR-VAR3",
+   "pool": "verification:area_rectangles",
+   "skill_id": "area_rectangles",
+   "type": "numeric",
+   "gap_targets": [
+    "area_rectangles"
+   ],
+   "prompt": "A rectangle has an area of 24 cm² and a length of 8 cm. How wide is it, in cm?",
+   "answer": "3",
+   "hints": [
+    "Area is the space inside, measured in squares.",
+    "Area of a rectangle = length × width."
+   ],
+   "solution": [
+    "Area = length × width, so 8 × ? = 24.",
+    "24 ÷ 8 = 3 cm."
+   ],
+   "patterns": {
+    "16": "PA_SUBTRACT_SIDE",
+    "22": "PA_PERIM_FOR_AREA"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "PAR-VAR4",
+   "pool": "verification:area_rectangles",
+   "skill_id": "area_rectangles",
+   "type": "numeric",
+   "gap_targets": [
+    "area_rectangles"
+   ],
+   "prompt": "A rectangle has an area of 28 cm² and a length of 7 cm. How wide is it, in cm?",
+   "answer": "4",
+   "hints": [
+    "Area is the space inside, measured in squares.",
+    "Area of a rectangle = length × width."
+   ],
+   "solution": [
+    "Area = length × width, so 7 × ? = 28.",
+    "28 ÷ 7 = 4 cm."
+   ],
+   "patterns": {
+    "21": "PA_SUBTRACT_SIDE",
+    "22": "PA_PERIM_FOR_AREA"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "PAR-PAR1",
+   "pool": "practice:area_rectangles",
+   "skill_id": "area_rectangles",
+   "type": "numeric",
+   "gap_targets": [
+    "area_rectangles"
+   ],
+   "prompt": "A rectangle is 10 cm long and 4 cm wide. What is its area, in cm²?",
+   "answer": "40",
+   "hints": [
+    "Area is the space inside, measured in squares.",
+    "Area of a rectangle = length × width."
+   ],
+   "solution": [
+    "Area = length × width = 10 × 4.",
+    "Area = 40 cm²."
+   ],
+   "patterns": {
+    "28": "PA_PERIM_FOR_AREA",
+    "14": "PA_ADD_SIDES"
+   }
+  },
+  {
+   "id": "PAR-PAR2",
+   "pool": "practice:area_rectangles",
+   "skill_id": "area_rectangles",
+   "type": "numeric",
+   "gap_targets": [
+    "area_rectangles"
+   ],
+   "prompt": "A rectangle is 12 cm long and 3 cm wide. What is its area, in cm²?",
+   "answer": "36",
+   "hints": [
+    "Area is the space inside, measured in squares.",
+    "Area of a rectangle = length × width."
+   ],
+   "solution": [
+    "Area = length × width = 12 × 3.",
+    "Area = 36 cm²."
+   ],
+   "patterns": {
+    "30": "PA_PERIM_FOR_AREA",
+    "15": "PA_ADD_SIDES"
+   }
+  },
+  {
+   "id": "PAR-PAR3",
+   "pool": "practice:area_rectangles",
+   "skill_id": "area_rectangles",
+   "type": "numeric",
+   "gap_targets": [
+    "area_rectangles"
+   ],
+   "prompt": "A rectangle has an area of 24 cm² and a length of 6 cm. How wide is it, in cm?",
+   "answer": "4",
+   "hints": [
+    "Area is the space inside, measured in squares.",
+    "Area of a rectangle = length × width."
+   ],
+   "solution": [
+    "Area = length × width, so 6 × ? = 24.",
+    "24 ÷ 6 = 4 cm."
+   ],
+   "patterns": {
+    "18": "PA_SUBTRACT_SIDE",
+    "20": "PA_PERIM_FOR_AREA"
+   }
+  },
+  {
+   "id": "PAR-PAR4",
+   "pool": "practice:area_rectangles",
+   "skill_id": "area_rectangles",
+   "type": "numeric",
+   "gap_targets": [
+    "area_rectangles"
+   ],
+   "prompt": "A rectangle has an area of 45 cm² and a length of 9 cm. How wide is it, in cm?",
+   "answer": "5",
+   "hints": [
+    "Area is the space inside, measured in squares.",
+    "Area of a rectangle = length × width."
+   ],
+   "solution": [
+    "Area = length × width, so 9 × ? = 45.",
+    "45 ÷ 9 = 5 cm."
+   ],
+   "patterns": {
+    "36": "PA_SUBTRACT_SIDE",
+    "28": "PA_PERIM_FOR_AREA"
+   }
+  },
+  {
+   "id": "PAR-RAR1",
+   "pool": "retest:area_rectangles",
+   "skill_id": "area_rectangles",
+   "type": "numeric",
+   "gap_targets": [
+    "area_rectangles"
+   ],
+   "prompt": "A rectangle is 11 cm long and 3 cm wide. What is its area, in cm²?",
+   "answer": "33",
+   "hints": [
+    "Area is the space inside, measured in squares.",
+    "Area of a rectangle = length × width."
+   ],
+   "solution": [
+    "Area = length × width = 11 × 3.",
+    "Area = 33 cm²."
+   ],
+   "patterns": {
+    "28": "PA_PERIM_FOR_AREA",
+    "14": "PA_ADD_SIDES"
+   }
+  },
+  {
+   "id": "PAR-RAR2",
+   "pool": "retest:area_rectangles",
+   "skill_id": "area_rectangles",
+   "type": "numeric",
+   "gap_targets": [
+    "area_rectangles"
+   ],
+   "prompt": "A rectangle is 7 cm long and 6 cm wide. What is its area, in cm²?",
+   "answer": "42",
+   "hints": [
+    "Area is the space inside, measured in squares.",
+    "Area of a rectangle = length × width."
+   ],
+   "solution": [
+    "Area = length × width = 7 × 6.",
+    "Area = 42 cm²."
+   ],
+   "patterns": {
+    "26": "PA_PERIM_FOR_AREA",
+    "13": "PA_ADD_SIDES"
+   }
+  },
+  {
+   "id": "PAR-RAR3",
+   "pool": "retest:area_rectangles",
+   "skill_id": "area_rectangles",
+   "type": "numeric",
+   "gap_targets": [
+    "area_rectangles"
+   ],
+   "prompt": "A rectangle is 12 cm long and 2 cm wide. What is its area, in cm²?",
+   "answer": "24",
+   "hints": [
+    "Area is the space inside, measured in squares.",
+    "Area of a rectangle = length × width."
+   ],
+   "solution": [
+    "Area = length × width = 12 × 2.",
+    "Area = 24 cm²."
+   ],
+   "patterns": {
+    "28": "PA_PERIM_FOR_AREA",
+    "14": "PA_ADD_SIDES"
+   }
+  },
+  {
+   "id": "PAR-RAR4",
+   "pool": "retest:area_rectangles",
+   "skill_id": "area_rectangles",
+   "type": "numeric",
+   "gap_targets": [
+    "area_rectangles"
+   ],
+   "prompt": "A rectangle has an area of 36 cm² and a length of 9 cm. How wide is it, in cm?",
+   "answer": "4",
+   "hints": [
+    "Area is the space inside, measured in squares.",
+    "Area of a rectangle = length × width."
+   ],
+   "solution": [
+    "Area = length × width, so 9 × ? = 36.",
+    "36 ÷ 9 = 4 cm."
+   ],
+   "patterns": {
+    "27": "PA_SUBTRACT_SIDE",
+    "26": "PA_PERIM_FOR_AREA"
+   }
+  },
+  {
+   "id": "PAR-RAR5",
+   "pool": "retest:area_rectangles",
+   "skill_id": "area_rectangles",
+   "type": "numeric",
+   "gap_targets": [
+    "area_rectangles"
+   ],
+   "prompt": "A rectangle has an area of 40 cm² and a length of 8 cm. How wide is it, in cm?",
+   "answer": "5",
+   "hints": [
+    "Area is the space inside, measured in squares.",
+    "Area of a rectangle = length × width."
+   ],
+   "solution": [
+    "Area = length × width, so 8 × ? = 40.",
+    "40 ÷ 8 = 5 cm."
+   ],
+   "patterns": {
+    "32": "PA_SUBTRACT_SIDE",
+    "26": "PA_PERIM_FOR_AREA"
+   }
+  },
+  {
+   "id": "PAR-RAR6",
+   "pool": "retest:area_rectangles",
+   "skill_id": "area_rectangles",
+   "type": "numeric",
+   "gap_targets": [
+    "area_rectangles"
+   ],
+   "prompt": "A rectangle is 10 cm long and 6 cm wide. What is its area, in cm²?",
+   "answer": "60",
+   "hints": [
+    "Area is the space inside, measured in squares.",
+    "Area of a rectangle = length × width."
+   ],
+   "solution": [
+    "Area = length × width = 10 × 6.",
+    "Area = 60 cm²."
+   ],
+   "patterns": {
+    "32": "PA_PERIM_FOR_AREA",
+    "16": "PA_ADD_SIDES"
+   }
+  }
+ ],
+ "lessons": {
+  "perimeter": {
+   "title": "Perimeter",
+   "big_idea": "Perimeter is the total length of the edge: imagine walking all the way round the shape. For a rectangle that means adding all four sides, not just two.",
+   "steps": [
+    "Mark each side's length, including the ones not written (opposite sides are equal).",
+    "Add all the sides.",
+    "Write the unit: cm, m … (not cm²)."
+   ],
+   "sense_check": "A fence round a 7 m by 3 m garden needs 7 + 3 + 7 + 3 = 20 m of fencing.",
+   "worked_examples": [
+    {
+     "prompt": "Perimeter of a 7 cm by 3 cm rectangle?",
+     "answer": "20",
+     "steps": [
+      "7 + 3 + 7 + 3 = 20.",
+      "20 cm."
+     ]
+    },
+    {
+     "prompt": "Perimeter of a square with 5 cm sides?",
+     "answer": "20",
+     "steps": [
+      "4 sides of 5 cm.",
+      "5 × 4 = 20 cm."
+     ]
+    }
+   ]
+  },
+  "area_rectangles": {
+   "title": "Area of rectangles",
+   "big_idea": "Area is how many unit squares fit inside a shape. A 7 cm by 3 cm rectangle holds 3 rows of 7 squares, so its area is 7 × 3 = 21 cm².",
+   "steps": [
+    "Area of a rectangle = length × width.",
+    "The answer is in square units: cm², m².",
+    "If you know the area and one side, divide to find the other side."
+   ],
+   "sense_check": "Adding the sides (7 + 3 = 10) measures a length, not the space inside.",
+   "worked_examples": [
+    {
+     "prompt": "Area of a 7 cm by 3 cm rectangle?",
+     "answer": "21",
+     "steps": [
+      "7 × 3 = 21.",
+      "21 cm²."
+     ]
+    },
+    {
+     "prompt": "Area 24 cm², length 6 cm. Width?",
+     "answer": "4",
+     "steps": [
+      "6 × ? = 24.",
+      "24 ÷ 6 = 4 cm."
+     ]
+    }
+   ]
+  }
+ }
+}
