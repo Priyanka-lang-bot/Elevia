@@ -1,41 +1,64 @@
 # ELEVIA: Verify before you teach
 
-ELEVIA finds the misconception behind a student's wrong answers, **checks it with new questions before teaching**, teaches the missing step, and retests on fresh questions later. It covers **4 subjects and 11 topics** (Maths, Science, English, Computer Science) on one website with real accounts for students, parents, teachers and school admins.
+ELEVIA finds the misconception behind a student's wrong answers. It **checks that misconception with new questions before teaching anything**, teaches the missing step, then retests later on fresh questions.
+
+It covers **4 subjects and 24 topics** (Maths, Science, English, Computer Science), with 943 questions and 82 named misconception patterns. Everything is on one website, with real accounts for students, parents, teachers and school admins.
 
 | Role | Job | How it decides |
 |---|---|---|
-| **Diagnoser** | Suggests the *possible* gap behind wrong answers; a single mistake is flagged as a possible slip | Matches answers to 39 named misconception patterns. Output is always **suspected**. |
-| **Checker** | Asks 2 new questions: confirmed / rejected / inconclusive; later runs the 3-question retest | Fixed rules. The only part that can mark a skill mastered (2 of 3 on a delayed retest). |
-| **Planner** | Turns a **verified** gap into a learning focus | Walks prerequisites in the skill map. **Refuses unverified gaps.** |
-| **Tutor** | Lesson, worked examples, hints, practice | Authored content; maths examples computed exactly. Optional AI rewording is validated, with the template as fallback. |
+| **Diagnoser** | Suggests the *possible* gap behind wrong answers. A single mistake is flagged as a possible slip. | Matches answers to named misconception patterns. Its output is always **suspected**. |
+| **Checker** | Asks 2 new questions and marks the gap confirmed, rejected or inconclusive. Later runs the 3-question retest. | Fixed rules. The only part that can mark a skill mastered (2 of 3 on a delayed retest). |
+| **Planner** | Turns a **verified** gap into a learning focus. | Walks prerequisites in the skill map. **Refuses unverified gaps.** |
+| **Tutor** | Lesson, worked examples, hints and practice. | Authored content; maths answers are computed exactly. |
 
-All four are deterministic, rule-based components coordinated by an orchestrator; they are **not autonomous LLM agents**. Teachers can resolve unclear cases and change the focus; every override is logged with a reason.
+All four are deterministic, rule-based components coordinated by an orchestrator. They are **not autonomous LLM agents**, and the deployed website makes no AI API calls. Teachers can resolve unclear cases and change the focus, and every override is logged with a reason.
 
 > ELEVIA identifies possible academic knowledge gaps from answers. It is not a clinical or psychological assessment. It has not been evaluated in classrooms, so it makes no claims about learning outcomes.
 
-**Docs:** [Architecture](docs/ARCHITECTURE.md) · [Feature matrix](docs/FEATURE_MATRIX.md) · [Demo script](docs/DEMO_SCRIPT.md) · [Test results](docs/TEST_RESULTS.md) · [Limitations and roadmap](docs/LIMITATIONS_AND_ROADMAP.md)
+**Docs:**
+- [Round 3 submission](docs/ROUND3_SUBMISSION.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Feature matrix](docs/FEATURE_MATRIX.md)
+- [Demo script (judges, 5–7 min)](docs/DEMO_SCRIPT.md)
+- [Test results](docs/TEST_RESULTS.md)
+- [Limitations and roadmap](docs/LIMITATIONS_AND_ROADMAP.md)
 
 ---
 
-## What's in the website
+## What's on the website
 
-- **Landing page** (`/`): static, crawlable HTML in the same notebook/cut-paper style as the login page, with real screenshots and a live subject catalogue.
-- **Accounts**: three pathways (individual student with parent consent, school student with a class code and teacher approval, independent learner 18+), plus parents, teachers and school admins. scrypt passwords, HttpOnly cookie sessions, CSRF protection, rate limits, access log.
-- **Student dashboard** (`#/learn`): subjects and topics, continue learning, upcoming retests, gaps being worked on, mastered skills, recent activity.
-- **Topic journey** (`#/learn/<topic>`): check-in → double-check → learn & practise → retest → result, with a step tracker and plain-language explanations at every step.
-- **Teacher portal**: students in your own classes only, class insights (who needs review, most common verified gaps), per-student evidence, and a review form (confirm/reject, change focus, notes; reason required).
-- **Parent view**: progress for children whose consent includes it; no override controls.
+- **Landing page** (`/`) is static, crawlable HTML. It has real screenshots, a live subject catalogue and, when demo mode is on, one-click demo cards.
+- **Accounts** support three pathways:
+  - an individual student, with parent consent;
+  - a school student, with a class code and teacher approval;
+  - an independent learner aged 18 or over.
+
+  Parents, teachers and school admins have accounts too. Security uses scrypt passwords, HttpOnly cookie sessions, CSRF protection, rate limits and an access log.
+- **Student dashboard** (`#/learn`) leads with a **"What to do next"** card. The rest of the page shows subjects and topics, upcoming retests, gaps being worked on, mastered skills and recent activity.
+- **Topic journey** (`#/learn/<topic>`) runs check-in → double-check → learn & practise → retest → result. It has a step tracker and plain-language explanations at every step, and progress persists across reloads.
+- **Teacher portal** shows only students in your own classes. It includes:
+  - a **review queue** of unclear cases, each with the reason it needs a teacher;
+  - per-student evidence;
+  - a review form to confirm or reject a gap, change the focus or add a note (a reason is required);
+  - an **intervention history**.
+- **Parent view** shows a summary card per child whose consent includes progress. It has no override controls.
 
 ### Subjects and topics
 
-| Subject | Topics (all playable end to end) | Answer checking |
-|---|---|---|
-| Mathematics | Fractions, Decimals, Percentages, Integers, Linear equations | Exact `Fraction` arithmetic; misconception answers computed by rule |
-| Science | Forces and motion, States of matter | Multiple choice; each wrong option maps to a named misconception |
-| English | Past tense verbs, Subject–verb agreement | Accepted-answer lists / multiple choice |
-| Computer Science | Variables and assignment, Loops | Predict-the-output; expected output verified by running the snippet at build time (student input is never executed) |
+All 24 topics are playable end to end: diagnostic, misconception check, plan, lesson, practice, retest and skill-map update.
 
-Planned (listed in the app as "planned", not playable): Geometry, Mensuration, Statistics, Probability, plants and photosynthesis, light and sound, circuits, vocabulary, reading comprehension, writing, Boolean logic, algorithms, data structures.
+| Subject | Topics | Answer checking |
+|---|---|---|
+| Mathematics (11) | Fractions, Decimals, Percentages, Integers, Linear equations, Order of operations, Factors and multiples, Ratio and proportion, Perimeter and area, Averages, Angles | Exact `Fraction` arithmetic; misconception answers are computed by rule |
+| Science (3) | Forces and motion, States of matter, Scientific reasoning (fair tests) | Multiple choice; each wrong option maps to a named misconception |
+| English (4) | Past tense verbs, Subject–verb agreement, Parts of speech, Apostrophes | Accepted-answer lists and multiple choice |
+| Computer Science (6) | Variables and assignment, Loops, Data types, Conditionals, Logical reasoning (Boolean logic), Algorithms | Predict the output. The expected output is verified by running the snippet at build time; **student input is compared as text and never executed** |
+
+These topics are listed in the app as "coming soon" and can't be played yet:
+- **Maths:** probability, area of triangles and circles, volume, graphs.
+- **Science:** heat and temperature, light, electric circuits, plants and photosynthesis.
+- **English:** reading comprehension, sentence construction, other tenses, vocabulary.
+- **CS:** functions, lists and data structures, sorting.
 
 ## Run it locally (Windows PowerShell)
 
@@ -45,36 +68,54 @@ py -3.13 -m venv .venv
 .venv\Scripts\activate
 python -m pip install --only-binary=:all: -r requirements.txt pytest
 copy .env.example .env
-python scripts\create_demo_accounts.py --with-activity
+python scripts\demo.py seed
+$env:ELEVIA_DEMO_MODE = "1"
 python -m uvicorn app:app --reload
 ```
-Open **http://localhost:8000**. Demo logins (password `Demo-Pass-2026!` for all, local use only):
 
-| Role | Log in with |
-|---|---|
-| Independent learner | `demo.learner@example.com` |
-| Individual student (12, parent consented) | `riya.demo` |
-| School student (Class 5 A) | `arjun.demo` |
-| Teacher (Class 5 A) | `demo.teacher@example.com` |
-| School admin | `demo.admin@example.com` |
-| Parents | `demo.parent@example.com` (Riya), `demo.parent2@example.com` (Arjun) |
+Open **http://localhost:8000** and choose a card under **"Explore the live demo"**, or use **"Or explore a demo account"** on the login page. You can also log in normally with password `Demo-Pass-2026!` (fictional accounts, local use only):
 
-`--with-activity` gives Arjun a finished decimals journey and a fractions case waiting for teacher review (scripted answers through the real workflow). To start again, delete `elevia.db` and rerun the script. With `ELEVIA_DEMO_EMAIL_LINKS=1` in `.env`, emailed links appear on screen instead (demo only).
+| Demo account | Log in with | What it shows |
+|---|---|---|
+| Ananya Rao, new learner (19) | `demo.learner@example.com` | Empty dashboard: run a full journey live |
+| Riya Sharma, school student, Class 6 A (11, parent consented) | `riya.demo` | Two mastered topics, practice under way, a loops retest ready |
+| Arjun Patel, school student, Class 6 A | `arjun.demo` | Mixed results, a teacher note, a fractions case in review |
+| Meera Iyer, teacher, Class 6 A | `demo.teacher@example.com` | Review queue, class table, intervention history |
+| Sunita Sharma, parent | `demo.parent@example.com` | Riya only (Raj Patel, `demo.parent2@example.com`, sees Arjun only) |
+| Kavita Menon, school admin, Sunrise Demo School | `demo.admin@example.com` | Classes, teachers, enrolments |
 
-**Tests:** `python -m pytest -q` (150 tests; `set ELEVIA_TEST_TURSO=1` first to run them through the Turso connector). Browser end-to-end: see `scripts/e2e_browser.py`.
+**Demo mode safety.** One-click login only works when `ELEVIA_DEMO_MODE=1`. Otherwise `/api/demo/login` returns 404 and the demo cards stay hidden. Further safeguards:
+- It can only sign in to accounts listed in the `demo_registry` table, never a real account.
+- It issues a normal session, and no password appears in the page.
+- It is rate-limited.
+- Demo accounts can't withdraw consent, change permissions or send invitations.
 
-**Curriculum:** topic content is generated by `python scripts/build_curriculum.py` from `scripts/curriculum/*.py` (validates everything and runs every code snippet). The original fractions files (`data/skill_map.json`, `questions.json`, `lessons.json`) are unchanged.
+**Reset:** `python scripts\demo.py reset` deletes only the rows listed in `demo_registry` and seeds again. Real users are untouched, and this is tested. `python scripts\demo.py status` shows what exists.
+
+**Tests:**
+- `python -m pytest -q` runs 185 tests. Set `$env:ELEVIA_TEST_TURSO = "1"` first to run them through the Turso connector.
+- `python scripts\e2e_browser.py` runs the browser end-to-end check (needs Playwright).
+
+**Curriculum:** topic content is generated by `python scripts\build_curriculum.py` from `scripts/curriculum/*.py`. The build validates every question and runs every code snippet with restricted built-ins.
 
 ## Deploy on Vercel (with a Turso database)
 
-Vercel runs `app.py` as one serverless function and serves `public/` from its CDN; data lives in **Turso** (hosted SQLite). Pushing to `main` deploys production; other branches get preview deployments.
+Vercel runs `app.py` as one serverless function and serves `public/` from its CDN. Pushing to `main` deploys production; other branches get preview deployments.
 
-1. Turso: create a database (region near your users), copy its `libsql://…` URL and a read-write token.
-2. Vercel project (FastAPI preset, no build settings). Environment variables: `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`; optionally `ELEVIA_DEMO_EMAIL_LINKS=1` for a judges' demo without email; `EMAIL_MODE=smtp` + `SMTP_*` for real email; `RETEST_DELAY_HOURS`, `ALLOW_EARLY_RETEST`.
-3. New tables are created automatically on first request (`CREATE TABLE IF NOT EXISTS`); existing data is kept. Round 3 only **adds** tables (`learner_links`, `case_topics`).
-4. Demo accounts on the live database (from your laptop): put the Turso values and `APP_BASE_URL=https://<project>.vercel.app` in `.env`, then run `python scripts\create_demo_accounts.py --with-activity`. The password is public in this README, so remove or change these accounts after judging.
+1. **Turso:** create a database and copy its `libsql://…` URL and a read-write token. Use a **separate database for previews** so preview demos never touch production data.
+2. **Vercel environment variables** (Project → Settings → Environment Variables):
+   - **Required for persistence:** `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`.
+   - **Optional:**
+     - `ELEVIA_DEMO_MODE=1` for one-click judge logins;
+     - `ELEVIA_DEMO_EMAIL_LINKS=1` to show email links on screen;
+     - `EMAIL_MODE=smtp` + `SMTP_*` for real email;
+     - `RETEST_DELAY_HOURS`;
+     - `ALLOW_EARLY_RETEST`.
+3. **Without Turso**, the function falls back to a temporary SQLite file in `/tmp`. Pages and the API work, but data is per instance and is lost when the instance is recycled. That's fine for a quick look, not for a judged demo.
+4. **Tables** are created on first request (`CREATE TABLE IF NOT EXISTS`). Round 3 only **adds** tables (`learner_links`, `case_topics`, `demo_registry`).
+5. **Demo accounts on Turso** (run from your laptop): put the Turso values in `.env`, then run `python scripts\demo.py seed`. The demo password is published here, so run `python scripts\demo.py reset` or remove the accounts after judging.
 
-Note: do not add a `pyproject.toml` with a `[project]` table; it made Vercel's build fail (the last good build before Round 3 had none).
+Note: don't add a `pyproject.toml` with a `[project]` table; it breaks Vercel's build.
 
 ## Older Streamlit version (fractions only, local demo)
 

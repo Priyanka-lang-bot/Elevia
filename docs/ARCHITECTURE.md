@@ -9,7 +9,8 @@ Browser ── public/ (static: index.html landing, app.js, learn.js, progress.j
 /api/*  ── app.py (FastAPI, one Vercel serverless function)
             ├─ backend/accounts/*   accounts, consent, schools, sharing, permissions, rate limits
             ├─ backend/learning.py  /learn: student journey + dashboard (login required, except /learn/catalog)
-            ├─ backend/progress.py  /progress: teacher / parent / shared views + teacher review
+            ├─ backend/progress.py  /progress: teacher / parent / shared views, review queue, intervention history
+            ├─ backend/demo.py      /demo: one-click demo login (only when ELEVIA_DEMO_MODE=1)
             ├─ backend/orchestrator.py  the workflow: diagnostic → verification → learning → retest
             │     └─ backend/agents/  diagnoser · checker · planner · tutor (rule-based)
             ├─ backend/engine.py    answer checking dispatcher
@@ -17,6 +18,8 @@ Browser ── public/ (static: index.html landing, app.js, learn.js, progress.j
             │     └─ generic_engine.py   (mcq, exact numeric, accepted text, predict-the-output)
             ├─ backend/content.py   curriculum loader + validation
             └─ backend/db.py / turso.py  SQLite locally, Turso (hosted SQLite) on Vercel
+                                         (Vercel without Turso: temporary /tmp/elevia.db)
+scripts/demo.py   seed / reset / status of the fictional demo school (run from a laptop)
 ```
 
 **Decision: keep one FastAPI app and a no-build vanilla-JS frontend.** The existing project already deployed this way, it needs no build step, and it keeps the Content-Security-Policy strict (`script-src 'self'`, no inline scripts, no third-party hosts). A framework rewrite would have added risk without adding capability.
@@ -61,14 +64,39 @@ Content is **authored as code** in `scripts/curriculum/*.py` and compiled by `sc
 
 The original fractions files are loaded unchanged and merged in, so the agents see one skill graph. **Adding a topic** = one authoring module + one entry in `SUBJECTS`; no workflow or UI code changes.
 
-## Data model (additions in Round 3)
+## Data model (additions in rounds 2 and 3)
 
 | Table | Why |
 |---|---|
 | `learner_links (user_id, student_id)` | Connects a login account to its learning record (`students`), which the agents already use. |
 | `case_topics (case_id, topic_id)` | Which topic a case belongs to. A **new table instead of a new column**, so the live Turso database only gains a table (no `ALTER`). Cases without a row are fractions cases, so old data stays valid. |
 
+| `demo_registry (kind, ref_id, slug)` | Lists every row the demo seed created (users, school, class). One-click login and reset only ever touch rows listed here. |
+
 Students can have one active case **per topic**, so a 24-hour retest wait in one topic doesn't block learning another.
+
+## Dashboards: what to show next
+
+- **Student "What to do next".** `learning._next_step()` picks one action from the student's own state. The priority order is:
+  1. an unlocked retest;
+  2. a retest, double-check, lesson or check-in in progress;
+  3. waiting for a retest;
+  4. a recommended new topic;
+  5. nothing.
+
+  The card links straight to that step.
+- **Teacher review queue.** `/progress/students` returns every `teacher_review` case in the teacher's classes. Each entry has the topic, skill, suspected misconception and a plain-language reason (e.g. "Double-check was mixed: confirm or reject the gap"). The same call returns the latest 15 `teacher_overrides` as the intervention history.
+- **Parent summary.** One card per child, built from the same data and limited by the consent scopes.
+
+## Demo mode
+
+- **Off by default.** `/api/demo/login` returns 404 unless `ELEVIA_DEMO_MODE=1`.
+- **Normal sessions.** When on, it creates an ordinary session (same cookie, CSRF and expiry) for a slug such as `riya` or `teacher`. It only ever does this for a user listed in `demo_registry` who is still active.
+- **No secrets in the page.** No password or token is sent to the page.
+- **Limits.** Logins are rate-limited per IP (60 per 10 minutes).
+- **Guarded actions.** Demo users can't withdraw consent, change parent permissions, send invitations or unassign teachers (`refuse_for_demo`).
+- **Seeding.** `scripts/demo.py seed` creates the demo school through the real routes: sign-up, consent, teacher approval and answering questions. It refuses if demo rows already exist or an email is already used by a real account.
+- **Reset.** `reset` deletes only registry-listed rows, then seeds again. Tests check that a real user created alongside the demo survives a reset.
 
 ## Access control
 

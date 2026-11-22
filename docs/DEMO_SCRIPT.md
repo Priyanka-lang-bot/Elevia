@@ -1,57 +1,64 @@
-# Demo script for PRASUNEX Round 3 (about 8 minutes)
+# Judge demo script (5–7 minutes)
 
 ## Before the session (once)
 
-1. Use a fresh database with demo accounts:
-   `python scripts\create_demo_accounts.py --with-activity` (locally), or the same command pointed at Turso for the live site (see README → Deploy).
-2. Keep `ALLOW_EARLY_RETEST=true` so you can skip the 24-hour wait on stage (the shortcut is recorded in the history).
-3. Open three browser windows (or one normal + two private windows), all logged out:
-   - A: the landing page
-   - B: will log in as the learner `demo.learner@example.com`
-   - C: will log in as the teacher `demo.teacher@example.com`
-   Password for all demo accounts: `Demo-Pass-2026!`
-4. Keep the answer sheet below at hand.
+1. **Seed the demo school** on the database the site uses: `python scripts\demo.py seed` (it uses Turso when `TURSO_DATABASE_URL` is in `.env`). Run `python scripts\demo.py status` to confirm.
+2. **Turn on demo mode:** set `ELEVIA_DEMO_MODE=1` (a Vercel environment variable, or in your shell locally). Leave `ALLOW_EARLY_RETEST` on (the default) so the 24-hour retest wait can be skipped on stage; the shortcut is recorded.
+3. Open the landing page. The **"Explore the live demo"** section with six cards should be visible. If it isn't, demo mode is off.
+4. **After a rehearsal**, run `python scripts\demo.py reset` to put every demo account back to its starting state. It deletes only demo rows.
 
-## 1. The problem and the idea (window A, 1 min)
+All demo accounts are fictional. Password for normal login, if needed: `Demo-Pass-2026!`.
 
-- Hero: "Don't just find the wrong answer. Find the missing understanding."
-- Scroll to **"A wrong answer is a symptom"** and **"How ELEVIA works"**: four roles, fixed rules, no AI in decisions.
-- Point at **Subjects**: 4 subjects, 11 playable topics; grey chips are planned, not faked.
-- Line to say: *"Our core rule is 'verify before you teach'. A suspected misconception is only a hypothesis until new questions confirm it."*
+## 1. The problem (landing page, 45 s)
 
-## 2. One complete student journey (window B, 4 min)
+- Hero: *"Don't just find the wrong answer. Find the missing understanding."*
+- Scroll through **"A wrong answer is a symptom"** and **"How ELEVIA works"**: four roles, fixed rules and no AI in decisions.
+- **Subjects**: 4 subjects and 24 playable topics. The grey "coming soon" chips are honest gaps, not fakes.
+- *"Our rule is 'verify before you teach'. A suspected misconception is only a hypothesis until new questions confirm it."*
 
-1. Log in → the **dashboard**. Choose grade 6, then **Mathematics → Fractions → Start the check-in**.
-2. **Check-in** (5 questions). Answer:
-   - `1/5 + 2/5` → **3/5** (right)
-   - `1/2 = ?/8` → **4**
-   - `1/2 + 1/3` → **2/5** ← the classic mistake
-   - `Write 6/8 in its simplest form` → **3/4**
-   - `1/4 + 2/3` → **3/7** ← same mistake
-   *(If a different question shows up, answer it correctly; only the two additions need the mistake.)*
-3. **Double-check screen**: point at the yellow box *"Possible gap: not confirmed yet"* and the step tracker. *"ELEVIA hasn't changed anything yet. It asks two NEW questions."*
-   - `1/3 + 1/6` → **2/9** (same mistake again)
-   - `What is the lowest common denominator of 1/4 and 1/6?` → **10** (adding the denominators: the same misunderstanding)
-4. **Gap confirmed → lesson**. Show "Why this lesson", the personal note quoting the student's own answer, step-by-step explanation, and worked examples. Click **Show a hint** on a practice question, answer two practice questions, click **"I'm done practising"**.
-5. **Retest scheduled** with a countdown (24 h). Click **Start now (demo shortcut)**. Answer all three correctly → **"Gap closed"**, retest 3/3, skill mastered.
-6. Optional, to show replanning: in another topic, deliberately fail a retest (answer 2 of 3 wrong): the gap stays open, "Last retest: 1 out of 3", and a fresh lesson and new practice appear.
-7. Back to the **dashboard**: topics started, mastered skills, history.
-8. Show another subject quickly: **Computer Science → Loops**, a predict-the-output question with real code.
+## 2. A new student, live (card: Ananya Rao, 2.5 min)
 
-## 3. The teacher's side (window C, 2 min)
+1. Click **Explore as Ananya**. Her empty dashboard says what to do first. Choose grade 6, then **Mathematics → Fractions → Start the check-in**.
+2. **Check-in**, 5 questions. Make the classic mistake on the two additions and answer the rest correctly:
+   - `1/2 + 1/3` → **2/5**
+   - `1/4 + 2/3` → **3/7**
+   - others, e.g. `1/5 + 2/5` → **3/5**, `1/2 = ?/8` → **4**, `6/8` simplest → **3/4**
+3. **Double-check**: point at *"Possible gap: not confirmed yet"*. *"Nothing has been taught yet. It asks two NEW questions."*
+   - `1/3 + 1/6` → **2/9**
+   - lowest common denominator of 1/4 and 1/6 → **10**
+4. **Gap confirmed → lesson.** Show "Why this lesson" quoting her own answer, the steps and the worked examples. Use **Show a hint**, answer a practice question, then click **I'm done practising**.
+5. **Retest scheduled** (24 h). Click **Start now (demo shortcut)** and answer all three correctly → **Gap closed**, and the skill is mastered on her skill map.
 
-1. Log in as the teacher. **Students' learning** shows Class 5 A, insights ("1 need your review") and Arjun's row marked **needs review**.
-2. **Open** Arjun: fractions round is **Inconclusive**, with evidence (his answers), the Checker's reason ("Mixed evidence…") and the review form. The decimals round shows a confirmed and resolved gap, with retest scores.
-3. Click **Confirm gap and teach** without a reason → the app asks for one. Type a reason, confirm → stage becomes "In the learning room"; the audit line shows your name and reason.
-4. Line to say: *"Teachers only see their own classes. Parents see only what their child's consent allows. Every view is logged."*
+## 3. A student with history (card: Riya Sharma, 45 s)
 
-## 4. Close (30 s)
+- Her dashboard leads with **"What to do next"**: continue her *Past tense verbs* lesson, which is in progress. A Loops retest is booked under upcoming retests.
+- Point out two mastered maths topics (Percentages took a second attempt after a failed retest) and a Science check-in where no gap was found.
+- Optional: open **Computer Science → Loops** to show a predict-the-output question. *"Student answers are compared as text; their code is never run."*
 
-- Honest scope: rule-based agents, 11 topics built and tested, more planned; optional AI only rewrites wording; no learning-outcome claims until classroom pilots.
-- Numbers you can stand behind: 150 automated tests, 16 browser checks, every topic tested end to end (docs/TEST_RESULTS.md).
+## 4. The teacher (card: Meera Iyer, 1.5 min)
+
+1. **Review queue**: Arjun, *Fractions*, "Double-check was mixed: confirm or reject the gap". Open it.
+2. Show the evidence (his answers and the Checker's reason). Click **Confirm gap and teach** without a reason, and the app asks for one. Type a reason and confirm. The stage moves to learning, and the decision appears in **Intervention history** with her name and reason.
+3. The class table shows each student's confirmed gaps. *"Teachers see only their own classes, and every view is logged."*
+
+## 5. The parent (card: Sunita Sharma, 30 s)
+
+- A plain-language summary of **Riya only**, limited to what Riya's consent allows, with no review controls.
+
+## 6. Close (30 s)
+
+- **Honest scope:**
+  - rule-based roles, not autonomous AI;
+  - 24 topics built and tested; more marked "coming soon";
+  - no classroom evaluation yet, so no learning-outcome claims.
+- **Evidence:**
+  - 185 automated tests, run on both database backends;
+  - 17 browser checks covering this exact journey;
+  - every topic tested end to end (see `docs/TEST_RESULTS.md`).
 
 ## If something goes wrong on stage
 
-- "Waiting for your teacher" appears for the learner: you answered the double-check with mixed results. Use the teacher window to confirm, or start another topic.
-- Ran out of new questions on a topic after several rounds: use another topic or reset the demo database.
-- Network hiccup: progress is saved after every answer; just reload.
+- **Demo cards missing:** demo mode is off, or the demo isn't seeded. A card reporting "needs reset" means someone changed an account: run `python scripts\demo.py reset`.
+- **Ananya gets "Waiting for your teacher":** the double-check answers were mixed. Log in as Meera to confirm, or reset.
+- **A question differs from the sheet:** answer it correctly. Only the two additions need the mistake.
+- **Network hiccup:** progress is saved after every answer, so just reload.
