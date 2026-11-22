@@ -1,8 +1,8 @@
 """Browser end-to-end check of the whole product, driven like a real user (Playwright + Chrome).
 
-    # terminal 1: a fresh database with demo accounts and scripted activity
-    ELEVIA_DB_PATH=/tmp/e2e.db python scripts/create_demo_accounts.py --with-activity
-    ELEVIA_DB_PATH=/tmp/e2e.db python -m uvicorn app:app --port 8765
+    # terminal 1: a fresh database with the demo accounts, demo mode on
+    ELEVIA_DB_PATH=/tmp/e2e.db python scripts/demo.py seed
+    ELEVIA_DB_PATH=/tmp/e2e.db ELEVIA_DEMO_MODE=1 python -m uvicorn app:app --port 8765
     # terminal 2
     python scripts/e2e_browser.py [--base http://localhost:8765] [--shots]   (--shots refreshes public/img/*.jpg)
 
@@ -83,7 +83,11 @@ def main():
         pg.goto(B + "/")
         expect(pg.locator("h1.hero-h")).to_contain_text("missing understanding")
         pg.locator("#subj-grid .topic-links a").first.wait_for()
-        assert pg.locator("#subj-grid .topic-links a").count() == 11
+        assert pg.locator("#subj-grid .topic-links a").count() == 24
+        broken = pg.evaluate("[...document.images].filter(i => i.loading !== 'lazy' && !(i.complete && i.naturalWidth > 0)).map(i => i.src)")
+        assert not broken, broken
+        pg.locator("#demo-grid .demo-card").first.wait_for()
+        assert pg.locator("#demo-grid .demo-card").count() == 6 and "Demo-Pass" not in pg.content()
         pg.click(".lnav-links a[href='#how']"); pg.wait_for_timeout(700)
         assert pg.evaluate("window.scrollY") > 400 and pg.evaluate("location.hash") == ""
         for sec in ("features", "students", "teachers", "about"):
@@ -94,15 +98,22 @@ def main():
                 assert pg.locator(h).count() == 1, h
             elif h.startswith("#/"):
                 assert re.match(r"#/(start|login|learn/[a-z_]+)?$", h), h
-        step(f"landing: hero, {len(hrefs)} links checked, live catalogue (11 topics), smooth in-page nav")
+        for y in range(0, pg.evaluate("document.body.scrollHeight"), 700):   # load lazy screenshots, then check them
+            pg.evaluate(f"window.scrollTo(0,{y})"); pg.wait_for_timeout(60)
+        pg.wait_for_timeout(500)
+        broken = pg.evaluate("[...document.images].filter(i => !(i.complete && i.naturalWidth > 0)).map(i => i.src)")
+        assert not broken, broken
+        step(f"landing: hero, {len(hrefs)} links checked, live catalogue (24 topics), 6 demo cards, no broken images")
+        pg.evaluate("window.scrollTo(0,0)")
         pg.click(".lnav-links a.btn"); expect(pg.locator("#app h1")).to_contain_text("How would you like")
         step("Get started opens the account-type chooser")
 
         # ---------------------------------------------------------------- student journey (independent learner)
         pg = new_page()
-        login(pg, "demo.learner@example.com")
+        pg.goto(B + "/"); pg.locator("#demo-grid .demo-card").first.wait_for()
+        pg.click("button[aria-label^='Open the demo as Ananya']")
         pg.locator("#app .tabs").wait_for()
-        step("learner logs in and lands on the dashboard")
+        step("one-click demo login (Ananya, new student) lands on the dashboard")
         pg.locator("#app button[aria-label='Start the check-in: Fractions']").click()
         expect(pg.locator("#dgrade-err")).to_be_visible()
         pg.select_option("#dgrade", "6")
@@ -144,39 +155,55 @@ def main():
         pg.locator("#app .cont-item").first.wait_for()
         assert pg.locator("#app .cont-item").count() == 1
         assert int(pg.locator("#app .stat-v").nth(1).inner_text()) >= 1          # retest pass mastered skills
-        shot(pg, "dash")
         step("dashboard: continue learning, mastered skill, history")
         mp = new_page(390, 844)
-        login(mp, "demo.learner@example.com"); mp.locator("#app .tabs").wait_for()
+        login(mp, "riya.demo"); mp.locator("#app .next-step").wait_for()
         assert mp.evaluate("document.documentElement.scrollWidth <= window.innerWidth + 1")
-        step("dashboard fits a 390px phone screen")
+        step("password login (Riya) works; dashboard with 'what to do next' fits a 390px phone screen")
+        rp = new_page()
+        rp.goto(B + "/#/login"); rp.locator(".demo-strip .demo-card").first.wait_for()
+        rp.click(".demo-strip button[aria-label^='Open the demo as Riya']")
+        rp.locator("#app .next-step").wait_for()
+        expect(rp.locator("#app .next-step h2")).to_contain_text("Past tense")
+        assert rp.locator("#app .upcoming, #app .list .item").count() >= 1
+        shot(rp, "dash")
+        rp.locator("#app .next-step button").click()
+        rp.locator("#app .lesson h2").wait_for()
+        step("Riya (demo strip on login page): next step opens her lesson in progress")
 
         # ---------------------------------------------------------------- teacher
         tp = new_page()
         login(tp, "demo.teacher@example.com")
-        tp.locator("#app .ptable").wait_for()
-        expect(tp.locator("#app .ptable tbody tr").first).to_contain_text("needs review")
-        tp.locator("#app .ptable a", has_text="Open").first.click()
-        tp.locator("#app .review").wait_for()
-        expect(tp.locator("#app .round").first).to_contain_text("Inconclusive")
+        tp.locator("#app .queue-item").wait_for()
+        expect(tp.locator("#app .queue-item")).to_contain_text("Arjun Patel · Fractions")
+        tp.wait_for_timeout(300)
         shot(tp, "teacher")
-        step("teacher: class overview -> student detail with evidence and review form")
-        tp.locator("#app .review button", has_text="Confirm gap").click()
-        expect(tp.locator("#app .review .alert")).to_be_visible()                # reason required
-        tp.fill("#app .review textarea", "Saw the same mistake in class on Monday")
-        tp.locator("#app .review button", has_text="Confirm gap").click()
-        expect(tp.locator("#app .round").first).to_contain_text("In the learning room")
-        expect(tp.locator("#app .audit").first).to_contain_text("Saw the same mistake")
+        tp.locator("#app .queue-item a", has_text="Review").click()
+        fr = tp.locator("#app section.panel", has=tp.locator("h2", has_text=re.compile("^Fractions$")))
+        rv = fr.locator(".review").first
+        rv.wait_for()
+        expect(fr.locator(".round").first).to_contain_text("Inconclusive")
+        expect(fr.locator(".round").first).to_contain_text("Evidence")
+        step("teacher: review queue -> Arjun's case with evidence and review form")
+        rv.locator("button", has_text="Confirm gap").click()
+        expect(rv.locator(".alert")).to_be_visible()                               # reason required
+        rv.locator("textarea").fill("Saw the same mistake in class on Monday")
+        rv.locator("button", has_text="Confirm gap").click()
+        fr = tp.locator("#app section.panel", has=tp.locator("h2", has_text=re.compile("^Fractions$")))
+        expect(fr.locator(".round").first).to_contain_text("In the learning room")
+        expect(fr.locator(".audit").first).to_contain_text("Saw the same mistake")
         step("teacher confirms with a reason; lesson created; override logged")
 
         # ---------------------------------------------------------------- parent + student sees teacher decision
         pp = new_page()
-        login(pp, "demo.parent2@example.com")
-        pp.locator("#app .ptable").wait_for()
-        pp.locator("#app .ptable a", has_text="Open").first.click()
+        login(pp, "demo.parent@example.com")
+        pp.locator("#app .kid").wait_for()
+        expect(pp.locator("#app .kid")).to_contain_text("Riya Sharma")
+        assert pp.locator("#app .kid").count() == 1 and "Arjun" not in pp.locator("#app main").inner_text()
+        pp.locator("#app .kid a", has_text="See details").click()
         pp.locator("#app .round").first.wait_for()
         assert pp.locator("#app .review").count() == 0
-        step("parent sees their child's progress, no review controls")
+        step("parent (Sunita) sees only Riya, in plain language, with no review controls")
         sp = new_page()
         login(sp, "arjun.demo")
         sp.locator("#app .cont-item").first.wait_for()
