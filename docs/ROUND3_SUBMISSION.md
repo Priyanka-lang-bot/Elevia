@@ -175,4 +175,4 @@ These are summarised from [LIMITATIONS_AND_ROADMAP.md](LIMITATIONS_AND_ROADMAP.m
 
 This project was built with substantial help from an AI coding assistant (Anthropic's Claude, via Claude Code). It wrote much of the code, curriculum authoring scripts, tests and documentation, working under our direction and review.
 
-Commits it contributed to carry a `Co-Authored-By: Claude` trailer (19 of the 25 commits on `round3` at the time of writing). The git history has not been rewritten. The product itself makes no AI API calls in its decision-making.
+Commits it contributed to carry a `Co-Authored-By: Claude` trailer (most commits on `round3`; run `git log --grep "Co-Authored-By: Claude"` to list them). The git history has not been rewritten. The product itself makes no AI API calls in its decision-making.
