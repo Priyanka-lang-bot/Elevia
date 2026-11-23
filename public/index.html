@@ -23,38 +23,36 @@
 </head>
 <body>
 <div id="landing">
+<a class="skip" href="#main">Skip to content</a>
 <header class="lnav" id="top">
   <a class="brand lnav-logo" href="#/" aria-label="ELEVIA home">ELEVIA</a>
+  <a class="nav-demo nav-demo-m" href="#demo" data-scroll>Try demo</a>
   <button class="lnav-toggle" type="button" aria-expanded="false" aria-controls="lnav-links"><span class="sr">Menu</span><span aria-hidden="true">☰</span></button>
   <nav id="lnav-links" class="lnav-links" aria-label="Main">
-    <a href="#home" data-scroll>Home</a>
+    <a href="#problem" data-scroll>The problem</a>
     <a href="#how" data-scroll>How it works</a>
-    <a href="#features" data-scroll>Features</a>
-    <a href="#students" data-scroll>For students</a>
+    <a href="#features" data-scroll>What's built</a>
+    <a href="#subjects" data-scroll>Subjects</a>
     <a href="#teachers" data-scroll>For teachers</a>
-    <a href="#about" data-scroll>About</a>
-    <a class="demo-cta" href="#demo" data-scroll hidden>Demo</a>
+    <a class="nav-demo" href="#demo" data-scroll>Try demo</a>
     <a class="lnav-login" href="#/login">Log in</a>
     <a class="btn main small" href="#/start">Get started</a>
   </nav>
 </header>
 
-<main>
+<main id="main">
+<!-- ============================================================ hero -->
 <section class="hero" id="home">
-  <div class="hero-copy reveal">
-    <p class="eyebrow">Personalised learning that checks before it teaches</p>
+  <div class="hero-copy">
     <h1 class="hero-h">Don't just find the wrong answer. <span class="brand hl">Find the missing understanding.</span></h1>
-    <p class="hero-p">ELEVIA spots the misconception behind a student's mistakes, checks it with new questions, and only then builds a lesson to teach what they missed. Then it retests on fresh questions to see if it stuck.</p>
+    <p class="hero-p">ELEVIA spots the misconception behind a student's mistakes, checks it with new questions, and only then builds a lesson to teach what they missed. Later it retests on fresh questions to see if it stuck.</p>
     <div class="actions">
       <a class="btn main big" href="#/start">Get started</a>
-      <a class="btn big" href="#how" data-scroll>See how it works</a>
-      <a class="btn big demo-cta" href="#demo" data-scroll hidden>Try the demo</a>
+      <a class="btn big btn-demo" href="#demo" data-scroll>Try the demo</a>
     </div>
-    <p class="hint hero-note" id="hero-counts">Maths, Science, English and Computer Science. Every answer is checked by fixed rules, not guessed by AI.</p>
+    <p class="hero-note"><a href="#how" data-scroll>See how it works</a> <span class="hint" id="hero-counts">4 subjects, 24 topics. Every answer is checked by fixed rules, not guessed by AI.</span></p>
   </div>
-  <div class="hero-art reveal" aria-hidden="false">
-    <svg class="cut deco d1" aria-hidden="true" width="170" height="105" viewBox="0 0 200 124"><path d="M38 104 C14 104 6 82 18 68 C8 50 26 30 46 38 C50 16 78 6 98 20 C112 4 146 8 152 32 C176 28 194 48 184 70 C198 86 186 106 166 104 Z" fill="#aeb9f1" stroke="#fff" stroke-width="7" stroke-linejoin="round"/></svg>
-    <svg class="cut deco d2" aria-hidden="true" width="150" height="93" viewBox="0 0 200 124"><path d="M38 104 C14 104 6 82 18 68 C8 50 26 30 46 38 C50 16 78 6 98 20 C112 4 146 8 152 32 C176 28 194 48 184 70 C198 86 186 106 166 104 Z" fill="#f2b8c8" stroke="#fff" stroke-width="7" stroke-linejoin="round"/></svg>
+  <div class="hero-art">
     <figure class="polaroid p-main">
       <span class="tape" aria-hidden="true"></span>
       <img src="/img/shot-lesson.jpg" width="1200" height="900" alt="ELEVIA lesson screen: the gap is confirmed and a step-by-step lesson on common denominators is shown" loading="eager">
@@ -68,87 +66,356 @@
   </div>
 </section>
 
-<section class="sec-block demo-sec" id="demo" hidden>
-  <div class="wrap">
-    <h2 class="sec-h">Explore the live demo</h2>
-    <p class="sec-p">No sign-up needed. Each card opens a fictional demo account with a normal, secure session. Demo data can be reset at any time.</p>
-    <div class="demo-grid" id="demo-grid" aria-live="polite"></div>
-    <p class="hint center" id="demo-note">New to ELEVIA? Start with <b>Ananya</b> and follow the 5-minute guide: pick Fractions and answer 1/2 + 1/3 = 2/5 on purpose.</p>
-  </div>
-</section>
-
-<section class="sec-block" id="problem">
-  <div class="wrap">
-    <h2 class="sec-h reveal">A wrong answer is a symptom, not a diagnosis</h2>
-    <p class="sec-p reveal">Students often follow a rule that <em>looks</em> right to them. Marking it wrong, or re-teaching the whole chapter, doesn't find that rule. Teaching to a guess can waste time or reinforce the wrong idea.</p>
-    <div class="prob-grid">
-      <article class="paper-card reveal"><span class="pc-num">1</span><h3>Marks say <em>what</em>, not <em>why</em></h3><p>"2/5" is wrong, but the score doesn't show the student added the tops and the bottoms separately.</p></article>
-      <article class="paper-card reveal tilt"><span class="pc-num">2</span><h3>One mistake can be a slip</h3><p>A single wrong answer might just be a typo or a rushed moment. Treating every slip as a gap wastes the student's time.</p></article>
-      <article class="paper-card reveal"><span class="pc-num">3</span><h3>The real gap is often earlier</h3><p>Trouble adding fractions can come from an earlier skill, like finding common denominators.</p></article>
+<!-- ============================================================ demo: student library cards -->
+<section class="demo-sec" id="demo" aria-labelledby="demo-h">
+  <div class="wrap demo-wrap">
+    <div class="demo-intro">
+      <h2 class="sec-h left" id="demo-h">Try ELEVIA as a student</h2>
+      <p class="sec-p left">No sign-up. Each card opens a fictional student account with a normal, secure session, so you can work through a real topic.</p>
+      <p class="hint">Teacher and parent views use separate demo logins that the team shares with judges.</p>
+    </div>
+    <div class="demo-grid" id="demo-grid" aria-live="polite">
+      <p class="demo-wait hint">Checking whether the live demo is available…</p>
     </div>
   </div>
 </section>
 
-<section class="sec-block alt" id="how">
+<!-- ============================================================ the problem: annotated worksheet -->
+<section class="sec-block symptom" id="problem" aria-labelledby="problem-h">
   <div class="wrap">
-    <h2 class="sec-h reveal">How ELEVIA works</h2>
-    <p class="sec-p reveal">Four coordinated roles move each student through one learning journey. Every decision is made by fixed, testable rules, so the same answers always lead to the same outcome.</p>
-    <ol class="roles">
-      <li class="role-card reveal" style="--c:#aeb9f1"><span class="tape" aria-hidden="true"></span><span class="role-n">1</span><h3>Diagnoser</h3><p>Reads the check-in answers and matches wrong answers against known misconception patterns. A single mistake is flagged as a possible slip.</p><span class="tag">Suggests a possible gap</span></li>
-      <li class="role-card reveal" style="--c:#f2b8c8"><span class="tape" aria-hidden="true"></span><span class="role-n">2</span><h3>Checker</h3><p>Asks 2 brand-new questions. Same mistake again: <b>confirmed</b>. All correct: <b>rejected</b>. Mixed: <b>inconclusive</b>, so a teacher decides.</p><span class="tag">Verifies before teaching</span></li>
-      <li class="role-card reveal" style="--c:#a9c2a1"><span class="tape" aria-hidden="true"></span><span class="role-n">3</span><h3>Planner</h3><p>Plans only for a confirmed gap. Walks the skill map's prerequisites to pick where to start.</p><span class="tag">Chooses the focus</span></li>
-      <li class="role-card reveal" style="--c:#e3c78f"><span class="tape" aria-hidden="true"></span><span class="role-n">4</span><h3>Tutor</h3><p>Explains the missing step with worked examples and practice questions with hints. Maths in examples is computed exactly.</p><span class="tag">Teaches the missing step</span></li>
-      <li class="role-card reveal" style="--c:#9fb0d6"><span class="tape" aria-hidden="true"></span><span class="role-n">↻</span><h3>Retest</h3><p>After a delay, 3 new questions. 2 out of 3 closes the gap and marks the skill mastered. Otherwise ELEVIA replans with a fresh lesson.</p><span class="tag">Checks it stuck</span></li>
-    </ol>
-    <p class="hint center reveal">Optional AI can rewrite a lesson's wording. Its output is checked, and if it fails the original template text is used. It never makes the decisions above.</p>
+    <h2 class="sec-h left" id="problem-h">A wrong answer is a symptom, not a diagnosis</h2>
+    <p class="sec-p left">Students often follow a rule that looks right to them. Marking it wrong, or re-teaching the whole chapter, doesn't find that rule.</p>
+    <div class="symptom-grid">
+      <div class="ws-stage" id="ws-stage" data-step="3">
+        <svg class="ws" viewBox="0 0 560 500" role="img" aria-labelledby="ws-title ws-desc">
+          <title id="ws-title">A student's fractions check-in, marked up in red pen</title>
+          <desc id="ws-desc">Four answers. 1/5 + 2/5 = 3/5 and 6/8 = 3/4 are right. 1/2 + 1/3 = 2/5 and 1/4 + 2/3 = 3/7 are wrong in the same way: the student added the tops and the bottoms. A note points to the earlier skill, common denominators.</desc>
+          <g class="ws-rules" aria-hidden="true">
+            <path d="M0 74H560M0 148H560M0 210H560M0 272H560M0 334H560M0 396H560M0 458H560"/>
+            <path class="ws-margin" d="M58 0V500"/>
+          </g>
+          <text class="ws-head" x="78" y="62">Fractions check-in</text>
+          <g class="ws-q">
+            <text x="78" y="140">1/5 + 2/5 =</text><text class="ws-a" x="290" y="140">3/5</text>
+            <text x="78" y="202">1/2 + 1/3 =</text><text class="ws-a" x="290" y="202">2/5</text>
+            <text x="78" y="264">6/8 simplest:</text><text class="ws-a" x="290" y="264">3/4</text>
+            <text x="78" y="326">1/4 + 2/3 =</text><text class="ws-a" x="290" y="326">3/7</text>
+          </g>
+          <!-- 1: the mark says what, not why -->
+          <g class="ann a1">
+            <path class="pen" pathLength="1" d="M372 120l10 12 22-28"/>
+            <path class="pen" pathLength="1" d="M424 244l10 12 22-28"/>
+            <path class="pen" pathLength="1" d="M276 174c30-12 72-8 78 14 6 24-40 34-70 26-24-6-30-30-8-40"/>
+            <text class="pen-t" x="436" y="62">2 / 4</text>
+            <text class="pen-t sm" x="392" y="206">…but why?</text>
+          </g>
+          <!-- 2: once may be a slip; the same rule twice is a pattern -->
+          <g class="ann a2">
+            <path class="pen" pathLength="1" d="M276 298c30-12 72-8 78 14 6 24-40 34-70 26-24-6-30-30-8-40"/>
+            <path class="pen dash" pathLength="1" d="M358 194c48 22 52 92 0 120"/>
+            <text class="pen-t sm" x="378" y="330">same rule,</text>
+            <text class="pen-t sm" x="378" y="356">twice</text>
+          </g>
+          <!-- 3: the real gap is earlier -->
+          <g class="ann a3">
+            <path class="pen" pathLength="1" d="M310 344c-6 34-28 48-56 58"/>
+            <path class="pen" pathLength="1" d="M266 390l-14 12 18 4"/>
+            <g class="sticky" transform="rotate(-3 120 440)">
+              <rect x="20" y="404" width="236" height="78" rx="3"/>
+              <text class="pen-t ink" x="34" y="436">earlier skill:</text>
+              <text class="pen-t ink" x="34" y="466">common denominators</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <ol class="symptom-steps">
+        <li class="sstep" data-step="1">
+          <span class="sn" aria-hidden="true">1</span>
+          <h3>Marks say what, not why</h3>
+          <p>"2/5" is wrong, but a score of 2 out of 4 doesn't show that the student added the tops and the bottoms separately.</p>
+        </li>
+        <li class="sstep" data-step="2">
+          <span class="sn" aria-hidden="true">2</span>
+          <h3>One mistake can be a slip</h3>
+          <p>A single wrong answer might be a typo or a rushed moment. The same rule showing up again is what makes it worth checking, and even then ELEVIA asks new questions before it calls it a gap.</p>
+        </li>
+        <li class="sstep" data-step="3">
+          <span class="sn" aria-hidden="true">3</span>
+          <h3>The real gap is often earlier</h3>
+          <p>Trouble adding fractions can come from an earlier skill, like finding common denominators. That's where the lesson should start.</p>
+        </li>
+      </ol>
+    </div>
   </div>
 </section>
 
-<section class="sec-block" id="features">
-  <div class="wrap">
-    <h2 class="sec-h reveal">What's built</h2>
-    <p class="sec-p reveal">Everything below works in the current version and is covered by automated tests.</p>
-    <ul class="feat-grid">
-      <li class="feat reveal"><span class="fi" aria-hidden="true">🔍</span><h3>Misconception detection</h3><p>82 named misconception patterns across 24 topics, each tied to the skill it points to.</p></li>
-      <li class="feat reveal"><span class="fi" aria-hidden="true">✓</span><h3>Verify before you teach</h3><p>No lesson is planned for a gap that hasn't been confirmed by new questions or a teacher.</p></li>
-      <li class="feat reveal"><span class="fi" aria-hidden="true">🗺</span><h3>Plans from a skill map</h3><p>Prerequisites decide where a learning plan starts.</p></li>
-      <li class="feat reveal"><span class="fi" aria-hidden="true">📘</span><h3>Step-by-step lessons</h3><p>Worked examples, sense checks, practice with hints and full solutions.</p></li>
-      <li class="feat reveal"><span class="fi" aria-hidden="true">⏱</span><h3>Delayed retests</h3><p>Retests use new questions after a gap (24 h by default), never a repeat of the check-in.</p></li>
-      <li class="feat reveal"><span class="fi" aria-hidden="true">📈</span><h3>Progress you can trust</h3><p>Only a passed retest marks a skill mastered. Progress is saved after every answer.</p></li>
-      <li class="feat reveal"><span class="fi" aria-hidden="true">🧑‍🏫</span><h3>Teacher review</h3><p>Teachers resolve unclear cases, change the focus, and every decision is logged with a reason.</p></li>
-      <li class="feat reveal"><span class="fi" aria-hidden="true">🔒</span><h3>Consent and privacy</h3><p>Parent consent for under-18s, school codes, and adult learners choose exactly what to share.</p></li>
-      <li class="feat reveal"><span class="fi" aria-hidden="true">≡</span><h3>Exact answer checking</h3><p>Exact fraction arithmetic, accepted-answer lists, and code answers verified by running the snippets when the question bank is built.</p></li>
+<!-- ============================================================ how it works: book stack -->
+<section class="books" id="how" aria-labelledby="how-h">
+  <div class="books-pin">
+    <div class="wrap books-wrap">
+      <div class="books-head">
+        <h2 class="sec-h left" id="how-h">How ELEVIA works</h2>
+        <p class="sec-p left">Four roles take turns with each student, then a retest checks the result. Every decision follows fixed, testable rules, so the same answers always lead to the same outcome.</p>
+      </div>
+      <ol class="bk-list">
+        <li class="bk-item" style="--i:0;--b:#aeb9f1;--bd:#7f8fd4;--w:84%;--r:-1.2deg;--x:4%">
+          <button class="book" type="button" aria-controls="leaf-0" aria-label="Book 1: Diagnoser">
+            <span class="bk-pages" aria-hidden="true"></span>
+            <span class="bk-spine"><span class="bk-title">Diagnoser</span><svg class="bk-orn" viewBox="0 0 60 20" aria-hidden="true"><circle cx="10" cy="10" r="5"/><circle cx="30" cy="10" r="5"/><circle cx="50" cy="10" r="5"/></svg></span>
+          </button>
+          <article class="leaf" id="leaf-0">
+            <div class="leaf-l"><span class="pg" aria-hidden="true">1</span>
+              <p class="leaf-kicker">Suggests a possible gap</p>
+              <h3>Diagnoser</h3>
+              <p>Reads the five check-in answers and matches each wrong one against 82 named misconception patterns. A single mistake is flagged as a possible slip.</p>
+            </div>
+            <div class="leaf-r"><span class="pg" aria-hidden="true">2</span>
+              <p class="margin-note">½ + ⅓ = 2/5 matches "adds the tops and the bottoms".</p>
+              <p class="leaf-rule">Its output is always <b>suspected</b>. Nothing is taught yet.</p>
+            </div>
+          </article>
+        </li>
+        <li class="bk-item" style="--i:1;--b:#f2b8c8;--bd:#d98aa1;--w:92%;--r:1deg;--x:0%">
+          <button class="book" type="button" aria-controls="leaf-1" aria-label="Book 2: Checker">
+            <span class="bk-pages" aria-hidden="true"></span>
+            <span class="bk-spine"><span class="bk-title">Checker</span><svg class="bk-orn" viewBox="0 0 60 20" aria-hidden="true"><path d="M6 10l5 5 9-10M36 10l5 5 9-10"/></svg></span>
+          </button>
+          <article class="leaf" id="leaf-1">
+            <div class="leaf-l"><span class="pg" aria-hidden="true">3</span>
+              <p class="leaf-kicker">Verifies before teaching</p>
+              <h3>Checker</h3>
+              <p>Asks two brand-new questions aimed at the same misconception.</p>
+            </div>
+            <div class="leaf-r"><span class="pg" aria-hidden="true">4</span>
+              <ul class="verdicts">
+                <li><b>Confirmed</b> the same mistake again</li>
+                <li><b>Rejected</b> both right, so it was probably a slip</li>
+                <li><b>Inconclusive</b> mixed, so a teacher decides</li>
+              </ul>
+              <p class="margin-note">The Checker also runs the retest later. It's the only part that can mark a skill mastered.</p>
+            </div>
+          </article>
+        </li>
+        <li class="bk-item" style="--i:2;--b:#a9c2a1;--bd:#7f9c76;--w:88%;--r:-.6deg;--x:6%">
+          <button class="book" type="button" aria-controls="leaf-2" aria-label="Book 3: Planner">
+            <span class="bk-pages" aria-hidden="true"></span>
+            <span class="bk-spine"><span class="bk-title">Planner</span><svg class="bk-orn" viewBox="0 0 60 20" aria-hidden="true"><path d="M4 14c10-12 18 6 28-4s14-6 24-2"/><circle cx="56" cy="8" r="3"/></svg></span>
+          </button>
+          <article class="leaf" id="leaf-2">
+            <div class="leaf-l"><span class="pg" aria-hidden="true">5</span>
+              <p class="leaf-kicker">Chooses the focus</p>
+              <h3>Planner</h3>
+              <p>Works only on a confirmed gap, and refuses one that hasn't been verified. It walks the skill map's prerequisites to decide where the lesson should start.</p>
+            </div>
+            <div class="leaf-r"><span class="pg" aria-hidden="true">6</span>
+              <p class="margin-note">Adding with unlike denominators needs common denominators, which needs equivalent fractions.</p>
+              <p class="leaf-rule">A teacher can change the focus. The change is logged with their reason.</p>
+            </div>
+          </article>
+        </li>
+        <li class="bk-item" style="--i:3;--b:#e3c78f;--bd:#c4a463;--w:96%;--r:.8deg;--x:2%">
+          <button class="book" type="button" aria-controls="leaf-3" aria-label="Book 4: Tutor">
+            <span class="bk-pages" aria-hidden="true"></span>
+            <span class="bk-spine"><span class="bk-title">Tutor</span><svg class="bk-orn" viewBox="0 0 60 20" aria-hidden="true"><path d="M8 16C20 4 40 4 52 16M30 6v12M22 8l-4 6M38 8l4 6"/></svg></span>
+          </button>
+          <article class="leaf" id="leaf-3">
+            <div class="leaf-l"><span class="pg" aria-hidden="true">7</span>
+              <p class="leaf-kicker">Teaches the missing step</p>
+              <h3>Tutor</h3>
+              <p>A short lesson that quotes the student's own wrong answer, then steps, worked examples and practice questions with hints and full solutions.</p>
+            </div>
+            <div class="leaf-r"><span class="pg" aria-hidden="true">8</span>
+              <p class="margin-note">"Earlier you answered 1/2 + 1/3 with 2/5. That matches a common mistake… Let's see why it doesn't work and fix it step by step."</p>
+              <p class="leaf-rule">Maths in examples is computed exactly, never typed by hand.</p>
+            </div>
+          </article>
+        </li>
+        <li class="bk-item" style="--i:4;--b:#9fb0d6;--bd:#6f84b8;--w:100%;--r:-.4deg;--x:0%">
+          <button class="book" type="button" aria-controls="leaf-4" aria-label="Book 5: Retest">
+            <span class="bk-pages" aria-hidden="true"></span>
+            <span class="bk-spine"><span class="bk-title">Retest</span><svg class="bk-orn" viewBox="0 0 60 20" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="M30 4a6 6 0 1 0 0 12a4 6 0 1 1 0-12"/><circle cx="50" cy="10" r="6" class="o"/></svg></span>
+          </button>
+          <article class="leaf" id="leaf-4">
+            <div class="leaf-l"><span class="pg" aria-hidden="true">9</span>
+              <p class="leaf-kicker">Checks it stuck</p>
+              <h3>Retest</h3>
+              <p>After a delay (24 hours by default), three questions the student hasn't seen. Two out of three closes the gap and marks the skill mastered.</p>
+            </div>
+            <div class="leaf-r"><span class="pg" aria-hidden="true">10</span>
+              <p class="margin-note">Fewer than 2 of 3? The gap stays open and ELEVIA plans a fresh lesson.</p>
+              <p class="leaf-rule">The check-in questions are never reused.</p>
+            </div>
+          </article>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ what's built: folder stack -->
+<section class="sec-block folders-sec" id="features" aria-labelledby="features-h">
+  <div class="wrap folders-wrap">
+    <div class="folders-intro">
+      <h2 class="sec-h left" id="features-h">What's built</h2>
+      <p class="sec-p left">Nine working parts. Each one runs in the current version and is covered by automated tests.</p>
+      <p class="hint folders-how">Point at a folder, or tap it, to open it.</p>
+    </div>
+    <ul class="folders" id="folders">
+      <li class="folder open" style="--i:0;--s:#dfe4f8">
+        <button class="folder-tab" type="button" id="ft-0" aria-expanded="true" aria-controls="fs-0"><span>Misconception detection</span></button>
+        <div class="folder-sheet" id="fs-0" role="region" aria-labelledby="ft-0">
+          <h3>Misconception detection</h3>
+          <p>Wrong answers are matched to named misconceptions, each tied to the skill it points to.</p>
+          <p class="evidence">82 patterns across 24 topics</p>
+        </div>
+      </li>
+      <li class="folder" style="--i:1;--s:#f8dfe6">
+        <button class="folder-tab" type="button" id="ft-1" aria-expanded="false" aria-controls="fs-1"><span>Verify before you teach</span></button>
+        <div class="folder-sheet" id="fs-1" role="region" aria-labelledby="ft-1">
+          <h3>Verify before you teach</h3>
+          <p>No lesson is planned for a gap until new questions, or a teacher, confirm it.</p>
+          <p class="evidence">2 new questions per suspected gap</p>
+        </div>
+      </li>
+      <li class="folder" style="--i:2;--s:#e1eadd">
+        <button class="folder-tab" type="button" id="ft-2" aria-expanded="false" aria-controls="fs-2"><span>Plans from a skill map</span></button>
+        <div class="folder-sheet" id="fs-2" role="region" aria-labelledby="ft-2">
+          <h3>Plans from a skill map</h3>
+          <p>Prerequisites decide where a learning plan starts, including links across topics, such as percentages back to decimals.</p>
+          <p class="evidence">54 skills with prerequisites</p>
+        </div>
+      </li>
+      <li class="folder" style="--i:3;--s:#f5ead2">
+        <button class="folder-tab" type="button" id="ft-3" aria-expanded="false" aria-controls="fs-3"><span>Step-by-step lessons</span></button>
+        <div class="folder-sheet" id="fs-3" role="region" aria-labelledby="ft-3">
+          <h3>Step-by-step lessons</h3>
+          <p>Worked examples, sense checks, and practice with hints and full solutions.</p>
+          <p class="evidence">51 lessons</p>
+        </div>
+      </li>
+      <li class="folder" style="--i:4;--s:#e2e7f2">
+        <button class="folder-tab" type="button" id="ft-4" aria-expanded="false" aria-controls="fs-4"><span>Delayed retests</span></button>
+        <div class="folder-sheet" id="fs-4" role="region" aria-labelledby="ft-4">
+          <h3>Delayed retests</h3>
+          <p>Retests come after a gap of time (24 hours by default) and use new questions, never a repeat of the check-in.</p>
+          <p class="evidence">3 unseen questions, pass with 2</p>
+        </div>
+      </li>
+      <li class="folder" style="--i:5;--s:#dfe4f8">
+        <button class="folder-tab" type="button" id="ft-5" aria-expanded="false" aria-controls="fs-5"><span>Progress you can trust</span></button>
+        <div class="folder-sheet" id="fs-5" role="region" aria-labelledby="ft-5">
+          <h3>Progress you can trust</h3>
+          <p>Only a passed retest marks a skill mastered. Progress is saved after every answer, so closing the tab loses nothing.</p>
+          <p class="evidence">Resumes at the same question</p>
+        </div>
+      </li>
+      <li class="folder" style="--i:6;--s:#f8dfe6">
+        <button class="folder-tab" type="button" id="ft-6" aria-expanded="false" aria-controls="fs-6"><span>Teacher review</span></button>
+        <div class="folder-sheet" id="fs-6" role="region" aria-labelledby="ft-6">
+          <h3>Teacher review</h3>
+          <p>Teachers see a queue of unclear cases with the reason each one needs them. They confirm or reject a gap, or change the focus, and every decision is logged with a reason.</p>
+          <p class="evidence">Own classes only</p>
+        </div>
+      </li>
+      <li class="folder" style="--i:7;--s:#e1eadd">
+        <button class="folder-tab" type="button" id="ft-7" aria-expanded="false" aria-controls="fs-7"><span>Consent and privacy</span></button>
+        <div class="folder-sheet" id="fs-7" role="region" aria-labelledby="ft-7">
+          <h3>Consent and privacy</h3>
+          <p>Parent consent for under-18s, school class codes with teacher approval, and adult learners choose exactly what to share. Every view of a student's progress is logged.</p>
+          <p class="evidence">Parents see only what consent allows</p>
+        </div>
+      </li>
+      <li class="folder" style="--i:8;--s:#f5ead2">
+        <button class="folder-tab" type="button" id="ft-8" aria-expanded="false" aria-controls="fs-8"><span>Exact answer checking</span></button>
+        <div class="folder-sheet" id="fs-8" role="region" aria-labelledby="ft-8">
+          <h3>Exact answer checking</h3>
+          <p>Exact fraction arithmetic, accepted-answer lists, and code answers verified by running each snippet when the question bank is built. A student's typed code is compared as text and never run.</p>
+          <p class="evidence">943 questions validated</p>
+        </div>
+      </li>
     </ul>
   </div>
 </section>
 
-<section class="sec-block alt" id="subjects">
+<!-- ============================================================ subjects: curriculum index -->
+<section class="sec-block subjects" id="subjects" aria-labelledby="subjects-h">
   <div class="wrap">
-    <h2 class="sec-h reveal">Subjects and topics</h2>
-    <p class="sec-p reveal">Every topic below has a check-in, double-check questions, lessons, practice and retests. Grey topics are planned and not playable yet.</p>
-    <div class="subj-grid" id="subj-grid">
-      <article class="subj" style="--c:#2f4a8a"><h3><span aria-hidden="true">∑</span> Mathematics</h3><p>Order of operations, factors and multiples, fractions, decimals, percentages, integers, ratio, linear equations, angles, perimeter and area, averages.</p></article>
-      <article class="subj" style="--c:#2e7d5b"><h3><span aria-hidden="true">⚛</span> Science</h3><p>Scientific reasoning, forces and motion, states of matter.</p></article>
-      <article class="subj" style="--c:#a0522d"><h3><span aria-hidden="true">Aa</span> English</h3><p>Parts of speech, past tense verbs, subject–verb agreement, apostrophes.</p></article>
-      <article class="subj" style="--c:#6b3fa0"><h3><span aria-hidden="true">&lt;/&gt;</span> Computer Science</h3><p>Variables, data types, conditionals, logical reasoning, loops, basic algorithms.</p></article>
+    <h2 class="sec-h left" id="subjects-h">Subjects and topics</h2>
+    <p class="sec-p left">Each topic in the index has a check-in, double-check questions, lessons, practice and retests. Pencilled titles are coming soon and can't be played yet.</p>
+    <div class="index-book" id="subj-grid">
+<!-- SUBJECT-INDEX:START (generated by scripts/build_landing_index.py; refreshed live from /api/learn/catalog) -->
+      <section class="idx-sub" style="--c:#2f4a8a" aria-labelledby="idx-mathematics">
+        <header class="idx-tab"><h3 id="idx-mathematics">Mathematics</h3><p class="idx-count">11 topics to play</p></header>
+        <p class="idx-desc">Number, ratio and algebra, checked with exact arithmetic.</p>
+        <ul class="idx-topics">
+          <li style="--k:0"><a href="#/learn/order_of_operations" aria-label="Start Order of operations, Mathematics, grades 4–7"><span class="t">Order of operations</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 4–7</span></a></li>
+          <li style="--k:1"><a href="#/learn/factors_multiples" aria-label="Start Factors and multiples, Mathematics, grades 5–7"><span class="t">Factors and multiples</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 5–7</span></a></li>
+          <li style="--k:2"><a href="#/learn/fractions" aria-label="Start Fractions, Mathematics, grades 3–6"><span class="t">Fractions</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 3–6</span></a></li>
+          <li style="--k:3"><a href="#/learn/decimals" aria-label="Start Decimals, Mathematics, grades 4–6"><span class="t">Decimals</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 4–6</span></a></li>
+          <li style="--k:4"><a href="#/learn/percentages" aria-label="Start Percentages, Mathematics, grades 6–8"><span class="t">Percentages</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 6–8</span></a></li>
+          <li style="--k:5"><a href="#/learn/integers" aria-label="Start Integers, Mathematics, grades 6–8"><span class="t">Integers</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 6–8</span></a></li>
+          <li style="--k:6"><a href="#/learn/ratio_proportion" aria-label="Start Ratio and proportion, Mathematics, grades 6–8"><span class="t">Ratio and proportion</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 6–8</span></a></li>
+          <li style="--k:7"><a href="#/learn/linear_equations" aria-label="Start Linear equations, Mathematics, grades 6–8"><span class="t">Linear equations</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 6–8</span></a></li>
+          <li style="--k:8"><a href="#/learn/angles" aria-label="Start Angles, Mathematics, grades 5–8"><span class="t">Angles</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 5–8</span></a></li>
+          <li style="--k:9"><a href="#/learn/perimeter_area" aria-label="Start Perimeter and area, Mathematics, grades 4–7"><span class="t">Perimeter and area</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 4–7</span></a></li>
+          <li style="--k:10"><a href="#/learn/statistics" aria-label="Start Averages, Mathematics, grades 6–8"><span class="t">Averages</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 6–8</span></a></li>
+        </ul>
+        <div class="idx-soon"><p class="idx-soon-h">Coming soon, not playable yet</p><ul aria-label="Mathematics topics coming soon"><li>Probability</li><li>Area of triangles and circles</li><li>Volume</li><li>Graphs</li></ul></div>
+      </section>
+      <section class="idx-sub" style="--c:#2e7d5b" aria-labelledby="idx-science">
+        <header class="idx-tab"><h3 id="idx-science">Science</h3><p class="idx-count">3 topics to play</p></header>
+        <p class="idx-desc">Concept questions that separate real misconceptions from slips.</p>
+        <ul class="idx-topics">
+          <li style="--k:0"><a href="#/learn/fair_testing" aria-label="Start Scientific reasoning, Science, grades 4–8"><span class="t">Scientific reasoning</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 4–8</span></a></li>
+          <li style="--k:1"><a href="#/learn/forces_motion" aria-label="Start Forces and motion, Science, grades 6–8"><span class="t">Forces and motion</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 6–8</span></a></li>
+          <li style="--k:2"><a href="#/learn/states_of_matter" aria-label="Start States of matter, Science, grades 5–8"><span class="t">States of matter</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 5–8</span></a></li>
+        </ul>
+        <div class="idx-soon"><p class="idx-soon-h">Coming soon, not playable yet</p><ul aria-label="Science topics coming soon"><li>Heat and temperature</li><li>Light</li><li>Electric circuits</li><li>Plants and photosynthesis</li></ul></div>
+      </section>
+      <section class="idx-sub" style="--c:#a0522d" aria-labelledby="idx-english">
+        <header class="idx-tab"><h3 id="idx-english">English</h3><p class="idx-count">4 topics to play</p></header>
+        <p class="idx-desc">Grammar, word classes and punctuation, with exact answer checking.</p>
+        <ul class="idx-topics">
+          <li style="--k:0"><a href="#/learn/parts_of_speech" aria-label="Start Parts of speech, English, grades 4–7"><span class="t">Parts of speech</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 4–7</span></a></li>
+          <li style="--k:1"><a href="#/learn/past_tense" aria-label="Start Past tense verbs, English, grades 3–6"><span class="t">Past tense verbs</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 3–6</span></a></li>
+          <li style="--k:2"><a href="#/learn/subject_verb_agreement" aria-label="Start Subject–verb agreement, English, grades 3–7"><span class="t">Subject–verb agreement</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 3–7</span></a></li>
+          <li style="--k:3"><a href="#/learn/apostrophes" aria-label="Start Punctuation: apostrophes, English, grades 4–7"><span class="t">Punctuation: apostrophes</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 4–7</span></a></li>
+        </ul>
+        <div class="idx-soon"><p class="idx-soon-h">Coming soon, not playable yet</p><ul aria-label="English topics coming soon"><li>Reading comprehension</li><li>Sentence construction</li><li>Other tenses</li><li>Vocabulary</li></ul></div>
+      </section>
+      <section class="idx-sub" style="--c:#6b3fa0" aria-labelledby="idx-computer_science">
+        <header class="idx-tab"><h3 id="idx-computer_science">Computer Science</h3><p class="idx-count">6 topics to play</p></header>
+        <p class="idx-desc">Predict what short programs print. Answers are verified by running the code.</p>
+        <ul class="idx-topics">
+          <li style="--k:0"><a href="#/learn/variables" aria-label="Start Variables and assignment, Computer Science, grades 6–9"><span class="t">Variables and assignment</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 6–9</span></a></li>
+          <li style="--k:1"><a href="#/learn/data_types" aria-label="Start Data types, Computer Science, grades 7–10"><span class="t">Data types</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 7–10</span></a></li>
+          <li style="--k:2"><a href="#/learn/conditionals" aria-label="Start Conditional statements, Computer Science, grades 7–10"><span class="t">Conditional statements</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 7–10</span></a></li>
+          <li style="--k:3"><a href="#/learn/boolean_logic" aria-label="Start Logical reasoning, Computer Science, grades 7–10"><span class="t">Logical reasoning</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 7–10</span></a></li>
+          <li style="--k:4"><a href="#/learn/loops" aria-label="Start Loops, Computer Science, grades 7–10"><span class="t">Loops</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 7–10</span></a></li>
+          <li style="--k:5"><a href="#/learn/algorithms" aria-label="Start Basic algorithms, Computer Science, grades 8–10"><span class="t">Basic algorithms</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 8–10</span></a></li>
+        </ul>
+        <div class="idx-soon"><p class="idx-soon-h">Coming soon, not playable yet</p><ul aria-label="Computer Science topics coming soon"><li>Functions</li><li>Lists and data structures</li><li>Sorting algorithms</li></ul></div>
+      </section>
+<!-- SUBJECT-INDEX:END -->
     </div>
   </div>
 </section>
 
+<!-- ============================================================ students -->
 <section class="sec-block" id="students">
   <div class="wrap split">
-    <div class="split-copy reveal">
+    <div class="split-copy">
       <h2 class="sec-h left">For students</h2>
       <p class="sec-p left">Always know where you are and why.</p>
       <ul class="ticks">
         <li>A step tracker: check-in, double-check, learn, retest, result</li>
         <li>Told plainly whether a suspected gap has been confirmed yet</li>
         <li>Short lessons with worked examples, hints and solutions</li>
-        <li>A dashboard of topics, upcoming retests and mastered skills</li>
+        <li>A dashboard that says what to do next, with upcoming retests and mastered skills</li>
         <li>Safe to close the tab: progress is saved after every answer</li>
       </ul>
     </div>
-    <div class="shots reveal">
+    <div class="shots">
       <div class="shot-tabs" role="tablist" aria-label="Student screens">
         <button role="tab" type="button" aria-selected="true" data-shot="dash">Dashboard</button>
         <button role="tab" type="button" aria-selected="false" data-shot="verify">Double-check</button>
@@ -156,29 +423,30 @@
         <button role="tab" type="button" aria-selected="false" data-shot="result">Result</button>
       </div>
       <figure class="browser"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-        <img id="shot-img" src="/img/shot-dash.jpg" width="1200" height="900" loading="lazy" alt="Student dashboard with subjects, continue learning and upcoming retests">
+        <img id="shot-img" src="/img/shot-dash.jpg" width="1200" height="900" loading="lazy" alt="Student dashboard with what to do next, continue learning and upcoming retests">
       </figure>
-      <p class="hint center">Real screens captured from the working app with test accounts.</p>
+      <p class="hint center">Real screens captured from the working app with demo accounts.</p>
     </div>
   </div>
 </section>
 
+<!-- ============================================================ teachers -->
 <section class="sec-block alt" id="teachers">
   <div class="wrap split rev">
-    <div class="shots reveal">
+    <div class="shots">
       <figure class="browser"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
         <img src="/img/shot-teacher.jpg" width="1200" height="900" loading="lazy" alt="Teacher portal: review queue, class insights and each student's progress">
       </figure>
     </div>
-    <div class="split-copy reveal">
+    <div class="split-copy">
       <h2 class="sec-h left">For teachers</h2>
       <p class="sec-p left">You stay in charge of the decisions that need a human.</p>
       <ul class="ticks">
         <li>See students in the classes you're assigned to, nobody else's</li>
+        <li>A review queue of unclear cases, each with the reason it needs you</li>
         <li>Each student's verified gaps, the evidence and why the Checker decided</li>
-        <li>Resolve inconclusive cases: confirm and teach, or reject</li>
-        <li>Change a learning focus, with every override logged with a reason</li>
-        <li>Class view: who needs review and the most common verified gaps</li>
+        <li>Confirm and teach, reject, or change a focus, always with a logged reason</li>
+        <li>An intervention history of every decision you've made</li>
         <li>Approve students who join with your class code</li>
       </ul>
       <p class="hint">Teachers join by invitation from their school admin.</p>
@@ -186,38 +454,59 @@
   </div>
 </section>
 
-<section class="sec-block" id="why">
+<!-- ============================================================ verify before you teach + about + close -->
+<section class="story" id="why" aria-labelledby="why-h">
   <div class="wrap">
-    <h2 class="sec-h reveal">Verify before you teach</h2>
-    <p class="sec-p reveal">ELEVIA's core rule: a suspected misconception is a hypothesis until new evidence supports it.</p>
-    <div class="compare">
-      <div class="cmp-col reveal">
+    <h2 class="sec-h left" id="why-h">Verify before you teach</h2>
+    <p class="sec-p left">ELEVIA's central rule: a suspected misconception is only a hypothesis until new evidence supports it.</p>
+    <div class="journal">
+      <div class="jpage jl">
         <h3>The usual way</h3>
-        <ol class="flow muted"><li>Wrong answer</li><li>Assume the cause</li><li>Re-teach</li><li>Hope it worked</li></ol>
+        <ol class="jlist usual">
+          <li>Wrong answer</li>
+          <li>Assume the cause</li>
+          <li>Re-teach the chapter</li>
+          <li>Hope it worked</li>
+        </ol>
+        <p class="margin-note muted">Fast, but it can teach the wrong thing.</p>
       </div>
-      <div class="cmp-col good reveal">
-        <span class="tape" aria-hidden="true"></span>
+      <div class="jpage jr">
         <h3>The ELEVIA way</h3>
-        <ol class="flow"><li>Wrong answer matches a known pattern</li><li><b>Suspected</b> gap: nothing changes yet</li><li>2 new questions: confirmed, rejected or inconclusive</li><li>Lesson only for a confirmed gap</li><li>Retest on new questions later</li></ol>
+        <ol class="jlist">
+          <li>A wrong answer matches a known pattern</li>
+          <li>A <b>suspected</b> gap is noted. Nothing changes yet</li>
+          <li>Two new questions test it</li>
+          <li>The gap is confirmed, rejected or inconclusive. Inconclusive goes to a teacher</li>
+          <li>A lesson is planned only for a confirmed gap</li>
+          <li>A later retest, on new questions, checks whether it stuck</li>
+        </ol>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="sec-block alt" id="about">
-  <div class="wrap narrow reveal">
-    <h2 class="sec-h">About ELEVIA</h2>
-    <p class="sec-p">ELEVIA is being built for PRASUNEX Innovathon 2026, around one question: how do we close the actual gap in a student's understanding instead of just marking answers? It is a working prototype. It hasn't been tested in classrooms yet, so we make no claims about learning outcomes.</p>
-    <p class="sec-p">What's next: more topics (reading comprehension, electricity, light, probability), wider prerequisite planning, and classroom pilots with teachers.</p>
-  </div>
-</section>
-
-<section class="cta">
-  <div class="cta-sheet reveal">
-    <span class="tape" aria-hidden="true"></span>
-    <h2 class="brand">Find the missing understanding.</h2>
-    <p>Sign up as a student, through your school, or as an adult learner. Each topic starts with a 5-question check-in.</p>
-    <div class="actions center-row"><a class="btn main big" href="#/start">Get started</a><a class="btn big" href="#/login">Log in</a></div>
+    <div class="story-end">
+      <aside class="about-card" id="about" aria-labelledby="about-h">
+        <span class="tape" aria-hidden="true"></span>
+        <h3 id="about-h">About ELEVIA</h3>
+        <p>ELEVIA tries to find the missing understanding behind wrong answers, rather than only marking them right or wrong.</p>
+        <p>It's a working prototype built for PRASUNEX Innovathon 2026. It hasn't been tested in classrooms yet, so we make no claims about learning outcomes.</p>
+        <p class="margin-note">Next: reading comprehension, electricity, light, probability, and pilots with teachers.</p>
+      </aside>
+      <div class="last-page">
+        <svg class="line" viewBox="0 0 600 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 18 Q300 64 600 18"/></svg>
+        <ul class="pegs" aria-label="The ELEVIA cycle">
+          <li style="--t:-4deg">spotted</li>
+          <li style="--t:3deg">checked</li>
+          <li style="--t:-2deg">taught</li>
+          <li style="--t:4deg">retested</li>
+        </ul>
+        <h2 class="brand">Find the missing understanding.</h2>
+        <p>Sign up as a student, through your school, or as an adult learner. Each topic starts with a 5-question check-in.</p>
+        <div class="actions center-row">
+          <a class="btn main big" href="#/start">Get started</a>
+          <a class="btn big" href="#/login">Log in</a>
+          <a class="btn big btn-demo" href="#demo" data-scroll>Try the demo</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 </main>
@@ -225,12 +514,12 @@
 <footer class="lfoot">
   <div class="wrap foot-grid">
     <div><a class="brand foot-logo" href="#/">ELEVIA</a><p class="hint">Verify before you teach.</p></div>
-    <nav aria-label="Footer"><a href="#how" data-scroll>How it works</a><a href="#subjects" data-scroll>Subjects</a><a href="#teachers" data-scroll>For teachers</a><a href="#/start">Get started</a><a href="#/login">Log in</a></nav>
+    <nav aria-label="Footer"><a href="#how" data-scroll>How it works</a><a href="#subjects" data-scroll>Subjects</a><a href="#teachers" data-scroll>For teachers</a><a href="#demo" data-scroll>Try demo</a><a href="#/start">Get started</a><a href="#/login">Log in</a></nav>
     <p class="hint foot-note">ELEVIA points out possible gaps in what a student has learned from their answers. It is not a medical or psychological assessment.</p>
   </div>
 </footer>
 </div>
 <div id="app" aria-live="polite" hidden><p style="padding:24px">Loading ELEVIA…</p></div>
-<noscript><p style="padding:24px">ELEVIA needs JavaScript turned on.</p></noscript>
+<noscript><p style="padding:24px">ELEVIA needs JavaScript turned on to log in and learn. The page above works without it.</p></noscript>
 </body>
 </html>

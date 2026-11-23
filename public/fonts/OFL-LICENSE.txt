@@ -1,3 +1,4 @@
+Kalam: Copyright (c) 2014 Indian Type Foundry (info@indiantypefoundry.com), SIL Open Font License 1.1.
 Copyright 2014 The Nunito Project Authors (https://github.com/googlefonts/nunito) Nunito-Italic[wght].ttf: Copyright 2014 The Nunito Project Authors (https://github.com/googlefonts/nunito)
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
