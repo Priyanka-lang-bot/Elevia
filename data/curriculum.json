@@ -49,7 +49,7 @@
    "name": "English",
    "icon": "Aa",
    "color": "#a0522d",
-   "description": "Grammar and sentence construction with exact answer checking.",
+   "description": "Grammar, word classes and punctuation, with exact answer checking.",
    "topics": [
     "parts_of_speech",
     "past_tense",

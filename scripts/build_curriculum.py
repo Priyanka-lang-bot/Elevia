@@ -52,7 +52,7 @@ SUBJECTS = [
      "topics": ["fair_testing", "forces_motion", "states_of_matter"],
      "planned": ["Heat and temperature", "Light", "Electric circuits", "Plants and photosynthesis"]},
     {"id": "english", "name": "English", "icon": "Aa", "color": "#a0522d",
-     "description": "Grammar and sentence construction with exact answer checking.",
+     "description": "Grammar, word classes and punctuation, with exact answer checking.",
      "topics": ["parts_of_speech", "past_tense", "subject_verb_agreement", "apostrophes"],
      "planned": ["Reading comprehension", "Sentence construction", "Other tenses", "Vocabulary"]},
     {"id": "computer_science", "name": "Computer Science", "icon": "</>", "color": "#6b3fa0",
