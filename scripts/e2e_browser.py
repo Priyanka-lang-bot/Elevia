@@ -82,16 +82,22 @@ def main():
         pg = new_page(1300, 900)
         pg.goto(B + "/")
         expect(pg.locator("h1.hero-h")).to_contain_text("missing understanding")
-        pg.locator("#subj-grid .topic-links a").first.wait_for()
-        assert pg.locator("#subj-grid .topic-links a").count() == 24
+        pg.locator("#subj-grid .idx-topics a").first.wait_for()
+        assert pg.locator("#subj-grid .idx-topics a").count() == 24
+        assert pg.locator("#subj-grid .idx-soon a").count() == 0 and pg.locator("#subj-grid .idx-soon li").count() >= 12
         broken = pg.evaluate("[...document.images].filter(i => i.loading !== 'lazy' && !(i.complete && i.naturalWidth > 0)).map(i => i.src)")
         assert not broken, broken
-        pg.locator("#demo-grid .demo-card").first.wait_for()
-        assert pg.locator("#demo-grid .demo-card").count() == 6 and "Demo-Pass" not in pg.content()
+        pg.locator("#demo-grid .lib-card").first.wait_for()
+        assert pg.locator("#demo-grid .lib-card").count() == 3 and "Demo-Pass" not in pg.content()
+        names = pg.locator("#demo-grid .lib-name").all_inner_texts()
+        assert names == ["Ananya Rao", "Riya Sharma", "Arjun Patel"], names        # students only
+        staff = pg.request.post(B + "/api/demo/login", data={"slug": "teacher"},
+                                headers={"x-elevia-web": "1"}).status        # outside the page: no console noise
+        assert staff == 403, staff
         pg.click(".lnav-links a[href='#how']"); pg.wait_for_timeout(700)
         assert pg.evaluate("window.scrollY") > 400 and pg.evaluate("location.hash") == ""
-        for sec in ("features", "students", "teachers", "about"):
-            assert pg.locator(f"#{sec}").count() == 1
+        for sec in ("problem", "how", "features", "subjects", "students", "teachers", "why", "about", "demo"):
+            assert pg.locator(f"#{sec}").count() == 1, sec
         hrefs = pg.eval_on_selector_all("#landing a[href]", "els => els.map(e => e.getAttribute('href'))")
         for h in hrefs:      # no dead links: every in-page anchor exists, every app route is known
             if h.startswith("#") and not h.startswith("#/"):
@@ -103,14 +109,52 @@ def main():
         pg.wait_for_timeout(500)
         broken = pg.evaluate("[...document.images].filter(i => !(i.complete && i.naturalWidth > 0)).map(i => i.src)")
         assert not broken, broken
-        step(f"landing: hero, {len(hrefs)} links checked, live catalogue (24 topics), 6 demo cards, no broken images")
+        step(f"landing: {len(hrefs)} links checked, index of 24 playable topics (coming-soon titles are not links), "
+             "3 student demo cards, teacher one-click refused, no broken images")
+
+        pg.evaluate("window.scrollTo(0,0)")
+        pg.click(".lnav-links a.nav-demo"); pg.wait_for_timeout(700)
+        top = pg.evaluate("document.getElementById('demo').getBoundingClientRect().top")
+        assert 0 <= top < 120, top
+        step("Try demo in the top navigation scrolls to the student demo cards")
+
+        def active_book():
+            return pg.evaluate("[...document.querySelectorAll('#how .bk-item')].findIndex(x => x.classList.contains('active'))")
+        assert pg.evaluate("document.getElementById('how').classList.contains('live')")
+        y = pg.evaluate("""(() => { const s = document.getElementById('how');
+            return s.getBoundingClientRect().top + scrollY - document.querySelector('.lnav').offsetHeight + (s.offsetHeight - innerHeight) * 0.5 })()""")
+        pg.evaluate(f"window.scrollTo({{top: {y}, behavior: 'instant'}})"); pg.wait_for_timeout(500)
+        assert active_book() == 2, active_book()
+        expect(pg.locator("#leaf-2")).to_be_visible()
+        pg.click("#how .bk-item:nth-child(5) .book"); pg.wait_for_timeout(1400)
+        assert active_book() == 4 and pg.locator("#how .bk-item:nth-child(5) .book").get_attribute("aria-expanded") == "true"
+        step("book stack: scrolling opens one book at a time (3rd at mid-section); clicking a spine opens its page")
+
+        def ws_step():
+            return pg.evaluate("document.getElementById('ws-stage').dataset.step")
+        for n in ("1", "3"):
+            pg.evaluate(f"""(() => {{ const s = document.querySelector('.sstep[data-step="{n}"]');
+                scrollTo({{top: s.getBoundingClientRect().top + scrollY - innerHeight * 0.4, behavior: "instant"}}) }})()"""); pg.wait_for_timeout(500)
+            assert ws_step() == n, (n, ws_step())
+        step("worksheet: red-pen annotations appear one idea at a time as you scroll (1, then 3)")
+
+        pg.evaluate("document.getElementById('features').scrollIntoView()"); pg.wait_for_timeout(300)
+        pg.click("#ft-3"); pg.wait_for_timeout(700)
+        assert pg.locator(".folder.open").count() == 1 and pg.get_attribute("#ft-3", "aria-expanded") == "true"
+        expect(pg.locator("#fs-3")).to_be_visible()
+        pg.keyboard.press("ArrowRight"); pg.wait_for_timeout(700)
+        assert pg.get_attribute("#ft-4", "aria-expanded") == "true" and pg.evaluate("document.activeElement.id") == "ft-4"
+        pg.hover("#ft-7"); pg.wait_for_timeout(700)
+        assert pg.get_attribute("#ft-7", "aria-expanded") == "true"
+        step("folders: click, arrow keys and hover each open exactly one folder")
+
         pg.evaluate("window.scrollTo(0,0)")
         pg.click(".lnav-links a.btn"); expect(pg.locator("#app h1")).to_contain_text("How would you like")
         step("Get started opens the account-type chooser")
 
         # ---------------------------------------------------------------- student journey (independent learner)
         pg = new_page()
-        pg.goto(B + "/"); pg.locator("#demo-grid .demo-card").first.wait_for()
+        pg.goto(B + "/"); pg.locator("#demo-grid .lib-card").first.wait_for()
         pg.click("button[aria-label^='Open the demo as Ananya']")
         pg.locator("#app .tabs").wait_for()
         step("one-click demo login (Ananya, new student) lands on the dashboard")
@@ -215,7 +259,35 @@ def main():
         mp.goto(B + "/"); mp.locator(".lnav-toggle").click()
         expect(mp.locator(".lnav-links")).to_be_visible()
         assert mp.evaluate("document.documentElement.scrollWidth <= window.innerWidth + 1")
-        step("landing on a phone: menu opens, no horizontal overflow")
+        expect(mp.locator(".nav-demo-m")).to_be_visible()
+        mp.locator(".lnav-toggle").click()
+        mp.evaluate("document.getElementById('features').scrollIntoView()")
+        mp.click("#ft-2"); expect(mp.locator("#fs-2")).to_be_visible()
+        assert not mp.locator("#fs-5").is_visible()
+        mp.click("#ft-2"); assert not mp.locator("#fs-2").is_visible()             # tap again to close
+        mp.click("#how .bk-item:nth-child(4) .book"); expect(mp.locator("#leaf-3")).to_be_visible()
+        assert not mp.locator("#leaf-0").is_visible()
+        for w in (768, 1024):                                                       # tablet widths
+            tp2 = new_page(w, 1000); tp2.goto(B + "/"); tp2.wait_for_timeout(400)
+            assert tp2.evaluate("document.documentElement.scrollWidth <= window.innerWidth + 1"), w
+        step("phone and tablet: Try demo always visible, menu opens, tap-to-open folders and books, no horizontal overflow")
+
+        nj = browser.new_context(viewport={"width": 1300, "height": 900}, java_script_enabled=False).new_page()
+        nj.goto(B + "/")
+        for i in range(9):
+            expect(nj.locator(f"#fs-{i}")).to_be_visible()
+        for i in range(5):
+            expect(nj.locator(f"#leaf-{i}")).to_be_visible()
+        assert nj.locator("#subj-grid .idx-topics a").count() == 24 and nj.locator("#ws-stage .a3").is_visible()
+        step("without JavaScript every folder sheet, book page, annotation and all 24 topics are still readable")
+
+        rm = browser.new_context(viewport={"width": 1300, "height": 900}, reduced_motion="reduce").new_page()
+        rm.on("pageerror", lambda e: errors.append(f"reduced-motion: {e}"))
+        rm.goto(B + "/"); rm.locator("#subj-grid .idx-topics a").first.wait_for()
+        assert not rm.evaluate("document.getElementById('subj-grid').classList.contains('idx-live')")
+        rm.evaluate("document.getElementById('subjects').scrollIntoView()")
+        expect(rm.locator("#subj-grid .idx-topics a").first).to_be_visible()
+        step("reduced motion: no reveal animations, content shown straight away")
         browser.close()
 
     if errors:

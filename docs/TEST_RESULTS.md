@@ -1,6 +1,6 @@
 # Test results
 
-Every number below comes from runs I actually executed on the `round3` branch (20–22 Nov 2026). The latest run was on commit `cb4c41b`.
+Every number below comes from runs I actually executed (20–23 Nov 2026). The latest runs were on the `landing-redesign` branch (based on `round3`), 23 Nov 2026.
 
 ## Automated tests (pytest)
 
@@ -8,8 +8,9 @@ Every number below comes from runs I actually executed on the `round3` branch (2
 |---|---|
 | Baseline before round 3 work (commit `bcb020a`) | **81 passed** |
 | End of round 2 | **150 passed** |
-| Now, local SQLite: `python -m pytest -q` | **185 passed, 0 failed** |
-| Now, through the Turso connector fake: `ELEVIA_TEST_TURSO=1 python -m pytest -q` | **185 passed, 0 failed** |
+| End of round 3 (`round3`, commit `cb4c41b`) | **185 passed** |
+| Now, local SQLite: `python -m pytest -q` | **186 passed, 0 failed** |
+| Now, through the Turso connector fake: `ELEVIA_TEST_TURSO=1 python -m pytest -q` | **186 passed, 0 failed** |
 
 | File | Tests | Covers |
 |---|---|---|
@@ -18,7 +19,7 @@ Every number below comes from runs I actually executed on the `round3` branch (2
 | `test_fractions.py` | 20 | Exact fraction parsing and checking, mistake patterns |
 | `test_learning_journey.py` | 35 | Correct answers, suspected misconception, careless slip, confirmed, rejected, inconclusive, retest pass/fail, replanning, persistence, errors and duplicates, exact maths |
 | `test_subjects.py` | 55 | **Full journey and a rejected-gap journey on each of the 23 non-fraction topics** (parametrised), plus replanning on a new subject, two topics side by side, dashboard, unknown topic, curriculum completeness for all 24 topics, exact numeric/percent/negative/text/MCQ checking, code never executed, public catalogue |
-| `test_demo.py` | 9 | Demo mode is off by default; one-click login per role (HttpOnly, SameSite=Lax cookie, no token in the body); demo login never reaches a real account; rate limit (60 per 10 min, then 429); guarded actions are refused for demo users; **reset restores the demo state and leaves real users untouched**; student, teacher and parent dashboards agree; next step, review queue and intervention history |
+| `test_demo.py` | 10 | Demo mode is off by default; one-click login for each **student** account (HttpOnly, SameSite=Lax cookie, no token in the body); teacher, parent and admin demo accounts refused one-click (403, no cookie) but work with a password; demo login never reaches a real account; rate limit (60 per 10 min, then 429); guarded actions are refused for demo users; **reset restores the demo state and leaves real users untouched**; student, teacher and parent dashboards agree; next step, review queue and intervention history |
 | `test_progress.py` | 5 | Teacher sees and resolves an inconclusive gap (reason required, audited), reject and notes, other teacher/admin/stranger/student blocked, parent permission scopes, learner sharing |
 | `test_workflow_api.py` | 11 | Older engine API |
 | `test_web_entry.py` | 2 | Website entry point |
@@ -31,25 +32,33 @@ Every number below comes from runs I actually executed on the `round3` branch (2
 
 ## Browser end-to-end (`python scripts/e2e_browser.py`, headless Chromium)
 
-**17 of 17 checks passed, 0 console errors**, on a fresh local database seeded with `scripts/demo.py seed` and with demo mode on:
+**23 of 23 checks passed, 0 console errors**, on a fresh local database seeded with `scripts/demo.py seed`, with demo mode on:
 
-1. Landing: hero, every link checked, live catalogue (24 topics), 6 demo cards, no broken images
-2. "Get started" opens the account-type chooser
-3. One-click demo login (Ananya, new student) lands on the dashboard
-4. Grade is asked once, then the fractions check-in starts
-5. Diagnoser: suspected gap shown as not confirmed; double-check asked
-6. Checker confirms → Planner and Tutor build the lesson
-7. Practice → delayed retest (demo shortcut) → 3/3 → gap closed
-8. Code question: program shown, typed output checked
-9. Reload keeps progress (resumes at question 3 of 5)
-10. Dashboard: continue learning, mastered skill, history
-11. Password login (Riya) works; dashboard with "What to do next" fits a 390 px phone screen
-12. Riya via the login-page demo strip: her next step opens the lesson in progress
-13. Teacher: review queue → Arjun's case with evidence and review form
-14. Teacher confirms with a reason; lesson created; override logged
-15. Parent (Sunita) sees only Riya, in plain language, with no review controls
-16. Student sees the teacher's decision on their journey
-17. Landing on a phone: menu opens, no horizontal overflow
+1. Landing: 48 links checked, index of 24 playable topics (coming-soon titles are not links), 3 student demo cards, a one-click teacher login refused (403), no broken images
+2. "Try demo" in the top navigation scrolls to the student demo cards
+3. Book stack: scrolling opens one book at a time (the 3rd at mid-section); clicking a spine opens its page
+4. Worksheet: red-pen annotations appear one idea at a time as you scroll
+5. Folders: click, arrow keys and hover each open exactly one folder
+6. "Get started" opens the account-type chooser
+7. One-click demo login (Ananya, new student) lands on the dashboard
+8. Grade is asked once, then the fractions check-in starts
+9. Diagnoser: suspected gap shown as not confirmed; double-check asked
+10. Checker confirms → Planner and Tutor build the lesson
+11. Practice → delayed retest (demo shortcut) → 3/3 → gap closed
+12. Code question: program shown, typed output checked
+13. Reload keeps progress (resumes at question 3 of 5)
+14. Dashboard: continue learning, mastered skill, history
+15. Password login (Riya) works; dashboard with "What to do next" fits a 390 px phone screen
+16. Riya via the login-page demo strip: her next step opens the lesson in progress
+17. Teacher (password login): review queue → Arjun's case with evidence and review form
+18. Teacher confirms with a reason; lesson created; override logged
+19. Parent (Sunita, password login) sees only Riya, in plain language, with no review controls
+20. Student sees the teacher's decision on their journey
+21. Phone (390 px) and tablet (768, 1024 px): Try demo always visible, menu opens, tap-to-open folders and books, no horizontal overflow
+22. Without JavaScript: every folder sheet, book page, worksheet annotation and all 24 topics are readable
+23. Reduced motion: no reveal animations, content shown straight away
+
+I also took screenshots at 1440 px and 390 px and reviewed every landing section by eye, plus the "demo is off" state (server without `ELEVIA_DEMO_MODE`).
 
 ## Deployment checks (22 Nov 2026)
 

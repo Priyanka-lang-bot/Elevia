@@ -17,6 +17,7 @@
 - **Teacher and parent dashboards show progress, not trends over time** (no charts until there is enough real data to make them meaningful).
 - **Hint usage is recorded but not used in decisions.**
 - **The live deployment has no persistent database yet.** The Vercel project has no Turso variables, so the site runs on a temporary per-instance SQLite file. Demo mode is off there until `ELEVIA_DEMO_MODE=1` is set and the demo is seeded on Turso (see TEST_RESULTS.md).
+- **The student demo accounts are shared.** Anyone who clicks Try demo uses the same three accounts, so one visitor can change what the next one sees (e.g. finish Ananya's fractions topic). Run `python scripts/demo.py reset` before a judged session.
 - **Demo accounts use a published password.** That's fine for fictional accounts, but reset or remove them after judging.
 - **Email sign-up needs a mail provider** on the live site (or `ELEVIA_DEMO_EMAIL_LINKS=1` for a demo).
 

@@ -11,8 +11,8 @@ See TEST_RESULTS.md.
 
 | Area | Feature | Status |
 |---|---|---|
-| Landing | Hero, problem, how it works, features, subjects (live catalogue), student/teacher sections with real screenshots, why ELEVIA, CTA, footer | BUILT · TESTED (browser) · DEPLOYED (preview, checked) |
-| Demo | One-click demo login for 6 fictional accounts (env-gated, registry-only, rate-limited, normal sessions, guarded actions) | BUILT · TESTED (API + browser) |
+| Landing | Notebook redesign: marked-up worksheet (scroll sequence), book stack for the roles (scroll + click), folder drawer for features (hover/tap/keys), curriculum index (live, coming-soon not linked), combined verify/about/closing spread, real screenshots | BUILT · TESTED (browser: desktop, tablet, phone, no-JS, reduced motion) |
+| Demo | "Try demo" in the navigation and hero; one-click login for the 3 fictional **student** accounts (env-gated, registry-only, rate-limited, normal sessions, guarded actions). Teacher/parent/admin demo accounts refused one-click (403), password login only | BUILT · TESTED (API + browser) |
 | Demo | Seed and reset of the demo school through the real routes; reset deletes only registry rows | BUILT · TESTED (incl. real user survives reset) |
 | Landing | Responsive (desktop/phone), mobile menu, no horizontal overflow, smooth in-page nav, no dead links | BUILT · TESTED (browser) |
 | Landing | SEO title/description, static crawlable HTML | BUILT |

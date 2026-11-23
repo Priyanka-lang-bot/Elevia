@@ -10,7 +10,7 @@ Browser ── public/ (static: index.html landing, app.js, learn.js, progress.j
             ├─ backend/accounts/*   accounts, consent, schools, sharing, permissions, rate limits
             ├─ backend/learning.py  /learn: student journey + dashboard (login required, except /learn/catalog)
             ├─ backend/progress.py  /progress: teacher / parent / shared views, review queue, intervention history
-            ├─ backend/demo.py      /demo: one-click demo login (only when ELEVIA_DEMO_MODE=1)
+            ├─ backend/demo.py      /demo: one-click student demo login (only when ELEVIA_DEMO_MODE=1)
             ├─ backend/orchestrator.py  the workflow: diagnostic → verification → learning → retest
             │     └─ backend/agents/  diagnoser · checker · planner · tutor (rule-based)
             ├─ backend/engine.py    answer checking dispatcher
@@ -91,7 +91,8 @@ Students can have one active case **per topic**, so a 24-hour retest wait in one
 ## Demo mode
 
 - **Off by default.** `/api/demo/login` returns 404 unless `ELEVIA_DEMO_MODE=1`.
-- **Normal sessions.** When on, it creates an ordinary session (same cookie, CSRF and expiry) for a slug such as `riya` or `teacher`. It only ever does this for a user listed in `demo_registry` who is still active.
+- **Normal sessions.** When on, it creates an ordinary session (same cookie, CSRF and expiry) for a student slug (`fresh`, `riya`, `arjun`). It only ever does this for a user listed in `demo_registry` who is still active.
+- **Students only.** The teacher, parent and admin demo accounts exist so the student data has a real class, consent and teacher decisions behind it, but their slugs are refused with 403. They log in with a password like anyone else.
 - **No secrets in the page.** No password or token is sent to the page.
 - **Limits.** Logins are rate-limited per IP (60 per 10 minutes).
 - **Guarded actions.** Demo users can't withdraw consent, change parent permissions, send invitations or unassign teachers (`refuse_for_demo`).

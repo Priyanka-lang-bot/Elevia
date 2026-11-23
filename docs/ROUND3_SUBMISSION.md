@@ -41,11 +41,11 @@ Teachers resolve unclear cases and can redirect the focus, always with a logged 
 
 ## 4. Platform overview
 
-- **Landing page:** what the problem is, how ELEVIA works, a live subject catalogue, real screenshots, and one-click demo cards.
+- **Landing page:** a notebook-style story: a marked-up worksheet for the problem, a stack of books for the four roles, a drawer of folders for what's built, a curriculum index, real screenshots, and **Try demo** in the navigation.
 - **Accounts:** three sign-up pathways, parent consent, class codes with teacher approval, email verification, password reset, and sharing grants with scopes.
 - **Student dashboard** (`#/learn`) and **topic journeys** (`#/learn/<topic>`) with a step tracker.
 - **Teacher portal** and **parent view** (home pages for those roles).
-- **Demo mode:** six fictional accounts in "Sunrise Demo School", opened with one click. A safe reset deletes only demo rows.
+- **Demo mode:** fictional accounts in "Sunrise Demo School". The three student accounts open with one click from **Try demo**; teacher, parent and admin demo accounts use a normal password login. A safe reset deletes only demo rows.
 
 ## 5. Key features
 
@@ -124,15 +124,16 @@ These are captured from the running app by `scripts/e2e_browser.py --shots`, usi
 
 All results come from runs actually executed. Details are in [TEST_RESULTS.md](TEST_RESULTS.md).
 
-- **Automated tests:** 185 passed on local SQLite and 185 passed through the Turso connector fake. They cover:
+- **Automated tests:** 186 passed on local SQLite and 186 passed through the Turso connector fake. They cover:
   - the full and rejected-gap journeys for every topic;
   - the Diagnoser, Checker, Planner and Tutor rules;
   - accounts and consent, and role access (teacher, parent, admin, stranger);
   - demo login and reset (including that real users survive a reset);
   - persistence and error handling.
-- **Browser end-to-end:** 17 of 17 checks passed with 0 console errors. The run covers:
+- **Browser end-to-end:** 23 of 23 checks passed with 0 console errors. The run covers:
   - the landing page;
-  - one-click login and a full fractions journey;
+  - the landing page's scroll sequences, folders and books, at desktop, tablet and phone sizes, without JavaScript and with reduced motion;
+  - one-click student login and a full fractions journey;
   - a code question and reload persistence;
   - a phone-sized dashboard;
   - teacher review with a reason;
@@ -146,7 +147,7 @@ All results come from runs actually executed. Details are in [TEST_RESULTS.md](T
 - **What I fixed:** the API had been crashing on all deployments, including `main`, because no database was configured. That is fixed on `round3`.
 - **What is still needed before judging:**
   - Add `TURSO_DATABASE_URL` and `TURSO_AUTH_TOKEN` to the Vercel project, so data persists. Until then the site uses a temporary per-instance database.
-  - Add `ELEVIA_DEMO_MODE=1`, then run `python scripts/demo.py seed` against that database, so the one-click demo cards appear.
+  - Add `ELEVIA_DEMO_MODE=1`, then run `python scripts/demo.py seed` against that database, so the student demo cards under Try demo work.
   - Make sure the link judges receive is publicly viewable. Vercel can require a Vercel login for preview links, so either merge to `main` and share the production domain, or turn off preview protection.
 
 ## 12. Limitations and roadmap
