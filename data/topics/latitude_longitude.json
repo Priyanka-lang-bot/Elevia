@@ -1,0 +1,1112 @@
+{
+ "skills": [
+  {
+   "id": "lat_long_meaning",
+   "name": "What latitude and longitude measure",
+   "grade": 6,
+   "prerequisites": [],
+   "description": "Latitude: north–south of the Equator. Longitude: east–west of the Prime Meridian."
+  },
+  {
+   "id": "hemispheres",
+   "name": "Hemispheres from coordinates",
+   "grade": 6,
+   "prerequisites": [
+    "lat_long_meaning"
+   ],
+   "description": "Using the N/S and E/W letters to find a place's hemispheres."
+  }
+ ],
+ "misconceptions": {
+  "SS_LAT_LONG_SWAP": {
+   "label": "Mixes up latitude and longitude",
+   "gap_skill": "lat_long_meaning",
+   "explanation": "Reads a latitude as a distance east–west (or the other way round)."
+  },
+  "SS_IGNORES_LETTER": {
+   "label": "Assumes every place is north and east",
+   "gap_skill": "hemispheres",
+   "explanation": "Ignores the S or W letter and puts the place in the Northern and Eastern Hemispheres."
+  }
+ },
+ "questions": [
+  {
+   "id": "LATL-DA1",
+   "pool": "diagnostic:latitude_longitude:A",
+   "skill_id": "lat_long_meaning",
+   "type": "mcq",
+   "gap_targets": [
+    "lat_long_meaning"
+   ],
+   "prompt": "Delhi is at about 29°N, 77°E. What does 29°N tell you?",
+   "answer": "How far north or south of the Equator it is",
+   "hints": [
+    "Latitude (°N or °S) is distance north or south of the Equator.",
+    "Longitude (°E or °W) is distance east or west of the Prime Meridian."
+   ],
+   "solution": [
+    "29°N is a latitude: it says the place is 29° north of the Equator.",
+    "Coordinates are always written latitude first, then longitude."
+   ],
+   "patterns": {
+    "How far east or west of the Prime Meridian it is": "SS_LAT_LONG_SWAP"
+   },
+   "options": [
+    "How far east or west of the Prime Meridian it is",
+    "How high above sea level it is",
+    "How far north or south of the Equator it is"
+   ]
+  },
+  {
+   "id": "LATL-DA2",
+   "pool": "diagnostic:latitude_longitude:A",
+   "skill_id": "lat_long_meaning",
+   "type": "mcq",
+   "gap_targets": [
+    "lat_long_meaning"
+   ],
+   "prompt": "Mumbai is at about 19°N, 73°E. What does 73°E tell you?",
+   "answer": "How far east or west of the Prime Meridian it is",
+   "hints": [
+    "Latitude (°N or °S) is distance north or south of the Equator.",
+    "Longitude (°E or °W) is distance east or west of the Prime Meridian."
+   ],
+   "solution": [
+    "73°E is a longitude: it says the place is 73° east of the Prime Meridian.",
+    "Coordinates are always written latitude first, then longitude."
+   ],
+   "patterns": {
+    "How far north or south of the Equator it is": "SS_LAT_LONG_SWAP"
+   },
+   "options": [
+    "How high above sea level it is",
+    "How far east or west of the Prime Meridian it is",
+    "How far north or south of the Equator it is"
+   ]
+  },
+  {
+   "id": "LATL-DA3",
+   "pool": "diagnostic:latitude_longitude:A",
+   "skill_id": "lat_long_meaning",
+   "type": "mcq",
+   "gap_targets": [
+    "lat_long_meaning"
+   ],
+   "prompt": "Chennai is at about 13°N, 80°E. What does 13°N tell you?",
+   "answer": "How far north or south of the Equator it is",
+   "hints": [
+    "Latitude (°N or °S) is distance north or south of the Equator.",
+    "Longitude (°E or °W) is distance east or west of the Prime Meridian."
+   ],
+   "solution": [
+    "13°N is a latitude: it says the place is 13° north of the Equator.",
+    "Coordinates are always written latitude first, then longitude."
+   ],
+   "patterns": {
+    "How far east or west of the Prime Meridian it is": "SS_LAT_LONG_SWAP"
+   },
+   "options": [
+    "How far north or south of the Equator it is",
+    "How far east or west of the Prime Meridian it is",
+    "How high above sea level it is"
+   ]
+  },
+  {
+   "id": "LATL-DA4",
+   "pool": "diagnostic:latitude_longitude:A",
+   "skill_id": "hemispheres",
+   "type": "mcq",
+   "gap_targets": [
+    "hemispheres"
+   ],
+   "prompt": "Rio de Janeiro is at about 23°S, 43°W. Which two hemispheres is it in?",
+   "answer": "Southern and Western",
+   "hints": [
+    "Look at the letters: N or S gives the north–south hemisphere, E or W the east–west one.",
+    "S means south of the Equator; W means west of the Prime Meridian."
+   ],
+   "solution": [
+    "S = southern of the Equator, so the Southern Hemisphere.",
+    "W = western of the Prime Meridian, so the Western Hemisphere."
+   ],
+   "patterns": {
+    "Northern and Eastern": "SS_IGNORES_LETTER"
+   },
+   "options": [
+    "Northern and Eastern",
+    "Southern and Eastern",
+    "Southern and Western"
+   ]
+  },
+  {
+   "id": "LATL-DA5",
+   "pool": "diagnostic:latitude_longitude:A",
+   "skill_id": "hemispheres",
+   "type": "mcq",
+   "gap_targets": [
+    "hemispheres"
+   ],
+   "prompt": "Sydney is at about 34°S, 151°E. Which two hemispheres is it in?",
+   "answer": "Southern and Eastern",
+   "hints": [
+    "Look at the letters: N or S gives the north–south hemisphere, E or W the east–west one.",
+    "S means south of the Equator; W means west of the Prime Meridian."
+   ],
+   "solution": [
+    "S = southern of the Equator, so the Southern Hemisphere.",
+    "E = eastern of the Prime Meridian, so the Eastern Hemisphere."
+   ],
+   "patterns": {
+    "Northern and Eastern": "SS_IGNORES_LETTER"
+   },
+   "options": [
+    "Southern and Western",
+    "Southern and Eastern",
+    "Northern and Eastern"
+   ]
+  },
+  {
+   "id": "LATL-DB1",
+   "pool": "diagnostic:latitude_longitude:B",
+   "skill_id": "lat_long_meaning",
+   "type": "mcq",
+   "gap_targets": [
+    "lat_long_meaning"
+   ],
+   "prompt": "Kolkata is at about 23°N, 88°E. What does 88°E tell you?",
+   "answer": "How far east or west of the Prime Meridian it is",
+   "hints": [
+    "Latitude (°N or °S) is distance north or south of the Equator.",
+    "Longitude (°E or °W) is distance east or west of the Prime Meridian."
+   ],
+   "solution": [
+    "88°E is a longitude: it says the place is 88° east of the Prime Meridian.",
+    "Coordinates are always written latitude first, then longitude."
+   ],
+   "patterns": {
+    "How far north or south of the Equator it is": "SS_LAT_LONG_SWAP"
+   },
+   "options": [
+    "How far east or west of the Prime Meridian it is",
+    "How far north or south of the Equator it is",
+    "How high above sea level it is"
+   ]
+  },
+  {
+   "id": "LATL-DB2",
+   "pool": "diagnostic:latitude_longitude:B",
+   "skill_id": "lat_long_meaning",
+   "type": "mcq",
+   "gap_targets": [
+    "lat_long_meaning"
+   ],
+   "prompt": "Srinagar is at about 34°N, 75°E. What does 34°N tell you?",
+   "answer": "How far north or south of the Equator it is",
+   "hints": [
+    "Latitude (°N or °S) is distance north or south of the Equator.",
+    "Longitude (°E or °W) is distance east or west of the Prime Meridian."
+   ],
+   "solution": [
+    "34°N is a latitude: it says the place is 34° north of the Equator.",
+    "Coordinates are always written latitude first, then longitude."
+   ],
+   "patterns": {
+    "How far east or west of the Prime Meridian it is": "SS_LAT_LONG_SWAP"
+   },
+   "options": [
+    "How far east or west of the Prime Meridian it is",
+    "How high above sea level it is",
+    "How far north or south of the Equator it is"
+   ]
+  },
+  {
+   "id": "LATL-DB3",
+   "pool": "diagnostic:latitude_longitude:B",
+   "skill_id": "lat_long_meaning",
+   "type": "mcq",
+   "gap_targets": [
+    "lat_long_meaning"
+   ],
+   "prompt": "Kanyakumari is at about 8°N, 78°E. What does 78°E tell you?",
+   "answer": "How far east or west of the Prime Meridian it is",
+   "hints": [
+    "Latitude (°N or °S) is distance north or south of the Equator.",
+    "Longitude (°E or °W) is distance east or west of the Prime Meridian."
+   ],
+   "solution": [
+    "78°E is a longitude: it says the place is 78° east of the Prime Meridian.",
+    "Coordinates are always written latitude first, then longitude."
+   ],
+   "patterns": {
+    "How far north or south of the Equator it is": "SS_LAT_LONG_SWAP"
+   },
+   "options": [
+    "How high above sea level it is",
+    "How far east or west of the Prime Meridian it is",
+    "How far north or south of the Equator it is"
+   ]
+  },
+  {
+   "id": "LATL-DB4",
+   "pool": "diagnostic:latitude_longitude:B",
+   "skill_id": "hemispheres",
+   "type": "mcq",
+   "gap_targets": [
+    "hemispheres"
+   ],
+   "prompt": "Cape Town is at about 34°S, 18°E. Which two hemispheres is it in?",
+   "answer": "Southern and Eastern",
+   "hints": [
+    "Look at the letters: N or S gives the north–south hemisphere, E or W the east–west one.",
+    "S means south of the Equator; W means west of the Prime Meridian."
+   ],
+   "solution": [
+    "S = southern of the Equator, so the Southern Hemisphere.",
+    "E = eastern of the Prime Meridian, so the Eastern Hemisphere."
+   ],
+   "patterns": {
+    "Northern and Eastern": "SS_IGNORES_LETTER"
+   },
+   "options": [
+    "Southern and Eastern",
+    "Northern and Eastern",
+    "Southern and Western"
+   ]
+  },
+  {
+   "id": "LATL-DB5",
+   "pool": "diagnostic:latitude_longitude:B",
+   "skill_id": "hemispheres",
+   "type": "mcq",
+   "gap_targets": [
+    "hemispheres"
+   ],
+   "prompt": "New York is at about 41°N, 74°W. Which two hemispheres is it in?",
+   "answer": "Northern and Western",
+   "hints": [
+    "Look at the letters: N or S gives the north–south hemisphere, E or W the east–west one.",
+    "S means south of the Equator; W means west of the Prime Meridian."
+   ],
+   "solution": [
+    "N = northern of the Equator, so the Northern Hemisphere.",
+    "W = western of the Prime Meridian, so the Western Hemisphere."
+   ],
+   "patterns": {
+    "Northern and Eastern": "SS_IGNORES_LETTER"
+   },
+   "options": [
+    "Northern and Eastern",
+    "Southern and Western",
+    "Northern and Western"
+   ]
+  },
+  {
+   "id": "LATL-VLLM1",
+   "pool": "verification:lat_long_meaning",
+   "skill_id": "lat_long_meaning",
+   "type": "mcq",
+   "gap_targets": [
+    "lat_long_meaning"
+   ],
+   "prompt": "Guwahati is at about 26°N, 92°E. What does 26°N tell you?",
+   "answer": "How far north or south of the Equator it is",
+   "hints": [
+    "Latitude (°N or °S) is distance north or south of the Equator.",
+    "Longitude (°E or °W) is distance east or west of the Prime Meridian."
+   ],
+   "solution": [
+    "26°N is a latitude: it says the place is 26° north of the Equator.",
+    "Coordinates are always written latitude first, then longitude."
+   ],
+   "patterns": {
+    "How far east or west of the Prime Meridian it is": "SS_LAT_LONG_SWAP"
+   },
+   "options": [
+    "How high above sea level it is",
+    "How far north or south of the Equator it is",
+    "How far east or west of the Prime Meridian it is"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "LATL-VLLM2",
+   "pool": "verification:lat_long_meaning",
+   "skill_id": "lat_long_meaning",
+   "type": "mcq",
+   "gap_targets": [
+    "lat_long_meaning"
+   ],
+   "prompt": "Jaipur is at about 27°N, 76°E. What does 76°E tell you?",
+   "answer": "How far east or west of the Prime Meridian it is",
+   "hints": [
+    "Latitude (°N or °S) is distance north or south of the Equator.",
+    "Longitude (°E or °W) is distance east or west of the Prime Meridian."
+   ],
+   "solution": [
+    "76°E is a longitude: it says the place is 76° east of the Prime Meridian.",
+    "Coordinates are always written latitude first, then longitude."
+   ],
+   "patterns": {
+    "How far north or south of the Equator it is": "SS_LAT_LONG_SWAP"
+   },
+   "options": [
+    "How far east or west of the Prime Meridian it is",
+    "How far north or south of the Equator it is",
+    "How high above sea level it is"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "LATL-VLLM3",
+   "pool": "verification:lat_long_meaning",
+   "skill_id": "lat_long_meaning",
+   "type": "mcq",
+   "gap_targets": [
+    "lat_long_meaning"
+   ],
+   "prompt": "Hyderabad is at about 17°N, 78°E. What does 78°E tell you?",
+   "answer": "How far east or west of the Prime Meridian it is",
+   "hints": [
+    "Latitude (°N or °S) is distance north or south of the Equator.",
+    "Longitude (°E or °W) is distance east or west of the Prime Meridian."
+   ],
+   "solution": [
+    "78°E is a longitude: it says the place is 78° east of the Prime Meridian.",
+    "Coordinates are always written latitude first, then longitude."
+   ],
+   "patterns": {
+    "How far north or south of the Equator it is": "SS_LAT_LONG_SWAP"
+   },
+   "options": [
+    "How far north or south of the Equator it is",
+    "How high above sea level it is",
+    "How far east or west of the Prime Meridian it is"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "LATL-VLLM4",
+   "pool": "verification:lat_long_meaning",
+   "skill_id": "lat_long_meaning",
+   "type": "mcq",
+   "gap_targets": [
+    "lat_long_meaning"
+   ],
+   "prompt": "Lucknow is at about 27°N, 81°E. What does 27°N tell you?",
+   "answer": "How far north or south of the Equator it is",
+   "hints": [
+    "Latitude (°N or °S) is distance north or south of the Equator.",
+    "Longitude (°E or °W) is distance east or west of the Prime Meridian."
+   ],
+   "solution": [
+    "27°N is a latitude: it says the place is 27° north of the Equator.",
+    "Coordinates are always written latitude first, then longitude."
+   ],
+   "patterns": {
+    "How far east or west of the Prime Meridian it is": "SS_LAT_LONG_SWAP"
+   },
+   "options": [
+    "How high above sea level it is",
+    "How far north or south of the Equator it is",
+    "How far east or west of the Prime Meridian it is"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "LATL-PLLM1",
+   "pool": "practice:lat_long_meaning",
+   "skill_id": "lat_long_meaning",
+   "type": "mcq",
+   "gap_targets": [
+    "lat_long_meaning"
+   ],
+   "prompt": "Pune is at about 18°N, 74°E. What does 18°N tell you?",
+   "answer": "How far north or south of the Equator it is",
+   "hints": [
+    "Latitude (°N or °S) is distance north or south of the Equator.",
+    "Longitude (°E or °W) is distance east or west of the Prime Meridian."
+   ],
+   "solution": [
+    "18°N is a latitude: it says the place is 18° north of the Equator.",
+    "Coordinates are always written latitude first, then longitude."
+   ],
+   "patterns": {
+    "How far east or west of the Prime Meridian it is": "SS_LAT_LONG_SWAP"
+   },
+   "options": [
+    "How far north or south of the Equator it is",
+    "How far east or west of the Prime Meridian it is",
+    "How high above sea level it is"
+   ]
+  },
+  {
+   "id": "LATL-PLLM2",
+   "pool": "practice:lat_long_meaning",
+   "skill_id": "lat_long_meaning",
+   "type": "mcq",
+   "gap_targets": [
+    "lat_long_meaning"
+   ],
+   "prompt": "Bhopal is at about 23°N, 77°E. What does 77°E tell you?",
+   "answer": "How far east or west of the Prime Meridian it is",
+   "hints": [
+    "Latitude (°N or °S) is distance north or south of the Equator.",
+    "Longitude (°E or °W) is distance east or west of the Prime Meridian."
+   ],
+   "solution": [
+    "77°E is a longitude: it says the place is 77° east of the Prime Meridian.",
+    "Coordinates are always written latitude first, then longitude."
+   ],
+   "patterns": {
+    "How far north or south of the Equator it is": "SS_LAT_LONG_SWAP"
+   },
+   "options": [
+    "How far north or south of the Equator it is",
+    "How high above sea level it is",
+    "How far east or west of the Prime Meridian it is"
+   ]
+  },
+  {
+   "id": "LATL-PLLM3",
+   "pool": "practice:lat_long_meaning",
+   "skill_id": "lat_long_meaning",
+   "type": "mcq",
+   "gap_targets": [
+    "lat_long_meaning"
+   ],
+   "prompt": "Delhi is at about 29°N, 77°E. What does 77°E tell you?",
+   "answer": "How far east or west of the Prime Meridian it is",
+   "hints": [
+    "Latitude (°N or °S) is distance north or south of the Equator.",
+    "Longitude (°E or °W) is distance east or west of the Prime Meridian."
+   ],
+   "solution": [
+    "77°E is a longitude: it says the place is 77° east of the Prime Meridian.",
+    "Coordinates are always written latitude first, then longitude."
+   ],
+   "patterns": {
+    "How far north or south of the Equator it is": "SS_LAT_LONG_SWAP"
+   },
+   "options": [
+    "How high above sea level it is",
+    "How far east or west of the Prime Meridian it is",
+    "How far north or south of the Equator it is"
+   ]
+  },
+  {
+   "id": "LATL-PLLM4",
+   "pool": "practice:lat_long_meaning",
+   "skill_id": "lat_long_meaning",
+   "type": "mcq",
+   "gap_targets": [
+    "lat_long_meaning"
+   ],
+   "prompt": "Mumbai is at about 19°N, 73°E. What does 19°N tell you?",
+   "answer": "How far north or south of the Equator it is",
+   "hints": [
+    "Latitude (°N or °S) is distance north or south of the Equator.",
+    "Longitude (°E or °W) is distance east or west of the Prime Meridian."
+   ],
+   "solution": [
+    "19°N is a latitude: it says the place is 19° north of the Equator.",
+    "Coordinates are always written latitude first, then longitude."
+   ],
+   "patterns": {
+    "How far east or west of the Prime Meridian it is": "SS_LAT_LONG_SWAP"
+   },
+   "options": [
+    "How far north or south of the Equator it is",
+    "How far east or west of the Prime Meridian it is",
+    "How high above sea level it is"
+   ]
+  },
+  {
+   "id": "LATL-RLLM1",
+   "pool": "retest:lat_long_meaning",
+   "skill_id": "lat_long_meaning",
+   "type": "mcq",
+   "gap_targets": [
+    "lat_long_meaning"
+   ],
+   "prompt": "Chennai is at about 13°N, 80°E. What does 80°E tell you?",
+   "answer": "How far east or west of the Prime Meridian it is",
+   "hints": [
+    "Latitude (°N or °S) is distance north or south of the Equator.",
+    "Longitude (°E or °W) is distance east or west of the Prime Meridian."
+   ],
+   "solution": [
+    "80°E is a longitude: it says the place is 80° east of the Prime Meridian.",
+    "Coordinates are always written latitude first, then longitude."
+   ],
+   "patterns": {
+    "How far north or south of the Equator it is": "SS_LAT_LONG_SWAP"
+   },
+   "options": [
+    "How far north or south of the Equator it is",
+    "How high above sea level it is",
+    "How far east or west of the Prime Meridian it is"
+   ]
+  },
+  {
+   "id": "LATL-RLLM2",
+   "pool": "retest:lat_long_meaning",
+   "skill_id": "lat_long_meaning",
+   "type": "mcq",
+   "gap_targets": [
+    "lat_long_meaning"
+   ],
+   "prompt": "Kolkata is at about 23°N, 88°E. What does 23°N tell you?",
+   "answer": "How far north or south of the Equator it is",
+   "hints": [
+    "Latitude (°N or °S) is distance north or south of the Equator.",
+    "Longitude (°E or °W) is distance east or west of the Prime Meridian."
+   ],
+   "solution": [
+    "23°N is a latitude: it says the place is 23° north of the Equator.",
+    "Coordinates are always written latitude first, then longitude."
+   ],
+   "patterns": {
+    "How far east or west of the Prime Meridian it is": "SS_LAT_LONG_SWAP"
+   },
+   "options": [
+    "How high above sea level it is",
+    "How far north or south of the Equator it is",
+    "How far east or west of the Prime Meridian it is"
+   ]
+  },
+  {
+   "id": "LATL-RLLM3",
+   "pool": "retest:lat_long_meaning",
+   "skill_id": "lat_long_meaning",
+   "type": "mcq",
+   "gap_targets": [
+    "lat_long_meaning"
+   ],
+   "prompt": "Srinagar is at about 34°N, 75°E. What does 75°E tell you?",
+   "answer": "How far east or west of the Prime Meridian it is",
+   "hints": [
+    "Latitude (°N or °S) is distance north or south of the Equator.",
+    "Longitude (°E or °W) is distance east or west of the Prime Meridian."
+   ],
+   "solution": [
+    "75°E is a longitude: it says the place is 75° east of the Prime Meridian.",
+    "Coordinates are always written latitude first, then longitude."
+   ],
+   "patterns": {
+    "How far north or south of the Equator it is": "SS_LAT_LONG_SWAP"
+   },
+   "options": [
+    "How far east or west of the Prime Meridian it is",
+    "How far north or south of the Equator it is",
+    "How high above sea level it is"
+   ]
+  },
+  {
+   "id": "LATL-RLLM4",
+   "pool": "retest:lat_long_meaning",
+   "skill_id": "lat_long_meaning",
+   "type": "mcq",
+   "gap_targets": [
+    "lat_long_meaning"
+   ],
+   "prompt": "Kanyakumari is at about 8°N, 78°E. What does 8°N tell you?",
+   "answer": "How far north or south of the Equator it is",
+   "hints": [
+    "Latitude (°N or °S) is distance north or south of the Equator.",
+    "Longitude (°E or °W) is distance east or west of the Prime Meridian."
+   ],
+   "solution": [
+    "8°N is a latitude: it says the place is 8° north of the Equator.",
+    "Coordinates are always written latitude first, then longitude."
+   ],
+   "patterns": {
+    "How far east or west of the Prime Meridian it is": "SS_LAT_LONG_SWAP"
+   },
+   "options": [
+    "How far east or west of the Prime Meridian it is",
+    "How high above sea level it is",
+    "How far north or south of the Equator it is"
+   ]
+  },
+  {
+   "id": "LATL-RLLM5",
+   "pool": "retest:lat_long_meaning",
+   "skill_id": "lat_long_meaning",
+   "type": "mcq",
+   "gap_targets": [
+    "lat_long_meaning"
+   ],
+   "prompt": "Guwahati is at about 26°N, 92°E. What does 92°E tell you?",
+   "answer": "How far east or west of the Prime Meridian it is",
+   "hints": [
+    "Latitude (°N or °S) is distance north or south of the Equator.",
+    "Longitude (°E or °W) is distance east or west of the Prime Meridian."
+   ],
+   "solution": [
+    "92°E is a longitude: it says the place is 92° east of the Prime Meridian.",
+    "Coordinates are always written latitude first, then longitude."
+   ],
+   "patterns": {
+    "How far north or south of the Equator it is": "SS_LAT_LONG_SWAP"
+   },
+   "options": [
+    "How high above sea level it is",
+    "How far east or west of the Prime Meridian it is",
+    "How far north or south of the Equator it is"
+   ]
+  },
+  {
+   "id": "LATL-RLLM6",
+   "pool": "retest:lat_long_meaning",
+   "skill_id": "lat_long_meaning",
+   "type": "mcq",
+   "gap_targets": [
+    "lat_long_meaning"
+   ],
+   "prompt": "Jaipur is at about 27°N, 76°E. What does 27°N tell you?",
+   "answer": "How far north or south of the Equator it is",
+   "hints": [
+    "Latitude (°N or °S) is distance north or south of the Equator.",
+    "Longitude (°E or °W) is distance east or west of the Prime Meridian."
+   ],
+   "solution": [
+    "27°N is a latitude: it says the place is 27° north of the Equator.",
+    "Coordinates are always written latitude first, then longitude."
+   ],
+   "patterns": {
+    "How far east or west of the Prime Meridian it is": "SS_LAT_LONG_SWAP"
+   },
+   "options": [
+    "How far north or south of the Equator it is",
+    "How far east or west of the Prime Meridian it is",
+    "How high above sea level it is"
+   ]
+  },
+  {
+   "id": "LATL-VH1",
+   "pool": "verification:hemispheres",
+   "skill_id": "hemispheres",
+   "type": "mcq",
+   "gap_targets": [
+    "hemispheres"
+   ],
+   "prompt": "Lima is at about 12°S, 77°W. Which two hemispheres is it in?",
+   "answer": "Southern and Western",
+   "hints": [
+    "Look at the letters: N or S gives the north–south hemisphere, E or W the east–west one.",
+    "S means south of the Equator; W means west of the Prime Meridian."
+   ],
+   "solution": [
+    "S = southern of the Equator, so the Southern Hemisphere.",
+    "W = western of the Prime Meridian, so the Western Hemisphere."
+   ],
+   "patterns": {
+    "Northern and Eastern": "SS_IGNORES_LETTER"
+   },
+   "options": [
+    "Northern and Eastern",
+    "Southern and Eastern",
+    "Southern and Western"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "LATL-VH2",
+   "pool": "verification:hemispheres",
+   "skill_id": "hemispheres",
+   "type": "mcq",
+   "gap_targets": [
+    "hemispheres"
+   ],
+   "prompt": "Nairobi is at about 1°S, 37°E. Which two hemispheres is it in?",
+   "answer": "Southern and Eastern",
+   "hints": [
+    "Look at the letters: N or S gives the north–south hemisphere, E or W the east–west one.",
+    "S means south of the Equator; W means west of the Prime Meridian."
+   ],
+   "solution": [
+    "S = southern of the Equator, so the Southern Hemisphere.",
+    "E = eastern of the Prime Meridian, so the Eastern Hemisphere."
+   ],
+   "patterns": {
+    "Northern and Eastern": "SS_IGNORES_LETTER"
+   },
+   "options": [
+    "Southern and Western",
+    "Southern and Eastern",
+    "Northern and Eastern"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "LATL-VH3",
+   "pool": "verification:hemispheres",
+   "skill_id": "hemispheres",
+   "type": "mcq",
+   "gap_targets": [
+    "hemispheres"
+   ],
+   "prompt": "Buenos Aires is at about 35°S, 58°W. Which two hemispheres is it in?",
+   "answer": "Southern and Western",
+   "hints": [
+    "Look at the letters: N or S gives the north–south hemisphere, E or W the east–west one.",
+    "S means south of the Equator; W means west of the Prime Meridian."
+   ],
+   "solution": [
+    "S = southern of the Equator, so the Southern Hemisphere.",
+    "W = western of the Prime Meridian, so the Western Hemisphere."
+   ],
+   "patterns": {
+    "Northern and Eastern": "SS_IGNORES_LETTER"
+   },
+   "options": [
+    "Southern and Western",
+    "Northern and Eastern",
+    "Southern and Eastern"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "LATL-VH4",
+   "pool": "verification:hemispheres",
+   "skill_id": "hemispheres",
+   "type": "mcq",
+   "gap_targets": [
+    "hemispheres"
+   ],
+   "prompt": "Mexico City is at about 19°N, 99°W. Which two hemispheres is it in?",
+   "answer": "Northern and Western",
+   "hints": [
+    "Look at the letters: N or S gives the north–south hemisphere, E or W the east–west one.",
+    "S means south of the Equator; W means west of the Prime Meridian."
+   ],
+   "solution": [
+    "N = northern of the Equator, so the Northern Hemisphere.",
+    "W = western of the Prime Meridian, so the Western Hemisphere."
+   ],
+   "patterns": {
+    "Northern and Eastern": "SS_IGNORES_LETTER"
+   },
+   "options": [
+    "Northern and Eastern",
+    "Southern and Western",
+    "Northern and Western"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "LATL-PH1",
+   "pool": "practice:hemispheres",
+   "skill_id": "hemispheres",
+   "type": "mcq",
+   "gap_targets": [
+    "hemispheres"
+   ],
+   "prompt": "Jakarta is at about 6°S, 107°E. Which two hemispheres is it in?",
+   "answer": "Southern and Eastern",
+   "hints": [
+    "Look at the letters: N or S gives the north–south hemisphere, E or W the east–west one.",
+    "S means south of the Equator; W means west of the Prime Meridian."
+   ],
+   "solution": [
+    "S = southern of the Equator, so the Southern Hemisphere.",
+    "E = eastern of the Prime Meridian, so the Eastern Hemisphere."
+   ],
+   "patterns": {
+    "Northern and Eastern": "SS_IGNORES_LETTER"
+   },
+   "options": [
+    "Southern and Western",
+    "Southern and Eastern",
+    "Northern and Eastern"
+   ]
+  },
+  {
+   "id": "LATL-PH2",
+   "pool": "practice:hemispheres",
+   "skill_id": "hemispheres",
+   "type": "mcq",
+   "gap_targets": [
+    "hemispheres"
+   ],
+   "prompt": "Santiago is at about 33°S, 71°W. Which two hemispheres is it in?",
+   "answer": "Southern and Western",
+   "hints": [
+    "Look at the letters: N or S gives the north–south hemisphere, E or W the east–west one.",
+    "S means south of the Equator; W means west of the Prime Meridian."
+   ],
+   "solution": [
+    "S = southern of the Equator, so the Southern Hemisphere.",
+    "W = western of the Prime Meridian, so the Western Hemisphere."
+   ],
+   "patterns": {
+    "Northern and Eastern": "SS_IGNORES_LETTER"
+   },
+   "options": [
+    "Southern and Western",
+    "Northern and Eastern",
+    "Southern and Eastern"
+   ]
+  },
+  {
+   "id": "LATL-PH3",
+   "pool": "practice:hemispheres",
+   "skill_id": "hemispheres",
+   "type": "mcq",
+   "gap_targets": [
+    "hemispheres"
+   ],
+   "prompt": "Rio de Janeiro is at about 23°S, 43°W. Which two hemispheres is it in?",
+   "answer": "Southern and Western",
+   "hints": [
+    "Look at the letters: N or S gives the north–south hemisphere, E or W the east–west one.",
+    "S means south of the Equator; W means west of the Prime Meridian."
+   ],
+   "solution": [
+    "S = southern of the Equator, so the Southern Hemisphere.",
+    "W = western of the Prime Meridian, so the Western Hemisphere."
+   ],
+   "patterns": {
+    "Northern and Eastern": "SS_IGNORES_LETTER"
+   },
+   "options": [
+    "Northern and Eastern",
+    "Southern and Eastern",
+    "Southern and Western"
+   ]
+  },
+  {
+   "id": "LATL-PH4",
+   "pool": "practice:hemispheres",
+   "skill_id": "hemispheres",
+   "type": "mcq",
+   "gap_targets": [
+    "hemispheres"
+   ],
+   "prompt": "Cape Town is at about 34°S, 18°E. Which two hemispheres is it in?",
+   "answer": "Southern and Eastern",
+   "hints": [
+    "Look at the letters: N or S gives the north–south hemisphere, E or W the east–west one.",
+    "S means south of the Equator; W means west of the Prime Meridian."
+   ],
+   "solution": [
+    "S = southern of the Equator, so the Southern Hemisphere.",
+    "E = eastern of the Prime Meridian, so the Eastern Hemisphere."
+   ],
+   "patterns": {
+    "Northern and Eastern": "SS_IGNORES_LETTER"
+   },
+   "options": [
+    "Southern and Western",
+    "Southern and Eastern",
+    "Northern and Eastern"
+   ]
+  },
+  {
+   "id": "LATL-RH1",
+   "pool": "retest:hemispheres",
+   "skill_id": "hemispheres",
+   "type": "mcq",
+   "gap_targets": [
+    "hemispheres"
+   ],
+   "prompt": "Sydney is at about 34°S, 151°E. Which two hemispheres is it in?",
+   "answer": "Southern and Eastern",
+   "hints": [
+    "Look at the letters: N or S gives the north–south hemisphere, E or W the east–west one.",
+    "S means south of the Equator; W means west of the Prime Meridian."
+   ],
+   "solution": [
+    "S = southern of the Equator, so the Southern Hemisphere.",
+    "E = eastern of the Prime Meridian, so the Eastern Hemisphere."
+   ],
+   "patterns": {
+    "Northern and Eastern": "SS_IGNORES_LETTER"
+   },
+   "options": [
+    "Southern and Eastern",
+    "Northern and Eastern",
+    "Southern and Western"
+   ]
+  },
+  {
+   "id": "LATL-RH2",
+   "pool": "retest:hemispheres",
+   "skill_id": "hemispheres",
+   "type": "mcq",
+   "gap_targets": [
+    "hemispheres"
+   ],
+   "prompt": "New York is at about 41°N, 74°W. Which two hemispheres is it in?",
+   "answer": "Northern and Western",
+   "hints": [
+    "Look at the letters: N or S gives the north–south hemisphere, E or W the east–west one.",
+    "S means south of the Equator; W means west of the Prime Meridian."
+   ],
+   "solution": [
+    "N = northern of the Equator, so the Northern Hemisphere.",
+    "W = western of the Prime Meridian, so the Western Hemisphere."
+   ],
+   "patterns": {
+    "Northern and Eastern": "SS_IGNORES_LETTER"
+   },
+   "options": [
+    "Northern and Eastern",
+    "Southern and Western",
+    "Northern and Western"
+   ]
+  },
+  {
+   "id": "LATL-RH3",
+   "pool": "retest:hemispheres",
+   "skill_id": "hemispheres",
+   "type": "mcq",
+   "gap_targets": [
+    "hemispheres"
+   ],
+   "prompt": "Nairobi is at about 1°S, 37°E. Which two hemispheres is it in?",
+   "answer": "Southern and Eastern",
+   "hints": [
+    "Look at the letters: N or S gives the north–south hemisphere, E or W the east–west one.",
+    "S means south of the Equator; W means west of the Prime Meridian."
+   ],
+   "solution": [
+    "S = southern of the Equator, so the Southern Hemisphere.",
+    "E = eastern of the Prime Meridian, so the Eastern Hemisphere."
+   ],
+   "patterns": {
+    "Northern and Eastern": "SS_IGNORES_LETTER"
+   },
+   "options": [
+    "Southern and Western",
+    "Southern and Eastern",
+    "Northern and Eastern"
+   ]
+  },
+  {
+   "id": "LATL-RH4",
+   "pool": "retest:hemispheres",
+   "skill_id": "hemispheres",
+   "type": "mcq",
+   "gap_targets": [
+    "hemispheres"
+   ],
+   "prompt": "Mexico City is at about 19°N, 99°W. Which two hemispheres is it in?",
+   "answer": "Northern and Western",
+   "hints": [
+    "Look at the letters: N or S gives the north–south hemisphere, E or W the east–west one.",
+    "S means south of the Equator; W means west of the Prime Meridian."
+   ],
+   "solution": [
+    "N = northern of the Equator, so the Northern Hemisphere.",
+    "W = western of the Prime Meridian, so the Western Hemisphere."
+   ],
+   "patterns": {
+    "Northern and Eastern": "SS_IGNORES_LETTER"
+   },
+   "options": [
+    "Northern and Western",
+    "Northern and Eastern",
+    "Southern and Western"
+   ]
+  },
+  {
+   "id": "LATL-RH5",
+   "pool": "retest:hemispheres",
+   "skill_id": "hemispheres",
+   "type": "mcq",
+   "gap_targets": [
+    "hemispheres"
+   ],
+   "prompt": "Santiago is at about 33°S, 71°W. Which two hemispheres is it in?",
+   "answer": "Southern and Western",
+   "hints": [
+    "Look at the letters: N or S gives the north–south hemisphere, E or W the east–west one.",
+    "S means south of the Equator; W means west of the Prime Meridian."
+   ],
+   "solution": [
+    "S = southern of the Equator, so the Southern Hemisphere.",
+    "W = western of the Prime Meridian, so the Western Hemisphere."
+   ],
+   "patterns": {
+    "Northern and Eastern": "SS_IGNORES_LETTER"
+   },
+   "options": [
+    "Northern and Eastern",
+    "Southern and Eastern",
+    "Southern and Western"
+   ]
+  },
+  {
+   "id": "LATL-RH6",
+   "pool": "retest:hemispheres",
+   "skill_id": "hemispheres",
+   "type": "mcq",
+   "gap_targets": [
+    "hemispheres"
+   ],
+   "prompt": "Lima is at about 12°S, 77°W. Which two hemispheres is it in?",
+   "answer": "Southern and Western",
+   "hints": [
+    "Look at the letters: N or S gives the north–south hemisphere, E or W the east–west one.",
+    "S means south of the Equator; W means west of the Prime Meridian."
+   ],
+   "solution": [
+    "S = southern of the Equator, so the Southern Hemisphere.",
+    "W = western of the Prime Meridian, so the Western Hemisphere."
+   ],
+   "patterns": {
+    "Northern and Eastern": "SS_IGNORES_LETTER"
+   },
+   "options": [
+    "Southern and Eastern",
+    "Southern and Western",
+    "Northern and Eastern"
+   ]
+  }
+ ],
+ "lessons": {
+  "lat_long_meaning": {
+   "title": "What latitude and longitude tell you",
+   "big_idea": "A position has two parts. Latitude says how far north or south of the Equator a place is. Longitude says how far east or west of the Prime Meridian it is. Mixing them up puts you on the wrong side of the world.",
+   "steps": [
+    "Coordinates are written latitude first: 29°N, 77°E.",
+    "The number with N or S is the latitude.",
+    "The number with E or W is the longitude.",
+    "Latitude lines (parallels) run east–west; longitude lines (meridians) run north–south from pole to pole."
+   ],
+   "sense_check": "India is north of the Equator and east of the Prime Meridian, so Indian places have °N and °E.",
+   "worked_examples": [
+    {
+     "prompt": "Delhi is at about 29°N, 77°E. What does 29°N tell you?",
+     "answer": "How far north or south of the Equator it is",
+     "steps": [
+      "29°N has the letter N, so it is a latitude.",
+      "It says Delhi is 29° north of the Equator."
+     ]
+    }
+   ]
+  },
+  "hemispheres": {
+   "title": "Which hemispheres a place is in",
+   "big_idea": "The Equator splits the Earth into Northern and Southern Hemispheres; the Prime Meridian splits it into Eastern and Western. The letters in a place's coordinates tell you which halves it is in.",
+   "steps": [
+    "Find the latitude letter: N → Northern, S → Southern.",
+    "Find the longitude letter: E → Eastern, W → Western.",
+    "Put the two together.",
+    "Don't assume north and east just because India is: always read the letters."
+   ],
+   "sense_check": "Sydney is at about 34°S, 151°E: south of the Equator but east of the Prime Meridian.",
+   "worked_examples": [
+    {
+     "prompt": "Rio de Janeiro is at about 23°S, 43°W. Which hemispheres?",
+     "answer": "Southern and Western",
+     "steps": [
+      "S → Southern Hemisphere.",
+      "W → Western Hemisphere."
+     ]
+    }
+   ]
+  }
+ }
+}
