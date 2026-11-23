@@ -20,6 +20,16 @@ def demo_login(client, slug):
     return r
 
 
+STAFF_LOGIN = {"teacher": "demo.teacher@example.com", "parent": "demo.parent@example.com",
+               "admin": "demo.admin@example.com"}
+
+
+def staff_login(client, slug):
+    """Teacher/parent/admin demo accounts are not one-click: they log in with the normal password route."""
+    return client.post("/auth/login", json={"identifier": STAFF_LOGIN[slug], "password": demo_script.PW},
+                       headers={"X-Elevia-Web": "1"})
+
+
 @pytest.fixture
 def demo_on(monkeypatch):
     monkeypatch.setenv("ELEVIA_DEMO_MODE", "1")
@@ -37,13 +47,12 @@ def test_not_ready_until_seeded(client, demo_on):
     assert demo_login(client, "riya").status_code == 409
 
 
-def test_one_click_login_gives_a_normal_session_for_each_role(client, demo_on):
+def test_one_click_login_gives_a_normal_session_for_each_student(client, demo_on):
     demo_script.seed()
     d = client.get("/demo/accounts").json()
-    assert d["ready"] and {a["slug"] for a in d["accounts"]} == {"riya", "arjun", "fresh", "teacher", "parent", "admin"}
+    assert d["ready"] and {a["slug"] for a in d["accounts"]} == {"riya", "arjun", "fresh"}   # students only
     assert "Demo-Pass" not in str(d) and "password" not in str(d).lower()          # no credentials in the page
-    roles = {"riya": "student", "arjun": "student", "fresh": "learner", "teacher": "teacher", "parent": "parent",
-             "admin": "school_admin"}
+    roles = {"riya": "student", "arjun": "student", "fresh": "learner"}
     for slug, role in roles.items():
         r = demo_login(client, slug)
         assert r.status_code == 200, r.text
@@ -54,6 +63,17 @@ def test_one_click_login_gives_a_normal_session_for_each_role(client, demo_on):
         me = client.get("/auth/me", headers=H(tok)).json()
         assert me["user"]["role"] == role
     assert demo_login(client, "nobody").status_code == 400
+
+
+def test_staff_and_parent_demo_accounts_are_never_one_click(client, demo_on):
+    demo_script.seed()
+    for slug in ("teacher", "parent", "parent2", "admin"):
+        r = demo_login(client, slug)
+        assert r.status_code == 403 and "set-cookie" not in r.headers, slug
+    # they still exist and work with a normal password login
+    r = client.post("/auth/login", json={"identifier": "demo.teacher@example.com", "password": demo_script.PW},
+                    headers={"X-Elevia-Web": "1"})
+    assert r.status_code == 200, r.text
 
 
 def test_demo_login_never_reaches_real_accounts(client, demo_on):
@@ -73,7 +93,7 @@ def test_demo_login_is_rate_limited(client, demo_on):
 
 def test_shared_demo_accounts_cannot_break_the_demo(client, demo_on):
     demo_script.seed(activity=False)
-    tok = demo_login(client, "parent").cookies.get("elevia_session")
+    tok = staff_login(client, "parent").cookies.get("elevia_session")
     kid = db_one("SELECT ref_id FROM demo_registry WHERE slug='riya'")[0]
     r = client.post(f"/parent/children/{kid}/withdraw-consent", headers=H(tok))
     assert r.status_code == 403 and "shared demo account" in r.json()["detail"]
@@ -92,7 +112,7 @@ def test_reset_restores_demo_and_never_touches_real_users(client, demo_on):
     demo_script.seed()
     seeded = {t: count(f"SELECT COUNT(*) FROM {t}") for t in ("users", "cases", "responses", "gaps", "schools")}
     # a judge changes things
-    ttok = demo_login(client, "teacher").cookies.get("elevia_session")
+    ttok = staff_login(client, "teacher").cookies.get("elevia_session")
     case = db_one("SELECT id FROM cases WHERE stage='teacher_review'")[0]
     client.post(f"/progress/cases/{case}/decision", json={"decision": "reject", "reason": "judge tried it"}, headers=H(ttok))
     fr = demo_login(client, "fresh").cookies.get("elevia_session")
@@ -111,7 +131,8 @@ def test_reset_restores_demo_and_never_touches_real_users(client, demo_on):
 
 def test_demo_story_is_realistic_and_consistent_across_dashboards(client, demo_on):
     demo_script.seed()
-    tok = {s: demo_login(client, s).cookies.get("elevia_session") for s in ("riya", "arjun", "teacher", "parent")}
+    tok = {s: (staff_login if s in STAFF_LOGIN else demo_login)(client, s).cookies.get("elevia_session")
+           for s in ("riya", "arjun", "teacher", "parent")}
     riya = client.get("/learn/dashboard", headers=H(tok["riya"])).json()
     arjun = client.get("/learn/dashboard", headers=H(tok["arjun"])).json()
     assert riya["totals"]["skills_mastered"] >= 2 and riya["upcoming_retests"] and riya["open_gaps"]
@@ -141,7 +162,8 @@ def test_demo_story_is_realistic_and_consistent_across_dashboards(client, demo_o
 
 def test_next_step_queue_and_intervention_history(client, demo_on):
     demo_script.seed()
-    tok = {s: demo_login(client, s).cookies.get("elevia_session") for s in ("riya", "arjun", "fresh", "teacher")}
+    tok = {s: (staff_login if s in STAFF_LOGIN else demo_login)(client, s).cookies.get("elevia_session")
+           for s in ("riya", "arjun", "fresh", "teacher")}
     riya = client.get("/learn/dashboard", headers=H(tok["riya"])).json()["next_step"]
     assert riya["kind"] == "learn" and riya["topic_id"] == "past_tense"          # lesson in progress first
     arjun = client.get("/learn/dashboard", headers=H(tok["arjun"])).json()["next_step"]
@@ -158,5 +180,5 @@ def test_next_step_queue_and_intervention_history(client, demo_on):
     riya = client.get("/learn/dashboard", headers=H(tok["riya"])).json()["next_step"]
     assert riya["kind"] == "retest" and riya["topic_id"] == "loops"
     # parents get no queue
-    ptok = demo_login(client, "parent").cookies.get("elevia_session")
+    ptok = staff_login(client, "parent").cookies.get("elevia_session")
     assert client.get("/progress/students", headers=H(ptok)).json()["queue"] == []

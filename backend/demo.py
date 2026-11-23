@@ -24,25 +24,22 @@ from .accounts.errors import AccountError
 router = APIRouter(prefix="/demo")
 
 # What each card says. Names match the people the seed creates (fictional).
+# Only STUDENT accounts can be opened with one click. The teacher, parent and admin demo accounts still exist
+# (the seed creates them so the student data has a real class, consent and teacher decisions behind it), but
+# they are reached with a normal password login, so no staff or parent account is publicly one click away.
 PROFILES = [
-    {"slug": "riya", "name": "Riya Sharma", "role": "Student", "badge": "Grade 6 · Class 6 A",
-     "explore": "A student with history: mastered skills, a confirmed gap, a failed-then-passed retest, "
-                "a lesson in progress and a retest booked."},
-    {"slug": "arjun", "name": "Arjun Patel", "role": "Student", "badge": "Grade 6 · Class 6 A",
-     "explore": "A student who is struggling more: several open gaps, a failed retest and a case waiting "
-                "for his teacher."},
     {"slug": "fresh", "name": "Ananya Rao", "role": "New student", "badge": "Start from scratch",
-     "explore": "No history yet. Follow the demo script: pick a topic, make a mistake on purpose and watch "
-                "ELEVIA check it before teaching."},
-    {"slug": "teacher", "name": "Meera Iyer", "role": "Teacher", "badge": "Class 6 A",
-     "explore": "Review queue, verified gaps with evidence, confirm/reject/change focus with a reason, and the "
-                "intervention history."},
-    {"slug": "parent", "name": "Sunita Sharma", "role": "Parent", "badge": "Riya's parent",
-     "explore": "A plain-language summary of Riya's learning, limited to what Riya's consent allows."},
-    {"slug": "admin", "name": "Kavita Menon", "role": "School admin", "badge": "Sunrise Demo School",
-     "explore": "Classes, teachers and class codes. Admins manage the school; they can't see learning data."},
+     "explore": "No history yet. Pick a topic, make a mistake on purpose and watch ELEVIA check it "
+                "before it teaches anything."},
+    {"slug": "riya", "name": "Riya Sharma", "role": "Student", "badge": "Grade 6 · Class 6 A",
+     "explore": "A student with history: mastered skills, a failed-then-passed retest, a lesson in progress "
+                "and a retest booked."},
+    {"slug": "arjun", "name": "Arjun Patel", "role": "Student", "badge": "Grade 6 · Class 6 A",
+     "explore": "A student who is finding things harder: open gaps, a failed retest, a teacher's note and a "
+                "case waiting for his teacher."},
 ]
 SLUGS = {p["slug"] for p in PROFILES}
+STAFF_SLUGS = {"teacher", "parent", "parent2", "admin"}   # registry entries that are never one-click
 
 
 def enabled() -> bool:
@@ -83,6 +80,9 @@ def demo_login(body: DemoLogin, request: Request, response: Response):
     from .accounts.routes import _with_session  # same cookie handling as the password login
     if not enabled():
         raise AccountError("Not found.", 404)
+    if body.slug in STAFF_SLUGS:
+        raise AccountError("Teacher, parent and admin demo accounts use a normal password login.", 403,
+                           code="demo_student_only")
     if body.slug not in SLUGS:
         raise AccountError("Unknown demo account.", 400)
     ip = (request.headers.get("x-forwarded-for", "").split(",")[0].strip()
