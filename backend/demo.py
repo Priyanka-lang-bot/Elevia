@@ -12,6 +12,7 @@ Safety model
 """
 from __future__ import annotations
 
+import hmac
 import os
 
 from fastapi import APIRouter, Request, Response
@@ -24,22 +25,32 @@ from .accounts.errors import AccountError
 router = APIRouter(prefix="/demo")
 
 # What each card says. Names match the people the seed creates (fictional).
-# Only STUDENT accounts can be opened with one click. The teacher, parent and admin demo accounts still exist
-# (the seed creates them so the student data has a real class, consent and teacher decisions behind it), but
-# they are reached with a normal password login, so no staff or parent account is publicly one click away.
+# Student accounts open with one click. The teacher demo opens only with the judges' access code
+# (ELEVIA_DEMO_TEACHER_CODE, a server secret, never in the repository or the page). Parent and admin demo
+# accounts are never one-click: they exist so the student data has real consent and a real school behind it.
 PROFILES = [
-    {"slug": "fresh", "name": "Ananya Rao", "role": "New student", "badge": "Start from scratch",
-     "explore": "No history yet. Pick a topic, make a mistake on purpose and watch ELEVIA check it "
-                "before it teaches anything."},
-    {"slug": "riya", "name": "Riya Sharma", "role": "Student", "badge": "Grade 6 · Class 6 A",
-     "explore": "A student with history: mastered skills, a failed-then-passed retest, a lesson in progress "
-                "and a retest booked."},
-    {"slug": "arjun", "name": "Arjun Patel", "role": "Student", "badge": "Grade 6 · Class 6 A",
-     "explore": "A student who is finding things harder: open gaps, a failed retest, a teacher's note and a "
-                "case waiting for his teacher."},
+    {"slug": "riya", "name": "Riya Sharma", "role": "Student · DEMO-09-001", "badge": "Grade 9 · Class 9 A · 2026-27",
+     "explore": "Six months of history across five subjects: mastered skills, retests failed then passed, a lesson "
+                "in progress, a retest due and a case waiting for her teacher."},
+    {"slug": "fresh", "name": "Dev Kapoor", "role": "New learner", "badge": "No history yet",
+     "explore": "Start from nothing. Pick a topic, make a mistake on purpose and watch ELEVIA check it before it "
+                "teaches anything."},
+    {"slug": "arjun", "name": "Arjun Patel", "role": "Student · DEMO-09-002", "badge": "Grade 9 · Class 9 A · 2026-27",
+     "explore": "Finding maths hard: repeated failed retests on integers, a teacher's note and a case waiting for "
+                "his teacher."},
 ]
+TEACHER_PROFILE = {"slug": "teacher", "name": "Ananya Mehta", "role": "Class 9 teacher",
+                   "badge": "ELEVIA Demonstration School",
+                   "explore": "The class overview, the review queue, Riya's six-month record and the evidence behind "
+                              "every gap. Confirm or reject a case with a reason and see it in the history."}
 SLUGS = {p["slug"] for p in PROFILES}
-STAFF_SLUGS = {"teacher", "parent", "parent2", "admin"}   # registry entries that are never one-click
+STAFF_SLUGS = {"parent", "parent2", "parent3", "parent4", "parent5", "admin"}   # never one-click
+
+
+def teacher_code() -> str:
+    """The judges' access code for the teacher demo, or '' when the teacher demo is off."""
+    code = os.getenv("ELEVIA_DEMO_TEACHER_CODE", "").strip()
+    return code if len(code) >= 8 else ""
 
 
 def enabled() -> bool:
@@ -63,6 +74,7 @@ def refuse_for_demo(conn, user: dict, what: str) -> None:
 
 class DemoLogin(BaseModel):
     slug: str = Field(max_length=20)
+    access_code: str = Field(default="", max_length=100)
 
 
 @router.get("/accounts")
@@ -72,7 +84,9 @@ def accounts():
     with db.transaction() as conn:
         have = registry_users(conn)
     return {"enabled": True, "ready": all(p["slug"] in have for p in PROFILES),
-            "accounts": [{**p, "available": p["slug"] in have} for p in PROFILES]}
+            "accounts": [{**p, "available": p["slug"] in have} for p in PROFILES],
+            # the teacher card says whether an access code will work; the code itself is never sent
+            "teacher": {**TEACHER_PROFILE, "available": bool(teacher_code()) and "teacher" in have}}
 
 
 @router.post("/login")
@@ -81,17 +95,33 @@ def demo_login(body: DemoLogin, request: Request, response: Response):
     if not enabled():
         raise AccountError("Not found.", 404)
     if body.slug in STAFF_SLUGS:
-        raise AccountError("Teacher, parent and admin demo accounts use a normal password login.", 403,
+        raise AccountError("Parent and admin demo accounts use a normal password login.", 403,
                            code="demo_student_only")
-    if body.slug not in SLUGS:
+    if body.slug not in SLUGS and body.slug != "teacher":
         raise AccountError("Unknown demo account.", 400)
     ip = (request.headers.get("x-forwarded-for", "").split(",")[0].strip()
           or (request.client.host if request.client else "unknown"))
-    key = f"demo-login:{ip}"
+    key, bad = f"demo-login:{ip}", f"demo-code:{ip}"
+    # Attempts are recorded in their own transaction, so a refused attempt still counts towards the limits.
     with db.transaction() as conn:
-        if core.rate_limited(conn, key, 60, 10):
-            raise AccountError("Too many demo logins from here. Please wait a few minutes.", 429)
-        core.record_event(conn, key)
+        too_many = core.rate_limited(conn, key, 60, 10)
+        too_many_codes = body.slug == "teacher" and core.rate_limited(conn, bad, 10, 10)
+        code = teacher_code() if body.slug == "teacher" else ""
+        code_ok = bool(code) and hmac.compare_digest(body.access_code.strip().encode(), code.encode())
+        if not too_many:
+            core.record_event(conn, key)
+        if body.slug == "teacher" and code and not code_ok and not too_many_codes:
+            core.record_event(conn, bad)
+    if too_many:
+        raise AccountError("Too many demo logins from here. Please wait a few minutes.", 429)
+    if body.slug == "teacher":
+        if not code:
+            raise AccountError("The teacher demo isn't switched on for this server.", 403, code="demo_teacher_off")
+        if too_many_codes:
+            raise AccountError("Too many wrong access codes. Please wait a few minutes.", 429)
+        if not code_ok:
+            raise AccountError("That access code isn't right.", 403, code="demo_bad_code")
+    with db.transaction() as conn:
         uid = registry_users(conn).get(body.slug)
         user = conn.execute("SELECT * FROM users WHERE id=?", (uid,)).fetchone() if uid else None
         if user is None:
