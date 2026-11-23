@@ -25,6 +25,8 @@ All four are deterministic, rule-based components coordinated by an orchestrator
 
 ---
 
+> **Round 3 submission package:** see [docs/round3-submission/](docs/round3-submission/ROUND3_SUBMISSION_README.md).
+
 ## What's on the website
 
 - **Landing page** (`/`) is static, crawlable HTML in the app's notebook style, told through study objects:

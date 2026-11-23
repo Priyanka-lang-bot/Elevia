@@ -3,6 +3,8 @@
 **Theme:** Closing learning gaps with agentic AI in personalised education
 **Tagline:** Verify before you teach.
 
+> **Final submission package:** [docs/round3-submission/](round3-submission/ROUND3_SUBMISSION_README.md): technical documentation, feature matrix, demo script, judges' quick start, roadmap and submission checklist.
+
 | | |
 |---|---|
 | GitHub | https://github.com/Priyanka-lang-bot/Elevia (branch `round3`; pull request #1 into `main`) |
