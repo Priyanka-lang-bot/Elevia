@@ -29,16 +29,8 @@ function initLanding() {
     scrollToY(target.getBoundingClientRect().top + window.scrollY - nav.offsetHeight + 1);
     target.setAttribute("tabindex", "-1"); target.focus({ preventScroll: true });
   }));
-  // Screenshot tabs
-  const shots = { dash: ["/img/shot-dash.jpg", "Student dashboard with what to do next, continue learning and upcoming retests"],
-    verify: ["/img/shot-verify.jpg", "Double-check screen: the possible gap is not confirmed yet and two new questions are asked"],
-    lesson: ["/img/shot-lesson.jpg", "Lesson screen with the confirmed gap, steps and worked examples"],
-    result: ["/img/shot-result.jpg", "Result screen: the gap is closed after passing the retest on new questions"] };
-  const img = document.getElementById("shot-img");
-  document.querySelectorAll(".shot-tabs button").forEach((b) => b.addEventListener("click", () => {
-    document.querySelectorAll(".shot-tabs button").forEach((x) => x.setAttribute("aria-selected", String(x === b)));
-    const [src, alt] = shots[b.dataset.shot]; img.src = src; img.alt = alt;
-  }));
+  initShots();
+  revealOnce(document.querySelectorAll("#students .rv"));
   initFolders();
   initBooks();
   initSymptom();
@@ -63,6 +55,64 @@ const scrollHandlers = [];
 function onLandingScroll() {
   if (document.getElementById("landing").hidden) return;
   scrollHandlers.forEach((f) => f());
+}
+
+/* ------------------------------------------------------------------ reveal once (no replays) */
+// Adds .pre (hidden) and later .in (shown) only when IntersectionObserver works and motion is allowed, so the
+// content is always visible without JavaScript, with reduced motion, or if the observer never fires.
+function revealOnce(nodes, onShow) {
+  nodes = [...nodes];
+  if (!nodes.length || !("IntersectionObserver" in window) || reduceMotion()) return;
+  nodes.forEach((n) => n.classList.add("pre"));
+  const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add("in"); e.target.classList.remove("pre");
+    io.unobserve(e.target);
+    if (onShow) onShow(e.target);
+  }), { rootMargin: "0px 0px -12% 0px", threshold: 0.12 });
+  nodes.forEach((n) => io.observe(n));
+  // safety net: never leave content hidden if the observer is slow to fire (e.g. a jump to an anchor)
+  setTimeout(() => nodes.forEach((n) => {
+    if (n.classList.contains("pre") && n.getBoundingClientRect().top < innerHeight) { n.classList.add("in"); n.classList.remove("pre"); }
+  }), 1500);
+}
+
+/* ------------------------------------------------------------------ for students: screenshot tabs */
+const SHOTS = {
+  dash: ["/img/shot-dash.jpg", "Riya Sharma's dashboard: what to do next, continue learning, upcoming retests and gaps being worked on",
+    "Riya's dashboard after six months: one clear next step, the retest booked for tomorrow and every gap ELEVIA is working on, with whether it has been checked yet."],
+  verify: ["/img/shot-verify.jpg", "Double-check screen: the possible gap is not confirmed yet and two new questions are asked",
+    "The double-check: a possible gap is shown as not confirmed yet, and the Checker asks two new questions before anything is taught."],
+  lesson: ["/img/shot-lesson.jpg", "Lesson screen with the confirmed gap, steps and worked examples",
+    "The lesson starts only once the gap is confirmed. It quotes the student's own answer, then steps, worked examples and practice with hints."],
+  result: ["/img/shot-result.jpg", "Result screen: the gap is closed after passing the retest on new questions",
+    "A day later: a retest on three unseen questions. Two right closes the gap and marks the skill mastered."],
+};
+function initShots() {
+  const tabs = [...document.querySelectorAll(".shot-tabs [role=tab]")];
+  const img = document.getElementById("shot-img"), cap = document.getElementById("shot-cap"), panelEl = document.getElementById("shot-panel");
+  if (!img || !tabs.length) return;
+  Object.values(SHOTS).forEach(([src]) => { const i = new Image(); i.src = src; });   // no flash when switching
+  const select = (t, focus) => {
+    tabs.forEach((x) => { const on = x === t; x.setAttribute("aria-selected", String(on)); x.tabIndex = on ? 0 : -1; });
+    panelEl.setAttribute("aria-labelledby", t.id);
+    const [src, alt, text] = SHOTS[t.dataset.shot];
+    if (focus) t.focus();
+    if (img.getAttribute("src") === src) return;
+    const swap = () => { img.src = src; img.alt = alt; cap.textContent = text; img.classList.remove("swap"); };
+    if (reduceMotion()) { swap(); return; }
+    img.classList.add("swap");
+    setTimeout(swap, 180);
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => select(t));
+    t.addEventListener("keydown", (ev) => {
+      const n = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[ev.key];
+      if (n === undefined) return;
+      ev.preventDefault();
+      select(tabs[(n + tabs.length) % tabs.length], true);
+    });
+  });
 }
 
 /* ------------------------------------------------------------------ demo: student reader cards */
@@ -112,6 +162,36 @@ async function renderDemoCards(box, onEnabled, compact) {
       el("p", { class: "lib-ex", text: a.explore }),
       action, err);
   }));
+  if (!compact && d.teacher) box.append(teacherDemoCard(d.teacher));
+}
+
+// The teacher demo opens only with the judges' access code, which the server checks. It is never in the page.
+function teacherDemoCard(t) {
+  const card = el("article", { class: "lib-card teacher-card" },
+    el("p", { class: "lib-head", text: "Demo teacher card" }),
+    el("h3", { class: "lib-name", text: t.name }),
+    el("p", { class: "lib-role", text: `${t.role} · ${t.badge}` }),
+    el("p", { class: "lib-ex", text: t.explore }));
+  if (!t.available) {
+    card.append(el("p", { class: "hint", text: "The teacher demo isn't switched on for this server." }));
+    return card;
+  }
+  const input = el("input", { id: "teacher-code", type: "password", autocomplete: "off", maxlength: 100, spellcheck: "false" });
+  const err = el("p", { class: "alert bad", role: "alert", hidden: true });
+  const btn = el("button", { class: "btn main", type: "submit", text: "Open the teacher view" });
+  const form = el("form", { class: "code-form", novalidate: true },
+    el("label", { for: "teacher-code", text: "Judges' access code" }), input, btn, err);
+  form.addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    if (!input.value.trim()) { err.textContent = "Enter the access code the ELEVIA team gave you."; err.hidden = false; input.focus(); return; }
+    btn.disabled = true; btn.textContent = "Opening…"; err.hidden = true;
+    try {
+      await api("POST", "/demo/login", { slug: "teacher", access_code: input.value.trim() });
+      state.me = null; go("#/home");
+    } catch (e) { err.textContent = e.detail; err.hidden = false; btn.disabled = false; btn.textContent = "Open the teacher view"; input.select(); }
+  });
+  card.append(form);
+  return card;
 }
 
 /* ------------------------------------------------------------------ the problem: worksheet annotations */
@@ -187,6 +267,7 @@ function initFolders() {
   const list = document.getElementById("folders");
   if (!list) return;
   list.classList.add("js-folders");
+  revealOnce([list]);                              // the folders slide in one after another, once
   const items = [...list.querySelectorAll(".folder")];
   const tabs = items.map((f) => f.querySelector(".folder-tab"));
   const fine = matchMedia("(hover: hover) and (pointer: fine) and (min-width: 901px)");
@@ -202,9 +283,10 @@ function initFolders() {
     });
     t.addEventListener("keydown", (ev) => {
       const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[ev.key];
-      if (!d) return;
+      const jump = { Home: 0, End: tabs.length - 1 }[ev.key];
+      if (!d && jump === undefined) return;
       ev.preventDefault();
-      const n = (i + d + tabs.length) % tabs.length;
+      const n = jump !== undefined ? jump : (i + d + tabs.length) % tabs.length;
       tabs[n].focus(); setOpen(n);
     });
   });
