@@ -146,7 +146,8 @@ CREATE INDEX IF NOT EXISTS idx_runs_case ON agent_runs(case_id);
 
 
 def now_iso() -> str:
-    return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+    from . import clock
+    return clock.now().isoformat()
 
 
 def using_turso() -> bool:

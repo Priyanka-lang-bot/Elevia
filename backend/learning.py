@@ -240,7 +240,7 @@ def _retest_info(case: dict, retest: Optional[dict]) -> Optional[dict]:
     seconds = 0
     if not unlocked:
         try:
-            seconds = max(0, int((datetime.fromisoformat(avail) - datetime.now(timezone.utc)).total_seconds()))
+            seconds = max(0, int((datetime.fromisoformat(avail) - datetime.fromisoformat(now)).total_seconds()))
         except ValueError:
             seconds = 0
     return {"available_at": avail, "unlocked": unlocked, "seconds_left": seconds,
