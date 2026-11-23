@@ -34,8 +34,8 @@ Teachers resolve unclear cases and can redirect the focus, always with a logged 
 
 | User | What they get |
 |---|---|
-| Student (school, individual with parent consent, or independent learner 18+) | A "What to do next" card, topic journeys across four subjects, a skill map, retests and history |
-| Teacher | Students in their own classes only, a review queue with reasons, per-student evidence, confirm/reject/redirect with a reason, and an intervention history |
+| Student (school, individual with parent consent, or independent learner 18+) | A "What to do next" card, topic journeys across five subjects, a six-month timeline, progress by subject, a skill map, retests and a full learning history |
+| Teacher | Students in their own classes only: a class overview and class insights, a review queue with reasons, each student's six-month record and evidence, confirm/reject/redirect with a reason, and an intervention history |
 | Parent | A plain-language summary of their own child, limited to what the consent allows |
 | School admin | Classes, teacher invitations and enrolments, but not learning data |
 
@@ -45,7 +45,12 @@ Teachers resolve unclear cases and can redirect the focus, always with a logged 
 - **Accounts:** three sign-up pathways, parent consent, class codes with teacher approval, email verification, password reset, and sharing grants with scopes.
 - **Student dashboard** (`#/learn`) and **topic journeys** (`#/learn/<topic>`) with a step tracker.
 - **Teacher portal** and **parent view** (home pages for those roles).
-- **Demo mode:** fictional accounts in "Sunrise Demo School". The three student accounts open with one click from **Try demo**; teacher, parent and admin demo accounts use a normal password login. A safe reset deletes only demo rows.
+- **Demo mode:** a fictional Class 9 A at "ELEVIA Demonstration School" (2026-27).
+  - **The history:** six months of records produced by running the real workflow on simulated answers and a simulated calendar.
+  - **Riya Sharma** (DEMO-09-001): five subjects, 16 check-ins, 8 skills mastered, retests failed then passed, teacher decisions.
+  - **The class:** four classmates with different patterns, and teacher Ananya Mehta.
+  - **Access:** students open with one click from **Try demo**; the teacher view needs the judges' access code.
+  - **Reset:** a command-line reset recreates the same history and deletes only demo rows.
 
 ## 5. Key features
 
@@ -91,21 +96,23 @@ check-in ─▶ Diagnoser ─▶ suspected gap? ─no─▶ "no gap found"
 
 ## 8. Multi-subject coverage
 
-All 24 topics have objectives, two diagnostic sets, misconception patterns, double-check questions, lessons, practice, retests and skill-map updates. Each one is tested end to end, including a rejected-gap path.
+All 26 topics have objectives, two diagnostic sets, misconception patterns, double-check questions, lessons, practice, retests and skill-map updates. Each one is tested end to end, including a rejected-gap path.
 
 | Subject | Playable topics |
 |---|---|
 | Mathematics (11) | Fractions, Decimals, Percentages, Integers, Linear equations, Order of operations, Factors and multiples, Ratio and proportion, Perimeter and area, Averages, Angles |
 | Science (3) | Forces and motion, States of matter, Scientific reasoning (fair tests) |
 | English (4) | Past tense verbs, Subject–verb agreement, Parts of speech, Apostrophes |
+| Social Science (2) | Latitude and longitude, Time zones and Indian Standard Time |
 | Computer Science (6) | Variables and assignment, Loops, Data types, Conditionals, Logical reasoning, Algorithms |
 
-**Content totals:** 943 questions, 54 skills, 82 named misconception patterns, 51 lessons.
+**Content totals:** 1,019 questions, 58 skills, 86 named misconception patterns, 55 lessons.
 
 **Coming soon** (shown as such, not playable):
 - **Maths:** probability, area of triangles and circles, volume, graphs.
 - **Science:** heat and temperature, light, electric circuits, plants and photosynthesis.
 - **English:** reading comprehension, sentence construction, other tenses, vocabulary.
+- **Social Science:** physical features of India, drainage, climate, what is democracy?, the French Revolution, poverty as a challenge.
 - **CS:** functions, lists, sorting.
 
 ## 9. Screenshots
@@ -124,19 +131,18 @@ These are captured from the running app by `scripts/e2e_browser.py --shots`, usi
 
 All results come from runs actually executed. Details are in [TEST_RESULTS.md](TEST_RESULTS.md).
 
-- **Automated tests:** 186 passed on local SQLite and 186 passed through the Turso connector fake. They cover:
-  - the full and rejected-gap journeys for every topic;
+- **Automated tests:** 202 passed on local SQLite and 202 passed through the Turso connector fake. They cover:
+  - the full and rejected-gap journeys for every topic, including both Social Science topics;
   - the Diagnoser, Checker, Planner and Tutor rules;
   - accounts and consent, and role access (teacher, parent, admin, stranger);
-  - demo login and reset (including that real users survive a reset);
-  - persistence and error handling.
-- **Browser end-to-end:** 23 of 23 checks passed with 0 console errors. The run covers:
-  - the landing page;
-  - the landing page's scroll sequences, folders and books, at desktop, tablet and phone sizes, without JavaScript and with reduced motion;
-  - one-click student login and a full fractions journey;
-  - a code question and reload persistence;
-  - a phone-sized dashboard;
-  - teacher review with a reason;
+  - demo login, the teacher access code, reset (real users survive it) and determinism;
+  - **data consistency:** every dashboard figure is backed by records. Mastered skills ↔ passed retests, confirmed gaps ↔ the Checker's verdict or a logged teacher decision, lessons ↔ stored lessons, monthly figures ↔ totals ↔ the database.
+- **Browser end-to-end:** 26 of 26 checks passed with 0 console errors. The run covers:
+  - the landing page, including the scroll interactions, at desktop, tablet and phone sizes, without JavaScript and with reduced motion;
+  - a full topic live (Dev);
+  - Riya's six-month timeline, whose monthly table adds up to the dashboard totals;
+  - all five subjects, the skill map and the subject filter;
+  - the teacher demo with the access code: class overview, insights, Riya's flagged case with its evidence, a confirmed review saved to the history;
   - the parent's restricted view.
 - **Build-time content validation:** every question validated, every maths answer computed, and every CS answer executed.
 
