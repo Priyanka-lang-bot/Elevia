@@ -55,7 +55,7 @@ SUBJECTS = [
      "description": "Grammar, word classes and punctuation, with exact answer checking.",
      "topics": ["parts_of_speech", "past_tense", "subject_verb_agreement", "apostrophes"],
      "planned": ["Reading comprehension", "Sentence construction", "Other tenses", "Vocabulary"]},
-    {"id": "social_science", "name": "Social Science", "icon": "◍", "color": "#8a5a1e",
+    {"id": "social_science", "name": "Social Science", "icon": "◍", "color": "#b0306a",
      "description": "Geography of India's size and location: coordinates and time, with computed answers.",
      "topics": ["latitude_longitude", "time_zones"],
      "planned": ["Physical features of India", "Drainage", "Climate", "What is democracy?", "The French Revolution",

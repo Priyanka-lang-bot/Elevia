@@ -100,12 +100,28 @@ def _pattern(q, gap_skill):
 
 
 def _plain_wrong(q):
+    """A believable mistake that is NOT the misconception being checked (so it doesn't count as supporting it):
+    a different option, an off-by-one number, or a verb left unchanged."""
+    from fractions import Fraction
+    taken = {str(q["answer"]).strip().lower(), *[str(a).strip().lower() for a in q.get("accept", [])],
+             *[str(p).strip().lower() for p in q.get("patterns", {})]}
     if q["type"] == "mcq":
         bad = [o for o in q["options"] if o != q["answer"] and o not in q.get("patterns", {})]
         return bad[0] if bad else next(o for o in q["options"] if o != q["answer"])
-    if q["type"] in ("numeric", "text", "code_output"):
-        return "999"
-    return "1/100"
+    cands = []
+    m = re.search(r'"([A-Za-z]+)"', q["prompt"])
+    if m:
+        cands.append(m.group(1))                               # left the word as it was
+    try:
+        v = Fraction(str(q["answer"]).strip())
+        cands += [str(v + k) if v.denominator == 1 else f"{v.numerator + k}/{v.denominator}" for k in (1, 2, -1)]
+    except (ValueError, ZeroDivisionError):
+        pass
+    # another real answer from the same set of questions (e.g. a different program output), then a plural slip
+    pool = q.get("pool", "")
+    cands += [str(o["answer"]) for o in questions().values() if o.get("pool") == pool and o["id"] != q["id"]]
+    cands.append(str(q["answer"]).strip() + "s")
+    return next(c for c in cands if c.strip().lower() not in taken)
 
 
 def reference_instant(ref: date | None) -> datetime:
@@ -367,8 +383,6 @@ def history_riya(c, cal, pw, teacher):
     r.double_check("time_zones", "confirm")
     case["cond"] = r.visit(98).checkin("conditionals", "elif_chains")["case_id"]
     r.double_check("conditionals", "confirm")
-    teacher.visit(100).focus(case["cond"], "if_else", "Riya's mistakes come from reading a single if/else, so "
-                                                      "start there before elif chains.")
     case["pct"] = r.visit(103).checkin("percentages", "percent_of_quantity")["case_id"]
     r.double_check("percentages", "confirm")
     r.visit(106).practise("time_zones")
@@ -378,6 +392,8 @@ def history_riya(c, cal, pw, teacher):
     # Month 5: improvement, one more re-plan
     r.visit(126).practise("conditionals")
     r.visit(129).retest("conditionals", passed=False)
+    teacher.visit(130).focus(case["cond"], "if_else", "Riya's mistakes come from reading a single if/else, so "
+                                                      "start there before elif chains.")
     r.visit(131).practise("percentages")
     r.visit(133).retest("percentages")                                         # mastered
     r.visit(138).practise("conditionals")

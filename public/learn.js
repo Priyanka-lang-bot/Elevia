@@ -431,6 +431,7 @@ function renderDashboard(me, d, notice) {
       stat(`${d.totals.topics_started}/${d.totals.topics_available}`, "Topics started"),
       stat(d.totals.skills_mastered, "Skills mastered", "Only a passed retest counts"),
       stat(d.answers.total, "Answers checked", acc === null ? "None yet" : `${acc}% correct`))));
+  if (d.demo) kids.push(demoBanner(d.demo));
 
   if (d.next_step && !d.needs_grade) {
     const n = d.next_step;
@@ -492,9 +493,11 @@ function renderDashboard(me, d, notice) {
     });
     tabs.append(tab); panes.append(pane);
   });
+  const histSlot = el("div", { class: "hist-slot", "aria-live": "polite" });
+  kids.push(histSlot);
   kids.push(el("section", { class: "panel" }, el("h2", { text: "Subjects" }), tabs, panes));
 
-  kids.push(el("section", { class: "panel" }, el("h2", { text: "Recent activity" }),
+  kids.push(el("section", { class: "panel", id: "recent-activity" }, el("h2", { text: "Recent activity" }),
     d.history.length ? el("ul", { class: "list" }, d.history.map((h) => el("li", { class: "item" },
       el("span", { class: "grow" }, el("strong", { text: h.topic }), h.skill ? el("span", { class: "hint", text: ` · ${h.skill}` }) : null),
       el("span", { class: "hint", text: h.outcome }), el("span", { class: "hint", text: fmt(h.date) }))))
@@ -502,4 +505,12 @@ function renderDashboard(me, d, notice) {
   if (me.user.role === "learner") kids.push(el("p", { class: "center" }, el("a", { href: "#/sharing", text: "Privacy and sharing settings" })));
   learnMain(me, ...kids);
   root.querySelector("main").classList.add("dash");
+  if (d.phase !== "welcome") {
+    api("GET", "/learn/history").then((h) => {
+      if (!h.started || !histSlot.isConnected) return;
+      histSlot.replaceChildren(...historyPanels(h, "you"));
+      const recent = document.getElementById("recent-activity");
+      if (recent) recent.remove();                 // the full learning history below replaces the short list
+    }).catch(() => { /* the rest of the dashboard still works */ });
+  }
 }
