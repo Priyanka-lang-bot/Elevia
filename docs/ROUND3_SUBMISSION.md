@@ -6,7 +6,7 @@
 | | |
 |---|---|
 | GitHub | https://github.com/Priyanka-lang-bot/Elevia (branch `round3`; pull request #1 into `main`) |
-| Live preview | https://frontend-pmvi-git-round3-priyankawanjari52-8602.vercel.app (see "Live link status" below) |
+| Live preview | https://frontend-pmvi-git-six-month-demo-priyankawanjari52-8602.vercel.app (see "Live link status" below) |
 | Demo guide | [docs/DEMO_SCRIPT.md](DEMO_SCRIPT.md), 5–7 minutes |
 
 ---
@@ -148,13 +148,13 @@ All results come from runs actually executed. Details are in [TEST_RESULTS.md](T
 
 ## 11. Live link status
 
-- **Build:** the `round3` branch builds successfully on the Vercel project `frontend-pmvi`.
-- **What I checked in a browser on 22 Nov 2026:** the landing page, login page, `/api/health` and the subject catalogue (24 topics) all work on the preview link above.
-- **What I fixed:** the API had been crashing on all deployments, including `main`, because no database was configured. That is fixed on `round3`.
+- **Build:** the preview builds successfully on the Vercel project `frontend-pmvi`.
+- **What I checked in a browser on 23 Nov 2026:** the landing page, `/api/health` and the catalogue (5 subjects, 26 topics, 1,019 questions) all work on the preview.
+- **Database:** the project now has Turso configured for Production, Preview and Development, so data persists.
 - **What is still needed before judging:**
-  - Add `TURSO_DATABASE_URL` and `TURSO_AUTH_TOKEN` to the Vercel project, so data persists. Until then the site uses a temporary per-instance database.
-  - Add `ELEVIA_DEMO_MODE=1`, then run `python scripts/demo.py seed` against that database, so the student demo cards under Try demo work.
-  - Make sure the link judges receive is publicly viewable. Vercel can require a Vercel login for preview links, so either merge to `main` and share the production domain, or turn off preview protection.
+  - Seed the six-month demo into that database from a laptop with the Turso credentials: `python scripts/demo.py reset`.
+  - Add `ELEVIA_DEMO_MODE=1` and `ELEVIA_DEMO_TEACHER_CODE` (a private code, 8+ characters) to the Vercel project.
+  - Merge to `main` and share the production domain. Preview links can ask visitors to log in to Vercel.
 
 ## 12. Limitations and roadmap
 

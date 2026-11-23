@@ -84,20 +84,23 @@ I also reviewed screenshots by eye:
 - the student dashboard, teacher overview and student detail at 1440 px;
 - the "demo is off" state.
 
-## Deployment checks (22 Nov 2026)
+## Deployment checks (23 Nov 2026)
 
-- **Build:** the Vercel `frontend-pmvi` project builds every pushed `round3` commit successfully (GitHub commit status from Vercel). The latest is `cb4c41b`.
-- **Runtime, before the fix:** I opened the preview in a browser. Every `/api/*` call returned `500 FUNCTION_INVOCATION_FAILED`. The `main` branch alias failed the same way.
-  - Vercel's runtime logs showed `sqlite3.OperationalError: unable to open database file`.
-  - The project has **no environment variables** (no `TURSO_DATABASE_URL`), so the app tried to create `elevia.db` in the read-only code directory.
-- **Fix:** commit `cb4c41b`. On Vercel without Turso, the app now uses `/tmp/elevia.db`.
-- **Runtime, after the fix** (`frontend-pmvi-git-round3-…vercel.app`):
+- **Build:** the Vercel `frontend-pmvi` project built the `six-month-demo` branch (commit `a80b721`) successfully.
+- **Preview, opened in a browser** (`frontend-pmvi-git-six-month-demo-…vercel.app`):
   - `/api/health` → 200.
-  - `/api/learn/catalog` → 200, with 4 subjects, 24 topics and 943 questions.
-  - `/api/demo/accounts` → 200 with `enabled: false`, as expected, because `ELEVIA_DEMO_MODE` isn't set.
-  - The landing page and login page render.
+  - The catalogue serves 5 subjects, 26 topics and 1,019 questions.
+  - The landing page renders all 26 topic links, the 4 screenshot tabs, and all nine folders inside the window.
+  - `/api/demo/accounts` → `enabled: false`, as expected, because `ELEVIA_DEMO_MODE` is not set.
+  - The only console error was Vercel's own preview-toolbar script, blocked by ELEVIA's content security policy. Visitors without a Vercel login don't load it.
+- **Environment variables** (names and scopes only; I did not read or change any values):
+  - `TURSO_DATABASE_URL` and `TURSO_AUTH_TOKEN` are now set for Production, Preview and Development, with branch-specific database URLs for `round3` and `backup-before-round3`.
+  - `ELEVIA_DEMO_MODE` and `ELEVIA_DEMO_TEACHER_CODE` are not set.
 - **Not verified on the live site:**
-  - Persistent data. `/tmp` is per instance, so data can disappear when Vercel recycles an instance.
-  - The demo accounts, because they need Turso plus `ELEVIA_DEMO_MODE=1` and a seed.
-  - Email sign-up, because there is no mail provider.
-- **Vercel `frontend` project:** fails on every commit, including ones that build fine on `frontend-pmvi`. It's likely a duplicate project with different settings, and I didn't change or delete it.
+  - The demo accounts and their history. They must be seeded into the Turso database with the owner's credentials (`python scripts/demo.py reset`), and the two demo variables added.
+  - Production. `main` has not been changed.
+- **The `frontend` Vercel project** still fails on every commit. It looks like a duplicate, and I left it untouched.
+
+### Earlier (22 Nov 2026)
+
+- Every `/api/*` call on the previews and on `main` returned 500, because no database was configured and the code directory is read-only. This was fixed on `round3` (commit `cb4c41b`): without Turso, the app falls back to `/tmp/elevia.db`.
