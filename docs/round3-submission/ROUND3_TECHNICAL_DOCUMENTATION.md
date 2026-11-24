@@ -296,7 +296,7 @@ Detailed list: [`../TEST_RESULTS.md`](../TEST_RESULTS.md).
 - **Branch deploys.** Pushing to `main` deploys production; other branches get preview deployments (protected by Vercel Authentication).
 - **Configuration** (names only; values are never in the repository).
   - **Persistence:** `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN` (Production, Preview, Development).
-  - **Demo (Production):** `ELEVIA_DEMO_MODE=1` and `ELEVIA_DEMO_RESET_ON_DEPLOY=1`, both set. `ELEVIA_DEMO_TEACHER_CODE` is a private value the team sets.
+  - **Demo (Production):** `ELEVIA_DEMO_MODE=1`, `ELEVIA_DEMO_RESET_ON_DEPLOY=1` and `ELEVIA_DEMO_TEACHER_CODE` (set by the team as a Sensitive variable; its value isn't recorded anywhere in the repository).
   - **Optional:** `RETEST_DELAY_HOURS`, `ALLOW_EARLY_RETEST`, `EMAIL_MODE=smtp` with `SMTP_*`, and the `LLM_*` settings.
 
 **Verified on the live site (24 Nov 2026, https://frontend-pmvi.vercel.app):**
@@ -310,6 +310,9 @@ Detailed list: [`../TEST_RESULTS.md`](../TEST_RESULTS.md).
 | Student journey (Dev, fractions) | Check-in → suspected gap → double-check confirmed → lesson → practice → **failed retest (1/3): gap stays open, new plan** → practice → retest on 3 new questions → gap closed, mastered; still there after a reload |
 | Speed | 0.3–1 s per answer after moving functions to Mumbai (about 12 s before, with functions in Washington) |
 | Permissions | A student gets nothing from the teacher list and 403 on teacher decisions and the teacher demo login |
+| Teacher demo | Switched on: the teacher card shows the masked code field; wrong or missing codes are refused (403) and create no session. The full teacher journey (overview → evidence → decision with a reason) is verified in the browser run and shown in the video |
+| All topics | All 26 topics in 5 subjects open on the live site, each with a five-question check-in |
+| Riya's history | Monthly answers 12+28+16+23+20+21+21 = 141 = dashboard total; per-subject answers add up to 141; 9 confirmed + 3 rejected + 2 inconclusive = 14 suspected; 8 mastered = 8 passed retests |
 | Landing page | 26 topic links, 4 demo cards, scroll-driven student screens and folders, phone layout without horizontal overflow; screenshots served |
 
 ## 19. Known limitations

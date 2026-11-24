@@ -16,6 +16,8 @@ Everything here is fictional demonstration data. Nothing you do affects real stu
 
 *If the demo section says "The live demo isn't switched on", demo mode is off on the server; please contact the team.*
 
+A silent, captioned video of the same walkthrough is in the repository: `docs/round3-submission/video/elevia-demo.mp4`.
+
 ## 2. Student mode: Riya's dashboard (1 minute)
 
 - **Demonstration account** banner: student ID DEMO-09-001, Class 9 A, ELEVIA Demonstration School, 2026-27.
