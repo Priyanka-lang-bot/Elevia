@@ -9,7 +9,7 @@ ELEVIA is a working web prototype that finds the misconception behind a student'
 | **Live prototype** | https://frontend-pmvi.vercel.app (checked on 24 Nov 2026: opens without a login, demo ready) |
 | **GitHub repository** | https://github.com/Priyanka-lang-bot/Elevia |
 | **Demonstration video** | https://github.com/Priyanka-lang-bot/Elevia/blob/main/docs/round3-submission/video/elevia-demo.mp4 (6 min 57 s, silent with on-screen captions; see the note below) · 3-minute version: https://github.com/Priyanka-lang-bot/Elevia/blob/main/docs/round3-submission/video/elevia-demo-3min.mp4 (2 min 48 s) |
-| **Team / contact** | `[TO FILL IN]` |
+| **Team / contact** | As given in the PRASUNEX submission form |
 
 > The teacher demo opens with an access code that the team gives judges privately; it is not in this repository.
 >
@@ -79,5 +79,5 @@ A classroom pilot with baseline measures; the coming-soon topics; retest reminde
 ELEVIA was built with substantial help from an AI coding assistant, Anthropic's Claude (via Claude Code), working under the team's direction.
 
 - **Written with the assistant:** most of the application code (backend, the four roles, accounts and privacy, front end), the curriculum generation scripts and question banks, the automated and browser tests, the six-month demo generator, the deployment configuration and these documents. In the final round it also merged the pull requests, deployed production and ran the live checks described in the technical documentation.
-- **The team's part:** `[TO FILL IN by the team: e.g. the idea and problem framing, requirements and design decisions for each round, reviewing and testing the results, curriculum choices, the presentation and video]`.
+- **The team's part:** as described by the team in the PRASUNEX submission form.
 - **Traceability:** commits the assistant contributed to carry a `Co-Authored-By: Claude` trailer, and the Git history has not been rewritten.

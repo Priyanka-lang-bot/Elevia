@@ -341,5 +341,5 @@ See [`ROUND3_FUTURE_ROADMAP.md`](ROUND3_FUTURE_ROADMAP.md). In brief:
 ELEVIA was built with substantial help from an AI coding assistant, Anthropic's Claude (via Claude Code), working under the team's direction.
 
 - **Written with the assistant:** most of the application code (backend, the four roles, accounts and privacy, front end), the curriculum generation scripts and question banks, the automated and browser tests, the six-month demo generator, the deployment configuration and these documents. In the final round it also merged the pull requests, deployed production and ran the live checks described in the technical documentation.
-- **The team's part:** `[TO FILL IN by the team: e.g. the idea and problem framing, requirements and design decisions for each round, reviewing and testing the results, curriculum choices, the presentation and video]`.
+- **The team's part:** as described by the team in the PRASUNEX submission form.
 - **Traceability:** commits the assistant contributed to carry a `Co-Authored-By: Claude` trailer, and the Git history has not been rewritten.

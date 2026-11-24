@@ -32,15 +32,14 @@ Deadline: **25 November 2026, 11:00 PM IST**. Status as of 24 Nov 2026.
 |---|---|---|
 | 1 | Open https://frontend-pmvi.vercel.app → Try demo → type your access code on Ananya Mehta's card → check the teacher view opens (Claude didn't use the code) | 24 Nov |
 | 2 | Watch the video once. Optional: record a narrated version on the live site with `ROUND3_DEMO_SCRIPT.md`, or upload the MP4 to YouTube (unlisted) or Drive if the portal wants a streaming link | 25 Nov |
-| 3 | Fill in team/contact details and the team's part of the AI-assistance note (`ROUND3_SUBMISSION_README.md` and section 20 of the technical documentation) | 25 Nov |
+| 3 | In the submission form: team/contact details and what the team did itself (the documents point there) | 25 Nov |
 | 4 | Give judges the teacher access code privately (e.g. the portal's private notes field; never in the repository or the video) | 25 Nov |
 | 5 | Redeploy production just before judging, for a fresh demo (Vercel → Deployments → latest production deployment → ⋯ → Redeploy) | 25 Nov |
 | 6 | Submit on the competition portal | Before 25 Nov, 11:00 PM IST |
 
-## Placeholders to fill in
+## Placeholders
 
-- `[TO FILL IN]` team/contact: `ROUND3_SUBMISSION_README.md`
-- `[TO FILL IN by the team: …]` the team's part: `ROUND3_SUBMISSION_README.md` and `ROUND3_TECHNICAL_DOCUMENTATION.md`
+None left in the documents. Team/contact details and the team's own contribution go in the submission form.
 
 ## Notes
 
