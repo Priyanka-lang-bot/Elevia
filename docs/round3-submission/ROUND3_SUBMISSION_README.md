@@ -6,12 +6,12 @@ ELEVIA is a working web prototype that finds the misconception behind a student'
 
 | | |
 |---|---|
-| **Live prototype** | `[TO FILL IN after the production site is fixed and checked; see SUBMISSION_CHECKLIST.md]` |
+| **Live prototype** | https://frontend-pmvi.vercel.app (checked on 24 Nov 2026: opens without a login, demo ready) |
 | **GitHub repository** | https://github.com/Priyanka-lang-bot/Elevia |
 | **Demonstration video** | `[TO FILL IN: video link]` |
 | **Team / contact** | `[TO FILL IN]` |
 
-> On 23 Nov 2026 the production address `https://frontend-pmvi.vercel.app` was still serving an old build whose API returned errors. Don't submit it as the live link until the checklist step "Production verified" is ticked.
+> The teacher demo opens with an access code that the team gives judges privately; it is not in this repository.
 
 ## Problem
 
@@ -53,9 +53,9 @@ Python 3.13 · FastAPI · Pydantic · SQLite (local) / Turso (hosted SQLite) · 
 | [SUBMISSION_CHECKLIST.md](SUBMISSION_CHECKLIST.md) | Each official requirement mapped to its deliverable and evidence |
 | [../TEST_RESULTS.md](../TEST_RESULTS.md) | Test results in detail |
 
-## Testing (run 23 Nov 2026)
+## Testing (run 24 Nov 2026)
 
-202 automated tests passed on SQLite and 202 on the Turso connector · 26 of 26 browser checks passed with no console errors · build-time validation of all 1,019 questions.
+205 automated tests passed on SQLite and 205 on the Turso connector · 26 of 26 browser checks passed with no console errors · build-time validation of all 1,019 questions · the live site checked by hand: the demo, Riya's history, Dev's full journey including a failed retest, permissions, and the landing page on desktop and phone.
 
 ## Limitations (summary)
 
@@ -64,7 +64,7 @@ Python 3.13 · FastAPI · Pydantic · SQLite (local) / Turso (hosted SQLite) · 
 - **Partial syllabus:** 26 topics; other Class 9 chapters are "coming soon".
 - **Answer formats:** no essay marking; Computer Science is predict-the-output only.
 - **Synthetic demo data:** the six-month history is synthetic and labelled as such.
-- **Live site:** the live site needs the steps in the checklist before judging.
+- **Hosting:** free-tier hosting; not load-tested for many simultaneous users. The demo accounts are shared by everyone using the demo.
 
 Full list: [ROUND3_FEATURE_MATRIX.md](ROUND3_FEATURE_MATRIX.md) and section 19 of the technical documentation.
 
@@ -74,4 +74,8 @@ A classroom pilot with baseline measures; the coming-soon topics; retest reminde
 
 ## AI-assisted development
 
-Much of the code, curriculum scripts, tests and documentation was written with an AI coding assistant (Anthropic's Claude, via Claude Code), under the team's direction and review. Commits it contributed to carry a `Co-Authored-By: Claude` trailer; the Git history has not been rewritten.
+ELEVIA was built with substantial help from an AI coding assistant, Anthropic's Claude (via Claude Code), working under the team's direction.
+
+- **Written with the assistant:** most of the application code (backend, the four roles, accounts and privacy, front end), the curriculum generation scripts and question banks, the automated and browser tests, the six-month demo generator, the deployment configuration and these documents. In the final round it also merged the pull requests, deployed production and ran the live checks described in the technical documentation.
+- **The team's part:** `[TO FILL IN by the team: e.g. the idea and problem framing, requirements and design decisions for each round, reviewing and testing the results, curriculum choices, the presentation and video]`.
+- **Traceability:** commits the assistant contributed to carry a `Co-Authored-By: Claude` trailer, and the Git history has not been rewritten.

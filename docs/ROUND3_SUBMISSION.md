@@ -7,8 +7,8 @@
 
 | | |
 |---|---|
-| GitHub | https://github.com/Priyanka-lang-bot/Elevia (branch `round3`; pull request #1 into `main`) |
-| Live preview | https://frontend-pmvi-git-six-month-demo-priyankawanjari52-8602.vercel.app (see "Live link status" below) |
+| GitHub | https://github.com/Priyanka-lang-bot/Elevia (`main`; Round 3 pull requests #1–#3 merged on 24 Nov 2026) |
+| Live site | https://frontend-pmvi.vercel.app (checked on 24 Nov 2026) |
 | Demo guide | [docs/DEMO_SCRIPT.md](DEMO_SCRIPT.md), 5–7 minutes |
 
 ---

@@ -1,20 +1,24 @@
 # ELEVIA: Demonstration video script (about 6 minutes 50 seconds)
 
-Every action below was performed in a real browser on 23 November 2026, against a freshly seeded demo (the automated browser run plus a manual check of the scene changes). Exact answers are given wherever the presenter types something.
+Every action below was performed in a real browser against a freshly seeded demo: the automated browser run and a manual check of the scene changes on 23 Nov 2026, and the same journeys on the live site on 24 Nov 2026. Exact answers are given wherever the presenter types something.
 
-**Where to record.** Use the production site once the pull requests are merged, the demo variables are set and the demo is seeded (see `SUBMISSION_CHECKLIST.md`). Until then, record on a laptop, which was verified:
+**Where to record.** On the live site, **https://frontend-pmvi.vercel.app**, which was verified on 24 Nov 2026. Before recording:
+1. Make sure the teacher access code is set in Vercel (`ELEVIA_DEMO_TEACHER_CODE`), or the teacher card will say the teacher demo isn't switched on.
+2. Redeploy production (Vercel → Deployments → the latest production deployment → ⋯ → Redeploy). The build resets the demo, so Riya's case is back in the queue, Dev has no history and "upcoming" retests are relative to that day.
+
+**Fallback: record on a laptop.**
 
 ```powershell
-git checkout six-month-demo
+git checkout main
 $env:ELEVIA_DB_PATH = "demo-video.db"
 $env:ELEVIA_DEMO_PASSWORD = "<private>"
-python scripts\demo.py seed
+python scripts\demo.py reset
 $env:ELEVIA_DEMO_MODE = "1"
 $env:ELEVIA_DEMO_TEACHER_CODE = "<private, 8+ characters>"
 python -m uvicorn app:app
 ```
 
-Then open `http://localhost:8000`. Seed on the day you record: the demo's "upcoming" retests are relative to the seed date.
+Then open `http://localhost:8000`.
 
 ---
 
@@ -29,7 +33,7 @@ Then open `http://localhost:8000`. Seed on the day you record: the demo's "upcom
 
 - **Screen:** landing page, "How ELEVIA works" (the stack of books).
 - **Action:** scroll steadily. Each book slides out and opens in turn: Diagnoser, Checker, Planner, Tutor, Retest.
-- **What viewers see:** an open two-page spread for each role.
+- **What viewers see:** an open two-page spread for each role. (Further down, "What's built" works the same way: scrolling opens its nine folders one after another, and "For students" steps through the Dashboard, Double-check, Lesson and Result screens.)
 - **Narration:** "ELEVIA has four roles. The Diagnoser suggests a *possible* gap. The Checker tests it with two new questions before anything is taught. The Planner walks the skill map to find where the lesson should start. The Tutor teaches the missing step, and a retest a day later checks it stuck. These are deterministic, testable rules, not an AI guessing, so the same answers always lead to the same decision."
 
 ## Scene 3. Student dashboard with six months of history (55 s)
@@ -104,8 +108,8 @@ Then open `http://localhost:8000`. Seed on the day you record: the demo's "upcom
 
 - **Screen:** the GitHub repository (or `docs/round3-submission/ROUND3_TECHNICAL_DOCUMENTATION.md`), then `docs/TEST_RESULTS.md`.
 - **Action:** scroll the architecture diagram, then the test summary.
-- **What viewers see:** the architecture diagram; "202 passed" on two databases; "26 of 26 browser checks".
-- **Narration:** "One FastAPI service on Vercel with a Turso database, and a plain JavaScript front end. 202 automated tests pass on both databases, including tests that every number on these dashboards is backed by records. 26 browser checks walk the student, teacher and history journeys."
+- **What viewers see:** the architecture diagram; "205 passed" on two databases; "26 of 26 browser checks".
+- **Narration:** "One FastAPI service on Vercel with a Turso database, and a plain JavaScript front end. 205 automated tests pass on both databases, including tests that every number on these dashboards is backed by records. 26 browser checks walk the student, teacher and history journeys."
 
 ## Scene 9. Limitations and future development (25 s)
 
@@ -127,10 +131,10 @@ Then open `http://localhost:8000`. Seed on the day you record: the demo's "upcom
 **Browser preparation**
 - [ ] Use Chrome or Edge in a fresh profile or guest window, with no extensions, bookmarks bar or saved passwords visible.
 - [ ] Set zoom to 100%, use a full-screen window, and close other tabs.
-- [ ] Do one full rehearsal, then **reset the demo** (`python scripts\demo.py reset`) so Riya's past-tense case is back in the queue and Dev has no history.
+- [ ] Do one full rehearsal, then **reset the demo** (redeploy production, or `python scripts\demo.py reset` locally) so Riya's past-tense case is back in the queue and Dev has no history.
 
 **Demo account preparation**
-- [ ] Seed or reset on the recording day. "Upcoming" retests are relative to the seed date.
+- [ ] Reset on the recording day (a production redeploy does it). "Upcoming" retests are relative to the reset date.
 - [ ] Demo mode is on: the Try demo section shows 3 student cards and a teacher card.
 - [ ] Have the teacher access code ready to paste. Never show it full-screen or say it aloud; the field masks it.
 - [ ] Don't show the terminal window that printed the demo password.

@@ -11,7 +11,7 @@
 | **Parameterised question banks** | Banks run out after repeated failed retests on one skill; generated variants would remove that limit | Maths and Social Science banks are already generated from rules and tables |
 | **Retest reminders** | Students forget delayed retests; a reminder makes the delay useful | The retest schedule already stored per case |
 | **Teacher authoring of questions and misconceptions** | Teachers know the mistakes their class makes; letting them add patterns improves diagnosis locally | The question format and validator |
-| **Continuous integration** | Run the 202 tests and the browser checks on every pull request | The existing test suites |
+| **Continuous integration** | Run the 205 tests and the browser checks on every pull request | The existing test suites |
 
 ## Medium term (3–9 months)
 

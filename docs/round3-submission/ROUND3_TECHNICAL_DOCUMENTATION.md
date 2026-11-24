@@ -1,6 +1,6 @@
 # ELEVIA: Technical documentation
 
-PRASUNEX Innovathon 2026, Round 3 (Prototype Development & Demonstration). Status as of 23 November 2026, code on branch `six-month-demo` (pull request #3). Every number in this document comes from a run that was actually executed; see section 17.
+PRASUNEX Innovathon 2026, Round 3 (Prototype Development & Demonstration). Status as of 24 November 2026, code on `main` (pull requests #3, #2 and #1 merged), live at https://frontend-pmvi.vercel.app. Every number in this document comes from a run that was actually executed; see section 17.
 
 ---
 
@@ -215,7 +215,7 @@ From `/api/progress/students` and `/api/progress/students/{id}`:
 
 A fictional **Class 9 A at ELEVIA Demonstration School (2026-27)**:
 
-| Account | Role | History (from a fresh seed, reference date 23 Nov 2026) |
+| Account | Role | History (from a fresh seed; the same counts for any reference date, checked for 23 and 24 Nov 2026) |
 |---|---|---|
 | Riya Sharma, DEMO-09-001 | Student, Grade 9 | 16 check-ins, 141 graded answers (+49 practice); 9 gaps confirmed, 3 rejected, 2 inconclusive; 14 lessons; retests 8 passed, 3 not; 8 skills mastered; 3 teacher decisions |
 | Arjun Patel, DEMO-09-002 | Student | Integers retest failed twice, then handed to the teacher; a mixed fractions double-check |
@@ -242,6 +242,14 @@ Class totals: 34 learning cases, 373 answers, 5 saved teacher decisions.
 
 **Reset.** `python scripts/demo.py reset` deletes only rows listed in `demo_registry`, then seeds again. A test confirms that a real user created alongside the demo survives.
 
+**Reset on the hosted database.** Seeding issues about 25,000 SQL statements, and Turso answers one statement per HTTP request, so `scripts/demo_sync.py` does it differently:
+1. copy every table from Turso to a local file (this copy is also the backup of the "before" state);
+2. run the same reset on a second local copy;
+3. check that every deleted user and school was a registered demo record;
+4. apply only the difference to Turso in **one transaction** (about 84 requests; a clash rolls everything back).
+
+The Vercel build step (`scripts/vercel_build.py`) runs this **only for production deployments with `ELEVIA_DEMO_RESET_ON_DEPLOY=1`**, so each production redeploy gives judges a fresh demo. A failed reset is logged and leaves the previous demo unchanged. Tests prove that a real user and their learning stay identical.
+
 ## 16. Security and privacy
 
 - **Passwords**: hashed with scrypt; repeated failed logins for an account are blocked for 15 minutes; unknown accounts take the same time to answer.
@@ -255,19 +263,19 @@ Class totals: 34 learning cases, 373 answers, 5 saved teacher decisions.
 
 ## 17. Testing methodology and results
 
-All results below were run on 23 November 2026 on branch `six-month-demo`.
+All results below were run on 24 November 2026 on the code now on `main`.
 
 | Suite | Command | Result |
 |---|---|---|
-| Automated tests (local SQLite) | `python -m pytest -q` | **202 passed, 0 failed** |
-| Same tests through the Turso connector | `ELEVIA_TEST_TURSO=1 python -m pytest -q` | **202 passed, 0 failed** |
+| Automated tests (local SQLite) | `python -m pytest -q` | **205 passed, 0 failed** |
+| Same tests through the Turso connector | `ELEVIA_TEST_TURSO=1 python -m pytest -q` | **205 passed, 0 failed** |
 | Curriculum build validation | `python scripts/build_curriculum.py` | 5 subjects, 26 topics, 58 skills, 86 misconceptions, 1,019 questions, 55 lessons, all valid |
 | Browser end-to-end (headless Chromium) | `python scripts/e2e_browser.py` | **26 of 26 checks passed, 0 console errors** |
 
-The 202 tests cover:
+The 205 tests cover:
 - the full journey **and** a rejected-gap journey for every non-fraction topic (parametrised over 25 topics), plus the fraction journeys;
 - the role rules;
-- accounts, consent, role access, demo login, the teacher access code and reset;
+- accounts, consent, role access, demo login, the teacher access code and reset (local and the fast Turso reset);
 - **data consistency** (every dashboard figure backed by records);
 - determinism, and that the simulated clock can't be changed by any request.
 
@@ -276,26 +284,33 @@ The browser run covers:
 - Riya's six-month history (the monthly table adds up to the dashboard totals);
 - the teacher journey (access code → overview → flagged case evidence → decision with a reason → visible in the history);
 - the parent's restricted view;
+- the landing page's scroll-driven sections (student screens and the nine folders) by scrolling, clicking and keyboard;
 - phone and tablet layouts, no JavaScript, and reduced motion.
 
 Detailed list: [`../TEST_RESULTS.md`](../TEST_RESULTS.md).
 
 ## 18. Deployment architecture
 
-- **Platform.** Vercel project `frontend-pmvi`: `app.py` runs as a Python serverless function (`maxDuration` 30 s), and `public/` is served from the CDN.
-- **Branch deploys.** Pushing to `main` deploys production; other branches get preview deployments.
-- **Configuration.**
-  - **Required for persistence:** `TURSO_DATABASE_URL` and `TURSO_AUTH_TOKEN`. Both are now set for Production, Preview and Development.
-  - **For the demo:** `ELEVIA_DEMO_MODE` and `ELEVIA_DEMO_TEACHER_CODE`. Not set yet.
+- **Platform.** Vercel project `frontend-pmvi`: `app.py` runs as a Python serverless function (`maxDuration` 30 s) in **Mumbai (`bom1`)**, next to the Turso database (`aws-ap-south-1`); `public/` is served from the CDN.
+- **Build step.** `python scripts/vercel_build.py` validates the curriculum and, for production only, resets the demo (section 15).
+- **Branch deploys.** Pushing to `main` deploys production; other branches get preview deployments (protected by Vercel Authentication).
+- **Configuration** (names only; values are never in the repository).
+  - **Persistence:** `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN` (Production, Preview, Development).
+  - **Demo (Production):** `ELEVIA_DEMO_MODE=1` and `ELEVIA_DEMO_RESET_ON_DEPLOY=1`, both set. `ELEVIA_DEMO_TEACHER_CODE` is a private value the team sets.
   - **Optional:** `RETEST_DELAY_HOURS`, `ALLOW_EARLY_RETEST`, `EMAIL_MODE=smtp` with `SMTP_*`, and the `LLM_*` settings.
 
-**Verified status (23 Nov 2026):**
+**Verified on the live site (24 Nov 2026, https://frontend-pmvi.vercel.app):**
 
-| Target | Status |
+| Check | Result |
 |---|---|
-| Preview of `six-month-demo` | Builds. In a browser: `/api/health` 200; 5 subjects, 26 topics, 1,019 questions; landing page renders; demo reports "off" (expected) |
-| Preview access | Protected by Vercel Authentication: visitors must be logged in to the Vercel team. **Judges can't open preview links** |
-| Production `frontend-pmvi.vercel.app` | Serves the **old `main` build (10 Nov)**. Its API returns **500** on every call. Fixed by merging the round 3 pull requests and redeploying |
+| Production deployment | Ready, built from `main` after merging PRs #3, #2 and #1 |
+| Opens without a Vercel login | Yes: production isn't covered by preview protection |
+| Database | Connected (Turso); demo reset wrote 1,098 demo rows in about 34 s during the build |
+| Demo | Enabled and ready; Riya's dashboard shows 141 answers, 8 mastered skills, the lesson in progress, the retest due and the case waiting for her teacher |
+| Student journey (Dev, fractions) | Check-in → suspected gap → double-check confirmed → lesson → practice → **failed retest (1/3): gap stays open, new plan** → practice → retest on 3 new questions → gap closed, mastered; still there after a reload |
+| Speed | 0.3–1 s per answer after moving functions to Mumbai (about 12 s before, with functions in Washington) |
+| Permissions | A student gets nothing from the teacher list and 403 on teacher decisions and the teacher demo login |
+| Landing page | 26 topic links, 4 demo cards, scroll-driven student screens and folders, phone layout without horizontal overflow; screenshots served |
 
 ## 19. Known limitations
 
@@ -304,7 +319,7 @@ Detailed list: [`../TEST_RESULTS.md`](../TEST_RESULTS.md).
 - **Fixed question banks.** Repeated failures on one skill end in teacher review.
 - **Partial curriculum.** 26 topics; many Class 9 chapters (e.g. democracy, the French Revolution, electricity, reading comprehension) are listed as "coming soon".
 - **Answer formats.** Multiple choice, exact numbers and accepted words only; no essay marking. Computer Science is predict-the-output only.
-- **Synthetic demo data.** The six-month history is synthetic, and the demo accounts are shared: reset before judging.
+- **Synthetic demo data.** The six-month history is synthetic, and the demo accounts are shared: a production redeploy resets them.
 - **Optional AI wording** is untested with a real model.
 - **No reminders or notifications.** Parent consent is email ownership plus a declaration, not verifiable parental consent.
 - **Production isn't serving round 3 yet** (section 18).
@@ -318,4 +333,10 @@ See [`ROUND3_FUTURE_ROADMAP.md`](ROUND3_FUTURE_ROADMAP.md). In brief:
 
 ---
 
-*AI-assisted development: much of the code, curriculum scripts, tests and documentation was written with an AI coding assistant (Anthropic's Claude, via Claude Code) under the team's direction and review. Commits it contributed to carry a `Co-Authored-By: Claude` trailer; history has not been rewritten.*
+### AI-assisted development
+
+ELEVIA was built with substantial help from an AI coding assistant, Anthropic's Claude (via Claude Code), working under the team's direction.
+
+- **Written with the assistant:** most of the application code (backend, the four roles, accounts and privacy, front end), the curriculum generation scripts and question banks, the automated and browser tests, the six-month demo generator, the deployment configuration and these documents. In the final round it also merged the pull requests, deployed production and ran the live checks described in the technical documentation.
+- **The team's part:** `[TO FILL IN by the team: e.g. the idea and problem framing, requirements and design decisions for each round, reviewing and testing the results, curriculum choices, the presentation and video]`.
+- **Traceability:** commits the assistant contributed to carry a `Co-Authored-By: Claude` trailer, and the Git history has not been rewritten.

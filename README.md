@@ -129,15 +129,16 @@ Vercel runs `app.py` as one serverless function and serves `public/` from its CD
 1. **Turso:** create a database and copy its `libsql://…` URL and a read-write token. Use a **separate database for previews** so preview demos never touch production data.
 2. **Vercel environment variables** (Project → Settings → Environment Variables):
    - **Required for persistence:** `TURSO_DATABASE_URL`, `TURSO_AUTH_TOKEN`.
+   - **Demo (Production):** `ELEVIA_DEMO_MODE=1` (one-click student demo), `ELEVIA_DEMO_RESET_ON_DEPLOY=1` (each production build resets the demo), and a private `ELEVIA_DEMO_TEACHER_CODE` (8+ characters, the judges' teacher access code).
    - **Optional:**
-     - `ELEVIA_DEMO_MODE=1` for one-click student demo logins;
      - `ELEVIA_DEMO_EMAIL_LINKS=1` to show email links on screen;
      - `EMAIL_MODE=smtp` + `SMTP_*` for real email;
      - `RETEST_DELAY_HOURS`;
      - `ALLOW_EARLY_RETEST`.
 3. **Without Turso**, the function falls back to a temporary SQLite file in `/tmp`. Pages and the API work, but data is per instance and is lost when the instance is recycled. That's fine for a quick look, not for a judged demo.
 4. **Tables** are created on first request (`CREATE TABLE IF NOT EXISTS`). Round 3 only **adds** tables (`learner_links`, `case_topics`, `demo_registry`).
-5. **Demo accounts on Turso** (run from your laptop): put the Turso values in `.env`, then run `python scripts\demo.py seed`. The demo password is published here, so run `python scripts\demo.py reset` or remove the accounts after judging.
+5. **Demo accounts on Turso:** with `ELEVIA_DEMO_RESET_ON_DEPLOY=1`, the build step (`scripts/vercel_build.py`) resets the demo on every production deployment, touching only demo-registered records, in one transaction. From a laptop with the Turso values in `.env`, `python scripts\demo.py reset --fast` does the same. No demo password is stored anywhere: it comes from `ELEVIA_DEMO_PASSWORD` or is generated at random.
+6. **Region:** `vercel.json` runs the functions in `bom1` (Mumbai) because the database is in `aws-ap-south-1`. Keep them in the same region, since every query is a network round trip.
 
 Note: don't add a `pyproject.toml` with a `[project]` table; it breaks Vercel's build.
 

@@ -1,8 +1,8 @@
 # ELEVIA: Judges' quick start (3–5 minutes)
 
-**Open:** `[LIVE PROTOTYPE URL, to be filled in by the team]`. The teacher access code is given to you separately by the team; it is not published.
+**Open:** https://frontend-pmvi.vercel.app (no Vercel or ELEVIA account needed). The teacher access code is given to you separately by the team; it is not published.
 
-Everything here is fictional demonstration data. Nothing you do affects real students, and the team resets the demo between judging sessions.
+Everything here is fictional demonstration data. Nothing you do affects real students, and the team resets the demo before judging. Other judges may be using the same demo accounts at the same time.
 
 ## 1. Enter the demo (no sign-up)
 
