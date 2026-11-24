@@ -57,6 +57,30 @@ function onLandingScroll() {
   scrollHandlers.forEach((f) => f());
 }
 
+/* ------------------------------------------------------------------ scroll stages (shared) */
+// A tall section with a sticky panel: the scroll position inside the section picks which stage is shown.
+// The page always scrolls natively (no scroll-jacking); clicking a stage scrolls to where that stage shows.
+// Only when `mq` matches (wide, tall enough screens); otherwise the section is a normal block with tabs.
+function scrollStages(section, count, mq, onStage) {
+  const navH = () => document.querySelector(".lnav").offsetHeight;
+  const span = () => section.offsetHeight - innerHeight;
+  const live = () => section.classList.contains("live");
+  const update = () => {
+    if (!live()) return;
+    const p = (navH() - section.getBoundingClientRect().top) / Math.max(1, span());
+    onStage(Math.min(count - 1, Math.max(0, Math.floor(p * count))));
+  };
+  const goTo = (i) => {
+    const top = section.getBoundingClientRect().top + scrollY - navH();
+    scrollToY(top + ((i + 0.5) / count) * span());
+  };
+  const apply = () => { section.classList.toggle("live", mq.matches); update(); };
+  mq.addEventListener("change", apply);
+  scrollHandlers.push(update);
+  apply();
+  return { live, goTo };
+}
+
 /* ------------------------------------------------------------------ reveal once (no replays) */
 // Adds .pre (hidden) and later .in (shown) only when IntersectionObserver works and motion is allowed, so the
 // content is always visible without JavaScript, with reduced motion, or if the observer never fires.
@@ -104,13 +128,17 @@ function initShots() {
     img.classList.add("swap");
     setTimeout(swap, 180);
   };
+  // wide screens: scrolling through the section steps Dashboard -> Double-check -> Lesson -> Result
+  const stages = scrollStages(document.getElementById("students"), tabs.length,
+    matchMedia("(min-width: 1001px) and (min-height: 640px)"), (i) => select(tabs[i]));
   tabs.forEach((t, i) => {
-    t.addEventListener("click", () => select(t));
+    t.addEventListener("click", () => (stages.live() ? stages.goTo(i) : select(t)));
     t.addEventListener("keydown", (ev) => {
       const n = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[ev.key];
       if (n === undefined) return;
       ev.preventDefault();
-      select(tabs[(n + tabs.length) % tabs.length], true);
+      const k = (n + tabs.length) % tabs.length;
+      if (stages.live()) { tabs[k].focus(); stages.goTo(k); } else select(tabs[k], true);
     });
   });
 }
@@ -276,8 +304,12 @@ function initFolders() {
     f.classList.toggle("open", k === i);
     tabs[k].setAttribute("aria-expanded", String(k === i));
   });
+  // wide, tall screens: scrolling through the section opens the folders one after another
+  const stages = scrollStages(list.closest("section"), items.length,
+    matchMedia("(min-width: 901px) and (min-height: 700px)"), setOpen);
   tabs.forEach((t, i) => {
     t.addEventListener("click", () => {
+      if (stages.live()) { stages.goTo(i); return; }
       // on phones a tapped open folder closes again; on wide screens one folder is always open
       if (narrow.matches && items[i].classList.contains("open")) setOpen(-1); else setOpen(i);
     });
@@ -287,13 +319,14 @@ function initFolders() {
       if (!d && jump === undefined) return;
       ev.preventDefault();
       const n = jump !== undefined ? jump : (i + d + tabs.length) % tabs.length;
-      tabs[n].focus(); setOpen(n);
+      tabs[n].focus();
+      if (stages.live()) stages.goTo(n); else setOpen(n);
     });
   });
   let timer = 0;
   items.forEach((f, i) => {
     f.addEventListener("mouseenter", () => {
-      if (!fine.matches) return;
+      if (!fine.matches || stages.live()) return;   // while scroll-driven, the scroll position decides
       clearTimeout(timer);
       timer = setTimeout(() => setOpen(i), 90);   // a short delay so sweeping across the stack doesn't flicker
     });

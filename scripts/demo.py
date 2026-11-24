@@ -2,6 +2,7 @@
 
     python scripts/demo.py seed  [--reference-date YYYY-MM-DD]   create the demo (refuses if it already exists)
     python scripts/demo.py reset [--reference-date YYYY-MM-DD]   delete ONLY demo rows (demo_registry), then seed
+    python scripts/demo.py reset --fast       same, for Turso: builds the demo locally and applies only the changes
     python scripts/demo.py status                                show which demo accounts exist
 
 Uses the database configured in .env (local SQLite, or Turso when TURSO_DATABASE_URL is set).
@@ -594,6 +595,7 @@ def _env_reference() -> date | None:
 
 
 def reset(reference_date: date | None = None, password: str | None = None) -> dict:
+    db.init_db()   # a brand-new database has no tables yet (CREATE IF NOT EXISTS; changes nothing otherwise)
     with db.transaction() as conn:
         gone = delete_demo(conn)
     return {"deleted": gone, **seed(reference_date=reference_date, password=password)}
@@ -614,7 +616,11 @@ def main():
     if "--reference-date" in args:
         ref = date.fromisoformat(args[args.index("--reference-date") + 1])
     if cmd in ("seed", "reset"):
-        out = seed("--no-activity" not in args, reference_date=ref) if cmd == "seed" else reset(reference_date=ref)
+        if cmd == "reset" and "--fast" in args:      # Turso: build locally, apply the difference in one go
+            from demo_sync import fast_reset
+            out = fast_reset(reference_date=ref)
+        else:
+            out = seed("--no-activity" not in args, reference_date=ref) if cmd == "seed" else reset(reference_date=ref)
         pw = out.pop("password")
         print(f"Demo {'created' if cmd == 'seed' else 'reset'}: six months of history from {out['period_start']} "
               f"to {out['reference_date']}.")
@@ -626,6 +632,7 @@ def main():
         print("For judges: set ELEVIA_DEMO_MODE=1 (one-click student demo) and ELEVIA_DEMO_TEACHER_CODE "
               "(teacher demo access code) on the server.")
     elif cmd == "status":
+        db.init_db()
         rows = status()
         print("\n".join(f"{r['slug']:8} {r['full_name']:15} {r['role']:12} {r['status']:8} "
                         f"{r['student_code'] or '':12} {r['reference_date'] or ''}" for r in rows) or "No demo accounts.")

@@ -119,17 +119,26 @@ def main():
         step(f"landing: {len(hrefs)} links checked, index of 26 playable topics in 5 subjects (coming-soon titles are not "
              "links), 3 student cards + a teacher card that needs the access code, no secrets in the page, no broken images")
 
-        pg.evaluate("document.getElementById('students').scrollIntoView()"); pg.wait_for_timeout(900)
+        def stage_y(sec, i, n):     # where stage i of n shows in a scroll-driven section
+            return pg.evaluate(f"""(() => {{ const s = document.getElementById('{sec}'), nh = document.querySelector('.lnav').offsetHeight;
+                return s.getBoundingClientRect().top + scrollY - nh + ({i} + 0.5) / {n} * (s.offsetHeight - innerHeight) }})()""")
+        assert pg.evaluate("document.getElementById('students').classList.contains('live')")
+        for i, (tab, img) in enumerate([("st-dash", "shot-dash"), ("st-verify", "shot-verify"),
+                                        ("st-lesson", "shot-lesson"), ("st-result", "shot-result")]):
+            pg.evaluate(f"window.scrollTo({{top: {stage_y('students', i, 4)}, behavior: 'instant'}})"); pg.wait_for_timeout(500)
+            assert pg.get_attribute(f"#{tab}", "aria-selected") == "true", tab
+            assert img in pg.get_attribute("#shot-img", "src"), (tab, pg.get_attribute("#shot-img", "src"))
+            box = pg.evaluate("(() => { const r = document.getElementById('shot-img').getBoundingClientRect(); return [r.top, r.bottom] })()")
+            assert box[0] >= pg.evaluate("document.querySelector('.lnav').offsetHeight") - 1 and box[1] <= pg.evaluate("innerHeight") + 1, box
         assert pg.evaluate("[...document.querySelectorAll('#students .rv')].every(n => n.classList.contains('in'))")
-        pg.focus("#st-dash"); pg.keyboard.press("ArrowRight"); pg.wait_for_timeout(400)
-        assert pg.get_attribute("#st-verify", "aria-selected") == "true" and pg.evaluate("document.activeElement.id") == "st-verify"
+        pg.click("#st-verify"); pg.wait_for_timeout(1600)
+        assert pg.get_attribute("#st-verify", "aria-selected") == "true"
         expect(pg.locator("#shot-cap")).to_contain_text("double-check")
-        assert "shot-verify" in pg.get_attribute("#shot-img", "src")
-        pg.keyboard.press("End"); pg.wait_for_timeout(400)
-        assert pg.get_attribute("#st-result", "aria-selected") == "true" and "shot-result" in pg.get_attribute("#shot-img", "src")
-        pg.click("#st-lesson"); pg.wait_for_timeout(400)
+        pg.focus("#st-verify"); pg.keyboard.press("ArrowRight"); pg.wait_for_timeout(1600)
+        assert pg.get_attribute("#st-lesson", "aria-selected") == "true" and pg.evaluate("document.activeElement.id") == "st-lesson"
         expect(pg.locator("#shot-cap")).to_contain_text("lesson")
-        step("For students: section slides in once; Dashboard/Double-check/Lesson/Result tabs work by click and arrow keys, with captions")
+        step("For students: the screen stays pinned and scrolling steps Dashboard -> Double-check -> Lesson -> Result; "
+             "clicking a tab or arrow keys scroll to that screen")
 
         pg.evaluate("window.scrollTo(0,0)")
         pg.click(".lnav-links a.nav-demo"); pg.wait_for_timeout(700)
@@ -159,17 +168,22 @@ def main():
 
         pg.evaluate("document.getElementById('features').scrollIntoView()"); pg.wait_for_timeout(1200)
         assert pg.evaluate("document.getElementById('folders').classList.contains('in')")       # entrance ran once
+        assert pg.evaluate("document.getElementById('features').classList.contains('live')")
         right = pg.evaluate("Math.max(...[...document.querySelectorAll('#folders .folder-tab')].map(t => t.getBoundingClientRect().right))")
         assert right <= pg.evaluate("innerWidth"), right                                         # all nine fit
-        pg.click("#ft-3"); pg.wait_for_timeout(700)
+        for i in range(9):
+            pg.evaluate(f"window.scrollTo({{top: {stage_y('features', i, 9)}, behavior: 'instant'}})"); pg.wait_for_timeout(700)
+            assert pg.locator(".folder.open").count() == 1 and pg.get_attribute(f"#ft-{i}", "aria-expanded") == "true", i
+            expect(pg.locator(f"#fs-{i}")).to_be_visible()
+        pg.click("#ft-3"); pg.wait_for_timeout(1600)
         assert pg.locator(".folder.open").count() == 1 and pg.get_attribute("#ft-3", "aria-expanded") == "true"
-        expect(pg.locator("#fs-3")).to_be_visible()
-        pg.keyboard.press("ArrowRight"); pg.wait_for_timeout(700)
+        pg.keyboard.press("ArrowRight"); pg.wait_for_timeout(1600)
         assert pg.get_attribute("#ft-4", "aria-expanded") == "true" and pg.evaluate("document.activeElement.id") == "ft-4"
-        pg.hover("#ft-7"); pg.wait_for_timeout(700)
-        assert pg.get_attribute("#ft-7", "aria-expanded") == "true"
-        expect(pg.locator("#fs-7")).to_contain_text("How it works")
-        step("What's built: folders slide in, all nine fit; click, arrow keys and hover open one panel with how it works and what's built")
+        expect(pg.locator("#fs-4")).to_contain_text("How it works")
+        pg.hover("#ft-7"); pg.wait_for_timeout(500)
+        assert pg.get_attribute("#ft-4", "aria-expanded") == "true"                             # scroll decides, not hover
+        step("What's built: pinned drawer; scrolling opens all nine folders one after another; clicking a tab or arrow keys "
+             "scroll to that folder")
 
         pg.evaluate("window.scrollTo(0,0)")
         pg.click(".lnav-links a.btn"); expect(pg.locator("#app h1")).to_contain_text("How would you like")

@@ -347,3 +347,23 @@ body.on-landing{background-attachment:fixed}
 @media (prefers-reduced-motion:reduce){
  #landing *,#landing *::before,#landing *::after{transition-duration:.01ms !important;animation-duration:.01ms !important;transition-delay:0s !important}
 }
+
+/* ---------------------------------------------------------------- scroll stages (students screens, folders)
+   Wide, tall screens only (JS adds .live): the section is taller than the screen, its content stays pinned
+   below the navigation, and the scroll position picks the stage. The page itself scrolls normally. */
+.when-live{display:none}
+.live .when-live{display:inline}
+.live .when-static{display:none}
+@media (min-width:1001px) and (min-height:640px){
+ #students.live{height:calc(100vh + 3 * 60vh);padding:0}
+ #students.live .stage-pin{position:sticky;top:var(--navh);height:calc(100vh - var(--navh));display:flex;align-items:center}
+ #students.live .split{width:100%}
+ #students.live #shot-img{max-height:calc(100vh - var(--navh) - 250px);width:auto;max-width:100%;margin:0 auto;display:block}
+ #students.live .browser{text-align:center}
+}
+@media (min-width:901px) and (min-height:700px){
+ .folders-sec.live{height:calc(100vh + 8 * 30vh);padding:0}
+ .folders-sec.live .stage-pin{position:sticky;top:var(--navh);height:calc(100vh - var(--navh));display:flex;align-items:center}
+ .folders-sec.live .folders-wrap{width:100%}
+ .folders-sec.live .js-folders{height:min(470px, calc(100vh - var(--navh) - 210px))}
+}
