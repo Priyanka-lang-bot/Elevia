@@ -18,6 +18,27 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
 
 
+def _report_region() -> None:
+    """Print the database region and the round-trip time from the build machine (no names, no secrets)."""
+    import re
+    m = re.search(r"\.((?:aws|gcp|fly)-[a-z0-9-]+)\.turso\.io", os.getenv("TURSO_DATABASE_URL", ""))
+    try:
+        from backend import db
+        conn = db.connect()
+        try:
+            conn.execute("SELECT 1")
+            t = time.time()
+            for _ in range(5):
+                conn.execute("SELECT 1")
+            ms = (time.time() - t) / 5 * 1000
+        finally:
+            conn.close()
+        print(f"ELEVIA build: database region {m.group(1) if m else 'unknown'}; "
+              f"{ms:.0f} ms per query from build region {os.getenv('VERCEL_REGION', '?')}.")
+    except Exception as e:  # informational only
+        print(f"ELEVIA build: database check failed ({type(e).__name__}).")
+
+
 def main() -> int:
     from backend.content import validate_all
     validate_all()
@@ -31,6 +52,7 @@ def main() -> int:
     if not os.getenv("TURSO_DATABASE_URL", "").strip():
         print("ELEVIA build: demo reset skipped: no TURSO_DATABASE_URL in this environment.")
         return 0
+    _report_region()
     started = time.time()
     try:
         from demo_sync import fast_reset
