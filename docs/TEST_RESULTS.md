@@ -1,6 +1,6 @@
 # Test results
 
-Every number below comes from runs I actually executed. The latest runs were on 23 Nov 2026, on the `six-month-demo` branch (based on `landing-redesign`, which is based on `round3`).
+Every number below comes from runs I actually executed. The latest runs were on 24 Nov 2026, on `six-month-demo` commit `8166b4b`, which was then merged into `main` (PRs #3, #2, #1).
 
 ## Automated tests (pytest)
 
@@ -9,8 +9,9 @@ Every number below comes from runs I actually executed. The latest runs were on 
 | Baseline before round 3 work (commit `bcb020a`) | **81 passed** |
 | End of round 3 (`round3`, `cb4c41b`) | **185 passed** |
 | Landing redesign (`landing-redesign`, `7992fac`) | **186 passed** |
-| Now, local SQLite: `python -m pytest -q` | **202 passed, 0 failed** |
-| Now, through the Turso connector fake: `ELEVIA_TEST_TURSO=1 python -m pytest -q` | **202 passed, 0 failed** |
+| Six-month demo (23 Nov) | **202 passed** |
+| Now (24 Nov), local SQLite: `python -m pytest -q` | **205 passed, 0 failed** |
+| Now (24 Nov), through the Turso connector fake: `ELEVIA_TEST_TURSO=1 python -m pytest -q` | **205 passed, 0 failed** |
 
 | File | Tests | Covers |
 |---|---|---|
@@ -18,6 +19,7 @@ Every number below comes from runs I actually executed. The latest runs were on 
 | `test_agents.py` | 20 | Diagnoser, Checker, Planner and Tutor rules; AI fallback paths (simulated) |
 | `test_clock.py` | 5 | The seed-only simulated clock: real time by default; moves every clock in the block; always restored, even after an error; no request can change it |
 | `test_demo.py` | 12 | Demo mode off by default; one-click login for each student (HttpOnly, SameSite=Lax, no token in the body); parent and admin demo accounts never one-click; **teacher demo only with the judges' access code** (the code is never sent to the page; short codes count as off; wrong codes refused and rate-limited); demo login never reaches real accounts; rate limit; guarded actions; **reset restores the same state and leaves a real user untouched**; student, teacher and parent dashboards agree; next step, queue and intervention history |
+| `test_demo_sync.py` | 3 | **Fast Turso reset**: builds the demo through the Turso connector, a second reset returns exactly the same counts, a real user and their learning stay byte-for-byte identical; refuses to delete any non-demo user; the Vercel build step resets only for production with `ELEVIA_DEMO_RESET_ON_DEPLOY=1` and never prints the password |
 | `test_demo_history.py` | 5 | **Every dashboard figure is backed by records**. Mastered skills ↔ passed retests (≥ 2/3) recorded by the Checker. Confirmed gaps ↔ the Checker's verdict or a logged teacher decision. Lessons in the history ↔ stored lessons. Teacher actions ↔ saved overrides with reasons. Failed retests ↔ a new plan afterwards. Monthly figures add up to the totals and match the dashboard and the database; all 5 subjects active; upcoming retests have future dates; no early-retest overrides while seeding. Class overview and insights computed from the same records. A teacher review is saved and appears in the history and the intervention list. History endpoints respect permissions. **The same reference date gives an identical history after a reset, with no duplicates** |
 | `test_fractions.py` | 20 | Exact fraction parsing and checking, mistake patterns |
 | `test_learning_journey.py` | 35 | Correct answers, suspected misconception, careless slip, confirmed, rejected, inconclusive, retest pass/fail, replanning, persistence, errors and duplicates, exact maths |
@@ -83,6 +85,10 @@ I also reviewed screenshots by eye:
 - the landing sections at 390, 1024, 1440 and 1920 px;
 - the student dashboard, teacher overview and student detail at 1440 px;
 - the "demo is off" state.
+
+## Deployment checks (24 Nov 2026)
+
+See the production section of `docs/round3-submission/SUBMISSION_CHECKLIST.md` (updated after the live checks).
 
 ## Deployment checks (23 Nov 2026)
 
