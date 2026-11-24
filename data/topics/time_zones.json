@@ -1,0 +1,1114 @@
+{
+ "skills": [
+  {
+   "id": "longitude_and_time",
+   "name": "Longitude and time difference",
+   "grade": 8,
+   "prerequisites": [
+    "lat_long_meaning"
+   ],
+   "description": "4 minutes of time for each degree of longitude."
+  },
+  {
+   "id": "east_west_time",
+   "name": "East is ahead, west is behind",
+   "grade": 8,
+   "prerequisites": [
+    "longitude_and_time"
+   ],
+   "description": "Adding time to the east and subtracting to the west; IST."
+  }
+ ],
+ "misconceptions": {
+  "SS_15_MIN_PER_DEGREE": {
+   "label": "Uses 15 minutes per degree instead of 4",
+   "gap_skill": "longitude_and_time",
+   "explanation": "Mixes up 15° per hour with 15 minutes per degree."
+  },
+  "SS_EAST_IS_BEHIND": {
+   "label": "Thinks places to the east are behind in time",
+   "gap_skill": "east_west_time",
+   "explanation": "Subtracts time when moving east (and adds when moving west)."
+  }
+ },
+ "questions": [
+  {
+   "id": "TZ-DA1",
+   "pool": "diagnostic:time_zones:A",
+   "skill_id": "longitude_and_time",
+   "type": "mcq",
+   "gap_targets": [
+    "longitude_and_time"
+   ],
+   "prompt": "Two places are 30° of longitude apart. How far apart are their local times?",
+   "answer": "2 hours",
+   "hints": [
+    "The Earth turns 360° in 24 hours, so 15° every hour.",
+    "That makes 4 minutes of time for each degree."
+   ],
+   "solution": [
+    "Each degree of longitude is 4 minutes of time.",
+    "30 × 4 = 120 minutes = 2 hours."
+   ],
+   "patterns": {
+    "7 hours 30 minutes": "SS_15_MIN_PER_DEGREE"
+   },
+   "options": [
+    "7 hours 30 minutes",
+    "30 minutes",
+    "2 hours"
+   ]
+  },
+  {
+   "id": "TZ-DA2",
+   "pool": "diagnostic:time_zones:A",
+   "skill_id": "longitude_and_time",
+   "type": "mcq",
+   "gap_targets": [
+    "longitude_and_time"
+   ],
+   "prompt": "Two places are 45° of longitude apart. How far apart are their local times?",
+   "answer": "3 hours",
+   "hints": [
+    "The Earth turns 360° in 24 hours, so 15° every hour.",
+    "That makes 4 minutes of time for each degree."
+   ],
+   "solution": [
+    "Each degree of longitude is 4 minutes of time.",
+    "45 × 4 = 180 minutes = 3 hours."
+   ],
+   "patterns": {
+    "11 hours 15 minutes": "SS_15_MIN_PER_DEGREE"
+   },
+   "options": [
+    "45 minutes",
+    "3 hours",
+    "11 hours 15 minutes"
+   ]
+  },
+  {
+   "id": "TZ-DA3",
+   "pool": "diagnostic:time_zones:A",
+   "skill_id": "east_west_time",
+   "type": "mcq",
+   "gap_targets": [
+    "east_west_time"
+   ],
+   "prompt": "When it is 12:00 at Greenwich (0°), what is the local time at 45°E?",
+   "answer": "15:00",
+   "hints": [
+    "The Sun rises in the east, so places to the east reach noon first.",
+    "East of you: add time. West of you: take time away."
+   ],
+   "solution": [
+    "45° × 4 minutes = 3 hours.",
+    "45°E is east of Greenwich, so add 3 hours: 15:00."
+   ],
+   "patterns": {
+    "09:00": "SS_EAST_IS_BEHIND"
+   },
+   "options": [
+    "15:00",
+    "09:00",
+    "12:45"
+   ]
+  },
+  {
+   "id": "TZ-DA4",
+   "pool": "diagnostic:time_zones:A",
+   "skill_id": "east_west_time",
+   "type": "mcq",
+   "gap_targets": [
+    "east_west_time"
+   ],
+   "prompt": "When it is 12:00 at Greenwich (0°), what is the local time at 30°W?",
+   "answer": "10:00",
+   "hints": [
+    "The Sun rises in the east, so places to the east reach noon first.",
+    "East of you: add time. West of you: take time away."
+   ],
+   "solution": [
+    "30° × 4 minutes = 2 hours.",
+    "30°W is west of Greenwich, so take away 2 hours: 10:00."
+   ],
+   "patterns": {
+    "14:00": "SS_EAST_IS_BEHIND"
+   },
+   "options": [
+    "14:00",
+    "11:30",
+    "10:00"
+   ]
+  },
+  {
+   "id": "TZ-DA5",
+   "pool": "diagnostic:time_zones:A",
+   "skill_id": "longitude_and_time",
+   "type": "mcq",
+   "gap_targets": [
+    "longitude_and_time"
+   ],
+   "prompt": "Two places are 10° of longitude apart. How far apart are their local times?",
+   "answer": "40 minutes",
+   "hints": [
+    "The Earth turns 360° in 24 hours, so 15° every hour.",
+    "That makes 4 minutes of time for each degree."
+   ],
+   "solution": [
+    "Each degree of longitude is 4 minutes of time.",
+    "10 × 4 = 40 minutes = 40 minutes."
+   ],
+   "patterns": {
+    "2 hours 30 minutes": "SS_15_MIN_PER_DEGREE"
+   },
+   "options": [
+    "10 minutes",
+    "40 minutes",
+    "2 hours 30 minutes"
+   ]
+  },
+  {
+   "id": "TZ-DB1",
+   "pool": "diagnostic:time_zones:B",
+   "skill_id": "longitude_and_time",
+   "type": "mcq",
+   "gap_targets": [
+    "longitude_and_time"
+   ],
+   "prompt": "Two places are 60° of longitude apart. How far apart are their local times?",
+   "answer": "4 hours",
+   "hints": [
+    "The Earth turns 360° in 24 hours, so 15° every hour.",
+    "That makes 4 minutes of time for each degree."
+   ],
+   "solution": [
+    "Each degree of longitude is 4 minutes of time.",
+    "60 × 4 = 240 minutes = 4 hours."
+   ],
+   "patterns": {
+    "15 hours": "SS_15_MIN_PER_DEGREE"
+   },
+   "options": [
+    "4 hours",
+    "15 hours",
+    "5 hours"
+   ]
+  },
+  {
+   "id": "TZ-DB2",
+   "pool": "diagnostic:time_zones:B",
+   "skill_id": "longitude_and_time",
+   "type": "mcq",
+   "gap_targets": [
+    "longitude_and_time"
+   ],
+   "prompt": "Two places are 20° of longitude apart. How far apart are their local times?",
+   "answer": "1 hour 20 minutes",
+   "hints": [
+    "The Earth turns 360° in 24 hours, so 15° every hour.",
+    "That makes 4 minutes of time for each degree."
+   ],
+   "solution": [
+    "Each degree of longitude is 4 minutes of time.",
+    "20 × 4 = 80 minutes = 1 hour 20 minutes."
+   ],
+   "patterns": {
+    "5 hours": "SS_15_MIN_PER_DEGREE"
+   },
+   "options": [
+    "5 hours",
+    "20 minutes",
+    "1 hour 20 minutes"
+   ]
+  },
+  {
+   "id": "TZ-DB3",
+   "pool": "diagnostic:time_zones:B",
+   "skill_id": "east_west_time",
+   "type": "mcq",
+   "gap_targets": [
+    "east_west_time"
+   ],
+   "prompt": "When it is 12:00 at Greenwich (0°), what is the local time at 60°E?",
+   "answer": "16:00",
+   "hints": [
+    "The Sun rises in the east, so places to the east reach noon first.",
+    "East of you: add time. West of you: take time away."
+   ],
+   "solution": [
+    "60° × 4 minutes = 4 hours.",
+    "60°E is east of Greenwich, so add 4 hours: 16:00."
+   ],
+   "patterns": {
+    "08:00": "SS_EAST_IS_BEHIND"
+   },
+   "options": [
+    "13:00",
+    "16:00",
+    "08:00"
+   ]
+  },
+  {
+   "id": "TZ-DB4",
+   "pool": "diagnostic:time_zones:B",
+   "skill_id": "east_west_time",
+   "type": "mcq",
+   "gap_targets": [
+    "east_west_time"
+   ],
+   "prompt": "When it is 12:00 at Greenwich (0°), what is the local time at 15°W?",
+   "answer": "11:00",
+   "hints": [
+    "The Sun rises in the east, so places to the east reach noon first.",
+    "East of you: add time. West of you: take time away."
+   ],
+   "solution": [
+    "15° × 4 minutes = 1 hour.",
+    "15°W is west of Greenwich, so take away 1 hour: 11:00."
+   ],
+   "patterns": {
+    "13:00": "SS_EAST_IS_BEHIND"
+   },
+   "options": [
+    "11:00",
+    "13:00",
+    "11:45"
+   ]
+  },
+  {
+   "id": "TZ-DB5",
+   "pool": "diagnostic:time_zones:B",
+   "skill_id": "longitude_and_time",
+   "type": "mcq",
+   "gap_targets": [
+    "longitude_and_time"
+   ],
+   "prompt": "Two places are 75° of longitude apart. How far apart are their local times?",
+   "answer": "5 hours",
+   "hints": [
+    "The Earth turns 360° in 24 hours, so 15° every hour.",
+    "That makes 4 minutes of time for each degree."
+   ],
+   "solution": [
+    "Each degree of longitude is 4 minutes of time.",
+    "75 × 4 = 300 minutes = 5 hours."
+   ],
+   "patterns": {
+    "18 hours 45 minutes": "SS_15_MIN_PER_DEGREE"
+   },
+   "options": [
+    "18 hours 45 minutes",
+    "6 hours",
+    "5 hours"
+   ]
+  },
+  {
+   "id": "TZ-VLAT1",
+   "pool": "verification:longitude_and_time",
+   "skill_id": "longitude_and_time",
+   "type": "mcq",
+   "gap_targets": [
+    "longitude_and_time"
+   ],
+   "prompt": "Two places are 15° of longitude apart. How far apart are their local times?",
+   "answer": "1 hour",
+   "hints": [
+    "The Earth turns 360° in 24 hours, so 15° every hour.",
+    "That makes 4 minutes of time for each degree."
+   ],
+   "solution": [
+    "Each degree of longitude is 4 minutes of time.",
+    "15 × 4 = 60 minutes = 1 hour."
+   ],
+   "patterns": {
+    "3 hours 45 minutes": "SS_15_MIN_PER_DEGREE"
+   },
+   "options": [
+    "15 minutes",
+    "1 hour",
+    "3 hours 45 minutes"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "TZ-VLAT2",
+   "pool": "verification:longitude_and_time",
+   "skill_id": "longitude_and_time",
+   "type": "mcq",
+   "gap_targets": [
+    "longitude_and_time"
+   ],
+   "prompt": "Two places are 90° of longitude apart. How far apart are their local times?",
+   "answer": "6 hours",
+   "hints": [
+    "The Earth turns 360° in 24 hours, so 15° every hour.",
+    "That makes 4 minutes of time for each degree."
+   ],
+   "solution": [
+    "Each degree of longitude is 4 minutes of time.",
+    "90 × 4 = 360 minutes = 6 hours."
+   ],
+   "patterns": {
+    "22 hours 30 minutes": "SS_15_MIN_PER_DEGREE"
+   },
+   "options": [
+    "6 hours",
+    "22 hours 30 minutes",
+    "7 hours"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "TZ-VLAT3",
+   "pool": "verification:longitude_and_time",
+   "skill_id": "longitude_and_time",
+   "type": "mcq",
+   "gap_targets": [
+    "longitude_and_time"
+   ],
+   "prompt": "Two places are 25° of longitude apart. How far apart are their local times?",
+   "answer": "1 hour 40 minutes",
+   "hints": [
+    "The Earth turns 360° in 24 hours, so 15° every hour.",
+    "That makes 4 minutes of time for each degree."
+   ],
+   "solution": [
+    "Each degree of longitude is 4 minutes of time.",
+    "25 × 4 = 100 minutes = 1 hour 40 minutes."
+   ],
+   "patterns": {
+    "6 hours 15 minutes": "SS_15_MIN_PER_DEGREE"
+   },
+   "options": [
+    "6 hours 15 minutes",
+    "25 minutes",
+    "1 hour 40 minutes"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "TZ-VLAT4",
+   "pool": "verification:longitude_and_time",
+   "skill_id": "longitude_and_time",
+   "type": "mcq",
+   "gap_targets": [
+    "longitude_and_time"
+   ],
+   "prompt": "Two places are 105° of longitude apart. How far apart are their local times?",
+   "answer": "7 hours",
+   "hints": [
+    "The Earth turns 360° in 24 hours, so 15° every hour.",
+    "That makes 4 minutes of time for each degree."
+   ],
+   "solution": [
+    "Each degree of longitude is 4 minutes of time.",
+    "105 × 4 = 420 minutes = 7 hours."
+   ],
+   "patterns": {
+    "26 hours 15 minutes": "SS_15_MIN_PER_DEGREE"
+   },
+   "options": [
+    "8 hours",
+    "7 hours",
+    "26 hours 15 minutes"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "TZ-PLAT1",
+   "pool": "practice:longitude_and_time",
+   "skill_id": "longitude_and_time",
+   "type": "mcq",
+   "gap_targets": [
+    "longitude_and_time"
+   ],
+   "prompt": "Two places are 5° of longitude apart. How far apart are their local times?",
+   "answer": "20 minutes",
+   "hints": [
+    "The Earth turns 360° in 24 hours, so 15° every hour.",
+    "That makes 4 minutes of time for each degree."
+   ],
+   "solution": [
+    "Each degree of longitude is 4 minutes of time.",
+    "5 × 4 = 20 minutes = 20 minutes."
+   ],
+   "patterns": {
+    "1 hour 15 minutes": "SS_15_MIN_PER_DEGREE"
+   },
+   "options": [
+    "20 minutes",
+    "1 hour 15 minutes",
+    "5 minutes"
+   ]
+  },
+  {
+   "id": "TZ-PLAT2",
+   "pool": "practice:longitude_and_time",
+   "skill_id": "longitude_and_time",
+   "type": "mcq",
+   "gap_targets": [
+    "longitude_and_time"
+   ],
+   "prompt": "Two places are 40° of longitude apart. How far apart are their local times?",
+   "answer": "2 hours 40 minutes",
+   "hints": [
+    "The Earth turns 360° in 24 hours, so 15° every hour.",
+    "That makes 4 minutes of time for each degree."
+   ],
+   "solution": [
+    "Each degree of longitude is 4 minutes of time.",
+    "40 × 4 = 160 minutes = 2 hours 40 minutes."
+   ],
+   "patterns": {
+    "10 hours": "SS_15_MIN_PER_DEGREE"
+   },
+   "options": [
+    "10 hours",
+    "40 minutes",
+    "2 hours 40 minutes"
+   ]
+  },
+  {
+   "id": "TZ-PLAT3",
+   "pool": "practice:longitude_and_time",
+   "skill_id": "longitude_and_time",
+   "type": "mcq",
+   "gap_targets": [
+    "longitude_and_time"
+   ],
+   "prompt": "Two places are 120° of longitude apart. How far apart are their local times?",
+   "answer": "8 hours",
+   "hints": [
+    "The Earth turns 360° in 24 hours, so 15° every hour.",
+    "That makes 4 minutes of time for each degree."
+   ],
+   "solution": [
+    "Each degree of longitude is 4 minutes of time.",
+    "120 × 4 = 480 minutes = 8 hours."
+   ],
+   "patterns": {
+    "30 hours": "SS_15_MIN_PER_DEGREE"
+   },
+   "options": [
+    "9 hours",
+    "8 hours",
+    "30 hours"
+   ]
+  },
+  {
+   "id": "TZ-PLAT4",
+   "pool": "practice:longitude_and_time",
+   "skill_id": "longitude_and_time",
+   "type": "mcq",
+   "gap_targets": [
+    "longitude_and_time"
+   ],
+   "prompt": "Two places are 35° of longitude apart. How far apart are their local times?",
+   "answer": "2 hours 20 minutes",
+   "hints": [
+    "The Earth turns 360° in 24 hours, so 15° every hour.",
+    "That makes 4 minutes of time for each degree."
+   ],
+   "solution": [
+    "Each degree of longitude is 4 minutes of time.",
+    "35 × 4 = 140 minutes = 2 hours 20 minutes."
+   ],
+   "patterns": {
+    "8 hours 45 minutes": "SS_15_MIN_PER_DEGREE"
+   },
+   "options": [
+    "2 hours 20 minutes",
+    "8 hours 45 minutes",
+    "35 minutes"
+   ]
+  },
+  {
+   "id": "TZ-RLAT1",
+   "pool": "retest:longitude_and_time",
+   "skill_id": "longitude_and_time",
+   "type": "mcq",
+   "gap_targets": [
+    "longitude_and_time"
+   ],
+   "prompt": "Two places are 50° of longitude apart. How far apart are their local times?",
+   "answer": "3 hours 20 minutes",
+   "hints": [
+    "The Earth turns 360° in 24 hours, so 15° every hour.",
+    "That makes 4 minutes of time for each degree."
+   ],
+   "solution": [
+    "Each degree of longitude is 4 minutes of time.",
+    "50 × 4 = 200 minutes = 3 hours 20 minutes."
+   ],
+   "patterns": {
+    "12 hours 30 minutes": "SS_15_MIN_PER_DEGREE"
+   },
+   "options": [
+    "12 hours 30 minutes",
+    "50 minutes",
+    "3 hours 20 minutes"
+   ]
+  },
+  {
+   "id": "TZ-RLAT2",
+   "pool": "retest:longitude_and_time",
+   "skill_id": "longitude_and_time",
+   "type": "mcq",
+   "gap_targets": [
+    "longitude_and_time"
+   ],
+   "prompt": "Two places are 70° of longitude apart. How far apart are their local times?",
+   "answer": "4 hours 40 minutes",
+   "hints": [
+    "The Earth turns 360° in 24 hours, so 15° every hour.",
+    "That makes 4 minutes of time for each degree."
+   ],
+   "solution": [
+    "Each degree of longitude is 4 minutes of time.",
+    "70 × 4 = 280 minutes = 4 hours 40 minutes."
+   ],
+   "patterns": {
+    "17 hours 30 minutes": "SS_15_MIN_PER_DEGREE"
+   },
+   "options": [
+    "4 hours",
+    "4 hours 40 minutes",
+    "17 hours 30 minutes"
+   ]
+  },
+  {
+   "id": "TZ-RLAT3",
+   "pool": "retest:longitude_and_time",
+   "skill_id": "longitude_and_time",
+   "type": "mcq",
+   "gap_targets": [
+    "longitude_and_time"
+   ],
+   "prompt": "Two places are 12° of longitude apart. How far apart are their local times?",
+   "answer": "48 minutes",
+   "hints": [
+    "The Earth turns 360° in 24 hours, so 15° every hour.",
+    "That makes 4 minutes of time for each degree."
+   ],
+   "solution": [
+    "Each degree of longitude is 4 minutes of time.",
+    "12 × 4 = 48 minutes = 48 minutes."
+   ],
+   "patterns": {
+    "3 hours": "SS_15_MIN_PER_DEGREE"
+   },
+   "options": [
+    "48 minutes",
+    "3 hours",
+    "12 minutes"
+   ]
+  },
+  {
+   "id": "TZ-RLAT4",
+   "pool": "retest:longitude_and_time",
+   "skill_id": "longitude_and_time",
+   "type": "mcq",
+   "gap_targets": [
+    "longitude_and_time"
+   ],
+   "prompt": "Two places are 80° of longitude apart. How far apart are their local times?",
+   "answer": "5 hours 20 minutes",
+   "hints": [
+    "The Earth turns 360° in 24 hours, so 15° every hour.",
+    "That makes 4 minutes of time for each degree."
+   ],
+   "solution": [
+    "Each degree of longitude is 4 minutes of time.",
+    "80 × 4 = 320 minutes = 5 hours 20 minutes."
+   ],
+   "patterns": {
+    "20 hours": "SS_15_MIN_PER_DEGREE"
+   },
+   "options": [
+    "20 hours",
+    "5 hours",
+    "5 hours 20 minutes"
+   ]
+  },
+  {
+   "id": "TZ-RLAT5",
+   "pool": "retest:longitude_and_time",
+   "skill_id": "longitude_and_time",
+   "type": "mcq",
+   "gap_targets": [
+    "longitude_and_time"
+   ],
+   "prompt": "Two places are 55° of longitude apart. How far apart are their local times?",
+   "answer": "3 hours 40 minutes",
+   "hints": [
+    "The Earth turns 360° in 24 hours, so 15° every hour.",
+    "That makes 4 minutes of time for each degree."
+   ],
+   "solution": [
+    "Each degree of longitude is 4 minutes of time.",
+    "55 × 4 = 220 minutes = 3 hours 40 minutes."
+   ],
+   "patterns": {
+    "13 hours 45 minutes": "SS_15_MIN_PER_DEGREE"
+   },
+   "options": [
+    "55 minutes",
+    "3 hours 40 minutes",
+    "13 hours 45 minutes"
+   ]
+  },
+  {
+   "id": "TZ-RLAT6",
+   "pool": "retest:longitude_and_time",
+   "skill_id": "longitude_and_time",
+   "type": "mcq",
+   "gap_targets": [
+    "longitude_and_time"
+   ],
+   "prompt": "Two places are 100° of longitude apart. How far apart are their local times?",
+   "answer": "6 hours 40 minutes",
+   "hints": [
+    "The Earth turns 360° in 24 hours, so 15° every hour.",
+    "That makes 4 minutes of time for each degree."
+   ],
+   "solution": [
+    "Each degree of longitude is 4 minutes of time.",
+    "100 × 4 = 400 minutes = 6 hours 40 minutes."
+   ],
+   "patterns": {
+    "25 hours": "SS_15_MIN_PER_DEGREE"
+   },
+   "options": [
+    "6 hours 40 minutes",
+    "25 hours",
+    "6 hours"
+   ]
+  },
+  {
+   "id": "TZ-VEWT1",
+   "pool": "verification:east_west_time",
+   "skill_id": "east_west_time",
+   "type": "mcq",
+   "gap_targets": [
+    "east_west_time"
+   ],
+   "prompt": "When it is 12:00 at Greenwich (0°), what is the local time at 90°E?",
+   "answer": "18:00",
+   "hints": [
+    "The Sun rises in the east, so places to the east reach noon first.",
+    "East of you: add time. West of you: take time away."
+   ],
+   "solution": [
+    "90° × 4 minutes = 6 hours.",
+    "90°E is east of Greenwich, so add 6 hours: 18:00."
+   ],
+   "patterns": {
+    "06:00": "SS_EAST_IS_BEHIND"
+   },
+   "options": [
+    "06:00",
+    "13:30",
+    "18:00"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "TZ-VEWT2",
+   "pool": "verification:east_west_time",
+   "skill_id": "east_west_time",
+   "type": "mcq",
+   "gap_targets": [
+    "east_west_time"
+   ],
+   "prompt": "When it is 12:00 at Greenwich (0°), what is the local time at 45°W?",
+   "answer": "09:00",
+   "hints": [
+    "The Sun rises in the east, so places to the east reach noon first.",
+    "East of you: add time. West of you: take time away."
+   ],
+   "solution": [
+    "45° × 4 minutes = 3 hours.",
+    "45°W is west of Greenwich, so take away 3 hours: 09:00."
+   ],
+   "patterns": {
+    "15:00": "SS_EAST_IS_BEHIND"
+   },
+   "options": [
+    "11:15",
+    "09:00",
+    "15:00"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "TZ-VEWT3",
+   "pool": "verification:east_west_time",
+   "skill_id": "east_west_time",
+   "type": "mcq",
+   "gap_targets": [
+    "east_west_time"
+   ],
+   "prompt": "When it is 12:00 at Greenwich (0°), what is the local time at 75°E?",
+   "answer": "17:00",
+   "hints": [
+    "The Sun rises in the east, so places to the east reach noon first.",
+    "East of you: add time. West of you: take time away."
+   ],
+   "solution": [
+    "75° × 4 minutes = 5 hours.",
+    "75°E is east of Greenwich, so add 5 hours: 17:00."
+   ],
+   "patterns": {
+    "07:00": "SS_EAST_IS_BEHIND"
+   },
+   "options": [
+    "17:00",
+    "07:00",
+    "13:15"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "TZ-VEWT4",
+   "pool": "verification:east_west_time",
+   "skill_id": "east_west_time",
+   "type": "mcq",
+   "gap_targets": [
+    "east_west_time"
+   ],
+   "prompt": "When it is 12:00 at Greenwich (0°), what is the local time at 60°W?",
+   "answer": "08:00",
+   "hints": [
+    "The Sun rises in the east, so places to the east reach noon first.",
+    "East of you: add time. West of you: take time away."
+   ],
+   "solution": [
+    "60° × 4 minutes = 4 hours.",
+    "60°W is west of Greenwich, so take away 4 hours: 08:00."
+   ],
+   "patterns": {
+    "16:00": "SS_EAST_IS_BEHIND"
+   },
+   "options": [
+    "16:00",
+    "11:00",
+    "08:00"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "TZ-PEWT1",
+   "pool": "practice:east_west_time",
+   "skill_id": "east_west_time",
+   "type": "mcq",
+   "gap_targets": [
+    "east_west_time"
+   ],
+   "prompt": "When it is 12:00 at Greenwich (0°), what is the local time at 30°E?",
+   "answer": "14:00",
+   "hints": [
+    "The Sun rises in the east, so places to the east reach noon first.",
+    "East of you: add time. West of you: take time away."
+   ],
+   "solution": [
+    "30° × 4 minutes = 2 hours.",
+    "30°E is east of Greenwich, so add 2 hours: 14:00."
+   ],
+   "patterns": {
+    "10:00": "SS_EAST_IS_BEHIND"
+   },
+   "options": [
+    "12:30",
+    "14:00",
+    "10:00"
+   ]
+  },
+  {
+   "id": "TZ-PEWT2",
+   "pool": "practice:east_west_time",
+   "skill_id": "east_west_time",
+   "type": "mcq",
+   "gap_targets": [
+    "east_west_time"
+   ],
+   "prompt": "When it is 12:00 at Greenwich (0°), what is the local time at 75°W?",
+   "answer": "07:00",
+   "hints": [
+    "The Sun rises in the east, so places to the east reach noon first.",
+    "East of you: add time. West of you: take time away."
+   ],
+   "solution": [
+    "75° × 4 minutes = 5 hours.",
+    "75°W is west of Greenwich, so take away 5 hours: 07:00."
+   ],
+   "patterns": {
+    "17:00": "SS_EAST_IS_BEHIND"
+   },
+   "options": [
+    "07:00",
+    "17:00",
+    "10:45"
+   ]
+  },
+  {
+   "id": "TZ-PEWT3",
+   "pool": "practice:east_west_time",
+   "skill_id": "east_west_time",
+   "type": "mcq",
+   "gap_targets": [
+    "east_west_time"
+   ],
+   "prompt": "When it is 12:00 at Greenwich (0°), what is the local time at 15°E?",
+   "answer": "13:00",
+   "hints": [
+    "The Sun rises in the east, so places to the east reach noon first.",
+    "East of you: add time. West of you: take time away."
+   ],
+   "solution": [
+    "15° × 4 minutes = 1 hour.",
+    "15°E is east of Greenwich, so add 1 hour: 13:00."
+   ],
+   "patterns": {
+    "11:00": "SS_EAST_IS_BEHIND"
+   },
+   "options": [
+    "11:00",
+    "12:15",
+    "13:00"
+   ]
+  },
+  {
+   "id": "TZ-PEWT4",
+   "pool": "practice:east_west_time",
+   "skill_id": "east_west_time",
+   "type": "mcq",
+   "gap_targets": [
+    "east_west_time"
+   ],
+   "prompt": "When it is 12:00 at Greenwich (0°), what is the local time at 90°W?",
+   "answer": "06:00",
+   "hints": [
+    "The Sun rises in the east, so places to the east reach noon first.",
+    "East of you: add time. West of you: take time away."
+   ],
+   "solution": [
+    "90° × 4 minutes = 6 hours.",
+    "90°W is west of Greenwich, so take away 6 hours: 06:00."
+   ],
+   "patterns": {
+    "18:00": "SS_EAST_IS_BEHIND"
+   },
+   "options": [
+    "10:30",
+    "06:00",
+    "18:00"
+   ]
+  },
+  {
+   "id": "TZ-REWT1",
+   "pool": "retest:east_west_time",
+   "skill_id": "east_west_time",
+   "type": "mcq",
+   "gap_targets": [
+    "east_west_time"
+   ],
+   "prompt": "When it is 12:00 at Greenwich (0°), what is the local time at 120°E?",
+   "answer": "20:00",
+   "hints": [
+    "The Sun rises in the east, so places to the east reach noon first.",
+    "East of you: add time. West of you: take time away."
+   ],
+   "solution": [
+    "120° × 4 minutes = 8 hours.",
+    "120°E is east of Greenwich, so add 8 hours: 20:00."
+   ],
+   "patterns": {
+    "04:00": "SS_EAST_IS_BEHIND"
+   },
+   "options": [
+    "20:00",
+    "04:00",
+    "14:00"
+   ]
+  },
+  {
+   "id": "TZ-REWT2",
+   "pool": "retest:east_west_time",
+   "skill_id": "east_west_time",
+   "type": "mcq",
+   "gap_targets": [
+    "east_west_time"
+   ],
+   "prompt": "When it is 12:00 at Greenwich (0°), what is the local time at 105°W?",
+   "answer": "05:00",
+   "hints": [
+    "The Sun rises in the east, so places to the east reach noon first.",
+    "East of you: add time. West of you: take time away."
+   ],
+   "solution": [
+    "105° × 4 minutes = 7 hours.",
+    "105°W is west of Greenwich, so take away 7 hours: 05:00."
+   ],
+   "patterns": {
+    "19:00": "SS_EAST_IS_BEHIND"
+   },
+   "options": [
+    "19:00",
+    "10:15",
+    "05:00"
+   ]
+  },
+  {
+   "id": "TZ-REWT3",
+   "pool": "retest:east_west_time",
+   "skill_id": "east_west_time",
+   "type": "mcq",
+   "gap_targets": [
+    "east_west_time"
+   ],
+   "prompt": "When it is 12:00 at Greenwich (0°), what is the local time at 135°E?",
+   "answer": "21:00",
+   "hints": [
+    "The Sun rises in the east, so places to the east reach noon first.",
+    "East of you: add time. West of you: take time away."
+   ],
+   "solution": [
+    "135° × 4 minutes = 9 hours.",
+    "135°E is east of Greenwich, so add 9 hours: 21:00."
+   ],
+   "patterns": {
+    "03:00": "SS_EAST_IS_BEHIND"
+   },
+   "options": [
+    "14:15",
+    "21:00",
+    "03:00"
+   ]
+  },
+  {
+   "id": "TZ-REWT4",
+   "pool": "retest:east_west_time",
+   "skill_id": "east_west_time",
+   "type": "mcq",
+   "gap_targets": [
+    "east_west_time"
+   ],
+   "prompt": "When it is 12:00 at Greenwich (0°), what is the local time at 50°W?",
+   "answer": "08:40",
+   "hints": [
+    "The Sun rises in the east, so places to the east reach noon first.",
+    "East of you: add time. West of you: take time away."
+   ],
+   "solution": [
+    "50° × 4 minutes = 3 hours 20 minutes.",
+    "50°W is west of Greenwich, so take away 3 hours 20 minutes: 08:40."
+   ],
+   "patterns": {
+    "15:20": "SS_EAST_IS_BEHIND"
+   },
+   "options": [
+    "08:40",
+    "15:20",
+    "11:10"
+   ]
+  },
+  {
+   "id": "TZ-REWT5",
+   "pool": "retest:east_west_time",
+   "skill_id": "east_west_time",
+   "type": "mcq",
+   "gap_targets": [
+    "east_west_time"
+   ],
+   "prompt": "India's Standard Time is set by the meridian at 82°30′E. When it is 06:00 at Greenwich, what time is it in India?",
+   "answer": "11:30",
+   "hints": [
+    "The Sun rises in the east, so places to the east reach noon first.",
+    "East of you: add time. West of you: take time away."
+   ],
+   "solution": [
+    "82.5° × 4 minutes = 330 minutes = 5 hours 30 minutes.",
+    "India is east of Greenwich, so add it: 11:30."
+   ],
+   "patterns": {
+    "00:30": "SS_EAST_IS_BEHIND"
+   },
+   "options": [
+    "00:30",
+    "07:22",
+    "11:30"
+   ]
+  },
+  {
+   "id": "TZ-REWT6",
+   "pool": "retest:east_west_time",
+   "skill_id": "east_west_time",
+   "type": "mcq",
+   "gap_targets": [
+    "east_west_time"
+   ],
+   "prompt": "India's Standard Time is set by the meridian at 82°30′E. When it is 15:00 at Greenwich, what time is it in India?",
+   "answer": "20:30",
+   "hints": [
+    "The Sun rises in the east, so places to the east reach noon first.",
+    "East of you: add time. West of you: take time away."
+   ],
+   "solution": [
+    "82.5° × 4 minutes = 330 minutes = 5 hours 30 minutes.",
+    "India is east of Greenwich, so add it: 20:30."
+   ],
+   "patterns": {
+    "09:30": "SS_EAST_IS_BEHIND"
+   },
+   "options": [
+    "16:22",
+    "20:30",
+    "09:30"
+   ]
+  }
+ ],
+ "lessons": {
+  "longitude_and_time": {
+   "title": "Four minutes for every degree",
+   "big_idea": "The Earth turns a full 360° in 24 hours. That is 15° every hour, or 4 minutes for every degree of longitude. A common slip is to use 15 minutes per degree, which makes every answer far too big.",
+   "steps": [
+    "Find how many degrees of longitude apart the places are.",
+    "Multiply by 4 to get minutes.",
+    "Turn the minutes into hours and minutes.",
+    "Check: 15° should always come out as exactly 1 hour."
+   ],
+   "sense_check": "India spans about 30° of longitude, so the Sun rises about 2 hours earlier in Arunachal Pradesh than in Gujarat, not 7½ hours.",
+   "worked_examples": [
+    {
+     "prompt": "Two places are 30° of longitude apart. How far apart are their local times?",
+     "answer": "2 hours",
+     "steps": [
+      "30 × 4 = 120 minutes.",
+      "120 minutes = 2 hours."
+     ]
+    }
+   ]
+  },
+  "east_west_time": {
+   "title": "East is ahead, west is behind",
+   "big_idea": "The Sun rises in the east, so places to the east of Greenwich have reached later in the day. Going east you add time; going west you take time away.",
+   "steps": [
+    "Work out the time difference (4 minutes per degree).",
+    "Is the place east (E) or west (W) of Greenwich?",
+    "East: add the difference. West: subtract it.",
+    "India (82°30′E) is 5 hours 30 minutes ahead of Greenwich."
+   ],
+   "sense_check": "When it is noon in London, offices in India are already open for the afternoon.",
+   "worked_examples": [
+    {
+     "prompt": "When it is 12:00 at Greenwich, what is the local time at 45°E?",
+     "answer": "15:00",
+     "steps": [
+      "45 × 4 = 180 minutes = 3 hours.",
+      "45°E is east, so add: 12:00 + 3 hours = 15:00."
+     ]
+    }
+   ]
+  }
+ }
+}

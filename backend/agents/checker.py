@@ -59,7 +59,8 @@ def select_retest(gap_skill: str, seen_ids: set[str]) -> dict:
 
 
 def retest_available_at(delay_hours: float, now: Optional[datetime] = None) -> str:
-    now = now or datetime.now(timezone.utc)
+    from .. import clock
+    now = now or clock.now()
     return (now + timedelta(hours=delay_hours)).replace(microsecond=0).isoformat()
 
 

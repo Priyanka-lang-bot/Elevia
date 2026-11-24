@@ -20,7 +20,7 @@ from typing import Optional
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel, Field
 
-from . import db, orchestrator as orch
+from . import db, history, orchestrator as orch
 from .accounts.routes import active_user
 from .accounts.errors import AccountError
 from .config import get_settings
@@ -240,7 +240,7 @@ def _retest_info(case: dict, retest: Optional[dict]) -> Optional[dict]:
     seconds = 0
     if not unlocked:
         try:
-            seconds = max(0, int((datetime.fromisoformat(avail) - datetime.now(timezone.utc)).total_seconds()))
+            seconds = max(0, int((datetime.fromisoformat(avail) - datetime.fromisoformat(now)).total_seconds()))
         except ValueError:
             seconds = 0
     return {"available_at": avail, "unlocked": unlocked, "seconds_left": seconds,
@@ -548,7 +548,19 @@ def state(topic: str = DEFAULT_TOPIC, user: dict = Depends(learner)):
 @router.get("/dashboard")
 def dashboard(user: dict = Depends(learner)):
     with db.transaction() as conn:
-        return build_dashboard(conn, user)
+        out = build_dashboard(conn, user)
+        out["demo"] = history.demo_profile(conn, user["id"])
+        return out
+
+
+@router.get("/history")
+def my_history(user: dict = Depends(learner)):
+    """Six-month learning timeline, subject progress and skill map for the logged-in student."""
+    with db.transaction() as conn:
+        student = _linked_student(conn, user)
+        if student is None:
+            return {"started": False, "demo": history.demo_profile(conn, user["id"])}
+        return {"started": True, **history.student_history(conn, student, user["id"], show_gaps=True)}
 
 
 @router.post("/start")

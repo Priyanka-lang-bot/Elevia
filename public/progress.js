@@ -36,6 +36,7 @@ async function progressPanels(me) {
           el("span", { class: "hint", text: "Waiting since " + fmt(q.since) })),
         el("a", { class: "btn small main", href: `#/progress/${q.user_id}`, text: "Review" }))))
         : el("p", { class: "hint", text: "Nothing waiting. Cases appear here when ELEVIA isn't sure and needs your decision." })));
+    for (const g of data.groups) if (g.overview) out.push(...classOverview(g.overview, g.label));
   }
   out.push(panel(head, ...data.groups.map((g) => el("div", { class: "pgroup" },
     teacher || data.groups.length > 1 ? el("h3", { text: g.label }) : null,
@@ -47,7 +48,8 @@ async function progressPanels(me) {
     teacher ? el("div", { class: "table-wrap" }, el("table", { class: "ptable" },
       el("thead", {}, el("tr", {}, ["Student", "Now working on", "Confirmed gaps", "Mastered", "Answers right", ""].map((h) => el("th", { scope: "col", text: h })))),
       el("tbody", {}, g.students.map((s) => el("tr", {},
-        el("th", { scope: "row" }, s.name, s.needs_review ? pill("needs review", "bad") : null),
+        el("th", { scope: "row" }, s.name, s.student_code ? el("span", { class: "hint", text: ` ${s.student_code}` }) : null,
+          s.needs_review ? pill("needs review", "bad") : null),
         el("td", { text: s.started ? (s.active.map((a) => `${a.topic}: ${a.stage_label}`).join("; ") || "Nothing in progress") : "Not started yet" }),
         el("td", { text: String(s.confirmed_gaps) }),
         el("td", { text: String(s.skills_mastered) }),
@@ -80,7 +82,15 @@ async function progressDetailView(uid) {
       el("p", { class: "hint", style: "margin:0", text: `Access: ${{ teacher_class: "you teach this student's class", parent_link: "parent (with your child's consent)", share_grant: "shared with you by the learner" }[d.access_via] || d.access_via}` }),
       d.started ? el("div", { class: "stats" }, stat(d.summary.topics_started, "Topics started"), stat(d.summary.confirmed_gaps, "Verified gaps open"),
         stat(d.summary.skills_mastered, "Skills mastered"), stat(d.summary.answers ? `${d.summary.correct}/${d.summary.answers}` : "0", "Answers correct")) : null)];
+  if (d.demo) parts.push(demoBanner(d.demo));
   if (!d.started) parts.push(panel("Not started", el("p", { class: "hint", text: "This student hasn't begun any topic yet." })));
+  if (d.started) {
+    try {
+      const h = await api("GET", `/progress/students/${uid}/history`);
+      parts.push(...historyPanels(h, d.name.split(" ")[0]));
+    } catch (e) { parts.push(panel("Learning history", el("p", { class: "alert bad", text: e.detail }))); }
+    if (d.topics.length) parts.push(el("h2", { class: "sec-title", text: d.can_review ? "Evidence and review, topic by topic" : "Topic by topic" }));
+  }
   for (const t of d.topics) {
     parts.push(el("section", { class: "panel" }, el("h2", { text: t.topic }),
       el("div", { class: "chips" }, t.skills.map((s) => el("span", { class: "chip" + (s.status === "Mastered" ? " ok" : s.status === "Needs practice" ? " warn" : ""), text: `${s.name}: ${s.status}` }))),
@@ -97,9 +107,12 @@ function roundCard(me, d, r) {
     box.append(el("dl", { class: "facts" },
       el("dt", { text: "Gap" }), el("dd", { text: `${g.skill} · ${g.status_label}` }),
       g.misconception ? [el("dt", { text: "Misconception" }), el("dd", { text: `${g.misconception}. ${g.explanation || ""}` })] : null,
-      g.checker_reason ? [el("dt", { text: "Double-check" }), el("dd", { text: g.checker_reason })] : null,
+      g.checker_reason ? [el("dt", { text: "Checker's verdict" }), el("dd", { text: g.checker_reason })] : null,
       g.verified_by ? [el("dt", { text: "Verified by" }), el("dd", { text: g.verified_by.startsWith("teacher:") ? "Teacher: " + g.verified_by.slice(8) : "Automatic double-check" })] : null,
-      g.evidence.length ? [el("dt", { text: "Evidence" }), el("dd", {}, el("ul", {}, g.evidence.map((e) => el("li", { text: `${e.prompt}  →  answered ${e.answer}` }))))] : null,
+      g.hypothesis ? [el("dt", { text: "Diagnoser" }), el("dd", { text: g.hypothesis })] : null,
+      g.evidence.length ? [el("dt", { text: "Check-in answers" }), el("dd", {}, el("ul", {}, g.evidence.map((e) => el("li", { text: `${e.prompt}  →  answered ${e.answer}` }))))] : null,
+      g.check_evidence && g.check_evidence.length ? [el("dt", { text: "Double-check answers" }), el("dd", {}, el("ul", {}, g.check_evidence.map((e) =>
+        el("li", { text: `${e.prompt}  →  answered ${e.answer} (${e.correct ? "right" : e.supports_gap ? "same mistake again" : "a different mistake"})` }))))] : null,
       g.retests.length ? [el("dt", { text: "Retests" }), el("dd", { text: g.retests.map((x) => `${x.score.correct}/${x.score.total} ${x.passed ? "passed" : "not passed"}`).join(", ") })] : null));
   }
   if (r.plan) box.append(el("p", { class: "hint", style: "margin:0" }, el("strong", { text: "Plan: " }), `${r.plan.focus}. ${r.plan.rationale}`));

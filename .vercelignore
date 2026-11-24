@@ -1,6 +1,9 @@
 tests/
 frontend/
-scripts/
+scripts/*
+!scripts/vercel_build.py
+!scripts/demo_sync.py
+!scripts/demo.py
 *.db
 .venv/
 venv/

@@ -12,8 +12,8 @@ See TEST_RESULTS.md.
 | Area | Feature | Status |
 |---|---|---|
 | Landing | Notebook redesign: marked-up worksheet (scroll sequence), book stack for the roles (scroll + click), folder drawer for features (hover/tap/keys), curriculum index (live, coming-soon not linked), combined verify/about/closing spread, real screenshots | BUILT · TESTED (browser: desktop, tablet, phone, no-JS, reduced motion) |
-| Demo | "Try demo" in the navigation and hero; one-click login for the 3 fictional **student** accounts (env-gated, registry-only, rate-limited, normal sessions, guarded actions). Teacher/parent/admin demo accounts refused one-click (403), password login only | BUILT · TESTED (API + browser) |
-| Demo | Seed and reset of the demo school through the real routes; reset deletes only registry rows | BUILT · TESTED (incl. real user survives reset) |
+| Demo | "Try demo" in the navigation and hero; one-click login for the fictional **student** accounts (env-gated, registry-only, rate-limited, normal sessions, guarded actions); **teacher demo only with the judges' access code** (server secret, constant-time compare, rate-limited); parent/admin never one-click; no demo password in the repo | BUILT · TESTED (API + browser) |
+| Demo | **Six-month Class 9 demo** (Riya Sharma DEMO-09-001 + 4 classmates, teacher Ananya Mehta): real routes on a seed-only simulated calendar, configurable reference date, deterministic, labelled as a demonstration account; reset deletes only registry rows and recreates the same history | BUILT · TESTED (consistency, determinism, real user survives reset) |
 | Landing | Responsive (desktop/phone), mobile menu, no horizontal overflow, smooth in-page nav, no dead links | BUILT · TESTED (browser) |
 | Landing | SEO title/description, static crawlable HTML | BUILT |
 | Accounts | Three sign-up pathways, parent consent, school codes + teacher approval, email verification, password reset | BUILT · TESTED (existing suite) |
@@ -22,9 +22,10 @@ See TEST_RESULTS.md.
 | Curriculum | Subject → topic → skill → misconception → questions → lessons, cross-topic prerequisites, build-time validation | BUILT · TESTED |
 | Mathematics | Fractions, decimals, percentages, integers, linear equations, order of operations, factors and multiples, ratio and proportion, perimeter and area, averages, angles: full journey | BUILT · TESTED (every topic end to end) |
 | Science | Forces and motion, states of matter, scientific reasoning (fair tests): full journey | BUILT · TESTED |
+| Social Science | Latitude and longitude; time zones and Indian Standard Time (Class 9 geography): full journey, computed answers | BUILT · TESTED |
 | English | Past tense verbs, subject–verb agreement, parts of speech, apostrophes: full journey | BUILT · TESTED |
 | Computer Science | Variables, loops, data types, conditionals, logical reasoning, algorithms: predict-the-output, answers verified by execution at build time, student input never executed | BUILT · TESTED |
-| Other topics | Probability, area of circles, volume, graphs, heat, light, electric circuits, photosynthesis, reading comprehension, sentence construction, vocabulary, functions, lists, sorting | PLANNED (shown as "coming soon" in the app) |
+| Other topics | Probability, area of circles, volume, graphs, heat, light, electric circuits, photosynthesis, reading comprehension, sentence construction, vocabulary, physical features of India, drainage, climate, democracy, the French Revolution, poverty, functions, lists, sorting | PLANNED (shown as "coming soon" in the app) |
 | Diagnoser | Pattern-based suspected gap, careless-slip alternative, unclassified mistakes | BUILT · TESTED |
 | Checker | 2 new questions; confirmed / rejected / inconclusive; retest 2 of 3; mastery | BUILT · TESTED |
 | Planner | Verified gaps only; prerequisite chain walk; teacher-forced focus | BUILT · TESTED |
@@ -32,10 +33,10 @@ See TEST_RESULTS.md.
 | Tutor/Diagnoser | Optional AI wording with validation and fallback | BUILT · SIMULATED (no real provider call made) |
 | Retest | Delay (`RETEST_DELAY_HOURS`, default 24), demo shortcut (`ALLOW_EARLY_RETEST`), new questions only | BUILT · TESTED |
 | Replanning | Failed retest → gap stays open → new plan, lesson, practice, new retest | BUILT · TESTED (fractions and loops) |
-| Student dashboard | "What to do next" card, stats, continue learning, upcoming retests, open gaps, subjects/topics with progress, planned topics, history | BUILT · TESTED (API + browser) |
+| Student dashboard | "What to do next" card, stats, continue learning, upcoming retests, open gaps, **six-month timeline (monthly chart + table)**, **progress by subject**, **skill map**, **learning history with subject filter**, subjects/topics, planned topics | BUILT · TESTED (API + browser) |
 | Persistence | Progress saved per answer; resumes after reload / new login; duplicate submissions recorded once | BUILT · TESTED |
 | Error handling | Crash during processing keeps answers → teacher review; friendly errors; loading/empty states | BUILT · TESTED |
-| Teacher portal | Own classes only; review queue with reasons; intervention history; confirmed-gaps column; class insights; student detail (gaps, evidence, Checker reasons, assessments, mastery); confirm/reject/focus/note with reason; audit trail | BUILT · TESTED (API + browser) |
+| Teacher portal | Own classes only; review queue with reasons; **class overview** (needs attention, upcoming retests, by subject, monthly class trend); **class insights** (difficult topics, frequent misconceptions, repeated failed retests, most improved, recently mastered); intervention history; student detail with the six-month timeline, skill map, Diagnoser hypothesis, check-in and double-check answers; student detail (gaps, evidence, Checker reasons, assessments, mastery); confirm/reject/focus/note with reason; audit trail | BUILT · TESTED (API + browser) |
 | Parent view | Plain-language summary card per child, within consent scopes, no controls | BUILT · TESTED |
 | Shared view | Adult learner shares chosen scopes with anyone | BUILT · TESTED |
 | Teacher escalation | Automatic after 3 failed cycles | PARTIAL: when the question bank for a skill runs out (after the 2nd failed retest) the case goes to teacher review |

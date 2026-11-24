@@ -13,7 +13,7 @@ from typing import Optional
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel, Field
 
-from . import db, orchestrator as orch
+from . import db, history, orchestrator as orch
 from .accounts import permissions
 from .accounts.errors import AccountError
 from .accounts.routes import active_user
@@ -179,6 +179,12 @@ def students(user: dict = Depends(active_user)):
                 "needs_review": sum(s["needs_review"] for s in st),
                 "common_gaps": [{"label": k, "students": v} for k, v in common.get(label, Counter()).most_common(5)],
             } if user["role"] == "teacher" else None
+            if user["role"] == "teacher" and g["class_id"] is not None:
+                g["overview"] = history.class_overview(conn, [
+                    {"user_id": s["user_id"], "name": s["name"], "student": _student_of(conn, s["user_id"])} for s in st])
+            for s in st:
+                d = history.demo_profile(conn, s["user_id"])
+                s["student_code"] = d["student_code"] if d else None
             out.append(g)
         return {"role": user["role"], "groups": out, "queue": queue, "interventions": interventions[:15]}
 
@@ -194,6 +200,7 @@ def student_detail(user_id: int, user: dict = Depends(active_user)):
         student = _student_of(conn, user_id)
         base = {"user_id": user_id, "name": person["full_name"], "access_via": via, "can_review": can_review,
                 "can_see_gaps": can_gaps, "can_see_assessments": can_assess}
+        base["demo"] = history.demo_profile(conn, user_id)
         if student is None:
             return {**base, "started": False, "topics": [], "skills": []}
         mastery = {r["skill_id"]: dict(r) for r in conn.execute(
@@ -224,6 +231,10 @@ def student_detail(user_id: int, user: dict = Depends(active_user)):
                                 "checker_reason": ver_reason,
                                 "evidence": [{"prompt": e.get("prompt"), "answer": e.get("answer")}
                                              for e in (ev.get("diagnosis") or [])][:4],
+                                "check_evidence": [{"prompt": e.get("prompt"), "answer": e.get("answer"),
+                                                    "correct": bool(e.get("is_correct")),
+                                                    "supports_gap": bool(e.get("supports_gap"))}
+                                                   for e in (ev.get("verification") or [])],
                                 "retests": [{"score": x.get("score"), "passed": x.get("passed")}
                                             for x in ev.get("retests", [])]}
                 if d["plan"] and can_gaps:
@@ -250,6 +261,19 @@ def student_detail(user_id: int, user: dict = Depends(active_user)):
         teachable = [{"skill_id": s, "name": skill_name(s)} for s in sorted(lessons(), key=skill_name)] if can_review else []
         return {**base, "started": True, "grade": student["grade"], "summary": _summary(conn, student),
                 "topics": topic_out, "teachable_skills": teachable}
+
+
+@router.get("/students/{user_id}/history")
+def student_history(user_id: int, user: dict = Depends(active_user)):
+    """The same six-month history the student sees, for a teacher of their class or a parent/viewer with permission.
+    Misconception names and the Checker's reasons are shown only to viewers allowed to see gaps."""
+    with db.transaction() as conn:
+        permissions.require(conn, user, user_id, "progress")      # logs the access
+        can_gaps = bool(permissions.access_via(conn, user, user_id, "gaps"))
+        student = _student_of(conn, user_id)
+        if student is None:
+            return {"started": False, "demo": history.demo_profile(conn, user_id)}
+        return {"started": True, **history.student_history(conn, student, user_id, show_gaps=can_gaps)}
 
 
 def _teacher_case(case_id: int, user: dict) -> str:

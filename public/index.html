@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="/landing.css">
 <script src="/decor.js" defer></script>
 <script src="/app.js" defer></script>
+<script src="/history.js" defer></script>
 <script src="/learn.js" defer></script>
 <script src="/progress.js" defer></script>
 <script src="/landing.js" defer></script>
@@ -50,7 +51,7 @@
       <a class="btn main big" href="#/start">Get started</a>
       <a class="btn big btn-demo" href="#demo" data-scroll>Try the demo</a>
     </div>
-    <p class="hero-note"><a href="#how" data-scroll>See how it works</a> <span class="hint" id="hero-counts">4 subjects, 24 topics. Every answer is checked by fixed rules, not guessed by AI.</span></p>
+    <p class="hero-note"><a href="#how" data-scroll>See how it works</a> <span class="hint" id="hero-counts">5 subjects, 26 topics. Every answer is checked by fixed rules, not guessed by AI.</span></p>
   </div>
   <div class="hero-art">
     <figure class="polaroid p-main">
@@ -70,9 +71,9 @@
 <section class="demo-sec" id="demo" aria-labelledby="demo-h">
   <div class="wrap demo-wrap">
     <div class="demo-intro">
-      <h2 class="sec-h left" id="demo-h">Try ELEVIA as a student</h2>
-      <p class="sec-p left">No sign-up. Each card opens a fictional student account with a normal, secure session, so you can work through a real topic.</p>
-      <p class="hint">Teacher and parent views use separate demo logins that the team shares with judges.</p>
+      <h2 class="sec-h left" id="demo-h">Try the ELEVIA demo</h2>
+      <p class="sec-p left">No sign-up. Riya Sharma's card opens six months of real learning history across five subjects; Dev Kapoor starts from nothing so you can run a topic live.</p>
+      <p class="hint">Every card opens a fictional account with a normal, secure session. The teacher view needs the judges' access code from the ELEVIA team.</p>
     </div>
     <div class="demo-grid" id="demo-grid" aria-live="polite">
       <p class="demo-wait hint">Checking whether the live demo is available…</p>
@@ -167,7 +168,7 @@
             <div class="leaf-l"><span class="pg" aria-hidden="true">1</span>
               <p class="leaf-kicker">Suggests a possible gap</p>
               <h3>Diagnoser</h3>
-              <p>Reads the five check-in answers and matches each wrong one against 82 named misconception patterns. A single mistake is flagged as a possible slip.</p>
+              <p>Reads the five check-in answers and matches each wrong one against 86 named misconception patterns. A single mistake is flagged as a possible slip.</p>
             </div>
             <div class="leaf-r"><span class="pg" aria-hidden="true">2</span>
               <p class="margin-note">½ + ⅓ = 2/5 matches "adds the tops and the bottoms".</p>
@@ -254,86 +255,115 @@
 
 <!-- ============================================================ what's built: folder stack -->
 <section class="sec-block folders-sec" id="features" aria-labelledby="features-h">
+  <div class="stage-pin">
   <div class="wrap folders-wrap">
     <div class="folders-intro">
       <h2 class="sec-h left" id="features-h">What's built</h2>
       <p class="sec-p left">Nine working parts. Each one runs in the current version and is covered by automated tests.</p>
-      <p class="hint folders-how">Point at a folder, or tap it, to open it.</p>
+      <p class="hint folders-how"><span class="when-static">Point at a folder, tap it, or use the arrow keys to open it.</span><span class="when-live">Keep scrolling to open each folder in turn, or click a tab.</span></p>
     </div>
     <ul class="folders" id="folders">
       <li class="folder open" style="--i:0;--s:#dfe4f8">
         <button class="folder-tab" type="button" id="ft-0" aria-expanded="true" aria-controls="fs-0"><span>Misconception detection</span></button>
         <div class="folder-sheet" id="fs-0" role="region" aria-labelledby="ft-0">
           <h3>Misconception detection</h3>
-          <p>Wrong answers are matched to named misconceptions, each tied to the skill it points to.</p>
-          <p class="evidence">82 patterns across 24 topics</p>
+          <p class="what">Wrong answers are matched to named misconceptions, each tied to the skill it points to.</p>
+          <dl class="fs-facts">
+            <div><dt>How it works</dt><dd>The Diagnoser compares every check-in answer with the known wrong answers for that question. One match is treated as a possible slip; the same rule showing up again makes a suspected gap.</dd></div>
+            <div><dt>What's built</dt><dd>86 named misconceptions across 26 topics, each topic tested end to end.</dd></div>
+          </dl>
         </div>
       </li>
       <li class="folder" style="--i:1;--s:#f8dfe6">
         <button class="folder-tab" type="button" id="ft-1" aria-expanded="false" aria-controls="fs-1"><span>Verify before you teach</span></button>
         <div class="folder-sheet" id="fs-1" role="region" aria-labelledby="ft-1">
           <h3>Verify before you teach</h3>
-          <p>No lesson is planned for a gap until new questions, or a teacher, confirm it.</p>
-          <p class="evidence">2 new questions per suspected gap</p>
+          <p class="what">No lesson is planned for a gap until new evidence supports it.</p>
+          <dl class="fs-facts">
+            <div><dt>How it works</dt><dd>The Checker asks two new questions aimed at the same misconception. The same mistake again confirms the gap; all right rejects it as a slip; a different mistake sends it to the teacher.</dd></div>
+            <div><dt>What's built</dt><dd>The Planner refuses unverified gaps. That rule is enforced in code and covered by tests.</dd></div>
+          </dl>
         </div>
       </li>
       <li class="folder" style="--i:2;--s:#e1eadd">
         <button class="folder-tab" type="button" id="ft-2" aria-expanded="false" aria-controls="fs-2"><span>Plans from a skill map</span></button>
         <div class="folder-sheet" id="fs-2" role="region" aria-labelledby="ft-2">
           <h3>Plans from a skill map</h3>
-          <p>Prerequisites decide where a learning plan starts, including links across topics, such as percentages back to decimals.</p>
-          <p class="evidence">54 skills with prerequisites</p>
+          <p class="what">The lesson starts at the earliest skill that is actually missing.</p>
+          <dl class="fs-facts">
+            <div><dt>How it works</dt><dd>The Planner walks the prerequisites of the confirmed gap, including links across topics: time differences build on what latitude and longitude measure.</dd></div>
+            <div><dt>What's built</dt><dd>58 skills with prerequisites. A teacher can change the focus, with a reason that is logged.</dd></div>
+          </dl>
         </div>
       </li>
       <li class="folder" style="--i:3;--s:#f5ead2">
         <button class="folder-tab" type="button" id="ft-3" aria-expanded="false" aria-controls="fs-3"><span>Step-by-step lessons</span></button>
         <div class="folder-sheet" id="fs-3" role="region" aria-labelledby="ft-3">
           <h3>Step-by-step lessons</h3>
-          <p>Worked examples, sense checks, and practice with hints and full solutions.</p>
-          <p class="evidence">51 lessons</p>
+          <p class="what">A short lesson that starts from the student's own wrong answer.</p>
+          <dl class="fs-facts">
+            <div><dt>How it works</dt><dd>The Tutor gives the big idea, steps, a sense check, worked examples and practice with hints and full solutions. Practice gives feedback but never counts towards progress.</dd></div>
+            <div><dt>What's built</dt><dd>55 lessons. Maths in examples is computed, never typed by hand.</dd></div>
+          </dl>
         </div>
       </li>
       <li class="folder" style="--i:4;--s:#e2e7f2">
         <button class="folder-tab" type="button" id="ft-4" aria-expanded="false" aria-controls="fs-4"><span>Delayed retests</span></button>
         <div class="folder-sheet" id="fs-4" role="region" aria-labelledby="ft-4">
           <h3>Delayed retests</h3>
-          <p>Retests come after a gap of time (24 hours by default) and use new questions, never a repeat of the check-in.</p>
-          <p class="evidence">3 unseen questions, pass with 2</p>
+          <p class="what">A later check, on questions the student hasn't seen, of whether it stuck.</p>
+          <dl class="fs-facts">
+            <div><dt>How it works</dt><dd>After practice the Checker books three unseen questions for 24 hours later. Two out of three closes the gap; fewer means a new plan; if the questions run out, the teacher decides.</dd></div>
+            <div><dt>What's built</dt><dd>The delay is enforced by the server. Starting early is a logged demo shortcut.</dd></div>
+          </dl>
         </div>
       </li>
       <li class="folder" style="--i:5;--s:#dfe4f8">
         <button class="folder-tab" type="button" id="ft-5" aria-expanded="false" aria-controls="fs-5"><span>Progress you can trust</span></button>
         <div class="folder-sheet" id="fs-5" role="region" aria-labelledby="ft-5">
           <h3>Progress you can trust</h3>
-          <p>Only a passed retest marks a skill mastered. Progress is saved after every answer, so closing the tab loses nothing.</p>
-          <p class="evidence">Resumes at the same question</p>
+          <p class="what">Only a passed retest marks a skill mastered.</p>
+          <dl class="fs-facts">
+            <div><dt>How it works</dt><dd>Every answer is saved the moment it's given. The dashboard, the six-month timeline and the teacher's view are all worked out from those same records.</dd></div>
+            <div><dt>What's built</dt><dd>Resumes at the same question after a reload. Tests check that the figures agree.</dd></div>
+          </dl>
         </div>
       </li>
       <li class="folder" style="--i:6;--s:#f8dfe6">
         <button class="folder-tab" type="button" id="ft-6" aria-expanded="false" aria-controls="fs-6"><span>Teacher review</span></button>
         <div class="folder-sheet" id="fs-6" role="region" aria-labelledby="ft-6">
           <h3>Teacher review</h3>
-          <p>Teachers see a queue of unclear cases with the reason each one needs them. They confirm or reject a gap, or change the focus, and every decision is logged with a reason.</p>
-          <p class="evidence">Own classes only</p>
+          <p class="what">The teacher decides the cases ELEVIA isn't sure about.</p>
+          <dl class="fs-facts">
+            <div><dt>How it works</dt><dd>A queue lists unclear cases with the reason each one needs a teacher, the check-in and double-check answers, and the Checker's verdict. Confirm, reject or change the focus, always with a reason.</dd></div>
+            <div><dt>What's built</dt><dd>Teachers see their own classes only. Every decision is saved in the intervention history.</dd></div>
+          </dl>
         </div>
       </li>
       <li class="folder" style="--i:7;--s:#e1eadd">
         <button class="folder-tab" type="button" id="ft-7" aria-expanded="false" aria-controls="fs-7"><span>Consent and privacy</span></button>
         <div class="folder-sheet" id="fs-7" role="region" aria-labelledby="ft-7">
           <h3>Consent and privacy</h3>
-          <p>Parent consent for under-18s, school class codes with teacher approval, and adult learners choose exactly what to share. Every view of a student's progress is logged.</p>
-          <p class="evidence">Parents see only what consent allows</p>
+          <p class="what">Students, parents and schools each control what is shared.</p>
+          <dl class="fs-facts">
+            <div><dt>How it works</dt><dd>Under-18s need a parent's consent; school students join with a class code and teacher approval; adult learners choose exactly what to share. Every view of a student's progress is logged.</dd></div>
+            <div><dt>What's built</dt><dd>Access rules are tested for teachers, parents, school admins and strangers.</dd></div>
+          </dl>
         </div>
       </li>
       <li class="folder" style="--i:8;--s:#f5ead2">
         <button class="folder-tab" type="button" id="ft-8" aria-expanded="false" aria-controls="fs-8"><span>Exact answer checking</span></button>
         <div class="folder-sheet" id="fs-8" role="region" aria-labelledby="ft-8">
           <h3>Exact answer checking</h3>
-          <p>Exact fraction arithmetic, accepted-answer lists, and code answers verified by running each snippet when the question bank is built. A student's typed code is compared as text and never run.</p>
-          <p class="evidence">943 questions validated</p>
+          <p class="what">Answers are checked exactly, never guessed.</p>
+          <dl class="fs-facts">
+            <div><dt>How it works</dt><dd>Fractions use exact arithmetic, text answers use accepted-answer lists, and program outputs were verified by running each snippet when the question bank was built.</dd></div>
+            <div><dt>What's built</dt><dd>1,019 questions validated. A student's typed code is compared as text and never run.</dd></div>
+          </dl>
         </div>
       </li>
     </ul>
+  </div>
   </div>
 </section>
 
@@ -383,6 +413,15 @@
         </ul>
         <div class="idx-soon"><p class="idx-soon-h">Coming soon, not playable yet</p><ul aria-label="English topics coming soon"><li>Reading comprehension</li><li>Sentence construction</li><li>Other tenses</li><li>Vocabulary</li></ul></div>
       </section>
+      <section class="idx-sub" style="--c:#b0306a" aria-labelledby="idx-social_science">
+        <header class="idx-tab"><h3 id="idx-social_science">Social Science</h3><p class="idx-count">2 topics to play</p></header>
+        <p class="idx-desc">Geography of India&#x27;s size and location: coordinates and time, with computed answers.</p>
+        <ul class="idx-topics">
+          <li style="--k:0"><a href="#/learn/latitude_longitude" aria-label="Start Latitude and longitude, Social Science, grades 6–9"><span class="t">Latitude and longitude</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 6–9</span></a></li>
+          <li style="--k:1"><a href="#/learn/time_zones" aria-label="Start Time zones and Indian Standard Time, Social Science, grades 8–10"><span class="t">Time zones and Indian Standard Time</span><span class="lead" aria-hidden="true"></span><span class="g">Grades 8–10</span></a></li>
+        </ul>
+        <div class="idx-soon"><p class="idx-soon-h">Coming soon, not playable yet</p><ul aria-label="Social Science topics coming soon"><li>Physical features of India</li><li>Drainage</li><li>Climate</li><li>What is democracy?</li><li>The French Revolution</li><li>Poverty as a challenge</li></ul></div>
+      </section>
       <section class="idx-sub" style="--c:#6b3fa0" aria-labelledby="idx-computer_science">
         <header class="idx-tab"><h3 id="idx-computer_science">Computer Science</h3><p class="idx-count">6 topics to play</p></header>
         <p class="idx-desc">Predict what short programs print. Answers are verified by running the code.</p>
@@ -403,8 +442,9 @@
 
 <!-- ============================================================ students -->
 <section class="sec-block" id="students">
+  <div class="stage-pin">
   <div class="wrap split">
-    <div class="split-copy">
+    <div class="split-copy rv">
       <h2 class="sec-h left">For students</h2>
       <p class="sec-p left">Always know where you are and why.</p>
       <ul class="ticks">
@@ -415,18 +455,22 @@
         <li>Safe to close the tab: progress is saved after every answer</li>
       </ul>
     </div>
-    <div class="shots">
+    <div class="shots rv">
       <div class="shot-tabs" role="tablist" aria-label="Student screens">
-        <button role="tab" type="button" aria-selected="true" data-shot="dash">Dashboard</button>
-        <button role="tab" type="button" aria-selected="false" data-shot="verify">Double-check</button>
-        <button role="tab" type="button" aria-selected="false" data-shot="lesson">Lesson</button>
-        <button role="tab" type="button" aria-selected="false" data-shot="result">Result</button>
+        <button role="tab" type="button" id="st-dash" aria-selected="true" aria-controls="shot-panel" data-shot="dash">Dashboard</button>
+        <button role="tab" type="button" id="st-verify" aria-selected="false" aria-controls="shot-panel" tabindex="-1" data-shot="verify">Double-check</button>
+        <button role="tab" type="button" id="st-lesson" aria-selected="false" aria-controls="shot-panel" tabindex="-1" data-shot="lesson">Lesson</button>
+        <button role="tab" type="button" id="st-result" aria-selected="false" aria-controls="shot-panel" tabindex="-1" data-shot="result">Result</button>
       </div>
-      <figure class="browser"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-        <img id="shot-img" src="/img/shot-dash.jpg" width="1200" height="900" loading="lazy" alt="Student dashboard with what to do next, continue learning and upcoming retests">
-      </figure>
-      <p class="hint center">Real screens captured from the working app with demo accounts.</p>
+      <div id="shot-panel" role="tabpanel" aria-labelledby="st-dash" tabindex="0">
+        <figure class="browser"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <img id="shot-img" src="/img/shot-dash.jpg" width="1200" height="900" loading="lazy" alt="Riya Sharma's dashboard: what to do next, continue learning, upcoming retests and gaps being worked on">
+        </figure>
+        <p class="shot-cap" id="shot-cap">Riya's dashboard after six months: one clear next step, the retest booked for tomorrow and every gap ELEVIA is working on, with whether it has been checked yet.</p>
+      </div>
+      <p class="hint center">Real screens captured from the working app with the demo accounts.<span class="when-live"> Keep scrolling to step through all four, or pick one.</span></p>
     </div>
+  </div>
   </div>
 </section>
 

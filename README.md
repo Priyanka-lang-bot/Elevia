@@ -2,7 +2,7 @@
 
 ELEVIA finds the misconception behind a student's wrong answers. It **checks that misconception with new questions before teaching anything**, teaches the missing step, then retests later on fresh questions.
 
-It covers **4 subjects and 24 topics** (Maths, Science, English, Computer Science), with 943 questions and 82 named misconception patterns. Everything is on one website, with real accounts for students, parents, teachers and school admins.
+It covers **5 subjects and 26 topics** (Maths, Science, English, Social Science, Computer Science), with 1,019 questions and 86 named misconception patterns. Everything is on one website, with real accounts for students, parents, teachers and school admins.
 
 | Role | Job | How it decides |
 |---|---|---|
@@ -25,13 +25,15 @@ All four are deterministic, rule-based components coordinated by an orchestrator
 
 ---
 
+> **Round 3 submission package:** see [docs/round3-submission/](docs/round3-submission/ROUND3_SUBMISSION_README.md).
+
 ## What's on the website
 
 - **Landing page** (`/`) is static, crawlable HTML in the app's notebook style, told through study objects:
   - a red-pen-marked worksheet that explains the problem one idea at a time as you scroll;
   - a stack of books for the four roles plus the retest; each book opens to its page as you scroll, or when you click its spine;
   - a drawer of folders for what's built (hover, tap or arrow keys);
-  - a curriculum index of the 24 playable topics, with "coming soon" titles pencilled in and not linked;
+  - a curriculum index of the 26 playable topics, with "coming soon" titles pencilled in and not linked;
   - one closing spread for "verify before you teach", About and the final call to action.
 
   **Try demo** sits in the top navigation and the hero. Everything is readable without JavaScript, and the page respects reduced-motion settings.
@@ -41,9 +43,9 @@ All four are deterministic, rule-based components coordinated by an orchestrator
   - an independent learner aged 18 or over.
 
   Parents, teachers and school admins have accounts too. Security uses scrypt passwords, HttpOnly cookie sessions, CSRF protection, rate limits and an access log.
-- **Student dashboard** (`#/learn`) leads with a **"What to do next"** card. The rest of the page shows subjects and topics, upcoming retests, gaps being worked on, mastered skills and recent activity.
+- **Student dashboard** (`#/learn`) leads with a **"What to do next"** card, then a **six-month timeline** (monthly chart with a table view), **progress by subject**, a **skill map** and the full **learning history**, all computed from stored records. The rest of the page shows subjects and topics, upcoming retests, gaps being worked on, mastered skills and recent activity.
 - **Topic journey** (`#/learn/<topic>`) runs check-in → double-check → learn & practise → retest → result. It has a step tracker and plain-language explanations at every step, and progress persists across reloads.
-- **Teacher portal** shows only students in your own classes. It includes:
+- **Teacher portal** shows only students in your own classes. It includes a **class overview** (needs attention, upcoming retests, by subject, class trend) and **class insights** (topics causing difficulty, frequent misconceptions, repeated failed retests, most improved), plus:
   - a **review queue** of unclear cases, each with the reason it needs a teacher;
   - per-student evidence;
   - a review form to confirm or reject a gap, change the focus or add a note (a reason is required);
@@ -52,19 +54,21 @@ All four are deterministic, rule-based components coordinated by an orchestrator
 
 ### Subjects and topics
 
-All 24 topics are playable end to end: diagnostic, misconception check, plan, lesson, practice, retest and skill-map update.
+All 26 topics are playable end to end: diagnostic, misconception check, plan, lesson, practice, retest and skill-map update.
 
 | Subject | Topics | Answer checking |
 |---|---|---|
 | Mathematics (11) | Fractions, Decimals, Percentages, Integers, Linear equations, Order of operations, Factors and multiples, Ratio and proportion, Perimeter and area, Averages, Angles | Exact `Fraction` arithmetic; misconception answers are computed by rule |
 | Science (3) | Forces and motion, States of matter, Scientific reasoning (fair tests) | Multiple choice; each wrong option maps to a named misconception |
 | English (4) | Past tense verbs, Subject–verb agreement, Parts of speech, Apostrophes | Accepted-answer lists and multiple choice |
+| Social Science (2) | Latitude and longitude, Time zones and Indian Standard Time (Class 9 geography: India's size and location) | Multiple choice generated from coordinate and time tables; every answer computed |
 | Computer Science (6) | Variables and assignment, Loops, Data types, Conditionals, Logical reasoning (Boolean logic), Algorithms | Predict the output. The expected output is verified by running the snippet at build time; **student input is compared as text and never executed** |
 
 These topics are listed in the app as "coming soon" and can't be played yet:
 - **Maths:** probability, area of triangles and circles, volume, graphs.
 - **Science:** heat and temperature, light, electric circuits, plants and photosynthesis.
 - **English:** reading comprehension, sentence construction, other tenses, vocabulary.
+- **Social Science:** physical features of India, drainage, climate, what is democracy?, the French Revolution, poverty as a challenge.
 - **CS:** functions, lists and data structures, sorting.
 
 ## Run it locally (Windows PowerShell)
@@ -77,32 +81,44 @@ python -m pip install --only-binary=:all: -r requirements.txt pytest
 copy .env.example .env
 python scripts\demo.py seed
 $env:ELEVIA_DEMO_MODE = "1"
+$env:ELEVIA_DEMO_TEACHER_CODE = "choose-a-judges-code"
 python -m uvicorn app:app --reload
 ```
 
-Open **http://localhost:8000** and click **Try demo**. The three student cards open with one click; the login page shows them too. Teacher, parent and admin demo accounts are **not** one-click: log in normally with password `Demo-Pass-2026!` (fictional accounts, local use only):
+Open **http://localhost:8000** and click **Try demo**. The student cards open with one click. The teacher card needs the judges' access code, set with `$env:ELEVIA_DEMO_TEACHER_CODE = "<8+ characters>"` before starting the server. Everyone else logs in normally with the demo password, which is printed once by `demo.py seed` (or chosen with `$env:ELEVIA_DEMO_PASSWORD` before seeding). No demo password is stored in this repository.
+
+The demo is a fictional **Class 9 A at ELEVIA Demonstration School (2026-27)** with **six months of history**:
 
 | Demo account | Log in with | What it shows |
 |---|---|---|
-| Ananya Rao, new learner (19) | `demo.learner@example.com` | Empty dashboard: run a full journey live |
-| Riya Sharma, school student, Class 6 A (11, parent consented) | `riya.demo` | Two mastered topics, practice under way, a loops retest ready |
-| Arjun Patel, school student, Class 6 A | `arjun.demo` | Mixed results, a teacher note, a fractions case in review |
-| Meera Iyer, teacher, Class 6 A | `demo.teacher@example.com` | Review queue, class table, intervention history |
-| Sunita Sharma, parent | `demo.parent@example.com` | Riya only (Raj Patel, `demo.parent2@example.com`, sees Arjun only) |
-| Kavita Menon, school admin, Sunrise Demo School | `demo.admin@example.com` | Classes, teachers, enrolments |
+| Riya Sharma, DEMO-09-001, Grade 9 | `riya.demo` (one click) | Six months across 5 subjects: 16 check-ins, 8 skills mastered, two retests failed then passed, a lesson in progress, a retest due, a case waiting for her teacher |
+| Arjun Patel, DEMO-09-002 | `arjun.demo` (one click) | Integers retest failed twice (handed to the teacher), a mixed fractions double-check, a teacher's note |
+| Kabir Singh, Meera Nair, Zoya Khan (DEMO-09-003 to 005) | `kabir.demo`, `meera.demo`, `zoya.demo` | Classmates with different patterns: strong, steady with one teacher rejection, joined in month 4 |
+| Dev Kapoor, new learner (19) | `demo.learner@example.com` (one click) | No history: run a topic live |
+| Ananya Mehta, Class 9 teacher | `demo.teacher@example.com` (access code) | Class overview, insights, review queue, intervention history, each student's record |
+| Sunita Sharma, parent | `demo.parent@example.com` | Riya only (each classmate has their own parent account) |
+| Kavita Menon, school admin | `demo.admin@example.com` | Classes, teachers, enrolments (no learning data) |
+
+**How the history is made.** `scripts/demo.py` runs the real routes on a simulated calendar (`backend/clock.py`, used only by the seed):
+- accounts: sign-up, parent consent and teacher approval;
+- learning: the Diagnoser → Checker → Planner → Tutor → retest workflow;
+- teacher decisions: the review routes, each with a reason.
+
+Only the answers are simulated. Retest delays are honoured, not skipped. The same reference date always gives the same history (`--reference-date YYYY-MM-DD`; the default is today).
 
 **Demo mode safety.** One-click login only works when `ELEVIA_DEMO_MODE=1`. Otherwise `/api/demo/login` returns 404 and the Try demo section says the live demo is off, with Get started and Log in buttons instead. Further safeguards:
-- One-click is for **student accounts only** (Ananya, Riya, Arjun). Teacher, parent and admin slugs are refused with 403.
-- It can only sign in to accounts listed in the `demo_registry` table, never a real account.
-- It issues a normal session, and no password appears in the page.
-- It is rate-limited.
-- Demo accounts can't withdraw consent, change permissions or send invitations.
+- **Students:** one-click works for the student accounts (Riya, Dev, Arjun).
+- **Teacher:** opens only with the access code, which is compared in constant time and rate-limited (10 wrong tries per 10 minutes).
+- **Parents and admin:** always refused with 403.
+- **Real accounts:** never reachable. Demo login only signs in to accounts listed in `demo_registry`.
+- **Sessions:** it issues a normal session, and no password or code appears in the page.
+- **Locked actions:** demo accounts can't withdraw consent, change permissions or send invitations.
 
 **Reset:** `python scripts\demo.py reset` deletes only the rows listed in `demo_registry` and seeds again. Real users are untouched, and this is tested. `python scripts\demo.py status` shows what exists.
 
 **Tests:**
-- `python -m pytest -q` runs 186 tests. Set `$env:ELEVIA_TEST_TURSO = "1"` first to run them through the Turso connector.
-- `python scripts\e2e_browser.py` runs the browser end-to-end check (23 checks; needs Playwright).
+- `python -m pytest -q` runs 202 tests. Set `$env:ELEVIA_TEST_TURSO = "1"` first to run them through the Turso connector.
+- `python scripts\e2e_browser.py` runs the browser end-to-end check (26 checks; needs Playwright and the `ELEVIA_DEMO_PASSWORD` / `ELEVIA_DEMO_TEACHER_CODE` the server uses).
 
 **Curriculum:** topic content is generated by `python scripts\build_curriculum.py` from `scripts/curriculum/*.py`. The build validates every question and runs every code snippet with restricted built-ins. After changing it, run `python scripts\build_landing_index.py` to refresh the static subject index in the landing page (the page also refreshes it live from the API).
 
