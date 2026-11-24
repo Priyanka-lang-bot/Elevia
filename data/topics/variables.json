@@ -1,0 +1,1029 @@
+{
+ "skills": [
+  {
+   "id": "variable_assignment",
+   "name": "Variables and assignment",
+   "grade": 6,
+   "prerequisites": [],
+   "description": "A variable holds its latest value; the right-hand side is evaluated first."
+  },
+  {
+   "id": "variable_tracing",
+   "name": "Tracing assignments",
+   "grade": 7,
+   "prerequisites": [
+    "variable_assignment"
+   ],
+   "description": "Copying values between variables; why a naive swap fails."
+  }
+ ],
+ "misconceptions": {
+  "CS_KEEPS_FIRST": {
+   "label": "Thinks a variable keeps its first value",
+   "gap_skill": "variable_assignment",
+   "explanation": "Predicts that after x = 3 then x = 7, x is still 3."
+  },
+  "CS_ASSIGN_LINK": {
+   "label": "Thinks `b = a` links the two variables forever",
+   "gap_skill": "variable_tracing",
+   "explanation": "Predicts that changing a later also changes b."
+  },
+  "CS_SWAP": {
+   "label": "Thinks `a = b` followed by `b = a` swaps two values",
+   "gap_skill": "variable_tracing",
+   "explanation": "Misses that the first assignment overwrites a's old value."
+  }
+ },
+ "questions": [
+  {
+   "id": "VAR-DA1",
+   "pool": "diagnostic:variables:A",
+   "skill_id": "variable_assignment",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_assignment"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "7",
+   "hints": [
+    "A variable is a labelled box holding ONE value at a time.",
+    "A new assignment replaces the old value."
+   ],
+   "solution": [
+    "x starts as 3.",
+    "x = 7 replaces it, so x is 7.",
+    "The program prints 7."
+   ],
+   "patterns": {
+    "3": "CS_KEEPS_FIRST"
+   },
+   "code": "x = 3\nx = 7\nprint(x)"
+  },
+  {
+   "id": "VAR-DA2",
+   "pool": "diagnostic:variables:A",
+   "skill_id": "variable_assignment",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_assignment"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "9",
+   "hints": [
+    "A variable is a labelled box holding ONE value at a time.",
+    "A new assignment replaces the old value."
+   ],
+   "solution": [
+    "x starts as 4.",
+    "x + 5 is worked out first: 4 + 5 = 9.",
+    "That result is stored back in x, so it prints 9."
+   ],
+   "patterns": {
+    "4": "CS_KEEPS_FIRST"
+   },
+   "code": "x = 4\nx = x + 5\nprint(x)"
+  },
+  {
+   "id": "VAR-DA3",
+   "pool": "diagnostic:variables:A",
+   "skill_id": "variable_tracing",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_tracing"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "5",
+   "hints": [
+    "Trace line by line. Write down each variable's value after every line.",
+    "`a = b` copies the value of b into a right now. It does not link them."
+   ],
+   "solution": [
+    "b = a copies the value 5 into b.",
+    "Changing a to 9 later does not change b.",
+    "The program prints 5."
+   ],
+   "patterns": {
+    "9": "CS_ASSIGN_LINK"
+   },
+   "code": "a = 5\nb = a\na = 9\nprint(b)"
+  },
+  {
+   "id": "VAR-DA4",
+   "pool": "diagnostic:variables:A",
+   "skill_id": "variable_tracing",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_tracing"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "2",
+   "hints": [
+    "Trace line by line. Write down each variable's value after every line.",
+    "`a = b` copies the value of b into a right now. It does not link them."
+   ],
+   "solution": [
+    "b = a copies the value 2 into b.",
+    "Changing a to 8 later does not change b.",
+    "The program prints 2."
+   ],
+   "patterns": {
+    "8": "CS_ASSIGN_LINK"
+   },
+   "code": "a = 2\nb = a\na = 8\nprint(b)"
+  },
+  {
+   "id": "VAR-DA5",
+   "pool": "diagnostic:variables:A",
+   "skill_id": "variable_tracing",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_tracing"
+   ],
+   "prompt": "What does this program print? (Type the two numbers with a space, like: 3 4)",
+   "answer": "2 2",
+   "hints": [
+    "Trace line by line. Write down each variable's value after every line.",
+    "`a = b` copies the value of b into a right now. It does not link them."
+   ],
+   "solution": [
+    "a = b makes a equal to 2. The 1 is now lost.",
+    "b = a copies 2 back into b.",
+    "Both are 2: it prints 2 2."
+   ],
+   "patterns": {
+    "2 1": "CS_SWAP"
+   },
+   "code": "a = 1\nb = 2\na = b\nb = a\nprint(a, b)"
+  },
+  {
+   "id": "VAR-DB1",
+   "pool": "diagnostic:variables:B",
+   "skill_id": "variable_assignment",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_assignment"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "2",
+   "hints": [
+    "A variable is a labelled box holding ONE value at a time.",
+    "A new assignment replaces the old value."
+   ],
+   "solution": [
+    "x starts as 6.",
+    "x = 2 replaces it, so x is 2.",
+    "The program prints 2."
+   ],
+   "patterns": {
+    "6": "CS_KEEPS_FIRST"
+   },
+   "code": "x = 6\nx = 2\nprint(x)"
+  },
+  {
+   "id": "VAR-DB2",
+   "pool": "diagnostic:variables:B",
+   "skill_id": "variable_assignment",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_assignment"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "13",
+   "hints": [
+    "A variable is a labelled box holding ONE value at a time.",
+    "A new assignment replaces the old value."
+   ],
+   "solution": [
+    "x starts as 10.",
+    "x + 3 is worked out first: 10 + 3 = 13.",
+    "That result is stored back in x, so it prints 13."
+   ],
+   "patterns": {
+    "10": "CS_KEEPS_FIRST"
+   },
+   "code": "x = 10\nx = x + 3\nprint(x)"
+  },
+  {
+   "id": "VAR-DB3",
+   "pool": "diagnostic:variables:B",
+   "skill_id": "variable_tracing",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_tracing"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "4",
+   "hints": [
+    "Trace line by line. Write down each variable's value after every line.",
+    "`a = b` copies the value of b into a right now. It does not link them."
+   ],
+   "solution": [
+    "b = a copies the value 4 into b.",
+    "Changing a to 1 later does not change b.",
+    "The program prints 4."
+   ],
+   "patterns": {
+    "1": "CS_ASSIGN_LINK"
+   },
+   "code": "a = 4\nb = a\na = 1\nprint(b)"
+  },
+  {
+   "id": "VAR-DB4",
+   "pool": "diagnostic:variables:B",
+   "skill_id": "variable_tracing",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_tracing"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "7",
+   "hints": [
+    "Trace line by line. Write down each variable's value after every line.",
+    "`a = b` copies the value of b into a right now. It does not link them."
+   ],
+   "solution": [
+    "b = a copies the value 7 into b.",
+    "Changing a to 3 later does not change b.",
+    "The program prints 7."
+   ],
+   "patterns": {
+    "3": "CS_ASSIGN_LINK"
+   },
+   "code": "a = 7\nb = a\na = 3\nprint(b)"
+  },
+  {
+   "id": "VAR-DB5",
+   "pool": "diagnostic:variables:B",
+   "skill_id": "variable_tracing",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_tracing"
+   ],
+   "prompt": "What does this program print? (Type the two numbers with a space, like: 3 4)",
+   "answer": "8 8",
+   "hints": [
+    "Trace line by line. Write down each variable's value after every line.",
+    "`a = b` copies the value of b into a right now. It does not link them."
+   ],
+   "solution": [
+    "a = b makes a equal to 8. The 5 is now lost.",
+    "b = a copies 8 back into b.",
+    "Both are 8: it prints 8 8."
+   ],
+   "patterns": {
+    "8 5": "CS_SWAP"
+   },
+   "code": "a = 5\nb = 8\na = b\nb = a\nprint(a, b)"
+  },
+  {
+   "id": "VAR-VVA1",
+   "pool": "verification:variable_assignment",
+   "skill_id": "variable_assignment",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_assignment"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "4",
+   "hints": [
+    "A variable is a labelled box holding ONE value at a time.",
+    "A new assignment replaces the old value."
+   ],
+   "solution": [
+    "x starts as 9.",
+    "x = 4 replaces it, so x is 4.",
+    "The program prints 4."
+   ],
+   "patterns": {
+    "9": "CS_KEEPS_FIRST"
+   },
+   "code": "x = 9\nx = 4\nprint(x)",
+   "check_role": "same_type"
+  },
+  {
+   "id": "VAR-VVA2",
+   "pool": "verification:variable_assignment",
+   "skill_id": "variable_assignment",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_assignment"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "6",
+   "hints": [
+    "A variable is a labelled box holding ONE value at a time.",
+    "A new assignment replaces the old value."
+   ],
+   "solution": [
+    "x starts as 1.",
+    "x = 6 replaces it, so x is 6.",
+    "The program prints 6."
+   ],
+   "patterns": {
+    "1": "CS_KEEPS_FIRST"
+   },
+   "code": "x = 1\nx = 6\nprint(x)",
+   "check_role": "same_type"
+  },
+  {
+   "id": "VAR-VVA3",
+   "pool": "verification:variable_assignment",
+   "skill_id": "variable_assignment",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_assignment"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "10",
+   "hints": [
+    "A variable is a labelled box holding ONE value at a time.",
+    "A new assignment replaces the old value."
+   ],
+   "solution": [
+    "x starts as 8.",
+    "x + 2 is worked out first: 8 + 2 = 10.",
+    "That result is stored back in x, so it prints 10."
+   ],
+   "patterns": {
+    "8": "CS_KEEPS_FIRST"
+   },
+   "code": "x = 8\nx = x + 2\nprint(x)",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "VAR-VVA4",
+   "pool": "verification:variable_assignment",
+   "skill_id": "variable_assignment",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_assignment"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "12",
+   "hints": [
+    "A variable is a labelled box holding ONE value at a time.",
+    "A new assignment replaces the old value."
+   ],
+   "solution": [
+    "x starts as 3.",
+    "x + 9 is worked out first: 3 + 9 = 12.",
+    "That result is stored back in x, so it prints 12."
+   ],
+   "patterns": {
+    "3": "CS_KEEPS_FIRST"
+   },
+   "code": "x = 3\nx = x + 9\nprint(x)",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "VAR-VVT1",
+   "pool": "verification:variable_tracing",
+   "skill_id": "variable_tracing",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_tracing"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "6",
+   "hints": [
+    "Trace line by line. Write down each variable's value after every line.",
+    "`a = b` copies the value of b into a right now. It does not link them."
+   ],
+   "solution": [
+    "b = a copies the value 6 into b.",
+    "Changing a to 10 later does not change b.",
+    "The program prints 6."
+   ],
+   "patterns": {
+    "10": "CS_ASSIGN_LINK"
+   },
+   "code": "a = 6\nb = a\na = 10\nprint(b)",
+   "check_role": "same_type"
+  },
+  {
+   "id": "VAR-VVT2",
+   "pool": "verification:variable_tracing",
+   "skill_id": "variable_tracing",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_tracing"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "3",
+   "hints": [
+    "Trace line by line. Write down each variable's value after every line.",
+    "`a = b` copies the value of b into a right now. It does not link them."
+   ],
+   "solution": [
+    "b = a copies the value 3 into b.",
+    "Changing a to 12 later does not change b.",
+    "The program prints 3."
+   ],
+   "patterns": {
+    "12": "CS_ASSIGN_LINK"
+   },
+   "code": "a = 3\nb = a\na = 12\nprint(b)",
+   "check_role": "same_type"
+  },
+  {
+   "id": "VAR-VVT3",
+   "pool": "verification:variable_tracing",
+   "skill_id": "variable_tracing",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_tracing"
+   ],
+   "prompt": "What does this program print? (Type the two numbers with a space, like: 3 4)",
+   "answer": "7 7",
+   "hints": [
+    "Trace line by line. Write down each variable's value after every line.",
+    "`a = b` copies the value of b into a right now. It does not link them."
+   ],
+   "solution": [
+    "a = b makes a equal to 7. The 4 is now lost.",
+    "b = a copies 7 back into b.",
+    "Both are 7: it prints 7 7."
+   ],
+   "patterns": {
+    "7 4": "CS_SWAP"
+   },
+   "code": "a = 4\nb = 7\na = b\nb = a\nprint(a, b)",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "VAR-VVT4",
+   "pool": "verification:variable_tracing",
+   "skill_id": "variable_tracing",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_tracing"
+   ],
+   "prompt": "What does this program print? (Type the two numbers with a space, like: 3 4)",
+   "answer": "3 3",
+   "hints": [
+    "Trace line by line. Write down each variable's value after every line.",
+    "`a = b` copies the value of b into a right now. It does not link them."
+   ],
+   "solution": [
+    "a = b makes a equal to 3. The 9 is now lost.",
+    "b = a copies 3 back into b.",
+    "Both are 3: it prints 3 3."
+   ],
+   "patterns": {
+    "3 9": "CS_SWAP"
+   },
+   "code": "a = 9\nb = 3\na = b\nb = a\nprint(a, b)",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "VAR-PVA1",
+   "pool": "practice:variable_assignment",
+   "skill_id": "variable_assignment",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_assignment"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "5",
+   "hints": [
+    "A variable is a labelled box holding ONE value at a time.",
+    "A new assignment replaces the old value."
+   ],
+   "solution": [
+    "x starts as 2.",
+    "x = 5 replaces it, so x is 5.",
+    "The program prints 5."
+   ],
+   "patterns": {
+    "2": "CS_KEEPS_FIRST"
+   },
+   "code": "x = 2\nx = 5\nprint(x)"
+  },
+  {
+   "id": "VAR-PVA2",
+   "pool": "practice:variable_assignment",
+   "skill_id": "variable_assignment",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_assignment"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "8",
+   "hints": [
+    "A variable is a labelled box holding ONE value at a time.",
+    "A new assignment replaces the old value."
+   ],
+   "solution": [
+    "x starts as 7.",
+    "x + 1 is worked out first: 7 + 1 = 8.",
+    "That result is stored back in x, so it prints 8."
+   ],
+   "patterns": {
+    "7": "CS_KEEPS_FIRST"
+   },
+   "code": "x = 7\nx = x + 1\nprint(x)"
+  },
+  {
+   "id": "VAR-PVA3",
+   "pool": "practice:variable_assignment",
+   "skill_id": "variable_assignment",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_assignment"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "11",
+   "hints": [
+    "A variable is a labelled box holding ONE value at a time.",
+    "A new assignment replaces the old value."
+   ],
+   "solution": [
+    "x starts as 8.",
+    "x = 11 replaces it, so x is 11.",
+    "The program prints 11."
+   ],
+   "patterns": {
+    "8": "CS_KEEPS_FIRST"
+   },
+   "code": "x = 8\nx = 11\nprint(x)"
+  },
+  {
+   "id": "VAR-PVA4",
+   "pool": "practice:variable_assignment",
+   "skill_id": "variable_assignment",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_assignment"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "10",
+   "hints": [
+    "A variable is a labelled box holding ONE value at a time.",
+    "A new assignment replaces the old value."
+   ],
+   "solution": [
+    "x starts as 5.",
+    "x + 5 is worked out first: 5 + 5 = 10.",
+    "That result is stored back in x, so it prints 10."
+   ],
+   "patterns": {
+    "5": "CS_KEEPS_FIRST"
+   },
+   "code": "x = 5\nx = x + 5\nprint(x)"
+  },
+  {
+   "id": "VAR-PVT1",
+   "pool": "practice:variable_tracing",
+   "skill_id": "variable_tracing",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_tracing"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "1",
+   "hints": [
+    "Trace line by line. Write down each variable's value after every line.",
+    "`a = b` copies the value of b into a right now. It does not link them."
+   ],
+   "solution": [
+    "b = a copies the value 1 into b.",
+    "Changing a to 4 later does not change b.",
+    "The program prints 1."
+   ],
+   "patterns": {
+    "4": "CS_ASSIGN_LINK"
+   },
+   "code": "a = 1\nb = a\na = 4\nprint(b)"
+  },
+  {
+   "id": "VAR-PVT2",
+   "pool": "practice:variable_tracing",
+   "skill_id": "variable_tracing",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_tracing"
+   ],
+   "prompt": "What does this program print? (Type the two numbers with a space, like: 3 4)",
+   "answer": "6 6",
+   "hints": [
+    "Trace line by line. Write down each variable's value after every line.",
+    "`a = b` copies the value of b into a right now. It does not link them."
+   ],
+   "solution": [
+    "a = b makes a equal to 6. The 2 is now lost.",
+    "b = a copies 6 back into b.",
+    "Both are 6: it prints 6 6."
+   ],
+   "patterns": {
+    "6 2": "CS_SWAP"
+   },
+   "code": "a = 2\nb = 6\na = b\nb = a\nprint(a, b)"
+  },
+  {
+   "id": "VAR-PVT3",
+   "pool": "practice:variable_tracing",
+   "skill_id": "variable_tracing",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_tracing"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "9",
+   "hints": [
+    "Trace line by line. Write down each variable's value after every line.",
+    "`a = b` copies the value of b into a right now. It does not link them."
+   ],
+   "solution": [
+    "b = a copies the value 9 into b.",
+    "Changing a to 2 later does not change b.",
+    "The program prints 9."
+   ],
+   "patterns": {
+    "2": "CS_ASSIGN_LINK"
+   },
+   "code": "a = 9\nb = a\na = 2\nprint(b)"
+  },
+  {
+   "id": "VAR-PVT4",
+   "pool": "practice:variable_tracing",
+   "skill_id": "variable_tracing",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_tracing"
+   ],
+   "prompt": "What does this program print? (Type the two numbers with a space, like: 3 4)",
+   "answer": "5 5",
+   "hints": [
+    "Trace line by line. Write down each variable's value after every line.",
+    "`a = b` copies the value of b into a right now. It does not link them."
+   ],
+   "solution": [
+    "a = b makes a equal to 5. The 3 is now lost.",
+    "b = a copies 5 back into b.",
+    "Both are 5: it prints 5 5."
+   ],
+   "patterns": {
+    "5 3": "CS_SWAP"
+   },
+   "code": "a = 3\nb = 5\na = b\nb = a\nprint(a, b)"
+  },
+  {
+   "id": "VAR-RVA1",
+   "pool": "retest:variable_assignment",
+   "skill_id": "variable_assignment",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_assignment"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "12",
+   "hints": [
+    "A variable is a labelled box holding ONE value at a time.",
+    "A new assignment replaces the old value."
+   ],
+   "solution": [
+    "x starts as 5.",
+    "x = 12 replaces it, so x is 12.",
+    "The program prints 12."
+   ],
+   "patterns": {
+    "5": "CS_KEEPS_FIRST"
+   },
+   "code": "x = 5\nx = 12\nprint(x)"
+  },
+  {
+   "id": "VAR-RVA2",
+   "pool": "retest:variable_assignment",
+   "skill_id": "variable_assignment",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_assignment"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "4",
+   "hints": [
+    "A variable is a labelled box holding ONE value at a time.",
+    "A new assignment replaces the old value."
+   ],
+   "solution": [
+    "x starts as 13.",
+    "x = 4 replaces it, so x is 4.",
+    "The program prints 4."
+   ],
+   "patterns": {
+    "13": "CS_KEEPS_FIRST"
+   },
+   "code": "x = 13\nx = 4\nprint(x)"
+  },
+  {
+   "id": "VAR-RVA3",
+   "pool": "retest:variable_assignment",
+   "skill_id": "variable_assignment",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_assignment"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "1",
+   "hints": [
+    "A variable is a labelled box holding ONE value at a time.",
+    "A new assignment replaces the old value."
+   ],
+   "solution": [
+    "x starts as 20.",
+    "x = 1 replaces it, so x is 1.",
+    "The program prints 1."
+   ],
+   "patterns": {
+    "20": "CS_KEEPS_FIRST"
+   },
+   "code": "x = 20\nx = 1\nprint(x)"
+  },
+  {
+   "id": "VAR-RVA4",
+   "pool": "retest:variable_assignment",
+   "skill_id": "variable_assignment",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_assignment"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "13",
+   "hints": [
+    "A variable is a labelled box holding ONE value at a time.",
+    "A new assignment replaces the old value."
+   ],
+   "solution": [
+    "x starts as 6.",
+    "x + 7 is worked out first: 6 + 7 = 13.",
+    "That result is stored back in x, so it prints 13."
+   ],
+   "patterns": {
+    "6": "CS_KEEPS_FIRST"
+   },
+   "code": "x = 6\nx = x + 7\nprint(x)"
+  },
+  {
+   "id": "VAR-RVA5",
+   "pool": "retest:variable_assignment",
+   "skill_id": "variable_assignment",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_assignment"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "15",
+   "hints": [
+    "A variable is a labelled box holding ONE value at a time.",
+    "A new assignment replaces the old value."
+   ],
+   "solution": [
+    "x starts as 12.",
+    "x + 3 is worked out first: 12 + 3 = 15.",
+    "That result is stored back in x, so it prints 15."
+   ],
+   "patterns": {
+    "12": "CS_KEEPS_FIRST"
+   },
+   "code": "x = 12\nx = x + 3\nprint(x)"
+  },
+  {
+   "id": "VAR-RVA6",
+   "pool": "retest:variable_assignment",
+   "skill_id": "variable_assignment",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_assignment"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "8",
+   "hints": [
+    "A variable is a labelled box holding ONE value at a time.",
+    "A new assignment replaces the old value."
+   ],
+   "solution": [
+    "x starts as 0.",
+    "x + 8 is worked out first: 0 + 8 = 8.",
+    "That result is stored back in x, so it prints 8."
+   ],
+   "patterns": {
+    "0": "CS_KEEPS_FIRST"
+   },
+   "code": "x = 0\nx = x + 8\nprint(x)"
+  },
+  {
+   "id": "VAR-RVT1",
+   "pool": "retest:variable_tracing",
+   "skill_id": "variable_tracing",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_tracing"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "8",
+   "hints": [
+    "Trace line by line. Write down each variable's value after every line.",
+    "`a = b` copies the value of b into a right now. It does not link them."
+   ],
+   "solution": [
+    "b = a copies the value 8 into b.",
+    "Changing a to 2 later does not change b.",
+    "The program prints 8."
+   ],
+   "patterns": {
+    "2": "CS_ASSIGN_LINK"
+   },
+   "code": "a = 8\nb = a\na = 2\nprint(b)"
+  },
+  {
+   "id": "VAR-RVT2",
+   "pool": "retest:variable_tracing",
+   "skill_id": "variable_tracing",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_tracing"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "11",
+   "hints": [
+    "Trace line by line. Write down each variable's value after every line.",
+    "`a = b` copies the value of b into a right now. It does not link them."
+   ],
+   "solution": [
+    "b = a copies the value 11 into b.",
+    "Changing a to 5 later does not change b.",
+    "The program prints 11."
+   ],
+   "patterns": {
+    "5": "CS_ASSIGN_LINK"
+   },
+   "code": "a = 11\nb = a\na = 5\nprint(b)"
+  },
+  {
+   "id": "VAR-RVT3",
+   "pool": "retest:variable_tracing",
+   "skill_id": "variable_tracing",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_tracing"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "4",
+   "hints": [
+    "Trace line by line. Write down each variable's value after every line.",
+    "`a = b` copies the value of b into a right now. It does not link them."
+   ],
+   "solution": [
+    "b = a copies the value 4 into b.",
+    "Changing a to 6 later does not change b.",
+    "The program prints 4."
+   ],
+   "patterns": {
+    "6": "CS_ASSIGN_LINK"
+   },
+   "code": "a = 4\nb = a\na = 6\nprint(b)"
+  },
+  {
+   "id": "VAR-RVT4",
+   "pool": "retest:variable_tracing",
+   "skill_id": "variable_tracing",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_tracing"
+   ],
+   "prompt": "What does this program print? (Type the two numbers with a space, like: 3 4)",
+   "answer": "1 1",
+   "hints": [
+    "Trace line by line. Write down each variable's value after every line.",
+    "`a = b` copies the value of b into a right now. It does not link them."
+   ],
+   "solution": [
+    "a = b makes a equal to 1. The 6 is now lost.",
+    "b = a copies 1 back into b.",
+    "Both are 1: it prints 1 1."
+   ],
+   "patterns": {
+    "1 6": "CS_SWAP"
+   },
+   "code": "a = 6\nb = 1\na = b\nb = a\nprint(a, b)"
+  },
+  {
+   "id": "VAR-RVT5",
+   "pool": "retest:variable_tracing",
+   "skill_id": "variable_tracing",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_tracing"
+   ],
+   "prompt": "What does this program print? (Type the two numbers with a space, like: 3 4)",
+   "answer": "2 2",
+   "hints": [
+    "Trace line by line. Write down each variable's value after every line.",
+    "`a = b` copies the value of b into a right now. It does not link them."
+   ],
+   "solution": [
+    "a = b makes a equal to 2. The 7 is now lost.",
+    "b = a copies 2 back into b.",
+    "Both are 2: it prints 2 2."
+   ],
+   "patterns": {
+    "2 7": "CS_SWAP"
+   },
+   "code": "a = 7\nb = 2\na = b\nb = a\nprint(a, b)"
+  },
+  {
+   "id": "VAR-RVT6",
+   "pool": "retest:variable_tracing",
+   "skill_id": "variable_tracing",
+   "type": "code_output",
+   "gap_targets": [
+    "variable_tracing"
+   ],
+   "prompt": "What does this program print? (Type the two numbers with a space, like: 3 4)",
+   "answer": "9 9",
+   "hints": [
+    "Trace line by line. Write down each variable's value after every line.",
+    "`a = b` copies the value of b into a right now. It does not link them."
+   ],
+   "solution": [
+    "a = b makes a equal to 9. The 3 is now lost.",
+    "b = a copies 9 back into b.",
+    "Both are 9: it prints 9 9."
+   ],
+   "patterns": {
+    "9 3": "CS_SWAP"
+   },
+   "code": "a = 3\nb = 9\na = b\nb = a\nprint(a, b)"
+  }
+ ],
+ "lessons": {
+  "variable_assignment": {
+   "title": "Variables and assignment",
+   "big_idea": "A variable is like a labelled box that holds one value at a time. `x = 7` puts 7 in the box and throws away whatever was there before.",
+   "steps": [
+    "Read `=` as 'becomes' or 'gets', not 'equals'.",
+    "Work out the right-hand side first, using the CURRENT values.",
+    "Store the result in the variable on the left, replacing the old value.",
+    "Only the latest value is kept."
+   ],
+   "sense_check": "`x = x + 1` would be impossible in maths, but in code it just means: x gets (old x) + 1.",
+   "worked_examples": [
+    {
+     "prompt": "What does this program print?",
+     "code": "x = 3\nx = 7\nprint(x)",
+     "answer": "7",
+     "steps": [
+      "x becomes 3.",
+      "x becomes 7 (the 3 is replaced).",
+      "Prints 7."
+     ]
+    },
+    {
+     "prompt": "What does this program print?",
+     "code": "x = 4\nx = x + 5\nprint(x)",
+     "answer": "9",
+     "steps": [
+      "x becomes 4.",
+      "x + 5 = 9, then x becomes 9.",
+      "Prints 9."
+     ]
+    }
+   ]
+  },
+  "variable_tracing": {
+   "title": "Tracing assignments step by step",
+   "big_idea": "`b = a` copies a's value into b at that moment. The two variables are not linked, so changing one later does not change the other.",
+   "steps": [
+    "Make a trace table with one column per variable.",
+    "Go line by line and update only the variable on the left of `=`.",
+    "When a value is overwritten, cross it out: it is gone.",
+    "At print, read the current values from the table."
+   ],
+   "sense_check": "To swap two cups of juice you need a third, empty cup. Code needs a temporary variable too.",
+   "worked_examples": [
+    {
+     "prompt": "What does this program print?",
+     "code": "a = 5\nb = a\na = 9\nprint(b)",
+     "answer": "5",
+     "steps": [
+      "a = 5.",
+      "b = 5 (a copy).",
+      "a = 9; b is still 5.",
+      "Prints 5."
+     ]
+    },
+    {
+     "prompt": "What does this program print?",
+     "code": "a = 1\nb = 2\na = b\nb = a\nprint(a, b)",
+     "answer": "2 2",
+     "steps": [
+      "a = 1, b = 2.",
+      "a = b → a = 2 (the 1 is lost).",
+      "b = a → b = 2.",
+      "Prints 2 2."
+     ]
+    }
+   ]
+  }
+ }
+}

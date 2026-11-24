@@ -23,7 +23,8 @@ ROLE_LABELS = {"student": "Student", "learner": "Independent learner", "parent":
 
 
 def utcnow() -> datetime:
-    return datetime.now(timezone.utc).replace(microsecond=0)
+    from .. import clock
+    return clock.now()
 
 
 def iso(dt: datetime) -> str:

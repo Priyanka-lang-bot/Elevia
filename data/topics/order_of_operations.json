@@ -1,0 +1,941 @@
+{
+ "skills": [
+  {
+   "id": "multiply_before_add",
+   "name": "Multiply before you add",
+   "grade": 5,
+   "prerequisites": [],
+   "description": "× and ÷ before + and −; + and − left to right."
+  },
+  {
+   "id": "brackets_first",
+   "name": "Brackets first",
+   "grade": 6,
+   "prerequisites": [
+    "multiply_before_add"
+   ],
+   "description": "Brackets are worked out before anything else."
+  }
+ ],
+ "misconceptions": {
+  "ARITH_LEFT_TO_RIGHT": {
+   "label": "Works strictly left to right, ignoring that × and ÷ come first",
+   "gap_skill": "multiply_before_add",
+   "explanation": "Works out 3 + 4 × 2 as 7 × 2 = 14 instead of 11."
+  },
+  "ARITH_ADD_FIRST": {
+   "label": "Thinks addition must always be done before subtraction",
+   "gap_skill": "multiply_before_add",
+   "explanation": "Works out 10 − 3 + 2 as 10 − 5 = 5 instead of 9."
+  },
+  "ARITH_IGNORE_BRACKETS": {
+   "label": "Ignores the brackets",
+   "gap_skill": "brackets_first",
+   "explanation": "Works out 2 × (3 + 4) as 2 × 3 + 4 = 10 instead of 14."
+  }
+ },
+ "questions": [
+  {
+   "id": "OOP-DA1",
+   "pool": "diagnostic:order_of_operations:A",
+   "skill_id": "multiply_before_add",
+   "type": "numeric",
+   "gap_targets": [
+    "multiply_before_add"
+   ],
+   "prompt": "3 + 4 × 2 = ?",
+   "answer": "11",
+   "hints": [
+    "Multiplication and division come before addition and subtraction.",
+    "Then do + and − from left to right."
+   ],
+   "solution": [
+    "Multiply first: 4 × 2 = 8.",
+    "Then add: 3 + 8 = 11."
+   ],
+   "patterns": {
+    "14": "ARITH_LEFT_TO_RIGHT"
+   }
+  },
+  {
+   "id": "OOP-DA2",
+   "pool": "diagnostic:order_of_operations:A",
+   "skill_id": "multiply_before_add",
+   "type": "numeric",
+   "gap_targets": [
+    "multiply_before_add"
+   ],
+   "prompt": "10 − 3 + 2 = ?",
+   "answer": "9",
+   "hints": [
+    "Multiplication and division come before addition and subtraction.",
+    "Then do + and − from left to right."
+   ],
+   "solution": [
+    "+ and − have the same priority: go left to right.",
+    "10 − 3 = 7, then 7 + 2 = 9."
+   ],
+   "patterns": {
+    "5": "ARITH_ADD_FIRST"
+   }
+  },
+  {
+   "id": "OOP-DA3",
+   "pool": "diagnostic:order_of_operations:A",
+   "skill_id": "brackets_first",
+   "type": "numeric",
+   "gap_targets": [
+    "brackets_first"
+   ],
+   "prompt": "2 × (3 + 4) = ?",
+   "answer": "14",
+   "hints": [
+    "Work out what is inside the brackets first.",
+    "Then multiply or divide, then add or subtract."
+   ],
+   "solution": [
+    "Brackets first: 3 + 4 = 7.",
+    "Then multiply: 2 × 7 = 14."
+   ],
+   "patterns": {
+    "10": "ARITH_IGNORE_BRACKETS"
+   }
+  },
+  {
+   "id": "OOP-DA4",
+   "pool": "diagnostic:order_of_operations:A",
+   "skill_id": "multiply_before_add",
+   "type": "numeric",
+   "gap_targets": [
+    "multiply_before_add"
+   ],
+   "prompt": "5 + 2 × 6 = ?",
+   "answer": "17",
+   "hints": [
+    "Multiplication and division come before addition and subtraction.",
+    "Then do + and − from left to right."
+   ],
+   "solution": [
+    "Multiply first: 2 × 6 = 12.",
+    "Then add: 5 + 12 = 17."
+   ],
+   "patterns": {
+    "42": "ARITH_LEFT_TO_RIGHT"
+   }
+  },
+  {
+   "id": "OOP-DA5",
+   "pool": "diagnostic:order_of_operations:A",
+   "skill_id": "brackets_first",
+   "type": "numeric",
+   "gap_targets": [
+    "brackets_first"
+   ],
+   "prompt": "(3 + 2) × 5 = ?",
+   "answer": "25",
+   "hints": [
+    "Work out what is inside the brackets first.",
+    "Then multiply or divide, then add or subtract."
+   ],
+   "solution": [
+    "Brackets first: 3 + 2 = 5.",
+    "Then multiply: 5 × 5 = 25."
+   ],
+   "patterns": {
+    "13": "ARITH_IGNORE_BRACKETS"
+   }
+  },
+  {
+   "id": "OOP-DB1",
+   "pool": "diagnostic:order_of_operations:B",
+   "skill_id": "multiply_before_add",
+   "type": "numeric",
+   "gap_targets": [
+    "multiply_before_add"
+   ],
+   "prompt": "6 + 2 × 5 = ?",
+   "answer": "16",
+   "hints": [
+    "Multiplication and division come before addition and subtraction.",
+    "Then do + and − from left to right."
+   ],
+   "solution": [
+    "Multiply first: 2 × 5 = 10.",
+    "Then add: 6 + 10 = 16."
+   ],
+   "patterns": {
+    "40": "ARITH_LEFT_TO_RIGHT"
+   }
+  },
+  {
+   "id": "OOP-DB2",
+   "pool": "diagnostic:order_of_operations:B",
+   "skill_id": "multiply_before_add",
+   "type": "numeric",
+   "gap_targets": [
+    "multiply_before_add"
+   ],
+   "prompt": "12 − 4 + 3 = ?",
+   "answer": "11",
+   "hints": [
+    "Multiplication and division come before addition and subtraction.",
+    "Then do + and − from left to right."
+   ],
+   "solution": [
+    "+ and − have the same priority: go left to right.",
+    "12 − 4 = 8, then 8 + 3 = 11."
+   ],
+   "patterns": {
+    "5": "ARITH_ADD_FIRST"
+   }
+  },
+  {
+   "id": "OOP-DB3",
+   "pool": "diagnostic:order_of_operations:B",
+   "skill_id": "brackets_first",
+   "type": "numeric",
+   "gap_targets": [
+    "brackets_first"
+   ],
+   "prompt": "4 × (2 + 3) = ?",
+   "answer": "20",
+   "hints": [
+    "Work out what is inside the brackets first.",
+    "Then multiply or divide, then add or subtract."
+   ],
+   "solution": [
+    "Brackets first: 2 + 3 = 5.",
+    "Then multiply: 4 × 5 = 20."
+   ],
+   "patterns": {
+    "11": "ARITH_IGNORE_BRACKETS"
+   }
+  },
+  {
+   "id": "OOP-DB4",
+   "pool": "diagnostic:order_of_operations:B",
+   "skill_id": "multiply_before_add",
+   "type": "numeric",
+   "gap_targets": [
+    "multiply_before_add"
+   ],
+   "prompt": "2 + 7 × 3 = ?",
+   "answer": "23",
+   "hints": [
+    "Multiplication and division come before addition and subtraction.",
+    "Then do + and − from left to right."
+   ],
+   "solution": [
+    "Multiply first: 7 × 3 = 21.",
+    "Then add: 2 + 21 = 23."
+   ],
+   "patterns": {
+    "27": "ARITH_LEFT_TO_RIGHT"
+   }
+  },
+  {
+   "id": "OOP-DB5",
+   "pool": "diagnostic:order_of_operations:B",
+   "skill_id": "brackets_first",
+   "type": "numeric",
+   "gap_targets": [
+    "brackets_first"
+   ],
+   "prompt": "(1 + 4) × 6 = ?",
+   "answer": "30",
+   "hints": [
+    "Work out what is inside the brackets first.",
+    "Then multiply or divide, then add or subtract."
+   ],
+   "solution": [
+    "Brackets first: 1 + 4 = 5.",
+    "Then multiply: 5 × 6 = 30."
+   ],
+   "patterns": {
+    "25": "ARITH_IGNORE_BRACKETS"
+   }
+  },
+  {
+   "id": "OOP-VMBA1",
+   "pool": "verification:multiply_before_add",
+   "skill_id": "multiply_before_add",
+   "type": "numeric",
+   "gap_targets": [
+    "multiply_before_add"
+   ],
+   "prompt": "8 + 3 × 2 = ?",
+   "answer": "14",
+   "hints": [
+    "Multiplication and division come before addition and subtraction.",
+    "Then do + and − from left to right."
+   ],
+   "solution": [
+    "Multiply first: 3 × 2 = 6.",
+    "Then add: 8 + 6 = 14."
+   ],
+   "patterns": {
+    "22": "ARITH_LEFT_TO_RIGHT"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "OOP-VMBA2",
+   "pool": "verification:multiply_before_add",
+   "skill_id": "multiply_before_add",
+   "type": "numeric",
+   "gap_targets": [
+    "multiply_before_add"
+   ],
+   "prompt": "4 + 5 × 3 = ?",
+   "answer": "19",
+   "hints": [
+    "Multiplication and division come before addition and subtraction.",
+    "Then do + and − from left to right."
+   ],
+   "solution": [
+    "Multiply first: 5 × 3 = 15.",
+    "Then add: 4 + 15 = 19."
+   ],
+   "patterns": {
+    "27": "ARITH_LEFT_TO_RIGHT"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "OOP-VMBA3",
+   "pool": "verification:multiply_before_add",
+   "skill_id": "multiply_before_add",
+   "type": "numeric",
+   "gap_targets": [
+    "multiply_before_add"
+   ],
+   "prompt": "20 − 2 × 3 = ?",
+   "answer": "14",
+   "hints": [
+    "Multiplication and division come before addition and subtraction.",
+    "Then do + and − from left to right."
+   ],
+   "solution": [
+    "Multiply first: 2 × 3 = 6.",
+    "Then subtract: 20 − 6 = 14."
+   ],
+   "patterns": {
+    "54": "ARITH_LEFT_TO_RIGHT"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "OOP-VMBA4",
+   "pool": "verification:multiply_before_add",
+   "skill_id": "multiply_before_add",
+   "type": "numeric",
+   "gap_targets": [
+    "multiply_before_add"
+   ],
+   "prompt": "15 − 6 + 4 = ?",
+   "answer": "13",
+   "hints": [
+    "Multiplication and division come before addition and subtraction.",
+    "Then do + and − from left to right."
+   ],
+   "solution": [
+    "+ and − have the same priority: go left to right.",
+    "15 − 6 = 9, then 9 + 4 = 13."
+   ],
+   "patterns": {
+    "5": "ARITH_ADD_FIRST"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "OOP-PMBA1",
+   "pool": "practice:multiply_before_add",
+   "skill_id": "multiply_before_add",
+   "type": "numeric",
+   "gap_targets": [
+    "multiply_before_add"
+   ],
+   "prompt": "7 + 2 × 4 = ?",
+   "answer": "15",
+   "hints": [
+    "Multiplication and division come before addition and subtraction.",
+    "Then do + and − from left to right."
+   ],
+   "solution": [
+    "Multiply first: 2 × 4 = 8.",
+    "Then add: 7 + 8 = 15."
+   ],
+   "patterns": {
+    "36": "ARITH_LEFT_TO_RIGHT"
+   }
+  },
+  {
+   "id": "OOP-PMBA2",
+   "pool": "practice:multiply_before_add",
+   "skill_id": "multiply_before_add",
+   "type": "numeric",
+   "gap_targets": [
+    "multiply_before_add"
+   ],
+   "prompt": "9 + 3 × 3 = ?",
+   "answer": "18",
+   "hints": [
+    "Multiplication and division come before addition and subtraction.",
+    "Then do + and − from left to right."
+   ],
+   "solution": [
+    "Multiply first: 3 × 3 = 9.",
+    "Then add: 9 + 9 = 18."
+   ],
+   "patterns": {
+    "36": "ARITH_LEFT_TO_RIGHT"
+   }
+  },
+  {
+   "id": "OOP-PMBA3",
+   "pool": "practice:multiply_before_add",
+   "skill_id": "multiply_before_add",
+   "type": "numeric",
+   "gap_targets": [
+    "multiply_before_add"
+   ],
+   "prompt": "18 − 5 + 2 = ?",
+   "answer": "15",
+   "hints": [
+    "Multiplication and division come before addition and subtraction.",
+    "Then do + and − from left to right."
+   ],
+   "solution": [
+    "+ and − have the same priority: go left to right.",
+    "18 − 5 = 13, then 13 + 2 = 15."
+   ],
+   "patterns": {
+    "11": "ARITH_ADD_FIRST"
+   }
+  },
+  {
+   "id": "OOP-PMBA4",
+   "pool": "practice:multiply_before_add",
+   "skill_id": "multiply_before_add",
+   "type": "numeric",
+   "gap_targets": [
+    "multiply_before_add"
+   ],
+   "prompt": "30 − 4 × 5 = ?",
+   "answer": "10",
+   "hints": [
+    "Multiplication and division come before addition and subtraction.",
+    "Then do + and − from left to right."
+   ],
+   "solution": [
+    "Multiply first: 4 × 5 = 20.",
+    "Then subtract: 30 − 20 = 10."
+   ],
+   "patterns": {
+    "130": "ARITH_LEFT_TO_RIGHT"
+   }
+  },
+  {
+   "id": "OOP-RMBA1",
+   "pool": "retest:multiply_before_add",
+   "skill_id": "multiply_before_add",
+   "type": "numeric",
+   "gap_targets": [
+    "multiply_before_add"
+   ],
+   "prompt": "6 + 3 × 4 = ?",
+   "answer": "18",
+   "hints": [
+    "Multiplication and division come before addition and subtraction.",
+    "Then do + and − from left to right."
+   ],
+   "solution": [
+    "Multiply first: 3 × 4 = 12.",
+    "Then add: 6 + 12 = 18."
+   ],
+   "patterns": {
+    "36": "ARITH_LEFT_TO_RIGHT"
+   }
+  },
+  {
+   "id": "OOP-RMBA2",
+   "pool": "retest:multiply_before_add",
+   "skill_id": "multiply_before_add",
+   "type": "numeric",
+   "gap_targets": [
+    "multiply_before_add"
+   ],
+   "prompt": "2 + 8 × 5 = ?",
+   "answer": "42",
+   "hints": [
+    "Multiplication and division come before addition and subtraction.",
+    "Then do + and − from left to right."
+   ],
+   "solution": [
+    "Multiply first: 8 × 5 = 40.",
+    "Then add: 2 + 40 = 42."
+   ],
+   "patterns": {
+    "50": "ARITH_LEFT_TO_RIGHT"
+   }
+  },
+  {
+   "id": "OOP-RMBA3",
+   "pool": "retest:multiply_before_add",
+   "skill_id": "multiply_before_add",
+   "type": "numeric",
+   "gap_targets": [
+    "multiply_before_add"
+   ],
+   "prompt": "11 + 2 × 3 = ?",
+   "answer": "17",
+   "hints": [
+    "Multiplication and division come before addition and subtraction.",
+    "Then do + and − from left to right."
+   ],
+   "solution": [
+    "Multiply first: 2 × 3 = 6.",
+    "Then add: 11 + 6 = 17."
+   ],
+   "patterns": {
+    "39": "ARITH_LEFT_TO_RIGHT"
+   }
+  },
+  {
+   "id": "OOP-RMBA4",
+   "pool": "retest:multiply_before_add",
+   "skill_id": "multiply_before_add",
+   "type": "numeric",
+   "gap_targets": [
+    "multiply_before_add"
+   ],
+   "prompt": "14 − 5 + 3 = ?",
+   "answer": "12",
+   "hints": [
+    "Multiplication and division come before addition and subtraction.",
+    "Then do + and − from left to right."
+   ],
+   "solution": [
+    "+ and − have the same priority: go left to right.",
+    "14 − 5 = 9, then 9 + 3 = 12."
+   ],
+   "patterns": {
+    "6": "ARITH_ADD_FIRST"
+   }
+  },
+  {
+   "id": "OOP-RMBA5",
+   "pool": "retest:multiply_before_add",
+   "skill_id": "multiply_before_add",
+   "type": "numeric",
+   "gap_targets": [
+    "multiply_before_add"
+   ],
+   "prompt": "25 − 3 × 4 = ?",
+   "answer": "13",
+   "hints": [
+    "Multiplication and division come before addition and subtraction.",
+    "Then do + and − from left to right."
+   ],
+   "solution": [
+    "Multiply first: 3 × 4 = 12.",
+    "Then subtract: 25 − 12 = 13."
+   ],
+   "patterns": {
+    "88": "ARITH_LEFT_TO_RIGHT"
+   }
+  },
+  {
+   "id": "OOP-RMBA6",
+   "pool": "retest:multiply_before_add",
+   "skill_id": "multiply_before_add",
+   "type": "numeric",
+   "gap_targets": [
+    "multiply_before_add"
+   ],
+   "prompt": "9 − 6 + 2 = ?",
+   "answer": "5",
+   "hints": [
+    "Multiplication and division come before addition and subtraction.",
+    "Then do + and − from left to right."
+   ],
+   "solution": [
+    "+ and − have the same priority: go left to right.",
+    "9 − 6 = 3, then 3 + 2 = 5."
+   ],
+   "patterns": {
+    "1": "ARITH_ADD_FIRST"
+   }
+  },
+  {
+   "id": "OOP-VBF1",
+   "pool": "verification:brackets_first",
+   "skill_id": "brackets_first",
+   "type": "numeric",
+   "gap_targets": [
+    "brackets_first"
+   ],
+   "prompt": "5 × (1 + 4) = ?",
+   "answer": "25",
+   "hints": [
+    "Work out what is inside the brackets first.",
+    "Then multiply or divide, then add or subtract."
+   ],
+   "solution": [
+    "Brackets first: 1 + 4 = 5.",
+    "Then multiply: 5 × 5 = 25."
+   ],
+   "patterns": {
+    "9": "ARITH_IGNORE_BRACKETS"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "OOP-VBF2",
+   "pool": "verification:brackets_first",
+   "skill_id": "brackets_first",
+   "type": "numeric",
+   "gap_targets": [
+    "brackets_first"
+   ],
+   "prompt": "3 × (6 + 2) = ?",
+   "answer": "24",
+   "hints": [
+    "Work out what is inside the brackets first.",
+    "Then multiply or divide, then add or subtract."
+   ],
+   "solution": [
+    "Brackets first: 6 + 2 = 8.",
+    "Then multiply: 3 × 8 = 24."
+   ],
+   "patterns": {
+    "20": "ARITH_IGNORE_BRACKETS"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "OOP-VBF3",
+   "pool": "verification:brackets_first",
+   "skill_id": "brackets_first",
+   "type": "numeric",
+   "gap_targets": [
+    "brackets_first"
+   ],
+   "prompt": "(2 + 5) × 3 = ?",
+   "answer": "21",
+   "hints": [
+    "Work out what is inside the brackets first.",
+    "Then multiply or divide, then add or subtract."
+   ],
+   "solution": [
+    "Brackets first: 2 + 5 = 7.",
+    "Then multiply: 7 × 3 = 21."
+   ],
+   "patterns": {
+    "17": "ARITH_IGNORE_BRACKETS"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "OOP-VBF4",
+   "pool": "verification:brackets_first",
+   "skill_id": "brackets_first",
+   "type": "numeric",
+   "gap_targets": [
+    "brackets_first"
+   ],
+   "prompt": "(6 + 1) × 3 = ?",
+   "answer": "21",
+   "hints": [
+    "Work out what is inside the brackets first.",
+    "Then multiply or divide, then add or subtract."
+   ],
+   "solution": [
+    "Brackets first: 6 + 1 = 7.",
+    "Then multiply: 7 × 3 = 21."
+   ],
+   "patterns": {
+    "9": "ARITH_IGNORE_BRACKETS"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "OOP-PBF1",
+   "pool": "practice:brackets_first",
+   "skill_id": "brackets_first",
+   "type": "numeric",
+   "gap_targets": [
+    "brackets_first"
+   ],
+   "prompt": "2 × (4 + 5) = ?",
+   "answer": "18",
+   "hints": [
+    "Work out what is inside the brackets first.",
+    "Then multiply or divide, then add or subtract."
+   ],
+   "solution": [
+    "Brackets first: 4 + 5 = 9.",
+    "Then multiply: 2 × 9 = 18."
+   ],
+   "patterns": {
+    "13": "ARITH_IGNORE_BRACKETS"
+   }
+  },
+  {
+   "id": "OOP-PBF2",
+   "pool": "practice:brackets_first",
+   "skill_id": "brackets_first",
+   "type": "numeric",
+   "gap_targets": [
+    "brackets_first"
+   ],
+   "prompt": "7 × (1 + 2) = ?",
+   "answer": "21",
+   "hints": [
+    "Work out what is inside the brackets first.",
+    "Then multiply or divide, then add or subtract."
+   ],
+   "solution": [
+    "Brackets first: 1 + 2 = 3.",
+    "Then multiply: 7 × 3 = 21."
+   ],
+   "patterns": {
+    "9": "ARITH_IGNORE_BRACKETS"
+   }
+  },
+  {
+   "id": "OOP-PBF3",
+   "pool": "practice:brackets_first",
+   "skill_id": "brackets_first",
+   "type": "numeric",
+   "gap_targets": [
+    "brackets_first"
+   ],
+   "prompt": "(3 + 3) × 4 = ?",
+   "answer": "24",
+   "hints": [
+    "Work out what is inside the brackets first.",
+    "Then multiply or divide, then add or subtract."
+   ],
+   "solution": [
+    "Brackets first: 3 + 3 = 6.",
+    "Then multiply: 6 × 4 = 24."
+   ],
+   "patterns": {
+    "15": "ARITH_IGNORE_BRACKETS"
+   }
+  },
+  {
+   "id": "OOP-PBF4",
+   "pool": "practice:brackets_first",
+   "skill_id": "brackets_first",
+   "type": "numeric",
+   "gap_targets": [
+    "brackets_first"
+   ],
+   "prompt": "(5 + 2) × 6 = ?",
+   "answer": "42",
+   "hints": [
+    "Work out what is inside the brackets first.",
+    "Then multiply or divide, then add or subtract."
+   ],
+   "solution": [
+    "Brackets first: 5 + 2 = 7.",
+    "Then multiply: 7 × 6 = 42."
+   ],
+   "patterns": {
+    "17": "ARITH_IGNORE_BRACKETS"
+   }
+  },
+  {
+   "id": "OOP-RBF1",
+   "pool": "retest:brackets_first",
+   "skill_id": "brackets_first",
+   "type": "numeric",
+   "gap_targets": [
+    "brackets_first"
+   ],
+   "prompt": "3 × (2 + 7) = ?",
+   "answer": "27",
+   "hints": [
+    "Work out what is inside the brackets first.",
+    "Then multiply or divide, then add or subtract."
+   ],
+   "solution": [
+    "Brackets first: 2 + 7 = 9.",
+    "Then multiply: 3 × 9 = 27."
+   ],
+   "patterns": {
+    "13": "ARITH_IGNORE_BRACKETS"
+   }
+  },
+  {
+   "id": "OOP-RBF2",
+   "pool": "retest:brackets_first",
+   "skill_id": "brackets_first",
+   "type": "numeric",
+   "gap_targets": [
+    "brackets_first"
+   ],
+   "prompt": "4 × (5 + 1) = ?",
+   "answer": "24",
+   "hints": [
+    "Work out what is inside the brackets first.",
+    "Then multiply or divide, then add or subtract."
+   ],
+   "solution": [
+    "Brackets first: 5 + 1 = 6.",
+    "Then multiply: 4 × 6 = 24."
+   ],
+   "patterns": {
+    "21": "ARITH_IGNORE_BRACKETS"
+   }
+  },
+  {
+   "id": "OOP-RBF3",
+   "pool": "retest:brackets_first",
+   "skill_id": "brackets_first",
+   "type": "numeric",
+   "gap_targets": [
+    "brackets_first"
+   ],
+   "prompt": "6 × (2 + 3) = ?",
+   "answer": "30",
+   "hints": [
+    "Work out what is inside the brackets first.",
+    "Then multiply or divide, then add or subtract."
+   ],
+   "solution": [
+    "Brackets first: 2 + 3 = 5.",
+    "Then multiply: 6 × 5 = 30."
+   ],
+   "patterns": {
+    "15": "ARITH_IGNORE_BRACKETS"
+   }
+  },
+  {
+   "id": "OOP-RBF4",
+   "pool": "retest:brackets_first",
+   "skill_id": "brackets_first",
+   "type": "numeric",
+   "gap_targets": [
+    "brackets_first"
+   ],
+   "prompt": "(2 + 3) × 8 = ?",
+   "answer": "40",
+   "hints": [
+    "Work out what is inside the brackets first.",
+    "Then multiply or divide, then add or subtract."
+   ],
+   "solution": [
+    "Brackets first: 2 + 3 = 5.",
+    "Then multiply: 5 × 8 = 40."
+   ],
+   "patterns": {
+    "26": "ARITH_IGNORE_BRACKETS"
+   }
+  },
+  {
+   "id": "OOP-RBF5",
+   "pool": "retest:brackets_first",
+   "skill_id": "brackets_first",
+   "type": "numeric",
+   "gap_targets": [
+    "brackets_first"
+   ],
+   "prompt": "(5 + 4) × 2 = ?",
+   "answer": "18",
+   "hints": [
+    "Work out what is inside the brackets first.",
+    "Then multiply or divide, then add or subtract."
+   ],
+   "solution": [
+    "Brackets first: 5 + 4 = 9.",
+    "Then multiply: 9 × 2 = 18."
+   ],
+   "patterns": {
+    "13": "ARITH_IGNORE_BRACKETS"
+   }
+  },
+  {
+   "id": "OOP-RBF6",
+   "pool": "retest:brackets_first",
+   "skill_id": "brackets_first",
+   "type": "numeric",
+   "gap_targets": [
+    "brackets_first"
+   ],
+   "prompt": "(8 + 1) × 4 = ?",
+   "answer": "36",
+   "hints": [
+    "Work out what is inside the brackets first.",
+    "Then multiply or divide, then add or subtract."
+   ],
+   "solution": [
+    "Brackets first: 8 + 1 = 9.",
+    "Then multiply: 9 × 4 = 36."
+   ],
+   "patterns": {
+    "12": "ARITH_IGNORE_BRACKETS"
+   }
+  }
+ ],
+ "lessons": {
+  "multiply_before_add": {
+   "title": "Multiply before you add",
+   "big_idea": "In a calculation with several operations, × and ÷ are done before + and −. Additions and subtractions are then done from left to right.",
+   "steps": [
+    "Look for × and ÷ first and work them out.",
+    "Replace them with their answers.",
+    "Then do + and − in order from left to right."
+   ],
+   "sense_check": "3 + 4 × 2 means 3 plus two fours: 3 + 8 = 11, not 7 × 2 = 14.",
+   "worked_examples": [
+    {
+     "prompt": "3 + 4 × 2 = ?",
+     "answer": "11",
+     "steps": [
+      "Multiply first: 4 × 2 = 8.",
+      "Then add: 3 + 8 = 11."
+     ]
+    },
+    {
+     "prompt": "10 − 3 + 2 = ?",
+     "answer": "9",
+     "steps": [
+      "Left to right: 10 − 3 = 7.",
+      "7 + 2 = 9."
+     ]
+    }
+   ]
+  },
+  "brackets_first": {
+   "title": "Brackets first",
+   "big_idea": "Brackets change the order: whatever is inside them is worked out before anything else.",
+   "steps": [
+    "Work out the inside of each bracket first.",
+    "Then multiply or divide.",
+    "Finally add or subtract."
+   ],
+   "sense_check": "2 × (3 + 4) means two lots of 7, which is 14. Without the brackets it would be 2 × 3 + 4 = 10.",
+   "worked_examples": [
+    {
+     "prompt": "2 × (3 + 4) = ?",
+     "answer": "14",
+     "steps": [
+      "Brackets: 3 + 4 = 7.",
+      "2 × 7 = 14."
+     ]
+    },
+    {
+     "prompt": "(3 + 2) × 5 = ?",
+     "answer": "25",
+     "steps": [
+      "Brackets: 3 + 2 = 5.",
+      "5 × 5 = 25."
+     ]
+    }
+   ]
+  }
+ }
+}

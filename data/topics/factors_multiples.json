@@ -1,0 +1,1027 @@
+{
+ "skills": [
+  {
+   "id": "highest_common_factor",
+   "name": "Highest common factor",
+   "grade": 5,
+   "prerequisites": [],
+   "description": "The biggest number dividing both numbers."
+  },
+  {
+   "id": "lowest_common_multiple",
+   "name": "Lowest common multiple",
+   "grade": 6,
+   "prerequisites": [
+    "highest_common_factor"
+   ],
+   "description": "The smallest number both numbers divide into."
+  }
+ ],
+ "misconceptions": {
+  "FM_GAVE_LCM": {
+   "label": "Gives the LCM when asked for the HCF",
+   "gap_skill": "highest_common_factor",
+   "explanation": "Mixes up 'highest common factor' and 'lowest common multiple'."
+  },
+  "FM_HCF_IS_SMALLER": {
+   "label": "Thinks the HCF is always the smaller number",
+   "gap_skill": "highest_common_factor",
+   "explanation": "Says the HCF of 8 and 20 is 8, though 8 doesn't divide 20."
+  },
+  "FM_LCM_IS_PRODUCT": {
+   "label": "Thinks the LCM is always the two numbers multiplied",
+   "gap_skill": "lowest_common_multiple",
+   "explanation": "Says the LCM of 4 and 6 is 24 instead of 12."
+  },
+  "FM_GAVE_HCF": {
+   "label": "Gives the HCF when asked for the LCM",
+   "gap_skill": "lowest_common_multiple",
+   "explanation": "Mixes up the two: answers 2 for the LCM of 4 and 6."
+  }
+ },
+ "questions": [
+  {
+   "id": "FAM-DA1",
+   "pool": "diagnostic:factors_multiples:A",
+   "skill_id": "highest_common_factor",
+   "type": "numeric",
+   "gap_targets": [
+    "highest_common_factor"
+   ],
+   "prompt": "What is the highest common factor (HCF) of 12 and 18?",
+   "answer": "6",
+   "hints": [
+    "A factor divides into a number exactly. List the factors of both numbers.",
+    "The HCF is the biggest number in both lists. It can't be bigger than the smaller number."
+   ],
+   "solution": [
+    "Factors of 12: 1, 2, 3, 4, 6, 12.",
+    "Factors of 18: 1, 2, 3, 6, 9, 18.",
+    "The biggest number in both lists is 6."
+   ],
+   "patterns": {
+    "36": "FM_GAVE_LCM",
+    "12": "FM_HCF_IS_SMALLER"
+   }
+  },
+  {
+   "id": "FAM-DA2",
+   "pool": "diagnostic:factors_multiples:A",
+   "skill_id": "lowest_common_multiple",
+   "type": "numeric",
+   "gap_targets": [
+    "lowest_common_multiple"
+   ],
+   "prompt": "What is the lowest common multiple (LCM) of 4 and 6?",
+   "answer": "12",
+   "hints": [
+    "List the multiples of each number: 4, 8, 12, … and 6, 12, 18, …",
+    "The LCM is the first number in both lists. It is often smaller than the two numbers multiplied."
+   ],
+   "solution": [
+    "Multiples of 4: 4, 8, 12.",
+    "Multiples of 6: 6, 12.",
+    "The first number in both lists is 12."
+   ],
+   "patterns": {
+    "24": "FM_LCM_IS_PRODUCT",
+    "2": "FM_GAVE_HCF"
+   }
+  },
+  {
+   "id": "FAM-DA3",
+   "pool": "diagnostic:factors_multiples:A",
+   "skill_id": "highest_common_factor",
+   "type": "numeric",
+   "gap_targets": [
+    "highest_common_factor"
+   ],
+   "prompt": "What is the highest common factor (HCF) of 8 and 20?",
+   "answer": "4",
+   "hints": [
+    "A factor divides into a number exactly. List the factors of both numbers.",
+    "The HCF is the biggest number in both lists. It can't be bigger than the smaller number."
+   ],
+   "solution": [
+    "Factors of 8: 1, 2, 4, 8.",
+    "Factors of 20: 1, 2, 4, 5, 10, 20.",
+    "The biggest number in both lists is 4."
+   ],
+   "patterns": {
+    "40": "FM_GAVE_LCM",
+    "8": "FM_HCF_IS_SMALLER"
+   }
+  },
+  {
+   "id": "FAM-DA4",
+   "pool": "diagnostic:factors_multiples:A",
+   "skill_id": "lowest_common_multiple",
+   "type": "numeric",
+   "gap_targets": [
+    "lowest_common_multiple"
+   ],
+   "prompt": "What is the lowest common multiple (LCM) of 6 and 9?",
+   "answer": "18",
+   "hints": [
+    "List the multiples of each number: 4, 8, 12, … and 6, 12, 18, …",
+    "The LCM is the first number in both lists. It is often smaller than the two numbers multiplied."
+   ],
+   "solution": [
+    "Multiples of 6: 6, 12, 18.",
+    "Multiples of 9: 9, 18.",
+    "The first number in both lists is 18."
+   ],
+   "patterns": {
+    "54": "FM_LCM_IS_PRODUCT",
+    "3": "FM_GAVE_HCF"
+   }
+  },
+  {
+   "id": "FAM-DA5",
+   "pool": "diagnostic:factors_multiples:A",
+   "skill_id": "highest_common_factor",
+   "type": "numeric",
+   "gap_targets": [
+    "highest_common_factor"
+   ],
+   "prompt": "What is the highest common factor (HCF) of 15 and 25?",
+   "answer": "5",
+   "hints": [
+    "A factor divides into a number exactly. List the factors of both numbers.",
+    "The HCF is the biggest number in both lists. It can't be bigger than the smaller number."
+   ],
+   "solution": [
+    "Factors of 15: 1, 3, 5, 15.",
+    "Factors of 25: 1, 5, 25.",
+    "The biggest number in both lists is 5."
+   ],
+   "patterns": {
+    "75": "FM_GAVE_LCM",
+    "15": "FM_HCF_IS_SMALLER"
+   }
+  },
+  {
+   "id": "FAM-DB1",
+   "pool": "diagnostic:factors_multiples:B",
+   "skill_id": "highest_common_factor",
+   "type": "numeric",
+   "gap_targets": [
+    "highest_common_factor"
+   ],
+   "prompt": "What is the highest common factor (HCF) of 16 and 24?",
+   "answer": "8",
+   "hints": [
+    "A factor divides into a number exactly. List the factors of both numbers.",
+    "The HCF is the biggest number in both lists. It can't be bigger than the smaller number."
+   ],
+   "solution": [
+    "Factors of 16: 1, 2, 4, 8, 16.",
+    "Factors of 24: 1, 2, 3, 4, 6, 8, 12, 24.",
+    "The biggest number in both lists is 8."
+   ],
+   "patterns": {
+    "48": "FM_GAVE_LCM",
+    "16": "FM_HCF_IS_SMALLER"
+   }
+  },
+  {
+   "id": "FAM-DB2",
+   "pool": "diagnostic:factors_multiples:B",
+   "skill_id": "lowest_common_multiple",
+   "type": "numeric",
+   "gap_targets": [
+    "lowest_common_multiple"
+   ],
+   "prompt": "What is the lowest common multiple (LCM) of 6 and 8?",
+   "answer": "24",
+   "hints": [
+    "List the multiples of each number: 4, 8, 12, … and 6, 12, 18, …",
+    "The LCM is the first number in both lists. It is often smaller than the two numbers multiplied."
+   ],
+   "solution": [
+    "Multiples of 6: 6, 12, 18, 24.",
+    "Multiples of 8: 8, 16, 24.",
+    "The first number in both lists is 24."
+   ],
+   "patterns": {
+    "48": "FM_LCM_IS_PRODUCT",
+    "2": "FM_GAVE_HCF"
+   }
+  },
+  {
+   "id": "FAM-DB3",
+   "pool": "diagnostic:factors_multiples:B",
+   "skill_id": "highest_common_factor",
+   "type": "numeric",
+   "gap_targets": [
+    "highest_common_factor"
+   ],
+   "prompt": "What is the highest common factor (HCF) of 9 and 15?",
+   "answer": "3",
+   "hints": [
+    "A factor divides into a number exactly. List the factors of both numbers.",
+    "The HCF is the biggest number in both lists. It can't be bigger than the smaller number."
+   ],
+   "solution": [
+    "Factors of 9: 1, 3, 9.",
+    "Factors of 15: 1, 3, 5, 15.",
+    "The biggest number in both lists is 3."
+   ],
+   "patterns": {
+    "45": "FM_GAVE_LCM",
+    "9": "FM_HCF_IS_SMALLER"
+   }
+  },
+  {
+   "id": "FAM-DB4",
+   "pool": "diagnostic:factors_multiples:B",
+   "skill_id": "lowest_common_multiple",
+   "type": "numeric",
+   "gap_targets": [
+    "lowest_common_multiple"
+   ],
+   "prompt": "What is the lowest common multiple (LCM) of 10 and 15?",
+   "answer": "30",
+   "hints": [
+    "List the multiples of each number: 4, 8, 12, … and 6, 12, 18, …",
+    "The LCM is the first number in both lists. It is often smaller than the two numbers multiplied."
+   ],
+   "solution": [
+    "Multiples of 10: 10, 20, 30.",
+    "Multiples of 15: 15, 30.",
+    "The first number in both lists is 30."
+   ],
+   "patterns": {
+    "150": "FM_LCM_IS_PRODUCT",
+    "5": "FM_GAVE_HCF"
+   }
+  },
+  {
+   "id": "FAM-DB5",
+   "pool": "diagnostic:factors_multiples:B",
+   "skill_id": "highest_common_factor",
+   "type": "numeric",
+   "gap_targets": [
+    "highest_common_factor"
+   ],
+   "prompt": "What is the highest common factor (HCF) of 14 and 21?",
+   "answer": "7",
+   "hints": [
+    "A factor divides into a number exactly. List the factors of both numbers.",
+    "The HCF is the biggest number in both lists. It can't be bigger than the smaller number."
+   ],
+   "solution": [
+    "Factors of 14: 1, 2, 7, 14.",
+    "Factors of 21: 1, 3, 7, 21.",
+    "The biggest number in both lists is 7."
+   ],
+   "patterns": {
+    "42": "FM_GAVE_LCM",
+    "14": "FM_HCF_IS_SMALLER"
+   }
+  },
+  {
+   "id": "FAM-VHCF1",
+   "pool": "verification:highest_common_factor",
+   "skill_id": "highest_common_factor",
+   "type": "numeric",
+   "gap_targets": [
+    "highest_common_factor"
+   ],
+   "prompt": "What is the highest common factor (HCF) of 18 and 24?",
+   "answer": "6",
+   "hints": [
+    "A factor divides into a number exactly. List the factors of both numbers.",
+    "The HCF is the biggest number in both lists. It can't be bigger than the smaller number."
+   ],
+   "solution": [
+    "Factors of 18: 1, 2, 3, 6, 9, 18.",
+    "Factors of 24: 1, 2, 3, 4, 6, 8, 12, 24.",
+    "The biggest number in both lists is 6."
+   ],
+   "patterns": {
+    "72": "FM_GAVE_LCM",
+    "18": "FM_HCF_IS_SMALLER"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "FAM-VHCF2",
+   "pool": "verification:highest_common_factor",
+   "skill_id": "highest_common_factor",
+   "type": "numeric",
+   "gap_targets": [
+    "highest_common_factor"
+   ],
+   "prompt": "What is the highest common factor (HCF) of 10 and 25?",
+   "answer": "5",
+   "hints": [
+    "A factor divides into a number exactly. List the factors of both numbers.",
+    "The HCF is the biggest number in both lists. It can't be bigger than the smaller number."
+   ],
+   "solution": [
+    "Factors of 10: 1, 2, 5, 10.",
+    "Factors of 25: 1, 5, 25.",
+    "The biggest number in both lists is 5."
+   ],
+   "patterns": {
+    "50": "FM_GAVE_LCM",
+    "10": "FM_HCF_IS_SMALLER"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "FAM-VHCF3",
+   "pool": "verification:highest_common_factor",
+   "skill_id": "highest_common_factor",
+   "type": "numeric",
+   "gap_targets": [
+    "highest_common_factor"
+   ],
+   "prompt": "What is the highest common factor (HCF) of 12 and 30?",
+   "answer": "6",
+   "hints": [
+    "A factor divides into a number exactly. List the factors of both numbers.",
+    "The HCF is the biggest number in both lists. It can't be bigger than the smaller number."
+   ],
+   "solution": [
+    "Factors of 12: 1, 2, 3, 4, 6, 12.",
+    "Factors of 30: 1, 2, 3, 5, 6, 10, 15, 30.",
+    "The biggest number in both lists is 6."
+   ],
+   "patterns": {
+    "60": "FM_GAVE_LCM",
+    "12": "FM_HCF_IS_SMALLER"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "FAM-VHCF4",
+   "pool": "verification:highest_common_factor",
+   "skill_id": "highest_common_factor",
+   "type": "numeric",
+   "gap_targets": [
+    "highest_common_factor"
+   ],
+   "prompt": "What is the highest common factor (HCF) of 20 and 28?",
+   "answer": "4",
+   "hints": [
+    "A factor divides into a number exactly. List the factors of both numbers.",
+    "The HCF is the biggest number in both lists. It can't be bigger than the smaller number."
+   ],
+   "solution": [
+    "Factors of 20: 1, 2, 4, 5, 10, 20.",
+    "Factors of 28: 1, 2, 4, 7, 14, 28.",
+    "The biggest number in both lists is 4."
+   ],
+   "patterns": {
+    "140": "FM_GAVE_LCM",
+    "20": "FM_HCF_IS_SMALLER"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "FAM-PHCF1",
+   "pool": "practice:highest_common_factor",
+   "skill_id": "highest_common_factor",
+   "type": "numeric",
+   "gap_targets": [
+    "highest_common_factor"
+   ],
+   "prompt": "What is the highest common factor (HCF) of 6 and 15?",
+   "answer": "3",
+   "hints": [
+    "A factor divides into a number exactly. List the factors of both numbers.",
+    "The HCF is the biggest number in both lists. It can't be bigger than the smaller number."
+   ],
+   "solution": [
+    "Factors of 6: 1, 2, 3, 6.",
+    "Factors of 15: 1, 3, 5, 15.",
+    "The biggest number in both lists is 3."
+   ],
+   "patterns": {
+    "30": "FM_GAVE_LCM",
+    "6": "FM_HCF_IS_SMALLER"
+   }
+  },
+  {
+   "id": "FAM-PHCF2",
+   "pool": "practice:highest_common_factor",
+   "skill_id": "highest_common_factor",
+   "type": "numeric",
+   "gap_targets": [
+    "highest_common_factor"
+   ],
+   "prompt": "What is the highest common factor (HCF) of 12 and 16?",
+   "answer": "4",
+   "hints": [
+    "A factor divides into a number exactly. List the factors of both numbers.",
+    "The HCF is the biggest number in both lists. It can't be bigger than the smaller number."
+   ],
+   "solution": [
+    "Factors of 12: 1, 2, 3, 4, 6, 12.",
+    "Factors of 16: 1, 2, 4, 8, 16.",
+    "The biggest number in both lists is 4."
+   ],
+   "patterns": {
+    "48": "FM_GAVE_LCM",
+    "12": "FM_HCF_IS_SMALLER"
+   }
+  },
+  {
+   "id": "FAM-PHCF3",
+   "pool": "practice:highest_common_factor",
+   "skill_id": "highest_common_factor",
+   "type": "numeric",
+   "gap_targets": [
+    "highest_common_factor"
+   ],
+   "prompt": "What is the highest common factor (HCF) of 21 and 28?",
+   "answer": "7",
+   "hints": [
+    "A factor divides into a number exactly. List the factors of both numbers.",
+    "The HCF is the biggest number in both lists. It can't be bigger than the smaller number."
+   ],
+   "solution": [
+    "Factors of 21: 1, 3, 7, 21.",
+    "Factors of 28: 1, 2, 4, 7, 14, 28.",
+    "The biggest number in both lists is 7."
+   ],
+   "patterns": {
+    "84": "FM_GAVE_LCM",
+    "21": "FM_HCF_IS_SMALLER"
+   }
+  },
+  {
+   "id": "FAM-PHCF4",
+   "pool": "practice:highest_common_factor",
+   "skill_id": "highest_common_factor",
+   "type": "numeric",
+   "gap_targets": [
+    "highest_common_factor"
+   ],
+   "prompt": "What is the highest common factor (HCF) of 18 and 27?",
+   "answer": "9",
+   "hints": [
+    "A factor divides into a number exactly. List the factors of both numbers.",
+    "The HCF is the biggest number in both lists. It can't be bigger than the smaller number."
+   ],
+   "solution": [
+    "Factors of 18: 1, 2, 3, 6, 9, 18.",
+    "Factors of 27: 1, 3, 9, 27.",
+    "The biggest number in both lists is 9."
+   ],
+   "patterns": {
+    "54": "FM_GAVE_LCM",
+    "18": "FM_HCF_IS_SMALLER"
+   }
+  },
+  {
+   "id": "FAM-RHCF1",
+   "pool": "retest:highest_common_factor",
+   "skill_id": "highest_common_factor",
+   "type": "numeric",
+   "gap_targets": [
+    "highest_common_factor"
+   ],
+   "prompt": "What is the highest common factor (HCF) of 24 and 36?",
+   "answer": "12",
+   "hints": [
+    "A factor divides into a number exactly. List the factors of both numbers.",
+    "The HCF is the biggest number in both lists. It can't be bigger than the smaller number."
+   ],
+   "solution": [
+    "Factors of 24: 1, 2, 3, 4, 6, 8, 12, 24.",
+    "Factors of 36: 1, 2, 3, 4, 6, 9, 12, 18, 36.",
+    "The biggest number in both lists is 12."
+   ],
+   "patterns": {
+    "72": "FM_GAVE_LCM",
+    "24": "FM_HCF_IS_SMALLER"
+   }
+  },
+  {
+   "id": "FAM-RHCF2",
+   "pool": "retest:highest_common_factor",
+   "skill_id": "highest_common_factor",
+   "type": "numeric",
+   "gap_targets": [
+    "highest_common_factor"
+   ],
+   "prompt": "What is the highest common factor (HCF) of 14 and 35?",
+   "answer": "7",
+   "hints": [
+    "A factor divides into a number exactly. List the factors of both numbers.",
+    "The HCF is the biggest number in both lists. It can't be bigger than the smaller number."
+   ],
+   "solution": [
+    "Factors of 14: 1, 2, 7, 14.",
+    "Factors of 35: 1, 5, 7, 35.",
+    "The biggest number in both lists is 7."
+   ],
+   "patterns": {
+    "70": "FM_GAVE_LCM",
+    "14": "FM_HCF_IS_SMALLER"
+   }
+  },
+  {
+   "id": "FAM-RHCF3",
+   "pool": "retest:highest_common_factor",
+   "skill_id": "highest_common_factor",
+   "type": "numeric",
+   "gap_targets": [
+    "highest_common_factor"
+   ],
+   "prompt": "What is the highest common factor (HCF) of 16 and 40?",
+   "answer": "8",
+   "hints": [
+    "A factor divides into a number exactly. List the factors of both numbers.",
+    "The HCF is the biggest number in both lists. It can't be bigger than the smaller number."
+   ],
+   "solution": [
+    "Factors of 16: 1, 2, 4, 8, 16.",
+    "Factors of 40: 1, 2, 4, 5, 8, 10, 20, 40.",
+    "The biggest number in both lists is 8."
+   ],
+   "patterns": {
+    "80": "FM_GAVE_LCM",
+    "16": "FM_HCF_IS_SMALLER"
+   }
+  },
+  {
+   "id": "FAM-RHCF4",
+   "pool": "retest:highest_common_factor",
+   "skill_id": "highest_common_factor",
+   "type": "numeric",
+   "gap_targets": [
+    "highest_common_factor"
+   ],
+   "prompt": "What is the highest common factor (HCF) of 27 and 36?",
+   "answer": "9",
+   "hints": [
+    "A factor divides into a number exactly. List the factors of both numbers.",
+    "The HCF is the biggest number in both lists. It can't be bigger than the smaller number."
+   ],
+   "solution": [
+    "Factors of 27: 1, 3, 9, 27.",
+    "Factors of 36: 1, 2, 3, 4, 6, 9, 12, 18, 36.",
+    "The biggest number in both lists is 9."
+   ],
+   "patterns": {
+    "108": "FM_GAVE_LCM",
+    "27": "FM_HCF_IS_SMALLER"
+   }
+  },
+  {
+   "id": "FAM-RHCF5",
+   "pool": "retest:highest_common_factor",
+   "skill_id": "highest_common_factor",
+   "type": "numeric",
+   "gap_targets": [
+    "highest_common_factor"
+   ],
+   "prompt": "What is the highest common factor (HCF) of 20 and 30?",
+   "answer": "10",
+   "hints": [
+    "A factor divides into a number exactly. List the factors of both numbers.",
+    "The HCF is the biggest number in both lists. It can't be bigger than the smaller number."
+   ],
+   "solution": [
+    "Factors of 20: 1, 2, 4, 5, 10, 20.",
+    "Factors of 30: 1, 2, 3, 5, 6, 10, 15, 30.",
+    "The biggest number in both lists is 10."
+   ],
+   "patterns": {
+    "60": "FM_GAVE_LCM",
+    "20": "FM_HCF_IS_SMALLER"
+   }
+  },
+  {
+   "id": "FAM-RHCF6",
+   "pool": "retest:highest_common_factor",
+   "skill_id": "highest_common_factor",
+   "type": "numeric",
+   "gap_targets": [
+    "highest_common_factor"
+   ],
+   "prompt": "What is the highest common factor (HCF) of 12 and 42?",
+   "answer": "6",
+   "hints": [
+    "A factor divides into a number exactly. List the factors of both numbers.",
+    "The HCF is the biggest number in both lists. It can't be bigger than the smaller number."
+   ],
+   "solution": [
+    "Factors of 12: 1, 2, 3, 4, 6, 12.",
+    "Factors of 42: 1, 2, 3, 6, 7, 14, 21, 42.",
+    "The biggest number in both lists is 6."
+   ],
+   "patterns": {
+    "84": "FM_GAVE_LCM",
+    "12": "FM_HCF_IS_SMALLER"
+   }
+  },
+  {
+   "id": "FAM-VLCM1",
+   "pool": "verification:lowest_common_multiple",
+   "skill_id": "lowest_common_multiple",
+   "type": "numeric",
+   "gap_targets": [
+    "lowest_common_multiple"
+   ],
+   "prompt": "What is the lowest common multiple (LCM) of 4 and 10?",
+   "answer": "20",
+   "hints": [
+    "List the multiples of each number: 4, 8, 12, … and 6, 12, 18, …",
+    "The LCM is the first number in both lists. It is often smaller than the two numbers multiplied."
+   ],
+   "solution": [
+    "Multiples of 4: 4, 8, 12, 16, 20.",
+    "Multiples of 10: 10, 20.",
+    "The first number in both lists is 20."
+   ],
+   "patterns": {
+    "40": "FM_LCM_IS_PRODUCT",
+    "2": "FM_GAVE_HCF"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "FAM-VLCM2",
+   "pool": "verification:lowest_common_multiple",
+   "skill_id": "lowest_common_multiple",
+   "type": "numeric",
+   "gap_targets": [
+    "lowest_common_multiple"
+   ],
+   "prompt": "What is the lowest common multiple (LCM) of 6 and 15?",
+   "answer": "30",
+   "hints": [
+    "List the multiples of each number: 4, 8, 12, … and 6, 12, 18, …",
+    "The LCM is the first number in both lists. It is often smaller than the two numbers multiplied."
+   ],
+   "solution": [
+    "Multiples of 6: 6, 12, 18, 24, 30.",
+    "Multiples of 15: 15, 30.",
+    "The first number in both lists is 30."
+   ],
+   "patterns": {
+    "90": "FM_LCM_IS_PRODUCT",
+    "3": "FM_GAVE_HCF"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "FAM-VLCM3",
+   "pool": "verification:lowest_common_multiple",
+   "skill_id": "lowest_common_multiple",
+   "type": "numeric",
+   "gap_targets": [
+    "lowest_common_multiple"
+   ],
+   "prompt": "What is the lowest common multiple (LCM) of 8 and 12?",
+   "answer": "24",
+   "hints": [
+    "List the multiples of each number: 4, 8, 12, … and 6, 12, 18, …",
+    "The LCM is the first number in both lists. It is often smaller than the two numbers multiplied."
+   ],
+   "solution": [
+    "Multiples of 8: 8, 16, 24.",
+    "Multiples of 12: 12, 24.",
+    "The first number in both lists is 24."
+   ],
+   "patterns": {
+    "96": "FM_LCM_IS_PRODUCT",
+    "4": "FM_GAVE_HCF"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "FAM-VLCM4",
+   "pool": "verification:lowest_common_multiple",
+   "skill_id": "lowest_common_multiple",
+   "type": "numeric",
+   "gap_targets": [
+    "lowest_common_multiple"
+   ],
+   "prompt": "What is the lowest common multiple (LCM) of 9 and 12?",
+   "answer": "36",
+   "hints": [
+    "List the multiples of each number: 4, 8, 12, … and 6, 12, 18, …",
+    "The LCM is the first number in both lists. It is often smaller than the two numbers multiplied."
+   ],
+   "solution": [
+    "Multiples of 9: 9, 18, 27, 36.",
+    "Multiples of 12: 12, 24, 36.",
+    "The first number in both lists is 36."
+   ],
+   "patterns": {
+    "108": "FM_LCM_IS_PRODUCT",
+    "3": "FM_GAVE_HCF"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "FAM-PLCM1",
+   "pool": "practice:lowest_common_multiple",
+   "skill_id": "lowest_common_multiple",
+   "type": "numeric",
+   "gap_targets": [
+    "lowest_common_multiple"
+   ],
+   "prompt": "What is the lowest common multiple (LCM) of 4 and 14?",
+   "answer": "28",
+   "hints": [
+    "List the multiples of each number: 4, 8, 12, … and 6, 12, 18, …",
+    "The LCM is the first number in both lists. It is often smaller than the two numbers multiplied."
+   ],
+   "solution": [
+    "Multiples of 4: 4, 8, 12, 16, 20, 24, 28.",
+    "Multiples of 14: 14, 28.",
+    "The first number in both lists is 28."
+   ],
+   "patterns": {
+    "56": "FM_LCM_IS_PRODUCT",
+    "2": "FM_GAVE_HCF"
+   }
+  },
+  {
+   "id": "FAM-PLCM2",
+   "pool": "practice:lowest_common_multiple",
+   "skill_id": "lowest_common_multiple",
+   "type": "numeric",
+   "gap_targets": [
+    "lowest_common_multiple"
+   ],
+   "prompt": "What is the lowest common multiple (LCM) of 10 and 12?",
+   "answer": "60",
+   "hints": [
+    "List the multiples of each number: 4, 8, 12, … and 6, 12, 18, …",
+    "The LCM is the first number in both lists. It is often smaller than the two numbers multiplied."
+   ],
+   "solution": [
+    "Multiples of 10: 10, 20, 30, 40, 50, 60.",
+    "Multiples of 12: 12, 24, 36, 48, 60.",
+    "The first number in both lists is 60."
+   ],
+   "patterns": {
+    "120": "FM_LCM_IS_PRODUCT",
+    "2": "FM_GAVE_HCF"
+   }
+  },
+  {
+   "id": "FAM-PLCM3",
+   "pool": "practice:lowest_common_multiple",
+   "skill_id": "lowest_common_multiple",
+   "type": "numeric",
+   "gap_targets": [
+    "lowest_common_multiple"
+   ],
+   "prompt": "What is the lowest common multiple (LCM) of 6 and 10?",
+   "answer": "30",
+   "hints": [
+    "List the multiples of each number: 4, 8, 12, … and 6, 12, 18, …",
+    "The LCM is the first number in both lists. It is often smaller than the two numbers multiplied."
+   ],
+   "solution": [
+    "Multiples of 6: 6, 12, 18, 24, 30.",
+    "Multiples of 10: 10, 20, 30.",
+    "The first number in both lists is 30."
+   ],
+   "patterns": {
+    "60": "FM_LCM_IS_PRODUCT",
+    "2": "FM_GAVE_HCF"
+   }
+  },
+  {
+   "id": "FAM-PLCM4",
+   "pool": "practice:lowest_common_multiple",
+   "skill_id": "lowest_common_multiple",
+   "type": "numeric",
+   "gap_targets": [
+    "lowest_common_multiple"
+   ],
+   "prompt": "What is the lowest common multiple (LCM) of 15 and 20?",
+   "answer": "60",
+   "hints": [
+    "List the multiples of each number: 4, 8, 12, … and 6, 12, 18, …",
+    "The LCM is the first number in both lists. It is often smaller than the two numbers multiplied."
+   ],
+   "solution": [
+    "Multiples of 15: 15, 30, 45, 60.",
+    "Multiples of 20: 20, 40, 60.",
+    "The first number in both lists is 60."
+   ],
+   "patterns": {
+    "300": "FM_LCM_IS_PRODUCT",
+    "5": "FM_GAVE_HCF"
+   }
+  },
+  {
+   "id": "FAM-RLCM1",
+   "pool": "retest:lowest_common_multiple",
+   "skill_id": "lowest_common_multiple",
+   "type": "numeric",
+   "gap_targets": [
+    "lowest_common_multiple"
+   ],
+   "prompt": "What is the lowest common multiple (LCM) of 8 and 10?",
+   "answer": "40",
+   "hints": [
+    "List the multiples of each number: 4, 8, 12, … and 6, 12, 18, …",
+    "The LCM is the first number in both lists. It is often smaller than the two numbers multiplied."
+   ],
+   "solution": [
+    "Multiples of 8: 8, 16, 24, 32, 40.",
+    "Multiples of 10: 10, 20, 30, 40.",
+    "The first number in both lists is 40."
+   ],
+   "patterns": {
+    "80": "FM_LCM_IS_PRODUCT",
+    "2": "FM_GAVE_HCF"
+   }
+  },
+  {
+   "id": "FAM-RLCM2",
+   "pool": "retest:lowest_common_multiple",
+   "skill_id": "lowest_common_multiple",
+   "type": "numeric",
+   "gap_targets": [
+    "lowest_common_multiple"
+   ],
+   "prompt": "What is the lowest common multiple (LCM) of 6 and 21?",
+   "answer": "42",
+   "hints": [
+    "List the multiples of each number: 4, 8, 12, … and 6, 12, 18, …",
+    "The LCM is the first number in both lists. It is often smaller than the two numbers multiplied."
+   ],
+   "solution": [
+    "Multiples of 6: 6, 12, 18, 24, 30, 36, 42.",
+    "Multiples of 21: 21, 42.",
+    "The first number in both lists is 42."
+   ],
+   "patterns": {
+    "126": "FM_LCM_IS_PRODUCT",
+    "3": "FM_GAVE_HCF"
+   }
+  },
+  {
+   "id": "FAM-RLCM3",
+   "pool": "retest:lowest_common_multiple",
+   "skill_id": "lowest_common_multiple",
+   "type": "numeric",
+   "gap_targets": [
+    "lowest_common_multiple"
+   ],
+   "prompt": "What is the lowest common multiple (LCM) of 12 and 15?",
+   "answer": "60",
+   "hints": [
+    "List the multiples of each number: 4, 8, 12, … and 6, 12, 18, …",
+    "The LCM is the first number in both lists. It is often smaller than the two numbers multiplied."
+   ],
+   "solution": [
+    "Multiples of 12: 12, 24, 36, 48, 60.",
+    "Multiples of 15: 15, 30, 45, 60.",
+    "The first number in both lists is 60."
+   ],
+   "patterns": {
+    "180": "FM_LCM_IS_PRODUCT",
+    "3": "FM_GAVE_HCF"
+   }
+  },
+  {
+   "id": "FAM-RLCM4",
+   "pool": "retest:lowest_common_multiple",
+   "skill_id": "lowest_common_multiple",
+   "type": "numeric",
+   "gap_targets": [
+    "lowest_common_multiple"
+   ],
+   "prompt": "What is the lowest common multiple (LCM) of 14 and 21?",
+   "answer": "42",
+   "hints": [
+    "List the multiples of each number: 4, 8, 12, … and 6, 12, 18, …",
+    "The LCM is the first number in both lists. It is often smaller than the two numbers multiplied."
+   ],
+   "solution": [
+    "Multiples of 14: 14, 28, 42.",
+    "Multiples of 21: 21, 42.",
+    "The first number in both lists is 42."
+   ],
+   "patterns": {
+    "294": "FM_LCM_IS_PRODUCT",
+    "7": "FM_GAVE_HCF"
+   }
+  },
+  {
+   "id": "FAM-RLCM5",
+   "pool": "retest:lowest_common_multiple",
+   "skill_id": "lowest_common_multiple",
+   "type": "numeric",
+   "gap_targets": [
+    "lowest_common_multiple"
+   ],
+   "prompt": "What is the lowest common multiple (LCM) of 10 and 25?",
+   "answer": "50",
+   "hints": [
+    "List the multiples of each number: 4, 8, 12, … and 6, 12, 18, …",
+    "The LCM is the first number in both lists. It is often smaller than the two numbers multiplied."
+   ],
+   "solution": [
+    "Multiples of 10: 10, 20, 30, 40, 50.",
+    "Multiples of 25: 25, 50.",
+    "The first number in both lists is 50."
+   ],
+   "patterns": {
+    "250": "FM_LCM_IS_PRODUCT",
+    "5": "FM_GAVE_HCF"
+   }
+  },
+  {
+   "id": "FAM-RLCM6",
+   "pool": "retest:lowest_common_multiple",
+   "skill_id": "lowest_common_multiple",
+   "type": "numeric",
+   "gap_targets": [
+    "lowest_common_multiple"
+   ],
+   "prompt": "What is the lowest common multiple (LCM) of 12 and 18?",
+   "answer": "36",
+   "hints": [
+    "List the multiples of each number: 4, 8, 12, … and 6, 12, 18, …",
+    "The LCM is the first number in both lists. It is often smaller than the two numbers multiplied."
+   ],
+   "solution": [
+    "Multiples of 12: 12, 24, 36.",
+    "Multiples of 18: 18, 36.",
+    "The first number in both lists is 36."
+   ],
+   "patterns": {
+    "216": "FM_LCM_IS_PRODUCT",
+    "6": "FM_GAVE_HCF"
+   }
+  }
+ ],
+ "lessons": {
+  "highest_common_factor": {
+   "title": "Highest common factor",
+   "big_idea": "The HCF is the biggest number that divides into BOTH numbers exactly. It is never bigger than the smaller number, and it is only the smaller number if that number divides into the other.",
+   "steps": [
+    "List all the factors of the first number.",
+    "List all the factors of the second number.",
+    "Circle the numbers in both lists.",
+    "The biggest circled number is the HCF."
+   ],
+   "sense_check": "8 doesn't divide into 12 exactly, so the HCF of 8 and 12 can't be 8. It's 4.",
+   "worked_examples": [
+    {
+     "prompt": "HCF of 12 and 18?",
+     "answer": "6",
+     "steps": [
+      "Factors of 12: 1, 2, 3, 4, 6, 12.",
+      "Factors of 18: 1, 2, 3, 6, 9, 18.",
+      "Biggest in both: 6."
+     ]
+    },
+    {
+     "prompt": "HCF of 8 and 20?",
+     "answer": "4",
+     "steps": [
+      "Factors of 8: 1, 2, 4, 8.",
+      "Factors of 20: 1, 2, 4, 5, 10, 20.",
+      "Biggest in both: 4."
+     ]
+    }
+   ]
+  },
+  "lowest_common_multiple": {
+   "title": "Lowest common multiple",
+   "big_idea": "The LCM is the SMALLEST number that both numbers divide into. Multiplying the two numbers always gives a common multiple, but often not the lowest one.",
+   "steps": [
+    "Write the first few multiples of each number.",
+    "Find the first number that appears in both lists.",
+    "Check: both numbers divide into it exactly."
+   ],
+   "sense_check": "4 × 6 = 24 is a common multiple, but 12 comes first in both lists.",
+   "worked_examples": [
+    {
+     "prompt": "LCM of 4 and 6?",
+     "answer": "12",
+     "steps": [
+      "Multiples of 4: 4, 8, 12.",
+      "Multiples of 6: 6, 12.",
+      "First in both: 12."
+     ]
+    },
+    {
+     "prompt": "LCM of 6 and 9?",
+     "answer": "18",
+     "steps": [
+      "Multiples of 6: 6, 12, 18.",
+      "Multiples of 9: 9, 18.",
+      "First in both: 18."
+     ]
+    }
+   ]
+  }
+ }
+}

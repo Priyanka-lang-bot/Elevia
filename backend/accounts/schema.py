@@ -192,6 +192,32 @@ CREATE TABLE IF NOT EXISTS email_outbox (
     created_at TEXT NOT NULL
 );
 
+-- Connects a logged-in student/learner account to their learning record (students table, used by the agents).
+CREATE TABLE IF NOT EXISTS learner_links (
+    user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+    student_id INTEGER NOT NULL UNIQUE REFERENCES students(id) ON DELETE CASCADE,
+    created_at TEXT NOT NULL
+);
+
+-- Rows created by scripts/demo.py. Demo login and demo reset only ever act on what is listed here.
+CREATE TABLE IF NOT EXISTS demo_registry (
+    kind TEXT NOT NULL,            -- 'user' or 'school'
+    ref_id INTEGER NOT NULL,
+    slug TEXT,
+    created_at TEXT NOT NULL,
+    PRIMARY KEY (kind, ref_id)
+);
+
+-- Labels for the fictional demo students (student code, the reference date their six-month history ends on).
+-- Written only by scripts/demo.py; shown so nobody mistakes a demonstration account for a real one.
+CREATE TABLE IF NOT EXISTS demo_profiles (
+    user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+    student_code TEXT NOT NULL,
+    reference_date TEXT NOT NULL,
+    period_start TEXT NOT NULL,
+    created_at TEXT NOT NULL
+);
+
 CREATE INDEX IF NOT EXISTS idx_sessions_user ON auth_sessions(user_id);
 CREATE INDEX IF NOT EXISTS idx_tokens_email ON email_tokens(email);
 CREATE INDEX IF NOT EXISTS idx_enroll_class ON class_enrollments(class_id);

@@ -1,0 +1,941 @@
+{
+ "skills": [
+  {
+   "id": "angles_on_a_line",
+   "name": "Angles on a line and around a point",
+   "grade": 5,
+   "prerequisites": [],
+   "description": "180° on a straight line, 360° around a point."
+  },
+  {
+   "id": "angles_in_a_triangle",
+   "name": "Angles in a triangle",
+   "grade": 6,
+   "prerequisites": [
+    "angles_on_a_line"
+   ],
+   "description": "The three angles add up to 180°."
+  }
+ ],
+ "misconceptions": {
+  "GEO_LINE_360": {
+   "label": "Thinks angles on a straight line add up to 360°",
+   "gap_skill": "angles_on_a_line",
+   "explanation": "Subtracts from 360° instead of 180° on a straight line."
+  },
+  "GEO_LINE_90": {
+   "label": "Subtracts from 90° instead of 180°",
+   "gap_skill": "angles_on_a_line",
+   "explanation": "Treats a straight line like a right angle."
+  },
+  "GEO_POINT_180": {
+   "label": "Thinks angles around a point add up to 180°",
+   "gap_skill": "angles_on_a_line",
+   "explanation": "Uses the straight-line total for a full turn."
+  },
+  "GEO_TRIANGLE_360": {
+   "label": "Thinks the angles in a triangle add up to 360°",
+   "gap_skill": "angles_in_a_triangle",
+   "explanation": "Confuses the triangle total with a full turn."
+  }
+ },
+ "questions": [
+  {
+   "id": "ANG-DA1",
+   "pool": "diagnostic:angles:A",
+   "skill_id": "angles_on_a_line",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_on_a_line"
+   ],
+   "prompt": "Two angles sit together on a straight line. One is 130°. What is the other, in degrees?",
+   "answer": "50",
+   "hints": [
+    "Angles on a straight line add up to 180°.",
+    "Angles all the way round a point add up to 360°."
+   ],
+   "solution": [
+    "Angles on a straight line add up to 180°.",
+    "180 − 130 = 50°."
+   ],
+   "patterns": {
+    "230": "GEO_LINE_360"
+   }
+  },
+  {
+   "id": "ANG-DA2",
+   "pool": "diagnostic:angles:A",
+   "skill_id": "angles_in_a_triangle",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_in_a_triangle"
+   ],
+   "prompt": "A triangle has angles of 50° and 60°. What is the third angle, in degrees?",
+   "answer": "70",
+   "hints": [
+    "The three angles inside any triangle add up to 180°.",
+    "Add the two you know, then subtract from 180°."
+   ],
+   "solution": [
+    "The angles in a triangle add up to 180°.",
+    "50 + 60 = 110; 180 − 110 = 70°."
+   ],
+   "patterns": {
+    "250": "GEO_TRIANGLE_360"
+   }
+  },
+  {
+   "id": "ANG-DA3",
+   "pool": "diagnostic:angles:A",
+   "skill_id": "angles_on_a_line",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_on_a_line"
+   ],
+   "prompt": "Two angles sit together on a straight line. One is 65°. What is the other, in degrees?",
+   "answer": "115",
+   "hints": [
+    "Angles on a straight line add up to 180°.",
+    "Angles all the way round a point add up to 360°."
+   ],
+   "solution": [
+    "Angles on a straight line add up to 180°.",
+    "180 − 65 = 115°."
+   ],
+   "patterns": {
+    "295": "GEO_LINE_360",
+    "25": "GEO_LINE_90"
+   }
+  },
+  {
+   "id": "ANG-DA4",
+   "pool": "diagnostic:angles:A",
+   "skill_id": "angles_in_a_triangle",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_in_a_triangle"
+   ],
+   "prompt": "A triangle has angles of 35° and 85°. What is the third angle, in degrees?",
+   "answer": "60",
+   "hints": [
+    "The three angles inside any triangle add up to 180°.",
+    "Add the two you know, then subtract from 180°."
+   ],
+   "solution": [
+    "The angles in a triangle add up to 180°.",
+    "35 + 85 = 120; 180 − 120 = 60°."
+   ],
+   "patterns": {
+    "240": "GEO_TRIANGLE_360"
+   }
+  },
+  {
+   "id": "ANG-DA5",
+   "pool": "diagnostic:angles:A",
+   "skill_id": "angles_on_a_line",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_on_a_line"
+   ],
+   "prompt": "Two angles sit together on a straight line. One is 110°. What is the other, in degrees?",
+   "answer": "70",
+   "hints": [
+    "Angles on a straight line add up to 180°.",
+    "Angles all the way round a point add up to 360°."
+   ],
+   "solution": [
+    "Angles on a straight line add up to 180°.",
+    "180 − 110 = 70°."
+   ],
+   "patterns": {
+    "250": "GEO_LINE_360"
+   }
+  },
+  {
+   "id": "ANG-DB1",
+   "pool": "diagnostic:angles:B",
+   "skill_id": "angles_on_a_line",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_on_a_line"
+   ],
+   "prompt": "Two angles sit together on a straight line. One is 140°. What is the other, in degrees?",
+   "answer": "40",
+   "hints": [
+    "Angles on a straight line add up to 180°.",
+    "Angles all the way round a point add up to 360°."
+   ],
+   "solution": [
+    "Angles on a straight line add up to 180°.",
+    "180 − 140 = 40°."
+   ],
+   "patterns": {
+    "220": "GEO_LINE_360"
+   }
+  },
+  {
+   "id": "ANG-DB2",
+   "pool": "diagnostic:angles:B",
+   "skill_id": "angles_in_a_triangle",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_in_a_triangle"
+   ],
+   "prompt": "A triangle has angles of 40° and 70°. What is the third angle, in degrees?",
+   "answer": "70",
+   "hints": [
+    "The three angles inside any triangle add up to 180°.",
+    "Add the two you know, then subtract from 180°."
+   ],
+   "solution": [
+    "The angles in a triangle add up to 180°.",
+    "40 + 70 = 110; 180 − 110 = 70°."
+   ],
+   "patterns": {
+    "250": "GEO_TRIANGLE_360"
+   }
+  },
+  {
+   "id": "ANG-DB3",
+   "pool": "diagnostic:angles:B",
+   "skill_id": "angles_on_a_line",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_on_a_line"
+   ],
+   "prompt": "Two angles sit together on a straight line. One is 55°. What is the other, in degrees?",
+   "answer": "125",
+   "hints": [
+    "Angles on a straight line add up to 180°.",
+    "Angles all the way round a point add up to 360°."
+   ],
+   "solution": [
+    "Angles on a straight line add up to 180°.",
+    "180 − 55 = 125°."
+   ],
+   "patterns": {
+    "305": "GEO_LINE_360",
+    "35": "GEO_LINE_90"
+   }
+  },
+  {
+   "id": "ANG-DB4",
+   "pool": "diagnostic:angles:B",
+   "skill_id": "angles_in_a_triangle",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_in_a_triangle"
+   ],
+   "prompt": "A triangle has angles of 25° and 95°. What is the third angle, in degrees?",
+   "answer": "60",
+   "hints": [
+    "The three angles inside any triangle add up to 180°.",
+    "Add the two you know, then subtract from 180°."
+   ],
+   "solution": [
+    "The angles in a triangle add up to 180°.",
+    "25 + 95 = 120; 180 − 120 = 60°."
+   ],
+   "patterns": {
+    "240": "GEO_TRIANGLE_360"
+   }
+  },
+  {
+   "id": "ANG-DB5",
+   "pool": "diagnostic:angles:B",
+   "skill_id": "angles_on_a_line",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_on_a_line"
+   ],
+   "prompt": "Two angles sit together on a straight line. One is 100°. What is the other, in degrees?",
+   "answer": "80",
+   "hints": [
+    "Angles on a straight line add up to 180°.",
+    "Angles all the way round a point add up to 360°."
+   ],
+   "solution": [
+    "Angles on a straight line add up to 180°.",
+    "180 − 100 = 80°."
+   ],
+   "patterns": {
+    "260": "GEO_LINE_360"
+   }
+  },
+  {
+   "id": "ANG-VAOAL1",
+   "pool": "verification:angles_on_a_line",
+   "skill_id": "angles_on_a_line",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_on_a_line"
+   ],
+   "prompt": "Two angles sit together on a straight line. One is 120°. What is the other, in degrees?",
+   "answer": "60",
+   "hints": [
+    "Angles on a straight line add up to 180°.",
+    "Angles all the way round a point add up to 360°."
+   ],
+   "solution": [
+    "Angles on a straight line add up to 180°.",
+    "180 − 120 = 60°."
+   ],
+   "patterns": {
+    "240": "GEO_LINE_360"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "ANG-VAOAL2",
+   "pool": "verification:angles_on_a_line",
+   "skill_id": "angles_on_a_line",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_on_a_line"
+   ],
+   "prompt": "Two angles sit together on a straight line. One is 75°. What is the other, in degrees?",
+   "answer": "105",
+   "hints": [
+    "Angles on a straight line add up to 180°.",
+    "Angles all the way round a point add up to 360°."
+   ],
+   "solution": [
+    "Angles on a straight line add up to 180°.",
+    "180 − 75 = 105°."
+   ],
+   "patterns": {
+    "285": "GEO_LINE_360",
+    "15": "GEO_LINE_90"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "ANG-VAOAL3",
+   "pool": "verification:angles_on_a_line",
+   "skill_id": "angles_on_a_line",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_on_a_line"
+   ],
+   "prompt": "Three angles around a point are 100°, 120° and x. What is x, in degrees?",
+   "answer": "140",
+   "hints": [
+    "Angles on a straight line add up to 180°.",
+    "Angles all the way round a point add up to 360°."
+   ],
+   "solution": [
+    "Angles around a point add up to 360°.",
+    "360 − 100 − 120 = 140°."
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "ANG-VAOAL4",
+   "pool": "verification:angles_on_a_line",
+   "skill_id": "angles_on_a_line",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_on_a_line"
+   ],
+   "prompt": "Three angles around a point are 90°, 150° and x. What is x, in degrees?",
+   "answer": "120",
+   "hints": [
+    "Angles on a straight line add up to 180°.",
+    "Angles all the way round a point add up to 360°."
+   ],
+   "solution": [
+    "Angles around a point add up to 360°.",
+    "360 − 90 − 150 = 120°."
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "ANG-PAOAL1",
+   "pool": "practice:angles_on_a_line",
+   "skill_id": "angles_on_a_line",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_on_a_line"
+   ],
+   "prompt": "Two angles sit together on a straight line. One is 150°. What is the other, in degrees?",
+   "answer": "30",
+   "hints": [
+    "Angles on a straight line add up to 180°.",
+    "Angles all the way round a point add up to 360°."
+   ],
+   "solution": [
+    "Angles on a straight line add up to 180°.",
+    "180 − 150 = 30°."
+   ],
+   "patterns": {
+    "210": "GEO_LINE_360"
+   }
+  },
+  {
+   "id": "ANG-PAOAL2",
+   "pool": "practice:angles_on_a_line",
+   "skill_id": "angles_on_a_line",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_on_a_line"
+   ],
+   "prompt": "Two angles sit together on a straight line. One is 35°. What is the other, in degrees?",
+   "answer": "145",
+   "hints": [
+    "Angles on a straight line add up to 180°.",
+    "Angles all the way round a point add up to 360°."
+   ],
+   "solution": [
+    "Angles on a straight line add up to 180°.",
+    "180 − 35 = 145°."
+   ],
+   "patterns": {
+    "325": "GEO_LINE_360",
+    "55": "GEO_LINE_90"
+   }
+  },
+  {
+   "id": "ANG-PAOAL3",
+   "pool": "practice:angles_on_a_line",
+   "skill_id": "angles_on_a_line",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_on_a_line"
+   ],
+   "prompt": "Two angles sit together on a straight line. One is 125°. What is the other, in degrees?",
+   "answer": "55",
+   "hints": [
+    "Angles on a straight line add up to 180°.",
+    "Angles all the way round a point add up to 360°."
+   ],
+   "solution": [
+    "Angles on a straight line add up to 180°.",
+    "180 − 125 = 55°."
+   ],
+   "patterns": {
+    "235": "GEO_LINE_360"
+   }
+  },
+  {
+   "id": "ANG-PAOAL4",
+   "pool": "practice:angles_on_a_line",
+   "skill_id": "angles_on_a_line",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_on_a_line"
+   ],
+   "prompt": "Two angles sit together on a straight line. One is 80°. What is the other, in degrees?",
+   "answer": "100",
+   "hints": [
+    "Angles on a straight line add up to 180°.",
+    "Angles all the way round a point add up to 360°."
+   ],
+   "solution": [
+    "Angles on a straight line add up to 180°.",
+    "180 − 80 = 100°."
+   ],
+   "patterns": {
+    "280": "GEO_LINE_360",
+    "10": "GEO_LINE_90"
+   }
+  },
+  {
+   "id": "ANG-RAOAL1",
+   "pool": "retest:angles_on_a_line",
+   "skill_id": "angles_on_a_line",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_on_a_line"
+   ],
+   "prompt": "Two angles sit together on a straight line. One is 115°. What is the other, in degrees?",
+   "answer": "65",
+   "hints": [
+    "Angles on a straight line add up to 180°.",
+    "Angles all the way round a point add up to 360°."
+   ],
+   "solution": [
+    "Angles on a straight line add up to 180°.",
+    "180 − 115 = 65°."
+   ],
+   "patterns": {
+    "245": "GEO_LINE_360"
+   }
+  },
+  {
+   "id": "ANG-RAOAL2",
+   "pool": "retest:angles_on_a_line",
+   "skill_id": "angles_on_a_line",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_on_a_line"
+   ],
+   "prompt": "Two angles sit together on a straight line. One is 45°. What is the other, in degrees?",
+   "answer": "135",
+   "hints": [
+    "Angles on a straight line add up to 180°.",
+    "Angles all the way round a point add up to 360°."
+   ],
+   "solution": [
+    "Angles on a straight line add up to 180°.",
+    "180 − 45 = 135°."
+   ],
+   "patterns": {
+    "315": "GEO_LINE_360",
+    "45": "GEO_LINE_90"
+   }
+  },
+  {
+   "id": "ANG-RAOAL3",
+   "pool": "retest:angles_on_a_line",
+   "skill_id": "angles_on_a_line",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_on_a_line"
+   ],
+   "prompt": "Two angles sit together on a straight line. One is 160°. What is the other, in degrees?",
+   "answer": "20",
+   "hints": [
+    "Angles on a straight line add up to 180°.",
+    "Angles all the way round a point add up to 360°."
+   ],
+   "solution": [
+    "Angles on a straight line add up to 180°.",
+    "180 − 160 = 20°."
+   ],
+   "patterns": {
+    "200": "GEO_LINE_360"
+   }
+  },
+  {
+   "id": "ANG-RAOAL4",
+   "pool": "retest:angles_on_a_line",
+   "skill_id": "angles_on_a_line",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_on_a_line"
+   ],
+   "prompt": "Three angles around a point are 110°, 130° and x. What is x, in degrees?",
+   "answer": "120",
+   "hints": [
+    "Angles on a straight line add up to 180°.",
+    "Angles all the way round a point add up to 360°."
+   ],
+   "solution": [
+    "Angles around a point add up to 360°.",
+    "360 − 110 − 130 = 120°."
+   ]
+  },
+  {
+   "id": "ANG-RAOAL5",
+   "pool": "retest:angles_on_a_line",
+   "skill_id": "angles_on_a_line",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_on_a_line"
+   ],
+   "prompt": "Two angles sit together on a straight line. One is 70°. What is the other, in degrees?",
+   "answer": "110",
+   "hints": [
+    "Angles on a straight line add up to 180°.",
+    "Angles all the way round a point add up to 360°."
+   ],
+   "solution": [
+    "Angles on a straight line add up to 180°.",
+    "180 − 70 = 110°."
+   ],
+   "patterns": {
+    "290": "GEO_LINE_360",
+    "20": "GEO_LINE_90"
+   }
+  },
+  {
+   "id": "ANG-RAOAL6",
+   "pool": "retest:angles_on_a_line",
+   "skill_id": "angles_on_a_line",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_on_a_line"
+   ],
+   "prompt": "Three angles around a point are 80°, 140° and x. What is x, in degrees?",
+   "answer": "140",
+   "hints": [
+    "Angles on a straight line add up to 180°.",
+    "Angles all the way round a point add up to 360°."
+   ],
+   "solution": [
+    "Angles around a point add up to 360°.",
+    "360 − 80 − 140 = 140°."
+   ]
+  },
+  {
+   "id": "ANG-VAIAT1",
+   "pool": "verification:angles_in_a_triangle",
+   "skill_id": "angles_in_a_triangle",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_in_a_triangle"
+   ],
+   "prompt": "A triangle has angles of 45° and 75°. What is the third angle, in degrees?",
+   "answer": "60",
+   "hints": [
+    "The three angles inside any triangle add up to 180°.",
+    "Add the two you know, then subtract from 180°."
+   ],
+   "solution": [
+    "The angles in a triangle add up to 180°.",
+    "45 + 75 = 120; 180 − 120 = 60°."
+   ],
+   "patterns": {
+    "240": "GEO_TRIANGLE_360"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "ANG-VAIAT2",
+   "pool": "verification:angles_in_a_triangle",
+   "skill_id": "angles_in_a_triangle",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_in_a_triangle"
+   ],
+   "prompt": "A triangle has angles of 30° and 80°. What is the third angle, in degrees?",
+   "answer": "70",
+   "hints": [
+    "The three angles inside any triangle add up to 180°.",
+    "Add the two you know, then subtract from 180°."
+   ],
+   "solution": [
+    "The angles in a triangle add up to 180°.",
+    "30 + 80 = 110; 180 − 110 = 70°."
+   ],
+   "patterns": {
+    "250": "GEO_TRIANGLE_360"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "ANG-VAIAT3",
+   "pool": "verification:angles_in_a_triangle",
+   "skill_id": "angles_in_a_triangle",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_in_a_triangle"
+   ],
+   "prompt": "A triangle has angles of 60° and 60°. What is the third angle, in degrees?",
+   "answer": "60",
+   "hints": [
+    "The three angles inside any triangle add up to 180°.",
+    "Add the two you know, then subtract from 180°."
+   ],
+   "solution": [
+    "The angles in a triangle add up to 180°.",
+    "60 + 60 = 120; 180 − 120 = 60°."
+   ],
+   "patterns": {
+    "240": "GEO_TRIANGLE_360"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "ANG-VAIAT4",
+   "pool": "verification:angles_in_a_triangle",
+   "skill_id": "angles_in_a_triangle",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_in_a_triangle"
+   ],
+   "prompt": "A triangle has angles of 20° and 110°. What is the third angle, in degrees?",
+   "answer": "50",
+   "hints": [
+    "The three angles inside any triangle add up to 180°.",
+    "Add the two you know, then subtract from 180°."
+   ],
+   "solution": [
+    "The angles in a triangle add up to 180°.",
+    "20 + 110 = 130; 180 − 130 = 50°."
+   ],
+   "patterns": {
+    "230": "GEO_TRIANGLE_360"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "ANG-PAIAT1",
+   "pool": "practice:angles_in_a_triangle",
+   "skill_id": "angles_in_a_triangle",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_in_a_triangle"
+   ],
+   "prompt": "A triangle has angles of 55° and 65°. What is the third angle, in degrees?",
+   "answer": "60",
+   "hints": [
+    "The three angles inside any triangle add up to 180°.",
+    "Add the two you know, then subtract from 180°."
+   ],
+   "solution": [
+    "The angles in a triangle add up to 180°.",
+    "55 + 65 = 120; 180 − 120 = 60°."
+   ],
+   "patterns": {
+    "240": "GEO_TRIANGLE_360"
+   }
+  },
+  {
+   "id": "ANG-PAIAT2",
+   "pool": "practice:angles_in_a_triangle",
+   "skill_id": "angles_in_a_triangle",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_in_a_triangle"
+   ],
+   "prompt": "A triangle has angles of 35° and 75°. What is the third angle, in degrees?",
+   "answer": "70",
+   "hints": [
+    "The three angles inside any triangle add up to 180°.",
+    "Add the two you know, then subtract from 180°."
+   ],
+   "solution": [
+    "The angles in a triangle add up to 180°.",
+    "35 + 75 = 110; 180 − 110 = 70°."
+   ],
+   "patterns": {
+    "250": "GEO_TRIANGLE_360"
+   }
+  },
+  {
+   "id": "ANG-PAIAT3",
+   "pool": "practice:angles_in_a_triangle",
+   "skill_id": "angles_in_a_triangle",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_in_a_triangle"
+   ],
+   "prompt": "A triangle has angles of 50° and 50°. What is the third angle, in degrees?",
+   "answer": "80",
+   "hints": [
+    "The three angles inside any triangle add up to 180°.",
+    "Add the two you know, then subtract from 180°."
+   ],
+   "solution": [
+    "The angles in a triangle add up to 180°.",
+    "50 + 50 = 100; 180 − 100 = 80°."
+   ],
+   "patterns": {
+    "260": "GEO_TRIANGLE_360"
+   }
+  },
+  {
+   "id": "ANG-PAIAT4",
+   "pool": "practice:angles_in_a_triangle",
+   "skill_id": "angles_in_a_triangle",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_in_a_triangle"
+   ],
+   "prompt": "A triangle has angles of 15° and 105°. What is the third angle, in degrees?",
+   "answer": "60",
+   "hints": [
+    "The three angles inside any triangle add up to 180°.",
+    "Add the two you know, then subtract from 180°."
+   ],
+   "solution": [
+    "The angles in a triangle add up to 180°.",
+    "15 + 105 = 120; 180 − 120 = 60°."
+   ],
+   "patterns": {
+    "240": "GEO_TRIANGLE_360"
+   }
+  },
+  {
+   "id": "ANG-RAIAT1",
+   "pool": "retest:angles_in_a_triangle",
+   "skill_id": "angles_in_a_triangle",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_in_a_triangle"
+   ],
+   "prompt": "A triangle has angles of 70° and 40°. What is the third angle, in degrees?",
+   "answer": "70",
+   "hints": [
+    "The three angles inside any triangle add up to 180°.",
+    "Add the two you know, then subtract from 180°."
+   ],
+   "solution": [
+    "The angles in a triangle add up to 180°.",
+    "70 + 40 = 110; 180 − 110 = 70°."
+   ],
+   "patterns": {
+    "250": "GEO_TRIANGLE_360"
+   }
+  },
+  {
+   "id": "ANG-RAIAT2",
+   "pool": "retest:angles_in_a_triangle",
+   "skill_id": "angles_in_a_triangle",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_in_a_triangle"
+   ],
+   "prompt": "A triangle has angles of 25° and 85°. What is the third angle, in degrees?",
+   "answer": "70",
+   "hints": [
+    "The three angles inside any triangle add up to 180°.",
+    "Add the two you know, then subtract from 180°."
+   ],
+   "solution": [
+    "The angles in a triangle add up to 180°.",
+    "25 + 85 = 110; 180 − 110 = 70°."
+   ],
+   "patterns": {
+    "250": "GEO_TRIANGLE_360"
+   }
+  },
+  {
+   "id": "ANG-RAIAT3",
+   "pool": "retest:angles_in_a_triangle",
+   "skill_id": "angles_in_a_triangle",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_in_a_triangle"
+   ],
+   "prompt": "A triangle has angles of 65° and 65°. What is the third angle, in degrees?",
+   "answer": "50",
+   "hints": [
+    "The three angles inside any triangle add up to 180°.",
+    "Add the two you know, then subtract from 180°."
+   ],
+   "solution": [
+    "The angles in a triangle add up to 180°.",
+    "65 + 65 = 130; 180 − 130 = 50°."
+   ],
+   "patterns": {
+    "230": "GEO_TRIANGLE_360"
+   }
+  },
+  {
+   "id": "ANG-RAIAT4",
+   "pool": "retest:angles_in_a_triangle",
+   "skill_id": "angles_in_a_triangle",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_in_a_triangle"
+   ],
+   "prompt": "A triangle has angles of 30° and 100°. What is the third angle, in degrees?",
+   "answer": "50",
+   "hints": [
+    "The three angles inside any triangle add up to 180°.",
+    "Add the two you know, then subtract from 180°."
+   ],
+   "solution": [
+    "The angles in a triangle add up to 180°.",
+    "30 + 100 = 130; 180 − 130 = 50°."
+   ],
+   "patterns": {
+    "230": "GEO_TRIANGLE_360"
+   }
+  },
+  {
+   "id": "ANG-RAIAT5",
+   "pool": "retest:angles_in_a_triangle",
+   "skill_id": "angles_in_a_triangle",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_in_a_triangle"
+   ],
+   "prompt": "A triangle has angles of 45° and 90°. What is the third angle, in degrees?",
+   "answer": "45",
+   "hints": [
+    "The three angles inside any triangle add up to 180°.",
+    "Add the two you know, then subtract from 180°."
+   ],
+   "solution": [
+    "The angles in a triangle add up to 180°.",
+    "45 + 90 = 135; 180 − 135 = 45°."
+   ],
+   "patterns": {
+    "225": "GEO_TRIANGLE_360"
+   }
+  },
+  {
+   "id": "ANG-RAIAT6",
+   "pool": "retest:angles_in_a_triangle",
+   "skill_id": "angles_in_a_triangle",
+   "type": "numeric",
+   "gap_targets": [
+    "angles_in_a_triangle"
+   ],
+   "prompt": "A triangle has angles of 10° and 120°. What is the third angle, in degrees?",
+   "answer": "50",
+   "hints": [
+    "The three angles inside any triangle add up to 180°.",
+    "Add the two you know, then subtract from 180°."
+   ],
+   "solution": [
+    "The angles in a triangle add up to 180°.",
+    "10 + 120 = 130; 180 − 130 = 50°."
+   ],
+   "patterns": {
+    "230": "GEO_TRIANGLE_360"
+   }
+  }
+ ],
+ "lessons": {
+  "angles_on_a_line": {
+   "title": "Angles on a line and around a point",
+   "big_idea": "A straight line is half a turn: the angles on it add up to 180°. A full turn around a point is 360°.",
+   "steps": [
+    "Decide: is it a straight line (180°) or all the way round a point (360°)?",
+    "Add up the angles you know.",
+    "Subtract from 180° or 360°."
+   ],
+   "sense_check": "If one angle on a line is 130°, the other must be small, 50°. 230° would be bigger than the whole line.",
+   "worked_examples": [
+    {
+     "prompt": "One angle on a straight line is 130°. The other?",
+     "answer": "50",
+     "steps": [
+      "Straight line: 180°.",
+      "180 − 130 = 50°."
+     ]
+    },
+    {
+     "prompt": "Around a point: 100°, 120° and x. x?",
+     "answer": "140",
+     "steps": [
+      "Full turn: 360°.",
+      "360 − 100 − 120 = 140°."
+     ]
+    }
+   ]
+  },
+  "angles_in_a_triangle": {
+   "title": "Angles in a triangle",
+   "big_idea": "The three angles of any triangle add up to 180°: tear the corners off a paper triangle and they make a straight line.",
+   "steps": [
+    "Add the two angles you know.",
+    "Subtract the total from 180°.",
+    "Check: all three add to 180°."
+   ],
+   "sense_check": "A triangle's third angle can't be more than 180°, so 250° is impossible.",
+   "worked_examples": [
+    {
+     "prompt": "Triangle angles 50° and 60°. Third?",
+     "answer": "70",
+     "steps": [
+      "50 + 60 = 110.",
+      "180 − 110 = 70°."
+     ]
+    },
+    {
+     "prompt": "Triangle angles 35° and 85°. Third?",
+     "answer": "60",
+     "steps": [
+      "35 + 85 = 120.",
+      "180 − 120 = 60°."
+     ]
+    }
+   ]
+  }
+ }
+}

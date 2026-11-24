@@ -1,0 +1,1169 @@
+{
+ "skills": [
+  {
+   "id": "adjectives_and_adverbs",
+   "name": "Adjectives and adverbs",
+   "grade": 4,
+   "prerequisites": [],
+   "description": "What each describes; -ly adjectives."
+  },
+  {
+   "id": "word_class_in_context",
+   "name": "Word class depends on the sentence",
+   "grade": 5,
+   "prerequisites": [
+    "adjectives_and_adverbs"
+   ],
+   "description": "Nouns and verbs that share a spelling."
+  }
+ ],
+ "misconceptions": {
+  "ENG_ADJ_ADV_MIX": {
+   "label": "Mixes up adjectives and adverbs",
+   "gap_skill": "adjectives_and_adverbs",
+   "explanation": "Calls 'quietly' an adjective, or every -ly word an adverb."
+  },
+  "ENG_FIXED_WORD_CLASS": {
+   "label": "Thinks a word always has the same word class",
+   "gap_skill": "word_class_in_context",
+   "explanation": "Calls 'run' a verb even in 'we went for a run'."
+  }
+ },
+ "questions": [
+  {
+   "id": "POS-DA1",
+   "pool": "diagnostic:parts_of_speech:A",
+   "skill_id": "adjectives_and_adverbs",
+   "type": "mcq",
+   "gap_targets": [
+    "adjectives_and_adverbs"
+   ],
+   "prompt": "In the sentence \"The tortoise moved slowly across the road.\", what part of speech is \"slowly\"?",
+   "answer": "adverb",
+   "hints": [
+    "An adjective describes a noun (a quiet library). An adverb describes a verb (closed quietly).",
+    "Not every -ly word is an adverb: lovely and friendly describe nouns."
+   ],
+   "solution": [
+    "\"slowly\" describes how something is done (a verb).",
+    "So it is an adverb."
+   ],
+   "patterns": {
+    "adjective": "ENG_ADJ_ADV_MIX"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-DA2",
+   "pool": "diagnostic:parts_of_speech:A",
+   "skill_id": "word_class_in_context",
+   "type": "mcq",
+   "gap_targets": [
+    "word_class_in_context"
+   ],
+   "prompt": "In the sentence \"We went for a run before school.\", what part of speech is \"run\"?",
+   "answer": "noun",
+   "hints": [
+    "Look at what the word is doing in THIS sentence.",
+    "After 'a', 'the' or 'my' it is usually a noun; if it's the action, it's a verb."
+   ],
+   "solution": [
+    "Here \"run\" is a thing (it comes after a/the).",
+    "So it is a noun in this sentence."
+   ],
+   "patterns": {
+    "verb": "ENG_FIXED_WORD_CLASS"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-DA3",
+   "pool": "diagnostic:parts_of_speech:A",
+   "skill_id": "adjectives_and_adverbs",
+   "type": "mcq",
+   "gap_targets": [
+    "adjectives_and_adverbs"
+   ],
+   "prompt": "In the sentence \"The quiet library was nearly empty.\", what part of speech is \"quiet\"?",
+   "answer": "adjective",
+   "hints": [
+    "An adjective describes a noun (a quiet library). An adverb describes a verb (closed quietly).",
+    "Not every -ly word is an adverb: lovely and friendly describe nouns."
+   ],
+   "solution": [
+    "\"quiet\" describes a noun.",
+    "So it is an adjective."
+   ],
+   "patterns": {
+    "adverb": "ENG_ADJ_ADV_MIX"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-DA4",
+   "pool": "diagnostic:parts_of_speech:A",
+   "skill_id": "word_class_in_context",
+   "type": "mcq",
+   "gap_targets": [
+    "word_class_in_context"
+   ],
+   "prompt": "In the sentence \"Please book a table for four.\", what part of speech is \"book\"?",
+   "answer": "verb",
+   "hints": [
+    "Look at what the word is doing in THIS sentence.",
+    "After 'a', 'the' or 'my' it is usually a noun; if it's the action, it's a verb."
+   ],
+   "solution": [
+    "Here \"book\" is the action.",
+    "So it is a verb in this sentence."
+   ],
+   "patterns": {
+    "noun": "ENG_FIXED_WORD_CLASS"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-DA5",
+   "pool": "diagnostic:parts_of_speech:A",
+   "skill_id": "adjectives_and_adverbs",
+   "type": "mcq",
+   "gap_targets": [
+    "adjectives_and_adverbs"
+   ],
+   "prompt": "In the sentence \"Meera sang beautifully at the concert.\", what part of speech is \"beautifully\"?",
+   "answer": "adverb",
+   "hints": [
+    "An adjective describes a noun (a quiet library). An adverb describes a verb (closed quietly).",
+    "Not every -ly word is an adverb: lovely and friendly describe nouns."
+   ],
+   "solution": [
+    "\"beautifully\" describes how something is done (a verb).",
+    "So it is an adverb."
+   ],
+   "patterns": {
+    "adjective": "ENG_ADJ_ADV_MIX"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-DB1",
+   "pool": "diagnostic:parts_of_speech:B",
+   "skill_id": "word_class_in_context",
+   "type": "mcq",
+   "gap_targets": [
+    "word_class_in_context"
+   ],
+   "prompt": "In the sentence \"Ravi gave the ball a hard kick.\", what part of speech is \"kick\"?",
+   "answer": "noun",
+   "hints": [
+    "Look at what the word is doing in THIS sentence.",
+    "After 'a', 'the' or 'my' it is usually a noun; if it's the action, it's a verb."
+   ],
+   "solution": [
+    "Here \"kick\" is a thing (it comes after a/the).",
+    "So it is a noun in this sentence."
+   ],
+   "patterns": {
+    "verb": "ENG_FIXED_WORD_CLASS"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-DB2",
+   "pool": "diagnostic:parts_of_speech:B",
+   "skill_id": "adjectives_and_adverbs",
+   "type": "mcq",
+   "gap_targets": [
+    "adjectives_and_adverbs"
+   ],
+   "prompt": "In the sentence \"Her lovely painting won a prize.\", what part of speech is \"lovely\"?",
+   "answer": "adjective",
+   "hints": [
+    "An adjective describes a noun (a quiet library). An adverb describes a verb (closed quietly).",
+    "Not every -ly word is an adverb: lovely and friendly describe nouns."
+   ],
+   "solution": [
+    "\"lovely\" describes a noun.",
+    "So it is an adjective."
+   ],
+   "patterns": {
+    "adverb": "ENG_ADJ_ADV_MIX"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-DB3",
+   "pool": "diagnostic:parts_of_speech:B",
+   "skill_id": "word_class_in_context",
+   "type": "mcq",
+   "gap_targets": [
+    "word_class_in_context"
+   ],
+   "prompt": "In the sentence \"Water the plants every morning.\", what part of speech is \"water\"?",
+   "answer": "verb",
+   "hints": [
+    "Look at what the word is doing in THIS sentence.",
+    "After 'a', 'the' or 'my' it is usually a noun; if it's the action, it's a verb."
+   ],
+   "solution": [
+    "Here \"water\" is the action.",
+    "So it is a verb in this sentence."
+   ],
+   "patterns": {
+    "noun": "ENG_FIXED_WORD_CLASS"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-DB4",
+   "pool": "diagnostic:parts_of_speech:B",
+   "skill_id": "adjectives_and_adverbs",
+   "type": "mcq",
+   "gap_targets": [
+    "adjectives_and_adverbs"
+   ],
+   "prompt": "In the sentence \"The children waited patiently for the bus.\", what part of speech is \"patiently\"?",
+   "answer": "adverb",
+   "hints": [
+    "An adjective describes a noun (a quiet library). An adverb describes a verb (closed quietly).",
+    "Not every -ly word is an adverb: lovely and friendly describe nouns."
+   ],
+   "solution": [
+    "\"patiently\" describes how something is done (a verb).",
+    "So it is an adverb."
+   ],
+   "patterns": {
+    "adjective": "ENG_ADJ_ADV_MIX"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-DB5",
+   "pool": "diagnostic:parts_of_speech:B",
+   "skill_id": "word_class_in_context",
+   "type": "mcq",
+   "gap_targets": [
+    "word_class_in_context"
+   ],
+   "prompt": "In the sentence \"Let's take a walk after dinner.\", what part of speech is \"walk\"?",
+   "answer": "noun",
+   "hints": [
+    "Look at what the word is doing in THIS sentence.",
+    "After 'a', 'the' or 'my' it is usually a noun; if it's the action, it's a verb."
+   ],
+   "solution": [
+    "Here \"walk\" is a thing (it comes after a/the).",
+    "So it is a noun in this sentence."
+   ],
+   "patterns": {
+    "verb": "ENG_FIXED_WORD_CLASS"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-VAAA1",
+   "pool": "verification:adjectives_and_adverbs",
+   "skill_id": "adjectives_and_adverbs",
+   "type": "mcq",
+   "gap_targets": [
+    "adjectives_and_adverbs"
+   ],
+   "prompt": "In the sentence \"We climbed a steep hill.\", what part of speech is \"steep\"?",
+   "answer": "adjective",
+   "hints": [
+    "An adjective describes a noun (a quiet library). An adverb describes a verb (closed quietly).",
+    "Not every -ly word is an adverb: lovely and friendly describe nouns."
+   ],
+   "solution": [
+    "\"steep\" describes a noun.",
+    "So it is an adjective."
+   ],
+   "patterns": {
+    "adverb": "ENG_ADJ_ADV_MIX"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "POS-VAAA2",
+   "pool": "verification:adjectives_and_adverbs",
+   "skill_id": "adjectives_and_adverbs",
+   "type": "mcq",
+   "gap_targets": [
+    "adjectives_and_adverbs"
+   ],
+   "prompt": "In the sentence \"He closed the door quietly.\", what part of speech is \"quietly\"?",
+   "answer": "adverb",
+   "hints": [
+    "An adjective describes a noun (a quiet library). An adverb describes a verb (closed quietly).",
+    "Not every -ly word is an adverb: lovely and friendly describe nouns."
+   ],
+   "solution": [
+    "\"quietly\" describes how something is done (a verb).",
+    "So it is an adverb."
+   ],
+   "patterns": {
+    "adjective": "ENG_ADJ_ADV_MIX"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "POS-VAAA3",
+   "pool": "verification:adjectives_and_adverbs",
+   "skill_id": "adjectives_and_adverbs",
+   "type": "mcq",
+   "gap_targets": [
+    "adjectives_and_adverbs"
+   ],
+   "prompt": "In the sentence \"The friendly shopkeeper smiled at us.\", what part of speech is \"friendly\"?",
+   "answer": "adjective",
+   "hints": [
+    "An adjective describes a noun (a quiet library). An adverb describes a verb (closed quietly).",
+    "Not every -ly word is an adverb: lovely and friendly describe nouns."
+   ],
+   "solution": [
+    "\"friendly\" describes a noun.",
+    "So it is an adjective."
+   ],
+   "patterns": {
+    "adverb": "ENG_ADJ_ADV_MIX"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "POS-VAAA4",
+   "pool": "verification:adjectives_and_adverbs",
+   "skill_id": "adjectives_and_adverbs",
+   "type": "mcq",
+   "gap_targets": [
+    "adjectives_and_adverbs"
+   ],
+   "prompt": "In the sentence \"She answered the question correctly.\", what part of speech is \"correctly\"?",
+   "answer": "adverb",
+   "hints": [
+    "An adjective describes a noun (a quiet library). An adverb describes a verb (closed quietly).",
+    "Not every -ly word is an adverb: lovely and friendly describe nouns."
+   ],
+   "solution": [
+    "\"correctly\" describes how something is done (a verb).",
+    "So it is an adverb."
+   ],
+   "patterns": {
+    "adjective": "ENG_ADJ_ADV_MIX"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "POS-PAAA1",
+   "pool": "practice:adjectives_and_adverbs",
+   "skill_id": "adjectives_and_adverbs",
+   "type": "mcq",
+   "gap_targets": [
+    "adjectives_and_adverbs"
+   ],
+   "prompt": "In the sentence \"The soup smells delicious.\", what part of speech is \"delicious\"?",
+   "answer": "adjective",
+   "hints": [
+    "An adjective describes a noun (a quiet library). An adverb describes a verb (closed quietly).",
+    "Not every -ly word is an adverb: lovely and friendly describe nouns."
+   ],
+   "solution": [
+    "\"delicious\" describes a noun.",
+    "So it is an adjective."
+   ],
+   "patterns": {
+    "adverb": "ENG_ADJ_ADV_MIX"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-PAAA2",
+   "pool": "practice:adjectives_and_adverbs",
+   "skill_id": "adjectives_and_adverbs",
+   "type": "mcq",
+   "gap_targets": [
+    "adjectives_and_adverbs"
+   ],
+   "prompt": "In the sentence \"The baby slept soundly all night.\", what part of speech is \"soundly\"?",
+   "answer": "adverb",
+   "hints": [
+    "An adjective describes a noun (a quiet library). An adverb describes a verb (closed quietly).",
+    "Not every -ly word is an adverb: lovely and friendly describe nouns."
+   ],
+   "solution": [
+    "\"soundly\" describes how something is done (a verb).",
+    "So it is an adverb."
+   ],
+   "patterns": {
+    "adjective": "ENG_ADJ_ADV_MIX"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-PAAA3",
+   "pool": "practice:adjectives_and_adverbs",
+   "skill_id": "adjectives_and_adverbs",
+   "type": "mcq",
+   "gap_targets": [
+    "adjectives_and_adverbs"
+   ],
+   "prompt": "In the sentence \"It was a cold morning.\", what part of speech is \"cold\"?",
+   "answer": "adjective",
+   "hints": [
+    "An adjective describes a noun (a quiet library). An adverb describes a verb (closed quietly).",
+    "Not every -ly word is an adverb: lovely and friendly describe nouns."
+   ],
+   "solution": [
+    "\"cold\" describes a noun.",
+    "So it is an adjective."
+   ],
+   "patterns": {
+    "adverb": "ENG_ADJ_ADV_MIX"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-PAAA4",
+   "pool": "practice:adjectives_and_adverbs",
+   "skill_id": "adjectives_and_adverbs",
+   "type": "mcq",
+   "gap_targets": [
+    "adjectives_and_adverbs"
+   ],
+   "prompt": "In the sentence \"Rain fell heavily on the roof.\", what part of speech is \"heavily\"?",
+   "answer": "adverb",
+   "hints": [
+    "An adjective describes a noun (a quiet library). An adverb describes a verb (closed quietly).",
+    "Not every -ly word is an adverb: lovely and friendly describe nouns."
+   ],
+   "solution": [
+    "\"heavily\" describes how something is done (a verb).",
+    "So it is an adverb."
+   ],
+   "patterns": {
+    "adjective": "ENG_ADJ_ADV_MIX"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-RAAA1",
+   "pool": "retest:adjectives_and_adverbs",
+   "skill_id": "adjectives_and_adverbs",
+   "type": "mcq",
+   "gap_targets": [
+    "adjectives_and_adverbs"
+   ],
+   "prompt": "In the sentence \"The kitten looked sleepy.\", what part of speech is \"sleepy\"?",
+   "answer": "adjective",
+   "hints": [
+    "An adjective describes a noun (a quiet library). An adverb describes a verb (closed quietly).",
+    "Not every -ly word is an adverb: lovely and friendly describe nouns."
+   ],
+   "solution": [
+    "\"sleepy\" describes a noun.",
+    "So it is an adjective."
+   ],
+   "patterns": {
+    "adverb": "ENG_ADJ_ADV_MIX"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-RAAA2",
+   "pool": "retest:adjectives_and_adverbs",
+   "skill_id": "adjectives_and_adverbs",
+   "type": "mcq",
+   "gap_targets": [
+    "adjectives_and_adverbs"
+   ],
+   "prompt": "In the sentence \"The dog barked loudly at the postman.\", what part of speech is \"loudly\"?",
+   "answer": "adverb",
+   "hints": [
+    "An adjective describes a noun (a quiet library). An adverb describes a verb (closed quietly).",
+    "Not every -ly word is an adverb: lovely and friendly describe nouns."
+   ],
+   "solution": [
+    "\"loudly\" describes how something is done (a verb).",
+    "So it is an adverb."
+   ],
+   "patterns": {
+    "adjective": "ENG_ADJ_ADV_MIX"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-RAAA3",
+   "pool": "retest:adjectives_and_adverbs",
+   "skill_id": "adjectives_and_adverbs",
+   "type": "mcq",
+   "gap_targets": [
+    "adjectives_and_adverbs"
+   ],
+   "prompt": "In the sentence \"A bright light filled the room.\", what part of speech is \"bright\"?",
+   "answer": "adjective",
+   "hints": [
+    "An adjective describes a noun (a quiet library). An adverb describes a verb (closed quietly).",
+    "Not every -ly word is an adverb: lovely and friendly describe nouns."
+   ],
+   "solution": [
+    "\"bright\" describes a noun.",
+    "So it is an adjective."
+   ],
+   "patterns": {
+    "adverb": "ENG_ADJ_ADV_MIX"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-RAAA4",
+   "pool": "retest:adjectives_and_adverbs",
+   "skill_id": "adjectives_and_adverbs",
+   "type": "mcq",
+   "gap_targets": [
+    "adjectives_and_adverbs"
+   ],
+   "prompt": "In the sentence \"Arjun ran fast to catch the bus.\", what part of speech is \"fast\"?",
+   "answer": "adverb",
+   "hints": [
+    "An adjective describes a noun (a quiet library). An adverb describes a verb (closed quietly).",
+    "Not every -ly word is an adverb: lovely and friendly describe nouns."
+   ],
+   "solution": [
+    "\"fast\" describes how something is done (a verb).",
+    "So it is an adverb."
+   ],
+   "patterns": {
+    "adjective": "ENG_ADJ_ADV_MIX"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-RAAA5",
+   "pool": "retest:adjectives_and_adverbs",
+   "skill_id": "adjectives_and_adverbs",
+   "type": "mcq",
+   "gap_targets": [
+    "adjectives_and_adverbs"
+   ],
+   "prompt": "In the sentence \"That was a silly mistake.\", what part of speech is \"silly\"?",
+   "answer": "adjective",
+   "hints": [
+    "An adjective describes a noun (a quiet library). An adverb describes a verb (closed quietly).",
+    "Not every -ly word is an adverb: lovely and friendly describe nouns."
+   ],
+   "solution": [
+    "\"silly\" describes a noun.",
+    "So it is an adjective."
+   ],
+   "patterns": {
+    "adverb": "ENG_ADJ_ADV_MIX"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-RAAA6",
+   "pool": "retest:adjectives_and_adverbs",
+   "skill_id": "adjectives_and_adverbs",
+   "type": "mcq",
+   "gap_targets": [
+    "adjectives_and_adverbs"
+   ],
+   "prompt": "In the sentence \"The team played well in the final.\", what part of speech is \"well\"?",
+   "answer": "adverb",
+   "hints": [
+    "An adjective describes a noun (a quiet library). An adverb describes a verb (closed quietly).",
+    "Not every -ly word is an adverb: lovely and friendly describe nouns."
+   ],
+   "solution": [
+    "\"well\" describes how something is done (a verb).",
+    "So it is an adverb."
+   ],
+   "patterns": {
+    "adjective": "ENG_ADJ_ADV_MIX"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-VWCIC1",
+   "pool": "verification:word_class_in_context",
+   "skill_id": "word_class_in_context",
+   "type": "mcq",
+   "gap_targets": [
+    "word_class_in_context"
+   ],
+   "prompt": "In the sentence \"They will paint the fence on Sunday.\", what part of speech is \"paint\"?",
+   "answer": "verb",
+   "hints": [
+    "Look at what the word is doing in THIS sentence.",
+    "After 'a', 'the' or 'my' it is usually a noun; if it's the action, it's a verb."
+   ],
+   "solution": [
+    "Here \"paint\" is the action.",
+    "So it is a verb in this sentence."
+   ],
+   "patterns": {
+    "noun": "ENG_FIXED_WORD_CLASS"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "POS-VWCIC2",
+   "pool": "verification:word_class_in_context",
+   "skill_id": "word_class_in_context",
+   "type": "mcq",
+   "gap_targets": [
+    "word_class_in_context"
+   ],
+   "prompt": "In the sentence \"The play at school was a success.\", what part of speech is \"play\"?",
+   "answer": "noun",
+   "hints": [
+    "Look at what the word is doing in THIS sentence.",
+    "After 'a', 'the' or 'my' it is usually a noun; if it's the action, it's a verb."
+   ],
+   "solution": [
+    "Here \"play\" is a thing (it comes after a/the).",
+    "So it is a noun in this sentence."
+   ],
+   "patterns": {
+    "verb": "ENG_FIXED_WORD_CLASS"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "POS-VWCIC3",
+   "pool": "verification:word_class_in_context",
+   "skill_id": "word_class_in_context",
+   "type": "mcq",
+   "gap_targets": [
+    "word_class_in_context"
+   ],
+   "prompt": "In the sentence \"Can you hand me the scissors?\", what part of speech is \"hand\"?",
+   "answer": "verb",
+   "hints": [
+    "Look at what the word is doing in THIS sentence.",
+    "After 'a', 'the' or 'my' it is usually a noun; if it's the action, it's a verb."
+   ],
+   "solution": [
+    "Here \"hand\" is the action.",
+    "So it is a verb in this sentence."
+   ],
+   "patterns": {
+    "noun": "ENG_FIXED_WORD_CLASS"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "POS-VWCIC4",
+   "pool": "verification:word_class_in_context",
+   "skill_id": "word_class_in_context",
+   "type": "mcq",
+   "gap_targets": [
+    "word_class_in_context"
+   ],
+   "prompt": "In the sentence \"She had a long drink of water.\", what part of speech is \"drink\"?",
+   "answer": "noun",
+   "hints": [
+    "Look at what the word is doing in THIS sentence.",
+    "After 'a', 'the' or 'my' it is usually a noun; if it's the action, it's a verb."
+   ],
+   "solution": [
+    "Here \"drink\" is a thing (it comes after a/the).",
+    "So it is a noun in this sentence."
+   ],
+   "patterns": {
+    "verb": "ENG_FIXED_WORD_CLASS"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "POS-PWCIC1",
+   "pool": "practice:word_class_in_context",
+   "skill_id": "word_class_in_context",
+   "type": "mcq",
+   "gap_targets": [
+    "word_class_in_context"
+   ],
+   "prompt": "In the sentence \"The birds nest in that tree.\", what part of speech is \"nest\"?",
+   "answer": "verb",
+   "hints": [
+    "Look at what the word is doing in THIS sentence.",
+    "After 'a', 'the' or 'my' it is usually a noun; if it's the action, it's a verb."
+   ],
+   "solution": [
+    "Here \"nest\" is the action.",
+    "So it is a verb in this sentence."
+   ],
+   "patterns": {
+    "noun": "ENG_FIXED_WORD_CLASS"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-PWCIC2",
+   "pool": "practice:word_class_in_context",
+   "skill_id": "word_class_in_context",
+   "type": "mcq",
+   "gap_targets": [
+    "word_class_in_context"
+   ],
+   "prompt": "In the sentence \"I heard a loud knock at the door.\", what part of speech is \"knock\"?",
+   "answer": "noun",
+   "hints": [
+    "Look at what the word is doing in THIS sentence.",
+    "After 'a', 'the' or 'my' it is usually a noun; if it's the action, it's a verb."
+   ],
+   "solution": [
+    "Here \"knock\" is a thing (it comes after a/the).",
+    "So it is a noun in this sentence."
+   ],
+   "patterns": {
+    "verb": "ENG_FIXED_WORD_CLASS"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-PWCIC3",
+   "pool": "practice:word_class_in_context",
+   "skill_id": "word_class_in_context",
+   "type": "mcq",
+   "gap_targets": [
+    "word_class_in_context"
+   ],
+   "prompt": "In the sentence \"We fish in the lake every summer.\", what part of speech is \"fish\"?",
+   "answer": "verb",
+   "hints": [
+    "Look at what the word is doing in THIS sentence.",
+    "After 'a', 'the' or 'my' it is usually a noun; if it's the action, it's a verb."
+   ],
+   "solution": [
+    "Here \"fish\" is the action.",
+    "So it is a verb in this sentence."
+   ],
+   "patterns": {
+    "noun": "ENG_FIXED_WORD_CLASS"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-PWCIC4",
+   "pool": "practice:word_class_in_context",
+   "skill_id": "word_class_in_context",
+   "type": "mcq",
+   "gap_targets": [
+    "word_class_in_context"
+   ],
+   "prompt": "In the sentence \"Grandma gave me a warm hug.\", what part of speech is \"hug\"?",
+   "answer": "noun",
+   "hints": [
+    "Look at what the word is doing in THIS sentence.",
+    "After 'a', 'the' or 'my' it is usually a noun; if it's the action, it's a verb."
+   ],
+   "solution": [
+    "Here \"hug\" is a thing (it comes after a/the).",
+    "So it is a noun in this sentence."
+   ],
+   "patterns": {
+    "verb": "ENG_FIXED_WORD_CLASS"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-RWCIC1",
+   "pool": "retest:word_class_in_context",
+   "skill_id": "word_class_in_context",
+   "type": "mcq",
+   "gap_targets": [
+    "word_class_in_context"
+   ],
+   "prompt": "In the sentence \"Please light the candles.\", what part of speech is \"light\"?",
+   "answer": "verb",
+   "hints": [
+    "Look at what the word is doing in THIS sentence.",
+    "After 'a', 'the' or 'my' it is usually a noun; if it's the action, it's a verb."
+   ],
+   "solution": [
+    "Here \"light\" is the action.",
+    "So it is a verb in this sentence."
+   ],
+   "patterns": {
+    "noun": "ENG_FIXED_WORD_CLASS"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-RWCIC2",
+   "pool": "retest:word_class_in_context",
+   "skill_id": "word_class_in_context",
+   "type": "mcq",
+   "gap_targets": [
+    "word_class_in_context"
+   ],
+   "prompt": "In the sentence \"The swim made us hungry.\", what part of speech is \"swim\"?",
+   "answer": "noun",
+   "hints": [
+    "Look at what the word is doing in THIS sentence.",
+    "After 'a', 'the' or 'my' it is usually a noun; if it's the action, it's a verb."
+   ],
+   "solution": [
+    "Here \"swim\" is a thing (it comes after a/the).",
+    "So it is a noun in this sentence."
+   ],
+   "patterns": {
+    "verb": "ENG_FIXED_WORD_CLASS"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-RWCIC3",
+   "pool": "retest:word_class_in_context",
+   "skill_id": "word_class_in_context",
+   "type": "mcq",
+   "gap_targets": [
+    "word_class_in_context"
+   ],
+   "prompt": "In the sentence \"Don't park your bike here.\", what part of speech is \"park\"?",
+   "answer": "verb",
+   "hints": [
+    "Look at what the word is doing in THIS sentence.",
+    "After 'a', 'the' or 'my' it is usually a noun; if it's the action, it's a verb."
+   ],
+   "solution": [
+    "Here \"park\" is the action.",
+    "So it is a verb in this sentence."
+   ],
+   "patterns": {
+    "noun": "ENG_FIXED_WORD_CLASS"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-RWCIC4",
+   "pool": "retest:word_class_in_context",
+   "skill_id": "word_class_in_context",
+   "type": "mcq",
+   "gap_targets": [
+    "word_class_in_context"
+   ],
+   "prompt": "In the sentence \"There was a long wait at the station.\", what part of speech is \"wait\"?",
+   "answer": "noun",
+   "hints": [
+    "Look at what the word is doing in THIS sentence.",
+    "After 'a', 'the' or 'my' it is usually a noun; if it's the action, it's a verb."
+   ],
+   "solution": [
+    "Here \"wait\" is a thing (it comes after a/the).",
+    "So it is a noun in this sentence."
+   ],
+   "patterns": {
+    "verb": "ENG_FIXED_WORD_CLASS"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-RWCIC5",
+   "pool": "retest:word_class_in_context",
+   "skill_id": "word_class_in_context",
+   "type": "mcq",
+   "gap_targets": [
+    "word_class_in_context"
+   ],
+   "prompt": "In the sentence \"I will email my teacher tonight.\", what part of speech is \"email\"?",
+   "answer": "verb",
+   "hints": [
+    "Look at what the word is doing in THIS sentence.",
+    "After 'a', 'the' or 'my' it is usually a noun; if it's the action, it's a verb."
+   ],
+   "solution": [
+    "Here \"email\" is the action.",
+    "So it is a verb in this sentence."
+   ],
+   "patterns": {
+    "noun": "ENG_FIXED_WORD_CLASS"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  },
+  {
+   "id": "POS-RWCIC6",
+   "pool": "retest:word_class_in_context",
+   "skill_id": "word_class_in_context",
+   "type": "mcq",
+   "gap_targets": [
+    "word_class_in_context"
+   ],
+   "prompt": "In the sentence \"He made a quick jump over the puddle.\", what part of speech is \"jump\"?",
+   "answer": "noun",
+   "hints": [
+    "Look at what the word is doing in THIS sentence.",
+    "After 'a', 'the' or 'my' it is usually a noun; if it's the action, it's a verb."
+   ],
+   "solution": [
+    "Here \"jump\" is a thing (it comes after a/the).",
+    "So it is a noun in this sentence."
+   ],
+   "patterns": {
+    "verb": "ENG_FIXED_WORD_CLASS"
+   },
+   "options": [
+    "noun",
+    "verb",
+    "adjective",
+    "adverb"
+   ]
+  }
+ ],
+ "lessons": {
+  "adjectives_and_adverbs": {
+   "title": "Adjectives and adverbs",
+   "big_idea": "Adjectives describe nouns (a quiet library). Adverbs describe verbs: how, when or where something happens (closed the door quietly). The -ly ending is a clue, not a rule: lovely and friendly are adjectives.",
+   "steps": [
+    "Find the word it is describing.",
+    "If it describes a person, place or thing, it's an adjective.",
+    "If it describes an action (how, when, where), it's an adverb.",
+    "After verbs like is, looks, smells, feels, a describing word is usually an adjective (the soup smells delicious)."
+   ],
+   "sense_check": "Try 'a lovely ___': a lovely painting works, so 'lovely' describes a noun.",
+   "worked_examples": [
+    {
+     "prompt": "\"He closed the door quietly.\" What is \"quietly\"?",
+     "answer": "adverb",
+     "steps": [
+      "It tells us HOW he closed the door.",
+      "It describes the verb 'closed'.",
+      "Adverb."
+     ]
+    },
+    {
+     "prompt": "\"Her lovely painting won a prize.\" What is \"lovely\"?",
+     "answer": "adjective",
+     "steps": [
+      "It describes the painting (a noun).",
+      "Even though it ends in -ly, it's an adjective."
+     ]
+    }
+   ]
+  },
+  "word_class_in_context": {
+   "title": "Word class depends on the sentence",
+   "big_idea": "Many words can be a noun in one sentence and a verb in another. You can only tell by looking at the job the word does in that sentence.",
+   "steps": [
+    "Read the whole sentence.",
+    "Is the word a thing (often after a, the, my)? Then it's a noun.",
+    "Is it the action someone does? Then it's a verb.",
+    "Don't decide from the word alone."
+   ],
+   "sense_check": "'I run' (verb) and 'a run' (noun): same word, different jobs.",
+   "worked_examples": [
+    {
+     "prompt": "\"We went for a run.\" What is \"run\"?",
+     "answer": "noun",
+     "steps": [
+      "It comes after 'a'.",
+      "It names a thing we went for.",
+      "Noun."
+     ]
+    },
+    {
+     "prompt": "\"Please book a table.\" What is \"book\"?",
+     "answer": "verb",
+     "steps": [
+      "It's what we are asked to do.",
+      "It's the action.",
+      "Verb."
+     ]
+    }
+   ]
+  }
+ }
+}

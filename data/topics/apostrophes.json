@@ -1,0 +1,1125 @@
+{
+ "skills": [
+  {
+   "id": "apostrophes_for_possession",
+   "name": "Apostrophes for belonging",
+   "grade": 4,
+   "prerequisites": [],
+   "description": "'s for one owner, s' for several; never for plurals."
+  },
+  {
+   "id": "contractions_vs_possessives",
+   "name": "its / it's, your / you're, their / they're",
+   "grade": 5,
+   "prerequisites": [
+    "apostrophes_for_possession"
+   ],
+   "description": "Contractions versus possessive words."
+  }
+ ],
+ "misconceptions": {
+  "ENG_APOS_PLURAL": {
+   "label": "Uses an apostrophe just to make a word plural",
+   "gap_skill": "apostrophes_for_possession",
+   "explanation": "Writes 'six apple's' or 'two cat's'."
+  },
+  "ENG_APOS_PLACE": {
+   "label": "Puts the apostrophe in the wrong place for one or several owners",
+   "gap_skill": "apostrophes_for_possession",
+   "explanation": "Writes 'the girl's coats' for several girls, or 'the dogs' tail' for one dog."
+  },
+  "ENG_CONTRACTION_MIX": {
+   "label": "Confuses it's / you're / they're with its / your / their",
+   "gap_skill": "contractions_vs_possessives",
+   "explanation": "Writes 'the cat licked it's paw' or 'your going to love it'."
+  }
+ },
+ "questions": [
+  {
+   "id": "APO-DA1",
+   "pool": "diagnostic:apostrophes:A",
+   "skill_id": "apostrophes_for_possession",
+   "type": "mcq",
+   "gap_targets": [
+    "apostrophes_for_possession"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The ___ tail was wagging. (one dog)",
+   "answer": "dog's",
+   "hints": [
+    "An apostrophe shows that something belongs to someone. It is NOT used just to make a plural.",
+    "One owner: add 's (the dog's tail). Several owners ending in s: add ' after the s (the girls' coats)."
+   ],
+   "solution": [
+    "One owner: add 's.",
+    "The dog's tail was wagging."
+   ],
+   "patterns": {
+    "dogs'": "ENG_APOS_PLACE"
+   },
+   "options": [
+    "dog's",
+    "dogs'",
+    "dogs"
+   ]
+  },
+  {
+   "id": "APO-DA2",
+   "pool": "diagnostic:apostrophes:A",
+   "skill_id": "contractions_vs_possessives",
+   "type": "mcq",
+   "gap_targets": [
+    "contractions_vs_possessives"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The cat licked ___ paw.",
+   "answer": "its",
+   "hints": [
+    "Try expanding it: it's = it is, you're = you are, they're = they are.",
+    "If the expanded version makes sense, use the apostrophe. If not, use its / your / their."
+   ],
+   "solution": [
+    "'its' shows belonging (no letters are missing).",
+    "The cat licked its paw."
+   ],
+   "patterns": {
+    "it's": "ENG_CONTRACTION_MIX"
+   },
+   "options": [
+    "it's",
+    "its"
+   ]
+  },
+  {
+   "id": "APO-DA3",
+   "pool": "diagnostic:apostrophes:A",
+   "skill_id": "apostrophes_for_possession",
+   "type": "mcq",
+   "gap_targets": [
+    "apostrophes_for_possession"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The ___ coats were on the pegs. (several girls)",
+   "answer": "girls'",
+   "hints": [
+    "An apostrophe shows that something belongs to someone. It is NOT used just to make a plural.",
+    "One owner: add 's (the dog's tail). Several owners ending in s: add ' after the s (the girls' coats)."
+   ],
+   "solution": [
+    "Several owners ending in s: add ' after the s.",
+    "The girls' coats were on the pegs."
+   ],
+   "patterns": {
+    "girl's": "ENG_APOS_PLACE"
+   },
+   "options": [
+    "girls",
+    "girls'",
+    "girl's"
+   ]
+  },
+  {
+   "id": "APO-DA4",
+   "pool": "diagnostic:apostrophes:A",
+   "skill_id": "contractions_vs_possessives",
+   "type": "mcq",
+   "gap_targets": [
+    "contractions_vs_possessives"
+   ],
+   "prompt": "Choose the word that completes the sentence:  ___ raining again today.",
+   "answer": "It's",
+   "hints": [
+    "Try expanding it: it's = it is, you're = you are, they're = they are.",
+    "If the expanded version makes sense, use the apostrophe. If not, use its / your / their."
+   ],
+   "solution": [
+    "It's = it is: it makes sense here.",
+    "It's raining again today."
+   ],
+   "patterns": {
+    "Its": "ENG_CONTRACTION_MIX"
+   },
+   "options": [
+    "Its",
+    "It's"
+   ]
+  },
+  {
+   "id": "APO-DA5",
+   "pool": "diagnostic:apostrophes:A",
+   "skill_id": "apostrophes_for_possession",
+   "type": "mcq",
+   "gap_targets": [
+    "apostrophes_for_possession"
+   ],
+   "prompt": "Choose the word that completes the sentence:  We bought six ___ at the market.",
+   "answer": "apples",
+   "hints": [
+    "An apostrophe shows that something belongs to someone. It is NOT used just to make a plural.",
+    "One owner: add 's (the dog's tail). Several owners ending in s: add ' after the s (the girls' coats)."
+   ],
+   "solution": [
+    "A plural with no owner needs no apostrophe.",
+    "We bought six apples at the market."
+   ],
+   "patterns": {
+    "apple's": "ENG_APOS_PLURAL",
+    "apples'": "ENG_APOS_PLURAL"
+   },
+   "options": [
+    "apple's",
+    "apples'",
+    "apples"
+   ]
+  },
+  {
+   "id": "APO-DB1",
+   "pool": "diagnostic:apostrophes:B",
+   "skill_id": "contractions_vs_possessives",
+   "type": "mcq",
+   "gap_targets": [
+    "contractions_vs_possessives"
+   ],
+   "prompt": "Choose the word that completes the sentence:  Is this ___ jacket?",
+   "answer": "your",
+   "hints": [
+    "Try expanding it: it's = it is, you're = you are, they're = they are.",
+    "If the expanded version makes sense, use the apostrophe. If not, use its / your / their."
+   ],
+   "solution": [
+    "'your' shows belonging (no letters are missing).",
+    "Is this your jacket?"
+   ],
+   "patterns": {
+    "you're": "ENG_CONTRACTION_MIX"
+   },
+   "options": [
+    "you're",
+    "your"
+   ]
+  },
+  {
+   "id": "APO-DB2",
+   "pool": "diagnostic:apostrophes:B",
+   "skill_id": "apostrophes_for_possession",
+   "type": "mcq",
+   "gap_targets": [
+    "apostrophes_for_possession"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The ___ desk was very tidy. (one teacher)",
+   "answer": "teacher's",
+   "hints": [
+    "An apostrophe shows that something belongs to someone. It is NOT used just to make a plural.",
+    "One owner: add 's (the dog's tail). Several owners ending in s: add ' after the s (the girls' coats)."
+   ],
+   "solution": [
+    "One owner: add 's.",
+    "The teacher's desk was very tidy."
+   ],
+   "patterns": {
+    "teachers'": "ENG_APOS_PLACE"
+   },
+   "options": [
+    "teacher's",
+    "teachers'",
+    "teachers"
+   ]
+  },
+  {
+   "id": "APO-DB3",
+   "pool": "diagnostic:apostrophes:B",
+   "skill_id": "contractions_vs_possessives",
+   "type": "mcq",
+   "gap_targets": [
+    "contractions_vs_possessives"
+   ],
+   "prompt": "Choose the word that completes the sentence:  ___ going to love this book.",
+   "answer": "You're",
+   "hints": [
+    "Try expanding it: it's = it is, you're = you are, they're = they are.",
+    "If the expanded version makes sense, use the apostrophe. If not, use its / your / their."
+   ],
+   "solution": [
+    "You're = you are: it makes sense here.",
+    "You're going to love this book."
+   ],
+   "patterns": {
+    "Your": "ENG_CONTRACTION_MIX"
+   },
+   "options": [
+    "Your",
+    "You're"
+   ]
+  },
+  {
+   "id": "APO-DB4",
+   "pool": "diagnostic:apostrophes:B",
+   "skill_id": "apostrophes_for_possession",
+   "type": "mcq",
+   "gap_targets": [
+    "apostrophes_for_possession"
+   ],
+   "prompt": "Choose the word that completes the sentence:  All the ___ shirts were muddy. (many players)",
+   "answer": "players'",
+   "hints": [
+    "An apostrophe shows that something belongs to someone. It is NOT used just to make a plural.",
+    "One owner: add 's (the dog's tail). Several owners ending in s: add ' after the s (the girls' coats)."
+   ],
+   "solution": [
+    "Several owners ending in s: add ' after the s.",
+    "All the players' shirts were muddy."
+   ],
+   "patterns": {
+    "player's": "ENG_APOS_PLACE"
+   },
+   "options": [
+    "players",
+    "players'",
+    "player's"
+   ]
+  },
+  {
+   "id": "APO-DB5",
+   "pool": "diagnostic:apostrophes:B",
+   "skill_id": "contractions_vs_possessives",
+   "type": "mcq",
+   "gap_targets": [
+    "contractions_vs_possessives"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The children packed ___ bags.",
+   "answer": "their",
+   "hints": [
+    "Try expanding it: it's = it is, you're = you are, they're = they are.",
+    "If the expanded version makes sense, use the apostrophe. If not, use its / your / their."
+   ],
+   "solution": [
+    "'their' shows belonging (no letters are missing).",
+    "The children packed their bags."
+   ],
+   "patterns": {
+    "they're": "ENG_CONTRACTION_MIX"
+   },
+   "options": [
+    "their",
+    "they're",
+    "there"
+   ]
+  },
+  {
+   "id": "APO-VAFP1",
+   "pool": "verification:apostrophes_for_possession",
+   "skill_id": "apostrophes_for_possession",
+   "type": "mcq",
+   "gap_targets": [
+    "apostrophes_for_possession"
+   ],
+   "prompt": "Choose the word that completes the sentence:  There are ten ___ on the shelf.",
+   "answer": "books",
+   "hints": [
+    "An apostrophe shows that something belongs to someone. It is NOT used just to make a plural.",
+    "One owner: add 's (the dog's tail). Several owners ending in s: add ' after the s (the girls' coats)."
+   ],
+   "solution": [
+    "A plural with no owner needs no apostrophe.",
+    "There are ten books on the shelf."
+   ],
+   "patterns": {
+    "book's": "ENG_APOS_PLURAL",
+    "books'": "ENG_APOS_PLURAL"
+   },
+   "options": [
+    "book's",
+    "books'",
+    "books"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "APO-VAFP2",
+   "pool": "verification:apostrophes_for_possession",
+   "skill_id": "apostrophes_for_possession",
+   "type": "mcq",
+   "gap_targets": [
+    "apostrophes_for_possession"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The ___ bag was left on the bus. (one boy)",
+   "answer": "boy's",
+   "hints": [
+    "An apostrophe shows that something belongs to someone. It is NOT used just to make a plural.",
+    "One owner: add 's (the dog's tail). Several owners ending in s: add ' after the s (the girls' coats)."
+   ],
+   "solution": [
+    "One owner: add 's.",
+    "The boy's bag was left on the bus."
+   ],
+   "patterns": {
+    "boys'": "ENG_APOS_PLACE"
+   },
+   "options": [
+    "boys",
+    "boy's",
+    "boys'"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "APO-VAFP3",
+   "pool": "verification:apostrophes_for_possession",
+   "skill_id": "apostrophes_for_possession",
+   "type": "mcq",
+   "gap_targets": [
+    "apostrophes_for_possession"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The ___ staff room is upstairs. (all the teachers)",
+   "answer": "teachers'",
+   "hints": [
+    "An apostrophe shows that something belongs to someone. It is NOT used just to make a plural.",
+    "One owner: add 's (the dog's tail). Several owners ending in s: add ' after the s (the girls' coats)."
+   ],
+   "solution": [
+    "Several owners ending in s: add ' after the s.",
+    "The teachers' staff room is upstairs."
+   ],
+   "patterns": {
+    "teacher's": "ENG_APOS_PLACE"
+   },
+   "options": [
+    "teachers'",
+    "teacher's",
+    "teachers"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "APO-VAFP4",
+   "pool": "verification:apostrophes_for_possession",
+   "skill_id": "apostrophes_for_possession",
+   "type": "mcq",
+   "gap_targets": [
+    "apostrophes_for_possession"
+   ],
+   "prompt": "Choose the word that completes the sentence:  My aunt has two ___.",
+   "answer": "cats",
+   "hints": [
+    "An apostrophe shows that something belongs to someone. It is NOT used just to make a plural.",
+    "One owner: add 's (the dog's tail). Several owners ending in s: add ' after the s (the girls' coats)."
+   ],
+   "solution": [
+    "A plural with no owner needs no apostrophe.",
+    "My aunt has two cats."
+   ],
+   "patterns": {
+    "cat's": "ENG_APOS_PLURAL",
+    "cats'": "ENG_APOS_PLURAL"
+   },
+   "options": [
+    "cat's",
+    "cats'",
+    "cats"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "APO-PAFP1",
+   "pool": "practice:apostrophes_for_possession",
+   "skill_id": "apostrophes_for_possession",
+   "type": "mcq",
+   "gap_targets": [
+    "apostrophes_for_possession"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The ___ bowl was empty. (one cat)",
+   "answer": "cat's",
+   "hints": [
+    "An apostrophe shows that something belongs to someone. It is NOT used just to make a plural.",
+    "One owner: add 's (the dog's tail). Several owners ending in s: add ' after the s (the girls' coats)."
+   ],
+   "solution": [
+    "One owner: add 's.",
+    "The cat's bowl was empty."
+   ],
+   "patterns": {
+    "cats'": "ENG_APOS_PLACE"
+   },
+   "options": [
+    "cats",
+    "cat's",
+    "cats'"
+   ]
+  },
+  {
+   "id": "APO-PAFP2",
+   "pool": "practice:apostrophes_for_possession",
+   "skill_id": "apostrophes_for_possession",
+   "type": "mcq",
+   "gap_targets": [
+    "apostrophes_for_possession"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The ___ nests were high in the tree. (several birds)",
+   "answer": "birds'",
+   "hints": [
+    "An apostrophe shows that something belongs to someone. It is NOT used just to make a plural.",
+    "One owner: add 's (the dog's tail). Several owners ending in s: add ' after the s (the girls' coats)."
+   ],
+   "solution": [
+    "Several owners ending in s: add ' after the s.",
+    "The birds' nests were high in the tree."
+   ],
+   "patterns": {
+    "bird's": "ENG_APOS_PLACE"
+   },
+   "options": [
+    "birds'",
+    "bird's",
+    "birds"
+   ]
+  },
+  {
+   "id": "APO-PAFP3",
+   "pool": "practice:apostrophes_for_possession",
+   "skill_id": "apostrophes_for_possession",
+   "type": "mcq",
+   "gap_targets": [
+    "apostrophes_for_possession"
+   ],
+   "prompt": "Choose the word that completes the sentence:  Please sharpen your ___.",
+   "answer": "pencils",
+   "hints": [
+    "An apostrophe shows that something belongs to someone. It is NOT used just to make a plural.",
+    "One owner: add 's (the dog's tail). Several owners ending in s: add ' after the s (the girls' coats)."
+   ],
+   "solution": [
+    "A plural with no owner needs no apostrophe.",
+    "Please sharpen your pencils."
+   ],
+   "patterns": {
+    "pencil's": "ENG_APOS_PLURAL",
+    "pencils'": "ENG_APOS_PLURAL"
+   },
+   "options": [
+    "pencil's",
+    "pencils'",
+    "pencils"
+   ]
+  },
+  {
+   "id": "APO-PAFP4",
+   "pool": "practice:apostrophes_for_possession",
+   "skill_id": "apostrophes_for_possession",
+   "type": "mcq",
+   "gap_targets": [
+    "apostrophes_for_possession"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The ___ wings were bright blue. (one butterfly)",
+   "answer": "butterfly's",
+   "hints": [
+    "An apostrophe shows that something belongs to someone. It is NOT used just to make a plural.",
+    "One owner: add 's (the dog's tail). Several owners ending in s: add ' after the s (the girls' coats)."
+   ],
+   "solution": [
+    "One owner: add 's.",
+    "The butterfly's wings were bright blue."
+   ],
+   "patterns": {
+    "butterflies'": "ENG_APOS_PLACE"
+   },
+   "options": [
+    "butterflys",
+    "butterfly's",
+    "butterflies'"
+   ]
+  },
+  {
+   "id": "APO-RAFP1",
+   "pool": "retest:apostrophes_for_possession",
+   "skill_id": "apostrophes_for_possession",
+   "type": "mcq",
+   "gap_targets": [
+    "apostrophes_for_possession"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The ___ projects are on the wall. (all the students)",
+   "answer": "students'",
+   "hints": [
+    "An apostrophe shows that something belongs to someone. It is NOT used just to make a plural.",
+    "One owner: add 's (the dog's tail). Several owners ending in s: add ' after the s (the girls' coats)."
+   ],
+   "solution": [
+    "Several owners ending in s: add ' after the s.",
+    "The students' projects are on the wall."
+   ],
+   "patterns": {
+    "student's": "ENG_APOS_PLACE"
+   },
+   "options": [
+    "students'",
+    "student's",
+    "students"
+   ]
+  },
+  {
+   "id": "APO-RAFP2",
+   "pool": "retest:apostrophes_for_possession",
+   "skill_id": "apostrophes_for_possession",
+   "type": "mcq",
+   "gap_targets": [
+    "apostrophes_for_possession"
+   ],
+   "prompt": "Choose the word that completes the sentence:  We need four ___ for the salad.",
+   "answer": "tomatoes",
+   "hints": [
+    "An apostrophe shows that something belongs to someone. It is NOT used just to make a plural.",
+    "One owner: add 's (the dog's tail). Several owners ending in s: add ' after the s (the girls' coats)."
+   ],
+   "solution": [
+    "A plural with no owner needs no apostrophe.",
+    "We need four tomatoes for the salad."
+   ],
+   "patterns": {
+    "tomato's": "ENG_APOS_PLURAL",
+    "tomatoes'": "ENG_APOS_PLURAL"
+   },
+   "options": [
+    "tomato's",
+    "tomatoes'",
+    "tomatoes"
+   ]
+  },
+  {
+   "id": "APO-RAFP3",
+   "pool": "retest:apostrophes_for_possession",
+   "skill_id": "apostrophes_for_possession",
+   "type": "mcq",
+   "gap_targets": [
+    "apostrophes_for_possession"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The ___ door was painted red. (one house)",
+   "answer": "house's",
+   "hints": [
+    "An apostrophe shows that something belongs to someone. It is NOT used just to make a plural.",
+    "One owner: add 's (the dog's tail). Several owners ending in s: add ' after the s (the girls' coats)."
+   ],
+   "solution": [
+    "One owner: add 's.",
+    "The house's door was painted red."
+   ],
+   "patterns": {
+    "houses'": "ENG_APOS_PLACE"
+   },
+   "options": [
+    "houses",
+    "house's",
+    "houses'"
+   ]
+  },
+  {
+   "id": "APO-RAFP4",
+   "pool": "retest:apostrophes_for_possession",
+   "skill_id": "apostrophes_for_possession",
+   "type": "mcq",
+   "gap_targets": [
+    "apostrophes_for_possession"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The ___ fields were flooded. (several farmers)",
+   "answer": "farmers'",
+   "hints": [
+    "An apostrophe shows that something belongs to someone. It is NOT used just to make a plural.",
+    "One owner: add 's (the dog's tail). Several owners ending in s: add ' after the s (the girls' coats)."
+   ],
+   "solution": [
+    "Several owners ending in s: add ' after the s.",
+    "The farmers' fields were flooded."
+   ],
+   "patterns": {
+    "farmer's": "ENG_APOS_PLACE"
+   },
+   "options": [
+    "farmers'",
+    "farmer's",
+    "farmers"
+   ]
+  },
+  {
+   "id": "APO-RAFP5",
+   "pool": "retest:apostrophes_for_possession",
+   "skill_id": "apostrophes_for_possession",
+   "type": "mcq",
+   "gap_targets": [
+    "apostrophes_for_possession"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The shop sells fresh ___ every day.",
+   "answer": "bananas",
+   "hints": [
+    "An apostrophe shows that something belongs to someone. It is NOT used just to make a plural.",
+    "One owner: add 's (the dog's tail). Several owners ending in s: add ' after the s (the girls' coats)."
+   ],
+   "solution": [
+    "A plural with no owner needs no apostrophe.",
+    "The shop sells fresh bananas every day."
+   ],
+   "patterns": {
+    "banana's": "ENG_APOS_PLURAL",
+    "bananas'": "ENG_APOS_PLURAL"
+   },
+   "options": [
+    "banana's",
+    "bananas'",
+    "bananas"
+   ]
+  },
+  {
+   "id": "APO-RAFP6",
+   "pool": "retest:apostrophes_for_possession",
+   "skill_id": "apostrophes_for_possession",
+   "type": "mcq",
+   "gap_targets": [
+    "apostrophes_for_possession"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The ___ roar was loud. (one lion)",
+   "answer": "lion's",
+   "hints": [
+    "An apostrophe shows that something belongs to someone. It is NOT used just to make a plural.",
+    "One owner: add 's (the dog's tail). Several owners ending in s: add ' after the s (the girls' coats)."
+   ],
+   "solution": [
+    "One owner: add 's.",
+    "The lion's roar was loud."
+   ],
+   "patterns": {
+    "lions'": "ENG_APOS_PLACE"
+   },
+   "options": [
+    "lions",
+    "lion's",
+    "lions'"
+   ]
+  },
+  {
+   "id": "APO-VCVP1",
+   "pool": "verification:contractions_vs_possessives",
+   "skill_id": "contractions_vs_possessives",
+   "type": "mcq",
+   "gap_targets": [
+    "contractions_vs_possessives"
+   ],
+   "prompt": "Choose the word that completes the sentence:  ___ coming to the party later.",
+   "answer": "They're",
+   "hints": [
+    "Try expanding it: it's = it is, you're = you are, they're = they are.",
+    "If the expanded version makes sense, use the apostrophe. If not, use its / your / their."
+   ],
+   "solution": [
+    "They're = they are: it makes sense here.",
+    "They're coming to the party later."
+   ],
+   "patterns": {
+    "Their": "ENG_CONTRACTION_MIX"
+   },
+   "options": [
+    "They're",
+    "Their",
+    "There"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "APO-VCVP2",
+   "pool": "verification:contractions_vs_possessives",
+   "skill_id": "contractions_vs_possessives",
+   "type": "mcq",
+   "gap_targets": [
+    "contractions_vs_possessives"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The tree lost ___ leaves in autumn.",
+   "answer": "its",
+   "hints": [
+    "Try expanding it: it's = it is, you're = you are, they're = they are.",
+    "If the expanded version makes sense, use the apostrophe. If not, use its / your / their."
+   ],
+   "solution": [
+    "'its' shows belonging (no letters are missing).",
+    "The tree lost its leaves in autumn."
+   ],
+   "patterns": {
+    "it's": "ENG_CONTRACTION_MIX"
+   },
+   "options": [
+    "it's",
+    "its"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "APO-VCVP3",
+   "pool": "verification:contractions_vs_possessives",
+   "skill_id": "contractions_vs_possessives",
+   "type": "mcq",
+   "gap_targets": [
+    "contractions_vs_possessives"
+   ],
+   "prompt": "Choose the word that completes the sentence:  I think ___ time for lunch.",
+   "answer": "it's",
+   "hints": [
+    "Try expanding it: it's = it is, you're = you are, they're = they are.",
+    "If the expanded version makes sense, use the apostrophe. If not, use its / your / their."
+   ],
+   "solution": [
+    "it's = it is: it makes sense here.",
+    "I think it's time for lunch."
+   ],
+   "patterns": {
+    "its": "ENG_CONTRACTION_MIX"
+   },
+   "options": [
+    "it's",
+    "its"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "APO-VCVP4",
+   "pool": "verification:contractions_vs_possessives",
+   "skill_id": "contractions_vs_possessives",
+   "type": "mcq",
+   "gap_targets": [
+    "contractions_vs_possessives"
+   ],
+   "prompt": "Choose the word that completes the sentence:  Don't forget ___ water bottle.",
+   "answer": "your",
+   "hints": [
+    "Try expanding it: it's = it is, you're = you are, they're = they are.",
+    "If the expanded version makes sense, use the apostrophe. If not, use its / your / their."
+   ],
+   "solution": [
+    "'your' shows belonging (no letters are missing).",
+    "Don't forget your water bottle."
+   ],
+   "patterns": {
+    "you're": "ENG_CONTRACTION_MIX"
+   },
+   "options": [
+    "you're",
+    "your"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "APO-PCVP1",
+   "pool": "practice:contractions_vs_possessives",
+   "skill_id": "contractions_vs_possessives",
+   "type": "mcq",
+   "gap_targets": [
+    "contractions_vs_possessives"
+   ],
+   "prompt": "Choose the word that completes the sentence:  Tell me when ___ ready to go.",
+   "answer": "you're",
+   "hints": [
+    "Try expanding it: it's = it is, you're = you are, they're = they are.",
+    "If the expanded version makes sense, use the apostrophe. If not, use its / your / their."
+   ],
+   "solution": [
+    "you're = you are: it makes sense here.",
+    "Tell me when you're ready to go."
+   ],
+   "patterns": {
+    "your": "ENG_CONTRACTION_MIX"
+   },
+   "options": [
+    "you're",
+    "your"
+   ]
+  },
+  {
+   "id": "APO-PCVP2",
+   "pool": "practice:contractions_vs_possessives",
+   "skill_id": "contractions_vs_possessives",
+   "type": "mcq",
+   "gap_targets": [
+    "contractions_vs_possessives"
+   ],
+   "prompt": "Choose the word that completes the sentence:  My cousins sold ___ old car.",
+   "answer": "their",
+   "hints": [
+    "Try expanding it: it's = it is, you're = you are, they're = they are.",
+    "If the expanded version makes sense, use the apostrophe. If not, use its / your / their."
+   ],
+   "solution": [
+    "'their' shows belonging (no letters are missing).",
+    "My cousins sold their old car."
+   ],
+   "patterns": {
+    "they're": "ENG_CONTRACTION_MIX"
+   },
+   "options": [
+    "there",
+    "their",
+    "they're"
+   ]
+  },
+  {
+   "id": "APO-PCVP3",
+   "pool": "practice:contractions_vs_possessives",
+   "skill_id": "contractions_vs_possessives",
+   "type": "mcq",
+   "gap_targets": [
+    "contractions_vs_possessives"
+   ],
+   "prompt": "Choose the word that completes the sentence:  I hope ___ not late again.",
+   "answer": "they're",
+   "hints": [
+    "Try expanding it: it's = it is, you're = you are, they're = they are.",
+    "If the expanded version makes sense, use the apostrophe. If not, use its / your / their."
+   ],
+   "solution": [
+    "they're = they are: it makes sense here.",
+    "I hope they're not late again."
+   ],
+   "patterns": {
+    "their": "ENG_CONTRACTION_MIX"
+   },
+   "options": [
+    "they're",
+    "their",
+    "there"
+   ]
+  },
+  {
+   "id": "APO-PCVP4",
+   "pool": "practice:contractions_vs_possessives",
+   "skill_id": "contractions_vs_possessives",
+   "type": "mcq",
+   "gap_targets": [
+    "contractions_vs_possessives"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The company changed ___ logo.",
+   "answer": "its",
+   "hints": [
+    "Try expanding it: it's = it is, you're = you are, they're = they are.",
+    "If the expanded version makes sense, use the apostrophe. If not, use its / your / their."
+   ],
+   "solution": [
+    "'its' shows belonging (no letters are missing).",
+    "The company changed its logo."
+   ],
+   "patterns": {
+    "it's": "ENG_CONTRACTION_MIX"
+   },
+   "options": [
+    "it's",
+    "its"
+   ]
+  },
+  {
+   "id": "APO-RCVP1",
+   "pool": "retest:contractions_vs_possessives",
+   "skill_id": "contractions_vs_possessives",
+   "type": "mcq",
+   "gap_targets": [
+    "contractions_vs_possessives"
+   ],
+   "prompt": "Choose the word that completes the sentence:  ___ a beautiful day.",
+   "answer": "It's",
+   "hints": [
+    "Try expanding it: it's = it is, you're = you are, they're = they are.",
+    "If the expanded version makes sense, use the apostrophe. If not, use its / your / their."
+   ],
+   "solution": [
+    "It's = it is: it makes sense here.",
+    "It's a beautiful day."
+   ],
+   "patterns": {
+    "Its": "ENG_CONTRACTION_MIX"
+   },
+   "options": [
+    "It's",
+    "Its"
+   ]
+  },
+  {
+   "id": "APO-RCVP2",
+   "pool": "retest:contractions_vs_possessives",
+   "skill_id": "contractions_vs_possessives",
+   "type": "mcq",
+   "gap_targets": [
+    "contractions_vs_possessives"
+   ],
+   "prompt": "Choose the word that completes the sentence:  Please wash ___ hands before dinner.",
+   "answer": "your",
+   "hints": [
+    "Try expanding it: it's = it is, you're = you are, they're = they are.",
+    "If the expanded version makes sense, use the apostrophe. If not, use its / your / their."
+   ],
+   "solution": [
+    "'your' shows belonging (no letters are missing).",
+    "Please wash your hands before dinner."
+   ],
+   "patterns": {
+    "you're": "ENG_CONTRACTION_MIX"
+   },
+   "options": [
+    "you're",
+    "your"
+   ]
+  },
+  {
+   "id": "APO-RCVP3",
+   "pool": "retest:contractions_vs_possessives",
+   "skill_id": "contractions_vs_possessives",
+   "type": "mcq",
+   "gap_targets": [
+    "contractions_vs_possessives"
+   ],
+   "prompt": "Choose the word that completes the sentence:  If ___ tired, have a rest.",
+   "answer": "you're",
+   "hints": [
+    "Try expanding it: it's = it is, you're = you are, they're = they are.",
+    "If the expanded version makes sense, use the apostrophe. If not, use its / your / their."
+   ],
+   "solution": [
+    "you're = you are: it makes sense here.",
+    "If you're tired, have a rest."
+   ],
+   "patterns": {
+    "your": "ENG_CONTRACTION_MIX"
+   },
+   "options": [
+    "you're",
+    "your"
+   ]
+  },
+  {
+   "id": "APO-RCVP4",
+   "pool": "retest:contractions_vs_possessives",
+   "skill_id": "contractions_vs_possessives",
+   "type": "mcq",
+   "gap_targets": [
+    "contractions_vs_possessives"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The players thanked ___ coach.",
+   "answer": "their",
+   "hints": [
+    "Try expanding it: it's = it is, you're = you are, they're = they are.",
+    "If the expanded version makes sense, use the apostrophe. If not, use its / your / their."
+   ],
+   "solution": [
+    "'their' shows belonging (no letters are missing).",
+    "The players thanked their coach."
+   ],
+   "patterns": {
+    "they're": "ENG_CONTRACTION_MIX"
+   },
+   "options": [
+    "there",
+    "their",
+    "they're"
+   ]
+  },
+  {
+   "id": "APO-RCVP5",
+   "pool": "retest:contractions_vs_possessives",
+   "skill_id": "contractions_vs_possessives",
+   "type": "mcq",
+   "gap_targets": [
+    "contractions_vs_possessives"
+   ],
+   "prompt": "Choose the word that completes the sentence:  Ask them if ___ hungry.",
+   "answer": "they're",
+   "hints": [
+    "Try expanding it: it's = it is, you're = you are, they're = they are.",
+    "If the expanded version makes sense, use the apostrophe. If not, use its / your / their."
+   ],
+   "solution": [
+    "they're = they are: it makes sense here.",
+    "Ask them if they're hungry."
+   ],
+   "patterns": {
+    "their": "ENG_CONTRACTION_MIX"
+   },
+   "options": [
+    "they're",
+    "their",
+    "there"
+   ]
+  },
+  {
+   "id": "APO-RCVP6",
+   "pool": "retest:contractions_vs_possessives",
+   "skill_id": "contractions_vs_possessives",
+   "type": "mcq",
+   "gap_targets": [
+    "contractions_vs_possessives"
+   ],
+   "prompt": "Choose the word that completes the sentence:  The dog wagged ___ tail.",
+   "answer": "its",
+   "hints": [
+    "Try expanding it: it's = it is, you're = you are, they're = they are.",
+    "If the expanded version makes sense, use the apostrophe. If not, use its / your / their."
+   ],
+   "solution": [
+    "'its' shows belonging (no letters are missing).",
+    "The dog wagged its tail."
+   ],
+   "patterns": {
+    "it's": "ENG_CONTRACTION_MIX"
+   },
+   "options": [
+    "it's",
+    "its"
+   ]
+  }
+ ],
+ "lessons": {
+  "apostrophes_for_possession": {
+   "title": "Apostrophes for belonging",
+   "big_idea": "An apostrophe shows that something belongs to someone. It never makes a word plural: six apples, not six apple's. Where it goes depends on whether there is one owner or several.",
+   "steps": [
+    "Ask: does something belong to someone? If not, no apostrophe.",
+    "One owner: write the owner, then 's (the dog's tail).",
+    "Several owners and the plural ends in s: write the plural, then ' (the girls' coats).",
+    "Check by saying 'the tail of the dog' or 'the coats of the girls'."
+   ],
+   "sense_check": "'The teachers' room' is shared by all the teachers; 'the teacher's desk' belongs to one.",
+   "worked_examples": [
+    {
+     "prompt": "The ___ tail was wagging. (one dog)",
+     "answer": "dog's",
+     "steps": [
+      "One owner: dog.",
+      "Add 's: dog's."
+     ]
+    },
+    {
+     "prompt": "The ___ coats were on the pegs. (several girls)",
+     "answer": "girls'",
+     "steps": [
+      "Several owners: girls.",
+      "Already ends in s, so add ': girls'."
+     ]
+    }
+   ]
+  },
+  "contractions_vs_possessives": {
+   "title": "its / it's, your / you're, their / they're",
+   "big_idea": "In it's, you're and they're the apostrophe shows missing letters (it is, you are, they are). Its, your and their show belonging and never have an apostrophe.",
+   "steps": [
+    "Try replacing the word with it is / you are / they are.",
+    "If the sentence still makes sense, use the apostrophe form.",
+    "If it doesn't, use its / your / their."
+   ],
+   "sense_check": "'The cat licked it is paw' makes no sense, so it's 'its paw'.",
+   "worked_examples": [
+    {
+     "prompt": "The cat licked ___ paw. (its / it's)",
+     "answer": "its",
+     "steps": [
+      "Try 'it is': the cat licked it is paw. No.",
+      "So: its."
+     ]
+    },
+    {
+     "prompt": "___ going to love this book. (Your / You're)",
+     "answer": "You're",
+     "steps": [
+      "Try 'you are': You are going to love this book. Yes.",
+      "So: You're."
+     ]
+    }
+   ]
+  }
+ }
+}

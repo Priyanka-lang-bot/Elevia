@@ -1,0 +1,981 @@
+{
+ "skills": [
+  {
+   "id": "text_vs_numbers",
+   "name": "Text versus numbers",
+   "grade": 7,
+   "prerequisites": [
+    "variable_assignment"
+   ],
+   "description": "Strings join and repeat; numbers add and multiply."
+  },
+  {
+   "id": "type_conversion",
+   "name": "Converting between types",
+   "grade": 8,
+   "prerequisites": [
+    "text_vs_numbers"
+   ],
+   "description": "int() and str()."
+  }
+ ],
+ "misconceptions": {
+  "CS_TEXT_AS_NUMBER": {
+   "label": "Treats text that looks like a number as a number",
+   "gap_skill": "text_vs_numbers",
+   "explanation": "Predicts \"3\" + \"4\" prints 7 instead of 34."
+  },
+  "CS_IGNORES_CONVERSION": {
+   "label": "Ignores int() or str() conversions",
+   "gap_skill": "type_conversion",
+   "explanation": "Predicts int(\"6\") * 2 prints 66."
+  }
+ },
+ "questions": [
+  {
+   "id": "TYP-DA1",
+   "pool": "diagnostic:data_types:A",
+   "skill_id": "text_vs_numbers",
+   "type": "code_output",
+   "gap_targets": [
+    "text_vs_numbers"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "34",
+   "hints": [
+    "Anything in quotes is text (a string), even if it looks like a number.",
+    "+ joins two strings end to end; * repeats a string."
+   ],
+   "solution": [
+    "\"3\" and \"4\" are text, because they are in quotes.",
+    "+ joins text: 34."
+   ],
+   "patterns": {
+    "7": "CS_TEXT_AS_NUMBER"
+   },
+   "code": "a = \"3\"\nb = \"4\"\nprint(a + b)"
+  },
+  {
+   "id": "TYP-DA2",
+   "pool": "diagnostic:data_types:A",
+   "skill_id": "text_vs_numbers",
+   "type": "code_output",
+   "gap_targets": [
+    "text_vs_numbers"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "55",
+   "hints": [
+    "Anything in quotes is text (a string), even if it looks like a number.",
+    "+ joins two strings end to end; * repeats a string."
+   ],
+   "solution": [
+    "x is the text \"5\".",
+    "Text × 2 repeats it 2 times: 55."
+   ],
+   "patterns": {
+    "10": "CS_TEXT_AS_NUMBER"
+   },
+   "code": "x = \"5\"\nprint(x * 2)"
+  },
+  {
+   "id": "TYP-DA3",
+   "pool": "diagnostic:data_types:A",
+   "skill_id": "type_conversion",
+   "type": "code_output",
+   "gap_targets": [
+    "type_conversion"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "12",
+   "hints": [
+    "int(...) turns text into a whole number; str(...) turns a number into text.",
+    "After converting, the normal rules for that type apply."
+   ],
+   "solution": [
+    "int(\"6\") turns the text into the number 6.",
+    "6 × 2 = 12."
+   ],
+   "patterns": {
+    "66": "CS_IGNORES_CONVERSION"
+   },
+   "code": "a = \"6\"\nb = int(a) * 2\nprint(b)"
+  },
+  {
+   "id": "TYP-DA4",
+   "pool": "diagnostic:data_types:A",
+   "skill_id": "type_conversion",
+   "type": "code_output",
+   "gap_targets": [
+    "type_conversion"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "81",
+   "hints": [
+    "int(...) turns text into a whole number; str(...) turns a number into text.",
+    "After converting, the normal rules for that type apply."
+   ],
+   "solution": [
+    "str(n) turns 8 into the text \"8\".",
+    "\"8\" + \"1\" joins them: 81."
+   ],
+   "patterns": {
+    "9": "CS_IGNORES_CONVERSION"
+   },
+   "code": "n = 8\nprint(str(n) + \"1\")"
+  },
+  {
+   "id": "TYP-DA5",
+   "pool": "diagnostic:data_types:A",
+   "skill_id": "text_vs_numbers",
+   "type": "code_output",
+   "gap_targets": [
+    "text_vs_numbers"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "29",
+   "hints": [
+    "Anything in quotes is text (a string), even if it looks like a number.",
+    "+ joins two strings end to end; * repeats a string."
+   ],
+   "solution": [
+    "\"2\" and \"9\" are text, because they are in quotes.",
+    "+ joins text: 29."
+   ],
+   "patterns": {
+    "11": "CS_TEXT_AS_NUMBER"
+   },
+   "code": "a = \"2\"\nb = \"9\"\nprint(a + b)"
+  },
+  {
+   "id": "TYP-DB1",
+   "pool": "diagnostic:data_types:B",
+   "skill_id": "text_vs_numbers",
+   "type": "code_output",
+   "gap_targets": [
+    "text_vs_numbers"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "71",
+   "hints": [
+    "Anything in quotes is text (a string), even if it looks like a number.",
+    "+ joins two strings end to end; * repeats a string."
+   ],
+   "solution": [
+    "\"7\" and \"1\" are text, because they are in quotes.",
+    "+ joins text: 71."
+   ],
+   "patterns": {
+    "8": "CS_TEXT_AS_NUMBER"
+   },
+   "code": "a = \"7\"\nb = \"1\"\nprint(a + b)"
+  },
+  {
+   "id": "TYP-DB2",
+   "pool": "diagnostic:data_types:B",
+   "skill_id": "text_vs_numbers",
+   "type": "code_output",
+   "gap_targets": [
+    "text_vs_numbers"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "444",
+   "hints": [
+    "Anything in quotes is text (a string), even if it looks like a number.",
+    "+ joins two strings end to end; * repeats a string."
+   ],
+   "solution": [
+    "x is the text \"4\".",
+    "Text × 3 repeats it 3 times: 444."
+   ],
+   "patterns": {
+    "12": "CS_TEXT_AS_NUMBER"
+   },
+   "code": "x = \"4\"\nprint(x * 3)"
+  },
+  {
+   "id": "TYP-DB3",
+   "pool": "diagnostic:data_types:B",
+   "skill_id": "type_conversion",
+   "type": "code_output",
+   "gap_targets": [
+    "type_conversion"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "27",
+   "hints": [
+    "int(...) turns text into a whole number; str(...) turns a number into text.",
+    "After converting, the normal rules for that type apply."
+   ],
+   "solution": [
+    "int(\"9\") turns the text into the number 9.",
+    "9 × 3 = 27."
+   ],
+   "patterns": {
+    "999": "CS_IGNORES_CONVERSION"
+   },
+   "code": "a = \"9\"\nb = int(a) * 3\nprint(b)"
+  },
+  {
+   "id": "TYP-DB4",
+   "pool": "diagnostic:data_types:B",
+   "skill_id": "type_conversion",
+   "type": "code_output",
+   "gap_targets": [
+    "type_conversion"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "52",
+   "hints": [
+    "int(...) turns text into a whole number; str(...) turns a number into text.",
+    "After converting, the normal rules for that type apply."
+   ],
+   "solution": [
+    "str(n) turns 5 into the text \"5\".",
+    "\"5\" + \"2\" joins them: 52."
+   ],
+   "patterns": {
+    "7": "CS_IGNORES_CONVERSION"
+   },
+   "code": "n = 5\nprint(str(n) + \"2\")"
+  },
+  {
+   "id": "TYP-DB5",
+   "pool": "diagnostic:data_types:B",
+   "skill_id": "text_vs_numbers",
+   "type": "code_output",
+   "gap_targets": [
+    "text_vs_numbers"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "66",
+   "hints": [
+    "Anything in quotes is text (a string), even if it looks like a number.",
+    "+ joins two strings end to end; * repeats a string."
+   ],
+   "solution": [
+    "\"6\" and \"6\" are text, because they are in quotes.",
+    "+ joins text: 66."
+   ],
+   "patterns": {
+    "12": "CS_TEXT_AS_NUMBER"
+   },
+   "code": "a = \"6\"\nb = \"6\"\nprint(a + b)"
+  },
+  {
+   "id": "TYP-VTVN1",
+   "pool": "verification:text_vs_numbers",
+   "skill_id": "text_vs_numbers",
+   "type": "code_output",
+   "gap_targets": [
+    "text_vs_numbers"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "18",
+   "hints": [
+    "Anything in quotes is text (a string), even if it looks like a number.",
+    "+ joins two strings end to end; * repeats a string."
+   ],
+   "solution": [
+    "\"1\" and \"8\" are text, because they are in quotes.",
+    "+ joins text: 18."
+   ],
+   "patterns": {
+    "9": "CS_TEXT_AS_NUMBER"
+   },
+   "code": "a = \"1\"\nb = \"8\"\nprint(a + b)",
+   "check_role": "same_type"
+  },
+  {
+   "id": "TYP-VTVN2",
+   "pool": "verification:text_vs_numbers",
+   "skill_id": "text_vs_numbers",
+   "type": "code_output",
+   "gap_targets": [
+    "text_vs_numbers"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "333",
+   "hints": [
+    "Anything in quotes is text (a string), even if it looks like a number.",
+    "+ joins two strings end to end; * repeats a string."
+   ],
+   "solution": [
+    "x is the text \"3\".",
+    "Text × 3 repeats it 3 times: 333."
+   ],
+   "patterns": {
+    "9": "CS_TEXT_AS_NUMBER"
+   },
+   "code": "x = \"3\"\nprint(x * 3)",
+   "check_role": "same_type"
+  },
+  {
+   "id": "TYP-VTVN3",
+   "pool": "verification:text_vs_numbers",
+   "skill_id": "text_vs_numbers",
+   "type": "code_output",
+   "gap_targets": [
+    "text_vs_numbers"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "25",
+   "hints": [
+    "Anything in quotes is text (a string), even if it looks like a number.",
+    "+ joins two strings end to end; * repeats a string."
+   ],
+   "solution": [
+    "\"2\" and \"5\" are text, because they are in quotes.",
+    "+ joins text: 25."
+   ],
+   "patterns": {
+    "7": "CS_TEXT_AS_NUMBER"
+   },
+   "code": "a = \"2\"\nb = \"5\"\nprint(a + b)",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "TYP-VTVN4",
+   "pool": "verification:text_vs_numbers",
+   "skill_id": "text_vs_numbers",
+   "type": "code_output",
+   "gap_targets": [
+    "text_vs_numbers"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "99",
+   "hints": [
+    "Anything in quotes is text (a string), even if it looks like a number.",
+    "+ joins two strings end to end; * repeats a string."
+   ],
+   "solution": [
+    "x is the text \"9\".",
+    "Text × 2 repeats it 2 times: 99."
+   ],
+   "patterns": {
+    "18": "CS_TEXT_AS_NUMBER"
+   },
+   "code": "x = \"9\"\nprint(x * 2)",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "TYP-PTVN1",
+   "pool": "practice:text_vs_numbers",
+   "skill_id": "text_vs_numbers",
+   "type": "code_output",
+   "gap_targets": [
+    "text_vs_numbers"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "46",
+   "hints": [
+    "Anything in quotes is text (a string), even if it looks like a number.",
+    "+ joins two strings end to end; * repeats a string."
+   ],
+   "solution": [
+    "\"4\" and \"6\" are text, because they are in quotes.",
+    "+ joins text: 46."
+   ],
+   "patterns": {
+    "10": "CS_TEXT_AS_NUMBER"
+   },
+   "code": "a = \"4\"\nb = \"6\"\nprint(a + b)"
+  },
+  {
+   "id": "TYP-PTVN2",
+   "pool": "practice:text_vs_numbers",
+   "skill_id": "text_vs_numbers",
+   "type": "code_output",
+   "gap_targets": [
+    "text_vs_numbers"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "2222",
+   "hints": [
+    "Anything in quotes is text (a string), even if it looks like a number.",
+    "+ joins two strings end to end; * repeats a string."
+   ],
+   "solution": [
+    "x is the text \"2\".",
+    "Text × 4 repeats it 4 times: 2222."
+   ],
+   "patterns": {
+    "8": "CS_TEXT_AS_NUMBER"
+   },
+   "code": "x = \"2\"\nprint(x * 4)"
+  },
+  {
+   "id": "TYP-PTVN3",
+   "pool": "practice:text_vs_numbers",
+   "skill_id": "text_vs_numbers",
+   "type": "code_output",
+   "gap_targets": [
+    "text_vs_numbers"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "88",
+   "hints": [
+    "Anything in quotes is text (a string), even if it looks like a number.",
+    "+ joins two strings end to end; * repeats a string."
+   ],
+   "solution": [
+    "\"8\" and \"8\" are text, because they are in quotes.",
+    "+ joins text: 88."
+   ],
+   "patterns": {
+    "16": "CS_TEXT_AS_NUMBER"
+   },
+   "code": "a = \"8\"\nb = \"8\"\nprint(a + b)"
+  },
+  {
+   "id": "TYP-PTVN4",
+   "pool": "practice:text_vs_numbers",
+   "skill_id": "text_vs_numbers",
+   "type": "code_output",
+   "gap_targets": [
+    "text_vs_numbers"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "111",
+   "hints": [
+    "Anything in quotes is text (a string), even if it looks like a number.",
+    "+ joins two strings end to end; * repeats a string."
+   ],
+   "solution": [
+    "x is the text \"1\".",
+    "Text × 3 repeats it 3 times: 111."
+   ],
+   "patterns": {
+    "3": "CS_TEXT_AS_NUMBER"
+   },
+   "code": "x = \"1\"\nprint(x * 3)"
+  },
+  {
+   "id": "TYP-RTVN1",
+   "pool": "retest:text_vs_numbers",
+   "skill_id": "text_vs_numbers",
+   "type": "code_output",
+   "gap_targets": [
+    "text_vs_numbers"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "55",
+   "hints": [
+    "Anything in quotes is text (a string), even if it looks like a number.",
+    "+ joins two strings end to end; * repeats a string."
+   ],
+   "solution": [
+    "\"5\" and \"5\" are text, because they are in quotes.",
+    "+ joins text: 55."
+   ],
+   "patterns": {
+    "10": "CS_TEXT_AS_NUMBER"
+   },
+   "code": "a = \"5\"\nb = \"5\"\nprint(a + b)"
+  },
+  {
+   "id": "TYP-RTVN2",
+   "pool": "retest:text_vs_numbers",
+   "skill_id": "text_vs_numbers",
+   "type": "code_output",
+   "gap_targets": [
+    "text_vs_numbers"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "66",
+   "hints": [
+    "Anything in quotes is text (a string), even if it looks like a number.",
+    "+ joins two strings end to end; * repeats a string."
+   ],
+   "solution": [
+    "x is the text \"6\".",
+    "Text × 2 repeats it 2 times: 66."
+   ],
+   "patterns": {
+    "12": "CS_TEXT_AS_NUMBER"
+   },
+   "code": "x = \"6\"\nprint(x * 2)"
+  },
+  {
+   "id": "TYP-RTVN3",
+   "pool": "retest:text_vs_numbers",
+   "skill_id": "text_vs_numbers",
+   "type": "code_output",
+   "gap_targets": [
+    "text_vs_numbers"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "91",
+   "hints": [
+    "Anything in quotes is text (a string), even if it looks like a number.",
+    "+ joins two strings end to end; * repeats a string."
+   ],
+   "solution": [
+    "\"9\" and \"1\" are text, because they are in quotes.",
+    "+ joins text: 91."
+   ],
+   "patterns": {
+    "10": "CS_TEXT_AS_NUMBER"
+   },
+   "code": "a = \"9\"\nb = \"1\"\nprint(a + b)"
+  },
+  {
+   "id": "TYP-RTVN4",
+   "pool": "retest:text_vs_numbers",
+   "skill_id": "text_vs_numbers",
+   "type": "code_output",
+   "gap_targets": [
+    "text_vs_numbers"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "777",
+   "hints": [
+    "Anything in quotes is text (a string), even if it looks like a number.",
+    "+ joins two strings end to end; * repeats a string."
+   ],
+   "solution": [
+    "x is the text \"7\".",
+    "Text × 3 repeats it 3 times: 777."
+   ],
+   "patterns": {
+    "21": "CS_TEXT_AS_NUMBER"
+   },
+   "code": "x = \"7\"\nprint(x * 3)"
+  },
+  {
+   "id": "TYP-RTVN5",
+   "pool": "retest:text_vs_numbers",
+   "skill_id": "text_vs_numbers",
+   "type": "code_output",
+   "gap_targets": [
+    "text_vs_numbers"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "22",
+   "hints": [
+    "Anything in quotes is text (a string), even if it looks like a number.",
+    "+ joins two strings end to end; * repeats a string."
+   ],
+   "solution": [
+    "\"2\" and \"2\" are text, because they are in quotes.",
+    "+ joins text: 22."
+   ],
+   "patterns": {
+    "4": "CS_TEXT_AS_NUMBER"
+   },
+   "code": "a = \"2\"\nb = \"2\"\nprint(a + b)"
+  },
+  {
+   "id": "TYP-RTVN6",
+   "pool": "retest:text_vs_numbers",
+   "skill_id": "text_vs_numbers",
+   "type": "code_output",
+   "gap_targets": [
+    "text_vs_numbers"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "88",
+   "hints": [
+    "Anything in quotes is text (a string), even if it looks like a number.",
+    "+ joins two strings end to end; * repeats a string."
+   ],
+   "solution": [
+    "x is the text \"8\".",
+    "Text × 2 repeats it 2 times: 88."
+   ],
+   "patterns": {
+    "16": "CS_TEXT_AS_NUMBER"
+   },
+   "code": "x = \"8\"\nprint(x * 2)"
+  },
+  {
+   "id": "TYP-VTC1",
+   "pool": "verification:type_conversion",
+   "skill_id": "type_conversion",
+   "type": "code_output",
+   "gap_targets": [
+    "type_conversion"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "14",
+   "hints": [
+    "int(...) turns text into a whole number; str(...) turns a number into text.",
+    "After converting, the normal rules for that type apply."
+   ],
+   "solution": [
+    "int(\"7\") turns the text into the number 7.",
+    "7 × 2 = 14."
+   ],
+   "patterns": {
+    "77": "CS_IGNORES_CONVERSION"
+   },
+   "code": "a = \"7\"\nb = int(a) * 2\nprint(b)",
+   "check_role": "same_type"
+  },
+  {
+   "id": "TYP-VTC2",
+   "pool": "verification:type_conversion",
+   "skill_id": "type_conversion",
+   "type": "code_output",
+   "gap_targets": [
+    "type_conversion"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "20",
+   "hints": [
+    "int(...) turns text into a whole number; str(...) turns a number into text.",
+    "After converting, the normal rules for that type apply."
+   ],
+   "solution": [
+    "int(\"4\") turns the text into the number 4.",
+    "4 × 5 = 20."
+   ],
+   "patterns": {
+    "44444": "CS_IGNORES_CONVERSION"
+   },
+   "code": "a = \"4\"\nb = int(a) * 5\nprint(b)",
+   "check_role": "same_type"
+  },
+  {
+   "id": "TYP-VTC3",
+   "pool": "verification:type_conversion",
+   "skill_id": "type_conversion",
+   "type": "code_output",
+   "gap_targets": [
+    "type_conversion"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "37",
+   "hints": [
+    "int(...) turns text into a whole number; str(...) turns a number into text.",
+    "After converting, the normal rules for that type apply."
+   ],
+   "solution": [
+    "str(n) turns 3 into the text \"3\".",
+    "\"3\" + \"7\" joins them: 37."
+   ],
+   "patterns": {
+    "10": "CS_IGNORES_CONVERSION"
+   },
+   "code": "n = 3\nprint(str(n) + \"7\")",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "TYP-VTC4",
+   "pool": "verification:type_conversion",
+   "skill_id": "type_conversion",
+   "type": "code_output",
+   "gap_targets": [
+    "type_conversion"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "64",
+   "hints": [
+    "int(...) turns text into a whole number; str(...) turns a number into text.",
+    "After converting, the normal rules for that type apply."
+   ],
+   "solution": [
+    "str(n) turns 6 into the text \"6\".",
+    "\"6\" + \"4\" joins them: 64."
+   ],
+   "patterns": {
+    "10": "CS_IGNORES_CONVERSION"
+   },
+   "code": "n = 6\nprint(str(n) + \"4\")",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "TYP-PTC1",
+   "pool": "practice:type_conversion",
+   "skill_id": "type_conversion",
+   "type": "code_output",
+   "gap_targets": [
+    "type_conversion"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "12",
+   "hints": [
+    "int(...) turns text into a whole number; str(...) turns a number into text.",
+    "After converting, the normal rules for that type apply."
+   ],
+   "solution": [
+    "int(\"3\") turns the text into the number 3.",
+    "3 × 4 = 12."
+   ],
+   "patterns": {
+    "3333": "CS_IGNORES_CONVERSION"
+   },
+   "code": "a = \"3\"\nb = int(a) * 4\nprint(b)"
+  },
+  {
+   "id": "TYP-PTC2",
+   "pool": "practice:type_conversion",
+   "skill_id": "type_conversion",
+   "type": "code_output",
+   "gap_targets": [
+    "type_conversion"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "15",
+   "hints": [
+    "int(...) turns text into a whole number; str(...) turns a number into text.",
+    "After converting, the normal rules for that type apply."
+   ],
+   "solution": [
+    "int(\"5\") turns the text into the number 5.",
+    "5 × 3 = 15."
+   ],
+   "patterns": {
+    "555": "CS_IGNORES_CONVERSION"
+   },
+   "code": "a = \"5\"\nb = int(a) * 3\nprint(b)"
+  },
+  {
+   "id": "TYP-PTC3",
+   "pool": "practice:type_conversion",
+   "skill_id": "type_conversion",
+   "type": "code_output",
+   "gap_targets": [
+    "type_conversion"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "26",
+   "hints": [
+    "int(...) turns text into a whole number; str(...) turns a number into text.",
+    "After converting, the normal rules for that type apply."
+   ],
+   "solution": [
+    "str(n) turns 2 into the text \"2\".",
+    "\"2\" + \"6\" joins them: 26."
+   ],
+   "patterns": {
+    "8": "CS_IGNORES_CONVERSION"
+   },
+   "code": "n = 2\nprint(str(n) + \"6\")"
+  },
+  {
+   "id": "TYP-PTC4",
+   "pool": "practice:type_conversion",
+   "skill_id": "type_conversion",
+   "type": "code_output",
+   "gap_targets": [
+    "type_conversion"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "79",
+   "hints": [
+    "int(...) turns text into a whole number; str(...) turns a number into text.",
+    "After converting, the normal rules for that type apply."
+   ],
+   "solution": [
+    "str(n) turns 7 into the text \"7\".",
+    "\"7\" + \"9\" joins them: 79."
+   ],
+   "patterns": {
+    "16": "CS_IGNORES_CONVERSION"
+   },
+   "code": "n = 7\nprint(str(n) + \"9\")"
+  },
+  {
+   "id": "TYP-RTC1",
+   "pool": "retest:type_conversion",
+   "skill_id": "type_conversion",
+   "type": "code_output",
+   "gap_targets": [
+    "type_conversion"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "18",
+   "hints": [
+    "int(...) turns text into a whole number; str(...) turns a number into text.",
+    "After converting, the normal rules for that type apply."
+   ],
+   "solution": [
+    "int(\"6\") turns the text into the number 6.",
+    "6 × 3 = 18."
+   ],
+   "patterns": {
+    "666": "CS_IGNORES_CONVERSION"
+   },
+   "code": "a = \"6\"\nb = int(a) * 3\nprint(b)"
+  },
+  {
+   "id": "TYP-RTC2",
+   "pool": "retest:type_conversion",
+   "skill_id": "type_conversion",
+   "type": "code_output",
+   "gap_targets": [
+    "type_conversion"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "16",
+   "hints": [
+    "int(...) turns text into a whole number; str(...) turns a number into text.",
+    "After converting, the normal rules for that type apply."
+   ],
+   "solution": [
+    "int(\"8\") turns the text into the number 8.",
+    "8 × 2 = 16."
+   ],
+   "patterns": {
+    "88": "CS_IGNORES_CONVERSION"
+   },
+   "code": "a = \"8\"\nb = int(a) * 2\nprint(b)"
+  },
+  {
+   "id": "TYP-RTC3",
+   "pool": "retest:type_conversion",
+   "skill_id": "type_conversion",
+   "type": "code_output",
+   "gap_targets": [
+    "type_conversion"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "41",
+   "hints": [
+    "int(...) turns text into a whole number; str(...) turns a number into text.",
+    "After converting, the normal rules for that type apply."
+   ],
+   "solution": [
+    "str(n) turns 4 into the text \"4\".",
+    "\"4\" + \"1\" joins them: 41."
+   ],
+   "patterns": {
+    "5": "CS_IGNORES_CONVERSION"
+   },
+   "code": "n = 4\nprint(str(n) + \"1\")"
+  },
+  {
+   "id": "TYP-RTC4",
+   "pool": "retest:type_conversion",
+   "skill_id": "type_conversion",
+   "type": "code_output",
+   "gap_targets": [
+    "type_conversion"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "15",
+   "hints": [
+    "int(...) turns text into a whole number; str(...) turns a number into text.",
+    "After converting, the normal rules for that type apply."
+   ],
+   "solution": [
+    "str(n) turns 1 into the text \"1\".",
+    "\"1\" + \"5\" joins them: 15."
+   ],
+   "patterns": {
+    "6": "CS_IGNORES_CONVERSION"
+   },
+   "code": "n = 1\nprint(str(n) + \"5\")"
+  },
+  {
+   "id": "TYP-RTC5",
+   "pool": "retest:type_conversion",
+   "skill_id": "type_conversion",
+   "type": "code_output",
+   "gap_targets": [
+    "type_conversion"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "36",
+   "hints": [
+    "int(...) turns text into a whole number; str(...) turns a number into text.",
+    "After converting, the normal rules for that type apply."
+   ],
+   "solution": [
+    "int(\"9\") turns the text into the number 9.",
+    "9 × 4 = 36."
+   ],
+   "patterns": {
+    "9999": "CS_IGNORES_CONVERSION"
+   },
+   "code": "a = \"9\"\nb = int(a) * 4\nprint(b)"
+  },
+  {
+   "id": "TYP-RTC6",
+   "pool": "retest:type_conversion",
+   "skill_id": "type_conversion",
+   "type": "code_output",
+   "gap_targets": [
+    "type_conversion"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "28",
+   "hints": [
+    "int(...) turns text into a whole number; str(...) turns a number into text.",
+    "After converting, the normal rules for that type apply."
+   ],
+   "solution": [
+    "str(n) turns 2 into the text \"2\".",
+    "\"2\" + \"8\" joins them: 28."
+   ],
+   "patterns": {
+    "10": "CS_IGNORES_CONVERSION"
+   },
+   "code": "n = 2\nprint(str(n) + \"8\")"
+  }
+ ],
+ "lessons": {
+  "text_vs_numbers": {
+   "title": "Text versus numbers",
+   "big_idea": "Quotes make a value text (a string). Text that looks like a number still behaves like text: + sticks strings together and * repeats them.",
+   "steps": [
+    "Check each value: is it in quotes? Then it's text.",
+    "text + text joins them end to end.",
+    "text * number repeats the text.",
+    "Only real numbers (no quotes) add up arithmetically."
+   ],
+   "sense_check": "A phone number \"98\" + \"76\" makes \"9876\", not 174.",
+   "worked_examples": [
+    {
+     "prompt": "What does this program print?",
+     "code": "a = \"3\"\nb = \"4\"\nprint(a + b)",
+     "answer": "34",
+     "steps": [
+      "\"3\" and \"4\" are text.",
+      "+ joins them: 34."
+     ]
+    },
+    {
+     "prompt": "What does this program print?",
+     "code": "x = \"5\"\nprint(x * 2)",
+     "answer": "55",
+     "steps": [
+      "x is text.",
+      "* 2 repeats it: 55."
+     ]
+    }
+   ]
+  },
+  "type_conversion": {
+   "title": "Converting between types",
+   "big_idea": "int() turns text into a whole number and str() turns a number into text. After converting, the value follows the rules of its new type.",
+   "steps": [
+    "Find each int(...) or str(...) and work out the converted value first.",
+    "Numbers: + and * do arithmetic.",
+    "Text: + joins, * repeats."
+   ],
+   "sense_check": "int(\"6\") * 2 is 12, because the 6 is now a real number.",
+   "worked_examples": [
+    {
+     "prompt": "What does this program print?",
+     "code": "a = \"6\"\nb = int(a) * 2\nprint(b)",
+     "answer": "12",
+     "steps": [
+      "int(\"6\") is the number 6.",
+      "6 × 2 = 12."
+     ]
+    },
+    {
+     "prompt": "What does this program print?",
+     "code": "n = 8\nprint(str(n) + \"1\")",
+     "answer": "81",
+     "steps": [
+      "str(8) is the text \"8\".",
+      "\"8\" + \"1\" = 81."
+     ]
+    }
+   ]
+  }
+ }
+}

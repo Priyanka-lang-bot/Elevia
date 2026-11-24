@@ -34,6 +34,13 @@ CREATE TABLE IF NOT EXISTS cases (
     closed_reason TEXT
 );
 
+-- Which curriculum topic a case belongs to. A separate table (not a new column) so existing databases,
+-- including the live Turso one, only gain a table. Cases with no row are fractions cases.
+CREATE TABLE IF NOT EXISTS case_topics (
+    case_id INTEGER PRIMARY KEY REFERENCES cases(id) ON DELETE CASCADE,
+    topic_id TEXT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS assessments (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     case_id INTEGER NOT NULL REFERENCES cases(id) ON DELETE CASCADE,
@@ -139,7 +146,8 @@ CREATE INDEX IF NOT EXISTS idx_runs_case ON agent_runs(case_id);
 
 
 def now_iso() -> str:
-    return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+    from . import clock
+    return clock.now().isoformat()
 
 
 def using_turso() -> bool:

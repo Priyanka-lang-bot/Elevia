@@ -147,7 +147,24 @@ function demoBanner() {
   return box;
 }
 
+function demoLoginStrip() {
+  const box = el("div", { class: "demo-strip", hidden: true },
+    el("p", { class: "sec", style: "margin:0", text: "Or explore a demo account" }));
+  const grid = el("div", { class: "demo-grid compact" });
+  box.append(grid);
+  if (typeof renderDemoCards === "function") renderDemoCards(grid, () => { box.hidden = false; }, true);
+  return box;
+}
+
+function landingVisible(on) {
+  const l = document.getElementById("landing");
+  if (l) l.hidden = !on;
+  root.hidden = on;
+  document.body.classList.toggle("on-landing", on);
+}
+
 function show(...nodes) {
+  landingVisible(false);
   root.replaceChildren(...nodes.filter(Boolean));
   const b = demoBanner(); if (b) root.append(b);
   const h = root.querySelector("h1"); if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
@@ -214,8 +231,13 @@ function loginView() {
     field("Password", "password", { type: "password", autocomplete: "current-password", placeholder: "Your password" }),
     el("a", { href: "#/forgot", style: "align-self:flex-end;font-size:14px", text: "Forgot password?" }),
     el("button", { class: "btn main", type: "submit", text: "Log in" }),
-    el("p", { class: "center", style: "margin:0;font-weight:600" }, "New here? ", el("a", { href: "#/", text: "Create an account" }))),
-    async (v) => { await api("POST", "/auth/login", { identifier: v.identifier, password: v.password }); go("#/home"); });
+    el("p", { class: "center", style: "margin:0;font-weight:600" }, "New here? ", el("a", { href: "#/start", text: "Create an account" })),
+      demoLoginStrip()),
+    async (v) => {
+      await api("POST", "/auth/login", { identifier: v.identifier, password: v.password });
+      const back = sessionStorage.getItem("elevia_return"); sessionStorage.removeItem("elevia_return");
+      go(back && back.startsWith("#/learn") ? back : "#/home");
+    });
   form.className = "stack"; form.style.cssText = "display:flex;flex-direction:column;gap:16px";
   show(sheetPage(form));
 }
@@ -277,7 +299,7 @@ function studentSignupView(school) {
     field("Password", "password", { type: "password", autocomplete: "new-password", hint: "At least 8 characters." }),
     field("Your email (optional)", "student_email", { type: "email", autocomplete: "email", placeholder: "Only if you have one" }),
     parentBox,
-    el("div", { class: "actions" }, el("a", { class: "btn", href: school ? "#/school" : "#/", text: "Back" }),
+    el("div", { class: "actions" }, el("a", { class: "btn", href: school ? "#/school" : "#/start", text: "Back" }),
       el("button", { class: "btn main grow", type: "submit", text: "Create my account" }))),
     async (v) => {
       const body = { full_name: v.full_name, date_of_birth: v.date_of_birth, username: v.username, password: v.password,
@@ -319,7 +341,7 @@ function schoolCodeView() {
           onClick: () => studentSignupView({ code: v.code, school_name: r.school_name, class_label: r.class_label }) }));
     });
   area.append(form, el("p", { class: "center hint", style: "margin:0", text: "Teacher or school admin? Open the invitation link from your email." }),
-    el("a", { class: "center", href: "#/", text: "Back" }));
+    el("a", { class: "center", href: "#/start", text: "Back" }));
   show(sheetPage(area));
 }
 
@@ -477,7 +499,7 @@ async function homeView() {
   if (step === "parent_home") return parentHome(me);
   if (step === "teacher_home") return teacherHome(me);
   if (step === "admin_home") return adminHome(me);
-  if (me.user.role === "learner") return learnerHome(me);
+  if (me.user.role === "learner" || me.user.role === "student") { location.hash = "#/learn"; return; }
   return studentHome(me);
 }
 
@@ -519,8 +541,8 @@ function studentHome(me) {
   const c = me.student && me.student.class;
   board(me, panel(`Welcome, ${me.user.full_name.split(" ")[0]}!`,
     el("p", { text: "Your account is ready." }),
-    c ? el("p", { text: `You're in ${c.school_name}, Class ${c.grade} ${c.division} (${c.academic_year}).` }) : null,
-    el("div", { class: "note", text: "Next step (coming soon): tell ELEVIA your grade, school and subjects, then start your first check-in." })));
+    c ? el("p", { text: `You're in ${c.school_name}, Class ${c.grade} ${c.division} (${c.academic_year}).` }) : null),
+    learnEntryPanel());
 }
 
 // ---- independent learner: sharing controls
@@ -546,12 +568,12 @@ async function learnerHome(me) {
     el("button", { class: "btn main", type: "submit", text: "Send invitation" })),
     async (v) => {
       await api("POST", "/sharing/invite", { email: v.email, scopes: v.scopes || [], expires_days: v.expires_days ? Number(v.expires_days) : null });
-      learnerHome(me);
+      sharingView();
     });
   const shares = data.shares.filter((s) => ["active", "invited"].includes(s.status));
   board(me,
-    panel(`Welcome, ${me.user.full_name.split(" ")[0]}!`, el("p", { text: "Your account is ready. Learning onboarding comes next." }),
-      el("p", { class: "hint", text: "Nobody can see your progress unless you share it below." })),
+    el("a", { href: "#/learn", text: "← Back to my dashboard" }),
+    panel("Privacy and sharing", el("p", { class: "hint", text: "Nobody can see your progress unless you share it below. You can change or stop sharing at any time." })),
     panel("People who can see your progress",
       shares.length ? el("ul", { class: "list" }, shares.map((s) => shareItem(me, s))) : el("p", { class: "hint", text: "You aren't sharing with anyone." })),
     data.requests.length ? panel("Requests to see your progress", el("ul", { class: "list" }, data.requests.map((r) => requestItem(me, r)))) : null,
@@ -624,7 +646,8 @@ async function parentHome(me) {
   });
   board(me,
     panel("Your children", cards.length ? el("ul", { class: "list" }, cards) : el("p", { class: "hint", text: "No children linked yet. When your child signs up with your email, you'll get a consent request." }),
-      el("p", { class: "hint", text: "Detailed progress reports appear here once your child starts learning." })),
+      el("p", { class: "hint", text: "What you can see below depends on the choices you saved for each child." })),
+    ...(await progressPanels(me)),
     await sharedWithMePanel());
 }
 
@@ -651,6 +674,7 @@ async function teacherHome(me) {
   let codes = [];
   try { codes = await api("GET", "/school/codes"); } catch (e) { /* ignore */ }
   board(me,
+    ...(await progressPanels(me)),
     ...(panels.length ? panels : [panel("Your classes", el("p", { class: "hint", text: "Your school admin hasn't assigned you a class yet." }))]),
     codesPanel(me, classes, codes, () => teacherHome(me)),
     await sharedWithMePanel());
@@ -720,15 +744,35 @@ async function adminHome(me) {
 // ------------------------------------------------------------------ router
 
 function route() {
+  if (typeof stopLearnTimer === "function") stopLearnTimer();
   const h = location.hash || "#/";
-  if (h === "#/" || h === "#") return accessView();
+  const oops = (e) => show(sheetPage([...title("OOPS"), el("p", { class: "alert bad", text: (e && e.detail) || "Something went wrong." })]));
+  if (h === "#/" || h === "#" || h.startsWith("#/#")) return landingView();
+  if (!h.startsWith("#/")) { landingVisible(true); if (typeof initLanding === "function") initLanding(); return; }  // in-page anchor
+  if (h === "#/start") return accessView();
+  if (h.startsWith("#/learn/")) return learnView(decodeURIComponent(h.slice(8))).catch(oops);
+  if (h.startsWith("#/progress/")) return progressDetailView(Number(h.slice(11))).catch(oops);
+  if (h === "#/sharing") return sharingView().catch(oops);
   if (h === "#/login") return loginView();
   if (h === "#/forgot") return forgotView();
   if (h === "#/student") return studentSignupView(null);
   if (h === "#/school") return schoolCodeView();
   if (h === "#/learner") return learnerSignupView();
+  if (h === "#/learn") return learnView().catch((e) => show(sheetPage([...title("OOPS"), el("p", { class: "alert bad", text: (e && e.detail) || "Something went wrong." })])));
   if (h === "#/home") return homeView().catch((e) => show(sheetPage([...title("OOPS"), el("p", { class: "alert bad", text: e.detail || "Something went wrong." })])));
-  return accessView();
+  return landingView();
+}
+
+function landingView() {
+  landingVisible(true);
+  window.scrollTo(0, 0);
+  if (typeof initLanding === "function") initLanding();
+}
+
+async function sharingView() {
+  const me = state.me || (state.me = await api("GET", "/auth/me"));
+  if (me.user.role !== "learner") { go("#/home"); return; }
+  return learnerHome(me);
 }
 
 function start() {
@@ -736,7 +780,7 @@ function start() {
   const q = new URLSearchParams(location.search);
   const action = q.get("action"), token = q.get("token");
   if (action) {
-    history.replaceState(null, "", "/" + (action === "sharing" ? "#/home" : "#/"));
+    history.replaceState(null, "", "/" + (action === "sharing" ? "#/home" : "#/start"));
     if (action === "consent" && token) return consentView(token);
     if (action === "verify" && token) return verifyView(token);
     if (action === "reset" && token) return resetView(token);
@@ -748,4 +792,5 @@ function start() {
 }
 
 window.addEventListener("hashchange", route);
-if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
+// Deferred scripts run while readyState is "interactive"; wait for DOMContentLoaded so learn.js is loaded before routing.
+if (document.readyState === "complete") start(); else document.addEventListener("DOMContentLoaded", start);

@@ -1,0 +1,976 @@
+{
+ "skills": [
+  {
+   "id": "equivalent_ratios",
+   "name": "Equivalent ratios",
+   "grade": 6,
+   "prerequisites": [],
+   "description": "Scaling both parts of a ratio by the same factor."
+  },
+  {
+   "id": "sharing_in_ratio",
+   "name": "Sharing in a ratio",
+   "grade": 7,
+   "prerequisites": [
+    "equivalent_ratios"
+   ],
+   "description": "Splitting a total into ratio shares."
+  }
+ ],
+ "misconceptions": {
+  "RAT_ADDITIVE": {
+   "label": "Adds the same amount to both parts instead of multiplying",
+   "gap_skill": "equivalent_ratios",
+   "explanation": "Goes from 2 : 3 to 6 : 7 by adding 4 to both parts."
+  },
+  "RAT_SHARE_EQUAL": {
+   "label": "Splits the total in half instead of in the ratio",
+   "gap_skill": "sharing_in_ratio",
+   "explanation": "Gives each person ₹15 when ₹30 is shared 2 : 3."
+  },
+  "RAT_DIVIDE_BY_PART": {
+   "label": "Divides the total by one part of the ratio",
+   "gap_skill": "sharing_in_ratio",
+   "explanation": "Works out ₹30 ÷ 2 for a 2 : 3 share, forgetting there are 5 shares."
+  }
+ },
+ "questions": [
+  {
+   "id": "RAT-DA1",
+   "pool": "diagnostic:ratio_proportion:A",
+   "skill_id": "equivalent_ratios",
+   "type": "numeric",
+   "gap_targets": [
+    "equivalent_ratios"
+   ],
+   "prompt": "A recipe uses 2 cups of flour for every 3 cups of milk. How many cups of milk go with 6 cups of flour?",
+   "answer": "9",
+   "hints": [
+    "A ratio stays the same when you MULTIPLY both parts by the same number.",
+    "Find how many times bigger the new amount is, then multiply the other part by that."
+   ],
+   "solution": [
+    "6 is 3 times 2.",
+    "So multiply 3 by 3: 3 × 3 = 9."
+   ],
+   "patterns": {
+    "7": "RAT_ADDITIVE"
+   }
+  },
+  {
+   "id": "RAT-DA2",
+   "pool": "diagnostic:ratio_proportion:A",
+   "skill_id": "sharing_in_ratio",
+   "type": "numeric",
+   "gap_targets": [
+    "sharing_in_ratio"
+   ],
+   "prompt": "₹30 is shared between Asha and Ben in the ratio 2 : 3. How much does Asha get (in ₹)?",
+   "answer": "12",
+   "hints": [
+    "Add the parts of the ratio to find how many equal shares there are.",
+    "Divide the total by the number of shares, then multiply by each part."
+   ],
+   "solution": [
+    "2 + 3 = 5 equal shares.",
+    "One share = 30 ÷ 5 = 6.",
+    "Asha gets 2 shares: 2 × 6 = 12."
+   ],
+   "patterns": {
+    "15": "RAT_DIVIDE_BY_PART"
+   }
+  },
+  {
+   "id": "RAT-DA3",
+   "pool": "diagnostic:ratio_proportion:A",
+   "skill_id": "equivalent_ratios",
+   "type": "numeric",
+   "gap_targets": [
+    "equivalent_ratios"
+   ],
+   "prompt": "A recipe uses 4 red beads for every 5 blue beads. How many blue beads go with 8 red beads?",
+   "answer": "10",
+   "hints": [
+    "A ratio stays the same when you MULTIPLY both parts by the same number.",
+    "Find how many times bigger the new amount is, then multiply the other part by that."
+   ],
+   "solution": [
+    "8 is 2 times 4.",
+    "So multiply 5 by 2: 5 × 2 = 10."
+   ],
+   "patterns": {
+    "9": "RAT_ADDITIVE"
+   }
+  },
+  {
+   "id": "RAT-DA4",
+   "pool": "diagnostic:ratio_proportion:A",
+   "skill_id": "sharing_in_ratio",
+   "type": "numeric",
+   "gap_targets": [
+    "sharing_in_ratio"
+   ],
+   "prompt": "₹40 is shared between Asha and Ben in the ratio 3 : 5. How much does Asha get (in ₹)?",
+   "answer": "15",
+   "hints": [
+    "Add the parts of the ratio to find how many equal shares there are.",
+    "Divide the total by the number of shares, then multiply by each part."
+   ],
+   "solution": [
+    "3 + 5 = 8 equal shares.",
+    "One share = 40 ÷ 8 = 5.",
+    "Asha gets 3 shares: 3 × 5 = 15."
+   ],
+   "patterns": {
+    "20": "RAT_SHARE_EQUAL",
+    "40/3": "RAT_DIVIDE_BY_PART"
+   }
+  },
+  {
+   "id": "RAT-DA5",
+   "pool": "diagnostic:ratio_proportion:A",
+   "skill_id": "equivalent_ratios",
+   "type": "numeric",
+   "gap_targets": [
+    "equivalent_ratios"
+   ],
+   "prompt": "A recipe uses 3 boys for every 7 girls. How many girls go with 12 boys?",
+   "answer": "28",
+   "hints": [
+    "A ratio stays the same when you MULTIPLY both parts by the same number.",
+    "Find how many times bigger the new amount is, then multiply the other part by that."
+   ],
+   "solution": [
+    "12 is 4 times 3.",
+    "So multiply 7 by 4: 7 × 4 = 28."
+   ],
+   "patterns": {
+    "16": "RAT_ADDITIVE"
+   }
+  },
+  {
+   "id": "RAT-DB1",
+   "pool": "diagnostic:ratio_proportion:B",
+   "skill_id": "equivalent_ratios",
+   "type": "numeric",
+   "gap_targets": [
+    "equivalent_ratios"
+   ],
+   "prompt": "A recipe uses 3 spoons of sugar for every 4 cups of water. How many cups of water go with 9 spoons of sugar?",
+   "answer": "12",
+   "hints": [
+    "A ratio stays the same when you MULTIPLY both parts by the same number.",
+    "Find how many times bigger the new amount is, then multiply the other part by that."
+   ],
+   "solution": [
+    "9 is 3 times 3.",
+    "So multiply 4 by 3: 4 × 3 = 12."
+   ],
+   "patterns": {
+    "10": "RAT_ADDITIVE"
+   }
+  },
+  {
+   "id": "RAT-DB2",
+   "pool": "diagnostic:ratio_proportion:B",
+   "skill_id": "sharing_in_ratio",
+   "type": "numeric",
+   "gap_targets": [
+    "sharing_in_ratio"
+   ],
+   "prompt": "₹35 is shared between Asha and Ben in the ratio 2 : 5. How much does Asha get (in ₹)?",
+   "answer": "10",
+   "hints": [
+    "Add the parts of the ratio to find how many equal shares there are.",
+    "Divide the total by the number of shares, then multiply by each part."
+   ],
+   "solution": [
+    "2 + 5 = 7 equal shares.",
+    "One share = 35 ÷ 7 = 5.",
+    "Asha gets 2 shares: 2 × 5 = 10."
+   ],
+   "patterns": {
+    "17.5": "RAT_DIVIDE_BY_PART"
+   }
+  },
+  {
+   "id": "RAT-DB3",
+   "pool": "diagnostic:ratio_proportion:B",
+   "skill_id": "equivalent_ratios",
+   "type": "numeric",
+   "gap_targets": [
+    "equivalent_ratios"
+   ],
+   "prompt": "A recipe uses 5 teachers for every 2 students. How many students go with 15 teachers?",
+   "answer": "6",
+   "hints": [
+    "A ratio stays the same when you MULTIPLY both parts by the same number.",
+    "Find how many times bigger the new amount is, then multiply the other part by that."
+   ],
+   "solution": [
+    "15 is 3 times 5.",
+    "So multiply 2 by 3: 2 × 3 = 6."
+   ],
+   "patterns": {
+    "12": "RAT_ADDITIVE"
+   }
+  },
+  {
+   "id": "RAT-DB4",
+   "pool": "diagnostic:ratio_proportion:B",
+   "skill_id": "sharing_in_ratio",
+   "type": "numeric",
+   "gap_targets": [
+    "sharing_in_ratio"
+   ],
+   "prompt": "₹24 is shared between Asha and Ben in the ratio 1 : 3. How much does Asha get (in ₹)?",
+   "answer": "6",
+   "hints": [
+    "Add the parts of the ratio to find how many equal shares there are.",
+    "Divide the total by the number of shares, then multiply by each part."
+   ],
+   "solution": [
+    "1 + 3 = 4 equal shares.",
+    "One share = 24 ÷ 4 = 6.",
+    "Asha gets 1 shares: 1 × 6 = 6."
+   ],
+   "patterns": {
+    "12": "RAT_SHARE_EQUAL",
+    "24": "RAT_DIVIDE_BY_PART"
+   }
+  },
+  {
+   "id": "RAT-DB5",
+   "pool": "diagnostic:ratio_proportion:B",
+   "skill_id": "equivalent_ratios",
+   "type": "numeric",
+   "gap_targets": [
+    "equivalent_ratios"
+   ],
+   "prompt": "A recipe uses 2 cars for every 9 bikes. How many bikes go with 8 cars?",
+   "answer": "36",
+   "hints": [
+    "A ratio stays the same when you MULTIPLY both parts by the same number.",
+    "Find how many times bigger the new amount is, then multiply the other part by that."
+   ],
+   "solution": [
+    "8 is 4 times 2.",
+    "So multiply 9 by 4: 9 × 4 = 36."
+   ],
+   "patterns": {
+    "15": "RAT_ADDITIVE"
+   }
+  },
+  {
+   "id": "RAT-VER1",
+   "pool": "verification:equivalent_ratios",
+   "skill_id": "equivalent_ratios",
+   "type": "numeric",
+   "gap_targets": [
+    "equivalent_ratios"
+   ],
+   "prompt": "A recipe uses 3 cups of flour for every 5 cups of milk. How many cups of milk go with 12 cups of flour?",
+   "answer": "20",
+   "hints": [
+    "A ratio stays the same when you MULTIPLY both parts by the same number.",
+    "Find how many times bigger the new amount is, then multiply the other part by that."
+   ],
+   "solution": [
+    "12 is 4 times 3.",
+    "So multiply 5 by 4: 5 × 4 = 20."
+   ],
+   "patterns": {
+    "14": "RAT_ADDITIVE"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "RAT-VER2",
+   "pool": "verification:equivalent_ratios",
+   "skill_id": "equivalent_ratios",
+   "type": "numeric",
+   "gap_targets": [
+    "equivalent_ratios"
+   ],
+   "prompt": "A recipe uses 2 red beads for every 7 blue beads. How many blue beads go with 6 red beads?",
+   "answer": "21",
+   "hints": [
+    "A ratio stays the same when you MULTIPLY both parts by the same number.",
+    "Find how many times bigger the new amount is, then multiply the other part by that."
+   ],
+   "solution": [
+    "6 is 3 times 2.",
+    "So multiply 7 by 3: 7 × 3 = 21."
+   ],
+   "patterns": {
+    "11": "RAT_ADDITIVE"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "RAT-VER3",
+   "pool": "verification:equivalent_ratios",
+   "skill_id": "equivalent_ratios",
+   "type": "numeric",
+   "gap_targets": [
+    "equivalent_ratios"
+   ],
+   "prompt": "A recipe uses 4 boys for every 3 girls. How many girls go with 20 boys?",
+   "answer": "15",
+   "hints": [
+    "A ratio stays the same when you MULTIPLY both parts by the same number.",
+    "Find how many times bigger the new amount is, then multiply the other part by that."
+   ],
+   "solution": [
+    "20 is 5 times 4.",
+    "So multiply 3 by 5: 3 × 5 = 15."
+   ],
+   "patterns": {
+    "19": "RAT_ADDITIVE"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "RAT-VER4",
+   "pool": "verification:equivalent_ratios",
+   "skill_id": "equivalent_ratios",
+   "type": "numeric",
+   "gap_targets": [
+    "equivalent_ratios"
+   ],
+   "prompt": "A recipe uses 5 spoons of sugar for every 6 cups of water. How many cups of water go with 10 spoons of sugar?",
+   "answer": "12",
+   "hints": [
+    "A ratio stays the same when you MULTIPLY both parts by the same number.",
+    "Find how many times bigger the new amount is, then multiply the other part by that."
+   ],
+   "solution": [
+    "10 is 2 times 5.",
+    "So multiply 6 by 2: 6 × 2 = 12."
+   ],
+   "patterns": {
+    "11": "RAT_ADDITIVE"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "RAT-PER1",
+   "pool": "practice:equivalent_ratios",
+   "skill_id": "equivalent_ratios",
+   "type": "numeric",
+   "gap_targets": [
+    "equivalent_ratios"
+   ],
+   "prompt": "A recipe uses 2 teachers for every 5 students. How many students go with 8 teachers?",
+   "answer": "20",
+   "hints": [
+    "A ratio stays the same when you MULTIPLY both parts by the same number.",
+    "Find how many times bigger the new amount is, then multiply the other part by that."
+   ],
+   "solution": [
+    "8 is 4 times 2.",
+    "So multiply 5 by 4: 5 × 4 = 20."
+   ],
+   "patterns": {
+    "11": "RAT_ADDITIVE"
+   }
+  },
+  {
+   "id": "RAT-PER2",
+   "pool": "practice:equivalent_ratios",
+   "skill_id": "equivalent_ratios",
+   "type": "numeric",
+   "gap_targets": [
+    "equivalent_ratios"
+   ],
+   "prompt": "A recipe uses 3 cars for every 2 bikes. How many bikes go with 15 cars?",
+   "answer": "10",
+   "hints": [
+    "A ratio stays the same when you MULTIPLY both parts by the same number.",
+    "Find how many times bigger the new amount is, then multiply the other part by that."
+   ],
+   "solution": [
+    "15 is 5 times 3.",
+    "So multiply 2 by 5: 2 × 5 = 10."
+   ],
+   "patterns": {
+    "14": "RAT_ADDITIVE"
+   }
+  },
+  {
+   "id": "RAT-PER3",
+   "pool": "practice:equivalent_ratios",
+   "skill_id": "equivalent_ratios",
+   "type": "numeric",
+   "gap_targets": [
+    "equivalent_ratios"
+   ],
+   "prompt": "A recipe uses 4 cups of flour for every 7 cups of milk. How many cups of milk go with 12 cups of flour?",
+   "answer": "21",
+   "hints": [
+    "A ratio stays the same when you MULTIPLY both parts by the same number.",
+    "Find how many times bigger the new amount is, then multiply the other part by that."
+   ],
+   "solution": [
+    "12 is 3 times 4.",
+    "So multiply 7 by 3: 7 × 3 = 21."
+   ],
+   "patterns": {
+    "15": "RAT_ADDITIVE"
+   }
+  },
+  {
+   "id": "RAT-PER4",
+   "pool": "practice:equivalent_ratios",
+   "skill_id": "equivalent_ratios",
+   "type": "numeric",
+   "gap_targets": [
+    "equivalent_ratios"
+   ],
+   "prompt": "A recipe uses 6 red beads for every 5 blue beads. How many blue beads go with 12 red beads?",
+   "answer": "10",
+   "hints": [
+    "A ratio stays the same when you MULTIPLY both parts by the same number.",
+    "Find how many times bigger the new amount is, then multiply the other part by that."
+   ],
+   "solution": [
+    "12 is 2 times 6.",
+    "So multiply 5 by 2: 5 × 2 = 10."
+   ],
+   "patterns": {
+    "11": "RAT_ADDITIVE"
+   }
+  },
+  {
+   "id": "RAT-RER1",
+   "pool": "retest:equivalent_ratios",
+   "skill_id": "equivalent_ratios",
+   "type": "numeric",
+   "gap_targets": [
+    "equivalent_ratios"
+   ],
+   "prompt": "A recipe uses 3 boys for every 8 girls. How many girls go with 9 boys?",
+   "answer": "24",
+   "hints": [
+    "A ratio stays the same when you MULTIPLY both parts by the same number.",
+    "Find how many times bigger the new amount is, then multiply the other part by that."
+   ],
+   "solution": [
+    "9 is 3 times 3.",
+    "So multiply 8 by 3: 8 × 3 = 24."
+   ],
+   "patterns": {
+    "14": "RAT_ADDITIVE"
+   }
+  },
+  {
+   "id": "RAT-RER2",
+   "pool": "retest:equivalent_ratios",
+   "skill_id": "equivalent_ratios",
+   "type": "numeric",
+   "gap_targets": [
+    "equivalent_ratios"
+   ],
+   "prompt": "A recipe uses 2 spoons of sugar for every 11 cups of water. How many cups of water go with 10 spoons of sugar?",
+   "answer": "55",
+   "hints": [
+    "A ratio stays the same when you MULTIPLY both parts by the same number.",
+    "Find how many times bigger the new amount is, then multiply the other part by that."
+   ],
+   "solution": [
+    "10 is 5 times 2.",
+    "So multiply 11 by 5: 11 × 5 = 55."
+   ],
+   "patterns": {
+    "19": "RAT_ADDITIVE"
+   }
+  },
+  {
+   "id": "RAT-RER3",
+   "pool": "retest:equivalent_ratios",
+   "skill_id": "equivalent_ratios",
+   "type": "numeric",
+   "gap_targets": [
+    "equivalent_ratios"
+   ],
+   "prompt": "A recipe uses 5 teachers for every 4 students. How many students go with 15 teachers?",
+   "answer": "12",
+   "hints": [
+    "A ratio stays the same when you MULTIPLY both parts by the same number.",
+    "Find how many times bigger the new amount is, then multiply the other part by that."
+   ],
+   "solution": [
+    "15 is 3 times 5.",
+    "So multiply 4 by 3: 4 × 3 = 12."
+   ],
+   "patterns": {
+    "14": "RAT_ADDITIVE"
+   }
+  },
+  {
+   "id": "RAT-RER4",
+   "pool": "retest:equivalent_ratios",
+   "skill_id": "equivalent_ratios",
+   "type": "numeric",
+   "gap_targets": [
+    "equivalent_ratios"
+   ],
+   "prompt": "A recipe uses 4 cars for every 9 bikes. How many bikes go with 8 cars?",
+   "answer": "18",
+   "hints": [
+    "A ratio stays the same when you MULTIPLY both parts by the same number.",
+    "Find how many times bigger the new amount is, then multiply the other part by that."
+   ],
+   "solution": [
+    "8 is 2 times 4.",
+    "So multiply 9 by 2: 9 × 2 = 18."
+   ],
+   "patterns": {
+    "13": "RAT_ADDITIVE"
+   }
+  },
+  {
+   "id": "RAT-RER5",
+   "pool": "retest:equivalent_ratios",
+   "skill_id": "equivalent_ratios",
+   "type": "numeric",
+   "gap_targets": [
+    "equivalent_ratios"
+   ],
+   "prompt": "A recipe uses 7 cups of flour for every 3 cups of milk. How many cups of milk go with 21 cups of flour?",
+   "answer": "9",
+   "hints": [
+    "A ratio stays the same when you MULTIPLY both parts by the same number.",
+    "Find how many times bigger the new amount is, then multiply the other part by that."
+   ],
+   "solution": [
+    "21 is 3 times 7.",
+    "So multiply 3 by 3: 3 × 3 = 9."
+   ],
+   "patterns": {
+    "17": "RAT_ADDITIVE"
+   }
+  },
+  {
+   "id": "RAT-RER6",
+   "pool": "retest:equivalent_ratios",
+   "skill_id": "equivalent_ratios",
+   "type": "numeric",
+   "gap_targets": [
+    "equivalent_ratios"
+   ],
+   "prompt": "A recipe uses 6 red beads for every 7 blue beads. How many blue beads go with 12 red beads?",
+   "answer": "14",
+   "hints": [
+    "A ratio stays the same when you MULTIPLY both parts by the same number.",
+    "Find how many times bigger the new amount is, then multiply the other part by that."
+   ],
+   "solution": [
+    "12 is 2 times 6.",
+    "So multiply 7 by 2: 7 × 2 = 14."
+   ],
+   "patterns": {
+    "13": "RAT_ADDITIVE"
+   }
+  },
+  {
+   "id": "RAT-VSIR1",
+   "pool": "verification:sharing_in_ratio",
+   "skill_id": "sharing_in_ratio",
+   "type": "numeric",
+   "gap_targets": [
+    "sharing_in_ratio"
+   ],
+   "prompt": "₹50 is shared between Asha and Ben in the ratio 2 : 3. How much does Asha get (in ₹)?",
+   "answer": "20",
+   "hints": [
+    "Add the parts of the ratio to find how many equal shares there are.",
+    "Divide the total by the number of shares, then multiply by each part."
+   ],
+   "solution": [
+    "2 + 3 = 5 equal shares.",
+    "One share = 50 ÷ 5 = 10.",
+    "Asha gets 2 shares: 2 × 10 = 20."
+   ],
+   "patterns": {
+    "25": "RAT_DIVIDE_BY_PART"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "RAT-VSIR2",
+   "pool": "verification:sharing_in_ratio",
+   "skill_id": "sharing_in_ratio",
+   "type": "numeric",
+   "gap_targets": [
+    "sharing_in_ratio"
+   ],
+   "prompt": "₹42 is shared between Asha and Ben in the ratio 4 : 3. How much does Asha get (in ₹)?",
+   "answer": "24",
+   "hints": [
+    "Add the parts of the ratio to find how many equal shares there are.",
+    "Divide the total by the number of shares, then multiply by each part."
+   ],
+   "solution": [
+    "4 + 3 = 7 equal shares.",
+    "One share = 42 ÷ 7 = 6.",
+    "Asha gets 4 shares: 4 × 6 = 24."
+   ],
+   "patterns": {
+    "21": "RAT_SHARE_EQUAL",
+    "10.5": "RAT_DIVIDE_BY_PART"
+   },
+   "check_role": "same_type"
+  },
+  {
+   "id": "RAT-VSIR3",
+   "pool": "verification:sharing_in_ratio",
+   "skill_id": "sharing_in_ratio",
+   "type": "numeric",
+   "gap_targets": [
+    "sharing_in_ratio"
+   ],
+   "prompt": "₹60 is shared between Asha and Ben in the ratio 1 : 4. How much does Asha get (in ₹)?",
+   "answer": "12",
+   "hints": [
+    "Add the parts of the ratio to find how many equal shares there are.",
+    "Divide the total by the number of shares, then multiply by each part."
+   ],
+   "solution": [
+    "1 + 4 = 5 equal shares.",
+    "One share = 60 ÷ 5 = 12.",
+    "Asha gets 1 shares: 1 × 12 = 12."
+   ],
+   "patterns": {
+    "30": "RAT_SHARE_EQUAL",
+    "60": "RAT_DIVIDE_BY_PART"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "RAT-VSIR4",
+   "pool": "verification:sharing_in_ratio",
+   "skill_id": "sharing_in_ratio",
+   "type": "numeric",
+   "gap_targets": [
+    "sharing_in_ratio"
+   ],
+   "prompt": "₹36 is shared between Asha and Ben in the ratio 5 : 4. How much does Asha get (in ₹)?",
+   "answer": "20",
+   "hints": [
+    "Add the parts of the ratio to find how many equal shares there are.",
+    "Divide the total by the number of shares, then multiply by each part."
+   ],
+   "solution": [
+    "5 + 4 = 9 equal shares.",
+    "One share = 36 ÷ 9 = 4.",
+    "Asha gets 5 shares: 5 × 4 = 20."
+   ],
+   "patterns": {
+    "18": "RAT_SHARE_EQUAL",
+    "7.2": "RAT_DIVIDE_BY_PART"
+   },
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "RAT-PSIR1",
+   "pool": "practice:sharing_in_ratio",
+   "skill_id": "sharing_in_ratio",
+   "type": "numeric",
+   "gap_targets": [
+    "sharing_in_ratio"
+   ],
+   "prompt": "₹28 is shared between Asha and Ben in the ratio 3 : 4. How much does Asha get (in ₹)?",
+   "answer": "12",
+   "hints": [
+    "Add the parts of the ratio to find how many equal shares there are.",
+    "Divide the total by the number of shares, then multiply by each part."
+   ],
+   "solution": [
+    "3 + 4 = 7 equal shares.",
+    "One share = 28 ÷ 7 = 4.",
+    "Asha gets 3 shares: 3 × 4 = 12."
+   ],
+   "patterns": {
+    "14": "RAT_SHARE_EQUAL",
+    "28/3": "RAT_DIVIDE_BY_PART"
+   }
+  },
+  {
+   "id": "RAT-PSIR2",
+   "pool": "practice:sharing_in_ratio",
+   "skill_id": "sharing_in_ratio",
+   "type": "numeric",
+   "gap_targets": [
+    "sharing_in_ratio"
+   ],
+   "prompt": "₹45 is shared between Asha and Ben in the ratio 4 : 5. How much does Asha get (in ₹)?",
+   "answer": "20",
+   "hints": [
+    "Add the parts of the ratio to find how many equal shares there are.",
+    "Divide the total by the number of shares, then multiply by each part."
+   ],
+   "solution": [
+    "4 + 5 = 9 equal shares.",
+    "One share = 45 ÷ 9 = 5.",
+    "Asha gets 4 shares: 4 × 5 = 20."
+   ],
+   "patterns": {
+    "22.5": "RAT_SHARE_EQUAL",
+    "11.25": "RAT_DIVIDE_BY_PART"
+   }
+  },
+  {
+   "id": "RAT-PSIR3",
+   "pool": "practice:sharing_in_ratio",
+   "skill_id": "sharing_in_ratio",
+   "type": "numeric",
+   "gap_targets": [
+    "sharing_in_ratio"
+   ],
+   "prompt": "₹72 is shared between Asha and Ben in the ratio 5 : 3. How much does Asha get (in ₹)?",
+   "answer": "45",
+   "hints": [
+    "Add the parts of the ratio to find how many equal shares there are.",
+    "Divide the total by the number of shares, then multiply by each part."
+   ],
+   "solution": [
+    "5 + 3 = 8 equal shares.",
+    "One share = 72 ÷ 8 = 9.",
+    "Asha gets 5 shares: 5 × 9 = 45."
+   ],
+   "patterns": {
+    "36": "RAT_SHARE_EQUAL",
+    "14.4": "RAT_DIVIDE_BY_PART"
+   }
+  },
+  {
+   "id": "RAT-PSIR4",
+   "pool": "practice:sharing_in_ratio",
+   "skill_id": "sharing_in_ratio",
+   "type": "numeric",
+   "gap_targets": [
+    "sharing_in_ratio"
+   ],
+   "prompt": "₹20 is shared between Asha and Ben in the ratio 3 : 2. How much does Asha get (in ₹)?",
+   "answer": "12",
+   "hints": [
+    "Add the parts of the ratio to find how many equal shares there are.",
+    "Divide the total by the number of shares, then multiply by each part."
+   ],
+   "solution": [
+    "3 + 2 = 5 equal shares.",
+    "One share = 20 ÷ 5 = 4.",
+    "Asha gets 3 shares: 3 × 4 = 12."
+   ],
+   "patterns": {
+    "10": "RAT_SHARE_EQUAL",
+    "20/3": "RAT_DIVIDE_BY_PART"
+   }
+  },
+  {
+   "id": "RAT-RSIR1",
+   "pool": "retest:sharing_in_ratio",
+   "skill_id": "sharing_in_ratio",
+   "type": "numeric",
+   "gap_targets": [
+    "sharing_in_ratio"
+   ],
+   "prompt": "₹56 is shared between Asha and Ben in the ratio 3 : 4. How much does Asha get (in ₹)?",
+   "answer": "24",
+   "hints": [
+    "Add the parts of the ratio to find how many equal shares there are.",
+    "Divide the total by the number of shares, then multiply by each part."
+   ],
+   "solution": [
+    "3 + 4 = 7 equal shares.",
+    "One share = 56 ÷ 7 = 8.",
+    "Asha gets 3 shares: 3 × 8 = 24."
+   ],
+   "patterns": {
+    "28": "RAT_SHARE_EQUAL",
+    "56/3": "RAT_DIVIDE_BY_PART"
+   }
+  },
+  {
+   "id": "RAT-RSIR2",
+   "pool": "retest:sharing_in_ratio",
+   "skill_id": "sharing_in_ratio",
+   "type": "numeric",
+   "gap_targets": [
+    "sharing_in_ratio"
+   ],
+   "prompt": "₹63 is shared between Asha and Ben in the ratio 2 : 5. How much does Asha get (in ₹)?",
+   "answer": "18",
+   "hints": [
+    "Add the parts of the ratio to find how many equal shares there are.",
+    "Divide the total by the number of shares, then multiply by each part."
+   ],
+   "solution": [
+    "2 + 5 = 7 equal shares.",
+    "One share = 63 ÷ 7 = 9.",
+    "Asha gets 2 shares: 2 × 9 = 18."
+   ],
+   "patterns": {
+    "31.5": "RAT_DIVIDE_BY_PART"
+   }
+  },
+  {
+   "id": "RAT-RSIR3",
+   "pool": "retest:sharing_in_ratio",
+   "skill_id": "sharing_in_ratio",
+   "type": "numeric",
+   "gap_targets": [
+    "sharing_in_ratio"
+   ],
+   "prompt": "₹80 is shared between Asha and Ben in the ratio 3 : 5. How much does Asha get (in ₹)?",
+   "answer": "30",
+   "hints": [
+    "Add the parts of the ratio to find how many equal shares there are.",
+    "Divide the total by the number of shares, then multiply by each part."
+   ],
+   "solution": [
+    "3 + 5 = 8 equal shares.",
+    "One share = 80 ÷ 8 = 10.",
+    "Asha gets 3 shares: 3 × 10 = 30."
+   ],
+   "patterns": {
+    "40": "RAT_SHARE_EQUAL",
+    "80/3": "RAT_DIVIDE_BY_PART"
+   }
+  },
+  {
+   "id": "RAT-RSIR4",
+   "pool": "retest:sharing_in_ratio",
+   "skill_id": "sharing_in_ratio",
+   "type": "numeric",
+   "gap_targets": [
+    "sharing_in_ratio"
+   ],
+   "prompt": "₹48 is shared between Asha and Ben in the ratio 5 : 3. How much does Asha get (in ₹)?",
+   "answer": "30",
+   "hints": [
+    "Add the parts of the ratio to find how many equal shares there are.",
+    "Divide the total by the number of shares, then multiply by each part."
+   ],
+   "solution": [
+    "5 + 3 = 8 equal shares.",
+    "One share = 48 ÷ 8 = 6.",
+    "Asha gets 5 shares: 5 × 6 = 30."
+   ],
+   "patterns": {
+    "24": "RAT_SHARE_EQUAL",
+    "9.6": "RAT_DIVIDE_BY_PART"
+   }
+  },
+  {
+   "id": "RAT-RSIR5",
+   "pool": "retest:sharing_in_ratio",
+   "skill_id": "sharing_in_ratio",
+   "type": "numeric",
+   "gap_targets": [
+    "sharing_in_ratio"
+   ],
+   "prompt": "₹27 is shared between Asha and Ben in the ratio 4 : 5. How much does Asha get (in ₹)?",
+   "answer": "12",
+   "hints": [
+    "Add the parts of the ratio to find how many equal shares there are.",
+    "Divide the total by the number of shares, then multiply by each part."
+   ],
+   "solution": [
+    "4 + 5 = 9 equal shares.",
+    "One share = 27 ÷ 9 = 3.",
+    "Asha gets 4 shares: 4 × 3 = 12."
+   ],
+   "patterns": {
+    "13.5": "RAT_SHARE_EQUAL",
+    "6.75": "RAT_DIVIDE_BY_PART"
+   }
+  },
+  {
+   "id": "RAT-RSIR6",
+   "pool": "retest:sharing_in_ratio",
+   "skill_id": "sharing_in_ratio",
+   "type": "numeric",
+   "gap_targets": [
+    "sharing_in_ratio"
+   ],
+   "prompt": "₹90 is shared between Asha and Ben in the ratio 7 : 3. How much does Asha get (in ₹)?",
+   "answer": "63",
+   "hints": [
+    "Add the parts of the ratio to find how many equal shares there are.",
+    "Divide the total by the number of shares, then multiply by each part."
+   ],
+   "solution": [
+    "7 + 3 = 10 equal shares.",
+    "One share = 90 ÷ 10 = 9.",
+    "Asha gets 7 shares: 7 × 9 = 63."
+   ],
+   "patterns": {
+    "45": "RAT_SHARE_EQUAL",
+    "90/7": "RAT_DIVIDE_BY_PART"
+   }
+  }
+ ],
+ "lessons": {
+  "equivalent_ratios": {
+   "title": "Equivalent ratios",
+   "big_idea": "A ratio compares amounts by multiplication. To keep a recipe tasting the same, both amounts must be multiplied by the same number, not increased by the same amount.",
+   "steps": [
+    "Find the scale factor: new amount ÷ old amount.",
+    "Multiply the other part by the same factor.",
+    "Check: the new ratio simplifies back to the old one."
+   ],
+   "sense_check": "2 flour : 3 milk. Tripling to 6 flour needs 9 milk. Adding 4 to both (6 : 7) would change the taste.",
+   "worked_examples": [
+    {
+     "prompt": "2 flour for 3 milk. Milk for 6 flour?",
+     "answer": "9",
+     "steps": [
+      "6 ÷ 2 = 3 times as much.",
+      "3 × 3 = 9."
+     ]
+    },
+    {
+     "prompt": "4 red : 5 blue. Blue for 8 red?",
+     "answer": "10",
+     "steps": [
+      "8 ÷ 4 = 2.",
+      "5 × 2 = 10."
+     ]
+    }
+   ]
+  },
+  "sharing_in_ratio": {
+   "title": "Sharing in a ratio",
+   "big_idea": "In the ratio 2 : 3 the total is split into 2 + 3 = 5 equal shares. One person gets 2 of them, the other 3. It is not split in half.",
+   "steps": [
+    "Add the ratio parts to get the number of shares.",
+    "Divide the total by the number of shares.",
+    "Multiply by each person's part.",
+    "Check: the amounts add up to the total."
+   ],
+   "sense_check": "₹30 in 2 : 3 gives ₹12 and ₹18. They add to 30, and 12 : 18 simplifies to 2 : 3.",
+   "worked_examples": [
+    {
+     "prompt": "₹30 shared 2 : 3. First share?",
+     "answer": "12",
+     "steps": [
+      "2 + 3 = 5 shares.",
+      "30 ÷ 5 = 6.",
+      "2 × 6 = 12."
+     ]
+    },
+    {
+     "prompt": "₹40 shared 3 : 5. First share?",
+     "answer": "15",
+     "steps": [
+      "3 + 5 = 8 shares.",
+      "40 ÷ 8 = 5.",
+      "3 × 5 = 15."
+     ]
+    }
+   ]
+  }
+ }
+}

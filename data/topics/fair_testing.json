@@ -1,0 +1,1139 @@
+{
+ "skills": [
+  {
+   "id": "variables_in_investigations",
+   "name": "What to change and what to measure",
+   "grade": 4,
+   "prerequisites": [],
+   "description": "Independent and dependent variables."
+  },
+  {
+   "id": "fair_test",
+   "name": "Fair tests",
+   "grade": 5,
+   "prerequisites": [
+    "variables_in_investigations"
+   ],
+   "description": "Changing one thing and keeping the rest the same."
+  }
+ ],
+ "misconceptions": {
+  "SCI_CHANGE_VS_MEASURE": {
+   "label": "Mixes up what you change and what you measure",
+   "gap_skill": "variables_in_investigations",
+   "explanation": "Chooses the result (e.g. plant height) as the thing to change."
+  },
+  "SCI_CHANGE_MANY": {
+   "label": "Thinks changing more than one thing at once is fine",
+   "gap_skill": "fair_test",
+   "explanation": "Doesn't see that two changes make the result impossible to explain."
+  },
+  "SCI_KEEP_TESTED_SAME": {
+   "label": "Keeps the thing being tested the same",
+   "gap_skill": "fair_test",
+   "explanation": "Lists the variable under test as something to control."
+  }
+ },
+ "questions": [
+  {
+   "id": "FAIR-DA1",
+   "pool": "diagnostic:fair_testing:A",
+   "skill_id": "variables_in_investigations",
+   "type": "mcq",
+   "gap_targets": [
+    "variables_in_investigations"
+   ],
+   "prompt": "Priya wants to find out whether the amount of water affects how tall a bean plant grows. What should Priya change?",
+   "answer": "The amount of water",
+   "hints": [
+    "The thing you CHANGE is the one in the question 'Does ___ affect …?'.",
+    "The thing you MEASURE is the result you are interested in."
+   ],
+   "solution": [
+    "The question asks whether the amount of water makes a difference, so that is what changes.",
+    "The height of the plant is what Priya measures. Everything else stays the same."
+   ],
+   "patterns": {
+    "The amount of water and the type of plant": "SCI_CHANGE_MANY",
+    "The height of the plant": "SCI_CHANGE_VS_MEASURE"
+   },
+   "options": [
+    "The amount of water",
+    "The amount of water and the type of plant",
+    "The height of the plant"
+   ]
+  },
+  {
+   "id": "FAIR-DA2",
+   "pool": "diagnostic:fair_testing:A",
+   "skill_id": "variables_in_investigations",
+   "type": "mcq",
+   "gap_targets": [
+    "variables_in_investigations"
+   ],
+   "prompt": "Rahul wants to find out whether the temperature of the water affects how quickly sugar dissolves. What should Rahul measure?",
+   "answer": "The time the sugar takes to dissolve",
+   "hints": [
+    "The thing you CHANGE is the one in the question 'Does ___ affect …?'.",
+    "The thing you MEASURE is the result you are interested in."
+   ],
+   "solution": [
+    "The result Rahul cares about is how quickly sugar dissolves.",
+    "So Rahul measures the time the sugar takes to dissolve."
+   ],
+   "patterns": {
+    "The temperature of the water": "SCI_CHANGE_VS_MEASURE"
+   },
+   "options": [
+    "The temperature of the water",
+    "The amount of water",
+    "The time the sugar takes to dissolve"
+   ]
+  },
+  {
+   "id": "FAIR-DA3",
+   "pool": "diagnostic:fair_testing:A",
+   "skill_id": "variables_in_investigations",
+   "type": "mcq",
+   "gap_targets": [
+    "variables_in_investigations"
+   ],
+   "prompt": "Meena wants to find out whether the height of the ramp affects how far a toy car rolls. What should Meena change?",
+   "answer": "The height of the ramp",
+   "hints": [
+    "The thing you CHANGE is the one in the question 'Does ___ affect …?'.",
+    "The thing you MEASURE is the result you are interested in."
+   ],
+   "solution": [
+    "The question asks whether the height of the ramp makes a difference, so that is what changes.",
+    "The distance the car rolls is what Meena measures. Everything else stays the same."
+   ],
+   "patterns": {
+    "The height of the ramp and the toy car used": "SCI_CHANGE_MANY",
+    "The distance the car rolls": "SCI_CHANGE_VS_MEASURE"
+   },
+   "options": [
+    "The distance the car rolls",
+    "The height of the ramp",
+    "The height of the ramp and the toy car used"
+   ]
+  },
+  {
+   "id": "FAIR-DB1",
+   "pool": "diagnostic:fair_testing:B",
+   "skill_id": "variables_in_investigations",
+   "type": "mcq",
+   "gap_targets": [
+    "variables_in_investigations"
+   ],
+   "prompt": "Kabir wants to find out whether the type of surface affects how far a ball rolls. What should Kabir change?",
+   "answer": "The type of surface",
+   "hints": [
+    "The thing you CHANGE is the one in the question 'Does ___ affect …?'.",
+    "The thing you MEASURE is the result you are interested in."
+   ],
+   "solution": [
+    "The question asks whether the type of surface makes a difference, so that is what changes.",
+    "The distance the ball rolls is what Kabir measures. Everything else stays the same."
+   ],
+   "patterns": {
+    "The type of surface and the ball used": "SCI_CHANGE_MANY",
+    "The distance the ball rolls": "SCI_CHANGE_VS_MEASURE"
+   },
+   "options": [
+    "The type of surface",
+    "The type of surface and the ball used",
+    "The distance the ball rolls"
+   ]
+  },
+  {
+   "id": "FAIR-DB2",
+   "pool": "diagnostic:fair_testing:B",
+   "skill_id": "variables_in_investigations",
+   "type": "mcq",
+   "gap_targets": [
+    "variables_in_investigations"
+   ],
+   "prompt": "Sara wants to find out whether the size of the parachute affects how long a parachute takes to fall. What should Sara measure?",
+   "answer": "The time it takes to fall",
+   "hints": [
+    "The thing you CHANGE is the one in the question 'Does ___ affect …?'.",
+    "The thing you MEASURE is the result you are interested in."
+   ],
+   "solution": [
+    "The result Sara cares about is how long a parachute takes to fall.",
+    "So Sara measures the time it takes to fall."
+   ],
+   "patterns": {
+    "The size of the parachute": "SCI_CHANGE_VS_MEASURE"
+   },
+   "options": [
+    "The size of the parachute",
+    "The weight hanging from it",
+    "The time it takes to fall"
+   ]
+  },
+  {
+   "id": "FAIR-DB3",
+   "pool": "diagnostic:fair_testing:B",
+   "skill_id": "variables_in_investigations",
+   "type": "mcq",
+   "gap_targets": [
+    "variables_in_investigations"
+   ],
+   "prompt": "Dev wants to find out whether the colour of the cup affects how quickly an ice cube melts in the sun. What should Dev change?",
+   "answer": "The colour of the cup",
+   "hints": [
+    "The thing you CHANGE is the one in the question 'Does ___ affect …?'.",
+    "The thing you MEASURE is the result you are interested in."
+   ],
+   "solution": [
+    "The question asks whether the colour of the cup makes a difference, so that is what changes.",
+    "The time the ice takes to melt is what Dev measures. Everything else stays the same."
+   ],
+   "patterns": {
+    "The colour of the cup and the size of the ice cube": "SCI_CHANGE_MANY",
+    "The time the ice takes to melt": "SCI_CHANGE_VS_MEASURE"
+   },
+   "options": [
+    "The time the ice takes to melt",
+    "The colour of the cup",
+    "The colour of the cup and the size of the ice cube"
+   ]
+  },
+  {
+   "id": "FAIR-VVII1",
+   "pool": "verification:variables_in_investigations",
+   "skill_id": "variables_in_investigations",
+   "type": "mcq",
+   "gap_targets": [
+    "variables_in_investigations"
+   ],
+   "prompt": "Anjali wants to find out whether the number of batteries affects how bright a bulb is. What should Anjali change?",
+   "answer": "The number of batteries",
+   "hints": [
+    "The thing you CHANGE is the one in the question 'Does ___ affect …?'.",
+    "The thing you MEASURE is the result you are interested in."
+   ],
+   "solution": [
+    "The question asks whether the number of batteries makes a difference, so that is what changes.",
+    "The brightness of the bulb is what Anjali measures. Everything else stays the same."
+   ],
+   "patterns": {
+    "The number of batteries and the type of bulb": "SCI_CHANGE_MANY",
+    "The brightness of the bulb": "SCI_CHANGE_VS_MEASURE"
+   },
+   "options": [
+    "The number of batteries",
+    "The number of batteries and the type of bulb",
+    "The brightness of the bulb"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "FAIR-VVII2",
+   "pool": "verification:variables_in_investigations",
+   "skill_id": "variables_in_investigations",
+   "type": "mcq",
+   "gap_targets": [
+    "variables_in_investigations"
+   ],
+   "prompt": "Vikram wants to find out whether the amount of salt in the water affects how quickly water freezes. What should Vikram change?",
+   "answer": "The amount of salt in the water",
+   "hints": [
+    "The thing you CHANGE is the one in the question 'Does ___ affect …?'.",
+    "The thing you MEASURE is the result you are interested in."
+   ],
+   "solution": [
+    "The question asks whether the amount of salt in the water makes a difference, so that is what changes.",
+    "The time the water takes to freeze is what Vikram measures. Everything else stays the same."
+   ],
+   "patterns": {
+    "The amount of salt in the water and the amount of water": "SCI_CHANGE_MANY",
+    "The time the water takes to freeze": "SCI_CHANGE_VS_MEASURE"
+   },
+   "options": [
+    "The amount of salt in the water and the amount of water",
+    "The time the water takes to freeze",
+    "The amount of salt in the water"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "FAIR-VVII3",
+   "pool": "verification:variables_in_investigations",
+   "skill_id": "variables_in_investigations",
+   "type": "mcq",
+   "gap_targets": [
+    "variables_in_investigations"
+   ],
+   "prompt": "Zoya wants to find out whether the length of the string affects how long one swing of a pendulum takes. What should Zoya measure?",
+   "answer": "The time for one swing",
+   "hints": [
+    "The thing you CHANGE is the one in the question 'Does ___ affect …?'.",
+    "The thing you MEASURE is the result you are interested in."
+   ],
+   "solution": [
+    "The result Zoya cares about is how long one swing of a pendulum takes.",
+    "So Zoya measures the time for one swing."
+   ],
+   "patterns": {
+    "The length of the string": "SCI_CHANGE_VS_MEASURE"
+   },
+   "options": [
+    "The angle it is let go from",
+    "The time for one swing",
+    "The length of the string"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "FAIR-VVII4",
+   "pool": "verification:variables_in_investigations",
+   "skill_id": "variables_in_investigations",
+   "type": "mcq",
+   "gap_targets": [
+    "variables_in_investigations"
+   ],
+   "prompt": "Arun wants to find out whether the amount of light affects how tall cress seedlings grow. What should Arun measure?",
+   "answer": "The height of the seedlings",
+   "hints": [
+    "The thing you CHANGE is the one in the question 'Does ___ affect …?'.",
+    "The thing you MEASURE is the result you are interested in."
+   ],
+   "solution": [
+    "The result Arun cares about is how tall cress seedlings grow.",
+    "So Arun measures the height of the seedlings."
+   ],
+   "patterns": {
+    "The amount of light": "SCI_CHANGE_VS_MEASURE"
+   },
+   "options": [
+    "The height of the seedlings",
+    "The amount of light",
+    "The type of seed"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "FAIR-PVII1",
+   "pool": "practice:variables_in_investigations",
+   "skill_id": "variables_in_investigations",
+   "type": "mcq",
+   "gap_targets": [
+    "variables_in_investigations"
+   ],
+   "prompt": "Neha wants to find out whether the thickness of the rubber band affects how far a rubber band stretches. What should Neha change?",
+   "answer": "The thickness of the rubber band",
+   "hints": [
+    "The thing you CHANGE is the one in the question 'Does ___ affect …?'.",
+    "The thing you MEASURE is the result you are interested in."
+   ],
+   "solution": [
+    "The question asks whether the thickness of the rubber band makes a difference, so that is what changes.",
+    "How far the band stretches is what Neha measures. Everything else stays the same."
+   ],
+   "patterns": {
+    "The thickness of the rubber band and the weight hung on it": "SCI_CHANGE_MANY",
+    "How far the band stretches": "SCI_CHANGE_VS_MEASURE"
+   },
+   "options": [
+    "The thickness of the rubber band and the weight hung on it",
+    "How far the band stretches",
+    "The thickness of the rubber band"
+   ]
+  },
+  {
+   "id": "FAIR-PVII2",
+   "pool": "practice:variables_in_investigations",
+   "skill_id": "variables_in_investigations",
+   "type": "mcq",
+   "gap_targets": [
+    "variables_in_investigations"
+   ],
+   "prompt": "Imran wants to find out whether the material of the spoon affects how quickly a spoon gets hot in hot water. What should Imran measure?",
+   "answer": "The time until the handle feels warm",
+   "hints": [
+    "The thing you CHANGE is the one in the question 'Does ___ affect …?'.",
+    "The thing you MEASURE is the result you are interested in."
+   ],
+   "solution": [
+    "The result Imran cares about is how quickly a spoon gets hot in hot water.",
+    "So Imran measures the time until the handle feels warm."
+   ],
+   "patterns": {
+    "The material of the spoon": "SCI_CHANGE_VS_MEASURE"
+   },
+   "options": [
+    "The size of the spoon",
+    "The time until the handle feels warm",
+    "The material of the spoon"
+   ]
+  },
+  {
+   "id": "FAIR-PVII3",
+   "pool": "practice:variables_in_investigations",
+   "skill_id": "variables_in_investigations",
+   "type": "mcq",
+   "gap_targets": [
+    "variables_in_investigations"
+   ],
+   "prompt": "Priya wants to find out whether the amount of water affects how tall a bean plant grows. What should Priya measure?",
+   "answer": "The height of the plant",
+   "hints": [
+    "The thing you CHANGE is the one in the question 'Does ___ affect …?'.",
+    "The thing you MEASURE is the result you are interested in."
+   ],
+   "solution": [
+    "The result Priya cares about is how tall a bean plant grows.",
+    "So Priya measures the height of the plant."
+   ],
+   "patterns": {
+    "The amount of water": "SCI_CHANGE_VS_MEASURE"
+   },
+   "options": [
+    "The height of the plant",
+    "The amount of water",
+    "The amount of sunlight"
+   ]
+  },
+  {
+   "id": "FAIR-PVII4",
+   "pool": "practice:variables_in_investigations",
+   "skill_id": "variables_in_investigations",
+   "type": "mcq",
+   "gap_targets": [
+    "variables_in_investigations"
+   ],
+   "prompt": "Rahul wants to find out whether the temperature of the water affects how quickly sugar dissolves. What should Rahul change?",
+   "answer": "The temperature of the water",
+   "hints": [
+    "The thing you CHANGE is the one in the question 'Does ___ affect …?'.",
+    "The thing you MEASURE is the result you are interested in."
+   ],
+   "solution": [
+    "The question asks whether the temperature of the water makes a difference, so that is what changes.",
+    "The time the sugar takes to dissolve is what Rahul measures. Everything else stays the same."
+   ],
+   "patterns": {
+    "The temperature of the water and the amount of sugar": "SCI_CHANGE_MANY",
+    "The time the sugar takes to dissolve": "SCI_CHANGE_VS_MEASURE"
+   },
+   "options": [
+    "The temperature of the water and the amount of sugar",
+    "The time the sugar takes to dissolve",
+    "The temperature of the water"
+   ]
+  },
+  {
+   "id": "FAIR-RVII1",
+   "pool": "retest:variables_in_investigations",
+   "skill_id": "variables_in_investigations",
+   "type": "mcq",
+   "gap_targets": [
+    "variables_in_investigations"
+   ],
+   "prompt": "Sara wants to find out whether the size of the parachute affects how long a parachute takes to fall. What should Sara change?",
+   "answer": "The size of the parachute",
+   "hints": [
+    "The thing you CHANGE is the one in the question 'Does ___ affect …?'.",
+    "The thing you MEASURE is the result you are interested in."
+   ],
+   "solution": [
+    "The question asks whether the size of the parachute makes a difference, so that is what changes.",
+    "The time it takes to fall is what Sara measures. Everything else stays the same."
+   ],
+   "patterns": {
+    "The size of the parachute and the height it is dropped from": "SCI_CHANGE_MANY",
+    "The time it takes to fall": "SCI_CHANGE_VS_MEASURE"
+   },
+   "options": [
+    "The time it takes to fall",
+    "The size of the parachute",
+    "The size of the parachute and the height it is dropped from"
+   ]
+  },
+  {
+   "id": "FAIR-RVII2",
+   "pool": "retest:variables_in_investigations",
+   "skill_id": "variables_in_investigations",
+   "type": "mcq",
+   "gap_targets": [
+    "variables_in_investigations"
+   ],
+   "prompt": "Meena wants to find out whether the height of the ramp affects how far a toy car rolls. What should Meena measure?",
+   "answer": "The distance the car rolls",
+   "hints": [
+    "The thing you CHANGE is the one in the question 'Does ___ affect …?'.",
+    "The thing you MEASURE is the result you are interested in."
+   ],
+   "solution": [
+    "The result Meena cares about is how far a toy car rolls.",
+    "So Meena measures the distance the car rolls."
+   ],
+   "patterns": {
+    "The height of the ramp": "SCI_CHANGE_VS_MEASURE"
+   },
+   "options": [
+    "The distance the car rolls",
+    "The height of the ramp",
+    "The floor surface"
+   ]
+  },
+  {
+   "id": "FAIR-RVII3",
+   "pool": "retest:variables_in_investigations",
+   "skill_id": "variables_in_investigations",
+   "type": "mcq",
+   "gap_targets": [
+    "variables_in_investigations"
+   ],
+   "prompt": "Zoya wants to find out whether the length of the string affects how long one swing of a pendulum takes. What should Zoya change?",
+   "answer": "The length of the string",
+   "hints": [
+    "The thing you CHANGE is the one in the question 'Does ___ affect …?'.",
+    "The thing you MEASURE is the result you are interested in."
+   ],
+   "solution": [
+    "The question asks whether the length of the string makes a difference, so that is what changes.",
+    "The time for one swing is what Zoya measures. Everything else stays the same."
+   ],
+   "patterns": {
+    "The length of the string and the weight on the end": "SCI_CHANGE_MANY",
+    "The time for one swing": "SCI_CHANGE_VS_MEASURE"
+   },
+   "options": [
+    "The length of the string and the weight on the end",
+    "The time for one swing",
+    "The length of the string"
+   ]
+  },
+  {
+   "id": "FAIR-RVII4",
+   "pool": "retest:variables_in_investigations",
+   "skill_id": "variables_in_investigations",
+   "type": "mcq",
+   "gap_targets": [
+    "variables_in_investigations"
+   ],
+   "prompt": "Anjali wants to find out whether the number of batteries affects how bright a bulb is. What should Anjali measure?",
+   "answer": "The brightness of the bulb",
+   "hints": [
+    "The thing you CHANGE is the one in the question 'Does ___ affect …?'.",
+    "The thing you MEASURE is the result you are interested in."
+   ],
+   "solution": [
+    "The result Anjali cares about is how bright a bulb is.",
+    "So Anjali measures the brightness of the bulb."
+   ],
+   "patterns": {
+    "The number of batteries": "SCI_CHANGE_VS_MEASURE"
+   },
+   "options": [
+    "The length of the wires",
+    "The brightness of the bulb",
+    "The number of batteries"
+   ]
+  },
+  {
+   "id": "FAIR-RVII5",
+   "pool": "retest:variables_in_investigations",
+   "skill_id": "variables_in_investigations",
+   "type": "mcq",
+   "gap_targets": [
+    "variables_in_investigations"
+   ],
+   "prompt": "Imran wants to find out whether the material of the spoon affects how quickly a spoon gets hot in hot water. What should Imran change?",
+   "answer": "The material of the spoon",
+   "hints": [
+    "The thing you CHANGE is the one in the question 'Does ___ affect …?'.",
+    "The thing you MEASURE is the result you are interested in."
+   ],
+   "solution": [
+    "The question asks whether the material of the spoon makes a difference, so that is what changes.",
+    "The time until the handle feels warm is what Imran measures. Everything else stays the same."
+   ],
+   "patterns": {
+    "The material of the spoon and the temperature of the water": "SCI_CHANGE_MANY",
+    "The time until the handle feels warm": "SCI_CHANGE_VS_MEASURE"
+   },
+   "options": [
+    "The material of the spoon",
+    "The material of the spoon and the temperature of the water",
+    "The time until the handle feels warm"
+   ]
+  },
+  {
+   "id": "FAIR-RVII6",
+   "pool": "retest:variables_in_investigations",
+   "skill_id": "variables_in_investigations",
+   "type": "mcq",
+   "gap_targets": [
+    "variables_in_investigations"
+   ],
+   "prompt": "Kabir wants to find out whether the type of surface affects how far a ball rolls. What should Kabir measure?",
+   "answer": "The distance the ball rolls",
+   "hints": [
+    "The thing you CHANGE is the one in the question 'Does ___ affect …?'.",
+    "The thing you MEASURE is the result you are interested in."
+   ],
+   "solution": [
+    "The result Kabir cares about is how far a ball rolls.",
+    "So Kabir measures the distance the ball rolls."
+   ],
+   "patterns": {
+    "The type of surface": "SCI_CHANGE_VS_MEASURE"
+   },
+   "options": [
+    "The type of surface",
+    "The height it is let go from",
+    "The distance the ball rolls"
+   ]
+  },
+  {
+   "id": "FAIR-DA4",
+   "pool": "diagnostic:fair_testing:A",
+   "skill_id": "fair_test",
+   "type": "mcq",
+   "gap_targets": [
+    "fair_test"
+   ],
+   "prompt": "Kabir is testing whether the type of surface affects how far a ball rolls. Which of these must stay the same to make it a fair test?",
+   "answer": "The ball used",
+   "hints": [
+    "In a fair test you change ONE thing and keep everything else the same.",
+    "Never keep the thing you are testing the same: you have to change it to test it."
+   ],
+   "solution": [
+    "The type of surface is being tested, so it must change.",
+    "The ball used could also affect the result, so it stays the same."
+   ],
+   "patterns": {
+    "The type of surface": "SCI_KEEP_TESTED_SAME"
+   },
+   "options": [
+    "The distance the ball rolls",
+    "The ball used",
+    "The type of surface"
+   ]
+  },
+  {
+   "id": "FAIR-DA5",
+   "pool": "diagnostic:fair_testing:A",
+   "skill_id": "fair_test",
+   "type": "mcq",
+   "gap_targets": [
+    "fair_test"
+   ],
+   "prompt": "Sara is testing whether the size of the parachute affects how long a parachute takes to fall. Between trials, Sara changes the size of the parachute and also the height it is dropped from. Is it a fair test?",
+   "answer": "No: two things changed, so you can't tell which one caused the difference",
+   "hints": [
+    "In a fair test you change ONE thing and keep everything else the same.",
+    "Never keep the thing you are testing the same: you have to change it to test it."
+   ],
+   "solution": [
+    "Sara changed the size of the parachute AND the height it is dropped from.",
+    "If the result changes, we can't tell which one caused it, so it isn't fair."
+   ],
+   "patterns": {
+    "Yes: changing more things gives more information": "SCI_CHANGE_MANY",
+    "Yes, as long as the measurements are careful": "SCI_CHANGE_MANY"
+   },
+   "options": [
+    "No: two things changed, so you can't tell which one caused the difference",
+    "Yes: changing more things gives more information",
+    "Yes, as long as the measurements are careful"
+   ]
+  },
+  {
+   "id": "FAIR-DB4",
+   "pool": "diagnostic:fair_testing:B",
+   "skill_id": "fair_test",
+   "type": "mcq",
+   "gap_targets": [
+    "fair_test"
+   ],
+   "prompt": "Priya is testing whether the amount of water affects how tall a bean plant grows. Which of these must stay the same to make it a fair test?",
+   "answer": "The type of plant",
+   "hints": [
+    "In a fair test you change ONE thing and keep everything else the same.",
+    "Never keep the thing you are testing the same: you have to change it to test it."
+   ],
+   "solution": [
+    "The amount of water is being tested, so it must change.",
+    "The type of plant could also affect the result, so it stays the same."
+   ],
+   "patterns": {
+    "The amount of water": "SCI_KEEP_TESTED_SAME"
+   },
+   "options": [
+    "The amount of water",
+    "The height of the plant",
+    "The type of plant"
+   ]
+  },
+  {
+   "id": "FAIR-DB5",
+   "pool": "diagnostic:fair_testing:B",
+   "skill_id": "fair_test",
+   "type": "mcq",
+   "gap_targets": [
+    "fair_test"
+   ],
+   "prompt": "Rahul is testing whether the temperature of the water affects how quickly sugar dissolves. Between trials, Rahul changes the temperature of the water and also the amount of sugar. Is it a fair test?",
+   "answer": "No: two things changed, so you can't tell which one caused the difference",
+   "hints": [
+    "In a fair test you change ONE thing and keep everything else the same.",
+    "Never keep the thing you are testing the same: you have to change it to test it."
+   ],
+   "solution": [
+    "Rahul changed the temperature of the water AND the amount of sugar.",
+    "If the result changes, we can't tell which one caused it, so it isn't fair."
+   ],
+   "patterns": {
+    "Yes: changing more things gives more information": "SCI_CHANGE_MANY",
+    "Yes, as long as the measurements are careful": "SCI_CHANGE_MANY"
+   },
+   "options": [
+    "Yes, as long as the measurements are careful",
+    "No: two things changed, so you can't tell which one caused the difference",
+    "Yes: changing more things gives more information"
+   ]
+  },
+  {
+   "id": "FAIR-VFT1",
+   "pool": "verification:fair_test",
+   "skill_id": "fair_test",
+   "type": "mcq",
+   "gap_targets": [
+    "fair_test"
+   ],
+   "prompt": "Dev is testing whether the colour of the cup affects how quickly an ice cube melts in the sun. Which of these must stay the same to make it a fair test?",
+   "answer": "The size of the ice cube",
+   "hints": [
+    "In a fair test you change ONE thing and keep everything else the same.",
+    "Never keep the thing you are testing the same: you have to change it to test it."
+   ],
+   "solution": [
+    "The colour of the cup is being tested, so it must change.",
+    "The size of the ice cube could also affect the result, so it stays the same."
+   ],
+   "patterns": {
+    "The colour of the cup": "SCI_KEEP_TESTED_SAME"
+   },
+   "options": [
+    "The size of the ice cube",
+    "The colour of the cup",
+    "The time the ice takes to melt"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "FAIR-VFT2",
+   "pool": "verification:fair_test",
+   "skill_id": "fair_test",
+   "type": "mcq",
+   "gap_targets": [
+    "fair_test"
+   ],
+   "prompt": "Arun is testing whether the amount of light affects how tall cress seedlings grow. Which of these must stay the same to make it a fair test?",
+   "answer": "The amount of water",
+   "hints": [
+    "In a fair test you change ONE thing and keep everything else the same.",
+    "Never keep the thing you are testing the same: you have to change it to test it."
+   ],
+   "solution": [
+    "The amount of light is being tested, so it must change.",
+    "The amount of water could also affect the result, so it stays the same."
+   ],
+   "patterns": {
+    "The amount of light": "SCI_KEEP_TESTED_SAME"
+   },
+   "options": [
+    "The amount of light",
+    "The height of the seedlings",
+    "The amount of water"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "FAIR-VFT3",
+   "pool": "verification:fair_test",
+   "skill_id": "fair_test",
+   "type": "mcq",
+   "gap_targets": [
+    "fair_test"
+   ],
+   "prompt": "Meena is testing whether the height of the ramp affects how far a toy car rolls. Between trials, Meena changes the height of the ramp and also the toy car used. Is it a fair test?",
+   "answer": "No: two things changed, so you can't tell which one caused the difference",
+   "hints": [
+    "In a fair test you change ONE thing and keep everything else the same.",
+    "Never keep the thing you are testing the same: you have to change it to test it."
+   ],
+   "solution": [
+    "Meena changed the height of the ramp AND the toy car used.",
+    "If the result changes, we can't tell which one caused it, so it isn't fair."
+   ],
+   "patterns": {
+    "Yes: changing more things gives more information": "SCI_CHANGE_MANY",
+    "Yes, as long as the measurements are careful": "SCI_CHANGE_MANY"
+   },
+   "options": [
+    "Yes, as long as the measurements are careful",
+    "No: two things changed, so you can't tell which one caused the difference",
+    "Yes: changing more things gives more information"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "FAIR-VFT4",
+   "pool": "verification:fair_test",
+   "skill_id": "fair_test",
+   "type": "mcq",
+   "gap_targets": [
+    "fair_test"
+   ],
+   "prompt": "Vikram is testing whether the amount of salt in the water affects how quickly water freezes. Between trials, Vikram changes the amount of salt in the water and also the amount of water. Is it a fair test?",
+   "answer": "No: two things changed, so you can't tell which one caused the difference",
+   "hints": [
+    "In a fair test you change ONE thing and keep everything else the same.",
+    "Never keep the thing you are testing the same: you have to change it to test it."
+   ],
+   "solution": [
+    "Vikram changed the amount of salt in the water AND the amount of water.",
+    "If the result changes, we can't tell which one caused it, so it isn't fair."
+   ],
+   "patterns": {
+    "Yes: changing more things gives more information": "SCI_CHANGE_MANY",
+    "Yes, as long as the measurements are careful": "SCI_CHANGE_MANY"
+   },
+   "options": [
+    "No: two things changed, so you can't tell which one caused the difference",
+    "Yes: changing more things gives more information",
+    "Yes, as long as the measurements are careful"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "FAIR-PFT1",
+   "pool": "practice:fair_test",
+   "skill_id": "fair_test",
+   "type": "mcq",
+   "gap_targets": [
+    "fair_test"
+   ],
+   "prompt": "Imran is testing whether the material of the spoon affects how quickly a spoon gets hot in hot water. Which of these must stay the same to make it a fair test?",
+   "answer": "The temperature of the water",
+   "hints": [
+    "In a fair test you change ONE thing and keep everything else the same.",
+    "Never keep the thing you are testing the same: you have to change it to test it."
+   ],
+   "solution": [
+    "The material of the spoon is being tested, so it must change.",
+    "The temperature of the water could also affect the result, so it stays the same."
+   ],
+   "patterns": {
+    "The material of the spoon": "SCI_KEEP_TESTED_SAME"
+   },
+   "options": [
+    "The material of the spoon",
+    "The time until the handle feels warm",
+    "The temperature of the water"
+   ]
+  },
+  {
+   "id": "FAIR-PFT2",
+   "pool": "practice:fair_test",
+   "skill_id": "fair_test",
+   "type": "mcq",
+   "gap_targets": [
+    "fair_test"
+   ],
+   "prompt": "Neha is testing whether the thickness of the rubber band affects how far a rubber band stretches. Between trials, Neha changes the thickness of the rubber band and also the weight hung on it. Is it a fair test?",
+   "answer": "No: two things changed, so you can't tell which one caused the difference",
+   "hints": [
+    "In a fair test you change ONE thing and keep everything else the same.",
+    "Never keep the thing you are testing the same: you have to change it to test it."
+   ],
+   "solution": [
+    "Neha changed the thickness of the rubber band AND the weight hung on it.",
+    "If the result changes, we can't tell which one caused it, so it isn't fair."
+   ],
+   "patterns": {
+    "Yes: changing more things gives more information": "SCI_CHANGE_MANY",
+    "Yes, as long as the measurements are careful": "SCI_CHANGE_MANY"
+   },
+   "options": [
+    "Yes, as long as the measurements are careful",
+    "No: two things changed, so you can't tell which one caused the difference",
+    "Yes: changing more things gives more information"
+   ]
+  },
+  {
+   "id": "FAIR-PFT3",
+   "pool": "practice:fair_test",
+   "skill_id": "fair_test",
+   "type": "mcq",
+   "gap_targets": [
+    "fair_test"
+   ],
+   "prompt": "Anjali is testing whether the number of batteries affects how bright a bulb is. Which of these must stay the same to make it a fair test?",
+   "answer": "The type of bulb",
+   "hints": [
+    "In a fair test you change ONE thing and keep everything else the same.",
+    "Never keep the thing you are testing the same: you have to change it to test it."
+   ],
+   "solution": [
+    "The number of batteries is being tested, so it must change.",
+    "The type of bulb could also affect the result, so it stays the same."
+   ],
+   "patterns": {
+    "The number of batteries": "SCI_KEEP_TESTED_SAME"
+   },
+   "options": [
+    "The type of bulb",
+    "The number of batteries",
+    "The brightness of the bulb"
+   ]
+  },
+  {
+   "id": "FAIR-PFT4",
+   "pool": "practice:fair_test",
+   "skill_id": "fair_test",
+   "type": "mcq",
+   "gap_targets": [
+    "fair_test"
+   ],
+   "prompt": "Zoya is testing whether the length of the string affects how long one swing of a pendulum takes. Between trials, Zoya changes the length of the string and also the weight on the end. Is it a fair test?",
+   "answer": "No: two things changed, so you can't tell which one caused the difference",
+   "hints": [
+    "In a fair test you change ONE thing and keep everything else the same.",
+    "Never keep the thing you are testing the same: you have to change it to test it."
+   ],
+   "solution": [
+    "Zoya changed the length of the string AND the weight on the end.",
+    "If the result changes, we can't tell which one caused it, so it isn't fair."
+   ],
+   "patterns": {
+    "Yes: changing more things gives more information": "SCI_CHANGE_MANY",
+    "Yes, as long as the measurements are careful": "SCI_CHANGE_MANY"
+   },
+   "options": [
+    "Yes: changing more things gives more information",
+    "Yes, as long as the measurements are careful",
+    "No: two things changed, so you can't tell which one caused the difference"
+   ]
+  },
+  {
+   "id": "FAIR-RFT1",
+   "pool": "retest:fair_test",
+   "skill_id": "fair_test",
+   "type": "mcq",
+   "gap_targets": [
+    "fair_test"
+   ],
+   "prompt": "Rahul is testing whether the temperature of the water affects how quickly sugar dissolves. Which of these must stay the same to make it a fair test?",
+   "answer": "The amount of water",
+   "hints": [
+    "In a fair test you change ONE thing and keep everything else the same.",
+    "Never keep the thing you are testing the same: you have to change it to test it."
+   ],
+   "solution": [
+    "The temperature of the water is being tested, so it must change.",
+    "The amount of water could also affect the result, so it stays the same."
+   ],
+   "patterns": {
+    "The temperature of the water": "SCI_KEEP_TESTED_SAME"
+   },
+   "options": [
+    "The time the sugar takes to dissolve",
+    "The amount of water",
+    "The temperature of the water"
+   ]
+  },
+  {
+   "id": "FAIR-RFT2",
+   "pool": "retest:fair_test",
+   "skill_id": "fair_test",
+   "type": "mcq",
+   "gap_targets": [
+    "fair_test"
+   ],
+   "prompt": "Priya is testing whether the amount of water affects how tall a bean plant grows. Between trials, Priya changes the amount of water and also the type of plant. Is it a fair test?",
+   "answer": "No: two things changed, so you can't tell which one caused the difference",
+   "hints": [
+    "In a fair test you change ONE thing and keep everything else the same.",
+    "Never keep the thing you are testing the same: you have to change it to test it."
+   ],
+   "solution": [
+    "Priya changed the amount of water AND the type of plant.",
+    "If the result changes, we can't tell which one caused it, so it isn't fair."
+   ],
+   "patterns": {
+    "Yes: changing more things gives more information": "SCI_CHANGE_MANY",
+    "Yes, as long as the measurements are careful": "SCI_CHANGE_MANY"
+   },
+   "options": [
+    "No: two things changed, so you can't tell which one caused the difference",
+    "Yes: changing more things gives more information",
+    "Yes, as long as the measurements are careful"
+   ]
+  },
+  {
+   "id": "FAIR-RFT3",
+   "pool": "retest:fair_test",
+   "skill_id": "fair_test",
+   "type": "mcq",
+   "gap_targets": [
+    "fair_test"
+   ],
+   "prompt": "Vikram is testing whether the amount of salt in the water affects how quickly water freezes. Which of these must stay the same to make it a fair test?",
+   "answer": "The freezer used",
+   "hints": [
+    "In a fair test you change ONE thing and keep everything else the same.",
+    "Never keep the thing you are testing the same: you have to change it to test it."
+   ],
+   "solution": [
+    "The amount of salt in the water is being tested, so it must change.",
+    "The freezer used could also affect the result, so it stays the same."
+   ],
+   "patterns": {
+    "The amount of salt in the water": "SCI_KEEP_TESTED_SAME"
+   },
+   "options": [
+    "The amount of salt in the water",
+    "The time the water takes to freeze",
+    "The freezer used"
+   ]
+  },
+  {
+   "id": "FAIR-RFT4",
+   "pool": "retest:fair_test",
+   "skill_id": "fair_test",
+   "type": "mcq",
+   "gap_targets": [
+    "fair_test"
+   ],
+   "prompt": "Kabir is testing whether the type of surface affects how far a ball rolls. Between trials, Kabir changes the type of surface and also the ball used. Is it a fair test?",
+   "answer": "No: two things changed, so you can't tell which one caused the difference",
+   "hints": [
+    "In a fair test you change ONE thing and keep everything else the same.",
+    "Never keep the thing you are testing the same: you have to change it to test it."
+   ],
+   "solution": [
+    "Kabir changed the type of surface AND the ball used.",
+    "If the result changes, we can't tell which one caused it, so it isn't fair."
+   ],
+   "patterns": {
+    "Yes: changing more things gives more information": "SCI_CHANGE_MANY",
+    "Yes, as long as the measurements are careful": "SCI_CHANGE_MANY"
+   },
+   "options": [
+    "Yes, as long as the measurements are careful",
+    "No: two things changed, so you can't tell which one caused the difference",
+    "Yes: changing more things gives more information"
+   ]
+  },
+  {
+   "id": "FAIR-RFT5",
+   "pool": "retest:fair_test",
+   "skill_id": "fair_test",
+   "type": "mcq",
+   "gap_targets": [
+    "fair_test"
+   ],
+   "prompt": "Neha is testing whether the thickness of the rubber band affects how far a rubber band stretches. Which of these must stay the same to make it a fair test?",
+   "answer": "The length of the band",
+   "hints": [
+    "In a fair test you change ONE thing and keep everything else the same.",
+    "Never keep the thing you are testing the same: you have to change it to test it."
+   ],
+   "solution": [
+    "The thickness of the rubber band is being tested, so it must change.",
+    "The length of the band could also affect the result, so it stays the same."
+   ],
+   "patterns": {
+    "The thickness of the rubber band": "SCI_KEEP_TESTED_SAME"
+   },
+   "options": [
+    "The length of the band",
+    "The thickness of the rubber band",
+    "How far the band stretches"
+   ]
+  },
+  {
+   "id": "FAIR-RFT6",
+   "pool": "retest:fair_test",
+   "skill_id": "fair_test",
+   "type": "mcq",
+   "gap_targets": [
+    "fair_test"
+   ],
+   "prompt": "Anjali is testing whether the number of batteries affects how bright a bulb is. Between trials, Anjali changes the number of batteries and also the type of bulb. Is it a fair test?",
+   "answer": "No: two things changed, so you can't tell which one caused the difference",
+   "hints": [
+    "In a fair test you change ONE thing and keep everything else the same.",
+    "Never keep the thing you are testing the same: you have to change it to test it."
+   ],
+   "solution": [
+    "Anjali changed the number of batteries AND the type of bulb.",
+    "If the result changes, we can't tell which one caused it, so it isn't fair."
+   ],
+   "patterns": {
+    "Yes: changing more things gives more information": "SCI_CHANGE_MANY",
+    "Yes, as long as the measurements are careful": "SCI_CHANGE_MANY"
+   },
+   "options": [
+    "Yes: changing more things gives more information",
+    "Yes, as long as the measurements are careful",
+    "No: two things changed, so you can't tell which one caused the difference"
+   ]
+  }
+ ],
+ "lessons": {
+  "variables_in_investigations": {
+   "title": "What to change and what to measure",
+   "big_idea": "Every investigation asks 'Does A affect B?'. A is the one thing you change on purpose. B is the result you measure. Mixing them up means you can't answer the question.",
+   "steps": [
+    "Write the question as 'Does ___ affect ___?'.",
+    "The first blank is what you change.",
+    "The second blank is what you measure.",
+    "Everything else is kept the same."
+   ],
+   "sense_check": "To find out if water affects plant growth, you give plants different amounts of water and measure their height, not the other way round.",
+   "worked_examples": [
+    {
+     "prompt": "Does the amount of water affect how tall a bean plant grows? What do you change?",
+     "answer": "The amount of water",
+     "steps": [
+      "The question names the amount of water as the possible cause.",
+      "So that is what you change.",
+      "You measure the plant's height."
+     ]
+    }
+   ]
+  },
+  "fair_test": {
+   "title": "Fair tests",
+   "big_idea": "A test is fair when only ONE thing changes, the thing being tested. Everything else that could affect the result is kept the same, so any difference must be caused by that one thing.",
+   "steps": [
+    "Name the thing you are testing: it must change.",
+    "List other things that could affect the result.",
+    "Keep all of those the same.",
+    "If two things change at once, you can't tell which caused the result."
+   ],
+   "sense_check": "If you change both the ramp height and the car, and the car goes further, was it the ramp or the car? You can't tell.",
+   "worked_examples": [
+    {
+     "prompt": "Testing whether ramp height affects how far a car rolls. Keep the same?",
+     "answer": "The car and the floor surface",
+     "steps": [
+      "Ramp height is tested, so it changes.",
+      "The car and the floor could also change the distance.",
+      "Keep them the same."
+     ]
+    }
+   ]
+  }
+ }
+}

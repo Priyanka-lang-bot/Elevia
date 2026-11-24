@@ -1,0 +1,369 @@
+/* ELEVIA landing page. Same notebook identity as the app (Nunito, Rubik Dirt, grid paper, navy ink, the
+   periwinkle / rose / sage / mustard paper stock), told as a desk of study things: a marked-up worksheet,
+   a stack of books, a drawer of folders, a curriculum index and the last page of a journal. */
+#landing{--peri:#aeb9f1;--rose:#f2b8c8;--sage:#a9c2a1;--mustard:#e3c78f;--slate:#9fb0d6;--pen:#b3261e;--pencil:#666c77;
+ --kraft:#e6dcc4;--card:#fffdf6;--tapec:rgba(214,206,186,.85);--navh:66px;overflow-x:clip}
+#landing .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.skip{position:absolute;left:12px;top:-60px;z-index:50;background:var(--navy);color:#fff;padding:10px 14px;border-radius:8px}
+.skip:focus{top:10px}
+#landing :focus-visible{outline:3px solid #7d8fd6;outline-offset:3px}
+.margin-note{font-family:Kalam,"Comic Sans MS",cursive;font-size:19px;line-height:1.35;color:var(--navy)}
+.margin-note.muted{color:var(--pencil)}
+
+/* ---------------------------------------------------------------- nav */
+.lnav{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:16px;padding:12px 28px;background:rgba(255,254,251,.95);border-bottom:1.5px solid var(--line)}
+.lnav-logo{font-size:34px;text-decoration:none;color:var(--ink)}
+.lnav-links{margin-left:auto;display:flex;align-items:center;gap:4px}
+.lnav-links a{font-weight:700;font-size:15px;color:var(--ink);text-decoration:none;padding:8px 10px;border-radius:8px}
+.lnav-links a:hover{background:#eef2ff;color:var(--navy)}
+.lnav-links a.btn{color:#fff;margin-left:6px;padding:0 18px}.lnav-links a.btn:hover{background:#2b3a5e;color:#fff}
+/* "Try demo" is a label stuck on the page, not another grey link */
+.nav-demo{background:#fde7ee !important;color:var(--navy) !important;border:1.5px dashed #c97a92;transform:rotate(-1.5deg);margin:0 6px}
+.nav-demo:hover{background:#fbd5e1 !important;transform:rotate(0)}
+.nav-demo-m{display:none;margin-left:auto;font-weight:800;font-size:15px;text-decoration:none;padding:8px 12px;border-radius:8px}
+.lnav-toggle{display:none;background:#fff;border:2px solid var(--navy);border-radius:10px;width:46px;height:44px;font-size:22px;cursor:pointer;color:var(--navy)}
+@media (max-width:1040px){
+ .lnav-toggle{display:block}.nav-demo-m{display:inline-block}
+ .lnav-links .nav-demo{display:none}
+ .lnav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--paper);border-bottom:1.5px solid var(--line);padding:10px 20px 18px;display:none;box-shadow:0 10px 24px rgba(0,0,0,.08)}
+ .lnav.open .lnav-links{display:flex}
+ .lnav-links a{padding:12px 10px;font-size:17px}.lnav-links a.btn{margin:8px 0 0;min-height:48px}
+}
+
+/* ---------------------------------------------------------------- hero */
+.hero{max-width:1200px;margin:0 auto;padding:76px 28px 72px;display:grid;grid-template-columns:1.05fr 1fr;gap:52px;align-items:center}
+.hero-h{margin:0;font-size:clamp(36px,4.6vw,58px);line-height:1.1;font-weight:800;letter-spacing:-.01em;color:var(--ink)}
+.hero-h .hl{display:inline;font-weight:400;color:var(--navy);background:linear-gradient(transparent 62%,rgba(242,184,200,.75) 62% 92%,transparent 92%);padding:0 4px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hero-p{font-size:19px;line-height:1.6;color:var(--muted);margin:22px 0 28px;max-width:560px}
+.btn.big{min-height:56px;padding:0 28px;font-size:17px;border-radius:14px}
+.btn.main.big{box-shadow:0 6px 0 #0f1626}
+.btn.main.big:hover{transform:translateY(-1px)}
+.btn.main.big:active{transform:translateY(3px);box-shadow:0 3px 0 #0f1626}
+.btn-demo{background:#fde7ee}.btn-demo:hover{background:#fbd5e1}
+.hero-note{margin:20px 0 0;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline}
+.hero-note a{font-size:15px}.hero-note .hint{font-size:14px}
+.hero-art{position:relative;min-height:420px;margin-bottom:60px}
+.polaroid{position:relative;z-index:1;margin:30px 0 0 40px;background:#fff;padding:12px 12px 14px;border-radius:4px;transform:rotate(2deg);filter:drop-shadow(0 14px 26px rgba(30,30,60,.2))}
+.polaroid img{display:block;width:100%;height:auto;border-radius:2px;border:1px solid var(--line)}
+.polaroid figcaption{font-size:13px;color:var(--muted);text-align:right;padding:10px 4px 0 210px;font-weight:600}
+#landing .tape{position:absolute;width:120px;height:28px;background:var(--tapec);top:-14px;left:calc(50% - 60px);transform:rotate(-3deg);z-index:2}
+.note-card{position:absolute;z-index:2;left:-34px;bottom:-78px;width:250px;background:#fff8e8;border-radius:4px;padding:18px 18px 14px;transform:rotate(-4deg);filter:drop-shadow(0 8px 14px rgba(30,30,60,.2));background-image:repeating-linear-gradient(transparent 0 23px,#ecd9ad 23px 24px)}
+.note-card .t2{width:80px;left:84px}
+.hand{margin:0 0 6px;font-family:Kalam,cursive;font-size:30px;color:var(--navy)}
+.hand s{color:var(--bad);text-decoration-thickness:3px}
+.note-card .small{margin:0;font-size:13.5px;line-height:1.5}
+
+/* ---------------------------------------------------------------- shared section type */
+.sec-block{padding:96px 0;position:relative}
+.sec-block.alt{background:rgba(255,254,251,.8);border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
+.sec-h{margin:0 auto 14px;font-size:clamp(28px,3.4vw,44px);font-weight:800;letter-spacing:-.01em;text-align:center;line-height:1.12;max-width:880px}
+.sec-h.left,.sec-p.left{text-align:left;margin-left:0}
+.sec-p{margin:0 auto 40px;max-width:640px;text-align:center;font-size:18px;line-height:1.6;color:var(--muted)}
+
+/* ---------------------------------------------------------------- demo: reader cards */
+.demo-sec{padding:64px 0 72px;background:rgba(255,254,251,.82);border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
+.demo-wrap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,2fr);gap:44px;align-items:start}
+.demo-intro .sec-p{margin-bottom:14px}
+.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.demo-wait{grid-column:1/-1;margin:24px 0}
+.lib-card{position:relative;display:flex;flex-direction:column;gap:8px;background-color:var(--card);border:1.5px solid var(--kraft);border-radius:4px;padding:16px 18px 18px;
+ background-image:linear-gradient(transparent 44px,#d98aa1 44px 46px,transparent 46px);
+ box-shadow:0 10px 22px rgba(31,42,68,.09)}
+
+.teacher-card{background-image:linear-gradient(transparent 44px,var(--navy) 44px 46px,transparent 46px)}
+.code-form{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end;margin-top:4px}
+.code-form label{width:100%;font-weight:700;font-size:14px}
+.code-form input{flex:1 1 160px;min-height:46px;padding:0 12px;border:2px solid #cfd6e2;border-radius:10px;font:inherit;background:#fff}
+.code-form input:focus-visible{border-color:var(--navy)}
+.code-form .alert{width:100%;margin:0}
+.lib-card::before{content:"";position:absolute;right:16px;top:14px;width:14px;height:14px;border-radius:50%;background:#fbfcfd;border:1.5px solid var(--kraft)}
+.lib-head{margin:0;font-size:12px;font-weight:800;letter-spacing:.04em;color:#a05a72;height:28px}
+.lib-name{margin:0;font-family:Kalam,cursive;font-size:28px;line-height:1.1;color:var(--navy)}
+.lib-role{margin:0;font-size:13.5px;font-weight:700;color:var(--muted)}
+.lib-ex{margin:0;font-size:14.5px;line-height:1.5;color:var(--muted);flex:1}
+.lib-card .btn{align-self:flex-start;margin-top:6px}
+.demo-off{grid-column:1/-1;position:relative;background:var(--card);border:1.5px dashed #c9b991;border-radius:6px;padding:20px 22px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center}
+.demo-off p{margin:0;max-width:560px;line-height:1.55}
+/* compact cards on the login page */
+.demo-strip{display:flex;flex-direction:column;gap:10px;border-top:1.5px dashed var(--line);padding-top:16px}
+.demo-grid.compact{grid-template-columns:1fr 1fr;gap:10px}
+.demo-card{background:var(--paper);border:1.5px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.demo-card.compact{padding:12px;gap:8px}
+.demo-top{display:flex;gap:12px;align-items:center}
+.demo-card h3{margin:0;font-size:15px}.demo-role{margin:2px 0 0;font-size:13px;font-weight:700;color:var(--muted)}
+.demo-card .btn{align-self:flex-start}
+
+/* ---------------------------------------------------------------- the problem: marked-up worksheet */
+.symptom-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:64px;align-items:start}
+.ws-stage{position:sticky;top:calc(var(--navh) + 32px)}
+.ws{display:block;width:100%;height:auto;background:var(--paper);border-radius:4px;filter:drop-shadow(0 12px 24px rgba(31,42,68,.14))}
+.ws-rules path{stroke:var(--rule);stroke-width:1.5;fill:none}.ws-rules .ws-margin{stroke:var(--rose);stroke-width:2}
+.ws text{font-family:Kalam,cursive;fill:#2b3a5e;font-size:31px}
+.ws .ws-head{font-size:24px;fill:var(--muted)}
+.ws .ws-a{fill:var(--navy);font-size:33px}
+.pen{fill:none;stroke:var(--pen);stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+.pen.dash{stroke-dasharray:.03 .03}
+.ws .pen-t{fill:var(--pen);font-size:30px}.ws .pen-t.sm{font-size:24px}.ws .pen-t.ink{fill:var(--navy);font-size:22px}
+.sticky rect{fill:#fbe9a9;filter:drop-shadow(0 3px 4px rgba(0,0,0,.15))}
+/* sequence: JS adds .seq on wide screens and moves data-step as each idea scrolls past */
+.seq .ann{opacity:0;transition:opacity .35s ease}
+.seq .ann .pen:not(.dash){stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .8s ease .1s}
+.seq[data-step="1"] .a1,.seq[data-step="2"] .a1,.seq[data-step="2"] .a2,.seq[data-step="3"] .ann{opacity:1}
+.seq[data-step="1"] .a1 .pen,.seq[data-step="2"] .a1 .pen,.seq[data-step="2"] .a2 .pen,.seq[data-step="3"] .ann .pen{stroke-dashoffset:0}
+.symptom-steps{list-style:none;margin:0;padding:0}
+.sstep{position:relative;padding:0 0 0 70px;margin:0 0 44px}
+.sstep h3{margin:0 0 10px;font-size:24px;line-height:1.25}
+.sstep p{margin:0;font-size:17px;line-height:1.65;color:var(--muted);max-width:460px}
+.sn{position:absolute;left:0;top:-4px;width:48px;height:48px;border-radius:50%;border:2.5px solid var(--pen);color:var(--pen);font-family:Kalam,cursive;font-size:26px;display:flex;align-items:center;justify-content:center;transform:rotate(-6deg)}
+.seq-on .sstep{min-height:52vh;display:flex;flex-direction:column;justify-content:center;margin:0;opacity:.45;transition:opacity .35s}
+.seq-on .sstep .sn{top:calc(50% - 30px)}
+.seq-on .sstep.on{opacity:1}
+.seq-on .symptom-steps{padding:4vh 0 10vh}
+
+/* ---------------------------------------------------------------- how it works: book stack */
+.books{padding:96px 0;background:rgba(255,254,251,.8);border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
+.bk-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.book{display:flex;align-items:stretch;height:62px;width:var(--w);margin:0 0 0 var(--x);padding:0;border:0;background:none;cursor:pointer;font:inherit;transform:rotate(var(--r));transition:transform .5s cubic-bezier(.2,.7,.2,1);text-align:left}
+.bk-pages{flex:0 0 26px;margin:5px 0;background:repeating-linear-gradient(0deg,#f6efdd 0 3px,#e3d6b8 3px 4px);border:2px solid var(--navy);border-right:0;border-radius:6px 0 0 6px}
+.bk-spine{position:relative;flex:1;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 22px 0 34px;background-color:var(--b);border:2px solid var(--navy);border-radius:2px 9px 9px 2px;
+ background-image:linear-gradient(90deg,transparent 12px,var(--bd) 12px 15px,transparent 15px 20px,var(--bd) 20px 22px,transparent 22px),linear-gradient(270deg,transparent 12px,var(--bd) 12px 15px,transparent 15px 20px,var(--bd) 20px 22px,transparent 22px)}
+.bk-title{font-weight:800;font-size:20px;color:var(--navy);letter-spacing:.01em}
+.bk-orn{width:60px;height:20px;flex:none;margin-right:16px;fill:none;stroke:var(--navy);stroke-width:2;stroke-linecap:round}
+.bk-orn .o{fill:var(--navy)}
+.bk-spine::after{content:"";position:absolute;right:58px;top:100%;width:12px;height:0;background:var(--pen);clip-path:polygon(0 0,100% 0,100% 100%,50% 78%,0 100%);transition:height .4s ease}
+.leaf{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:0;margin:6px 0 26px;background-color:var(--paper);border:1.5px solid var(--kraft);border-radius:3px 3px 6px 6px;
+ background-image:linear-gradient(90deg,transparent calc(50% - 18px),rgba(31,42,68,.07) 50%,transparent calc(50% + 18px));
+ box-shadow:0 14px 28px rgba(31,42,68,.12)}
+.leaf-l,.leaf-r{position:relative;padding:30px 34px 44px}
+.pg{position:absolute;bottom:14px;font-family:Kalam,cursive;font-size:15px;color:var(--pencil)}
+.leaf-l .pg{left:34px}.leaf-r .pg{right:34px}
+.leaf-kicker{margin:0 0 6px;font-family:Kalam,cursive;font-size:19px;color:var(--pen)}
+.leaf h3{margin:0 0 12px;font-size:34px;line-height:1.1;font-family:"Rubik Dirt",system-ui;font-weight:400;color:var(--navy)}
+.leaf-l p:not(.leaf-kicker){margin:0;font-size:16.5px;line-height:1.65;color:var(--ink)}
+.leaf-r{display:flex;flex-direction:column;justify-content:center;gap:16px}
+.leaf-r .margin-note{margin:0}
+.leaf-rule{margin:0;font-size:15px;line-height:1.55;color:var(--muted);border-left:3px solid var(--rose);padding-left:12px}
+.verdicts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:15.5px;line-height:1.45}
+.verdicts b{display:inline-block;min-width:112px;color:var(--navy)}
+/* small screens and no JS: every book is followed by its open page. With JS, a book opens its page on tap. */
+.js-books .bk-item .leaf{display:none}
+.js-books .bk-item.active .leaf{display:grid;animation:leafin .45s ease}
+.bk-item.active .book{transform:translateX(18px) rotate(0)}
+.bk-item.active .bk-spine::after{height:26px}
+@keyframes leafin{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+/* wide screens: the section pins while you scroll and each book in turn slides out and opens */
+@media (min-width:1001px){
+ .books.live{height:calc(100vh + 4 * 46vh);padding:0}
+ .books.live .books-pin{position:sticky;top:var(--navh);height:calc(100vh - var(--navh));display:flex;align-items:center}
+ .books.live .books-wrap{position:relative;width:100%}
+ .books.live .books-head .sec-p{margin-bottom:28px;max-width:440px}
+ .books.live .books-head,.books.live .bk-list{width:42%}
+ .books.live .bk-list{gap:10px}
+ .books.live .bk-item .leaf{display:grid;position:absolute;left:47%;right:28px;top:50%;margin:0;opacity:0;pointer-events:none;
+  transform:translateY(-50%) perspective(1400px) rotateY(-16deg) translateX(-18px);transform-origin:left center;transition:opacity .45s ease,transform .6s cubic-bezier(.2,.7,.2,1);animation:none}
+ .books.live .bk-item.active .leaf{opacity:1;pointer-events:auto;transform:translateY(-50%)}
+ .books.live .bk-item.active .book{transform:translateX(40px) rotate(0)}
+ .books.live .bk-item:not(.active) .book:hover{transform:translateX(10px) rotate(var(--r))}
+ .books.live .leaf{min-height:320px}
+}
+@media (max-height:700px) and (min-width:1001px){.books.live .book{height:50px}.books.live .books-head .sec-p{display:none}}
+
+/* ---------------------------------------------------------------- what's built: folder drawer */
+/* Base (no JavaScript, any width): a pile of folders, each one open, so every description is readable.
+   With JavaScript (.js-folders) wide screens get the side-by-side drawer and phones get tap-to-open. */
+.folders-wrap{display:grid;grid-template-columns:minmax(0,290px) minmax(0,1fr);gap:40px;align-items:start}
+.folders-how{margin:0}
+.folders{list-style:none;margin:0;padding:12px 0 0;display:flex;flex-direction:column}
+.folder{position:relative;margin-top:-6px;z-index:calc(1 + var(--i))}
+.folder::before{content:"";position:absolute;inset:0;border-radius:4px 10px 4px 4px;background-color:var(--s);background-image:repeating-linear-gradient(0deg,rgba(31,42,68,.04) 0 1px,transparent 1px 4px);border:1.5px solid rgba(31,42,68,.28);box-shadow:0 -4px 10px rgba(31,42,68,.08)}
+.folder-tab{position:relative;width:100%;height:58px;border:0;background:none;display:flex;align-items:center;justify-content:flex-start;padding:0 0 0 calc(12px + var(--i) * 2.6%);cursor:pointer;font:inherit}
+.folder-tab span{background:var(--paper);padding:6px 12px;border-radius:2px;font-size:14px;font-weight:800;color:var(--navy);box-shadow:0 1px 2px rgba(0,0,0,.12);white-space:nowrap}
+.folder.open .folder-tab span{background:var(--navy);color:#fff}
+.folder-sheet{position:relative;margin:0 12px 16px;padding:22px 22px 20px;background-color:var(--paper);border-radius:2px;box-shadow:0 2px 6px rgba(31,42,68,.1);display:flex;flex-direction:column;gap:10px}
+.folder-sheet h3{margin:0;font-size:23px;line-height:1.2}
+.folder-sheet p{margin:0;font-size:15.5px;line-height:1.6;color:var(--muted)}
+@media (max-width:900px){
+ .folders-wrap{grid-template-columns:1fr;gap:24px}
+ .js-folders .folder-tab::after{content:"+";margin-left:auto;margin-right:18px;font-weight:800;font-size:22px;color:var(--navy)}
+ .js-folders .folder.open .folder-tab::after{content:"–"}
+ .js-folders .folder:not(.open) .folder-sheet{display:none}
+}
+@media (min-width:901px){
+ /* heading above, drawer full width: nine folders always fit, and the open one is a proper reading panel */
+ .folders-wrap{grid-template-columns:1fr;gap:18px}
+ .folders-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:40px;align-items:end}
+ .folders-intro .sec-h{grid-column:1/-1}
+ .folders-intro .sec-p{margin-bottom:0}
+ .folders-how{justify-self:end}
+ .js-folders{flex-direction:row;height:470px;padding:22px 40px 0 0}
+ .js-folders .folder{flex:0 0 54px;margin-top:0;z-index:calc(20 - var(--i));transition:flex-grow .55s cubic-bezier(.2,.7,.2,1),flex-basis .55s cubic-bezier(.2,.7,.2,1)}
+ .js-folders .folder.open{flex:1 1 0;min-width:0}
+ .js-folders .folder::before{border-radius:6px 2px 2px 6px;box-shadow:8px 0 16px rgba(31,42,68,.1)}
+ /* the edge of a sheet peeking out of every folder */
+ .js-folders .folder::after{content:"";position:absolute;left:10px;right:10px;top:-10px;height:16px;background:var(--paper);border:1.5px solid rgba(31,42,68,.18);border-bottom:0;border-radius:3px 3px 0 0;z-index:-1;transition:transform .45s ease}
+ .js-folders .folder.open::after{transform:translateY(-8px)}
+ .js-folders .folder-tab{position:absolute;right:-32px;top:calc(20px + var(--i) * 30px);width:34px;height:170px;padding:0;justify-content:center;
+  background-color:var(--s);background-image:repeating-linear-gradient(0deg,rgba(31,42,68,.04) 0 1px,transparent 1px 4px);border:1.5px solid rgba(31,42,68,.28);border-left:0;border-radius:0 12px 12px 0}
+ .js-folders .folder-tab span{writing-mode:vertical-rl;transform:rotate(180deg);padding:10px 4px;font-size:12.5px;max-height:160px;overflow:hidden}
+ .js-folders .folder-sheet{position:absolute;top:24px;bottom:24px;left:16px;right:20px;margin:0;padding:26px 30px 22px;opacity:0;visibility:hidden;overflow:auto;transition:opacity .3s ease,visibility 0s linear .3s}
+ .js-folders .folder.open .folder-sheet{opacity:1;visibility:visible;transition:opacity .35s ease .25s,visibility 0s}
+ /* entrance: folders slide into the drawer one after another, once */
+ .js-folders.pre .folder{opacity:0;transform:translateY(26px)}
+ .js-folders.in .folder{opacity:1;transform:none;transition:opacity .45s ease calc(var(--i) * 70ms),transform .5s cubic-bezier(.2,.7,.2,1) calc(var(--i) * 70ms),flex-grow .55s cubic-bezier(.2,.7,.2,1),flex-basis .55s cubic-bezier(.2,.7,.2,1)}
+}
+@media (max-width:1100px) and (min-width:901px){.js-folders .folder{flex-basis:46px}}
+.folder-sheet .what{font-size:17px;color:var(--ink);line-height:1.55}
+.fs-facts{margin:6px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px 26px}
+.fs-facts dt{font-family:Kalam,cursive;font-size:18px;color:var(--pen);margin-bottom:2px}
+.fs-facts dd{margin:0;font-size:15px;line-height:1.6;color:var(--muted)}
+
+/* ---------------------------------------------------------------- subjects: curriculum index */
+.index-book{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin-top:30px;background-color:var(--paper);border:1.5px solid var(--kraft);border-radius:4px;box-shadow:0 14px 30px rgba(31,42,68,.1)}
+.idx-sub{padding:0 24px 30px;border-left:1.5px dashed #e3dcc9;min-width:0}
+.idx-sub:first-child{border-left:0}
+.idx-tab{margin:-24px 0 16px;display:flex;flex-direction:column;gap:2px}
+.idx-tab h3{align-self:flex-start;margin:0;background:var(--c);color:#fff;font-size:18px;padding:8px 16px;border-radius:9px 9px 2px 2px;box-shadow:0 -2px 0 rgba(0,0,0,.08) inset}
+.idx-count{margin:6px 0 0;font-family:Kalam,cursive;font-size:17px;color:var(--c)}
+.idx-desc{margin:0 0 14px;font-size:14.5px;line-height:1.5;color:var(--muted);min-height:66px}
+.idx-topics{list-style:none;margin:0;padding:0}
+.idx-topics a{display:flex;align-items:baseline;gap:6px;padding:7px 0;color:var(--ink);text-decoration:none;font-weight:700;font-size:15.5px;line-height:1.3}
+.idx-topics .t{flex:0 1 auto}
+.idx-topics .lead{flex:1 1 12px;min-width:12px;border-bottom:2px dotted #b9c2d6;transform:translateY(-4px)}
+.idx-topics .g{flex:none;font-size:12.5px;font-weight:600;color:var(--muted)}
+.idx-topics a:hover .t,.idx-topics a:focus-visible .t{background:linear-gradient(transparent 60%,color-mix(in srgb,var(--c) 28%,transparent) 60%)}
+.idx-soon{margin-top:18px;padding-top:12px;border-top:1.5px dashed #d3d7de}
+.idx-soon-h{margin:0 0 6px;font-size:13px;font-weight:800;color:var(--pencil)}
+.idx-soon ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.idx-soon li{font-family:Kalam,cursive;font-size:17px;color:var(--pencil);padding-left:20px;position:relative}
+.idx-soon li::before{content:"";position:absolute;left:2px;top:.55em;width:9px;height:9px;border:1.5px dashed var(--pencil);border-radius:50%}
+/* reveal, one column after another (JS adds .idx-live; without it everything is simply there) */
+.idx-live .idx-sub{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.idx-live .idx-sub .idx-topics li{opacity:0;transform:translateX(-8px);transition:opacity .35s ease,transform .35s ease;transition-delay:calc(120ms + var(--k) * 35ms)}
+.idx-live .idx-sub.in,.idx-live .idx-sub.in .idx-topics li{opacity:1;transform:none}
+@media (max-width:1240px){.index-book{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:44px}.idx-sub:nth-child(3n+1){border-left:0}}
+@media (max-width:1000px){.index-book{grid-template-columns:repeat(2,minmax(0,1fr))}.idx-sub:nth-child(n){border-left:1.5px dashed #e3dcc9}.idx-sub:nth-child(odd){border-left:0}}
+@media (max-width:620px){.index-book{grid-template-columns:1fr;row-gap:40px}.idx-sub:nth-child(n){border-left:0}.idx-desc{min-height:0}}
+
+/* ---------------------------------------------------------------- students / teachers screenshots */
+.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.split.rev{grid-template-columns:1.1fr .9fr}
+.ticks{list-style:none;margin:0 0 16px;padding:0;display:flex;flex-direction:column;gap:12px}
+.ticks li{position:relative;padding-left:34px;font-size:16.5px;line-height:1.5}
+.ticks li::before{content:"✓";position:absolute;left:2px;top:-2px;font-family:Kalam,cursive;font-size:22px;color:var(--ok)}
+.browser{margin:0;background:#fff;border:1.5px solid #cfd6e2;border-radius:12px;overflow:hidden;box-shadow:0 18px 40px rgba(31,42,68,.14)}
+.browser .dots{display:flex;gap:6px;padding:10px 12px;background:#f3f5f9;border-bottom:1.5px solid #e1e6ee}
+.browser .dots i{width:11px;height:11px;border-radius:50%;background:#d6dbe4}
+.browser img{display:block;width:100%;height:auto}
+.shot-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.shot-tabs button{font:inherit;font-weight:800;font-size:14px;padding:8px 14px;min-height:40px;border-radius:999px;border:1.5px solid #cfd6e2;background:#fff;color:var(--muted);cursor:pointer}
+.shot-tabs button[aria-selected=true]{background:var(--navy);border-color:var(--navy);color:#fff}
+.shots .hint{margin-top:10px}
+.shot-cap{margin:12px 2px 0;font-size:15.5px;line-height:1.55;color:var(--muted);min-height:3.2em}
+#shot-panel:focus-visible{outline:3px solid #7d8fd6;outline-offset:4px;border-radius:12px}
+#shot-img{transition:opacity .25s ease}
+#shot-img.swap{opacity:0}
+.shot-tabs button:focus-visible{outline:3px solid #7d8fd6;outline-offset:2px}
+/* one-time entrance for the student section (JS adds .pre only when it can also remove it) */
+.rv.pre{opacity:0;transform:translateY(22px)}
+.rv.in{opacity:1;transform:none;transition:opacity .6s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.shots.rv.in{transition-delay:.12s}
+
+/* ---------------------------------------------------------------- verify before you teach, about, last page */
+.story{padding:96px 0 104px}
+.journal{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);background-color:var(--paper);border:1.5px solid var(--kraft);border-radius:4px;
+ background-image:linear-gradient(90deg,transparent calc(42.5% - 20px),rgba(31,42,68,.07) 42.5%,transparent calc(42.5% + 20px));box-shadow:0 14px 30px rgba(31,42,68,.1)}
+.jpage{padding:34px 40px 36px}
+.jpage h3{margin:0 0 18px;font-size:22px}
+.jl h3{color:var(--pencil)}
+.jlist{margin:0;padding:0;list-style:none;counter-reset:j;display:flex;flex-direction:column;gap:12px}
+.jlist li{counter-increment:j;position:relative;padding:2px 0 2px 44px;font-size:16.5px;line-height:1.45;font-weight:600}
+.jlist li::before{content:counter(j);position:absolute;left:0;top:-1px;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+.jlist.usual li{color:var(--pencil);font-weight:600}
+.jlist.usual li::before{background:none;border:1.5px dashed var(--pencil);color:var(--pencil)}
+.jl .margin-note{margin:22px 0 0;transform:rotate(-1.5deg)}
+.story-end{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.5fr);gap:44px;margin-top:64px;align-items:center}
+.about-card{position:relative;background-color:#fff;border:1.5px solid #e1e5ec;border-radius:3px;padding:30px 28px 24px;transform:rotate(-1.3deg);
+ background-image:linear-gradient(transparent 70px,#e7a3b6 70px 72px,transparent 72px);box-shadow:0 12px 24px rgba(31,42,68,.11)}
+.about-card h3{margin:0 0 24px;font-size:22px}
+.about-card p{margin:0 0 12px;font-size:15.5px;line-height:1.6;color:var(--muted)}
+.about-card .margin-note{margin:8px 0 0;color:var(--navy);font-size:18px}
+.last-page{position:relative;text-align:center;background-color:var(--paper);border:1.5px solid var(--kraft);border-radius:4px;padding:112px 40px 46px;
+ background-image:repeating-linear-gradient(transparent 0 31px,var(--rule) 31px 32px);box-shadow:0 16px 32px rgba(31,42,68,.13)}
+.last-page .line{position:absolute;left:0;top:12px;width:100%;height:70px;overflow:visible}
+.last-page .line path{fill:none;stroke:#9a8a6a;stroke-width:2}
+.pegs{position:absolute;left:6%;right:6%;top:22px;margin:0;padding:0;list-style:none;display:flex;justify-content:space-around}
+.pegs li{position:relative;font-family:Kalam,cursive;font-size:18px;color:var(--navy);background:var(--card);border:1.5px solid var(--kraft);padding:14px 14px 8px;transform:rotate(var(--t));transform-origin:top center;box-shadow:0 4px 8px rgba(31,42,68,.1)}
+.pegs li:nth-child(2),.pegs li:nth-child(3){top:12px}
+.pegs li::before{content:"";position:absolute;left:calc(50% - 5px);top:-14px;width:10px;height:24px;border-radius:2px;background:#c9a067;border:1.5px solid #8f6d3e}
+.last-page h2{margin:0 0 12px;font-size:clamp(34px,4.6vw,56px);line-height:1.08}
+.last-page > p{font-size:18px;color:var(--muted);margin:0 auto 26px;max-width:520px;line-height:1.55}
+.center-row{justify-content:center}
+
+/* ---------------------------------------------------------------- footer */
+.lfoot{padding:40px 0 48px;border-top:1.5px solid var(--line);background:rgba(255,254,251,.92)}
+.foot-grid{display:grid;grid-template-columns:1fr 2fr;gap:24px;align-items:start}
+.foot-logo{font-size:32px;text-decoration:none;color:var(--ink)}
+.lfoot nav{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:flex-end}
+.lfoot nav a{color:var(--ink);text-decoration:none;font-weight:700;padding:4px 0}.lfoot nav a:hover{color:var(--link)}
+.foot-note{grid-column:1/-1;margin:0}
+body.on-landing{background-attachment:fixed}
+
+/* ---------------------------------------------------------------- responsive */
+@media (max-width:1000px){
+ .demo-wrap{grid-template-columns:1fr;gap:18px}
+ .symptom-grid{grid-template-columns:1fr;gap:36px}
+ .ws-stage{position:relative;top:auto;max-width:560px}
+}
+@media (max-width:900px){
+ .hero{grid-template-columns:1fr;padding-top:44px}.hero-art{min-height:0;margin-top:10px}.polaroid{margin:20px 10px 60px}
+ .split,.split.rev{grid-template-columns:1fr;gap:32px}.split.rev .shots{order:2}
+ .demo-grid{grid-template-columns:1fr 1fr}
+ .journal{grid-template-columns:1fr;background-image:none}
+ .jl{border-bottom:1.5px dashed #e3dcc9}
+ .story-end{grid-template-columns:1fr;gap:40px}
+ .leaf{grid-template-columns:1fr;background-image:none}
+ .leaf-r{padding-top:0}
+ .leaf-l .pg{display:none}
+}
+@media (max-width:620px){
+ #landing .wrap{padding:0 18px}
+ .sec-block,.books,.story{padding:64px 0}
+ .hero{padding:32px 18px 40px}
+ .note-card{position:relative;left:0;bottom:0;margin:-30px auto 0;width:auto;max-width:300px}
+ .demo-grid,.demo-grid.compact{grid-template-columns:1fr}
+ .lib-card:nth-child(n){transform:none}
+ .book{height:54px;width:calc(var(--w) - 4%)}.bk-title{font-size:17px}.bk-orn{display:none}
+ .leaf-l,.leaf-r{padding:22px 20px}
+ .leaf h3{font-size:28px}
+ .jpage{padding:26px 22px}
+ .last-page{padding:100px 18px 34px}
+ .pegs li{font-size:15px;padding:12px 8px 6px}
+ .foot-grid{grid-template-columns:1fr}.lfoot nav{justify-content:flex-start}
+ .lnav{padding:10px 14px;gap:8px}.lnav-logo{font-size:28px}
+}
+/* reduced motion: same content, no movement */
+@media (prefers-reduced-motion:reduce){
+ #landing *,#landing *::before,#landing *::after{transition-duration:.01ms !important;animation-duration:.01ms !important;transition-delay:0s !important}
+}
+
+/* ---------------------------------------------------------------- scroll stages (students screens, folders)
+   Wide, tall screens only (JS adds .live): the section is taller than the screen, its content stays pinned
+   below the navigation, and the scroll position picks the stage. The page itself scrolls normally. */
+.when-live{display:none}
+.live .when-live{display:inline}
+.live .when-static{display:none}
+@media (min-width:1001px) and (min-height:640px){
+ #students.live{height:calc(100vh + 3 * 60vh);padding:0}
+ #students.live .stage-pin{position:sticky;top:var(--navh);height:calc(100vh - var(--navh));display:flex;align-items:center}
+ #students.live .split{width:100%}
+ #students.live #shot-img{max-height:calc(100vh - var(--navh) - 250px);width:auto;max-width:100%;margin:0 auto;display:block}
+ #students.live .browser{text-align:center}
+}
+@media (min-width:901px) and (min-height:700px){
+ .folders-sec.live{height:calc(100vh + 8 * 30vh);padding:0}
+ .folders-sec.live .stage-pin{position:sticky;top:var(--navh);height:calc(100vh - var(--navh));display:flex;align-items:center}
+ .folders-sec.live .folders-wrap{width:100%}
+ .folders-sec.live .js-folders{height:min(470px, calc(100vh - var(--navh) - 210px))}
+}

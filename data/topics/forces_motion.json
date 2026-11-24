@@ -1,0 +1,1036 @@
+{
+ "skills": [
+  {
+   "id": "gravity_and_weight",
+   "name": "Gravity, mass and weight",
+   "grade": 6,
+   "prerequisites": [],
+   "description": "Mass vs weight; objects fall at the same rate without air resistance."
+  },
+  {
+   "id": "forces_and_motion",
+   "name": "Forces and motion",
+   "grade": 7,
+   "prerequisites": [
+    "gravity_and_weight"
+   ],
+   "description": "Balanced and unbalanced forces; friction; Newton's first law."
+  }
+ ],
+ "misconceptions": {
+  "SCI_HEAVIER_FASTER": {
+   "label": "Thinks heavier objects fall faster",
+   "gap_skill": "gravity_and_weight",
+   "explanation": "Believes mass makes things fall faster, even when air resistance is not involved."
+  },
+  "SCI_MASS_WEIGHT": {
+   "label": "Confuses mass with weight",
+   "gap_skill": "gravity_and_weight",
+   "explanation": "Thinks mass changes on the Moon, or that weight is measured in kilograms."
+  },
+  "SCI_MOTION_NEEDS_FORCE": {
+   "label": "Thinks a moving object needs a constant force to keep moving",
+   "gap_skill": "forces_and_motion",
+   "explanation": "Believes the 'force of the push' gets used up, instead of friction slowing the object."
+  },
+  "SCI_REST_NO_FORCE": {
+   "label": "Thinks objects at rest have no forces on them",
+   "gap_skill": "forces_and_motion",
+   "explanation": "Misses balanced forces, like the table pushing up on a book."
+  }
+ },
+ "questions": [
+  {
+   "id": "FRC-DA1",
+   "pool": "diagnostic:forces_motion:A",
+   "skill_id": "gravity_and_weight",
+   "type": "mcq",
+   "gap_targets": [
+    "gravity_and_weight"
+   ],
+   "prompt": "A heavy iron ball and a light iron ball are dropped from the same height at the same time. Ignoring air resistance, which reaches the ground first?",
+   "answer": "They land at the same time",
+   "hints": [
+    "Is the question about how much matter (mass) or how hard gravity pulls (weight)?",
+    "Without air resistance, mass does not change how fast things fall."
+   ],
+   "solution": [
+    "Without air resistance, gravity makes all objects fall with the same acceleration, whatever their mass.",
+    "Answer: They land at the same time."
+   ],
+   "patterns": {
+    "The heavy ball": "SCI_HEAVIER_FASTER"
+   },
+   "options": [
+    "They land at the same time",
+    "The heavy ball",
+    "The light ball"
+   ]
+  },
+  {
+   "id": "FRC-DA2",
+   "pool": "diagnostic:forces_motion:A",
+   "skill_id": "forces_and_motion",
+   "type": "mcq",
+   "gap_targets": [
+    "forces_and_motion"
+   ],
+   "prompt": "A hockey puck slides across smooth ice after being hit. Why does it slowly stop?",
+   "answer": "Friction from the ice slows it down",
+   "hints": [
+    "Does something need a force to keep moving, or only to change its motion?",
+    "Still objects can have forces on them that balance."
+   ],
+   "solution": [
+    "A moving object keeps moving unless a force acts on it. Friction is the force that slows the puck.",
+    "Answer: Friction from the ice slows it down."
+   ],
+   "patterns": {
+    "The force from the hit gets used up": "SCI_MOTION_NEEDS_FORCE",
+    "Nothing is pushing it any more, so it has to stop": "SCI_MOTION_NEEDS_FORCE"
+   },
+   "options": [
+    "The force from the hit gets used up",
+    "Nothing is pushing it any more, so it has to stop",
+    "Friction from the ice slows it down"
+   ]
+  },
+  {
+   "id": "FRC-DA3",
+   "pool": "diagnostic:forces_motion:A",
+   "skill_id": "gravity_and_weight",
+   "type": "mcq",
+   "gap_targets": [
+    "gravity_and_weight"
+   ],
+   "prompt": "On the Moon, an astronaut's mass is ___ compared with on Earth.",
+   "answer": "the same",
+   "hints": [
+    "Is the question about how much matter (mass) or how hard gravity pulls (weight)?",
+    "Without air resistance, mass does not change how fast things fall."
+   ],
+   "solution": [
+    "Mass is the amount of matter. It does not change from place to place; only weight changes.",
+    "Answer: the same."
+   ],
+   "patterns": {
+    "smaller": "SCI_MASS_WEIGHT",
+    "zero": "SCI_MASS_WEIGHT"
+   },
+   "options": [
+    "zero",
+    "the same",
+    "smaller"
+   ]
+  },
+  {
+   "id": "FRC-DA4",
+   "pool": "diagnostic:forces_motion:A",
+   "skill_id": "forces_and_motion",
+   "type": "mcq",
+   "gap_targets": [
+    "forces_and_motion"
+   ],
+   "prompt": "A book is resting on a table. Which is true?",
+   "answer": "Gravity pulls it down and the table pushes it up",
+   "hints": [
+    "Does something need a force to keep moving, or only to change its motion?",
+    "Still objects can have forces on them that balance."
+   ],
+   "solution": [
+    "Forces act on still objects too. Here they are balanced, so the book does not move.",
+    "Answer: Gravity pulls it down and the table pushes it up."
+   ],
+   "patterns": {
+    "There are no forces on it because it is not moving": "SCI_REST_NO_FORCE"
+   },
+   "options": [
+    "Gravity pulls it down and the table pushes it up",
+    "There are no forces on it because it is not moving",
+    "Only gravity acts on it"
+   ]
+  },
+  {
+   "id": "FRC-DA5",
+   "pool": "diagnostic:forces_motion:A",
+   "skill_id": "gravity_and_weight",
+   "type": "mcq",
+   "gap_targets": [
+    "gravity_and_weight"
+   ],
+   "prompt": "A bowling ball and a tennis ball are dropped together from a balcony. Air resistance is very small for both. What happens?",
+   "answer": "They hit the ground at about the same time",
+   "hints": [
+    "Is the question about how much matter (mass) or how hard gravity pulls (weight)?",
+    "Without air resistance, mass does not change how fast things fall."
+   ],
+   "solution": [
+    "When air resistance is small, objects of different mass fall together.",
+    "Answer: They hit the ground at about the same time."
+   ],
+   "patterns": {
+    "The bowling ball hits first because it is heavier": "SCI_HEAVIER_FASTER"
+   },
+   "options": [
+    "The bowling ball hits first because it is heavier",
+    "The tennis ball hits first because it is lighter",
+    "They hit the ground at about the same time"
+   ]
+  },
+  {
+   "id": "FRC-DB1",
+   "pool": "diagnostic:forces_motion:B",
+   "skill_id": "forces_and_motion",
+   "type": "mcq",
+   "gap_targets": [
+    "forces_and_motion"
+   ],
+   "prompt": "In deep space, far from any planet, a moving rocket turns off its engines. What happens to it?",
+   "answer": "It keeps moving at the same speed in a straight line",
+   "hints": [
+    "Does something need a force to keep moving, or only to change its motion?",
+    "Still objects can have forces on them that balance."
+   ],
+   "solution": [
+    "With no friction or gravity, nothing changes its motion, so it keeps going (Newton's first law).",
+    "Answer: It keeps moving at the same speed in a straight line."
+   ],
+   "patterns": {
+    "It slows down and stops": "SCI_MOTION_NEEDS_FORCE"
+   },
+   "options": [
+    "It starts falling",
+    "It keeps moving at the same speed in a straight line",
+    "It slows down and stops"
+   ]
+  },
+  {
+   "id": "FRC-DB2",
+   "pool": "diagnostic:forces_motion:B",
+   "skill_id": "gravity_and_weight",
+   "type": "mcq",
+   "gap_targets": [
+    "gravity_and_weight"
+   ],
+   "prompt": "Which of these changes when you travel from Earth to the Moon?",
+   "answer": "Your weight",
+   "hints": [
+    "Is the question about how much matter (mass) or how hard gravity pulls (weight)?",
+    "Without air resistance, mass does not change how fast things fall."
+   ],
+   "solution": [
+    "Weight is the pull of gravity, which is weaker on the Moon. Mass stays the same.",
+    "Answer: Your weight."
+   ],
+   "patterns": {
+    "Your mass": "SCI_MASS_WEIGHT",
+    "Both your mass and your weight": "SCI_MASS_WEIGHT"
+   },
+   "options": [
+    "Your weight",
+    "Your mass",
+    "Both your mass and your weight"
+   ]
+  },
+  {
+   "id": "FRC-DB3",
+   "pool": "diagnostic:forces_motion:B",
+   "skill_id": "forces_and_motion",
+   "type": "mcq",
+   "gap_targets": [
+    "forces_and_motion"
+   ],
+   "prompt": "A car moves along a straight road at a steady 50 km/h. What is true about the forces on it?",
+   "answer": "The forward force balances friction and air resistance",
+   "hints": [
+    "Does something need a force to keep moving, or only to change its motion?",
+    "Still objects can have forces on them that balance."
+   ],
+   "solution": [
+    "Steady speed means the forces are balanced. A bigger forward force would make the car speed up.",
+    "Answer: The forward force balances friction and air resistance."
+   ],
+   "patterns": {
+    "The forward force must be bigger than the backward forces": "SCI_MOTION_NEEDS_FORCE"
+   },
+   "options": [
+    "The forward force must be bigger than the backward forces",
+    "There are no forces on it",
+    "The forward force balances friction and air resistance"
+   ]
+  },
+  {
+   "id": "FRC-DB4",
+   "pool": "diagnostic:forces_motion:B",
+   "skill_id": "gravity_and_weight",
+   "type": "mcq",
+   "gap_targets": [
+    "gravity_and_weight"
+   ],
+   "prompt": "Weight is best described as…",
+   "answer": "the force of gravity pulling on an object",
+   "hints": [
+    "Is the question about how much matter (mass) or how hard gravity pulls (weight)?",
+    "Without air resistance, mass does not change how fast things fall."
+   ],
+   "solution": [
+    "Weight is a force (measured in newtons). The amount of matter is mass.",
+    "Answer: the force of gravity pulling on an object."
+   ],
+   "patterns": {
+    "the amount of matter in an object": "SCI_MASS_WEIGHT"
+   },
+   "options": [
+    "how big an object is",
+    "the force of gravity pulling on an object",
+    "the amount of matter in an object"
+   ]
+  },
+  {
+   "id": "FRC-DB5",
+   "pool": "diagnostic:forces_motion:B",
+   "skill_id": "forces_and_motion",
+   "type": "mcq",
+   "gap_targets": [
+    "forces_and_motion"
+   ],
+   "prompt": "A ball rolls across a carpet and stops. What made it stop?",
+   "answer": "Friction",
+   "hints": [
+    "Does something need a force to keep moving, or only to change its motion?",
+    "Still objects can have forces on them that balance."
+   ],
+   "solution": [
+    "A moving ball does not carry a supply of force. Friction from the carpet slows it down.",
+    "Answer: Friction."
+   ],
+   "patterns": {
+    "It ran out of force": "SCI_MOTION_NEEDS_FORCE"
+   },
+   "options": [
+    "Friction",
+    "It ran out of force",
+    "Gravity pulled it backwards"
+   ]
+  },
+  {
+   "id": "FRC-VGAW1",
+   "pool": "verification:gravity_and_weight",
+   "skill_id": "gravity_and_weight",
+   "type": "mcq",
+   "gap_targets": [
+    "gravity_and_weight"
+   ],
+   "prompt": "In a vacuum tube with no air, a feather and a coin are dropped together. What happens?",
+   "answer": "They land at the same time",
+   "hints": [
+    "Is the question about how much matter (mass) or how hard gravity pulls (weight)?",
+    "Without air resistance, mass does not change how fast things fall."
+   ],
+   "solution": [
+    "With no air, there is no air resistance, so the feather and coin fall together.",
+    "Answer: They land at the same time."
+   ],
+   "patterns": {
+    "The coin lands first because it is heavier": "SCI_HEAVIER_FASTER"
+   },
+   "options": [
+    "The coin lands first because it is heavier",
+    "The feather floats in the tube",
+    "They land at the same time"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "FRC-VGAW2",
+   "pool": "verification:gravity_and_weight",
+   "skill_id": "gravity_and_weight",
+   "type": "mcq",
+   "gap_targets": [
+    "gravity_and_weight"
+   ],
+   "prompt": "Mass is measured in kilograms. Weight is measured in…",
+   "answer": "newtons",
+   "hints": [
+    "Is the question about how much matter (mass) or how hard gravity pulls (weight)?",
+    "Without air resistance, mass does not change how fast things fall."
+   ],
+   "solution": [
+    "Weight is a force, so it is measured in newtons (N).",
+    "Answer: newtons."
+   ],
+   "patterns": {
+    "kilograms": "SCI_MASS_WEIGHT"
+   },
+   "options": [
+    "metres",
+    "newtons",
+    "kilograms"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "FRC-VGAW3",
+   "pool": "verification:gravity_and_weight",
+   "skill_id": "gravity_and_weight",
+   "type": "mcq",
+   "gap_targets": [
+    "gravity_and_weight"
+   ],
+   "prompt": "A 2 kg rock and a 10 kg rock are dropped from a cliff at the same moment. Ignoring air resistance, how do their speeds compare after 1 second?",
+   "answer": "They are falling at the same speed",
+   "hints": [
+    "Is the question about how much matter (mass) or how hard gravity pulls (weight)?",
+    "Without air resistance, mass does not change how fast things fall."
+   ],
+   "solution": [
+    "All objects speed up at the same rate under gravity when air resistance is ignored.",
+    "Answer: They are falling at the same speed."
+   ],
+   "patterns": {
+    "The 10 kg rock is five times faster": "SCI_HEAVIER_FASTER"
+   },
+   "options": [
+    "They are falling at the same speed",
+    "The 10 kg rock is five times faster",
+    "The 2 kg rock is faster"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "FRC-PGAW1",
+   "pool": "practice:gravity_and_weight",
+   "skill_id": "gravity_and_weight",
+   "type": "mcq",
+   "gap_targets": [
+    "gravity_and_weight"
+   ],
+   "prompt": "An object has a mass of 6 kg on Earth. What is its mass on the Moon?",
+   "answer": "6 kg",
+   "hints": [
+    "Is the question about how much matter (mass) or how hard gravity pulls (weight)?",
+    "Without air resistance, mass does not change how fast things fall."
+   ],
+   "solution": [
+    "Mass does not change. Its WEIGHT on the Moon is about one sixth of its weight on Earth.",
+    "Answer: 6 kg."
+   ],
+   "patterns": {
+    "1 kg": "SCI_MASS_WEIGHT",
+    "0 kg": "SCI_MASS_WEIGHT"
+   },
+   "options": [
+    "1 kg",
+    "0 kg",
+    "6 kg"
+   ]
+  },
+  {
+   "id": "FRC-PGAW2",
+   "pool": "practice:gravity_and_weight",
+   "skill_id": "gravity_and_weight",
+   "type": "mcq",
+   "gap_targets": [
+    "gravity_and_weight"
+   ],
+   "prompt": "Why does a crumpled sheet of paper fall faster than a flat sheet of the same paper?",
+   "answer": "The flat sheet meets more air resistance",
+   "hints": [
+    "Is the question about how much matter (mass) or how hard gravity pulls (weight)?",
+    "Without air resistance, mass does not change how fast things fall."
+   ],
+   "solution": [
+    "Both sheets have the same mass. The flat sheet has a larger surface, so air slows it more.",
+    "Answer: The flat sheet meets more air resistance."
+   ],
+   "patterns": {
+    "The crumpled sheet is heavier": "SCI_HEAVIER_FASTER"
+   },
+   "options": [
+    "Gravity is stronger on crumpled paper",
+    "The flat sheet meets more air resistance",
+    "The crumpled sheet is heavier"
+   ]
+  },
+  {
+   "id": "FRC-PGAW3",
+   "pool": "practice:gravity_and_weight",
+   "skill_id": "gravity_and_weight",
+   "type": "mcq",
+   "gap_targets": [
+    "gravity_and_weight"
+   ],
+   "prompt": "A bag of rice weighs less on the Moon than on Earth. This is because…",
+   "answer": "the Moon's gravity is weaker",
+   "hints": [
+    "Is the question about how much matter (mass) or how hard gravity pulls (weight)?",
+    "Without air resistance, mass does not change how fast things fall."
+   ],
+   "solution": [
+    "Weight depends on gravity. The rice's mass is unchanged.",
+    "Answer: the Moon's gravity is weaker."
+   ],
+   "patterns": {
+    "the rice has less mass on the Moon": "SCI_MASS_WEIGHT"
+   },
+   "options": [
+    "the Moon's gravity is weaker",
+    "the rice has less mass on the Moon",
+    "there is no air on the Moon"
+   ]
+  },
+  {
+   "id": "FRC-RGAW1",
+   "pool": "retest:gravity_and_weight",
+   "skill_id": "gravity_and_weight",
+   "type": "mcq",
+   "gap_targets": [
+    "gravity_and_weight"
+   ],
+   "prompt": "Galileo is said to have dropped two balls of different mass from a tower. What did he find?",
+   "answer": "They landed at almost the same time",
+   "hints": [
+    "Is the question about how much matter (mass) or how hard gravity pulls (weight)?",
+    "Without air resistance, mass does not change how fast things fall."
+   ],
+   "solution": [
+    "Objects of different mass fall at the same rate when air resistance is small.",
+    "Answer: They landed at almost the same time."
+   ],
+   "patterns": {
+    "The heavier ball landed much earlier": "SCI_HEAVIER_FASTER"
+   },
+   "options": [
+    "The heavier ball landed much earlier",
+    "The lighter ball landed first",
+    "They landed at almost the same time"
+   ]
+  },
+  {
+   "id": "FRC-RGAW2",
+   "pool": "retest:gravity_and_weight",
+   "skill_id": "gravity_and_weight",
+   "type": "mcq",
+   "gap_targets": [
+    "gravity_and_weight"
+   ],
+   "prompt": "If you could stand on Jupiter, which would be true?",
+   "answer": "Your weight would be greater and your mass the same",
+   "hints": [
+    "Is the question about how much matter (mass) or how hard gravity pulls (weight)?",
+    "Without air resistance, mass does not change how fast things fall."
+   ],
+   "solution": [
+    "Jupiter's gravity is stronger, so your weight increases. Your mass does not change.",
+    "Answer: Your weight would be greater and your mass the same."
+   ],
+   "patterns": {
+    "Your mass would be greater": "SCI_MASS_WEIGHT"
+   },
+   "options": [
+    "Your weight and mass would both stay the same",
+    "Your weight would be greater and your mass the same",
+    "Your mass would be greater"
+   ]
+  },
+  {
+   "id": "FRC-RGAW3",
+   "pool": "retest:gravity_and_weight",
+   "skill_id": "gravity_and_weight",
+   "type": "mcq",
+   "gap_targets": [
+    "gravity_and_weight"
+   ],
+   "prompt": "A hammer and a feather are dropped on the Moon, where there is no air. Which lands first?",
+   "answer": "They land at the same time",
+   "hints": [
+    "Is the question about how much matter (mass) or how hard gravity pulls (weight)?",
+    "Without air resistance, mass does not change how fast things fall."
+   ],
+   "solution": [
+    "With no air resistance, both fall with the same acceleration.",
+    "Answer: They land at the same time."
+   ],
+   "patterns": {
+    "The hammer": "SCI_HEAVIER_FASTER"
+   },
+   "options": [
+    "They land at the same time",
+    "The hammer",
+    "The feather"
+   ]
+  },
+  {
+   "id": "FRC-RGAW4",
+   "pool": "retest:gravity_and_weight",
+   "skill_id": "gravity_and_weight",
+   "type": "mcq",
+   "gap_targets": [
+    "gravity_and_weight"
+   ],
+   "prompt": "Which quantity stays the same wherever you are in the universe?",
+   "answer": "Mass",
+   "hints": [
+    "Is the question about how much matter (mass) or how hard gravity pulls (weight)?",
+    "Without air resistance, mass does not change how fast things fall."
+   ],
+   "solution": [
+    "Mass is the amount of matter in you, so it does not depend on where you are.",
+    "Answer: Mass."
+   ],
+   "patterns": {
+    "Weight": "SCI_MASS_WEIGHT"
+   },
+   "options": [
+    "Weight",
+    "Neither",
+    "Mass"
+   ]
+  },
+  {
+   "id": "FRC-RGAW5",
+   "pool": "retest:gravity_and_weight",
+   "skill_id": "gravity_and_weight",
+   "type": "mcq",
+   "gap_targets": [
+    "gravity_and_weight"
+   ],
+   "prompt": "A big stone and a small stone are dropped off a bridge at the same moment. Ignoring air resistance, which splashes into the river first?",
+   "answer": "Both at the same time",
+   "hints": [
+    "Is the question about how much matter (mass) or how hard gravity pulls (weight)?",
+    "Without air resistance, mass does not change how fast things fall."
+   ],
+   "solution": [
+    "Mass does not change how fast objects fall without air resistance.",
+    "Answer: Both at the same time."
+   ],
+   "patterns": {
+    "The big stone": "SCI_HEAVIER_FASTER"
+   },
+   "options": [
+    "The small stone",
+    "Both at the same time",
+    "The big stone"
+   ]
+  },
+  {
+   "id": "FRC-RGAW6",
+   "pool": "retest:gravity_and_weight",
+   "skill_id": "gravity_and_weight",
+   "type": "mcq",
+   "gap_targets": [
+    "gravity_and_weight"
+   ],
+   "prompt": "An astronaut weighs 600 N on Earth. Gravity on the Moon is about 1/6 as strong. What is the astronaut's weight on the Moon?",
+   "answer": "About 100 N",
+   "hints": [
+    "Is the question about how much matter (mass) or how hard gravity pulls (weight)?",
+    "Without air resistance, mass does not change how fast things fall."
+   ],
+   "solution": [
+    "Weight = mass × gravity strength. With 1/6 the gravity, 600 N becomes about 100 N.",
+    "Answer: About 100 N."
+   ],
+   "patterns": {
+    "600 N": "SCI_MASS_WEIGHT"
+   },
+   "options": [
+    "About 100 N",
+    "600 N",
+    "About 3600 N"
+   ]
+  },
+  {
+   "id": "FRC-VFAM1",
+   "pool": "verification:forces_and_motion",
+   "skill_id": "forces_and_motion",
+   "type": "mcq",
+   "gap_targets": [
+    "forces_and_motion"
+   ],
+   "prompt": "A lamp hangs from the ceiling and does not move. Which forces act on it?",
+   "answer": "Gravity down and the pull of the cord up, balanced",
+   "hints": [
+    "Does something need a force to keep moving, or only to change its motion?",
+    "Still objects can have forces on them that balance."
+   ],
+   "solution": [
+    "Two equal and opposite forces act on the lamp, so it stays still.",
+    "Answer: Gravity down and the pull of the cord up, balanced."
+   ],
+   "patterns": {
+    "No forces, because it is still": "SCI_REST_NO_FORCE"
+   },
+   "options": [
+    "No forces, because it is still",
+    "Only the pull of the cord",
+    "Gravity down and the pull of the cord up, balanced"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "FRC-VFAM2",
+   "pool": "verification:forces_and_motion",
+   "skill_id": "forces_and_motion",
+   "type": "mcq",
+   "gap_targets": [
+    "forces_and_motion"
+   ],
+   "prompt": "A trolley is pushed and let go on a perfectly frictionless track. Without any more pushing, it will…",
+   "answer": "keep moving at the same speed",
+   "hints": [
+    "Does something need a force to keep moving, or only to change its motion?",
+    "Still objects can have forces on them that balance."
+   ],
+   "solution": [
+    "With no friction, no force acts against it, so its speed does not change.",
+    "Answer: keep moving at the same speed."
+   ],
+   "patterns": {
+    "slow down and stop": "SCI_MOTION_NEEDS_FORCE"
+   },
+   "options": [
+    "speed up",
+    "keep moving at the same speed",
+    "slow down and stop"
+   ],
+   "check_role": "same_type"
+  },
+  {
+   "id": "FRC-VFAM3",
+   "pool": "verification:forces_and_motion",
+   "skill_id": "forces_and_motion",
+   "type": "mcq",
+   "gap_targets": [
+    "forces_and_motion"
+   ],
+   "prompt": "You are standing still on the floor. Which statement is correct?",
+   "answer": "Gravity pulls you down and the floor pushes you up equally",
+   "hints": [
+    "Does something need a force to keep moving, or only to change its motion?",
+    "Still objects can have forces on them that balance."
+   ],
+   "solution": [
+    "Being still means the forces are balanced, not that there are none.",
+    "Answer: Gravity pulls you down and the floor pushes you up equally."
+   ],
+   "patterns": {
+    "No forces act on you because you are not moving": "SCI_REST_NO_FORCE"
+   },
+   "options": [
+    "Gravity pulls you down and the floor pushes you up equally",
+    "No forces act on you because you are not moving",
+    "Only the floor pushes on you"
+   ],
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "FRC-PFAM1",
+   "pool": "practice:forces_and_motion",
+   "skill_id": "forces_and_motion",
+   "type": "mcq",
+   "gap_targets": [
+    "forces_and_motion"
+   ],
+   "prompt": "Why does a bicycle slow down when you stop pedalling on a flat road?",
+   "answer": "Friction and air resistance act against its motion",
+   "hints": [
+    "Does something need a force to keep moving, or only to change its motion?",
+    "Still objects can have forces on them that balance."
+   ],
+   "solution": [
+    "Without those backward forces the bicycle would keep rolling. Pedalling only balances them.",
+    "Answer: Friction and air resistance act against its motion."
+   ],
+   "patterns": {
+    "Motion always needs a push to continue": "SCI_MOTION_NEEDS_FORCE"
+   },
+   "options": [
+    "Motion always needs a push to continue",
+    "The bicycle gets heavier",
+    "Friction and air resistance act against its motion"
+   ]
+  },
+  {
+   "id": "FRC-PFAM2",
+   "pool": "practice:forces_and_motion",
+   "skill_id": "forces_and_motion",
+   "type": "mcq",
+   "gap_targets": [
+    "forces_and_motion"
+   ],
+   "prompt": "A box sits on the floor without moving. A student says 'There are no forces on the box.' Is the student right?",
+   "answer": "No: gravity and the floor's push act on it and balance",
+   "hints": [
+    "Does something need a force to keep moving, or only to change its motion?",
+    "Still objects can have forces on them that balance."
+   ],
+   "solution": [
+    "Gravity pulls the box down and the floor pushes up. They balance.",
+    "Answer: No: gravity and the floor's push act on it and balance."
+   ],
+   "patterns": {
+    "Yes: objects that are still have no forces on them": "SCI_REST_NO_FORCE"
+   },
+   "options": [
+    "No: only gravity acts on it",
+    "No: gravity and the floor's push act on it and balance",
+    "Yes: objects that are still have no forces on them"
+   ]
+  },
+  {
+   "id": "FRC-PFAM3",
+   "pool": "practice:forces_and_motion",
+   "skill_id": "forces_and_motion",
+   "type": "mcq",
+   "gap_targets": [
+    "forces_and_motion"
+   ],
+   "prompt": "A spacecraft coasts between planets with its engines off, far from any gravity. What does it need to keep moving at the same speed?",
+   "answer": "Nothing; it keeps moving on its own",
+   "hints": [
+    "Does something need a force to keep moving, or only to change its motion?",
+    "Still objects can have forces on them that balance."
+   ],
+   "solution": [
+    "An object in motion stays in motion unless a force acts on it.",
+    "Answer: Nothing; it keeps moving on its own."
+   ],
+   "patterns": {
+    "Its engines must stay on": "SCI_MOTION_NEEDS_FORCE"
+   },
+   "options": [
+    "Nothing; it keeps moving on its own",
+    "Its engines must stay on",
+    "It needs air to push against"
+   ]
+  },
+  {
+   "id": "FRC-RFAM1",
+   "pool": "retest:forces_and_motion",
+   "skill_id": "forces_and_motion",
+   "type": "mcq",
+   "gap_targets": [
+    "forces_and_motion"
+   ],
+   "prompt": "A puck on an air-hockey table (almost no friction) is tapped once. What happens?",
+   "answer": "It glides at nearly constant speed until it hits something",
+   "hints": [
+    "Does something need a force to keep moving, or only to change its motion?",
+    "Still objects can have forces on them that balance."
+   ],
+   "solution": [
+    "Almost no friction means almost no force against its motion, so its speed barely changes.",
+    "Answer: It glides at nearly constant speed until it hits something."
+   ],
+   "patterns": {
+    "It slows down quickly because the force of the tap runs out": "SCI_MOTION_NEEDS_FORCE"
+   },
+   "options": [
+    "It slows down quickly because the force of the tap runs out",
+    "It keeps speeding up",
+    "It glides at nearly constant speed until it hits something"
+   ]
+  },
+  {
+   "id": "FRC-RFAM2",
+   "pool": "retest:forces_and_motion",
+   "skill_id": "forces_and_motion",
+   "type": "mcq",
+   "gap_targets": [
+    "forces_and_motion"
+   ],
+   "prompt": "A picture hangs on a wall without moving. The forces on it are…",
+   "answer": "balanced",
+   "hints": [
+    "Does something need a force to keep moving, or only to change its motion?",
+    "Still objects can have forces on them that balance."
+   ],
+   "solution": [
+    "Gravity pulls it down and the nail or hook holds it up with an equal force.",
+    "Answer: balanced."
+   ],
+   "patterns": {
+    "zero; there are no forces": "SCI_REST_NO_FORCE"
+   },
+   "options": [
+    "unbalanced",
+    "balanced",
+    "zero; there are no forces"
+   ]
+  },
+  {
+   "id": "FRC-RFAM3",
+   "pool": "retest:forces_and_motion",
+   "skill_id": "forces_and_motion",
+   "type": "mcq",
+   "gap_targets": [
+    "forces_and_motion"
+   ],
+   "prompt": "When a moving object has balanced forces on it, it…",
+   "answer": "keeps moving at the same speed in the same direction",
+   "hints": [
+    "Does something need a force to keep moving, or only to change its motion?",
+    "Still objects can have forces on them that balance."
+   ],
+   "solution": [
+    "Balanced forces do not change motion. Only unbalanced forces do.",
+    "Answer: keeps moving at the same speed in the same direction."
+   ],
+   "patterns": {
+    "slows down and stops": "SCI_MOTION_NEEDS_FORCE"
+   },
+   "options": [
+    "keeps moving at the same speed in the same direction",
+    "slows down and stops",
+    "speeds up"
+   ]
+  },
+  {
+   "id": "FRC-RFAM4",
+   "pool": "retest:forces_and_motion",
+   "skill_id": "forces_and_motion",
+   "type": "mcq",
+   "gap_targets": [
+    "forces_and_motion"
+   ],
+   "prompt": "A football rolls on a flat field and stops. If there were no friction or air at all, what would happen?",
+   "answer": "It would keep rolling at the same speed",
+   "hints": [
+    "Does something need a force to keep moving, or only to change its motion?",
+    "Still objects can have forces on them that balance."
+   ],
+   "solution": [
+    "Friction and air resistance stop the ball. Without them, nothing would slow it down.",
+    "Answer: It would keep rolling at the same speed."
+   ],
+   "patterns": {
+    "It would still stop, because the kick's force runs out": "SCI_MOTION_NEEDS_FORCE"
+   },
+   "options": [
+    "It would still stop, because the kick's force runs out",
+    "It would speed up",
+    "It would keep rolling at the same speed"
+   ]
+  },
+  {
+   "id": "FRC-RFAM5",
+   "pool": "retest:forces_and_motion",
+   "skill_id": "forces_and_motion",
+   "type": "mcq",
+   "gap_targets": [
+    "forces_and_motion"
+   ],
+   "prompt": "A cup sits on a table. Why doesn't it fall through the table?",
+   "answer": "The table pushes up on it with a force equal to its weight",
+   "hints": [
+    "Does something need a force to keep moving, or only to change its motion?",
+    "Still objects can have forces on them that balance."
+   ],
+   "solution": [
+    "The table's upward push balances the cup's weight.",
+    "Answer: The table pushes up on it with a force equal to its weight."
+   ],
+   "patterns": {
+    "There are no forces on it, so it stays still": "SCI_REST_NO_FORCE"
+   },
+   "options": [
+    "Gravity does not act on things on tables",
+    "The table pushes up on it with a force equal to its weight",
+    "There are no forces on it, so it stays still"
+   ]
+  },
+  {
+   "id": "FRC-RFAM6",
+   "pool": "retest:forces_and_motion",
+   "skill_id": "forces_and_motion",
+   "type": "mcq",
+   "gap_targets": [
+    "forces_and_motion"
+   ],
+   "prompt": "Two teams pull a rope equally hard and the rope does not move. What is true?",
+   "answer": "Two equal forces act in opposite directions",
+   "hints": [
+    "Does something need a force to keep moving, or only to change its motion?",
+    "Still objects can have forces on them that balance."
+   ],
+   "solution": [
+    "The forces are balanced, so the rope stays still.",
+    "Answer: Two equal forces act in opposite directions."
+   ],
+   "patterns": {
+    "There are no forces on the rope": "SCI_REST_NO_FORCE"
+   },
+   "options": [
+    "Two equal forces act in opposite directions",
+    "There are no forces on the rope",
+    "The rope has no weight"
+   ]
+  }
+ ],
+ "lessons": {
+  "gravity_and_weight": {
+   "title": "Gravity, mass and weight",
+   "big_idea": "Mass is how much matter something has and never changes from place to place. Weight is the pull of gravity, measured in newtons. Without air resistance, heavy and light objects fall at the same rate.",
+   "steps": [
+    "Mass (kg) = amount of matter. Weight (N) = force of gravity on that matter.",
+    "On the Moon gravity is about 1/6 as strong, so weight drops to about 1/6. Mass stays the same.",
+    "Gravity pulls harder on a heavier object, but it is also harder to speed up, so both fall at the same rate.",
+    "In real life, air resistance can slow light or spread-out objects, like a feather or a flat sheet of paper."
+   ],
+   "sense_check": "Astronauts on the Moon dropped a hammer and a feather: they landed together, because there is no air there.",
+   "worked_examples": [
+    {
+     "prompt": "A heavy and a light ball are dropped together with no air resistance. Which lands first?",
+     "answer": "They land at the same time",
+     "steps": [
+      "No air resistance.",
+      "All objects fall with the same acceleration.",
+      "They land together."
+     ]
+    },
+    {
+     "prompt": "An object's mass is 6 kg on Earth. What is its mass on the Moon?",
+     "answer": "6 kg",
+     "steps": [
+      "Mass is the amount of matter.",
+      "Going to the Moon doesn't remove matter.",
+      "Still 6 kg (only its weight changes)."
+     ]
+    }
+   ]
+  },
+  "forces_and_motion": {
+   "title": "Forces and motion",
+   "big_idea": "An object does not need a force to KEEP moving; it needs a force to start, stop, speed up, slow down or turn. Things slow down on Earth because of friction and air resistance. Still objects usually have forces on them that are balanced.",
+   "steps": [
+    "Ask: is the motion changing? Only unbalanced forces change motion.",
+    "Moving at a steady speed in a straight line means the forces are balanced.",
+    "Something slowing down has a force against its motion, usually friction or air resistance.",
+    "Something sitting still has balanced forces, like gravity down and a push up from the table."
+   ],
+   "sense_check": "A puck on ice glides much further than on carpet. Same push, less friction: the push isn't 'used up'.",
+   "worked_examples": [
+    {
+     "prompt": "A ball rolls across a carpet and stops. What stopped it?",
+     "answer": "Friction",
+     "steps": [
+      "The ball was moving, then slowed down.",
+      "Slowing down needs a force against the motion.",
+      "That force is friction from the carpet."
+     ]
+    },
+    {
+     "prompt": "A book rests on a table. What forces act on it?",
+     "answer": "Gravity down, the table pushing up",
+     "steps": [
+      "Gravity always pulls the book down.",
+      "The book isn't falling, so something pushes up.",
+      "The table's push balances gravity."
+     ]
+    }
+   ]
+  }
+ }
+}

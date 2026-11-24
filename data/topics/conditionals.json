@@ -1,0 +1,1026 @@
+{
+ "skills": [
+  {
+   "id": "if_else",
+   "name": "if and else",
+   "grade": 7,
+   "prerequisites": [
+    "variable_assignment"
+   ],
+   "description": "Exactly one block runs; > is strict."
+  },
+  {
+   "id": "elif_chains",
+   "name": "elif chains",
+   "grade": 8,
+   "prerequisites": [
+    "if_else"
+   ],
+   "description": "The first True branch runs."
+  }
+ ],
+ "misconceptions": {
+  "CS_BOTH_BRANCHES": {
+   "label": "Thinks both the if and the else blocks run",
+   "gap_skill": "if_else",
+   "explanation": "Predicts both lines are printed."
+  },
+  "CS_GREATER_INCLUDES_EQUAL": {
+   "label": "Treats > as 'greater than or equal'",
+   "gap_skill": "if_else",
+   "explanation": "Thinks 5 > 5 is True."
+  },
+  "CS_ELIF_BEST_MATCH": {
+   "label": "Thinks Python picks the best-matching branch, not the first True one",
+   "gap_skill": "elif_chains",
+   "explanation": "Predicts 'merit' for 85 although 'score > 50' is checked first."
+  },
+  "CS_ELIF_ALL_RUN": {
+   "label": "Thinks every True branch of an elif chain runs",
+   "gap_skill": "elif_chains",
+   "explanation": "Predicts both 'pass' and 'merit'."
+  }
+ },
+ "questions": [
+  {
+   "id": "IFS-DA1",
+   "pool": "diagnostic:conditionals:A",
+   "skill_id": "if_else",
+   "type": "code_output",
+   "gap_targets": [
+    "if_else"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "big",
+   "hints": [
+    "Check the condition with the actual value. Only ONE of the if/else blocks runs.",
+    "> means strictly greater: 5 > 5 is False."
+   ],
+   "solution": [
+    "Is 7 > 5? Yes.",
+    "So only the if part runs: big."
+   ],
+   "patterns": {
+    "big small": "CS_BOTH_BRANCHES"
+   },
+   "code": "x = 7\nif x > 5:\n    print(\"big\")\nelse:\n    print(\"small\")"
+  },
+  {
+   "id": "IFS-DA2",
+   "pool": "diagnostic:conditionals:A",
+   "skill_id": "elif_chains",
+   "type": "code_output",
+   "gap_targets": [
+    "elif_chains"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "pass",
+   "hints": [
+    "Python checks the conditions from the top and runs the FIRST one that is True.",
+    "After one branch runs, the rest are skipped."
+   ],
+   "solution": [
+    "First check: is 85 > 50? Yes.",
+    "The first True branch runs and the rest are skipped.",
+    "It prints pass."
+   ],
+   "patterns": {
+    "merit": "CS_ELIF_BEST_MATCH",
+    "pass merit": "CS_ELIF_ALL_RUN"
+   },
+   "code": "score = 85\nif score > 50:\n    print(\"pass\")\nelif score > 80:\n    print(\"merit\")\nelse:\n    print(\"fail\")"
+  },
+  {
+   "id": "IFS-DA3",
+   "pool": "diagnostic:conditionals:A",
+   "skill_id": "if_else",
+   "type": "code_output",
+   "gap_targets": [
+    "if_else"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "small",
+   "hints": [
+    "Check the condition with the actual value. Only ONE of the if/else blocks runs.",
+    "> means strictly greater: 5 > 5 is False."
+   ],
+   "solution": [
+    "Is 5 > 5? No.",
+    "So only the else part runs: small."
+   ],
+   "patterns": {
+    "big small": "CS_BOTH_BRANCHES",
+    "big": "CS_GREATER_INCLUDES_EQUAL"
+   },
+   "code": "x = 5\nif x > 5:\n    print(\"big\")\nelse:\n    print(\"small\")"
+  },
+  {
+   "id": "IFS-DA4",
+   "pool": "diagnostic:conditionals:A",
+   "skill_id": "elif_chains",
+   "type": "code_output",
+   "gap_targets": [
+    "elif_chains"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "pass",
+   "hints": [
+    "Python checks the conditions from the top and runs the FIRST one that is True.",
+    "After one branch runs, the rest are skipped."
+   ],
+   "solution": [
+    "First check: is 92 > 40? Yes.",
+    "The first True branch runs and the rest are skipped.",
+    "It prints pass."
+   ],
+   "patterns": {
+    "merit": "CS_ELIF_BEST_MATCH",
+    "pass merit": "CS_ELIF_ALL_RUN"
+   },
+   "code": "score = 92\nif score > 40:\n    print(\"pass\")\nelif score > 90:\n    print(\"merit\")\nelse:\n    print(\"fail\")"
+  },
+  {
+   "id": "IFS-DA5",
+   "pool": "diagnostic:conditionals:A",
+   "skill_id": "if_else",
+   "type": "code_output",
+   "gap_targets": [
+    "if_else"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "big",
+   "hints": [
+    "Check the condition with the actual value. Only ONE of the if/else blocks runs.",
+    "> means strictly greater: 5 > 5 is False."
+   ],
+   "solution": [
+    "Is 12 > 10? Yes.",
+    "So only the if part runs: big."
+   ],
+   "patterns": {
+    "big small": "CS_BOTH_BRANCHES"
+   },
+   "code": "x = 12\nif x > 10:\n    print(\"big\")\nelse:\n    print(\"small\")"
+  },
+  {
+   "id": "IFS-DB1",
+   "pool": "diagnostic:conditionals:B",
+   "skill_id": "if_else",
+   "type": "code_output",
+   "gap_targets": [
+    "if_else"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "big",
+   "hints": [
+    "Check the condition with the actual value. Only ONE of the if/else blocks runs.",
+    "> means strictly greater: 5 > 5 is False."
+   ],
+   "solution": [
+    "Is 9 > 4? Yes.",
+    "So only the if part runs: big."
+   ],
+   "patterns": {
+    "big small": "CS_BOTH_BRANCHES"
+   },
+   "code": "x = 9\nif x > 4:\n    print(\"big\")\nelse:\n    print(\"small\")"
+  },
+  {
+   "id": "IFS-DB2",
+   "pool": "diagnostic:conditionals:B",
+   "skill_id": "elif_chains",
+   "type": "code_output",
+   "gap_targets": [
+    "elif_chains"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "pass",
+   "hints": [
+    "Python checks the conditions from the top and runs the FIRST one that is True.",
+    "After one branch runs, the rest are skipped."
+   ],
+   "solution": [
+    "First check: is 88 > 50? Yes.",
+    "The first True branch runs and the rest are skipped.",
+    "It prints pass."
+   ],
+   "patterns": {
+    "merit": "CS_ELIF_BEST_MATCH",
+    "pass merit": "CS_ELIF_ALL_RUN"
+   },
+   "code": "score = 88\nif score > 50:\n    print(\"pass\")\nelif score > 75:\n    print(\"merit\")\nelse:\n    print(\"fail\")"
+  },
+  {
+   "id": "IFS-DB3",
+   "pool": "diagnostic:conditionals:B",
+   "skill_id": "if_else",
+   "type": "code_output",
+   "gap_targets": [
+    "if_else"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "small",
+   "hints": [
+    "Check the condition with the actual value. Only ONE of the if/else blocks runs.",
+    "> means strictly greater: 5 > 5 is False."
+   ],
+   "solution": [
+    "Is 6 > 6? No.",
+    "So only the else part runs: small."
+   ],
+   "patterns": {
+    "big small": "CS_BOTH_BRANCHES",
+    "big": "CS_GREATER_INCLUDES_EQUAL"
+   },
+   "code": "x = 6\nif x > 6:\n    print(\"big\")\nelse:\n    print(\"small\")"
+  },
+  {
+   "id": "IFS-DB4",
+   "pool": "diagnostic:conditionals:B",
+   "skill_id": "elif_chains",
+   "type": "code_output",
+   "gap_targets": [
+    "elif_chains"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "pass",
+   "hints": [
+    "Python checks the conditions from the top and runs the FIRST one that is True.",
+    "After one branch runs, the rest are skipped."
+   ],
+   "solution": [
+    "First check: is 95 > 60? Yes.",
+    "The first True branch runs and the rest are skipped.",
+    "It prints pass."
+   ],
+   "patterns": {
+    "merit": "CS_ELIF_BEST_MATCH",
+    "pass merit": "CS_ELIF_ALL_RUN"
+   },
+   "code": "score = 95\nif score > 60:\n    print(\"pass\")\nelif score > 85:\n    print(\"merit\")\nelse:\n    print(\"fail\")"
+  },
+  {
+   "id": "IFS-DB5",
+   "pool": "diagnostic:conditionals:B",
+   "skill_id": "if_else",
+   "type": "code_output",
+   "gap_targets": [
+    "if_else"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "big",
+   "hints": [
+    "Check the condition with the actual value. Only ONE of the if/else blocks runs.",
+    "> means strictly greater: 5 > 5 is False."
+   ],
+   "solution": [
+    "Is 15 > 3? Yes.",
+    "So only the if part runs: big."
+   ],
+   "patterns": {
+    "big small": "CS_BOTH_BRANCHES"
+   },
+   "code": "x = 15\nif x > 3:\n    print(\"big\")\nelse:\n    print(\"small\")"
+  },
+  {
+   "id": "IFS-VIE1",
+   "pool": "verification:if_else",
+   "skill_id": "if_else",
+   "type": "code_output",
+   "gap_targets": [
+    "if_else"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "big",
+   "hints": [
+    "Check the condition with the actual value. Only ONE of the if/else blocks runs.",
+    "> means strictly greater: 5 > 5 is False."
+   ],
+   "solution": [
+    "Is 8 > 2? Yes.",
+    "So only the if part runs: big."
+   ],
+   "patterns": {
+    "big small": "CS_BOTH_BRANCHES"
+   },
+   "code": "x = 8\nif x > 2:\n    print(\"big\")\nelse:\n    print(\"small\")",
+   "check_role": "same_type"
+  },
+  {
+   "id": "IFS-VIE2",
+   "pool": "verification:if_else",
+   "skill_id": "if_else",
+   "type": "code_output",
+   "gap_targets": [
+    "if_else"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "big",
+   "hints": [
+    "Check the condition with the actual value. Only ONE of the if/else blocks runs.",
+    "> means strictly greater: 5 > 5 is False."
+   ],
+   "solution": [
+    "Is 20 > 11? Yes.",
+    "So only the if part runs: big."
+   ],
+   "patterns": {
+    "big small": "CS_BOTH_BRANCHES"
+   },
+   "code": "x = 20\nif x > 11:\n    print(\"big\")\nelse:\n    print(\"small\")",
+   "check_role": "same_type"
+  },
+  {
+   "id": "IFS-VIE3",
+   "pool": "verification:if_else",
+   "skill_id": "if_else",
+   "type": "code_output",
+   "gap_targets": [
+    "if_else"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "small",
+   "hints": [
+    "Check the condition with the actual value. Only ONE of the if/else blocks runs.",
+    "> means strictly greater: 5 > 5 is False."
+   ],
+   "solution": [
+    "Is 3 > 3? No.",
+    "So only the else part runs: small."
+   ],
+   "patterns": {
+    "big small": "CS_BOTH_BRANCHES",
+    "big": "CS_GREATER_INCLUDES_EQUAL"
+   },
+   "code": "x = 3\nif x > 3:\n    print(\"big\")\nelse:\n    print(\"small\")",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "IFS-VIE4",
+   "pool": "verification:if_else",
+   "skill_id": "if_else",
+   "type": "code_output",
+   "gap_targets": [
+    "if_else"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "small",
+   "hints": [
+    "Check the condition with the actual value. Only ONE of the if/else blocks runs.",
+    "> means strictly greater: 5 > 5 is False."
+   ],
+   "solution": [
+    "Is 10 > 10? No.",
+    "So only the else part runs: small."
+   ],
+   "patterns": {
+    "big small": "CS_BOTH_BRANCHES",
+    "big": "CS_GREATER_INCLUDES_EQUAL"
+   },
+   "code": "x = 10\nif x > 10:\n    print(\"big\")\nelse:\n    print(\"small\")",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "IFS-PIE1",
+   "pool": "practice:if_else",
+   "skill_id": "if_else",
+   "type": "code_output",
+   "gap_targets": [
+    "if_else"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "big",
+   "hints": [
+    "Check the condition with the actual value. Only ONE of the if/else blocks runs.",
+    "> means strictly greater: 5 > 5 is False."
+   ],
+   "solution": [
+    "Is 14 > 9? Yes.",
+    "So only the if part runs: big."
+   ],
+   "patterns": {
+    "big small": "CS_BOTH_BRANCHES"
+   },
+   "code": "x = 14\nif x > 9:\n    print(\"big\")\nelse:\n    print(\"small\")"
+  },
+  {
+   "id": "IFS-PIE2",
+   "pool": "practice:if_else",
+   "skill_id": "if_else",
+   "type": "code_output",
+   "gap_targets": [
+    "if_else"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "small",
+   "hints": [
+    "Check the condition with the actual value. Only ONE of the if/else blocks runs.",
+    "> means strictly greater: 5 > 5 is False."
+   ],
+   "solution": [
+    "Is 4 > 4? No.",
+    "So only the else part runs: small."
+   ],
+   "patterns": {
+    "big small": "CS_BOTH_BRANCHES",
+    "big": "CS_GREATER_INCLUDES_EQUAL"
+   },
+   "code": "x = 4\nif x > 4:\n    print(\"big\")\nelse:\n    print(\"small\")"
+  },
+  {
+   "id": "IFS-PIE3",
+   "pool": "practice:if_else",
+   "skill_id": "if_else",
+   "type": "code_output",
+   "gap_targets": [
+    "if_else"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "big",
+   "hints": [
+    "Check the condition with the actual value. Only ONE of the if/else blocks runs.",
+    "> means strictly greater: 5 > 5 is False."
+   ],
+   "solution": [
+    "Is 30 > 25? Yes.",
+    "So only the if part runs: big."
+   ],
+   "patterns": {
+    "big small": "CS_BOTH_BRANCHES"
+   },
+   "code": "x = 30\nif x > 25:\n    print(\"big\")\nelse:\n    print(\"small\")"
+  },
+  {
+   "id": "IFS-PIE4",
+   "pool": "practice:if_else",
+   "skill_id": "if_else",
+   "type": "code_output",
+   "gap_targets": [
+    "if_else"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "small",
+   "hints": [
+    "Check the condition with the actual value. Only ONE of the if/else blocks runs.",
+    "> means strictly greater: 5 > 5 is False."
+   ],
+   "solution": [
+    "Is 7 > 7? No.",
+    "So only the else part runs: small."
+   ],
+   "patterns": {
+    "big small": "CS_BOTH_BRANCHES",
+    "big": "CS_GREATER_INCLUDES_EQUAL"
+   },
+   "code": "x = 7\nif x > 7:\n    print(\"big\")\nelse:\n    print(\"small\")"
+  },
+  {
+   "id": "IFS-RIE1",
+   "pool": "retest:if_else",
+   "skill_id": "if_else",
+   "type": "code_output",
+   "gap_targets": [
+    "if_else"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "big",
+   "hints": [
+    "Check the condition with the actual value. Only ONE of the if/else blocks runs.",
+    "> means strictly greater: 5 > 5 is False."
+   ],
+   "solution": [
+    "Is 6 > 1? Yes.",
+    "So only the if part runs: big."
+   ],
+   "patterns": {
+    "big small": "CS_BOTH_BRANCHES"
+   },
+   "code": "x = 6\nif x > 1:\n    print(\"big\")\nelse:\n    print(\"small\")"
+  },
+  {
+   "id": "IFS-RIE2",
+   "pool": "retest:if_else",
+   "skill_id": "if_else",
+   "type": "code_output",
+   "gap_targets": [
+    "if_else"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "small",
+   "hints": [
+    "Check the condition with the actual value. Only ONE of the if/else blocks runs.",
+    "> means strictly greater: 5 > 5 is False."
+   ],
+   "solution": [
+    "Is 9 > 9? No.",
+    "So only the else part runs: small."
+   ],
+   "patterns": {
+    "big small": "CS_BOTH_BRANCHES",
+    "big": "CS_GREATER_INCLUDES_EQUAL"
+   },
+   "code": "x = 9\nif x > 9:\n    print(\"big\")\nelse:\n    print(\"small\")"
+  },
+  {
+   "id": "IFS-RIE3",
+   "pool": "retest:if_else",
+   "skill_id": "if_else",
+   "type": "code_output",
+   "gap_targets": [
+    "if_else"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "big",
+   "hints": [
+    "Check the condition with the actual value. Only ONE of the if/else blocks runs.",
+    "> means strictly greater: 5 > 5 is False."
+   ],
+   "solution": [
+    "Is 25 > 20? Yes.",
+    "So only the if part runs: big."
+   ],
+   "patterns": {
+    "big small": "CS_BOTH_BRANCHES"
+   },
+   "code": "x = 25\nif x > 20:\n    print(\"big\")\nelse:\n    print(\"small\")"
+  },
+  {
+   "id": "IFS-RIE4",
+   "pool": "retest:if_else",
+   "skill_id": "if_else",
+   "type": "code_output",
+   "gap_targets": [
+    "if_else"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "small",
+   "hints": [
+    "Check the condition with the actual value. Only ONE of the if/else blocks runs.",
+    "> means strictly greater: 5 > 5 is False."
+   ],
+   "solution": [
+    "Is 11 > 11? No.",
+    "So only the else part runs: small."
+   ],
+   "patterns": {
+    "big small": "CS_BOTH_BRANCHES",
+    "big": "CS_GREATER_INCLUDES_EQUAL"
+   },
+   "code": "x = 11\nif x > 11:\n    print(\"big\")\nelse:\n    print(\"small\")"
+  },
+  {
+   "id": "IFS-RIE5",
+   "pool": "retest:if_else",
+   "skill_id": "if_else",
+   "type": "code_output",
+   "gap_targets": [
+    "if_else"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "big",
+   "hints": [
+    "Check the condition with the actual value. Only ONE of the if/else blocks runs.",
+    "> means strictly greater: 5 > 5 is False."
+   ],
+   "solution": [
+    "Is 40 > 39? Yes.",
+    "So only the if part runs: big."
+   ],
+   "patterns": {
+    "big small": "CS_BOTH_BRANCHES"
+   },
+   "code": "x = 40\nif x > 39:\n    print(\"big\")\nelse:\n    print(\"small\")"
+  },
+  {
+   "id": "IFS-RIE6",
+   "pool": "retest:if_else",
+   "skill_id": "if_else",
+   "type": "code_output",
+   "gap_targets": [
+    "if_else"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "small",
+   "hints": [
+    "Check the condition with the actual value. Only ONE of the if/else blocks runs.",
+    "> means strictly greater: 5 > 5 is False."
+   ],
+   "solution": [
+    "Is 2 > 2? No.",
+    "So only the else part runs: small."
+   ],
+   "patterns": {
+    "big small": "CS_BOTH_BRANCHES",
+    "big": "CS_GREATER_INCLUDES_EQUAL"
+   },
+   "code": "x = 2\nif x > 2:\n    print(\"big\")\nelse:\n    print(\"small\")"
+  },
+  {
+   "id": "IFS-VEC1",
+   "pool": "verification:elif_chains",
+   "skill_id": "elif_chains",
+   "type": "code_output",
+   "gap_targets": [
+    "elif_chains"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "pass",
+   "hints": [
+    "Python checks the conditions from the top and runs the FIRST one that is True.",
+    "After one branch runs, the rest are skipped."
+   ],
+   "solution": [
+    "First check: is 81 > 33? Yes.",
+    "The first True branch runs and the rest are skipped.",
+    "It prints pass."
+   ],
+   "patterns": {
+    "merit": "CS_ELIF_BEST_MATCH",
+    "pass merit": "CS_ELIF_ALL_RUN"
+   },
+   "code": "score = 81\nif score > 33:\n    print(\"pass\")\nelif score > 80:\n    print(\"merit\")\nelse:\n    print(\"fail\")",
+   "check_role": "same_type"
+  },
+  {
+   "id": "IFS-VEC2",
+   "pool": "verification:elif_chains",
+   "skill_id": "elif_chains",
+   "type": "code_output",
+   "gap_targets": [
+    "elif_chains"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "pass",
+   "hints": [
+    "Python checks the conditions from the top and runs the FIRST one that is True.",
+    "After one branch runs, the rest are skipped."
+   ],
+   "solution": [
+    "First check: is 99 > 45? Yes.",
+    "The first True branch runs and the rest are skipped.",
+    "It prints pass."
+   ],
+   "patterns": {
+    "merit": "CS_ELIF_BEST_MATCH",
+    "pass merit": "CS_ELIF_ALL_RUN"
+   },
+   "code": "score = 99\nif score > 45:\n    print(\"pass\")\nelif score > 70:\n    print(\"merit\")\nelse:\n    print(\"fail\")",
+   "check_role": "same_type"
+  },
+  {
+   "id": "IFS-VEC3",
+   "pool": "verification:elif_chains",
+   "skill_id": "elif_chains",
+   "type": "code_output",
+   "gap_targets": [
+    "elif_chains"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "fail",
+   "hints": [
+    "Python checks the conditions from the top and runs the FIRST one that is True.",
+    "After one branch runs, the rest are skipped."
+   ],
+   "solution": [
+    "First check: is 25 > 35? No.",
+    "Is 25 > 60? No, so the else block runs.",
+    "It prints fail."
+   ],
+   "code": "score = 25\nif score > 35:\n    print(\"pass\")\nelif score > 60:\n    print(\"merit\")\nelse:\n    print(\"fail\")",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "IFS-VEC4",
+   "pool": "verification:elif_chains",
+   "skill_id": "elif_chains",
+   "type": "code_output",
+   "gap_targets": [
+    "elif_chains"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "pass",
+   "hints": [
+    "Python checks the conditions from the top and runs the FIRST one that is True.",
+    "After one branch runs, the rest are skipped."
+   ],
+   "solution": [
+    "First check: is 90 > 50? Yes.",
+    "The first True branch runs and the rest are skipped.",
+    "It prints pass."
+   ],
+   "patterns": {
+    "merit": "CS_ELIF_BEST_MATCH",
+    "pass merit": "CS_ELIF_ALL_RUN"
+   },
+   "code": "score = 90\nif score > 50:\n    print(\"pass\")\nelif score > 85:\n    print(\"merit\")\nelse:\n    print(\"fail\")",
+   "check_role": "similar_concept"
+  },
+  {
+   "id": "IFS-PEC1",
+   "pool": "practice:elif_chains",
+   "skill_id": "elif_chains",
+   "type": "code_output",
+   "gap_targets": [
+    "elif_chains"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "pass",
+   "hints": [
+    "Python checks the conditions from the top and runs the FIRST one that is True.",
+    "After one branch runs, the rest are skipped."
+   ],
+   "solution": [
+    "First check: is 86 > 40? Yes.",
+    "The first True branch runs and the rest are skipped.",
+    "It prints pass."
+   ],
+   "patterns": {
+    "merit": "CS_ELIF_BEST_MATCH",
+    "pass merit": "CS_ELIF_ALL_RUN"
+   },
+   "code": "score = 86\nif score > 40:\n    print(\"pass\")\nelif score > 80:\n    print(\"merit\")\nelse:\n    print(\"fail\")"
+  },
+  {
+   "id": "IFS-PEC2",
+   "pool": "practice:elif_chains",
+   "skill_id": "elif_chains",
+   "type": "code_output",
+   "gap_targets": [
+    "elif_chains"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "pass",
+   "hints": [
+    "Python checks the conditions from the top and runs the FIRST one that is True.",
+    "After one branch runs, the rest are skipped."
+   ],
+   "solution": [
+    "First check: is 97 > 55? Yes.",
+    "The first True branch runs and the rest are skipped.",
+    "It prints pass."
+   ],
+   "patterns": {
+    "merit": "CS_ELIF_BEST_MATCH",
+    "pass merit": "CS_ELIF_ALL_RUN"
+   },
+   "code": "score = 97\nif score > 55:\n    print(\"pass\")\nelif score > 91:\n    print(\"merit\")\nelse:\n    print(\"fail\")"
+  },
+  {
+   "id": "IFS-PEC3",
+   "pool": "practice:elif_chains",
+   "skill_id": "elif_chains",
+   "type": "code_output",
+   "gap_targets": [
+    "elif_chains"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "pass",
+   "hints": [
+    "Python checks the conditions from the top and runs the FIRST one that is True.",
+    "After one branch runs, the rest are skipped."
+   ],
+   "solution": [
+    "First check: is 72 > 30? Yes.",
+    "The first True branch runs and the rest are skipped.",
+    "It prints pass."
+   ],
+   "patterns": {
+    "merit": "CS_ELIF_BEST_MATCH",
+    "pass merit": "CS_ELIF_ALL_RUN"
+   },
+   "code": "score = 72\nif score > 30:\n    print(\"pass\")\nelif score > 65:\n    print(\"merit\")\nelse:\n    print(\"fail\")"
+  },
+  {
+   "id": "IFS-PEC4",
+   "pool": "practice:elif_chains",
+   "skill_id": "elif_chains",
+   "type": "code_output",
+   "gap_targets": [
+    "elif_chains"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "pass",
+   "hints": [
+    "Python checks the conditions from the top and runs the FIRST one that is True.",
+    "After one branch runs, the rest are skipped."
+   ],
+   "solution": [
+    "First check: is 83 > 50? Yes.",
+    "The first True branch runs and the rest are skipped.",
+    "It prints pass."
+   ],
+   "patterns": {
+    "merit": "CS_ELIF_BEST_MATCH",
+    "pass merit": "CS_ELIF_ALL_RUN"
+   },
+   "code": "score = 83\nif score > 50:\n    print(\"pass\")\nelif score > 78:\n    print(\"merit\")\nelse:\n    print(\"fail\")"
+  },
+  {
+   "id": "IFS-REC1",
+   "pool": "retest:elif_chains",
+   "skill_id": "elif_chains",
+   "type": "code_output",
+   "gap_targets": [
+    "elif_chains"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "pass",
+   "hints": [
+    "Python checks the conditions from the top and runs the FIRST one that is True.",
+    "After one branch runs, the rest are skipped."
+   ],
+   "solution": [
+    "First check: is 91 > 60? Yes.",
+    "The first True branch runs and the rest are skipped.",
+    "It prints pass."
+   ],
+   "patterns": {
+    "merit": "CS_ELIF_BEST_MATCH",
+    "pass merit": "CS_ELIF_ALL_RUN"
+   },
+   "code": "score = 91\nif score > 60:\n    print(\"pass\")\nelif score > 90:\n    print(\"merit\")\nelse:\n    print(\"fail\")"
+  },
+  {
+   "id": "IFS-REC2",
+   "pool": "retest:elif_chains",
+   "skill_id": "elif_chains",
+   "type": "code_output",
+   "gap_targets": [
+    "elif_chains"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "pass",
+   "hints": [
+    "Python checks the conditions from the top and runs the FIRST one that is True.",
+    "After one branch runs, the rest are skipped."
+   ],
+   "solution": [
+    "First check: is 87 > 45? Yes.",
+    "The first True branch runs and the rest are skipped.",
+    "It prints pass."
+   ],
+   "patterns": {
+    "merit": "CS_ELIF_BEST_MATCH",
+    "pass merit": "CS_ELIF_ALL_RUN"
+   },
+   "code": "score = 87\nif score > 45:\n    print(\"pass\")\nelif score > 82:\n    print(\"merit\")\nelse:\n    print(\"fail\")"
+  },
+  {
+   "id": "IFS-REC3",
+   "pool": "retest:elif_chains",
+   "skill_id": "elif_chains",
+   "type": "code_output",
+   "gap_targets": [
+    "elif_chains"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "fail",
+   "hints": [
+    "Python checks the conditions from the top and runs the FIRST one that is True.",
+    "After one branch runs, the rest are skipped."
+   ],
+   "solution": [
+    "First check: is 40 > 50? No.",
+    "Is 40 > 70? No, so the else block runs.",
+    "It prints fail."
+   ],
+   "code": "score = 40\nif score > 50:\n    print(\"pass\")\nelif score > 70:\n    print(\"merit\")\nelse:\n    print(\"fail\")"
+  },
+  {
+   "id": "IFS-REC4",
+   "pool": "retest:elif_chains",
+   "skill_id": "elif_chains",
+   "type": "code_output",
+   "gap_targets": [
+    "elif_chains"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "pass",
+   "hints": [
+    "Python checks the conditions from the top and runs the FIRST one that is True.",
+    "After one branch runs, the rest are skipped."
+   ],
+   "solution": [
+    "First check: is 94 > 35? Yes.",
+    "The first True branch runs and the rest are skipped.",
+    "It prints pass."
+   ],
+   "patterns": {
+    "merit": "CS_ELIF_BEST_MATCH",
+    "pass merit": "CS_ELIF_ALL_RUN"
+   },
+   "code": "score = 94\nif score > 35:\n    print(\"pass\")\nelif score > 88:\n    print(\"merit\")\nelse:\n    print(\"fail\")"
+  },
+  {
+   "id": "IFS-REC5",
+   "pool": "retest:elif_chains",
+   "skill_id": "elif_chains",
+   "type": "code_output",
+   "gap_targets": [
+    "elif_chains"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "fail",
+   "hints": [
+    "Python checks the conditions from the top and runs the FIRST one that is True.",
+    "After one branch runs, the rest are skipped."
+   ],
+   "solution": [
+    "First check: is 30 > 45? No.",
+    "Is 30 > 60? No, so the else block runs.",
+    "It prints fail."
+   ],
+   "code": "score = 30\nif score > 45:\n    print(\"pass\")\nelif score > 60:\n    print(\"merit\")\nelse:\n    print(\"fail\")"
+  },
+  {
+   "id": "IFS-REC6",
+   "pool": "retest:elif_chains",
+   "skill_id": "elif_chains",
+   "type": "code_output",
+   "gap_targets": [
+    "elif_chains"
+   ],
+   "prompt": "What does this program print?",
+   "answer": "pass",
+   "hints": [
+    "Python checks the conditions from the top and runs the FIRST one that is True.",
+    "After one branch runs, the rest are skipped."
+   ],
+   "solution": [
+    "First check: is 98 > 70? Yes.",
+    "The first True branch runs and the rest are skipped.",
+    "It prints pass."
+   ],
+   "patterns": {
+    "merit": "CS_ELIF_BEST_MATCH",
+    "pass merit": "CS_ELIF_ALL_RUN"
+   },
+   "code": "score = 98\nif score > 70:\n    print(\"pass\")\nelif score > 95:\n    print(\"merit\")\nelse:\n    print(\"fail\")"
+  }
+ ],
+ "lessons": {
+  "if_else": {
+   "title": "if and else",
+   "big_idea": "An if/else is a fork in the road: Python checks the condition once and runs exactly one of the two blocks, never both.",
+   "steps": [
+    "Put the real value into the condition.",
+    "Decide True or False (careful: > is strict).",
+    "True: run the if block. False: run the else block.",
+    "Then carry on after both."
+   ],
+   "sense_check": "x = 5: is 5 > 5? No, they are equal, so the else block runs.",
+   "worked_examples": [
+    {
+     "prompt": "What does this program print?",
+     "code": "x = 7\nif x > 5:\n    print(\"big\")\nelse:\n    print(\"small\")",
+     "answer": "big",
+     "steps": [
+      "7 > 5 is True.",
+      "Only the if block runs: big."
+     ]
+    },
+    {
+     "prompt": "What does this program print?",
+     "code": "x = 5\nif x > 5:\n    print(\"big\")\nelse:\n    print(\"small\")",
+     "answer": "small",
+     "steps": [
+      "5 > 5 is False.",
+      "The else block runs: small."
+     ]
+    }
+   ]
+  },
+  "elif_chains": {
+   "title": "elif chains",
+   "big_idea": "In an if/elif/else chain, Python runs the FIRST branch whose condition is True and skips the rest, even if a later branch would match 'better'. So the order of the checks matters.",
+   "steps": [
+    "Check the conditions from top to bottom.",
+    "Stop at the first True one and run only that block.",
+    "If none are True, run the else block."
+   ],
+   "sense_check": "score = 85 with 'if score > 50' first: 85 > 50 is True, so it prints pass, and the merit check never happens.",
+   "worked_examples": [
+    {
+     "prompt": "What does this program print?",
+     "code": "score = 85\nif score > 50:\n    print(\"pass\")\nelif score > 80:\n    print(\"merit\")\nelse:\n    print(\"fail\")",
+     "answer": "pass",
+     "steps": [
+      "85 > 50 is True.",
+      "That branch runs; the elif is skipped.",
+      "pass."
+     ]
+    },
+    {
+     "prompt": "What does this program print?",
+     "code": "score = 40\nif score > 50:\n    print(\"pass\")\nelif score > 80:\n    print(\"merit\")\nelse:\n    print(\"fail\")",
+     "answer": "fail",
+     "steps": [
+      "40 > 50 is False.",
+      "40 > 80 is False.",
+      "else: fail."
+     ]
+    }
+   ]
+  }
+ }
+}
