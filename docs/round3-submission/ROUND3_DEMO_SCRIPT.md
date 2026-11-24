@@ -2,7 +2,7 @@
 
 Every action below was performed in a real browser against a freshly seeded demo: the automated browser run and a manual check of the scene changes on 23 Nov 2026, and the same journeys on the live site on 24 Nov 2026. Exact answers are given wherever the presenter types something.
 
-**Recorded version.** A silent, captioned recording that follows these scenes is at https://github.com/Priyanka-lang-bot/Elevia/blob/main/docs/round3-submission/video/elevia-demo.mp4 (6 min 57 s). It was made with `scripts/record_demo.py` from a local run of the same code and demo data as the live site. To add a voice-over, record again on the live site with the narration below.
+**Recorded version.** A silent, captioned recording that follows these scenes is at https://github.com/Priyanka-lang-bot/Elevia/blob/main/docs/round3-submission/video/elevia-demo.mp4 (6 min 57 s). It was made with `scripts/record_demo.py` from a local run of the same code and demo data as the live site. A 3-minute cut of the same journey (`--short`) is at https://github.com/Priyanka-lang-bot/Elevia/blob/main/docs/round3-submission/video/elevia-demo-3min.mp4 (2 min 48 s). To add a voice-over, record again on the live site with the narration below.
 
 **Where to record.** On the live site, **https://frontend-pmvi.vercel.app**, which was verified on 24 Nov 2026. Before recording:
 1. The teacher access code is set in Vercel (`ELEVIA_DEMO_TEACHER_CODE`). Have it ready to type; never show or say it.

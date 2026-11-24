@@ -8,7 +8,7 @@ ELEVIA is a working web prototype that finds the misconception behind a student'
 |---|---|
 | **Live prototype** | https://frontend-pmvi.vercel.app (checked on 24 Nov 2026: opens without a login, demo ready) |
 | **GitHub repository** | https://github.com/Priyanka-lang-bot/Elevia |
-| **Demonstration video** | https://github.com/Priyanka-lang-bot/Elevia/blob/main/docs/round3-submission/video/elevia-demo.mp4 (6 min 57 s, silent with on-screen captions; see the note below) |
+| **Demonstration video** | https://github.com/Priyanka-lang-bot/Elevia/blob/main/docs/round3-submission/video/elevia-demo.mp4 (6 min 57 s, silent with on-screen captions; see the note below) · 3-minute version: https://github.com/Priyanka-lang-bot/Elevia/blob/main/docs/round3-submission/video/elevia-demo-3min.mp4 (2 min 48 s) |
 | **Team / contact** | `[TO FILL IN]` |
 
 > The teacher demo opens with an access code that the team gives judges privately; it is not in this repository.
