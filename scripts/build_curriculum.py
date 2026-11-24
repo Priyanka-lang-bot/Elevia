@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from scripts.curriculum import (cs_more, cs_topics, english_more, english_topics, math_more, math_topics,  # noqa: E402
-                                science_more, science_topics)
+                                science_more, science_topics, social_science)
 
 DATA = ROOT / "data"
 OUT = DATA / "topics"
@@ -52,9 +52,14 @@ SUBJECTS = [
      "topics": ["fair_testing", "forces_motion", "states_of_matter"],
      "planned": ["Heat and temperature", "Light", "Electric circuits", "Plants and photosynthesis"]},
     {"id": "english", "name": "English", "icon": "Aa", "color": "#a0522d",
-     "description": "Grammar and sentence construction with exact answer checking.",
+     "description": "Grammar, word classes and punctuation, with exact answer checking.",
      "topics": ["parts_of_speech", "past_tense", "subject_verb_agreement", "apostrophes"],
      "planned": ["Reading comprehension", "Sentence construction", "Other tenses", "Vocabulary"]},
+    {"id": "social_science", "name": "Social Science", "icon": "◍", "color": "#b0306a",
+     "description": "Geography of India's size and location: coordinates and time, with computed answers.",
+     "topics": ["latitude_longitude", "time_zones"],
+     "planned": ["Physical features of India", "Drainage", "Climate", "What is democracy?", "The French Revolution",
+                 "Poverty as a challenge"]},
     {"id": "computer_science", "name": "Computer Science", "icon": "</>", "color": "#6b3fa0",
      "description": "Predict what short programs print. Answers are verified by running the code.",
      "topics": ["variables", "data_types", "conditionals", "boolean_logic", "loops", "algorithms"],
@@ -75,7 +80,8 @@ def main() -> None:
     OUT.mkdir(exist_ok=True)
     topics = {"fractions": FRACTIONS}
     n_q = 0
-    for mod in (math_topics, math_more, science_topics, science_more, english_topics, english_more, cs_topics, cs_more):
+    for mod in (math_topics, math_more, science_topics, science_more, english_topics, english_more, social_science,
+                cs_topics, cs_more):
         for build in mod.ALL:
             t = build()
             tid = t["topic"]["id"]

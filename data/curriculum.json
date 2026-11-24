@@ -49,7 +49,7 @@
    "name": "English",
    "icon": "Aa",
    "color": "#a0522d",
-   "description": "Grammar and sentence construction with exact answer checking.",
+   "description": "Grammar, word classes and punctuation, with exact answer checking.",
    "topics": [
     "parts_of_speech",
     "past_tense",
@@ -61,6 +61,25 @@
     "Sentence construction",
     "Other tenses",
     "Vocabulary"
+   ]
+  },
+  {
+   "id": "social_science",
+   "name": "Social Science",
+   "icon": "◍",
+   "color": "#b0306a",
+   "description": "Geography of India's size and location: coordinates and time, with computed answers.",
+   "topics": [
+    "latitude_longitude",
+    "time_zones"
+   ],
+   "planned": [
+    "Physical features of India",
+    "Drainage",
+    "Climate",
+    "What is democracy?",
+    "The French Revolution",
+    "Poverty as a challenge"
    ]
   },
   {
@@ -470,6 +489,49 @@
    "diagnostic_pools": {
     "A": "diagnostic:apostrophes:A",
     "B": "diagnostic:apostrophes:B"
+   }
+  },
+  "latitude_longitude": {
+   "id": "latitude_longitude",
+   "subject": "social_science",
+   "name": "Latitude and longitude",
+   "unit": "India: size and location",
+   "grade_min": 6,
+   "grade_max": 9,
+   "description": "Reading coordinates: what latitude and longitude measure, and which hemispheres a place is in.",
+   "objectives": [
+    "Say what latitude and longitude each measure",
+    "Work out a place's hemispheres from its coordinates"
+   ],
+   "skills": [
+    "lat_long_meaning",
+    "hemispheres"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:latitude_longitude:A",
+    "B": "diagnostic:latitude_longitude:B"
+   }
+  },
+  "time_zones": {
+   "id": "time_zones",
+   "subject": "social_science",
+   "name": "Time zones and Indian Standard Time",
+   "unit": "India: size and location",
+   "grade_min": 8,
+   "grade_max": 10,
+   "description": "Working out local times from longitude, and why India uses one standard time.",
+   "objectives": [
+    "Use 4 minutes per degree of longitude",
+    "Add time going east and subtract going west",
+    "Explain Indian Standard Time (82°30′E)"
+   ],
+   "skills": [
+    "longitude_and_time",
+    "east_west_time"
+   ],
+   "diagnostic_pools": {
+    "A": "diagnostic:time_zones:A",
+    "B": "diagnostic:time_zones:B"
    }
   },
   "variables": {

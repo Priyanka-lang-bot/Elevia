@@ -10,7 +10,9 @@ Browser ── public/ (static: index.html landing, app.js, learn.js, progress.j
             ├─ backend/accounts/*   accounts, consent, schools, sharing, permissions, rate limits
             ├─ backend/learning.py  /learn: student journey + dashboard (login required, except /learn/catalog)
             ├─ backend/progress.py  /progress: teacher / parent / shared views, review queue, intervention history
-            ├─ backend/demo.py      /demo: one-click demo login (only when ELEVIA_DEMO_MODE=1)
+            ├─ backend/demo.py      /demo: one-click student demo; teacher demo with the access code
+            ├─ backend/history.py   six-month timeline, subject progress, skill map, class overview (from records)
+            ├─ backend/clock.py     the one place the backend reads the time (seed-only simulated calendar)
             ├─ backend/orchestrator.py  the workflow: diagnostic → verification → learning → retest
             │     └─ backend/agents/  diagnoser · checker · planner · tutor (rule-based)
             ├─ backend/engine.py    answer checking dispatcher
@@ -71,6 +73,7 @@ The original fractions files are loaded unchanged and merged in, so the agents s
 | `learner_links (user_id, student_id)` | Connects a login account to its learning record (`students`), which the agents already use. |
 | `case_topics (case_id, topic_id)` | Which topic a case belongs to. A **new table instead of a new column**, so the live Turso database only gains a table (no `ALTER`). Cases without a row are fractions cases, so old data stays valid. |
 
+| `demo_profiles (user_id, student_code, reference_date, period_start)` | Labels for the fictional demo students, shown on their dashboards so a demonstration account is never mistaken for a real one. |
 | `demo_registry (kind, ref_id, slug)` | Lists every row the demo seed created (users, school, class). One-click login and reset only ever touch rows listed here. |
 
 Students can have one active case **per topic**, so a 24-hour retest wait in one topic doesn't block learning another.
@@ -88,10 +91,44 @@ Students can have one active case **per topic**, so a 24-hour retest wait in one
 - **Teacher review queue.** `/progress/students` returns every `teacher_review` case in the teacher's classes. Each entry has the topic, skill, suspected misconception and a plain-language reason (e.g. "Double-check was mixed: confirm or reject the gap"). The same call returns the latest 15 `teacher_overrides` as the intervention history.
 - **Parent summary.** One card per child, built from the same data and limited by the consent scopes.
 
+## Learning history (backend/history.py)
+
+- **Sources.** Computed on each request from four tables only:
+  - `responses` (every answer);
+  - `agent_runs` (each role's decision and its time: diagnose, evaluate_verification, teach, schedule_retest, evaluate_retest);
+  - `teacher_overrides`;
+  - `skill_mastery`.
+- **Counting rule.** Practice answers never count towards progress, which is the same rule the dashboard uses, so every figure agrees.
+- **Student.** `/learn/history` and `/progress/students/{id}/history` return:
+  - monthly figures;
+  - an event list;
+  - upcoming retests;
+  - subject progress;
+  - a skill map.
+
+  The second route is permission-checked; misconception names and the Checker's reasons are shown only with the `gaps` scope.
+- **Teacher.** `/progress/students` adds a class overview per class:
+  - by subject;
+  - monthly trend;
+  - needs attention;
+  - upcoming retests;
+  - difficult topics;
+  - frequent misconceptions (distinct students);
+  - repeated failed retests;
+  - most improved (passed after a failed retest).
+
+## The demo's six-month history (scripts/demo.py + backend/clock.py)
+
+- **Real routes, simulated dates.** The seed drives the real HTTP routes. Before each step it sets a simulated clock (`clock.simulated()`), which only the seed calls; no request can change it, and it is always restored. Every record therefore carries a natural past timestamp.
+- **Delays honoured.** A retest can only start once it is due, exactly as on the live site.
+- **Deterministic.** The calendar ends on the reference date, so the same reference date gives the same history.
+- **Checked as it goes.** Each step asserts the stage the workflow reached, so a rule change stops the seed instead of producing an inconsistent story.
+
 ## Demo mode
 
 - **Off by default.** `/api/demo/login` returns 404 unless `ELEVIA_DEMO_MODE=1`.
-- **Normal sessions.** When on, it creates an ordinary session (same cookie, CSRF and expiry) for a slug such as `riya` or `teacher`. It only ever does this for a user listed in `demo_registry` who is still active.
+- **Normal sessions.** When on, it creates an ordinary session (same cookie, CSRF and expiry) for a student slug (`riya`, `fresh`, `arjun`), or for `teacher` when the request carries the judges' access code (`ELEVIA_DEMO_TEACHER_CODE`, 8+ characters, compared in constant time, 10 wrong tries per 10 minutes per IP). It only ever does this for a user listed in `demo_registry` who is still active.
+- **Parents and admin never.** Their demo accounts exist so the student data has real consent and a real school behind it, but their slugs are refused with 403. They log in with a password like anyone else. Demo passwords are not in the repository (`ELEVIA_DEMO_PASSWORD`, or a random one printed once by the seed).
 - **No secrets in the page.** No password or token is sent to the page.
 - **Limits.** Logins are rate-limited per IP (60 per 10 minutes).
 - **Guarded actions.** Demo users can't withdraw consent, change parent permissions, send invitations or unassign teachers (`refuse_for_demo`).

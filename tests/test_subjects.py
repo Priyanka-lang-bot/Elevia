@@ -117,7 +117,7 @@ def test_failed_retest_replans_on_a_new_subject(client, me):
 def test_two_topics_run_side_by_side_and_dashboard_tracks_both(client, me):
     d = client.get("/learn/dashboard", headers=me).json()
     assert d["phase"] == "welcome" and d["needs_grade"] and d["answers"]["total"] == 0
-    assert [s["id"] for s in d["subjects"]] == ["mathematics", "science", "english", "computer_science"]
+    assert [s["id"] for s in d["subjects"]] == ["mathematics", "science", "english", "social_science", "computer_science"]
     a = post(client, me, "/learn/start", {"grade": 6, "topic_id": "decimals"})
     b = post(client, me, "/learn/start", {"topic_id": "past_tense"})
     assert a["case_id"] != b["case_id"]
@@ -146,7 +146,7 @@ def test_unknown_topic_is_refused(client, me):
 
 def test_curriculum_structure_is_complete():
     counts = validate_all()
-    assert counts["subjects"] == 4 and counts["topics"] == 24
+    assert counts["subjects"] == 5 and counts["topics"] == 26
     cur = curriculum()
     for tid, t in cur["topics"].items():
         assert t["objectives"] and t["skills"] and t["unit"]
@@ -203,8 +203,8 @@ def test_public_catalog_needs_no_login_and_exposes_no_answers(client):
     r = client.get("/learn/catalog")
     assert r.status_code == 200
     d = r.json()
-    assert d["counts"] == {"subjects": 4, "topics": 24, "questions": len(questions())}
-    assert sum(len(s["topics"]) for s in d["subjects"]) == 24
+    assert d["counts"] == {"subjects": 5, "topics": 26, "questions": len(questions())}
+    assert sum(len(s["topics"]) for s in d["subjects"]) == 26
     for s in d["subjects"]:                                     # catalogue only, never question content
         assert set(s) == {"id", "name", "icon", "color", "description", "planned", "topics"}
         for t in s["topics"]:

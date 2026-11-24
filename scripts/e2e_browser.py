@@ -1,9 +1,10 @@
 """Browser end-to-end check of the whole product, driven like a real user (Playwright + Chrome).
 
-    # terminal 1: a fresh database with the demo accounts, demo mode on
+    # terminal 1: a fresh database with the six-month demo, demo mode and the teacher access code on
+    export ELEVIA_DEMO_PASSWORD=some-test-password ELEVIA_DEMO_TEACHER_CODE=some-judges-code
     ELEVIA_DB_PATH=/tmp/e2e.db python scripts/demo.py seed
     ELEVIA_DB_PATH=/tmp/e2e.db ELEVIA_DEMO_MODE=1 python -m uvicorn app:app --port 8765
-    # terminal 2
+    # terminal 2 (same two variables exported)
     python scripts/e2e_browser.py [--base http://localhost:8765] [--shots]   (--shots refreshes public/img/*.jpg)
 
 Covers: landing page (nav, catalogue, mobile menu), login, dashboard, a full fractions journey (check-in ->
@@ -11,6 +12,7 @@ double-check -> lesson -> practice -> retest -> result), a code question, teache
 -> confirming an inconclusive gap with a reason, parent view, and mobile layouts. Fails on any console error.
 """
 import argparse
+import os
 import re
 import sys
 from pathlib import Path
@@ -22,7 +24,8 @@ sys.path.insert(0, str(ROOT))
 from backend.content import questions  # noqa: E402
 from backend.engine import correct_answer_text, render_prompt  # noqa: E402
 
-PW = "Demo-Pass-2026!"
+PW = os.environ.get("ELEVIA_DEMO_PASSWORD", "")                 # the password the demo was seeded with
+TEACHER_CODE = os.environ.get("ELEVIA_DEMO_TEACHER_CODE", "")    # the server's judges' access code
 KEY = {q["id"]: correct_answer_text(q) for q in questions().values()}
 BY_PROMPT = {}
 for q in questions().values():
@@ -30,6 +33,8 @@ for q in questions().values():
 
 
 def main():
+    if not PW or not TEACHER_CODE:
+        sys.exit("Set ELEVIA_DEMO_PASSWORD and ELEVIA_DEMO_TEACHER_CODE (the values the demo server uses).")
     ap = argparse.ArgumentParser()
     ap.add_argument("--base", default="http://localhost:8765")
     ap.add_argument("--shots", action="store_true")
@@ -82,16 +87,24 @@ def main():
         pg = new_page(1300, 900)
         pg.goto(B + "/")
         expect(pg.locator("h1.hero-h")).to_contain_text("missing understanding")
-        pg.locator("#subj-grid .topic-links a").first.wait_for()
-        assert pg.locator("#subj-grid .topic-links a").count() == 24
+        pg.locator("#subj-grid .idx-topics a").first.wait_for()
+        assert pg.locator("#subj-grid .idx-topics a").count() == 26
+        assert pg.locator("#subj-grid .idx-soon a").count() == 0 and pg.locator("#subj-grid .idx-soon li").count() >= 12
         broken = pg.evaluate("[...document.images].filter(i => i.loading !== 'lazy' && !(i.complete && i.naturalWidth > 0)).map(i => i.src)")
         assert not broken, broken
-        pg.locator("#demo-grid .demo-card").first.wait_for()
-        assert pg.locator("#demo-grid .demo-card").count() == 6 and "Demo-Pass" not in pg.content()
+        pg.locator("#demo-grid .lib-card").first.wait_for()
+        pg.locator("#demo-grid .teacher-card").wait_for()
+        assert pg.locator("#demo-grid .lib-card").count() == 4 and PW not in pg.content() and TEACHER_CODE not in pg.content()
+        names = pg.locator("#demo-grid .lib-name").all_inner_texts()
+        assert names == ["Riya Sharma", "Dev Kapoor", "Arjun Patel", "Ananya Mehta"], names
+        assert pg.locator("#teacher-code").get_attribute("type") == "password"
+        staff = pg.request.post(B + "/api/demo/login", data={"slug": "teacher"},
+                                headers={"x-elevia-web": "1"}).status        # outside the page: no console noise
+        assert staff == 403, staff
         pg.click(".lnav-links a[href='#how']"); pg.wait_for_timeout(700)
         assert pg.evaluate("window.scrollY") > 400 and pg.evaluate("location.hash") == ""
-        for sec in ("features", "students", "teachers", "about"):
-            assert pg.locator(f"#{sec}").count() == 1
+        for sec in ("problem", "how", "features", "subjects", "students", "teachers", "why", "about", "demo"):
+            assert pg.locator(f"#{sec}").count() == 1, sec
         hrefs = pg.eval_on_selector_all("#landing a[href]", "els => els.map(e => e.getAttribute('href'))")
         for h in hrefs:      # no dead links: every in-page anchor exists, every app route is known
             if h.startswith("#") and not h.startswith("#/"):
@@ -103,20 +116,88 @@ def main():
         pg.wait_for_timeout(500)
         broken = pg.evaluate("[...document.images].filter(i => !(i.complete && i.naturalWidth > 0)).map(i => i.src)")
         assert not broken, broken
-        step(f"landing: hero, {len(hrefs)} links checked, live catalogue (24 topics), 6 demo cards, no broken images")
+        step(f"landing: {len(hrefs)} links checked, index of 26 playable topics in 5 subjects (coming-soon titles are not "
+             "links), 3 student cards + a teacher card that needs the access code, no secrets in the page, no broken images")
+
+        def stage_y(sec, i, n):     # where stage i of n shows in a scroll-driven section
+            return pg.evaluate(f"""(() => {{ const s = document.getElementById('{sec}'), nh = document.querySelector('.lnav').offsetHeight;
+                return s.getBoundingClientRect().top + scrollY - nh + ({i} + 0.5) / {n} * (s.offsetHeight - innerHeight) }})()""")
+        assert pg.evaluate("document.getElementById('students').classList.contains('live')")
+        for i, (tab, img) in enumerate([("st-dash", "shot-dash"), ("st-verify", "shot-verify"),
+                                        ("st-lesson", "shot-lesson"), ("st-result", "shot-result")]):
+            pg.evaluate(f"window.scrollTo({{top: {stage_y('students', i, 4)}, behavior: 'instant'}})"); pg.wait_for_timeout(500)
+            assert pg.get_attribute(f"#{tab}", "aria-selected") == "true", tab
+            assert img in pg.get_attribute("#shot-img", "src"), (tab, pg.get_attribute("#shot-img", "src"))
+            box = pg.evaluate("(() => { const r = document.getElementById('shot-img').getBoundingClientRect(); return [r.top, r.bottom] })()")
+            assert box[0] >= pg.evaluate("document.querySelector('.lnav').offsetHeight") - 1 and box[1] <= pg.evaluate("innerHeight") + 1, box
+        assert pg.evaluate("[...document.querySelectorAll('#students .rv')].every(n => n.classList.contains('in'))")
+        pg.click("#st-verify"); pg.wait_for_timeout(1600)
+        assert pg.get_attribute("#st-verify", "aria-selected") == "true"
+        expect(pg.locator("#shot-cap")).to_contain_text("double-check")
+        pg.focus("#st-verify"); pg.keyboard.press("ArrowRight"); pg.wait_for_timeout(1600)
+        assert pg.get_attribute("#st-lesson", "aria-selected") == "true" and pg.evaluate("document.activeElement.id") == "st-lesson"
+        expect(pg.locator("#shot-cap")).to_contain_text("lesson")
+        step("For students: the screen stays pinned and scrolling steps Dashboard -> Double-check -> Lesson -> Result; "
+             "clicking a tab or arrow keys scroll to that screen")
+
+        pg.evaluate("window.scrollTo(0,0)")
+        pg.click(".lnav-links a.nav-demo"); pg.wait_for_timeout(700)
+        top = pg.evaluate("document.getElementById('demo').getBoundingClientRect().top")
+        assert 0 <= top < 120, top
+        step("Try demo in the top navigation scrolls to the student demo cards")
+
+        def active_book():
+            return pg.evaluate("[...document.querySelectorAll('#how .bk-item')].findIndex(x => x.classList.contains('active'))")
+        assert pg.evaluate("document.getElementById('how').classList.contains('live')")
+        y = pg.evaluate("""(() => { const s = document.getElementById('how');
+            return s.getBoundingClientRect().top + scrollY - document.querySelector('.lnav').offsetHeight + (s.offsetHeight - innerHeight) * 0.5 })()""")
+        pg.evaluate(f"window.scrollTo({{top: {y}, behavior: 'instant'}})"); pg.wait_for_timeout(500)
+        assert active_book() == 2, active_book()
+        expect(pg.locator("#leaf-2")).to_be_visible()
+        pg.click("#how .bk-item:nth-child(5) .book"); pg.wait_for_timeout(1400)
+        assert active_book() == 4 and pg.locator("#how .bk-item:nth-child(5) .book").get_attribute("aria-expanded") == "true"
+        step("book stack: scrolling opens one book at a time (3rd at mid-section); clicking a spine opens its page")
+
+        def ws_step():
+            return pg.evaluate("document.getElementById('ws-stage').dataset.step")
+        for n in ("1", "3"):
+            pg.evaluate(f"""(() => {{ const s = document.querySelector('.sstep[data-step="{n}"]');
+                scrollTo({{top: s.getBoundingClientRect().top + scrollY - innerHeight * 0.4, behavior: "instant"}}) }})()"""); pg.wait_for_timeout(500)
+            assert ws_step() == n, (n, ws_step())
+        step("worksheet: red-pen annotations appear one idea at a time as you scroll (1, then 3)")
+
+        pg.evaluate("document.getElementById('features').scrollIntoView()"); pg.wait_for_timeout(1200)
+        assert pg.evaluate("document.getElementById('folders').classList.contains('in')")       # entrance ran once
+        assert pg.evaluate("document.getElementById('features').classList.contains('live')")
+        right = pg.evaluate("Math.max(...[...document.querySelectorAll('#folders .folder-tab')].map(t => t.getBoundingClientRect().right))")
+        assert right <= pg.evaluate("innerWidth"), right                                         # all nine fit
+        for i in range(9):
+            pg.evaluate(f"window.scrollTo({{top: {stage_y('features', i, 9)}, behavior: 'instant'}})"); pg.wait_for_timeout(700)
+            assert pg.locator(".folder.open").count() == 1 and pg.get_attribute(f"#ft-{i}", "aria-expanded") == "true", i
+            expect(pg.locator(f"#fs-{i}")).to_be_visible()
+        pg.click("#ft-3"); pg.wait_for_timeout(1600)
+        assert pg.locator(".folder.open").count() == 1 and pg.get_attribute("#ft-3", "aria-expanded") == "true"
+        pg.keyboard.press("ArrowRight"); pg.wait_for_timeout(1600)
+        assert pg.get_attribute("#ft-4", "aria-expanded") == "true" and pg.evaluate("document.activeElement.id") == "ft-4"
+        expect(pg.locator("#fs-4")).to_contain_text("How it works")
+        pg.hover("#ft-7"); pg.wait_for_timeout(500)
+        assert pg.get_attribute("#ft-4", "aria-expanded") == "true"                             # scroll decides, not hover
+        step("What's built: pinned drawer; scrolling opens all nine folders one after another; clicking a tab or arrow keys "
+             "scroll to that folder")
+
         pg.evaluate("window.scrollTo(0,0)")
         pg.click(".lnav-links a.btn"); expect(pg.locator("#app h1")).to_contain_text("How would you like")
         step("Get started opens the account-type chooser")
 
-        # ---------------------------------------------------------------- student journey (independent learner)
+        # ---------------------------------------------------------------- student journey: a full topic, live (Dev)
         pg = new_page()
-        pg.goto(B + "/"); pg.locator("#demo-grid .demo-card").first.wait_for()
-        pg.click("button[aria-label^='Open the demo as Ananya']")
+        pg.goto(B + "/"); pg.locator("#demo-grid .lib-card").first.wait_for()
+        pg.click("button[aria-label^='Open the demo as Dev']")
         pg.locator("#app .tabs").wait_for()
-        step("one-click demo login (Ananya, new student) lands on the dashboard")
+        step("one-click demo login (Dev, new learner) lands on the dashboard")
         pg.locator("#app button[aria-label='Start the check-in: Fractions']").click()
         expect(pg.locator("#dgrade-err")).to_be_visible()
-        pg.select_option("#dgrade", "6")
+        pg.select_option("#dgrade", "9")
         pg.locator("#app button[aria-label='Start the check-in: Fractions']").click()
         pg.locator("#app .qcount").wait_for()
         expect(pg.locator("#app .qcount")).to_contain_text("question 1 of 5")
@@ -143,56 +224,98 @@ def main():
         shot(pg, "result")
         step("practice -> delayed retest (demo shortcut) -> 3/3 -> gap closed")
         pg.locator("#app a", has_text="Choose another topic").click()
-        pg.locator("#app #tab-computer_science").click()
-        pg.locator("#app button[aria-label='Start the check-in: Loops']").click()
-        pg.locator("#app pre.code").wait_for()
+        pg.locator("#app #tab-social_science").click()
+        pg.locator("#app button[aria-label='Start the check-in: Time zones and Indian Standard Time']").click()
+        pg.locator("#app .qcount").wait_for()
         answer(pg); answer(pg)
-        step("code question: program shown, typed output checked")
+        step("Social Science topic plays through the same engine")
         pg.reload(); pg.locator("#app .qcount").wait_for()
         expect(pg.locator("#app .qcount")).to_contain_text("question 3 of 5")
         step("reload keeps progress (resumed at question 3 of 5)")
-        pg.locator("#app a", has_text="My dashboard").click()
-        pg.locator("#app .cont-item").first.wait_for()
-        assert pg.locator("#app .cont-item").count() == 1
-        assert int(pg.locator("#app .stat-v").nth(1).inner_text()) >= 1          # retest pass mastered skills
-        step("dashboard: continue learning, mastered skill, history")
-        mp = new_page(390, 844)
-        login(mp, "riya.demo"); mp.locator("#app .next-step").wait_for()
-        assert mp.evaluate("document.documentElement.scrollWidth <= window.innerWidth + 1")
-        step("password login (Riya) works; dashboard with 'what to do next' fits a 390px phone screen")
+
+        # ---------------------------------------------------------------- historical data journey (Riya)
         rp = new_page()
-        rp.goto(B + "/#/login"); rp.locator(".demo-strip .demo-card").first.wait_for()
-        rp.click(".demo-strip button[aria-label^='Open the demo as Riya']")
+        rp.goto(B + "/"); rp.locator("#demo-grid .lib-card").first.wait_for()
+        rp.click("button[aria-label^='Open the demo as Riya']")
         rp.locator("#app .next-step").wait_for()
-        expect(rp.locator("#app .next-step h2")).to_contain_text("Past tense")
-        assert rp.locator("#app .upcoming, #app .list .item").count() >= 1
+        expect(rp.locator("#app .demo-banner")).to_contain_text("DEMO-09-001")
+        expect(rp.locator("#app .demo-banner")).to_contain_text("Class 9 A, ELEVIA Demonstration School, 2026-27")
+        expect(rp.locator("#app .next-step h2")).to_contain_text("Data types")
+        rp.locator("#app .mcol").first.wait_for()
         shot(rp, "dash")
+        months = rp.locator("#app .mchart .mcol").count()
+        assert months >= 6, months
+        rp.locator("#app .mtable summary").click()
+        col = rp.eval_on_selector_all("#app .mtable tbody tr", "rs => rs.map(r => Number(r.children[1].textContent))")
+        stat_answers = int(rp.locator("#app #h-time ~ .stats .stat-v").first.inner_text())
+        header_answers = int(rp.locator("#app .hello .stat-v").nth(2).inner_text())
+        assert sum(col) == stat_answers == header_answers, (col, stat_answers, header_answers)
+        step(f"six-month timeline: {months} months; monthly table adds up to the totals ({stat_answers} answers) shown on the dashboard")
+        subj = rp.locator("#app .subj-row .subj-name").all_inner_texts()
+        assert subj == ["Mathematics", "Science", "English", "Social Science", "Computer Science"], subj
+        mastered = rp.locator("#app .sm-chip.mastered:not(.sm-key .sm-chip)").count()
+        assert mastered == int(rp.locator("#app .hello .stat-v").nth(1).inner_text()) == 8, mastered
+        rp.select_option("#evf", "Social Science")
+        texts = rp.locator("#app .events .ev").all_inner_texts()
+        assert texts and all("Social Science" in t for t in texts)
+        assert any("Retest passed" in t for t in texts) and any("Teacher confirmed" in t for t in texts)
+        step("all five subjects, skill map agrees with mastered count (8), history filters by subject with retests and teacher decisions")
         rp.locator("#app .next-step button").click()
         rp.locator("#app .lesson h2").wait_for()
-        step("Riya (demo strip on login page): next step opens her lesson in progress")
+        answer(rp)                                                     # she had done 2 practice questions already
+        rp.locator("#app button", has_text="done practising").click()
+        expect(rp.locator("#app .countdown")).to_contain_text("Unlocks")
+        step("Riya's next step opens her lesson in progress; finishing practice books a real delayed retest")
+        mp = new_page(390, 844)
+        login(mp, "riya.demo"); mp.locator("#app .mcol").first.wait_for()
+        assert mp.evaluate("document.documentElement.scrollWidth <= window.innerWidth + 1")
+        step("password login (Riya) works; dashboard with timeline and skill map fits a 390px phone screen")
 
-        # ---------------------------------------------------------------- teacher
+        # ---------------------------------------------------------------- teacher journey (judges' access code)
         tp = new_page()
-        login(tp, "demo.teacher@example.com")
-        tp.locator("#app .queue-item").wait_for()
-        expect(tp.locator("#app .queue-item")).to_contain_text("Arjun Patel · Fractions")
-        tp.wait_for_timeout(300)
+        tp.goto(B + "/"); tp.locator("#teacher-code").wait_for()
+        before = len(errors)
+        tp.fill("#teacher-code", "not-the-code"); tp.click(".teacher-card button[type=submit]")
+        expect(tp.locator(".teacher-card .alert")).to_contain_text("isn't right")
+        tp.wait_for_timeout(200)
+        # the browser logs the refused request itself (403); that one expected entry is the only thing dropped
+        expected = [e for e in errors[before:] if "status of 403" in e]
+        assert len(expected) <= 1 and len(errors[before:]) == len(expected), errors[before:]
+        del errors[before:]
+        tp.fill("#teacher-code", TEACHER_CODE); tp.click(".teacher-card button[type=submit]")
+        tp.locator("#app .queue-item").first.wait_for()
+        expect(tp.locator("#app #co-h")).to_contain_text("Class overview · Class 9 A")
+        expect(tp.locator("#app #co-h ~ .stats .stat-v").first).to_have_text("5")
+        expect(tp.locator("#app #ci-h ~ .insight-grid")).to_contain_text("Arjun Patel")
+        tp.evaluate("window.scrollTo({top: 0, behavior: 'instant'})"); tp.wait_for_timeout(300)
         shot(tp, "teacher")
-        tp.locator("#app .queue-item a", has_text="Review").click()
-        fr = tp.locator("#app section.panel", has=tp.locator("h2", has_text=re.compile("^Fractions$")))
-        rv = fr.locator(".review").first
+        step("teacher demo: wrong access code refused, right one opens the class overview, insights and review queue")
+        q = tp.locator("#app .queue-item", has_text="Riya Sharma · Past tense verbs")
+        q.locator("a", has_text="Review").click()
+        tp.locator("#app .demo-banner").wait_for()
+        tp.locator("#app .mcol").first.wait_for()
+        pt = tp.locator("#app section.panel", has=tp.locator("h2", has_text=re.compile("^Past tense verbs$")))
+        rv = pt.locator(".review").first
         rv.wait_for()
-        expect(fr.locator(".round").first).to_contain_text("Inconclusive")
-        expect(fr.locator(".round").first).to_contain_text("Evidence")
-        step("teacher: review queue -> Arjun's case with evidence and review form")
+        rnd = pt.locator(".round").first
+        for text in ("Inconclusive", "Diagnoser", "Check-in answers", "Double-check answers", "Checker's verdict", "a different mistake"):
+            expect(rnd).to_contain_text(text)
+        step("Riya's profile: six-month timeline, skill map, and the flagged case with Diagnoser hypothesis and Checker evidence")
         rv.locator("button", has_text="Confirm gap").click()
         expect(rv.locator(".alert")).to_be_visible()                               # reason required
-        rv.locator("textarea").fill("Saw the same mistake in class on Monday")
+        rv.locator("textarea").fill("Riya wrote 'thinked' in her diary entry in class today")
         rv.locator("button", has_text="Confirm gap").click()
-        fr = tp.locator("#app section.panel", has=tp.locator("h2", has_text=re.compile("^Fractions$")))
-        expect(fr.locator(".round").first).to_contain_text("In the learning room")
-        expect(fr.locator(".audit").first).to_contain_text("Saw the same mistake")
-        step("teacher confirms with a reason; lesson created; override logged")
+        pt = tp.locator("#app section.panel", has=tp.locator("h2", has_text=re.compile("^Past tense verbs$")))
+        expect(pt.locator(".round").first).to_contain_text("In the learning room")
+        expect(pt.locator(".audit").first).to_contain_text("diary entry")
+        tp.locator("#app #h-log").wait_for()
+        expect(tp.locator("#app .events .ev").first).to_contain_text("Teacher confirmed the gap")
+        tp.locator("#app a", has_text="Back to overview").click()
+        tp.locator("#app .queue-item").first.wait_for()
+        hist = tp.locator("#app section.panel", has=tp.locator("h2", has_text="Intervention history"))
+        expect(hist.locator(".item").first).to_contain_text("diary entry")
+        assert tp.locator("#app .queue-item", has_text="Riya Sharma · Past tense verbs").count() == 0
+        step("teacher confirms with a reason; saved in the case audit, Riya's history and the intervention history; queue updated")
 
         # ---------------------------------------------------------------- parent + student sees teacher decision
         pp = new_page()
@@ -201,21 +324,50 @@ def main():
         expect(pp.locator("#app .kid")).to_contain_text("Riya Sharma")
         assert pp.locator("#app .kid").count() == 1 and "Arjun" not in pp.locator("#app main").inner_text()
         pp.locator("#app .kid a", has_text="See details").click()
-        pp.locator("#app .round").first.wait_for()
+        pp.locator("#app .mcol").first.wait_for()
         assert pp.locator("#app .review").count() == 0
-        step("parent (Sunita) sees only Riya, in plain language, with no review controls")
+        step("parent (Sunita) sees only Riya, with her timeline, and no review controls")
         sp = new_page()
-        login(sp, "arjun.demo")
-        sp.locator("#app .cont-item").first.wait_for()
-        sp.goto(B + "/#/learn/fractions")
+        login(sp, "riya.demo")
+        sp.locator("#app .next-step").first.wait_for()
+        sp.goto(B + "/#/learn/past_tense")
         expect(sp.locator("#app .where")).to_contain_text("Your teacher chose")
-        step("student sees the teacher's decision on their journey")
+        step("student sees the teacher's decision on her journey")
 
         # ---------------------------------------------------------------- mobile landing
         mp.goto(B + "/"); mp.locator(".lnav-toggle").click()
         expect(mp.locator(".lnav-links")).to_be_visible()
         assert mp.evaluate("document.documentElement.scrollWidth <= window.innerWidth + 1")
-        step("landing on a phone: menu opens, no horizontal overflow")
+        expect(mp.locator(".nav-demo-m")).to_be_visible()
+        mp.locator(".lnav-toggle").click()
+        mp.evaluate("document.getElementById('features').scrollIntoView()")
+        mp.click("#ft-2"); expect(mp.locator("#fs-2")).to_be_visible()
+        assert not mp.locator("#fs-5").is_visible()
+        mp.click("#ft-2"); assert not mp.locator("#fs-2").is_visible()             # tap again to close
+        mp.click("#how .bk-item:nth-child(4) .book"); expect(mp.locator("#leaf-3")).to_be_visible()
+        assert not mp.locator("#leaf-0").is_visible()
+        for w in (768, 1024):                                                       # tablet widths
+            tp2 = new_page(w, 1000); tp2.goto(B + "/"); tp2.wait_for_timeout(400)
+            assert tp2.evaluate("document.documentElement.scrollWidth <= window.innerWidth + 1"), w
+        step("phone and tablet: Try demo always visible, menu opens, tap-to-open folders and books, no horizontal overflow")
+
+        nj = browser.new_context(viewport={"width": 1300, "height": 900}, java_script_enabled=False).new_page()
+        nj.goto(B + "/")
+        for i in range(9):
+            expect(nj.locator(f"#fs-{i}")).to_be_visible()
+        for i in range(5):
+            expect(nj.locator(f"#leaf-{i}")).to_be_visible()
+        assert nj.locator("#subj-grid .idx-topics a").count() == 26 and nj.locator("#ws-stage .a3").is_visible()
+        assert nj.locator("#students .split-copy").is_visible()
+        step("without JavaScript every folder sheet, book page, annotation, the student section and all 26 topics are readable")
+
+        rm = browser.new_context(viewport={"width": 1300, "height": 900}, reduced_motion="reduce").new_page()
+        rm.on("pageerror", lambda e: errors.append(f"reduced-motion: {e}"))
+        rm.goto(B + "/"); rm.locator("#subj-grid .idx-topics a").first.wait_for()
+        assert not rm.evaluate("document.getElementById('subj-grid').classList.contains('idx-live')")
+        rm.evaluate("document.getElementById('subjects').scrollIntoView()")
+        expect(rm.locator("#subj-grid .idx-topics a").first).to_be_visible()
+        step("reduced motion: no reveal animations, content shown straight away")
         browser.close()
 
     if errors:
