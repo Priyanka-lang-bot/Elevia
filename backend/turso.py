@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import base64
 import sqlite3
+import threading
 from typing import Any, Optional, Sequence
 
 import httpx
@@ -22,9 +23,28 @@ _transport: Optional[httpx.BaseTransport] = None
 _WRITE_PREFIXES = ("INSERT", "UPDATE", "DELETE", "REPLACE")
 
 
+# One HTTP client per process, so a warm serverless instance keeps its TLS connection to the database open
+# instead of paying a new handshake (several round trips) for every database connection.
+_shared: Optional[httpx.Client] = None
+_shared_lock = threading.Lock()
+
+
 def set_transport(t: Optional[httpx.BaseTransport]) -> None:
-    global _transport
+    global _transport, _shared
     _transport = t
+    with _shared_lock:
+        if _shared is not None:
+            _shared.close()
+        _shared = None
+
+
+def _client(timeout: float) -> httpx.Client:
+    global _shared
+    with _shared_lock:
+        if _shared is None:
+            _shared = httpx.Client(timeout=timeout, transport=_transport,
+                                   limits=httpx.Limits(max_keepalive_connections=8, keepalive_expiry=60))
+        return _shared
 
 
 def http_url(url: str) -> str:
@@ -136,14 +156,15 @@ class TursoConnection:
 
     def __init__(self, url: str, token: str, timeout: float = 10.0):
         self._url = http_url(url)
-        self._client = httpx.Client(timeout=timeout, transport=_transport,
-                                    headers={"Authorization": f"Bearer {token}"})
+        self._client = _client(timeout)
+        self._headers = {"Authorization": f"Bearer {token}"}
         self._baton: Optional[str] = None
         self.in_transaction = False
 
     def _pipeline(self, requests: list[dict]) -> list[dict]:
         try:
-            r = self._client.post(f"{self._url}/v2/pipeline", json={"baton": self._baton, "requests": requests})
+            r = self._client.post(f"{self._url}/v2/pipeline", json={"baton": self._baton, "requests": requests},
+                                  headers=self._headers)
         except httpx.HTTPError as e:
             raise sqlite3.OperationalError(f"Database unreachable: {type(e).__name__}") from None
         if r.status_code >= 400:
@@ -204,4 +225,4 @@ class TursoConnection:
         except sqlite3.Error:
             pass
         finally:
-            self._client.close()
+            self._baton = None   # the shared HTTP client stays open for the next connection
